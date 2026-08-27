@@ -1,0 +1,46 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.LV.LVBogenModel
+@{
+    ViewData["Title"] = "LV-Bogen";
+}
+
+<ul id="linkpath">
+    <li id="linkPathNavStart">Navigation</li>
+    <li>Start</li>
+    <li>LVs</li>
+    <li class="current">LV-Bogen</li>
+</ul>
+
+<section class="lv-bogen">
+    <header>
+        <h1>LV-Bogen</h1>
+        <p>@Model.Bogen!.Name</p>
+        <dl>
+            <dt>Bogen-ID</dt>
+            <dd>@Model.Bogen.Id</dd>
+            <dt>Einrichtung</dt>
+            <dd>@Model.Bogen.EIID</dd>
+            <dt>Status</dt>
+            <dd>@(Model.Bogen.Status?.ToString() ?? "-")</dd>
+        </dl>
+    </header>
+
+    <nav aria-label="LV-Kategorien">
+        <ul class="lv-navigation">
+            @foreach (var category in Model.Categories)
+            {
+                <li><a href="#lv-category-@category.Id">@category.Name</a></li>
+            }
+        </ul>
+    </nav>
+
+    <div id="LVWerte">
+        @foreach (var category in Model.Categories)
+        {
+            <section id="lv-category-@category.Id" class="lv-category">
+                <h2>@category.Name</h2>
+                <p>Die Werte dieser Kategorie werden im nächsten Migrationsschritt geladen.</p>
+            </section>
+        }
+    </div>
+</section>

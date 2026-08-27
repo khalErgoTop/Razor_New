@@ -1,0 +1,250 @@
+﻿/* Version: 241213 */
+.box{
+	height:unset
+}
+#LoginHeader{
+	background: url("Images/logo_berlin_m_srgb.svg") no-repeat;
+	display: inline-block;
+	height: 39px;
+	width: 100%;
+	border-bottom: 1px solid #ddd;
+	background-position-x: 0.6rem;
+	margin-top: 0.3rem;
+}
+#cmdCancel{
+	float:right
+}
+input[type="checkbox"]{
+	height: 24px;
+	width: 24px
+}
+.Button {
+	min-height: 43px;
+	width: auto;
+	border-radius: 0px;
+	text-decoration: none;
+	padding: 10px 16px;
+	padding-right: 16px;
+	font-size: 1em;
+	line-height: 1.2;
+	display: inline-block;
+	text-align: center;
+	justify-content: center;
+	cursor: pointer;
+	overflow: visible;
+	background-color: #fff;
+	color: #000;
+	border: 2px solid #000;
+	transition: background-color .2s ease-out;
+	position: relative;
+	padding-right: 59px;
+	background-image: url("Images/Roter_Pfeil.png");
+	background-repeat: no-repeat;
+	background-position-y: right;
+	background-size: 2.7rem;
+	background-position-x: calc(100% + 2px);
+	background-position-y: top;
+}
+
+#spanShowPassword {
+	background-image: url("Images/Icon_Auge.svg");
+	width: 24px;
+	height: 24px;
+	display: block;
+	position: absolute;
+	top: 0.6rem;
+	right: 0.75rem;
+	font-size: 1rem;
+	background-size: 24px;
+	line-height: 3rem;
+}
+#txtPasswort,
+#txtUsername{
+	float: right;
+	border: 2px solid #000;
+	width: 330px !important;
+	font-size: 100%;
+	padding-left: 0.5rem
+}
+#lblUser,
+#lblPW{
+	line-height: 2.25rem
+}
+#headerleft{
+	display:none
+}
+
+#BtnContrastChange::before {
+    top: 0.45rem
+    }
+#M_Header_content {
+	position:relative;
+	display: inline-block;
+	width: unset;
+	right: unset;
+	height: 75px;
+	float: left;
+	top: unset;
+}
+#Crmenu{
+	padding: 0;
+	margin: 0;
+}
+#header,
+#divAnmeldung {
+	margin-left:auto;
+	margin-right:auto;
+}
+label[for="chkStaylogedIn"]{
+	position: absolute;
+	line-height: 2rem;
+	text-align: center;
+	margin-left: 0.5rem;
+}
+#pnlMain {
+	width:100%;
+	margin-left:auto;
+	margin-right:auto;
+	background-color:#FFF
+}
+input#chkStaylogedIn{
+	margin-left: 1rem;
+}
+#pnlTop {
+	height:50px !important;
+}
+#headerlogo{
+	display:inline-block
+}
+.loginMargin {
+	background-color: White;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 1.5rem;
+	width: 500px
+}
+#lblCaption {
+	font-size: 1.375em;
+	color: #000;
+	line-height: 1.182em;
+	font-weight: 700;
+}
+#pnlUser{
+	margin-bottom: 1.5rem;
+}
+#pnlCaption{
+	margin-bottom:1rem
+}
+#lblUser {
+	margin-left:auto;
+	margin-right:auto;
+}
+#pnlPW{
+	margin-bottom: 0.5rem;
+}
+#lblPW {
+	margin-left:auto;
+	margin-right:auto;
+}
+#pnlHint {
+	display: block;
+}
+#lblHint {
+	color:Red;
+}
+#pnlCommands {
+	display:inline-block;
+	height: 3.5rem;
+}
+#divAnmeldung #pnlLogin.loginMargin .box{
+	/*padding-left: 1rem;*/
+	text-align: left;
+	position: relative;
+	width:100%;
+}
+#PnlVersion{
+	position: absolute;
+	bottom: 2rem;
+	right: 1rem;
+	font-size: 0.8rem;
+}
+#cmdCancel,
+#cmdLogin{
+	font-size:100%;
+	width: calc(50% - 0.65rem);
+}
+.divMaps {
+    color: var(--color-black);
+    background: url("Images/GoogleMaps_logo.svg");
+	background-repeat: repeat;
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    width: 12px;
+    height: 12px;
+    position: relative;
+    border: 0 none transparent;
+}
+#divStayLogedIn {
+	margin-top:10px;
+	margin-bottom: 20px;
+	text-align: left;
+}
+.hint {
+	float: left;
+	background-color: #FFF;
+	padding: 0.5em;
+	margin-top: 5px;
+	margin-left: 5px;
+	width: 175px;
+}
+.hmailto {
+	text-decoration: underline; 
+}
+#hylMailTo.msg {
+	display: block;
+}
+#divlblAppname{
+	display:inline
+}
+#lblAppname {
+	position: relative;
+	color: #0461ac;
+	display:inline;
+	top:-50px;
+	height:20px;
+	left:200px;
+	font-size:0
+}
+
+@media screen and (max-width: 940px) {
+	#LoginHeader {
+		left: 0rem;
+		position: relative;
+	}
+
+	#txtPasswort, #txtUsername {
+		width: 200px !important;
+	}
+
+	#pnlLogin {
+		width:100%;
+	}
+
+	#BtnContrastChange {
+		height: 20px;
+		position: relative;
+		display: inline-block;
+		width: 150px;
+	}
+
+	.boxKopf table {
+		width: 50%;
+		display: inline-block;
+		/* float: right; */
+		top: -50px;
+		position: relative;
+		right: calc(-100% + 30px);
+	}
+}

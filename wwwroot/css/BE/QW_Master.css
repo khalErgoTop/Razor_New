@@ -1,0 +1,3994 @@
+﻿/* Version: 250612 */
+
+@media {
+	:root {
+		--color-red: #e40422;
+		--color-lightgrey: #f2f0ef;
+		--color-grey: #434345;
+		--color-darkgrey: #252525 --color-lightblue: #000000;
+		--color-blue: #0047d3;
+		--color-darkblue: #001b3e;
+		--color-greyblue: #3b4d58;
+		--color-font: #434345;
+		--color-black: #000000;
+		--color-white: #FFFFFF;
+		--font-regular: "pt_sansregular", Arial,Helvetica,sans-serif;
+		--font-bold: "pt_sansbold",Arial,Helvetica,sans-serif;
+		--font-georgia: Georgia,Arial,Helvetica,sans-serif;
+		--color-grey-dark: #DDDDDD;
+	}
+}
+
+#M_DefFooter_PnlDefFt,
+#M_DefFooter_PnlDefFt .feedback-form,
+#M_DefFooter_ctl01,
+#M_DefFooter_ctl02,
+#M_DefFooter_ctl03 {
+	position: static !important;
+	bottom: auto !important;
+	right: auto !important;
+	left: auto !important;
+	width: auto !important;
+	z-index: 10 !important;
+}
+
+#Footer {
+	display: flex;
+	flex-direction: column;
+}
+
+
+body {
+	min-height: auto !important;
+}
+
+#Page, #M_pnlMain, #M_PnlMain {
+	min-height: auto !important;
+}
+
+.wrapper {
+	margin-bottom: 0 !important;
+	padding-bottom: 15px !important;
+}
+
+}
+
+#WrapperHead:not(.active) .boxKopf {
+	height: 0 !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	opacity: 0;
+	overflow: hidden;
+	transition: height .18s ease, opacity .18s ease;
+}
+
+#M_PnlModules.boxNavigation {
+	position: relative;
+	z-index: 2;
+	width: 100%;
+	background-color: transparent;
+}
+
+	#M_PnlModules.boxNavigation.modules-fixed {
+		position: fixed !important;
+		top: 0;
+		left: 0;
+		right: 0;
+		z-index: 1000;
+		width: 100%;
+		background-color: #fff;
+		box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+	}
+
+.wrapper {
+	padding-top: 0;
+}
+
+	:focus-visible {
+		outline: 3px solid #0076dd;
+		outline-offset: 0;
+		box-shadow: 0 0 0 5px #fff;
+	}
+
+	#AssistentBookmarks ul {
+		list-style: none;
+		display: flex;
+	}
+
+		#AssistentBookmarks ul li {
+			margin-right: 2rem;
+			display: inline-block;
+			font-size: 14px;
+			cursor: pointer;
+		}
+
+	#Assistent ul li {
+		cursor: pointer;
+	}
+
+	#Assistent .hidden {
+		visibility: hidden;
+	}
+
+	.wtSttToggle {
+		height: 0.5rem
+	}
+
+		.wtSttToggle::after {
+			content: url("Images/Icons/arrow_red_up.svg");
+			display: inline-block;
+			transform-origin: center center;
+			transition: transform .2s ease;
+			font-size: 1rem;
+			margin-top: -1.75rem;
+			position: absolute;
+			right: 0;
+			width: 1.5rem;
+			padding-left: 100%;
+		}
+
+		.wtSttToggle.toggled::after {
+			content: url("Images/Icons/arrow_red_down.svg"); /* nun rotiert es korrekt */
+		}
+
+	.wtSttToggle {
+		font-size: 0
+	}
+
+	input[type="checkbox"]:checked {
+		background-image: url("../../Images/Icons/Box_check_checked.svg");
+		font-size: 0;
+	}
+
+	input[type="checkbox"] {
+		-webkit-appearance: checkbox !important;
+		background-image: url("../../Images/Icons/Box_check.svg");
+		width: 24px !important;
+		height: 24px !important;
+	}
+
+	#divPageTitleSetting.PageTitleSetting input#M_MC_txtPageTitleSetting {
+		margin-bottom: 0.5rem
+	}
+
+	#M_MC_chkLeittextVisible {
+		float: left;
+		margin-top: 2px;
+	}
+
+	#divPageTitleSetting {
+		margin-top: 0.5rem;
+		width: 500px;
+		margin-left: 0.5rem;
+		position: absolute;
+		bottom: -2rem
+	}
+
+	#M_MC_txtInfoText {
+		width: 500px !important;
+		height: 350px !important;
+		margin-left: 0.5rem;
+	}
+
+	#M_MC_uppnlRadioButtonList table#M_MC_rblAuswahl tbody tr td input[type="radio"] {
+		-webkit-appearance: auto !important;
+		appearance: auto !important;
+	}
+
+	#DivRights #GridRights .jsgrid-table tr td:first-child {
+		padding-left: 0.5rem;
+	}
+
+	#spanGroupsSelectedControls #HrefRemoveGroup,
+	#spanGroupsSelectedControls #HrefAddGroup {
+		font-size: 0
+	}
+
+		#spanGroupsSelectedControls #HrefAddGroup:after {
+			font-size: 1rem;
+			content: "Gruppe hinzufügen"
+		}
+
+		#spanGroupsSelectedControls #HrefRemoveGroup:after {
+			font-size: 1rem;
+			content: "Gruppe entfernen"
+		}
+
+	#divGroupsSelected #spanGroupsSelected {
+		display: block;
+		float: left;
+		top: 0.5rem;
+		position: relative
+	}
+
+	#spanGroupsSelectedControls #HrefAddGroup:hover,
+	#spanGroupsSelectedControls #HrefRemoveGroup:hover {
+		cursor: pointer
+	}
+
+	#spanGroupsSelectedControls #HrefAddGroup,
+	#spanGroupsSelectedControls #HrefRemoveGroup {
+		padding: 0.25rem;
+		margin-left: 0.25rem;
+		border: 2px solid black;
+		width: auto;
+		float: right
+	}
+
+	#spanGroupsSelectedControls {
+		float: right;
+		margin-bottom: 0.25rem
+	}
+
+	#M_MC_lcGroupsSelected {
+		padding: 0;
+	}
+
+		#M_MC_lcGroupsSelected option {
+			padding: 0.25rem 0.5rem;
+		}
+
+	#M_MC_LblIsUserDeactivated {
+		position: absolute;
+		margin-left: 2rem;
+		line-height: 2rem !important;
+	}
+
+	.divOuterCheckedListbox.pnlOuterlstModules {
+		border: none
+	}
+
+	#M_MC_LstModules tbody tr td label {
+		top: -6px;
+		position: relative;
+	}
+
+	.innerMain #M_MC_PnlData.cmdpanel #M_MC_UppUserlist #M_MC_PnlUser {
+		width: 400px
+	}
+
+	#M_MC_PnlMain.options #M_MC_pnlStammdaten.pnlOptionValue span {
+		height: 2rem
+	}
+
+	#M_MC_PnlMain .pnlOptionValue input[type="checkbox"] {
+		display: inline-block;
+		margin-left: 10px;
+		position: absolute;
+		margin-top: -0.5rem !important;
+	}
+
+	#M_MC_PnlMain .pnlOptionValue label {
+		margin-left: 5rem !important;
+		margin-top: -0.17rem;
+		position: absolute;
+	}
+
+	#M_MC_pnlStammdaten {
+		margin-top: 1rem;
+	}
+
+	#M_MC_chkStammdatenAnzeige {
+		margin-top: 5px;
+	}
+
+	.lblBegriff {
+		line-height: 1rem !important;
+		display: inherit;
+	}
+
+	#M_MC_PnlMain .pnlOptionLabel {
+		line-height: 2.6rem !important;
+		padding-bottom: 0.5rem
+	}
+
+	#M_MC_tblMain tbody tr td a.mainlink {
+		padding: 5px 10px;
+	}
+
+	.wrapper div.innerMain #M_MC_pnlData.box table tbody tr td {
+		margin-right: 1rem
+	}
+
+	#M_MC_pnlData.box table tbody tr td:first-child {
+		width: 215px !important
+	}
+
+	#M_MC_pnlData.box table tbody tr td:last-child {
+		width: calc(100% - 200px) !important
+	}
+
+	#M_MC_txtOldPassword,
+	#M_MC_txtNewPassword,
+	#M_MC_txtVerifyPassword {
+		width: 100% !important;
+	}
+
+	#M_MC_pnlData.box table tbody tr td input.Button {
+		min-height: 43px;
+		width: 190px !important;
+		border-radius: 0px;
+		text-decoration: none;
+		padding: 10px 16px;
+		font-size: 1em;
+		line-height: 1.2;
+		display: inline-block;
+		text-align: center;
+		justify-content: center;
+		cursor: pointer;
+		overflow: visible;
+		background-color: #fff;
+		color: #000;
+		border: 2px solid #000;
+		transition: background-color .2s ease-out;
+		position: relative;
+		box-shadow: none;
+		background-image: none;
+	}
+
+	#M_MC_txtNewPassword,
+	#M_MC_txtVerifyPassword,
+	#M_MC_txtOldPassword {
+		padding-left: 0.5rem
+	}
+
+	a.mainlink {
+		color: #0047d3;
+	}
+
+		a.mainlink:hover {
+			text-decoration: underline;
+		}
+
+	#M_MC_tblMain td:before {
+		content: "▪";
+		color: #e40422;
+		font-size: 1.5rem;
+		text-decoration: unset;
+		line-height: 1rem;
+		margin-top: 1rem;
+		top: 2px;
+		position: relative;
+	}
+
+	#M_MC_DdlKreise {
+		width: calc(300px - 0.5rem) !important;
+	}
+
+	#ResetSearch {
+		margin-right: 0.5rem
+	}
+
+	#M_MC_BtnExpander,
+	#ResetSearch {
+		position: relative;
+		top: -2rem;
+		width: 23px;
+		float: right
+	}
+
+	.facilityItem {
+		margin-top: 1rem
+	}
+	/*input[type="checkbox"]:checked{
+	background: white;
+	border: 4px solid #2293fc;
+	outline: none;
+}
+input[type="checkbox"]{
+	height: 14px !important;
+	width: 14px !important;
+	border-radius: 50%;
+	border: 4px solid white;
+	outline: 1px solid #c3c3c3;
+	outline-offset: 0px;
+	background: black;
+	line-height: 4rem;
+	margin-top: 0.5rem;
+	padding: 0 !important;
+}*/
+
+	#M_MC_BtnEinrichtungssuche {
+		min-height: 43px;
+		width: 142px;
+		border-radius: 0px;
+		text-decoration: none;
+		padding: 10px 59px 10px 16px;
+		font-size: 1em;
+		line-height: 1.2;
+		display: inline-block;
+		text-align: left;
+		justify-content: center;
+		cursor: pointer;
+		overflow: visible;
+		background-color: #fff;
+		color: #000;
+		border: 2px solid #000;
+		transition: background-color .2s ease-out;
+		position: relative;
+		background-image: url("Images/Roter_Pfeil.png");
+		background-repeat: no-repeat;
+		background-position-y: right;
+		background-size: 2.7rem;
+		background-position-x: right;
+		background-position-y: top;
+		padding-right: 59px !important
+	}
+
+	#M_MC_BtnSaveUser,
+	#M_MC_BtnNewUser,
+	#M_MC_BtnDeleteUser,
+	#M_MC_BtnNewPW {
+		margin-bottom: 0.25rem
+	}
+
+	#M_MC_BtnRefreshList {
+		float: right;
+		width: auto !important;
+		height: auto;
+		font-size: 1rem;
+		margin-left: 0.5rem;
+	}
+
+	#M_MC_DdlUserTypes {
+		float: left;
+	}
+
+	#M_MC_pnlpnlSearchWith {
+		width: 220px;
+	}
+
+	#M_MC_DdlEntfernung {
+		float: left;
+	}
+
+	#DivUmkreisSelection {
+		width: 100%
+	}
+
+	#M_MC_LblEntfernung {
+		float: left
+	}
+
+	#DivtblSearchResults {
+	}
+
+	#M_MC_LblHeading {
+		color: #000;
+		margin: 50px 0 .75em 0;
+		line-height: 1.182em;
+		font-weight: 700;
+	}
+
+	input,
+	body,
+	selection {
+		-webkit-appearance: none !important;
+		appearance: none !important;
+	}
+
+		#M_MC_DdlMapServices,
+		#M_MC_TxtEinrichtungsname,
+		#M_MC_DdlTypSuche,
+		input[type="text"],
+		input[type="date"],
+		input[type="password"],
+		input[type="file"],
+		input[type="email"],
+		select,
+		textarea,
+		.form-control,
+		button.ui-multiselect {
+			-webkit-appearance: none !important;
+			appearance: none !important;
+			display: block;
+			border-radius: 0px;
+			font-size: 1em !important;
+			width: 100%;
+			min-height: 43px;
+			font-family: Arial,sans-serif;
+			background-color: #fff;
+			background-image: none;
+			border: 1px solid #737373;
+			color: #000;
+			padding: 10px;
+			transition: border-color .16s ease-in-out 0s,box-shadow .16s ease-in-out 0s;
+			max-width: none;
+			-webkit-box-sizing: border-box;
+			box-sizing: border-box;
+			margin: 0
+		}
+
+	#M_PnlMain.main .wrapper .innerMain div div ul.superCategory li div ul.subCategory01 {
+		padding-left: 1rem
+	}
+
+	.divAuflistungEinrichtung a:hover {
+		text-decoration: underline
+	}
+
+	.divAuflistungEinrichtung a {
+		cursor: pointer;
+		display: block;
+	}
+
+		.divAuflistungEinrichtung a span.AuflistungEinrichtungname.hst {
+			font-weight: bold
+		}
+
+	#M_PnlMain.main .wrapper .innerMain div p {
+		font-size: 1rem;
+		line-height: 1.5
+	}
+
+	#M_MC_FDescr_TxtEditFacDesc {
+		border: 2px solid var(--color-black)
+	}
+
+	#M_MC_PnlStammDaten div#M_MC_CurrentFacility div#Einrichtungsdaten div#M_MC_PnlTraeger div#InstitutionInner div#M_MC_PnlInst_InstContact_WebAddr.webAddress span#M_MC_PnlInst_InstContact_CtWebAddress.lblWebAddress a {
+		color: var(--color-blue);
+		text-decoration: underline;
+		cursor: pointer
+	}
+
+	#PnlVersion {
+		position: absolute;
+		bottom: 1.5rem;
+		right: 1rem
+	}
+
+	#pnlPersonControls {
+		top: 170px !important;
+		margin: 0 1rem !important;
+		height: 45px;
+	}
+
+	#M_MC_lstPersonsAvailable,
+	#M_MC_lstPersonsSelected {
+		width: 100% !important;
+		margin-top: 0.5rem;
+	}
+
+	#M_MC_pnlPersons {
+		display: flex
+	}
+
+	table#M_MC_tblVerguetung,
+	table#M_MC_tblVerguetung.tblVerguetung {
+		border: 1px solid #DDD
+	}
+
+	#M_MC_lblUserToChange,
+	#lblNews,
+	#FDVHeaderLbl,
+	.FFRHeaderLbl,
+	#ViewCount,
+	h3 {
+		font-weight: normal;
+		font-size: 14px;
+		line-height: 20px;
+		line-height: 1.25em;
+		margin-top: .5em;
+		margin-bottom: .4em;
+		color: var(--color-black);
+	}
+
+	#pnlNewControls {
+		margin: 0.5rem 0
+	}
+
+	#M_MC_btnPersonsAvailableSelectAll:after {
+		content: "Alle auswählen";
+		font-size: 11pt
+	}
+
+	#M_PnlModules.boxNavigation ul#CrModules li ul {
+		padding: 0;
+	}
+
+	#M_MC_PnlMain .pnlOptionLabel span.lblBegriff {
+		line-height: 2rem;
+	}
+
+	#M_MC_PnlMain .pnlOptionValue input {
+		height: 24px;
+		line-height: 1rem;
+	}
+
+	#M_MC_PnlMain .pnlOptionValue label {
+		margin-left: 0.5rem
+	}
+
+	#M_MC_DdlInstitution,
+	#M_MC_DdlUserTypes {
+		padding: 6px;
+		height: 36px;
+		width: 216px
+	}
+
+	#UserInformation #M_MC_LstUsers,
+	#UserInformation #M_MC_TxtBenutzername,
+	#UserInformation #M_MC_DdlUserTypes,
+	#M_MC_TxtConstraint,
+	#UserInformation #M_MC_TxtNachname,
+	#UserInformation #M_MC_TxtEmail,
+	#UserInformation #M_MC_TxtNachname,
+	#UserInformation #M_MC_TxtVorname {
+		padding: 6px;
+		width: 400px;
+	}
+
+	#M_MC_TxtConstraint {
+		margin-bottom: 0.5rem
+	}
+
+	.controlComplete {
+		margin-bottom: 0.5rem
+	}
+
+		.controlComplete span {
+			line-height: 1.6rem
+		}
+
+	#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager span.jsgrid-pager-nav-button,
+	#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager span.jsgrid-pager-page {
+		width: 10%
+	}
+
+#M_MC_btnTestEmailServer,
+#M_MC_Attachments_Files input.fileAttmt,
+#M_MC_FFView_SecLocs_SaveSecLocsGrid,
+#M_MC_FFView_SecLocs_CancelSecLocsGrid,
+#M_MC_FFView_SecLocs_SaveSecContactsData,
+#M_MC_FFView_SecLocs_CancelSecContactsData,
+#M_MC_FFView_SecLocs_BtnAddLoc,
+#M_MC_FFView_SecLocs_BtnCancelAdd,
+#M_MC_FFView_FIV_BtnAddFacilityImage,
+#M_MC_FFView_FIV_BtnCancelAddFacilityImage,
+#M_MC_FFView_FFS_SaveFeatures,
+#M_MC_FFView_FFS_CanelFeatures,
+#M_MC_BtnCancelRemoveFacility,
+#M_MC_BtnRemoveFacility,
+#M_MC_btnPersonsSelectedSelectAll,
+#M_MC_btnPersonsSelectedSelectNone,
+#M_MC_btnPersonsSelectedSelectInvert,
+#M_MC_btnAddNews,
+#M_MC_btnDeleteNews,
+#M_MC_btnEditNews,
+#M_MC_btnSave,
+#BtnInfoNewsDelete,
+#M_MC_BtnSave,
+#M_MC_BtnSaveNewFacility,
+#M_MC_btnPersonsAvailableSelectAll,
+#M_MC_btnPersonsAvailableSelectNone,
+#M_MC_btnPersonsAvailableSelectInvert,
+#M_MC_BtnCancelNew,
+#M_MC_FDescr_FIV_BtnAddFacilityImage,
+#M_MC_FDescr_FIV_BtnCancelAddFacilityImage,
+#M_MC_FDescr_FIV_BtnRemoveFacilityImage,
+#M_MC_FDescr_BtnSaveFacDesc,
+#M_MC_FDescr_BtnCancelEditDesc,
+#M_MC_FPReporting_BtnSaveFFR,
+#M_MC_FPReporting_BtnCancelFFR,
+#M_MC_PnlInst_SavInst,
+#M_MC_PnlInst_CnclEdtInst,
+#M_MC_FFView_ToggleLocationVisibility,
+#M_MC_FFView_ChangeLocationVisibility .buttons input.button.cancel,
+#M_MC_FFView_ToggleFacilityVisibility,
+#M_MC_FFView_ChangeVisibility .buttons input.button.cancel,
+#M_MC_FFView_SaveEditContact,
+#M_MC_FFView_CancelEditContact,
+#M_MC_FFView_SaveContactData,
+#M_MC_FFView_CanelContactData,
+#M_MC_Attachments_BtnCancelAddFile,
+#M_MC_Attachments_BtnAddFile,
+.ButtonExport {
+	width: auto;
+	border-radius: 0px;
+	text-decoration: none;
+	padding: 10px 59px 10px 16px;
+	line-height: 1.2;
+	display: inline-block;
+	text-align: center;
+	justify-content: center;
+	cursor: pointer;
+	overflow: visible;
+	background-color: #fff;
+	color: #000;
+	border: 2px solid #000;
+	transition: background-color .2s ease-out;
+	position: relative;
+	box-shadow: inset -39px 0 0 var(--color-darkblue);
+	background-image: url("Images/Roter_Pfeil.png");
+	background-repeat: no-repeat;
+	background-size: 2.7rem;
+	background-position-x: calc(100% + 2px);
+	background-position-y: top;
+}
+
+	#M_MC_LstFacilities label,
+	#M_MC_LstModules label {
+		margin-left: 0.4rem
+	}
+
+	#M_MC_LstFacilities input[type="checkbox"],
+	#M_MC_LstModules input[type="checkbox"] {
+		margin-right: 1rem
+	}
+
+	#M_MC_btnTestEmailServer {
+		font-size: 1rem
+	}
+
+	#M_MC_PnlMain .pnlOptionLabel span.lblBegriff {
+		margin-right: 3rem
+	}
+
+	#M_MC_LstFacilities input[type="checkbox"],
+	#M_MC_LstModules input[type="checkbox"],
+	#M_MC_PnlMain .pnlOptionValue input[type="checkbox"],
+	#UserInformation.userInformation input#M_MC_ChkIsUserDeactivated {
+		height: 24px;
+		width: 24px;
+		padding: 0;
+		margin: 0.3rem 0;
+	}
+
+#M_MC_PnlMain .pnlOptionValue input {
+	margin-left: 3rem;
+}
+
+	#M_MC_PnlMain .pnlOptionValue input[type="checkbox"] {
+		margin-left: 3rem;
+	}
+
+
+
+#M_MC_TxtEinrichtungsname {
+	padding: 0.5rem;
+	height: 43px !important;
+}
+
+	#DivUmkreisSelection #DivDistance .pnlDropDown select#M_MC_DdlEntfernung.dropDownlist,
+	#DivUmkreisSelection #DivPLZ div.pnlTextBox input#M_MC_TxtPlz.standardTextbox {
+		width: 85px;
+	}
+
+#Einrichtungsdaten #M_MC_FacilityData #DivFeats .ffs .valuepair span.label.identifier,
+#M_MC_Attachments_Attachments .label,
+#Einrichtungsdaten #M_MC_FacilityData .secLoc.label,
+#FDVHeader {
+	font-family: var(--font-bold);
+	font-size: 1.2rem !important;
+	/*color: #000;*/
+	line-height: 1.182em;
+	font-weight: 700;
+	border-left: 7px solid #ff4f4f;
+	padding-left: 12px;
+}
+
+	#M_MC_LstMainLinks {
+		list-style: none;
+		padding-left: 0
+	}
+
+	#M_MC_ctl02_FFRPlaces::before {
+		content: " ,";
+	}
+
+	.ffrDate span.label,
+	.ffrPlaces span.label {
+		width: 170px !important;
+		display: inline-block;
+	}
+
+	#FFRContent .ffrData .ffrSR span.label,
+	#FFRContent .ffrData .ffrSexM span.label,
+	#FFRContent .ffrData .ffrSexF span.label {
+		margin-left: 170px;
+	}
+
+	#M_LblAppname,
+	.ffrAvail {
+		display: none
+	}
+
+	.superCategory liul li {
+		padding: 5px;
+		cursor: pointer
+	}
+
+		.superCategory liul li div:hover {
+			color: var(--color-blue) !important
+		}
+
+	#ExtendedSearch {
+		margin-top: 1rem;
+		margin-bottom: 1rem
+	}
+
+	#M_lblUserLogin {
+		margin-right: 0;
+		position: absolute;
+		right: 0rem;
+		font-style: italic;
+	}
+
+	#M_MC_TxtNewTelefax,
+	#M_MC_TxtNewEmail,
+	#M_MC_TxtNewOrt,
+	#M_MC_TxtNewPlatzzahl,
+	#M_MC_TxtNewTelefon,
+	#M_MC_TxtNewPLZ,
+	#M_MC_txtOldPassword,
+	#M_MC_txtNewPassword,
+	#M_MC_txtVerifyPassword,
+	.ui-dialog-title,
+	#M_MC_LblNewPLZ,
+	#M_MC_LblNewOrt,
+	#M_MC_LblNewPlatzzahl,
+	#M_MC_TxtNewName,
+	#M_MC_LblNewname,
+	#M_MC_TblNewStrasse,
+	#M_MC_TxtNewStrasse,
+	#M_MC_LblKreis,
+	#M_MC_LblNewTelefon,
+	#M_MC_LblNewTelefax,
+	#M_MC_LblNewEmail,
+	#M_MC_LblNewLeistungstyp,
+	#M_MC_FFView_TxtEditContactTitle,
+	#M_MC_FFView_TxtEditContactFirstName,
+	#M_MC_FFView_TxtEditContactSurName,
+	#M_MC_FFView_TxtEditContactTelephone,
+	#M_MC_FFView_TxtEditContactTelefax,
+	#M_MC_FFView_TxtEditContactMobil,
+	#M_MC_FFView_TxtEditContactEmail,
+	#M_MC_FFView_TxtEditContactInternet,
+	#M_MC_FFView_TxtContactDataTelefax,
+	#M_MC_FFView_TxtContactDataMobil,
+	#M_MC_FFView_TxtContactDataEmail,
+	#M_MC_FFView_TxtContactDataTelefon,
+	#M_MC_FFView_TxtContactDataTelefax,
+	#M_MC_FFView_TxtContactDataWWW,
+	#M_MC_PnlInst_EditInstTel,
+	#M_MC_PnlInst_EditInstWeb,
+	#M_MC_PnlInst_EditInstEmail,
+	#M_MC_FPReporting_TxtFFRAddPlaces {
+		width: 25%;
+		margin-right: 1rem;
+		padding: 0;
+		line-height: 2.5rem
+	}
+
+	#ElementToHide {
+		padding-left: 0 !important;
+		margin-left: 0 !important
+	}
+
+	#M_MC_LblErweiterteSuche,
+	#M_MC_LblTypSuche,
+	#M_MC_LblUmkreissuche {
+		font-weight: bold;
+		margin-bottom: 10px;
+		display: block;
+	}
+
+	#M_MC_DivLstMerkm {
+		display: none;
+	}
+
+	#ElementToHide {
+		margin-top: 1rem !important;
+		margin-bottom: 2rem;
+	}
+
+	#DivSlider {
+		padding: 0.5rem 0 !important;
+		display: inline-block !important
+	}
+
+	.wrapper .innerMain #DivOuterSearch #DivInnerSearch #DivTextSearchBottom #M_MC_PnlTextboxSuche.pnlTextBox.control-group.searchform input.clearInput {
+		display: none
+	}
+
+	#M_MC_BtnEinrichtungssuche {
+		height: 35px !important;
+		padding: 0 10px;
+		right: -80%;
+	}
+
+	.verguetungLegende {
+		width: 1000px;
+		margin-top: 0.5rem
+	}
+
+	.pnlVerguetungTabelle table#M_MC_tblVerguetung.tblVerguetung {
+		margin-top: 0.5rem !important
+	}
+
+	.templates {
+		display: none;
+	}
+
+	.UsersLoggedIn {
+		display: block
+	}
+
+	#M_PnlInfoNews ul {
+		display: none
+	}
+
+	.divAuflistungEinrichtungAdresse .addr {
+		font-style: italic;
+		padding-left: 2rem
+	}
+
+	#M_PnlMain .innerMain table {
+		margin-top: 0.5rem
+	}
+
+	#M_MC_EinrichtungenListe .pnlFac {
+		border-bottom: 1px solid #DDD;
+		display: block
+	}
+
+	.ulUsers {
+		padding: 0;
+		margin: 0.5rem 0;
+		list-style-type: none
+	}
+
+	#M_PnlFooterMaster {
+		text-align: center;
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+		max-width: 100vw;
+		margin: 0;
+		z-index: auto;
+		background-color: #f5f5f5;
+		color: #000;
+		padding: 1em 24px;
+		border-top: 1px solid #ddd;
+		box-sizing: border-box
+	}
+
+	.AuflistungEinrichtungnanme {
+		font-weight: bold
+	}
+
+	.facilityItem li:nth-child(odd) {
+		list-style-type: none;
+		padding: 0.3rem 0.5rem;
+		border-bottom: 1px solid #BBB;
+		margin-bottom: 0
+	}
+
+	.facilityItem li:nth-child(even) {
+		list-style-type: none;
+		padding: 0.3rem 0.5rem;
+		border-bottom: 1px solid #BBB;
+		margin-bottom: 0
+	}
+
+	.superCategory li ul.subCategory01 li ul.facilityItem li .divAuflistungEinrichtung .wtStt {
+		margin-left: 2.25rem;
+		margin-top: 1rem;
+	}
+
+	html body div#Page form#aspnetForm div#M_PnlMain.main div.wrapper div.innerMain div div ul.superCategory li div ul.subCategory01 li div ul.facilityItem li div.fci div.divAuflistungEinrichtung div.wtStt ul.sub.Fci li:last-child {
+		border-bottom: none
+	}
+	/*.facilityItem li:nth-child(odd){
+	list-style-type: none;
+	padding:0.3rem 0.5rem;
+	border-bottom: 1px solid #BBB;
+	background:#EEE;
+	margin-bottom:0
+}
+.facilityItem li:nth-child(even){
+	list-style-type: none;
+	padding:0.3rem 0.5rem;
+	border-bottom: 1px solid #BBB;
+	background:#E0E0E0;
+	margin-bottom:0
+}*/
+	.superCategory li div ul li .sM1 {
+		background-color: #bdd0f5;
+		padding: 0.5rem;
+		cursor: pointer;
+		border-bottom: 1px solid #7f92a9;
+		font-weight: bold
+	}
+
+	.superCategory {
+		color: #333;
+		list-style-type: none !important;
+		margin: 0;
+		padding: 0
+	}
+
+		#Einrichtungsdaten #M_MC_UppAttachments #M_MC_AttachmentsPanel_Attachments .label.attmts,
+		#M_MC_pnlEinrichtungsdaten .secLocs.outer .secLoc.label,
+		#Einrichtungsdaten #M_MC_DivFacilityTopic,
+		#M_MC_pnlStammDaten .topic.inst,
+		.superCategory li h2 {
+			font-size: 1.2rem !important;
+			line-height: 1.182em;
+			border-left: 7px solid #ff4f4f;
+			padding-left: 12px;
+		}
+
+		.superCategory li div {
+			color: #333;
+			list-style-type: none
+		}
+
+	.innerMain .facilityItem {
+		padding: 0
+	}
+
+	ul.superCategory li div.sc00 h2:hover {
+		cursor: pointer
+	}
+
+	html body div#Page form#aspnetForm div#M_PnlMain.main div.wrapper div.innerMain div div ul.superCategory li div ul.subCategory01 li div.sc01:hover {
+		text-decoration: underline;
+	}
+
+	.subCategory01 li {
+		color: black;
+		list-style-type: disc;
+		cursor: pointer;
+		margin-bottom: .5em;
+		word-break: break-word;
+		line-height: 1.5rem
+	}
+
+		.subCategory01 li div {
+			color: #0047d3;
+			cursor: pointer
+		}
+
+	#M_MC_PnlData.box table tbody tr td {
+		padding: 5px 0
+	}
+
+	input[type="search"] {
+		-webkit-appearance: none;
+	}
+
+	#fancybox-content {
+		padding: 1rem 0.5rem 0.5rem 0.5rem !important
+	}
+
+	#fancybox-title {
+		margin: 0.5rem 0 0 0 !important;
+		width: 100% !important;
+		padding: 0 !important
+	}
+
+	#fancybox-title-inside {
+		background-color: #DDD;
+		padding: 5px
+	}
+
+	table {
+		border-spacing: 0px !important
+	}
+
+	html {
+		width: 100%;
+		overflow-x: hidden
+	}
+
+	body {
+		font-family: Arial,sans-serif;
+		font-size: 1rem;
+		line-height: 1.5;
+		background-color: #fff;
+		padding: 0;
+		margin: 0
+	}
+
+	.InstituionIdentifier,
+	.faciityIdentifier {
+		background-size: 32px;
+		height: 50px;
+		width: 32px;
+		display: block;
+		background-position-y: center !important
+	}
+
+	.facilityState7 {
+		background-image: url("Images/Haus_Abgelehnt.png");
+		background-repeat: no-repeat
+	}
+
+	.facilityState5 {
+		background-image: url("Images/Haus.png");
+		background-repeat: no-repeat
+	}
+
+	.facilityState11 {
+		background-image: url("Images/Haus_Entfernt.png");
+		background-repeat: no-repeat
+	}
+
+	.facilityState9 {
+		background-image: url("Images/Haus_Geschlossen.png");
+		background-repeat: no-repeat
+	}
+
+	.facilityState2 {
+		background-image: url("Images/Haus_in-Bearbeitung.png");
+		background-repeat: no-repeat
+	}
+
+	.facilityState0 {
+		background-image: url("Images/Haus_Neu.png");
+		background-repeat: no-repeat
+	}
+
+	.facilityState4 {
+		background-image: url("Images/Haus_Validierung.png");
+		background-repeat: no-repeat
+	}
+
+	.facilityState17 {
+		background-image: url("Images/Haus.png");
+		background-repeat: no-repeat
+	}
+
+	#M_pnlMain {
+		min-width: 320px
+	}
+
+	#WrapperHead {
+		position: inherit;
+		z-index: 0
+	}
+
+	.shadowRight {
+		background: url("Images/bg_shadow_right.png") repeat-y scroll right top transparent;
+		position: relative
+	}
+
+	.shadowBottom {
+		background: url("Images/bg_shadow_bottom.png") repeat-x scroll left bottom transparent;
+		position: inherit
+	}
+
+	.shadowBottomRight {
+		background: url("Images/bg_shadow_bottom_right.gif") no-repeat scroll right bottom transparent;
+		position: inherit
+	}
+
+	a {
+		text-decoration: none;
+		color: #333333
+	}
+
+		a:hover {
+			text-decoration: underline;
+		}
+
+	h1 {
+		font-weight: bold;
+		color: Black;
+		line-height: 1.182em;
+		font-size: 1.6rem;
+		margin: 0 0 .75em 0
+	}
+
+	h2 {
+		font-weight: bold;
+		line-height: 1.25em;
+		margin: 0 0 .4em 0
+	}
+
+	h3 {
+		font-weight: bold;
+		line-height: 20px;		
+	}
+
+	h4 {
+		padding-left: 5px;
+		font-weight: normal;
+		text-decoration: underline
+	}
+
+	.caplabel {
+		color: black;
+	}
+
+	.caplink {
+		color: White;
+	}
+
+		.caplink:hover {
+			text-decoration: underline;
+		}
+
+	.stext {
+		font-size: 9px
+	}
+
+	#M_MC_lstMainLinks {
+		list-style-type: none
+	}
+
+	#Einrichtungsdaten #M_MC_TblVerguetung {
+		width: 800px !important;
+		border: 1px solid #DDD
+	}
+
+	#M_MC_tblMain tbody tr td:first-child {
+		display: none
+	}
+
+	#M_MC_tblMain tbody tr td img {
+		display: none
+	}
+
+	.mainlink {
+		display: inline-block;
+		min-width: 400px;
+		padding: 14px;
+		color: #0047d3;
+	}
+
+	#M_MC_FFView_FacName,
+	#M_MC_PnlInst_InstName {
+		font-size: 1.6rem;
+		color: #000;
+		margin-top: 1.5em;
+		margin-bottom: 1.3em;
+		line-height: 1.148em;
+		font-weight: 600;
+	}
+
+	#M_MC_lblUserToChange {
+		color: var(--color-red);
+		margin-top: 3rem;
+		position: relative;
+		line-height: 4rem
+	}
+
+	#M_MC_cmdCancel,
+	#M_MC_cmdSave {
+		margin-top: 1rem
+	}
+
+	#M_MC_pnlData.box table tbody tr {
+		line-height: 2rem
+	}
+
+	.mainlinkSearch {
+		border-bottom: 1px solid #ccc;
+		font-size: 18px;
+		font-weight: bold
+	}
+
+	.box {
+		min-height: 30px;
+		width: auto
+	}
+
+	.tvContainer {
+		margin: 3px;
+		margin-top: 10px;
+		padding: 3px;
+		width: auto;
+		border-style: dotted;
+		border-width: thin
+	}
+
+	#M_MC_PnlStammDaten table.jsgrid-table {
+		width: 250px
+	}
+
+	.legende {
+		background: var(--color-darkblue) none repeat scroll 0 0;
+		border-collapse: collapse;
+		color: #fff;
+		display: inline-grid;
+		width: 100%;
+		overflow: hidden
+	}
+
+		.legende p {
+			margin: 0 0 0.5rem 0
+		}
+
+		.legende img {
+			height: 24px
+		}
+
+	.item {
+		display: inline-block;
+		position: relative;
+		display: inline-block;
+		padding: 0px 0 1px 12px
+	}
+
+	.itemTop {
+		display: inline-block;
+		float: left;
+		margin-left: 35px
+	}
+
+		.itemTop img {
+			vertical-align: middle;
+			display: inline-block;
+		}
+
+		.itemTop span {
+			padding: 0.5rem 0;
+			display: inline-block
+		}
+
+	.itemsAdditional {
+		display: inline-block
+	}
+
+	.boxEinrichtung {
+		padding: 3px;
+		margin-top: 3px;
+		margin-left: 3px;
+		margin-right: 3px;
+		margin-bottom: 3px
+	}
+
+	.cmdpanel {
+		padding: 3px;
+		padding-left: 6px
+	}
+
+	.hint {
+		float: left;
+		font-size: 70%;
+		background-color: #FDF48B;
+		padding: 0.5em;
+		margin-top: 5px;
+		margin-left: 5px;
+		width: 175px
+	}
+
+	.chkTerms {
+		font-size: smaller;
+		text-align: right;
+		margin-right: 5px
+	}
+
+		.chkTerms a {
+			text-decoration: underline
+		}
+
+	#Lstmenu {
+		margin: 0;
+		margin-left: 5px;
+		padding: 0.5em;
+		background: #B0B0B0;
+		float: left;
+		width: 170px
+	}
+
+		#Lstmenu li {
+			list-style: none;
+			margin: 0;
+			padding: 0
+		}
+
+			#Lstmenu li#active {
+				padding: 0.5em;
+				text-decoration: underline;
+				font-weight: bold;
+				color: #D67600
+			}
+
+	#TblWerte span {
+		padding-left: 15px;
+		display: block
+	}
+
+	.labelLevel2 {
+		margin-left: -10px
+	}
+
+	.labelLevel4 {
+		margin-left: 35px;
+		display: block
+	}
+
+	.labelLevel5 {
+		margin-left: 45px;
+		display: block
+	}
+
+	#TblWerte h2 {
+		font-size: 16px;
+		font-weight: bold;
+		margin-top: 5px
+	}
+
+	#TblWerte p {
+		margin-top: -5px;
+		margin-bottom: 2px
+	}
+
+	.helpWindow {
+		z-index: 999;
+		position: absolute;
+		visibility: hidden;
+		width: 300px;
+		background: #FFF099;
+		border-style: solid;
+		border-width: thin;
+		padding: 3px;
+	}
+
+	.helpCaption {
+		margin: 1px;
+		padding-top: 2px;
+		padding-bottom: 2px;
+		font-size: 10px;
+		font-weight: bold;
+		text-align: center;
+		color: White;
+		background: #000069;
+	}
+
+	#M_LblUserLogin,
+	#PnlVersion,
+	.UsersOnline {
+		font-size: 80%
+	}
+
+	.boxKopf table {
+		width: 100%
+	}
+
+		.boxKopf table tbody {
+			vertical-align: top
+		}
+
+	#Appname {
+		position: absolute;
+		top: 4rem;
+		z-index: 1;
+		font-size: 1.2rem;
+		left: 1.5rem
+	}
+
+	.treefix table tbody tr td a {
+		margin-left: 5px
+	}
+
+	#appname {
+		font-size: 20px;
+		margin-right: 12px;
+		line-height: 1.2em;
+		margin: 0;
+		max-height: 4.7em;
+		line-height: 1.2;
+		overflow: hidden;
+		word-break: break-word;
+		overflow: hidden;
+		padding: 3px
+	}
+
+	.lblAppname {
+		color: #003684;
+		display: inline-block;
+		font-size: 13px;
+		font-weight: bold;
+		position: relative;
+		text-shadow: 0 1px 1px rgba(255,255,255,0.7);
+		top: -32px
+	}
+
+	#Headerlogo {
+		background: url("Images/logo_berlin_m_srgb.svg") no-repeat;
+		background-position-x: 0%;
+		display: inline-block;
+		height: 44px;
+		width: 100%;
+		border-bottom: 1px solid #ddd;
+		padding-left: 1.5rem;
+		background-position-x: 1.5rem;
+		background-position-y: 6px
+	}
+
+#M_Header_content {
+	display: inline-block;
+	width: calc(100% - 150px);
+	right: 20px;
+	float: right;
+	top: 0;
+	position: absolute;
+	line-height: 2rem;
+	cursor: pointer;
+}
+
+	#LinkPathNavStart {
+		display: none
+	}
+
+	#Crmenu {
+		display: block;
+		text-align: right;
+		padding: 0;
+		margin: 0;
+		height: 3rem;
+		top: 0.35rem;
+		position: absolute;
+		right: 0rem
+	}
+
+	#WrapperHead #M_PnlTop #M_PnlLinkPath.boxNavigation ul#Linkpath li {
+		float: left;
+		margin-right: 0.5rem;
+		font-size: 85%
+	}
+
+	#Crmenu li {
+		list-style: none;
+		display: inline-block;
+		padding: 0 0.25rem;
+	}
+
+#Accessibility {
+	font-size:0px;
+	background: url(Images/barrierefreiheit.svg) no-repeat;
+	width:35px;
+	height: 35px;
+	position: relative;
+	top: -7px;
+}
+
+#Crmenu a {
+	display: block;
+	cursor: pointer;
+	text-decoration: none;
+	margin: 0;
+	line-height: 2rem
+}
+
+.cntrstChng {
+	display:none!important;
+}
+
+#Crmenu a:hover {
+	text-decoration: underline
+}
+
+	.lblUserLogin {
+		color: #0461ac;
+		display: block;
+		float: right;
+		font-size: 1em;
+		margin: 0;
+		padding: 5px;
+		text-align: right;
+		width: 216px
+	}
+
+	.boxKopf #headerleft {
+		vertical-align: middle;
+		width: 50px;
+	}
+
+	.boxKopf #headerright {
+		text-align: right;
+		vertical-align: top;
+	}
+
+	.boxNavigation {
+		display: inline-block;
+		width: 100%;
+	}
+
+	.leitboxOuter {
+		padding: 0;
+		margin: 0;
+		display: table;
+		width: 100%;
+	}
+
+	.panel {
+		padding: 3px;
+		padding-left: 10px;
+		margin: 3px;
+		margin-top: 0;
+	}
+
+	#M_PnlModules.boxNavigation ul#CrModules li a[title="Suche"] {
+		position: absolute;
+		right: 0;
+		font-size: 0.7rem
+	}
+
+		#M_PnlModules.boxNavigation ul#CrModules li a[title="Suche"]:after {
+			background-image: url(Images/Suche.svg);
+			background-size: 30px 30px;
+			height: 29px;
+			width: 30px;
+			position: absolute;
+			content: "";
+			left: 3.3rem;
+			top: -1.6rem
+		}
+
+	#M_PnlModules {
+		position: relative;
+		margin-left: auto;
+		background: var(--color-white);
+		margin-top: 0;
+		box-shadow: 0px 2px 5px #ddd;
+		border-bottom: 0px solid rgba(0,0,0,.1);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		height: 5.3rem;
+		z-index: 1
+	}
+
+	#M_PnlLinkPath {
+		margin-right: auto;
+		margin-top: 0;
+		padding-top: 1px;
+		padding-bottom: 1px;
+		position: relative;
+		background-color: #f5f5f5;
+	}
+
+	#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager {
+		display: none
+	}
+
+	#linkpath,
+	#Linkpath {
+		list-style: none;
+		margin-bottom: 0px;
+		margin-top: 0px;
+		display: flex;
+		align-items: baseline;
+		flex-wrap: wrap;
+		font-size: 14px;
+		line-height: 1.5;
+		padding: 0
+	}
+
+	#M_MC_FDescr_TxtEditFacDesc {
+		width: 500px;
+		height: 140px
+	}
+
+#M_LblUserLogin {
+
+	position: absolute !important;
+	bottom: 0.5rem !important;
+	right: 1rem !important;
+	z-index: 25 !important;
+}
+
+	#M_PnlGen {
+		height: 45px
+	}
+
+	.Button::after {
+		content: none;
+		display: none;
+	}
+
+	#DivBannerPlaceHolder {
+		display: none
+	}
+
+	#Linkpath li,
+	#linkpath li {
+		display: inline-block;
+		list-style: none;
+		background-image: url("images/BE_Pfeil.svg");
+		background-position: left;
+		padding-left: 10px;
+		background-size: 6px;
+		padding-right: 0px;
+		margin: 0 0.5em 0 0;
+		color: #454545;
+		background-repeat: no-repeat
+	}
+
+	#Linkpath a {
+		display: inline-block;
+		text-decoration: none;
+		padding: 0 2px 0 2px;
+		color: #454545
+	}
+
+	#M_PnlTop {
+		width: 100%
+	}
+
+	#Linkpath a:hover {
+		text-decoration: underline;
+		cursor: pointer
+	}
+
+	#LinkPathNavStart {
+		background-image: none !important;
+		color: #454545;
+		float: left
+	}
+
+	.current {
+		display: inline-block;
+		color: var(--color-black)
+	}
+
+	.topQMFrage {
+		text-decoration: line-Through
+	}
+
+	.TopQWWarnung {
+		color: Red;
+		padding-left: 0 !important
+	}
+
+	#CrModules {
+		position: relative;
+		height: 37px;
+		width: 100%;
+		display: flex;
+		padding: 0;
+		margin: 0
+	}
+
+		#CrModules a, #LiAuflistung {
+			display: inline-block;
+			text-decoration: none;
+			padding: 0;
+			margin-left: auto;
+			margin-right: auto;
+			color: var(--color-black);
+			width: 100%;
+			text-align: center;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			font-weight: bold;
+		}
+
+		#CrModules li {
+			display: inline-block;
+			margin: 0;
+			float: none;
+			flex: 1;
+			text-align: center;
+		}
+
+		#CrModules a:hover {
+			text-decoration: underline
+		}
+
+		#CrModules ul {
+			display: none
+		}
+
+	*#CrModules li:hover > ul {
+		display: block;
+		position: relative;
+		z-index: 1;
+	}
+
+	#CrModules li ul li {
+		display: block;
+		background-color: #f2f2f2;
+	}
+
+	.trv {
+		float: inherit;
+		display: inline-block;
+		z-index: auto;
+		clear: none
+	}
+
+		.trv td {
+			vertical-align: top !important
+		}
+
+	.lbltrv {
+		float: left;
+		display: inline-block;
+		z-index: inherit;
+		vertical-align: top;
+		caption-side: top;
+		position: static;
+		top: 0;
+		clear: left;
+		margin-left: 0
+	}
+
+	#AMNavigation {
+		float: left;
+		display: inline-block;
+		z-index: inherit;
+		vertical-align: top;
+		margin-left: 10px;
+		width: 150px
+	}
+
+	.AMNavigationElement {
+		margin-bottom: 10px
+	}
+
+	#TblGesundheit {
+		float: left;
+		display: inline-block;
+		z-index: inherit;
+		vertical-align: top;
+		width: 720px
+	}
+
+	#TblArbeit {
+		float: left;
+		display: inline-block;
+		z-index: inherit;
+		vertical-align: top
+	}
+
+	#TblFinanzen {
+		float: left;
+		display: inline-block;
+		z-index: inherit;
+		vertical-align: top
+	}
+
+	#TblSoziales {
+		float: left;
+		display: inline-block;
+		z-index: inherit;
+		vertical-align: top;
+	}
+
+	#TblPersonal {
+		float: left;
+		display: inline-block;
+		z-index: inherit;
+		vertical-align: top;
+	}
+
+	.lbtAMStammdaten {
+		margin-bottom: 10px;
+	}
+
+	.lbtAMTraeger {
+		margin-bottom: 10px;
+	}
+
+	.lbtGesundheit {
+		margin-bottom: 10px;
+	}
+
+	.lbtQWSuche {
+		display: block;
+	}
+
+#M_DefFooter_PnlDefFt {
+	/* Footer panel should participate in normal flow, not be fixed */
+	position: relative !important;
+	bottom: auto !important;
+	right: auto !important;
+	width: 100%;
+	max-width: 100vw;
+	margin: 0;
+	z-index: 10;
+	background-color: #f5f5f5;
+	color: #000;
+	padding: 1em 24px;
+	border-bottom: 1px solid #ddd;
+	height: auto;
+	box-sizing: border-box;
+}
+
+
+	#M_Footer {
+		/*		width: calc(100% - 80px);
+		padding: 20px 0px 0px 50px;*/
+		color: #000
+	}
+
+	.innerMain {
+		width: calc(100% - 80px);
+		margin-bottom: 7rem;
+		padding: 20px 0px 60px 50px;
+		overflow: unset;
+		position: inherit
+	}
+
+	#M_DefFooter_ctl02 {
+		left: 1rem;
+		position: fixed;
+		bottom: 0.55rem;
+		color: #000
+	}
+
+	#PnlStammDatenTable1stCol {
+		width: 20%;
+		vertical-align: top
+	}
+
+	#PnlStammDatenTable2stCol {
+		vertical-align: top;
+	}
+
+	#M_MC_TrvFacilities table {
+		margin-top: 3px
+	}
+
+	.stammdatenlblWerte {
+		width: 100px;
+	}
+
+	.stammdatentxtWerte {
+		width: 500px;
+	}
+
+	.lblWerte {
+		margin: 0 0 0 5px;
+	}
+
+	.stammdatenNotEditableTXT {
+		float: Right;
+		margin-left: 5em;
+		color: Black;
+	}
+
+	.lblAMStammEigenschaften {
+		font-weight: bold;
+	}
+
+	#BottomMenue {
+		display: inline-table;
+		float: none;
+		vertical-align: bottom;
+		margin-bottom: 5px;
+	}
+
+	.lbTest {
+		border-bottom-style: none;
+		border-top-style: none;
+		border-left-style: solid;
+		border-right-style: solid;
+		border-width: 1px;
+	}
+
+	.elementToHide {
+		display: block;
+	}
+
+	.elementToHide2 {
+		display: none;
+	}
+
+	#M_MC_TblSearchResults {
+		border-collapse: collapse;
+		border: 0 solid transparent;
+	}
+
+		#M_MC_TblSearchResults .ResultRow:hover {
+			background-color: #eee;
+			color: #Db1700 !important;
+		}
+
+	#M_MC_ctl01_pnlFacilities {
+		margin-top: 20px;
+	}
+
+	#M_MC_TblSearchResults .ResultRow a {
+		color: inherit
+	}
+
+	.tr_SearchResultAddress {
+		font-style: italic;
+		color: GrayText;
+		padding-left: 10px
+	}
+
+	.lbt_Show_Hide {
+		background-image: url("Images/plus.jpg")
+	}
+
+	.trvSearch {
+		overflow: visible;
+		width: 800px
+	}
+
+		.trvSearch td {
+			vertical-align: top !important;
+		}
+
+			.trvSearch td img {
+				height: 12px !important
+			}
+
+	.innerMain td {
+		padding: 0.25rem 0
+	}
+
+	.treefix td {
+		vertical-align: middle !important;
+		padding: 0
+	}
+
+	#divPageTitleSetting {
+		margin-top: 0.5rem
+	}
+
+	#M_MC_lblPageTitleSetting {
+		margin-left: 0px !important
+	}
+
+	.treefix td img {
+		height: 20px !important
+	}
+
+	.pnlCurrentFacility {
+		background-color: #f0f0f0;
+		margin-bottom: 20px;
+		margin-left: 50px;
+		padding: 10px
+	}
+
+	.pnlAllFacilities {
+		margin-left: 50px
+	}
+
+	#Einrichtungen #M_MC_PnlCurrentFacility.pnlCurrentFacility #M_MC_TrvCurrentFacility.treefix div,
+	#Einrichtungen #M_MC_PnlAllFacilities.pnlAllFacilities #M_MC_TrvFacilities.treefix div {
+		margin-left: 5px
+	}
+
+	.lblExtension {
+		background-image: url("");
+		float: right;
+		border-style: none;
+		width: 10px
+	}
+
+	.lblLeftLabel {
+		vertical-align: text-top
+	}
+
+	#M_MC_FFView_ContactData.pnlEdit.ui-dialog-content.ui-widget-content div input,
+	#M_MC_PnlInst_EditInst.pnlEdit.ui-dialog-content.ui-widget-content div input,
+	#M_MC_FFView_EditContact.pnlEdit.ui-dialog-content.ui-widget-content div input {
+		margin-bottom: 0.5rem
+	}
+
+	.lblInLine {
+		vertical-align: middle
+	}
+
+	.imgFacility {
+		background-image: url("Images/Haus.png");
+		height: 16px
+	}
+
+	.imgFacilityNew {
+		background-image: url("Images/Haus_Neu.png");
+		height: 16px
+	}
+
+	.lblAddFacility {
+	}
+
+	#M_MC_DivFreePlaces {
+		display: inline-block;
+		margin-top: 0.5rem
+	}
+
+	#M_MC_DdlKreise {
+		height: 43px;
+		background-color: white
+	}
+	/* Border */
+	select#M_MC_DdlNewTraeger.dropDownlist.value,
+	#M_MC_DdlKreise,
+	#M_MC_DdlTypSuche,
+	.standardTextbox,
+	.pnlDropDown select {
+		border: 1px solid #737373;
+		width: 300px
+	}
+
+	#M_MC_DdlTypSuche {
+		height: 43px;
+		padding: 10px
+	}
+
+	#M_MC_DdlTypSuche {
+		width: 100%;
+		max-width: 100%
+	}
+
+	.dropDownlist {
+		background: none repeat scroll 0 0 #FFF;
+		border-style: none;
+		max-width: 96%;
+	}
+
+	.standardTextbox {
+		color: #000;
+		height: 43px;
+	}
+
+	.pnlTextBox {
+		display: inline-block;
+		padding: 0 0 0 0;
+	}
+
+	.pnlDropDown {
+		overflow: hidden;
+		max-width: 400px;
+	}
+
+		select#M_MC_DdlNewTraeger.dropDownlist.value,
+		.pnlDropDown select {
+			height: 43px;
+		}
+
+	input[type="text"]:focus,
+	input[type="date"]:focus,
+	input[type="password"]:focus,
+	input[type="file"]:focus,
+	input[type="email"]:focus,
+	select:focus,
+	textarea:focus,
+	.form-control:focus,
+	button.ui-multiselect:focus {
+		border: 2px solid #0076dd !important;
+		box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.8);
+		outline: 2px solid #fff;
+		outline-offset: 0;
+		color: #000;
+	}
+
+	#DivtblSearchResults {
+		border-top: 1px solid black;
+		width: 100%;
+		margin-left: 10px;
+		margin-top: 20px;
+	}
+
+	#DivDistance .pnlDropDown {
+		margin-left: 5px;
+		width: 50px;
+	}
+
+	#lblEntfernungZusatz {
+		padding-left: 5px;
+	}
+
+	#lblPlz {
+		display: inline-block;
+	}
+
+	#sliderFac2InstOuter {
+		min-width: 50px;
+		width: 250px;
+		max-height: 10px;
+		display: inline-block;
+	}
+
+	#DivSlider {
+		display: inline-block;
+		margin-top: 5px;
+		margin-bottom: 10px;
+	}
+
+	#DivLabels {
+		display: block;
+		margin-bottom: 10px;
+		max-height: 10px;
+		min-width: 50px;
+		width: 250px;
+	}
+
+	#DivlabelSearchFor {
+		display: inline;
+	}
+
+	#labelSearchFor {
+		margin-right: 5px;
+		vertical-align: text-top;
+	}
+
+	#M_MC_PnlTextboxSuche {
+		padding: 0 0 0 0;
+	}
+
+	#M_MC_TxtEinrichtungsname {
+		margin-right: 5px;
+		height: 25px;
+		width: 100%;
+	}
+
+	#M_MC_BtnEinrichtungssuche {
+		color: #000;
+		background-color: #fff;
+		border: 2px solid #000 !important;
+		padding: 10px 16px;
+		min-height: 43px;
+	}
+
+		#M_MC_BtnEinrichtungssuche:link {
+			background-color: #fff;
+		}
+
+	.facilityItem {
+		display: none
+	}
+
+	#M_MC_BtnEinrichtungssuche:hover {
+		background-color: #f5f5f5
+	}
+
+	span#M_MC_lblErweiterteSuche {
+		display: inline-block;
+	}
+
+	.Button,
+	.button,
+	.btn {
+		min-height: 43px;
+		color: #000;
+		background-color: #fff;
+		border: 2px solid #000;
+		text-decoration: none;
+/*		padding: 10px 16px;
+*/		font-size: 1em;
+		line-height: 1.2;
+		display: inline-block;
+		text-align: center;
+		justify-content: center;
+		cursor: pointer;
+		overflow: visible;
+		transition: background-color .2s ease-out;
+		position: relative;
+		box-shadow: none;
+		background-image: none;
+		border-radius: 0;
+	}
+
+		.Button:hover {
+			background-color: #f5f5f5;
+		}
+
+		.button:hover,
+		.btn:hover,
+		.Button:focus,
+		.button:focus,
+		.btn:focus {
+			background-color: #f5f5f5;
+		}
+
+	.ui-dialog .button.save,
+	.ui-dialog .button.cancel,
+	#M_MC_BtnSave,
+	#M_MC_BtnCancel,
+	#M_MC_BtnEdit,
+	#M_MC_BtnAdd,
+	#M_MC_cmdSave,
+	#M_MC_cmdCancel {
+		min-height: 43px;
+		width: auto;
+		border-radius: 0;
+		text-decoration: none;
+		padding: 10px 16px;
+		font-size: 1em;
+		line-height: 1.2;
+		display: inline-block;
+		text-align: center;
+		cursor: pointer;
+		overflow: visible;
+		background-color: #fff;
+		color: #000;
+		border: 2px solid #000;
+		transition: background-color .2s ease-out;
+		box-shadow: none;
+		background-image: none;
+	}
+
+		.ui-dialog .button.save:hover,
+		.ui-dialog .button.cancel:hover,
+		#M_MC_BtnSave:hover,
+		#M_MC_BtnCancel:hover,
+		#M_MC_BtnEdit:hover,
+		#M_MC_BtnAdd:hover,
+		#M_MC_cmdSave:hover,
+		#M_MC_cmdCancel:hover {
+			background-color: #f5f5f5;
+		}
+
+	.ButtonInactive {
+		font-size: 85%;
+		border: 1px solid #808080;
+		background: white;
+		cursor: default;
+		text-decoration: none;
+		padding: 2px 0.2em 2px 0.2em;
+		margin: 0 0 0 0.2em;
+		min-height: 31px;
+		filter: alpha(opacity=50);
+		-moz-opacity: 0.5;
+		-khtml-opacity: 0.5;
+		opacity: 0.5;
+	}
+
+	.ButtonSave {
+		color: #000;
+		background-color: #fff;
+		background-image: none;
+		background-repeat: no-repeat;
+		background-position: left;
+		border: 2px solid #000;
+		text-decoration: none;
+		padding-left: 16px;
+		padding-right: 16px;
+		vertical-align: middle;
+		width: auto
+	}
+
+	#M_MC_PnlData.ButtonSave,
+	#M_MC_TblMain.ButtonSave,
+	.SaveOptions,
+	#M_MC_PnlNewFacility.ButtonSave,
+	#M_MC_PnlEditContact.ButtonSave {
+		padding: 10px 16px;
+		background-color: #fff !important;
+		border: 2px solid #000 !important;
+		color: #000 !important;
+		margin-bottom: 5px !important;
+		min-width: 80px !Important
+	}
+
+		#M_MC_PnlData.ButtonSave:hover,
+		#M_MC_TblMain.ButtonSave:hover,
+		.SaveOptions:hover,
+		#M_MC_PnlNewFacility.ButtonSave:hover,
+		#M_MC_PnlEditContact.ButtonSave:hover {
+			background-color: #f5f5f5 !important;
+			border: 2px solid #000 !important
+		}
+
+	#M_MC_PnldivContactData,
+	#M_MC_PnlEditContact {
+		height: 25px
+	}
+
+	input#M_MC_TxtContactDataWWW,
+	input#M_MC_TxtContactDataTelefax {
+		position: absolute;
+		left: 19.5rem
+	}
+
+	#M_MC_PnlEditContact div,
+	#M_MC_PnldivContactData div {
+		height: 1.5rem
+	}
+
+	input#M_MC_TxtEditContactSurName,
+	input#M_MC_TxtEditContactTelefax,
+	input#M_MC_TxtEditContactInternet {
+		position: absolute;
+		left: 18rem
+	}
+
+	span#M_MC_lblContactDataWWW,
+	span#M_MC_lblContactDataTelefax,
+	span#M_MC_lblEditContactSurName,
+	span#M_MC_lblEditContactInternet.lblInLine,
+	span#M_MC_lblEditContactTelefax {
+		position: absolute;
+		left: 14.5rem
+	}
+
+	#M_MC_PnlEditContact input#M_MC_TxtEditContactTitle,
+	#M_MC_PnlEditContact input#M_MC_TxtEditContactFirstName,
+	#M_MC_PnlEditContact input#M_MC_TxtEditContactTelephone,
+	#M_MC_PnlEditContact input#M_MC_TxtEditContactMobil,
+	#M_MC_PnlEditContact input#M_MC_TxtEditContactEmail,
+	input#M_MC_TxtContactDataTelefon,
+	input#M_MC_TxtContactDataEmail,
+	input#M_MC_TxtContactDataMobil {
+		position: absolute;
+		left: 4rem
+	}
+
+	#fancybox-content span {
+		margin: 0
+	}
+
+	.ButtonSaveInactive {
+		color: transparent;
+		background-color: transparent;
+		background-image: url(Images/Save_16x16_256.ico);
+		background-repeat: no-repeat;
+		background-position: left;
+		border: none;
+		vertical-align: middle;
+		text-decoration: none;
+		min-height: 31px;
+		padding-left: 16px;
+		padding-right: 1px;
+		cursor: default;
+		filter: alpha(opacity=50);
+		-moz-opacity: 0.5;
+		-khtml-opacity: 0.5;
+		opacity: 0.5;
+		width: 16px;
+	}
+
+	#M_MC_BtnSaveContactData {
+		margin: 0 !important
+	}
+
+	#M_MC_lbtSaveEditContact {
+		margin-left: 0 !important;
+		margin-right: 0 !important
+	}
+
+	#M_MC_PnldivContactData {
+		height: 200px;
+		width: 500px
+	}
+
+	#M_MC_PnlEditContact {
+		height: 200px;
+		width: 460px
+	}
+
+	a#M_MC_lbtSaveEditContact.ButtonSave,
+	a#M_MC_lbtCancelEditContact.ButtonCancel {
+		min-height: 10px
+	}
+
+	.ButtonCancel {
+		margin: 0 5px 0 0;
+		background-image: none;
+		background-position-x: 3px;
+	}
+
+	.ButtonCancel, .ButtonSave {
+		margin: 0 5px 0 0;
+		color: #000;
+		background-color: #fff;
+		background-repeat: no-repeat;
+		background-position: left;
+		background-position-x: 3px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		float: left !important;
+		border: 2px solid #000;
+		text-decoration: none;
+		padding-left: 16px;
+		padding-right: 16px;
+		text-align: center
+	}
+
+	input.ButtonCancel {
+		min-height: 30px;
+	}
+
+	.ButtonSave:hover,
+	.ButtonCancel:hover {
+		background-color: #f5f5f5;
+		border: 2px solid #000;
+	}
+
+#Page .button,
+#Page .Button,
+#Page .btn,
+#Page input.Button,
+#Page input.button,
+#Page input.btn,
+#Page a.button,
+#Page a.Button,
+#Page .ui-button,
+#Page .ui-dialog .ui-dialog-buttonpane button {
+	min-height: 43px !important;
+	min-width: 142px !important;
+	width: auto !important;
+	border-radius: 0 !important;
+	text-decoration: none !important;
+	padding: 10px 59px 10px 16px !important;
+	font-size: 1em !important;
+	line-height: 1.2 !important;
+	display: inline-block !important;
+	text-align: left !important;
+	justify-content: center !important;
+	cursor: pointer !important;
+	overflow: visible !important;
+	background-color: #fff !important;
+	color: #000 !important;
+	border: 2px solid #000 !important;
+	transition: background-color .2s ease-out !important;
+	position: relative !important;
+	box-shadow: none !important;
+	background-image: url("Images/Roter_Pfeil.png") !important;
+	background-repeat: no-repeat !important;
+	background-size: 2.7rem !important;
+	background-position-x: calc(100% + 2px);
+	background-position-y: top !important;
+	white-space: nowrap !important;
+	box-sizing: border-box !important;
+}
+
+		#Page .button:hover,
+		#Page .Button:hover,
+		#Page .btn:hover,
+		#Page input.Button:hover,
+		#Page input.button:hover,
+		#Page input.btn:hover,
+		#Page a.button:hover,
+		#Page a.Button:hover,
+		#Page .ui-button:hover,
+		#Page .ui-dialog .ui-dialog-buttonpane button:hover,
+		#Page .button:focus,
+		#Page .Button:focus,
+		#Page .btn:focus,
+		#Page input.Button:focus,
+		#Page input.button:focus,
+		#Page input.btn:focus,
+		#Page a.button:focus,
+		#Page a.Button:focus,
+		#Page .ui-button:focus,
+		#Page .ui-dialog .ui-dialog-buttonpane button:focus {
+			background-color: #f5f5f5 !important;
+		}
+
+	#Page .ui-dialog .ui-dialog-titlebar-close,
+	#Page .ui-dialog .ui-dialog-titlebar-close:hover,
+	#Page .ui-dialog .ui-dialog-titlebar-close:focus,
+	#Page .ui-button-icon-only.ui-dialog-titlebar-close {
+		min-width: 23px !important;
+		min-height: 23px !important;
+		width: 23px !important;
+		height: 23px !important;
+		padding: 0 !important;
+		border: none !important;
+		border-radius: 0 !important;
+		background-color: var(--color-darkblue) !important;
+		background-image: url("Images/Icons/cancel.svg") !important;
+		background-size: 100% !important;
+		background-repeat: no-repeat !important;
+		background-position: center center !important;
+		color: transparent !important;
+		box-shadow: none !important;
+		font-size: 0 !important;
+		line-height: 1 !important;
+		overflow: hidden !important;
+	}
+
+		#Page .ui-dialog .ui-dialog-titlebar-close .ui-button-icon-space,
+		#Page .ui-dialog .ui-dialog-titlebar-close .ui-button-text {
+			display: none !important;
+		}
+
+		#Page .ui-dialog .ui-dialog-titlebar-close .ui-icon-closethick {
+			display: block !important;
+			position: absolute !important;
+			top: 0 !important;
+			left: 0 !important;
+			width: 100% !important;
+			height: 100% !important;
+			margin: 0 !important;
+			background-image: url("Images/Icons/cancel.svg") !important;
+			background-repeat: no-repeat !important;
+			background-position: center center !important;
+			background-size: 100% !important;
+			border: none !important;
+		}
+
+		#Page .ui-dialog .ui-dialog-titlebar-close:hover,
+		#Page .ui-dialog .ui-dialog-titlebar-close:focus {
+			background-color: var(--color-darkblue) !important;
+			border-color: transparent !important;
+		}
+
+	#layout-grid__area--contentfooter,
+	#content-footer,
+	#M_PnlFooterMaster,
+	#M_DefFooter_PnlDefFt,
+	#footer {
+		background-color: #545454;
+		color: #fff;
+	}
+
+	#layout-grid__area--contentfooter,
+	#content-footer {
+		max-width: 100vw;
+		width: 100%;
+		margin: 0;
+		z-index: auto;
+		padding: 1em 24px;
+		position: relative;
+		grid-column: fullWidth !important;
+		box-sizing: border-box;
+	}
+
+#Footer {
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+}
+
+#M_DefFooter_PnlDefFt {
+	order: 0;
+}
+
+#M_DefFooter_PnlSpcFt {
+	order: 1;
+	position: relative !important;
+	bottom: auto !important;
+	right: auto !important;
+	width: 100%;
+	z-index: 5;
+}
+	
+	@media print, (max-width: 73.8125rem) {
+		#layout-grid__area--contentfooter,
+		#content-footer {
+			padding: 0.5em 12px;
+			display: block;
+		}
+
+		#content-footer {
+			padding-bottom: 0;
+		}
+	}
+
+	#layout-grid__area--contentfooter .feedback-form,
+	#content-footer .feedback-form,
+	#M_PnlFooterMaster .feedback-form,
+	#M_DefFooter_PnlDefFt .feedback-form,
+	#footer .feedback-form {
+		margin-bottom: 0;
+		border-top: 1px solid #ddd;
+		border-bottom: 1px solid #ddd;
+	}
+
+		#layout-grid__area--contentfooter .feedback-form .title,
+		#content-footer .feedback-form .title,
+		#M_PnlFooterMaster .feedback-form .title,
+		#M_DefFooter_PnlDefFt .feedback-form .title,
+		#footer .feedback-form .title {
+			text-align: right;
+			padding-right: 24px;
+			font-size: 1em;
+		}
+
+		#layout-grid__area--contentfooter .feedback-form .inner,
+		#content-footer .feedback-form .inner,
+		#M_PnlFooterMaster .feedback-form .inner,
+		#M_DefFooter_PnlDefFt .feedback-form .inner,
+		#footer .feedback-form .inner {
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 24px;
+		}
+
+	#layout-grid__area--contentfooter ul,
+	#content-footer ul,
+	#M_PnlFooterMaster ul,
+	#M_DefFooter_PnlDefFt ul,
+	#footer ul {
+		list-style: none;
+		padding: 0;
+		display: block;
+	}
+
+		#layout-grid__area--contentfooter ul > li,
+		#content-footer ul > li,
+		#M_PnlFooterMaster ul > li,
+		#M_DefFooter_PnlDefFt ul > li,
+		#footer ul > li {
+			margin-left: 0;
+		}
+
+			#layout-grid__area--contentfooter ul > li:before,
+			#content-footer ul > li:before,
+			#M_PnlFooterMaster ul > li:before,
+			#M_DefFooter_PnlDefFt ul > li:before,
+			#footer ul > li:before,
+			#layout-grid__area--contentfooter ul > li::marker,
+			#content-footer ul > li::marker,
+			#M_PnlFooterMaster ul > li::marker,
+			#M_DefFooter_PnlDefFt ul > li::marker,
+			#footer ul > li::marker {
+				content: unset;
+				display: none;
+			}
+
+	#layout-grid__area--contentfooter a,
+	#content-footer a,
+	#M_PnlFooterMaster a,
+	#M_DefFooter_PnlDefFt a,
+	#footer a {
+		color: #fff;
+		text-decoration: none;
+	}
+
+		#layout-grid__area--contentfooter a:hover,
+		#content-footer a:hover,
+		#M_PnlFooterMaster a:hover,
+		#M_DefFooter_PnlDefFt a:hover,
+		#footer a:hover {
+			text-decoration: underline;
+		}
+
+	#content-footer .content-footer__brand {
+		min-height: 30px;
+		max-width: 180px;
+	}
+
+		#content-footer .content-footer__brand img {
+			max-height: 2.5em;
+		}
+
+	@media print, (min-width: 73.8135rem ) {
+		#content-footer .content-footer__links > ul {
+			display: inline-flex;
+			padding-left: 5%;
+			width: 100%;
+		}
+
+			#content-footer .content-footer__links > ul > li {
+				width: 15%;
+				margin-left: 3%;
+				max-width: 210px;
+			}
+	}
+
+	@media print {
+		#footer,
+		#content-footer,
+		#M_PnlFooterMaster,
+		#M_DefFooter_PnlDefFt {
+			display: none !important;
+		}
+	}
+
+	#footer {
+		max-width: 100vw;
+		width: 100%;
+		margin: 0;
+		z-index: auto;
+		padding: 1em 24px;
+		position: relative;
+		grid-column: fullWidth !important;
+		background-color: #545454;
+		color: #000;
+		box-sizing: border-box;
+	}
+
+	@media print, (max-width: 73.8125rem) {
+		#footer {
+			padding: 0.5em 12px;
+			display: block;
+			padding-bottom: 0;
+		}
+	}
+
+	#footer ul {
+		list-style: none;
+		padding: 0;
+		display: block;
+	}
+
+		#footer ul > li {
+			margin-left: 0;
+		}
+
+			#footer ul > li:before,
+			#footer ul > li::marker {
+				content: unset;
+				display: none;
+			}
+
+	#footer a {
+		color: #fff;
+		text-decoration: none;
+	}
+
+		#footer a:hover {
+			text-decoration: underline;
+		}
+
+	#footer .footer__brand {
+		max-width: 120px;
+	}
+
+	@media print, (max-width: 73.8125rem) {
+		#footer .footer__brand {
+			padding-top: 1em;
+			padding-bottom: 1.5em;
+		}
+	}
+
+	@media print, (min-width: 73.8135rem ) {
+		#footer .footer__links > ul {
+			display: inline-flex;
+			padding-left: 5%;
+			width: 100%;
+		}
+
+			#footer .footer__links > ul > li {
+				width: 15%;
+				margin-left: 1%;
+				max-width: 210px;
+			}
+	}
+
+	@media print, (max-width: 73.8125rem) {
+		#footer .footer__links {
+			margin-left: -12px;
+			margin-right: -12px;
+		}
+
+			#footer .footer__links li {
+				margin: 0 !important;
+			}
+
+				#footer .footer__links li > a,
+				#footer .footer__links li > span,
+				#footer .footer__links li > .heading {
+					padding: 1em 12px;
+					margin: 0;
+					display: block;
+				}
+
+				#footer .footer__links li > .heading {
+					cursor: pointer;
+					display: flex;
+					justify-content: space-between;
+					background-color: #545454;
+					box-shadow: none;
+				}
+
+					#footer .footer__links li > .heading:after {
+						line-height: 1;
+						vertical-align: text-top;
+						content: "›";
+						display: inline-block;
+						width: auto;
+						height: auto;
+						color: inherit;
+						font-size: 1.2em;
+						transition: transform 0.2s;
+						transform: rotate(90deg);
+						flex-grow: 0;
+						text-align: right;
+						line-height: 1;
+						flex-shrink: 0;
+					}
+
+					#footer .footer__links li > .heading[aria-expanded=true]:after {
+						transform: rotate(-90deg);
+					}
+
+			#footer .footer__links > ul {
+				display: block;
+				border-bottom: 1px solid;
+				border-color: rgb(122.25, 122.25, 122.25);
+				background-color: #000;
+			}
+
+				#footer .footer__links > ul > li {
+					border-top: 1px solid;
+					border-color: rgb(122.25, 122.25, 122.25);
+				}
+
+					#footer .footer__links > ul > li > ul {
+						transition: max-height 0.2s;
+						overflow: hidden;
+						background-color: transparent;
+						margin: 0;
+					}
+
+						#footer .footer__links > ul > li > ul > li {
+							padding-left: 1em;
+						}
+	}
+
+	#footer .footer__claim {
+		margin-top: 20px;
+		color: white;
+	}
+
+	@media print, (min-width: 73.8135rem ) {
+		#footer .footer__claim {
+			padding-left: 8%;
+		}
+	}
+
+	#footer a.to-top {
+		color: #fff;
+		position: absolute;
+		right: 24px;
+		top: 1em;
+	}
+
+	@media print, (max-width: 73.8125rem) {
+		#footer a.to-top {
+			right: 12px;
+			top: 0.5em;
+		}
+	}
+
+	#footer a.to-top:after {
+		line-height: 1;
+		vertical-align: text-top;
+		content: "›";
+		display: inline-block;
+		width: auto;
+		height: auto;
+		color: #fff;
+		font-size: 1.2em;
+		transform: rotate(-90deg);
+		margin-left: 0.5em;
+	}
+
+	#M_DefFooter_PnlDefFt,
+	#M_PnlFooterMaster,
+	#M_Footer,
+	#PnlVersion {
+		background-color: #545454;
+		color: #fff;
+	}
+
+	.VerguetungLegende {
+		padding-top: 10px;
+	}
+
+	.TTip {
+		position: relative;
+	}
+
+#Footer, #footer, #M_Footer, #M_PnlFooterMaster, #M_DefFooter_PnlDefFt {
+	display: flex !important;
+	flex-direction: column !important;
+	position: relative !important;
+}
+
+#M_DefFooter_PnlDefFt {
+	position: static !important;
+	order: 0 !important;
+	width: 100% !important;
+	z-index: 15 !important;
+}
+
+	#M_DefFooter_PnlDefFt * {
+		position: static !important;
+	}
+
+#M_DefFooter_PnlSpcFt {
+	position: static !important;
+	order: 1 !important;
+	width: 100% !important;
+	z-index: 5 !important;
+}
+
+#M_Footer, #M_PnlFooterMaster {
+	position: static !important;
+}
+
+#M_DefFooter_ctl03,
+#M_DefFooter_ctl03 ul.ulUsers,
+#M_DefFooter_ctl01.UsersOnline span#M_DefFooter_ctl03.UsersLoggedIn ul.ulUsers {
+	display: block !important;
+	visibility: visible !important;
+	pointer-events: auto !important;
+	color: inherit !important;
+}
+
+span#M_DefFooter_ctl03 {
+	margin-left: 2rem !important;
+}
+
+#M_DefFooter_ctl03 {
+	z-index: 20 !important;
+}
+
+
+		.TTip span {
+			display: none;
+			font-size: 11px;
+			color: #000066;
+		}
+
+		.TTip:hover {
+			background-color: transparent;
+		}
+
+			.TTip:hover span {
+				max-width: 500px;
+				min-width: 150px;
+				position: absolute;
+				top: 10px;
+				left: 10px;
+				display: block;
+				background: #e6ecff;
+				border: 1px solid #003399;
+				text-decoration: none;
+				padding: 3px
+			}
+
+	#Einrichtungen #M_MC_pnlAllFacilities.pnlAllFacilities #CommandButtons div {
+		float: none !important;
+		left: 0 !important
+	}
+
+	#imgLeitTextToHide {
+		margin-left: 15px;
+		position: absolute;
+		display: table-cell;
+		height: 32px;
+		left: 16px;
+		z-index: 1;
+		border-radius: 50%;
+		border: 2px solid black;
+		background: var(--color-darkblue) none repeat scroll 0 0;
+		color: #fff;
+		padding: 0;
+	}
+
+	#M_DefFooter_ctl01.UsersOnline span#M_DefFooter_ctl03.UsersLoggedIn ul.ulUsers {
+		display: none
+	}
+
+	#M_MC_pnlAllFacilities.pnlAllFacilities div#CommandButtons {
+		margin-top: 0.5rem
+	}
+
+	.pnlDropDown select#M_MC_ddlEinrichtungstypen.DropDownlist {
+		width: 100%;
+		max-width: unset;
+	}
+
+	#M_MC_pnlAllFacilities.pnlAllFacilities #CommandButtons #divBackForthButtons {
+		margin-top: 0.5rem
+	}
+
+	.LeitTextToHide {
+		display: block
+	}
+
+	.item {
+		margin-left: 5px;
+		width: auto
+	}
+
+	.LeitTextToHideHidden {
+		display: none;
+		margin-bottom: 140px
+	}
+
+	.pnlBegriff {
+		padding-left: 10px;
+		min-width: 100px;
+		max-width: 390px;
+		display: inline-block
+	}
+
+	.pnlBegriffEdit {
+		padding-left: 10px;
+		min-width: 100px;
+		max-width: 390px;
+		display: inline-block
+	}
+
+	.lblBegriff {
+		overflow: visible;
+		min-width: 100px
+	}
+
+	#M_MC_PnlMain {
+		padding-top: 16px;
+		display: table
+	}
+
+	#M_MC_PnlControls {
+		padding-top: 16px
+	}
+
+	#DivtboxText {
+		display: inline-block
+	}
+
+	#tboxText {
+		background: none repeat scroll 0 0 #EFF6FA
+	}
+
+	#DivHelp {
+		width: 500px;
+		height: 250px;
+		overflow: auto
+	}
+
+	#DivOuterSearch {
+		margin-left: 10px;
+		margin-top: 20px;
+		display: block;
+		width: calc(100% - 20px)
+	}
+
+		#DivOuterSearch div:first {
+			display: table-row
+		}
+
+	#DivInnerSearch {
+		display: table;
+		width: 100%
+	}
+
+	#DivtblSearchResults table tr.ResultRow {
+		padding-bottom: 0.5rem
+	}
+
+	#DivInnerSearch input {
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box
+	}
+
+	#DivSearchLabel {
+		display: none;
+		padding-right: 5px
+	}
+
+	#DivSearchButton {
+		display: block;
+		/*	float: right;
+	margin-top: 7.5rem;
+	right: 11px;
+	position: absolute*/
+	}
+
+	#DivTypSucheDropDown {
+		display: inline-block;
+		width: 100%
+	}
+
+	#DivTextSearchBottom {
+		display: table-cell
+	}
+
+	#DivTypSuche {
+		display: block
+	}
+
+	#M_MC_lblTypSuche {
+		display: inline-block;
+		padding-right: 3px
+	}
+
+	#DivUmkreisOuter {
+		width: 100%;
+		margin-top: 2rem
+	}
+
+	#DivSlider span {
+		width: 190px;
+		float: left
+	}
+
+	input[type="checkbox"] {
+		height: 24px;
+		width: 24px
+	}
+
+	#M_MC_LblEntfernung {
+		float: left;
+		line-height: 2.6rem;
+		margin-right: 0.5rem
+	}
+
+	#DivDistance .pnlDropDown:after {
+		content: "(km)";
+		float: right;
+		line-height: 2.6rem;
+	}
+
+	#M_MC_LblEntfernungZusatz {
+		display: none
+	}
+
+	label[for="M_MC_ChkWithInstitution"],
+	label[for="M_MC_ChkWithFacility"] {
+		line-height: 2rem;
+		height: 2rem;
+		margin-bottom: 1rem;
+		position: absolute;
+		margin-left: 0.25rem
+	}
+
+	#DivUmkreisSelection {
+		padding-left: 10px;
+		display: table
+	}
+
+	#DivUmkreisSelection {
+		padding-left: 0;
+	}
+
+	#DivUmkreisOuter #DivUmkreisSelection #DivPLZ {
+		margin-left: 0;
+		padding-left: 0
+	}
+
+	#DivPLZ .pnlTextBox {
+		margin-left: 5px;
+		padding-bottom: 1px;
+		padding-right: 2px;
+		width: 100px;
+		z-index: 0
+	}
+
+	#DivPLZ {
+		display: inline-block;
+		margin-left: 10px;
+		padding-left: 100px
+	}
+
+	#DivDistance {
+		display: inline;
+		position: absolute
+	}
+
+	#M_MC_lblEntfernung {
+		display: block
+	}
+
+	#DivDistance .pnlDropDown {
+		display: inline;
+		vertical-align: middle
+	}
+
+	#M_MC_lblEntfernungZusatz {
+		display: inline
+	}
+
+	.ElementToHideInner {
+		margin-top: 10px;
+		margin-bottom: 10px;
+		display: table
+	}
+
+	#DivlabelSearchFor {
+		display: table-row;
+		margin-right: 30px
+	}
+
+	#labelSearchFor {
+		vertical-align: text-top
+	}
+
+	#DivSlider {
+		display: table-row;
+		margin-top: 5px;
+		margin-bottom: 10px
+	}
+
+	.pnlOptionLabel {
+		display: inline-block;
+		width: 300px;
+		margin-left: 10px;
+		vertical-align: top
+	}
+
+	.pnlOptionValue {
+		display: inline-block;
+		margin-left: 10px
+	}
+
+	.chkOptionStammdaten {
+		display: block;
+		overflow: visible;
+		min-width: 100px
+	}
+
+	#M_MC_PnlTextboxSuche {
+		display: flex
+	}
+
+	.divDropDown {
+		display: inline-block
+	}
+
+	#M_MC_ddlEinrichtungstypen {
+		max-width: 150px
+	}
+
+	#ResetSearch {
+		background-image: url("images/reset.svg");
+		border: none;
+		width: 23px;
+		background-repeat: no-repeat;
+		height: 25px;
+		background-color: unset;
+		cursor: pointer
+	}
+
+	.expanderOpened {
+		background-image: url(Images/arrow.png);
+		transform: rotate(180deg); /* Hintergrundbild um 180 Grad drehen */
+	}
+
+	.expanderClosed {
+		background-image: url(Images/arrow.png);
+	}
+
+	.expanderClosed,
+	.expanderOpened {
+		background-color: transparent;
+		background-position: 4% center;
+		background-size: 24px;
+		background-repeat: no-repeat;
+		border: 0 solid transparent;
+		width: 26px;
+		cursor: pointer
+	}
+
+	.UserInformation {
+		display: inline-block;
+		padding-right: 20px;
+		margin-top: 50px;
+		max-width: 60%;
+		width: 300px
+	}
+
+	.ControlComplete .pnlTextBox input {
+		width: 100%
+	}
+
+	.UserInformation .pnlTextBox {
+		display: block
+	}
+
+	.UserList {
+		display: inline-block;
+		vertical-align: top;
+		padding-right: 20px;
+		width: 200px
+	}
+
+	#M_MC_PnlUser {
+		display: inline-block
+	}
+
+	.ControlComplete {
+		display: block
+	}
+
+	.divOuterControl {
+		display: inline-block;
+		vertical-align: text-top
+	}
+
+	.ControlLabel {
+		display: inline-block;
+		min-width: 200px;
+		vertical-align: top
+	}
+
+	#M_MC_lstUsers {
+		border: 1px solid black;
+		cursor: pointer;
+		height: 300px;
+		list-style: none;
+		overflow-y: scroll;
+		padding-left: 10px;
+		width: 185px
+	}
+
+	.ui-selected {
+		background-color: #212d6a;
+		color: white
+	}
+
+	#DivlstUsers Select {
+		height: 300px;
+		width: auto;
+	}
+
+	#M_MC_divInstitution {
+		margin-top: 20px
+	}
+
+	#M_MC_PnlOptions {
+		margin-top: 20px;
+		display: block
+	}
+
+		#M_MC_PnlOptions .ControlLabel {
+			display: block
+		}
+
+	#M_MC_lstFacilities {
+		display: block;
+		max-height: 300px;
+		overflow: auto;
+		width: 100%
+	}
+
+	#M_MC_PnlOptions .ControlComplete {
+		vertical-align: top
+	}
+
+	#DivlstFacilities {
+		width: 100%;
+		min-width: 450px
+	}
+
+	#M_MC_divFacilities {
+		display: inline-block;
+		min-width: 250px;
+		padding-right: 20px;
+	}
+
+	#DivModule {
+		display: inline-block
+	}
+
+	#M_MC_ControlButtons {
+		margin-top: 20px
+	}
+
+	#DivNewUserEntries {
+		width: 100%
+	}
+
+		#DivNewUserEntries .ControlLabel {
+			display: table-cell;
+			width: 150px
+		}
+
+		#DivNewUserEntries .pnlTextBox {
+			display: table-cell;
+			width: 95%;
+			padding-right: 20px
+		}
+
+		#DivNewUserEntries .divOuterControl {
+			display: table-cell
+		}
+
+		#DivNewUserEntries .ControlComplete {
+			margin-bottom: 3px
+		}
+
+	#DivSpecialinformation {
+		border-top: 1px solid black;
+		font-size: 60%;
+		margin-top: 15px
+	}
+
+	#M_MC_divCounties {
+		display: inline-block;
+		padding-right: 20px
+	}
+
+	#DivlstCounties {
+		width: 100%
+	}
+
+	.pnlFac {
+		padding: 2px 0.5rem
+	}
+
+	#M_pnlInfoNews {
+		min-height: 38px;
+		position: absolute;
+		top: 6px;
+		width: 94%;
+		z-index: 99;
+	}
+
+		#M_pnlInfoNews ul {
+			background-color: White;
+			box-shadow: 10px 10px 5px grey;
+			display: none;
+			list-style-type: none;
+			margin: 0 auto 0 auto;
+			padding: 0px;
+			width: 300px;
+			left: calc(100% - 400px);
+			position: fixed;
+			z-index: 99;
+		}
+
+			#M_pnlInfoNews ul li {
+				border-bottom: 1px solid black;
+				list-style-type: none;
+				padding: 10px;
+				min-height: 35px;
+			}
+
+	#M_MC_Attachments_Files input {
+		font-size: 11pt;
+		height: 2.2rem;
+	}
+
+	.boxKopf #Crmenu li.Imp #Imp.ctlOpener.cancelable:hover,
+	.boxKopf #Crmenu li.Datenschutz #Datenschutz.ctlOpener.cancelable:hover {
+		cursor: pointer;
+		text-decoration: underline;
+		color: #333333
+	}
+
+	#SpanNewsEx {
+		margin-right: auto;
+		display: block;
+		left: calc(100% - 500px);
+		position: absolute;
+		cursor: pointer;
+		z-index: 1;
+		line-height: 2rem;
+	}
+
+		#SpanNewsEx:before {
+			content: "ℹ";
+			font-size: 2rem
+		}
+
+	@keyframes jump {
+		from {
+			background-position-y: 0px;
+		}
+
+		20% {
+			background-position-y: -10px;
+		}
+	}
+
+	@keyframes bounce {
+		0%, 20%, 50%, 80%, 100% {
+			background-position-y: 4px;
+		}
+
+		40% {
+			background-position-y: -6px;
+		}
+
+		60% {
+			background-position-y: -3px;
+		}
+	}
+
+	.pnlSave {
+		display: inline-block;
+	}
+
+	.pnlGenerateNewPasswort {
+		display: inline-block;
+	}
+
+		.pnlSave,
+		.pnlGenerateNewPasswort,
+		.pnlGenerateNewPasswort input.Button,
+		.pnlSave input.Button,
+		.pnlSave .Button,
+		.pnlSave .button {
+			position: relative;
+			z-index: 1200;
+		}
+
+	.pnlSave {
+		display: inline-block;
+	}
+
+	.pnlGenerateNewPasswort {
+		display: inline-block;
+	}
+
+.passwordPolicyHint,
+.PasswordPolicyHint {
+	position: relative;
+	display: block;
+	margin: 0.5rem 0 1rem 0;
+	padding: 0.6rem 0.9rem;
+	background: #fff;
+	border: 1px solid #e6e6e6;
+	border-left: 4px solid var(--color-blue);
+	color: inherit;
+	font-size: 0.9rem;
+	line-height: 1.4;
+	max-width: 100%;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+
+
+@media (max-width: 640px) {
+	.passwordPolicyHint {
+		font-size: 0.85rem;
+		padding: 0.5rem 0.75rem;
+	}
+}
+
+
+	.facilityControl.imgContactData {
+		background-image: url("Facility_Contact.png");
+		width: 20px;
+		height: 20px;
+		background-size: 20px;
+		float: right;
+		margin-right: 5px
+	}
+
+	#EditContact .FacilityControl {
+		background-image: url("Contact.png");
+		width: 20px;
+		height: 20px;
+		background-size: 20px;
+		float: right;
+		margin-right: 5px
+	}
+
+	#lblChangeVisiblityInner.Image.FacilityControl.NotVisible {
+		background-image: url("Search.png");
+		width: 20px;
+		height: 20px;
+		background-repeat: no-repeat;
+		background-size: 20px;
+		float: right;
+		margin-right: 5px
+	}
+
+	#lblAddAttachmentFileInner.Image.FacilityControl {
+		background-image: url("Upload.png");
+		width: 20px;
+		height: 20px;
+		background-size: 20px;
+		float: right;
+		margin-right: 5px
+	}
+
+	.InstituionIdentifier {
+		color: transparent;
+		display: inline-block;
+		background: url("Images/Traeger2.png") no-repeat scroll left top #FFFFFF;
+		position: relative;
+		border: 0 none transparent
+	}
+
+	#DivBackForthButtons .Buttons {
+		min-height: 10px;
+		background-color: transparent
+	}
+
+	#M_MC_PnlTableInformationBottom {
+		margin-top: 20px;
+		text-align: center
+	}
+
+	#M_MC_lblSearchResults {
+		font-weight: bold
+	}
+
+	#M_lblImpressumBIT {
+		display: block;
+		margin-top: 10px;
+		border-top: 1px solid black;
+		text-align: center;
+		padding-top: 5px
+	}
+
+	.ui-widget-header {
+		background: none !important
+	}
+
+	.ui-slider-horizontal {
+		width: 210px !important;
+		margin-left: 15px !important
+	}
+
+	#M_MC_divFacilityTypes {
+		display: inline-block
+	}
+
+	#DivlstFacilityTypes {
+		height: 250px;
+		overflow-y: scroll
+	}
+
+	.FacilityTypeWithQM {
+		background-image: url("Images/QM.gif");
+		height: 16px;
+		display: inline-block;
+		background-size: 16px;
+		background-repeat: no-repeat;
+		width: 16px
+	}
+
+	.WaitPanel {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+		text-align: center;
+		z-index: 999
+	}
+
+	#DivWaitPanelBackground {
+		background: #CCC;
+		filter: alpha(opacity=60);
+		-moz-opacity: 0.6;
+		opacity: 0.6;
+		height: 100%;
+		left: 0;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 998
+	}
+
+	.WaitLabel1 {
+		background-color: white;
+		background-image: url(Images/waiter1.gif);
+		background-repeat: no-repeat;
+		background-size: 100px;
+		background-position-y: top;
+		left: 50%;
+		height: 100px;
+		position: fixed;
+		top: 50%;
+		width: 100px;
+		z-index: 999
+	}
+
+	.WaitLabel2 {
+		filter: alpha(opacity=1);
+		-moz-opacity: 1.0;
+		opacity: 1.0;
+		background-color: white;
+		color: black;
+		height: 25px;
+		left: calc(50%);
+		position: fixed;
+		top: calc(55% + 55px);
+		width: 100px;
+		z-index: 999
+	}
+
+	.aspNetDisabled {
+		filter: alpha(opacity=60);
+		-moz-opacity: 0.6;
+		opacity: 0.6
+	}
+
+	#pnlWaitPanelMaster {
+		display: block;
+	}
+
+	.divCommandbuttons {
+		display: block;
+		margin-top: 20px
+	}
+
+	#Page form#aspnetForm .ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-draggable.ui-resizable .ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix.ui-draggable-handle {
+		background: var(--color-blue) !important;
+		color: white !important;
+		padding: 0.2rem
+	}
+
+
+	#M_PnlInfoNews ul {
+		list-style: none;
+		width: 397px;
+		position: absolute;
+		left: calc(100% - 420px);
+		background-color: white;
+		height: calc(100% - 5rem);
+		z-index: 1000;
+		padding: 10px 13px 10px 10px;
+		top: 2rem;
+		border-left: 1px solid #aaa
+	}
+
+		#M_PnlInfoNews ul li {
+			cursor: pointer;
+			background: #f5f5f5;
+			margin: 0.5rem;
+			padding: 0.5rem
+		}
+
+	@media (min-width: 55rem) {
+		#linkpath, #Linkpath {
+			max-width: 55rem;
+			margin: 0 auto 0;
+			padding-left: 5rem;
+		}
+
+		.wrapper {
+			position: relative;
+			max-width: 55rem;
+			margin: 0 auto 0;
+			margin-top: 0px;
+			margin-top: 0px;
+			background: #fff;
+			padding-bottom: 15px
+		}
+	}
+
+	@media screen and (max-width: 640px) {
+		#M_MC_divFacilities {
+			display: inline-block !important
+		}
+
+		#M_MC_PnlOptions {
+			display: inline !important
+		}
+
+		#M_MC_NewFacility .valuepair {
+			width: unset !important
+		}
+
+		#DivOuterSearch {
+			margin-left: 0 !important
+		}
+
+		.innerMain {
+			padding-left: 1.3rem !important;
+			width: calc(100% - 0.5rem) !important;
+		}
+
+		#M_MC_BtnEinrichtungssuche,
+		#DivSearchButton {
+		}
+
+		#M_MC_BtnEinrichtungssuche {
+			text-align: center !important;
+			padding-right: 3.5rem !important;
+			right: -60%;
+			top: 15px;
+		}
+
+		#Crmenu {
+			right: -1em;
+		}
+
+			#Crmenu li {
+				padding: 0px;
+				cursor: pointer !important;
+			}
+
+		#DivPLZ {
+			display: table-row;
+		}
+
+		#DivDistance {
+			display: table-row;
+		}
+
+		#M_MC_LblPlz {
+			display: inline-block;
+			width: 113px;
+		}
+	}
+	/*END max-width: 640px*/
+
+	@media screen and (max-width: 360px) {
+		body {
+			margin: 0
+		}
+
+		#WrapperHead {
+			background-image: none !important
+		}
+
+		.boxKopf {
+			width: 100%
+		}
+
+			.boxKopf #headerleft {
+				display: block;
+				width: 50px
+			}
+
+		.boxNavigation {
+			width: 100%
+		}
+
+		.shadowRight {
+			background-image: none !important
+		}
+
+		.shadowBottom {
+			background-image: none !important
+		}
+
+		.shadowBottomRight {
+			background-image: none !important
+		}
+
+		.innerMain {
+			width: 100%
+		}
+
+		.lblUserLogin {
+			position: relative !important;
+			top: 17px !important;
+			width: auto
+		}
+
+		#headerlogo {
+			left: -10px;
+			position: relative
+		}
+
+		#fancybox-wrap {
+			left: 10px !important;
+			padding: 0 !important;
+			top: 30px !important;
+			width: 290px !important
+		}
+
+		#fancybox-content {
+			width: 275px !important
+		}
+
+		#CrModules {
+			display: table-row !important;
+		}
+
+			#CrModules li {
+				padding-left: 0;
+				padding-right: 0
+			}
+
+		#DivPLZ {
+			padding-left: 0
+		}
+	}
+
+	#footer {
+		max-width: 100vw;
+		width: 100%;
+		margin: 0;
+		z-index: auto;
+		padding: 1em 24px;
+		position: relative;
+		background-color: #545454;
+		color: #000;
+		grid-column: fullWidth !important;
+		box-sizing: border-box;
+	}
+
+#M_DefFooter_ctl02,
+#M_DefFooter_ctl03 {
+	display: inline-block !important;
+	vertical-align: middle !important;
+	margin: 0 0.5rem 0 0 !important;
+}
+
+#M_DefFooter_PnlDefFt {
+	display: flex !important;
+	/*align-items: center !important;*/
+	justify-content: flex-end !important;
+	gap: 0.5rem !important;
+}
+#M_DefFooter_PnlDefFt {
+	display: none !important
+}
+
+.footer__links h3 {
+	color:white;
+}
+
+.footer__links ul > li {
+	margin-bottom: 0.5em;
+	word-break: break-word;
+}

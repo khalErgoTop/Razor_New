@@ -1,0 +1,68 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.QM.QMAuswahlModel
+
+<h1>QM-Bogenauswahl</h1>
+
+<form method="post">
+    <div class="divDropDown">
+        <label asp-for="BogenstatusSelection">Bogenstatus</label>
+        <select asp-for="BogenstatusSelection" class="DropDownlist">
+            @foreach (var status in Model.Bogenstatus)
+            {
+                <option value="@status.Value">@status.Text</option>
+            }
+
+@if (Model.SelectableBoegen.Count > 0)
+{
+    <h2>QM-Bögen</h2>
+    <ul class="treefix">
+        @foreach (var bogen in Model.SelectableBoegen)
+        {
+            <li>
+                <span>@bogen.Bezeichnung (@bogen.LayoutJahr - @bogen.LayoutBezeichnung)</span>
+                <form method="post">
+                    <input type="hidden" name="EIID" value="@bogen.EIID" />
+                    <input type="hidden" name="QLID" value="@bogen.QLID" />
+                    <button type="submit" asp-page-handler="Open">Öffnen</button>
+                </form>
+            </li>
+        }
+    </ul>
+}
+        </select>
+    </div>
+    <button type="submit" asp-page-handler="Filter">Filtern</button>
+</form>
+
+@if (Model.QmBogen is not null)
+{
+    <form method="post">
+        <input type="hidden" asp-for="EIID" />
+        <input type="hidden" asp-for="QLID" />
+        <p>@Model.QmBogen.Bezeichnung</p>
+        <button type="submit" asp-page-handler="Open">Öffnen</button>
+    </form>
+}
+
+<div asp-validation-summary="All"></div>
+
+<h2>Alle verfügbaren Leistungen</h2>
+@if (Model.Facilities.Count == 0)
+{
+    <p>Keine verfügbaren Leistungen gefunden.</p>
+}
+else
+{
+    <ul class="treefix">
+        @foreach (var facility in Model.Facilities)
+        {
+            <li>
+                <span>@facility.Einrichtungsname (@facility.Einrichtungskennzeichen)</span>
+                @if (facility.FKETID.HasValue)
+                {
+                    <a asp-page="/TOPqmV3/QMAuswahl" asp-route-EIID="@facility.EIID" asp-route-ETID="@facility.FKETID" asp-route-BogenstatusSelection="@Model.BogenstatusSelection">QM-Bögen anzeigen</a>
+                }
+            </li>
+        }
+    </ul>
+}

@@ -1,0 +1,164 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.Kalkulation.QWKalkulationModel
+@{
+    ViewData["Title"] = "Kalkulation";
+    var posts = Model.Data?.Posts ?? [];
+    var groups = posts.GroupBy(post => post.Oberkategorie).ToList();
+    var showContractData = string.Equals(Model.Section, "Vertragsdaten", StringComparison.Ordinal);
+    var showTrips = string.Equals(Model.Section, "Fahrten", StringComparison.Ordinal);
+    var showSummary = string.Equals(Model.Section, "Uebersicht", StringComparison.Ordinal);
+}
+
+<nav aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb"><li><a asp-page="/Index">Start</a></li><li><a asp-page="/Kalkulation/QWKalkulationsauswahl">Kalkulationsauswahl</a></li><li aria-current="page">Kalkulation</li></ol>
+</nav>
+
+@if (Model.Data is not null)
+{
+    <section class="pageContent">
+        <h1>Kalkulation</h1>
+        <dl>
+            <dt>Einrichtung</dt><dd>@Model.Data.Einrichtungskennzeichen - @Model.Data.Einrichtungsname</dd>
+            <dt>Kalkulation</dt><dd>@Model.Data.Bezeichnung</dd>
+            <dt>Status</dt><dd>@Model.Data.Status</dd>
+            @if (Model.Data.GueltigVon is not null)
+            {
+                <dt>Gültig ab</dt><dd>@Model.Data.GueltigVon.Value.ToString("d")</dd>
+            }
+            @if (Model.Data.GueltigBis is not null)
+            {
+                <dt>Gültig bis</dt><dd>@Model.Data.GueltigBis.Value.ToString("d")</dd>
+            }
+        </dl>
+
+        <div id="QWKalkNavigation">
+            <h2>Navigation</h2>
+            <ul>
+                <li>
+                    <a asp-page="/Kalkulation/QWKalkulation" asp-route-EIID="@Model.EIID" asp-route-Section="Vertragsdaten"><strong>Vertragsdaten</strong></a>
+                    <ul><li>Gültig ab</li><li>Gültig bis</li>
+                    @if (Model.Data.HasPlatzzahl) { <li>Platzzahl</li> }
+                    @if (Model.Data.HasAuslastung) { <li>Auslastung</li> }
+                    </ul>
+                </li>
+                @foreach (var group in groups)
+                {
+                    <li>
+                        <a asp-page="/Kalkulation/QWKalkulation" asp-route-EIID="@Model.EIID" asp-route-Category="@group.Key">
+                            <strong>@(group.FirstOrDefault(post => post.IsParentCategory)?.Kostenart ?? "Kosten")</strong>
+                        </a>
+                        <ul>
+                            @foreach (var post in group.Where(post => !post.IsParentCategory && !string.IsNullOrWhiteSpace(post.Kostenbestandteil)))
+                            {
+                                <li>@post.Ordnungszahl @post.Kostenbestandteil</li>
+                            }
+                        </ul>
+                    </li>
+                }
+                @if (Model.Data.MitFahrten)
+                {
+                    <li><a asp-page="/Kalkulation/QWKalkulation" asp-route-EIID="@Model.EIID" asp-route-Section="Fahrten"><strong>Fahrten</strong></a></li>
+                }
+                <li><a asp-page="/Kalkulation/QWKalkulation" asp-route-EIID="@Model.EIID" asp-route-Section="Uebersicht"><strong>Übersicht Summe</strong></a></li>
+            </ul>
+        </div>
+
+        <section aria-labelledby="detail-heading">
+            @if (showContractData)
+            {
+                <h2 id="detail-heading">Vertragsdaten</h2>
+                <dl>
+                    <dt>Gültig ab</dt><dd>@(Model.Data.GueltigVon?.ToString("d") ?? "")</dd>
+                    <dt>Gültig bis</dt><dd>@(Model.Data.GueltigBis?.ToString("d") ?? "")</dd>
+                    @if (Model.Data.HasPlatzzahl)
+                    {
+                        <dt>Platzzahl</dt><dd>@Model.Data.Platzzahl?.ToString("N2")</dd>
+                    }
+                    @if (Model.Data.HasAuslastung)
+                    {
+                        <dt>Auslastung (in %)</dt><dd>@Model.Data.Auslastung?.ToString("N2")</dd>
+                    }
+                </dl>
+            }
+            else if (showTrips)
+            {
+                <h2 id="detail-heading">Fahrten</h2>
+                <p>Die Fahrtdetails folgen im separaten Fahrten-Slice.</p>
+            }
+            else if (showSummary)
+            {
+                <h2 id="detail-heading">Übersicht Summe</h2>
+                <dl>
+                    <dt>Gesamtsumme Angebot ET der Eingabeposten</dt>
+                    <dd>@Model.Data.TotalInputAngebotET.ToString("N2")</dd>
+                </dl>
+                @if (Model.Data.Summary is { Count: > 0 } summary)
+                {
+                    <table>
+                        <thead><tr><th>Kategorie</th><th>Betrag</th></tr></thead>
+                        <tbody>
+                        @foreach (var item in summary.OrderBy(item => item.Key))
+                        {
+                            <tr><td>@item.Key</td><td>@item.Value.ToString("N2")</td></tr>
+                        }
+                        </tbody>
+                    </table>
+                }
+                else
+                {
+                    <p>Für diese Kalkulation sind keine Prozentverteilungen hinterlegt.</p>
+                }
+            }
+            else
+            {
+            <h2 id="detail-heading">@(Model.Category is null ? "Kalkulationsposten" : "Kalkulationsposten der ausgewählten Kategorie")</h2>
+            @if (!string.IsNullOrWhiteSpace(Model.SaveMessage))
+            {
+                <p role="status">@Model.SaveMessage</p>
+            }
+            <form method="post" asp-page-handler="Save">
+                <input type="hidden" asp-for="EIID" />
+                <input type="hidden" asp-for="Category" />
+                <input type="hidden" asp-for="Section" />
+            @if (!Model.VisiblePosts.Any())
+            {
+                <p>Für diesen Bereich sind keine Kalkulationsposten vorhanden.</p>
+            }
+            else
+            {
+                <table>
+                    <thead>
+                        <tr><th>Bezeichnung</th><th>Angebot ET</th><th>Angebot KT</th><th>Abschluss</th><th>Tagessatz</th></tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var post in Model.VisiblePosts.Where(post => !post.IsParentCategory && !string.IsNullOrWhiteSpace(post.Kostenbestandteil)))
+                    {
+                        <tr>
+                            <td>@post.Ordnungszahl @post.Kostenbestandteil</td>
+                            <td>
+                                @if (Model.CanEditPost(post))
+                                {
+                                    <input type="number" step="0.01" name="AngebotET[@post.Id]" value="@post.AngebotET?.ToString(System.Globalization.CultureInfo.InvariantCulture)" />
+                                }
+                                else
+                                {
+                                    @post.AngebotET?.ToString("N2")
+                                }
+                            </td>
+                            <td>@post.AngebotKT?.ToString("N2")</td>
+                            <td>@post.Abschluss?.ToString("N2")</td>
+                            <td>@post.Tagessatz?.ToString("N2")</td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            }
+                @if (Model.VisiblePosts.Any(post => Model.CanEditPost(post)))
+                {
+                    <button type="submit">Speichern</button>
+                }
+            </form>
+            }
+        </section>
+    </section>
+}

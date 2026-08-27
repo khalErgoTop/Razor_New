@@ -1,0 +1,149 @@
+﻿/*  LinkPath */
+
+/* Linkpfad */
+#linkpath {
+	list-style: none;
+	margin-top:0;
+	margin-bottom:0;
+	display:block;
+}
+
+
+#linkpath li {
+	display: inline-block; 
+	list-style: none;
+	color: #272727;
+    background-image: url("Images/list_bullet.png");
+    background-position: left;
+    padding-left: 10px;
+    padding-right: 3px;
+    background-repeat: no-repeat;
+	
+}
+
+#linkpath a {
+	display: inline-block;
+	text-decoration: none;
+	padding: 0 2px 0 2px;
+	color:#3145A8;
+}
+
+#linkpath a:hover {
+	text-decoration: underline;
+	/*background-color:#0461ac; /*#BDCCFC;*/
+	/*color:#FFF;*/
+	color:#db1700;
+	background: #cccccc;
+}
+
+#linkPathNavStart {
+    display:none !important;
+}
+
+/* aktuelle Seite im Linkpfad */
+.current 
+{
+	font-weight:bold;
+	display: inline-block;
+	text-decoration: underline;
+	padding: 0 2px 0 2px;
+	margin:  0 2px 0 0.2px;
+	color:#B5050E;
+
+}
+
+
+/* Legende */
+div.legende {
+	border-collapse: collapse; 
+	/*margin-top: 5px;*/
+	background: #FDF48B; /* Gelb */
+	/*border: thin solid black;*/
+	/*font-size: small; */
+	font: 90% arial-narrow,arial,sans-serif;
+	display:inline-block;
+	width:100%;
+}
+
+div.row {
+	
+}
+
+div.item {
+	/*IE hat Probleme damit: */
+	max-width:900px;
+	display: inline-block;
+	padding-left: 15px;
+	vertical-align:top;
+	
+	/*border: thin solid red;*/
+}
+
+.LeitTextToHide {
+    display:inline-block;
+}
+.LeitTextToHideHidden {
+    display:none;
+}
+
+.itemTop {
+	padding-left: 15px;
+	float:left;
+	display:inline-block;
+}
+
+.itemTop img {
+	vertical-align:top;
+}
+.itemTop span {
+
+}
+
+.itemsAdditional {
+	display:inline-block;
+}
+
+
+
+div.cmd {
+	/*display: block;*/
+	/*background-color: Green;*/
+}
+
+/* Vergütung */
+
+
+.tblVerguetung {
+	text-align:center;
+	padding-bottom:5px;
+}
+
+.lbltblVerguetungHeader {
+	font: 85% arial-narrow,arial,sans-serif;
+	font-weight:bolder;
+	overflow:visible;
+}
+
+.lbltblVerguetung {
+	font: 85% arial-narrow,arial,sans-serif;
+	margin-left:10px;
+}
+
+
+.pnlVerguetungTabelle {
+	padding-left:30px;
+	padding-top:5px;
+}
+
+.pnlVerguetung {
+	padding-top:30px;
+}
+
+#M_MC_lblEntfernungZusatz {
+    display:inline !important;
+}
+
+
+#divDistance .pnlDropDown {
+    vertical-align:middle;
+}

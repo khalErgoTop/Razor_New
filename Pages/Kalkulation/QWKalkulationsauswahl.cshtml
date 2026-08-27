@@ -1,0 +1,47 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.Kalkulation.QWKalkulationsauswahlModel
+@{
+    ViewData["Title"] = "Kalkulationsauswahl";
+}
+
+<nav aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb"><li><a asp-page="/Index">Start</a></li><li aria-current="page">Kalkulationsauswahl</li></ol>
+</nav>
+
+<section class="pageContent">
+    <h1>Kalkulationsauswahl</h1>
+    @if (Model.Message is not null)
+    {
+        <p role="alert">@Model.Message</p>
+    }
+    <form method="post" asp-page-handler="Filter">
+        <label for="District">Kreis</label>
+        <select id="District" name="District">
+            @foreach (var district in Model.Districts)
+            {
+                <option value="@district.Key" selected="@(district.Key == Model.District)">@district.Name</option>
+            }
+        </select>
+        <label for="Status">Bogenstatus</label>
+        <select id="Status" name="Status">
+            <option value="">Alle Status</option>
+            <option value="0" selected="@(Model.Status == 0)">Neu</option>
+            <option value="1" selected="@(Model.Status == 1)">In Bearbeitung</option>
+            <option value="2" selected="@(Model.Status == 2)">Versandt</option>
+            <option value="3" selected="@(Model.Status == 3)">Angenommen</option>
+            <option value="4" selected="@(Model.Status == 4)">Abgelehnt</option>
+        </select>
+        <button type="submit">Filtern</button>
+    </form>
+
+    <form method="post" asp-page-handler="Open">
+        <label for="SelectedFacility">Einrichtungen</label>
+        <select id="SelectedFacility" name="SelectedFacility" size="15" required>
+            @foreach (var facility in Model.Facilities)
+            {
+                <option value="@facility.EIID">@facility.Indicator - @facility.Name</option>
+            }
+        </select>
+        <button type="submit">Kalkulation öffnen</button>
+    </form>
+</section>

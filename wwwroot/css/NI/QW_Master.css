@@ -1,0 +1,597 @@
+/* Version: 260618 NI */
+@charset "UTF-8";
+
+:root {
+	--color-red: #e50046;
+	--color-lightgrey: #f3f3f3;
+	--color-grey: #6d6d72;
+	--color-darkgrey: #202020;
+	--color-blue: #004165;
+	--color-darkblue: #222;
+	--color-font: #111;
+	--color-white: #fff;
+	--nds-border: #b8b8b8;
+	--nds-dotted: #9d9d9d;
+	--nds-page-width: 988px;
+	--font-100: var(--font-regular);
+}
+/* ===================== */
+/* Grundlayout */
+/* ===================== */
+
+.superCategory,
+.subCategory01,
+.facilityItem {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.superCategory > li {
+    margin-bottom: 0.25rem;
+}
+
+/* ===================== */
+/* SGB IX */
+/* ===================== */
+
+.sc00 {
+    padding: 7px 10px;
+    background: var(--color-red, #e50046);
+    color: #fff;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.sc00 h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* ===================== */
+/* Unterkategorie */
+/* ===================== */
+
+.subCategory01 {
+    margin-top: .75rem;
+}
+
+.sc01 {
+    padding: 12px 16px;
+    background: #f4f4f4;
+    border-left: 4px solid var(--color-red, #e50046);
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* ===================== */
+/* Einrichtungen */
+/* ===================== */
+
+.facilityItem {
+    margin-top: .75rem;
+}
+
+.facilityItem > li {
+    margin-bottom: .75rem;
+}
+
+.divAuflistungEinrichtung {
+    border: 1px solid #e5e5e5;
+    border-radius: 6px;
+    background: #fff;
+    transition: all .2s ease;
+}
+
+.divAuflistungEinrichtung:hover {
+    border-color: var(--color-red, #e50046);
+    box-shadow: 0 2px 8px rgba(0,0,0,.08);
+}
+
+.divAuflistungEinrichtung a {
+    display: block;
+    padding: 14px 16px;
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Name */
+.AuflistungEinrichtungname {
+    display: block;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #222;
+}
+
+/* Kennzeichen */
+.AuflistungEinrichtungkennzeichen {
+    display: block;
+    margin-top: 2px;
+    color: #888;
+    font-size: .85rem;
+}
+
+/* Adresse */
+.divAuflistungEinrichtungAdresse {
+    margin-top: 8px;
+    color: #555;
+    font-size: .9rem;
+}
+
+/* ===================== */
+/* Standort-Icon */
+/* ===================== */
+.superCategory li{margin-top:0.25rem}
+.AuflistungEinrichtungname.hst::before {
+    content: "📍";
+    margin-right: .5rem;
+}
+
+.AuflistungEinrichtungname.nst::before {
+    content: "📌";
+    margin-right: .5rem;
+}
+#M_MC_BtnExpander {
+    width: 44px;
+    height: 44px;
+
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 32px;
+
+    cursor: pointer;
+    transition: opacity .2s ease;
+}
+
+/* geöffnet -> Pfeil nach oben */
+#M_MC_BtnExpander.expanderOpened {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e50046' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='18 15 12 9 6 15'/%3E%3C/svg%3E");
+}
+
+/* geschlossen -> Pfeil nach unten */
+#M_MC_BtnExpander.expanderClosed {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e50046' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+}
+
+#M_MC_BtnExpander:hover {
+    opacity: .8;
+}
+
+#M_MC_BtnExpander:active {
+    transform: scale(.95);
+}
+#ResetSearch {
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 28px;
+    cursor: pointer;
+position:absolute;
+right:0.5rem;
+bottom:0.5rem;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 21.6 21' fill='none'%3E%3Cpath d='M4.7 16.9c2.2 2.2 5.4 3.2 8.6 2.3 4.8-1.3 7.7-6.2 6.4-11C18.5 3.4 13.6.5 8.8 1.8c-2.1.6-4 1.9-5.2 3.7' stroke='%23e50046' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpolyline points='1.5 1.9 3 7.7 8.8 6.2' stroke='%23e50046' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");}
+
+#ResetSearch:hover {
+    opacity: .8;
+}
+#DivSearchButton{
+	margin-bottom:1rem
+}
+#ResetSearch:active {
+    transform: scale(.92);
+}
+#ExtendedSearch {
+    margin: 1rem 0;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fafafa;
+    overflow: hidden;
+    position: relative;
+}
+
+#ExtendedSearch > span {
+    display: inline-block;
+    padding: 12px 16px;
+    font-weight: 600;
+}
+
+#M_MC_BtnExpander {
+    float: left
+}
+
+.elementToHideInner,
+#DivFacQst,
+#DivUmkreisOuter {
+    padding: 1rem;
+}
+
+/* Checkboxen */
+.elementToHideInner > div > span {
+    margin-right: 1rem;
+}
+
+/* Leistungen + Freie Plätze */
+#DivFacQst {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    align-items: flex-end;
+}
+#M_MC_LblUmkreissuche{
+	font-weight:bold
+}
+
+#DivTypSucheDropDown {
+    min-width: 300px;
+}
+
+#M_MC_DivFreePlaces {
+    padding-bottom: .4rem;
+    line-height: 2.5rem;
+}
+
+.standardTextbox,
+.dropDownlist {
+    min-height: 38px;
+    padding: 0 .75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    box-sizing: border-box;
+}
+
+.standardTextbox:focus,
+.dropDownlist:focus {
+    border-color: var(--color-red);
+    outline: none;
+}
+
+/* ===================== */
+/* Umkreis */
+/* ===================== */
+
+#DivUmkreisOuter {
+    border-top: 1px solid #e5e5e5;
+    margin-top: 1rem;
+    padding-top: 1rem;
+}
+
+#DivUmkreisLabel {
+    margin-bottom: .75rem;
+}
+
+#DivUmkreisSelection {
+    display: flex;
+    align-items: flex-end;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+#DivPLZ {
+    display: flex;
+    flex-direction: column;
+    gap: .35rem;
+}
+
+#M_MC_TxtPlz {
+    width: 120px;
+}
+
+#DivDistance {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+#M_MC_LblEntfernung {
+    margin: 0;
+    white-space: nowrap;
+}
+
+#M_MC_DdlEntfernung {
+    width: 90px;
+}
+
+#M_MC_LblEntfernungZusatz {
+    white-space: nowrap;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    #DivFacQst,
+    #DivUmkreisSelection {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .control-group,
+    #M_MC_DivFreePlaces,
+    #DivPLZ,
+    #DivDistance {
+        width: 100%;
+    }
+
+    #DivDistance {
+        flex-wrap: wrap;
+    }
+
+    #M_MC_TxtPlz,
+    #M_MC_DdlEntfernung {
+        width: 100%;
+    }
+}
+
+#M_MC_TblSearchResults {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#M_MC_TblSearchResults td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #ddd;
+  vertical-align: top;
+}
+
+#M_MC_TblSearchResults tr:first-child td {
+  font-weight: bold;
+  background: #f3f3f3;
+}
+
+#M_MC_TblSearchResults tr.ResultRow:hover {
+  background: #f8f8f8;
+}
+
+#M_MC_TblSearchResults td:first-child {
+  width: 40px;
+  text-align: center;
+}
+
+#M_MC_TblSearchResults td:nth-child(2) {
+  width: auto;
+}
+
+#M_MC_TblSearchResults td:nth-child(3),
+#M_MC_TblSearchResults td:nth-child(4),
+#M_MC_TblSearchResults td:nth-child(5) {
+  width: 120px;
+  white-space: nowrap;
+}
+
+#M_MC_TblSearchResults a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.tr_SearchResultAddress {
+  margin-top: 4px;
+  color: #666;
+  font-size: 0.9em;
+}
+#M_MC_TblSearchResults tr:first-child{
+	font-weight:bold;
+}
+#M_MC_TblSearchResults tr:first-child td{
+	border-bottom:1px solid #ddd
+}
+.ulUsers,
+.UsersLoggedIn{
+	color:white;
+	margin:0;
+	padding:0;
+	list-style-type: none;
+}
+
+* {
+	box-sizing: border-box;
+}
+#PnlVersion{
+	position: relative;
+}
+#PnlVersion .key:before{
+	width: 223px;
+	height: 59px;
+	margin: 0;
+	content: url("Images/niedersachsen.png");
+	position: absolute;
+	right: 0;
+	top: -8rem;
+}
+#M_MC_LstMainLinks{
+	padding:0
+}
+#DivOuterSearch {
+	margin-top: 20px;
+	display: block
+}
+#DivInnerSearch {
+	display: table;
+	width: 100%;
+}
+#DivSearchLabel {
+	display: none;
+	padding-right: 5px;
+}
+#DivTextSearchBottom {
+	display: table-cell;
+}
+#M_MC_PnlTextboxSuche {
+	display: flex;
+	padding: 0 0 0 0
+}
+.pnlTextBox {
+	display: inline-block;
+	padding: 0 0 0 0;
+}
+#DivInnerSearch input {
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+}
+#M_MC_TxtEinrichtungsname {
+	margin-right: 5px;
+	height: 25px;
+	width: 100%;
+}
+#M_MC_TxtEinrichtungsname {
+	padding: 0.5rem;
+	height: 35px !important;
+}
+.clearInput{
+	display:none
+}
+#M_MC_DdlMapServices, #M_MC_TxtEinrichtungsname, #M_MC_DdlTypSuche, input[type="text"], input[type="date"], input[type="password"], input[type="file"], input[type="email"], select, textarea, .form-control, button.ui-multiselect {
+	-webkit-appearance: none !important;
+	appearance: none !important;
+	display: block;
+	border-radius: 0px;
+	font-size: 1em !important;
+	width: 100%;
+	min-height: 43px;
+	font-family: Arial,sans-serif;
+	background-color: #fff;
+	background-image: none;
+	color: #000;
+	padding: 10px;
+	transition: border-color .16s ease-in-out 0s,box-shadow .16s ease-in-out 0s;
+	max-width: none;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	margin: 0;
+	margin-right: 0px;
+}
+html,
+body {
+	background: #fff;
+	color: var(--color-font);
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 1.45;
+	margin: 0;
+}
+a {
+	color: var(--color-font);
+	text-decoration: none;
+}
+a:hover,
+a:focus {
+	color: var(--color-red);
+	text-decoration: none;
+}
+#Page,
+#M_Footer {
+	width: min(var(--nds-page-width), calc(100vw - 40px));
+	max-width: var(--nds-page-width);
+	margin: 0 auto;
+	background: #fff;
+	box-shadow: none;
+}
+#M_PnlInfoNews{display:none}
+#lblCaption,
+h3{
+	font-family: 'OpenSansSemibold', sans-serif;
+	font-size: 1.5em;
+	font-weight: bold;
+	margin: .5em 0 .2em 0;
+	margin-top: 0.5em
+}
+@media screen and (min-width: 761px) {
+	#WrapperHead{
+		height: 14rem;
+	}
+}
+
+.controlComplete {
+  margin-bottom: 0.5rem;
+}
+
+.pnlDropDown {
+  overflow: hidden;
+  max-width: 400px;
+}
+
+#M_MC_DdlInstitution,
+#M_MC_DdlUserTypes {
+  padding: 6px;
+  height: 36px;
+  width: 216px;
+}
+
+#M_MC_DdlUserTypes {
+  float: left;
+}
+
+select#M_MC_DdlNewTraeger.dropDownlist.value,
+.pnlDropDown select {
+  height: 38px;
+}
+
+select#M_MC_DdlNewTraeger.dropDownlist.value,
+#M_MC_DdlKreise,
+#M_MC_DdlTypSuche,
+.standardTextbox,
+.pnlDropDown select {
+  width: 300px;
+}
+
+.dropDownlist {
+  background: none repeat scroll 0 0 #FFF;
+  border-style: none;
+  max-width: 96%;
+}
+
+#DivlstUsers Select {
+  height: 300px;
+  width: 400px
+}
+#M_MC_LstMainLinks li{
+	list-style-type: none;
+	padding: 0;
+	line-height: 2rem
+}
+#UserInformation #M_MC_LstUsers,
+#UserInformation #M_MC_TxtBenutzername,
+#UserInformation #M_MC_DdlUserTypes,
+#M_MC_TxtConstraint,
+#UserInformation #M_MC_TxtNachname,
+#UserInformation #M_MC_TxtEmail,
+#UserInformation #M_MC_TxtVorname {
+  padding: 6px;
+  width: 400px
+}
+#M_MC_divInstitution {
+	margin-top: 20px;
+}
+.aspNetDisabled {
+	filter: alpha(opacity=60);
+	-moz-opacity: 0.6;
+	opacity: 0.6;
+}
+#M_MC_PnlOptions {
+	margin-top: 20px;
+	display: block;
+}
+.divOuterCheckedListbox.pnlOuterlstModules {
+ 	border: none;
+}
+.divOuterCheckedListbox {
+	border: 1px solid #dadada !important;
+	position: relative;
+	display: inline-block;
+}
+#DivlstFacilities {
+	width: 100%;
+	min-width: 450px;
+}
+#M_MC_ControlButtons {
+	margin-top: 20px;
+}

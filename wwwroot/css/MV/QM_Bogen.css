@@ -1,0 +1,556 @@
+﻿.innerMain {
+    display:block;
+}
+
+#Content {
+	margin-left:20px;
+	width:70%;
+	display:table-cell;
+	padding:0px 20px;
+	/*width:730px; 
+	height:550px; 
+	float:left; 
+	position:relative;*/
+}
+
+#QMWerte {
+    max-height:100%;
+    min-height:350px; 
+    overflow:auto;  
+}
+
+.QMNavigation > div {
+    background-color:white;
+    border:1px solid black;
+    width:200px;  
+}
+
+#QMNavigation{
+  	display:table-cell;
+  	font: 80% arial-narrow,arial,sans-serif;
+	position:fixed;
+	vertical-align:top;	
+}
+
+/* OPERA Specific Rules*/
+doesnotexist:-o-prefocus, #QMNavigation {
+  position:relative;
+}
+    
+/* OPERA Specific Rules END */
+
+.QMNavigation {
+	/*font: 80% arial-narrow,arial,sans-serif;
+	display:inline-block;
+	vertical-align:top;
+	width:30%;
+	
+	float:left;
+	z-index:inherit;
+	min-width:200px;
+	max-width:400px;
+	margin-left:10px;
+	*/
+}
+
+.QMNavigation td {
+	vertical-align:top !important;
+}
+
+.QMNavigation td img {
+	height:16px !important;
+}
+
+.pnlLVMatrixBegriff {
+	padding-left: 10px;
+}
+
+.cellUnterbegriff {
+	
+}
+
+.cellMatrixBezeichnung {
+	vertical-align:top;
+}
+
+.cellMatrix {
+	
+}
+
+.pnlTblMatrixInner {
+	
+	/*max-width:500px;*/
+	overflow:auto;
+	float:left;
+}
+
+.pnlTblMatrixOuter {
+	
+	/*max-width:500px;*/
+	overflow:auto;
+}
+
+.lblMatrixLabelx {
+	font: 80% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	overflow:visible;
+	max-width: 100px;
+	padding-right:10px;
+}
+
+.lblMatrixLabely {
+	font: 80% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	max-width: 100px;
+	padding-right:10px;
+}
+
+.lblMatrixLabelOuter {
+	font: 80% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	max-width: 100px;
+	padding-right:10px;
+}
+
+.tblMatrix {
+	/*border:1px solid black;*/
+	border-collapse:collapse;
+}
+
+.tblMatrix td {
+	/*border:1px solid black;*/
+}
+
+.tooltip {
+	position: absolute;
+	display: none;
+	background-color: #FFFFFF;
+	border:1px solid black;
+	margin:5px;
+	padding:5px;
+	/*width:220px;*/
+	overflow:visible;
+	z-index:9999; 
+}
+
+.tooltipEdit {
+	position : absolute;
+	display: none;
+	background-color: #FFFFFF;
+	border:1px solid black;
+	margin:5px;
+	padding:5px;
+	/*width:220px;*/
+	overflow:visible;
+	z-index:9999; 
+}
+
+.tooltipClosingImage {
+	position:relative;
+	top:-14px;
+	left:363px; /*x Rechts oben*/
+	/*left:-14px; /*X links oben*/
+}
+
+.imgKommentarEingabe {
+	margin-right:3px;
+	height:22px;
+}
+
+.imgKommentarEingabe:hover {
+	cursor: pointer; cursor: hand;
+}
+
+.imgKommentar:hover {
+	cursor:hand;
+}
+
+.imgKommentar {
+	height:22px;
+}
+	
+/* LV-BogenAnzeige*/
+.lblUnterbegriff {
+	font: 90% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	overflow:visible;
+	max-width:390;
+	
+}
+
+/* Panel in dem das Label lblBegriff ist LV-BogenAnzeige */
+.pnlLVBegriff {
+	padding-left: 10px;
+	/*min-width: 100px;*/
+	/*width:390px;*/
+	min-width: 100px;
+	max-width: 390px;
+}
+
+.pnlLVBegriffEdit {
+	min-width: 100px;
+	max-width:390px;
+}
+
+/* Label für die Begrifferklärung LV-BogenAnzeige*/
+.lblBegriff {
+	font: 80% arial-narrow,arial,sans-serif;
+	min-width: 100px;
+	overflow:visible;
+}
+
+.lblBegriffStammdaten {
+	font: 85% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	min-width: 100px;
+}
+
+.pnlLVBegriffStammdaten {
+	padding-left: 10px;
+	/*min-width: 100px;*/
+}
+
+/* Textfeld für die Eingabe Eines Textes LV-BogenAnzeige*/
+.LVBogenTxtEingabe {
+	font: 80% arial-narrow,arial,sans-serif;
+	min-width: 20px;
+	max-width: 120px;
+	text-align: right;
+}
+
+.pnlLVBogenChkEingabe {
+	min-width: 120px;
+	text-align:left;
+}
+
+.LVBogenKorrekturWert {
+	font: 80% arial-narrow,arial,sans-serif;
+	color:Red;
+	min-width:20px;
+	max-width:100px;
+}
+
+/*tooltipEdit 
+.pnlLVKorrekturwert {
+	float:right; /*float muß in extra Panel sein, da txtbox sich nicht um float kümmert*/
+	/*min-width:50px;
+	max-width:80px;
+	width:360px;
+}*/
+
+.tblKorrekturVerlauf {
+	font: 80% arial-narrow,arial,sans-serif;
+	max-width:360px;
+}
+
+
+.divtblKorrekturVerlaufRightCol {
+	margin-left:5px;
+}
+
+.divtblKorrekturVerlaufLeftCol {
+	
+}
+
+.divtblKorrekturVerlaufDate {
+	font: 90% arial-narrow,arial,sans-serif;
+	color:#88b8d7;
+}
+
+.divCheckPrivat {
+	font: 80% arial-narrow,arial,sans-serif;
+}
+
+.lblBezeichnungZusatz {
+	font: 80% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	width:50px;
+}
+.lblBezeichnungZusatzHeader {
+	font: 80% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	padding-left:10px;
+	width:100%;
+}
+
+.lblBezeichnungZusatzHeaderNormal {
+	font: 80% arial-narrow,arial,sans-serif;
+}
+
+.pnlBezeichnungHeaderNormal {
+	font: 80% arial-narrow,arial,sans-serif;
+}
+
+.PrivateImage {
+	background-image:url("Images/lock_large_locked.png");
+	width:15px;
+	height:15px;
+	float:left;
+}
+
+
+
+.ButtonRefresh {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #36c;*/
+	background-image:url(Images/refresh_forward.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 0px 2px 17px;
+	margin-right:5px;
+	/*cursor:hand;*/
+}
+
+.ButtonRefresh:active:hover {
+	/*text-decoration: underline;*/
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonNext {
+	font: 95% arial-narrow,arial,sans-serif;
+	border:none;
+	background-image:url(Images/right.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	color: transparent;
+	padding:2px 18px 2px 2px;
+	height: 18px;
+	margin-right:5px;
+	/*cursor:hand;*/
+
+}
+
+.ButtonNext:active:hover {
+	/*text-decoration: underline;*/
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonNextInactive {
+	font: 95% arial-narrow,arial,sans-serif;
+	border:none;
+	background-image:url(Images/right.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	color: transparent;
+	padding:2px 18px 2px 2px;
+	height: 18px;
+	margin-right:5px;
+	filter:alpha(opacity=90); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.9;
+	cursor:default;
+}
+.ButtonBack {
+	font: 85% arial-narrow,arial,sans-serif;
+	border:none;
+	background-image:url(Images/left.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	color: transparent;
+	height: 18px;
+	padding:2px 2px 2px 17px;
+	margin-right:5px;
+	/*cursor:hand;*/	
+}
+
+.ButtonBack:active:hover {
+	/*text-decoration: underline;*/
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonBackInactive {
+	font: 95% arial-narrow,arial,sans-serif;
+	border:none;
+	background-image:url(Images/left.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	color: transparent;
+	padding:2px 2px 2px 17px;
+	height: 18px;
+	margin-right:5px;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+	cursor:default;
+}
+
+.ButtonRefreshInactive {
+	font: 95% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #808080;*/
+	background-image:url(Images/refresh_forward.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding:2px 0px 2px 17px;
+	height: 18px;
+	margin-right:5px;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+	cursor:default;
+}
+
+.ButtonSend {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #36c;*/
+	background-image:url(Images/document_up.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 2px 2px 26px;
+	margin-right:5px;
+	/*cursor:hand;*/
+}
+
+/*
+.ButtonSendInactive {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #808080;*/
+/*  background-image:url(Images/document_up.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 2px 2px 26px;
+	margin-right:5px;
+	cursor:default;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+}
+
+.ButtonSend:hover {
+	/*text-decoration: underline;*/
+/*  border: 1px solid #36c;
+	background-color: #BDCCFC;
+}*/
+
+.ButtonExport {
+	font: 85% arial-narrow,arial,sans-serif;
+	border: 1px solid #36c;
+	background-image:url(Images/PrinterZoomIn.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding:2px 2px 2px 18px;
+	height: 18px;
+	margin-right:5px;
+	/*cursor:hand;*/
+}
+
+.ButtonExportInactive {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #36c;*/
+	/*background-image:url(../Images/Save_16x16_256.ico);*/
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding:2px 0px 2px 17px;
+	height: 18px;
+	margin-right:5px;
+	cursor:default;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+	/*cursor:hand;*/
+}
+
+.ButtonExport:hover {
+	/*text-decoration: underline;*/
+	/*border: 1px solid #36c;*/
+	background-color: #BDCCFC;
+}
+
+#CommandButtons {
+	border-top:1px solid #808080;
+	display: table;
+	padding-top:12px;
+}
+
+#c0_MC_pnlVersenden {
+	padding-top:5px;
+}
+
+.lblPrintComment {
+	background-image:url(Images/Printer.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	/*padding:2px 18px 2px 2px;*/
+	display: inline-block;
+	height: 15px;
+	width:20px;
+	margin-left:auto;
+	margin-right:5px;
+	cursor: pointer;
+}
+.lblPrintComment:hover {
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.lblOuterPrintComment {
+    display: block;
+    margin-top: -15px;
+    text-align: right;
+    width: 100%;
+}
+
+#c0_MC_txtEditContactPLZ {
+	margin-right:100px;
+}
+
+.Line {
+    border-top: 1px solid #E00060;
+    width:100%;
+}
+
+.Pflichtfeld {
+    background-image: url(Images/Critical.png);
+    background-size: 16px 16px;
+    display: inline-block;
+	height: 16px;
+	width: 16px;
+}
+
+.pnlDropDown {
+    max-width:100px !important;
+}
+
+.divDropDown {
+    display:inline-block;
+}
+
+#c0_MC_trvFacilities td {white-space:pre-wrap !important;}
+
+.QMNavigation > table tr:first-child {
+	background-color: #0461ac!important;
+
+    float: left;
+    margin-left:10px;
+    transform: rotate(90deg);
+    transform-origin: left top 0;
+}
+
+.QMNavigation > table tr a {
+    color:white!important;
+}
+
+.QMNavigation > table tr:first-child td:first-child {
+    transform: rotate(-90deg);
+}

@@ -1,0 +1,8 @@
+﻿
+li[selected] {
+    background-color: grey;
+}
+
+.ListOuter input::-ms-clear, .DatePicker::-ms-clear {
+    display: none;
+}

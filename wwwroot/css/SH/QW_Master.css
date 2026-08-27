@@ -1,0 +1,2534 @@
+﻿@import url(medium.css);
+@import url(large.css);
+
+@charset "UTF-8";
+
+@font-face {
+	font-family: "museo_sans100";
+	src: url("Fonts/museosans-100-webfont.woff2") format("woff2"), url("Fonts/museosans-100-webfont.woff") format("woff");
+}
+
+@font-face {
+	font-family: "museo_sans300";
+	src: url("Fonts/museosans-300-webfont.woff2") format("woff2"), url("Fonts/museosans-300-webfont.woff") format("woff");
+}
+
+@font-face {
+	font-family: 'museo_sans500';
+	src: url('Fonts/museosans-500-webfont.woff2') format('woff2'), url('Fonts/museosans-500-webfont.woff') format('woff');
+}
+
+@font-face {
+	font-family: 'museo_sans700';
+	src: url('Fonts/museosans_700-webfont.woff2') format('woff2'), url('Fonts/museosans_700-webfont.woff') format('woff');
+}
+
+@media {
+    :root {
+		 /* 
+     	--color-white: #000000;
+        --color-pink: #999999;
+        --color-blue: #FFFFFF;
+        --color-grey: #DDDDDD;
+        --color-darkgrey: #FFFFFF;
+        --color-black: #FFFFFF;
+        --color-cream: #000000;
+        --color-lightgrey:#222222;
+        --color-table-grey:#333333;
+        */ 
+             
+         --color-white: #FFFFFF;
+         --color-pink: #d4004b;
+         --color-blue: #003064;
+         --color-grey: #999999;
+         --color-darkgrey: #5e5e5e;
+         --color-black: #000000;
+         --color-cream: #EFF6FA;
+         --color-lightgrey:#F2F2F2;
+         --color-table-grey:#333333;
+
+         --font-100: "museo_sans100",Arial,Helvetica,sans-serif;
+		 --font-300: "museo_sans300",Arial,Helvetica,sans-serif;
+		 --font-500: "museo_sans500",Arial,Helvetica,sans-serif;
+		 --font-700: "museo_sans700",Arial,Helvetica,sans-serif
+		 
+    }
+}
+
+input:invalid {
+	color: red;
+}
+
+#M_MC_pnlStammDaten #M_MC_pnlEinrichtungsdaten span#M_MC_ctl4193.lblUnterbegriff{
+	padding-top: 2rem;
+}
+
+.ButtonDeleteFile{
+	width: 16px;
+	margin-top: 4px !important;
+	margin-left: 3px
+}
+
+body {
+	background: var(--color-white);
+    overflow-x: hidden !important;
+	padding: 0;
+	font-family: var(--font-300);
+	color: var(--color-darkgrey);
+	min-width: 800px;
+	min-height:600px;
+	overflow:auto;
+	background-repeat:no-repeat;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0461ac',endColorstr='#E5EFF6'); /* Internet Explorer */
+	z-index:0
+}
+
+#M_MC_pnlViews{
+	margin-top: 2rem
+}
+
+#M_MC_btnSave {
+	font-size: medium !important;
+	padding: 5px !important;
+	border: 1px solid var(--color-blue) !important;
+	border-radius: 0.2rem !important;
+	background: #fdfdfd !important
+}
+
+#M_MC_btnSave:hover{
+	background-color: var(--color-blue) !important
+}
+
+#M_MC_pnlMain #M_MC_btnTestEmailServer {
+	float: left;
+	width: 177px;
+	margin-top: 3px
+}
+
+#M_MC_divUserRights .ControlLabel{
+	margin:0
+}
+
+#M_MC_divUserRights #M_MC_lblUserRights{
+	padding:0;
+	margin:0; 
+	line-height:2.2rem
+}
+
+#UserInformation .ControlComplete{
+	cursor:pointer;
+	min-height:35px;
+	margin-top: 0.2rem
+}
+
+#UserInformation .ControlComplete .pnlTextBox input{
+	width:100%
+}
+
+#UserInformation .ControlComplete .divOuterControl{
+	padding: 0;
+	margin: 0
+}
+	
+#UserInformation .ControlComplete .divOuterControl input{
+	height: 30px;
+	width: 30px;
+	padding: 0;
+	margin: 0
+}
+
+#fancybox-outer{
+	background:var(--color-white) !important
+}
+
+.pnlFacilityData{
+	float: left; width:70%
+}
+
+#M_MC_Einrichtungsbilder{
+	float: right; width: 30%
+}
+
+#WrapperHead #ahrefImp,
+#WrapperHead #ahrefHelp,
+#WrapperHead .ahrefFancyInline{
+	display:none !important
+}
+
+#fancybox-content div{
+	width:100% !important
+}
+
+.pnlFacilityData{
+	margin-top:1rem
+}
+
+#aRefOpenHBGCost{
+	display:none
+}
+
+#M_MC_uppEinrichtungsdaten{
+	margin-top:2rem
+}
+
+#Einrichtungsdaten .topic.fac{
+	width:440px !important
+}
+
+#M_MC_pnlEinrichtungsdaten table .lblUnterbegriff:before{
+	background-image: url("Images/Haus.png");
+	background-repeat: no-repeat;
+	background-position: left;
+	content:"";
+	background-position-x: 2px;
+	background-size: 22px;
+	height: 36px;
+	line-height: 2rem;
+	padding-left: 30px
+}
+
+.lblUnterbegriff{
+	font-size:1.2rem;
+	color:var(--color-black) !important;
+	font-family: var(--font-100)
+}
+
+#M_MC_LblEditFacilityDescription{
+	margin:1rem 0;
+	font-size: 1.125rem;
+	font-family: var(--font-100);
+	border-bottom: 1px solid var(--color-pink)
+}
+
+#M_MC_PnlEditFacilityImage h2,
+#M_MC_PnlEditFacilityDescription h2,
+#M_MC_pnlEditContact h2,
+#M_MC_pnldivContactData h2{
+	margin:1rem 0 1rem 0.5rem;
+	font-size: 1.125rem;
+	font-family: var(--font-100);
+	border-bottom: 1px solid var(--color-pink)
+}
+
+#M_MC_lblEditContactTitle,
+c0$MC$txtEditContactTitle input,
+#M_MC_pnldivContactData{
+	line-height:1.2rem;
+	font-size:1rem;
+	font-family: var(--font-300)
+}
+
+#M_MC_pnlEditContact input,
+#M_MC_pnldivContactData input{
+	line-height:1.2rem;
+	font-size:100%;
+	font-family: var(--font-300);
+	padding:5px;
+	margin-right:2rem;
+	width:275px
+}
+
+#M_MC_PnlEditFacilityImage #M_MC_LblEditFacilityImage,
+#M_MC_PnlEditFacilityImage #M_MC_FuFacImg,
+#M_MC_PnlEditFacilityImage .divCommandbuttons{
+	margin-left:0.5rem
+}
+
+#M_MC_tblSearchResults tr{
+	border-bottom:1px solid #eee
+}
+
+#M_MC_tblSearchResults tr:nth-child(1) {
+	font-family: var(--font-500)
+}
+
+#M_MC_tblSearchResults tr td:nth-child(3) {
+	width:150px
+}
+
+#M_MC_tblSearchResults tr td:nth-child(4) {
+	width:100px
+}
+
+#M_MC_tblSearchResults tr td:nth-child(5) {
+	width:100px
+}
+
+.pnlInstitutionFacility,
+.pnlFacilityHead{
+	cursor:pointer
+}
+
+.lblFacilityName{
+	font-family: var(--font-500)
+}
+
+#M_MC_txtEinrichtungsname{
+    width: 90%;
+    line-height: 1.5rem;
+    top: 0;
+    position: relative;
+    font-size:1rem
+}
+
+#ViewCount{
+	font-family: var(--font-100)
+}
+
+#M_MC_TxtEditFacilityDescription{
+	font-family: var(--font-100);
+	margin: 0.5rem 0;
+	font-size: 1rem
+}
+
+#M_MC_TxtEditFacilityDescription{
+	height:200px
+}
+
+#M_MC_ddlTimeFrames{
+	font-family: var(--font-300);
+	font-size:1rem
+}
+
+#btnEditTimeFrame,
+#btnRemoveTimeFrame,
+#btnAddTimeFrame{
+	font-family: var(--font-300)
+}
+
+#M_MC_PnlEditFacilityDescription,
+#fancybox-wrap div#fancybox-outer div#fancybox-content{
+	min-height:300px !important
+}
+
+#HBGGrid{
+	margin-bottom:0.5rem
+}
+
+#M_MC_pnlMain #M_MC_pnlOptionStammdaten{
+	margin-top:10px
+}
+
+#M_MC_pnlMain #M_MC_pnlOptionStammdaten #M_MC_pnlStammdaten{
+	margin-left:210px
+}
+
+#M_MC_pnlMain #M_MC_pnlOptionStammdaten .pnlOptionLabel{
+	height:200px;
+	position:absolute
+}
+
+#spanHBGText,
+#divHBGData{
+	margin-top:2rem;
+	margin-bottom:0.5rem
+}
+
+#M_MC_fuAddFile,
+#M_MC_FuFacImg{
+	display: block;
+	font-family: var(--font-100);
+	margin: 0.5rem 0;
+	font-size: 1rem
+}
+
+#M_MC_btnToggleVisibility,
+.ButtonCancel,
+#M_MC_btnAddFile{
+	font-size: 1rem;
+	height: 34px !important;
+	background-color: #e9e9e9;
+	border-radius: 3px;
+	border: none;
+	font-family: var(--font-100);
+	margin: 0 0 0 0.2em;
+    margin-right: 0px;
+    margin-left: 1em;
+	padding: 6px 0.2em 6px 33px;
+	text-decoration: none;
+	color: var(--color-table-grey)
+}
+
+#divAddFile #M_MC_btnAddFile{
+	margin-left:0;
+}
+
+#DivLBHead:after{
+	font-size: 1.125rem;
+	font-family: var(--font-100);
+	border-bottom: 1px solid var(--color-pink);
+	color: var(--color-black);
+	content: "Leistungsbeschreibung";
+	padding-top: 2rem;
+	line-height: 2rem;
+	display: block;
+}
+#Einrichtungsdaten #M_MC_lblFilesDisclaimer:after{
+	font-size: 1.125rem;
+	font-family: var(--font-100);
+	border-bottom: 1px solid var(--color-pink);
+	color: var(--color-black);
+	content: "Broschüre";
+	display: block;
+	line-height: 2rem;
+	margin-left: 3rem
+}
+
+#M_MC_uppAttachments{
+	margin-top:2rem
+}
+
+#M_MC_AttachmentsPanel_pnlFilesDisclaimer{
+	margin:1rem 0;
+	font-style:italic
+}
+
+#M_MC_pnlStammDaten #M_MC_uppAttachments #M_MC_AttachmentsPanel_pnlAttachments .attmts{
+	font-size: 1.125rem;
+	font-family: var(--font-100);
+	border-bottom:1px solid var(--color-pink);
+	line-height: 2rem
+}
+
+#M_MC_pnlStammDaten #M_MC_uppAttachments #M_MC_AttachmentsPanel_pnlAttachments .attmts:before,
+#M_MC_pnlStammDaten #currentFacility #M_MC_pnlAttachments .label.attmts:before{
+	background-image: url("Images/Broschuere.png");
+	background-repeat: no-repeat;
+	background-position: left;
+	background-position-x: left;
+	content: "";
+	background-position-x: 2px;
+	background-size: 22px;
+	height: 36px;
+	line-height: 2rem;
+	padding-left: 30px;
+	font-size: 2rem;
+	background-position-y: 7px;
+	background-position-y: 11px;
+}
+
+#divTextSearchBottom{
+	font-size:1.5rem
+}
+
+
+
+#M_MC_btnTestEmailServer{
+	background:var(--color-white);
+	color:var(--color-black)
+}
+
+#M_MC_btnSave,
+.innerMain input{
+	border: 1px solid var(--color-blue);
+	border-radius: 0.2rem;
+	background: #fdfdfd;
+	font-family: var(--font-300);
+	cursor: pointer
+}
+
+#M_MC_btnSave{
+	color:black;
+	border: 1px solid white
+}
+
+.StandardTextbox{
+	padding:5px
+}
+
+.innerMain #M_MC_pnlStammDaten #currentFacility {
+	margin-left:1rem
+}
+
+.innerMain #M_MC_pnlMain input{
+	color: black;
+	font-size:0.9rem
+	
+}
+
+#WrapperHead #M_pnlTop .boxNavigation ul#crModules li a{
+	color: var(--color-blue);
+	display:block
+}
+
+#M_cphLinkPath_lbtHauptseite{
+	font-size:0;
+	background: url("Images/Haus.png") no-repeat;
+	background-size: 18px;
+	height:30px;
+	width:18px
+}
+
+.innerMain #M_MC_pnlStammDaten .topic{
+	font-size: 2rem;
+	border-bottom: 3px solid var(--color-pink);
+	font-family: var(--font-100);
+	width: 330px;
+	overflow: hidden;
+	color:var(--color-darkgrey)
+}
+
+#M_MC_lblWebContactLabel:before{
+	content:"Ihr "
+}
+
+#M_MC_pnlEinrichtungsdaten{
+	display: table;
+	width: 100%
+}
+
+.pnlFacilityData,
+#M_MC_pnlInstitutionInner{
+	color:var(--color-darkgrey)
+}
+
+#M_MC_DivLeistungsbeschreibung #DivLBHead span{
+	display:none
+}
+
+.pnlVerguetung .lblUnterbegriff h3,
+#M_MC_uppEinrichtungsdaten #M_MC_pnlEinrichtungsdaten #M_MC_lblEinrichtungsName.lblFacilityName h3,
+#M_MC_lblInstitutionName h3,
+#M_MC_pnlEinrichtungsdaten.FacilityData fieldset legend{
+	font-size:1.125rem;
+	font-family: var(--font-100);
+	border-bottom: 1px solid var(--color-pink);
+	margin: 0 0 10px;
+	color:var(--color-black)
+}
+
+.lblAppname {
+	font-family:var(--font-100);
+	position: relative;
+	height:20px;
+	top: -40px;
+	left: 20px;
+	color: var(--color-blue)
+}
+
+#M_pnlMain div#WrapperHead #M_pnlTop #M_pnlModules.boxNavigation ul#crModules li{
+	width:150px;
+}
+
+#M_pnlMain div#WrapperHead #M_pnlTop #M_pnlModules.boxNavigation ul#crModules li:hover{
+	background: var(--color-blue)
+}
+
+#M_pnlMain div#WrapperHead #M_pnlTop #M_pnlModules.boxNavigation ul#crModules li:hover a{
+	color:var(--color-white) !important
+}
+
+.lblUserLogin {
+	display: inline-block;
+	position: relative;
+	color: var(--color-pink);
+	font-size: 0.75rem;
+	padding: 1px 0.4em;
+	width: 202px;
+	left: -1rem;
+	top: 5px;
+	text-align: right
+}
+
+h2 {
+    font-size: 1.1rem !important
+}
+
+#fancybox-content #divTerms{
+	width:90%
+}
+
+.lblAddFacility a#aRefAddFacility.ahrefFancyInline span{
+	color: var(--color-darkgrey) !important
+}
+
+#divtblSearchResults #M_MC_tblSearchResults tbody tr a .tr_SearchResultAddress{
+	font-style:italic;
+	font-family:var(--font-300);
+}
+
+#divtblSearchResults #M_MC_tblSearchResults tbody tr a div{
+	font-family:var(--font-500);
+	color: var(--color-darkgrey)
+}
+
+#divtblSearchResults #M_MC_tblSearchResults tbody tr a .tr_SearchResultAddress{
+	font-weight:normal;
+	color: var(--color-darkgrey)
+}
+
+.innerMain .wrapper .shadowRight .shadowBottom .shadowBottomLeft .shadowBottomRight .innerMain #Content #M_MC_upLVBogen #LVWerte #M_MC_pnlLVKat2 table#M_MC_tblLVKat2 tbody tr td{
+	border-bottom: 1px solid #EDEDED;
+	padding: 8px
+}
+
+.innerMain .wrapper .shadowRight .shadowBottom .shadowBottomLeft .shadowBottomRight .innerMain #Content #M_MC_upLVBogen #LVWerte #M_MC_pnlLVKat2 table#M_MC_tblLVKat2{
+	width: 89%
+}
+
+.pnlCurrentFacility{
+	padding:5px
+}
+
+.innerMain .innerMain{
+	padding:0
+}
+
+.innerMain .innerMain #Einrichtungen{
+	width:95% !important
+}
+
+.divAuflistungEinrichtungAdresse .addr{
+	font-style:italic
+}
+
+#M_pnlMain .innerMain table{
+	margin:0.5rem 0
+}
+
+#M_MC_EinrichtungenListe .pnlFac{
+	border-bottom:1px solid #DDD
+}
+
+.ulUsers{
+	padding:0;
+	margin:0.5rem 0;
+	list-style-type: none
+}
+
+#M_PnlFooterMaster{
+	text-align:center
+}
+
+.fci:before{
+	display: inherit;
+	background: url("Images/Haus.png") no-repeat;
+	background-size: auto;
+	background-size: 30px;
+	width: 30px;
+	height: 40px;
+	position: relative;
+	border: 0 none transparent;
+	content: "";
+	float: left;
+	margin-right: 10px
+}
+
+.divAuflistungEinrichtungAdresse{
+	margin-left:2.3rem
+}
+
+.facilityItem{
+	margin-top:0.7rem
+}
+
+.AuflistungEinrichtungkennzeichen{
+	font-style:italic !important
+}
+
+.facilityItem li:nth-child(odd){
+	list-style-type: none;
+	padding:0.3rem 0.5rem;
+	min-height: 3rem
+}
+
+.facilityItem li:nth-child(even){
+	list-style-type: none;
+	padding:0.3rem 0.5rem;
+	min-height: 3rem
+}
+
+.superCategory li div ul li .sc01{
+	color: var(--color-darkgrey);
+	background-color:var(--color-cream);
+	padding:0.5rem;
+	cursor:pointer !important;
+	border-bottom:1px solid #c1d4eb
+}
+
+.superCategory{
+	color: var(--color-darkgrey);
+	list-style-type:none !important;
+	margin:0;
+	padding:0
+}
+
+.superCategory li h2{
+	background: var(--color-pink);
+	color:var(--color-white);
+	padding:0.5rem;
+	margin:0.5rem 0 0 0;
+	cursor:pointer
+}
+
+.superCategory li div{
+	color: var(--color-darkgrey);
+	list-style-type: none
+}
+
+.innerMain .facilityItem{
+	padding: 0
+}
+
+.subCategory01 {
+	list-style-type: none;
+	margin:0;
+	padding:0
+}
+
+#M_MC_pnlData.box table tbody tr td{
+	padding:5px 0
+}
+
+.tblVerguetung tbody tr:nth-child(even) {
+	background: #EEE
+}
+
+.tblVerguetung tbody tr:nth-child(odd) {
+	background: #DDD
+}
+
+#divImp{
+	padding:10px
+}
+
+select {
+	-webkit-appearance: none; 
+	-moz-appearance: none;
+	appearance: none;
+}
+
+input[type="search"] {
+  -webkit-appearance: none;
+}
+
+#M_MC_ctl01_lblLayoutLabel,
+#M_MC_ctl01_lblType,
+#M_MC_ctl01_lblStatus,
+#M_MC_ctl01_lblStand {
+	font-size:75%
+}
+
+#Page {
+	z-index:0    
+}
+
+#WrapperHead {
+	min-width:800px;
+	position:inherit;
+	z-index:0;
+}
+
+.wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 0;
+	width: 100%;
+	padding: 0.9rem 0 0 0
+}
+
+#M_MC_PnlStammDaten,
+#M_PnlFooterMaster {
+	overflow: hidden;
+	padding: 0 0 30px
+}
+
+.wrapper {
+	padding-bottom: 80px
+}
+
+.footerRotateBG slot{
+	padding:0 10rem
+}
+
+#M_PnlFooterMaster{
+	border-top: 1px solid #e9e9e9
+}
+
+#M_MC_TxtConstraint {
+    width: 100% !important;
+    font-size: 0.8rem
+}
+
+.shadowRight {
+	overflow:auto;
+	position:inherit;
+	margin-bottom:10px
+}
+
+.shadowBottom {
+	overflow:auto;
+	position:inherit
+}
+
+.shadowBottomLeft {
+	overflow:auto;
+	position:inherit
+}
+
+.shadowBottomRight {
+	overflow:auto;
+	position:inherit
+}
+
+a {
+	text-decoration:none;
+	color: var(--color-darkgrey)
+}
+
+h1 {
+	font-size: 14px;
+	font-weight: bold;
+	color: #3399CC;
+	padding: 3px
+}
+
+h2 {
+	font-size: 16px;
+	font-weight: bold;
+	padding-top: 3px
+}
+
+h3 {
+	padding: 0;
+	margin: 0;
+	font-family: var(--font-100);
+    font-size: 150%;
+	display: inline-block
+}
+
+h4 {
+	padding-left: 5px;
+	font-weight:normal;
+	text-decoration: underline
+}
+
+.menubox {
+	background-color:#0461ac;
+	padding: 3px;
+	margin-top: 3px;
+	margin-left: 3px;	
+	margin-right: 3px;
+	border-bottom: thin dashed teal
+}
+
+.caplabel {
+	color: var(--color-darkgrey)
+}
+
+.caplink {
+	color: var(--color-white);
+}
+
+.caplink:hover {
+	text-decoration: underline
+}
+
+.stext {
+	font-size: 9px
+}
+
+#M_MC_lstMainLinks {
+	list-style-type: none
+}
+
+.lblIdentifier {
+	text-align:right
+}
+
+.TermLabel {
+    display: block;
+    padding: 4px 0
+}
+
+#fancybox-outer {
+	width:1000px !important;
+	height:10% !important;
+	margin:0 auto
+}
+
+.Term {
+	border-bottom:1px solid #e9e9e9;
+}
+
+.lblSubCategory {
+	font-family: var(--font-300);
+	color: var(--color-blue);
+	font-size:120%
+}
+
+.mainlink {
+	display:inline-block;
+	font-size: 120%;
+	font-family: var(--font-300);
+	border-color: #e9e9e9;
+	padding:3px 6px;
+	border-width: 0 0 1px;
+	min-width:200px;
+	background: none repeat scroll 0 0 transparent;
+	color: var(--color-darkgrey);
+	border-bottom:1px solid #e9e9e9
+}
+
+.mainlinkSearch {
+	font-weight:bold
+}
+
+#crmenu li {
+	font-size: 0.8rem
+}
+
+.box {
+	margin: 3px;
+	height: 30px;
+	width: auto
+}
+
+#M_cphLeittext_pnlLeittext {
+	display:none
+}
+
+.c0_MC_lblTerms {
+	padding:15px
+}
+
+.tvContainer {
+	margin: 3px;
+	margin-top: 10px;
+	padding: 3px;
+	width: auto;
+	border-style: dotted;
+	border-width: thin
+}
+
+#divTerms {
+	padding:15px 0 0 5px
+}
+
+#fancybox-title {
+	width: 97% !important
+}
+
+.legende {
+	border-collapse: collapse; 
+	background: #0f74ae;
+	color: var(--color-white);
+	display:inline-block;
+	width:100%;
+	min-height:20px;
+}
+
+.item {
+	max-width:900px;
+	padding: 10px 0 8px 52px;
+	display: inline-block;
+	vertical-align:top
+}
+
+.itemTop {
+	float:left;
+	display:inline-block
+}
+
+.itemTop img {
+	height:16px;
+	vertical-align:top
+}
+
+.itemsAdditional {
+	display:inline-block
+}
+
+.boxEinrichtung {
+	padding: 3px;
+	margin-top: 3px;
+	margin-left: 3px;
+	margin-right: 3px;
+	margin-bottom: 3px
+}
+
+.cmdpanel {
+	padding: 3px;
+	padding-left: 6px
+}
+
+.hint {
+	float: left;
+	font-size: 70%;
+	background-color: #FDF48B;
+	padding: 0.5em;
+	margin-top: 5px;
+	margin-left: 5px;
+	width: 175px
+}
+
+.chkTerms {
+	font-size: smaller;
+	text-align: right;
+	margin-right: 5px
+}
+
+.chkTerms a {
+	text-decoration: underline;
+}
+
+#lstmenu {
+	margin: 0;
+	margin-left: 5px;
+	padding: 0.5em;
+	background: #B0B0B0;
+	float: left;
+	width: 170px
+}
+
+#lstmenu li {
+	list-style: none;
+	margin: 0;
+	padding: 0.3em
+}
+
+#lstmenu li#active {
+	padding: 0.5em;
+	text-decoration: underline;
+	font-weight: bold;
+	color: #D67600
+}
+
+#tblWerte {
+	width: 700px;
+	border-width: 1px;
+	border-style: dotted;
+	background-color: #D6D6D6
+}
+
+#tblWerte span {
+	padding-left: 15px;
+	display: block
+}
+
+.labelLevel2 {
+	margin-left: -10px
+}
+
+.labelLevel4 {
+	margin-left: 35px;
+	display: block
+}
+
+.labelLevel5 {
+	margin-left: 45px;
+	display: block
+}
+
+#tblWerte h2 {
+	font-size: 16px;
+	font-weight: bold;
+	margin-top: 5px
+}
+
+#tblWerte p {
+	margin-top: -5px;
+	margin-bottom: 2px
+}
+
+.HelpWindow {
+	z-index: 999;
+	position: absolute;
+	display: none;
+	visibility: hidden;
+	width: 300px;
+	background: var(--color-white)099;
+	border-style: solid;
+	border-width: thin;
+	padding: 3px
+}
+
+.HelpCaption {
+	margin: 1px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	font-size: 10px;
+	font-weight: bold;
+	text-align: center;
+	color: var(--color-white);
+	background: var(--color-black)069
+}	
+
+.boxKopf {
+	height: 8rem;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 0;
+	width: 990px;
+	padding: 0.9rem 0 0 0;
+}
+
+.boxKopf table {
+	width:100%;
+}
+
+#LoginHeader {
+	background-image: url("Images/LoginGradient.png");
+	background-repeat: no-repeat;
+}
+
+#appname {
+	position: absolute;
+	top: 20px;
+	left: 160px;
+	font-weight: bold;
+	font-size: x-large;
+	color: var(--color-white)
+}
+
+#M_hlRoot {
+    display: inline-block;
+    margin-top: 0.9rem;
+}
+
+#headerlogo {
+	background: #FFFFFF url("images/footer-wappen.png") no-repeat ;
+	height: 90px;
+	background-size: 170px 75px;
+	width: 200px;
+	background-repeat: no-repeat;
+	float: left;
+	background-position: 14px 7px;
+}
+
+#headerslogan {
+	float:left;
+	margin-top: 1.2rem;
+	margin-left:1rem
+}
+
+#M_header_content {
+	display:inline-block;
+	float:right
+}
+
+#crmenu {
+	list-style: none;
+	position: relative;
+	right: 20px;
+	display: block;
+	text-align: right;
+	margin-top: 0px;
+	min-height: 5px
+}
+  
+#crmenu li {
+	list-style: none;
+	display: block;
+	float: right
+}
+
+#crmenu a {
+	display: block;
+	text-decoration: none;
+	padding: 4px;
+	margin: 0 0 0 0.2em
+}
+
+#crmenu a:hover {
+	background-color: #BDCCFC
+}
+
+#headerright {
+	text-align:right;
+	width: 1px;
+	height: 60px;
+	vertical-align:top;
+	width:250px
+}
+
+.boxNavigation {
+	display: block;
+	padding-bottom: 0;
+	margin-top: 0;
+	margin-bottom: 0
+}
+
+.Leitbox {
+	background: var(--color-white);
+	margin-left:auto;
+	margin-right:auto;
+	width:947px;
+	display:block
+}
+
+.LeitboxOuter {
+    background: var(--color-white) none repeat scroll 0 0;
+    margin: 0 auto;
+    padding: 0;
+    position: relative;
+    width: 947px
+}
+
+.panel {
+	padding: 3px;
+	padding-left: 10px;
+	margin: 3px;
+	margin-top: 30px
+}
+
+#M_pnlModules {
+	z-index: 1;
+	color:var(--color-black);
+	text-align: center;
+	height:58px;
+	background: var(--color-lightgrey);
+}
+
+#M_pnlLinkPath {
+	font-size: 1rem
+}
+
+#linkPathNavStart {
+	display:none !important
+}
+
+#linkpath li {
+	display: inline-block; 
+	list-style: none;
+	padding-left: 6px;
+	padding-right: 3px;
+	vertical-align:text-top;
+	line-height: 2rem;
+}
+
+#linkpath a {
+	display: inline-block;
+	color:  #36c;
+	text-decoration:underline
+}
+
+#linkpath a:hover {
+	text-decoration: none;
+	color:#89b5d8
+}
+
+#linkPathNavStart {
+	color:var(--color-black);
+	background-image:none!important
+}
+
+.current {
+	color:var(--color-darkgrey);
+	display: inline-block
+}
+	
+.topQMFrage {
+	text-decoration: line-Through
+}
+
+.TopQWWarnung {
+	color: Red;
+	padding-left: 0 !important
+}
+
+#crModules {
+	list-style: none;
+	margin:0 auto;
+	position: absolute;
+	vertical-align:middle;
+	padding: 0 0 0 9rem
+}
+
+.boxNavigation ul#crModules li a:hover,
+.boxNavigation ul#crModules li ul li a:hover{
+	text-decoration:underline
+}
+
+#crModules a,
+#liAuflistung {
+	font-size: 1.15rem;
+	display: inline-block;
+	text-decoration: none;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+	font-family: var(--font-300);
+	padding: 18px 18px 18px 15px
+}
+
+#M_pnlLinkPath {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 0;
+	width: 990px;
+	padding: 0.9rem 0 0 0
+}
+
+#crModules li ul li {
+	background-color:var(--color-blue) !important;
+	display:block;
+	float:left;
+	width: 150px;
+	color: var(--color-white);
+	border-bottom: 1px solid var(--color-white)
+}
+
+#crModules li ul li a {
+	color:var(--color-white)
+}
+
+#liAuflistung {
+	display: inline-block
+}
+
+#crModules li {
+	display: inline-table;
+	margin-right:3px
+}
+
+.pnlFile {
+	padding-bottom:2px
+}
+
+.ButtonDeleteFile {
+	margin-top: 1px;
+	position: absolute
+}
+
+#crModules a:hover {
+	color:var(--color-white);
+	background-color:var(--color-blue)
+}
+
+#crModules ul {
+	display: none
+}
+
+#crModules li:hover > ul {
+	display: block;
+	position:relative;
+	z-index:300;
+	width:0;
+	margin:0;
+	padding:0
+}
+
+.trv {
+	float:inherit;
+	display:inline-block;
+	z-index:auto;
+	clear:none
+}
+
+.trv td {
+	vertical-align:top !important
+}
+
+.lbltrv {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	caption-side:top;
+	position:static;
+	top: 0;
+	clear:left;
+	margin-left: 0
+}
+
+#AMNavigation {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	width:50px;
+	margin-left:10px;
+	width:150px
+}
+
+.AMNavigationElement {
+	margin-bottom:10px
+}
+
+#tblGesundheit {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	width:720px
+}
+
+#tblArbeit {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	width:720px
+}
+
+#tblFinanzen {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	width:720px
+}
+
+#tblSoziales {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	width:720px
+}
+
+#tblPersonal {	
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	width:720px
+}
+
+.lbtAMStammdaten {
+	margin-bottom:10px
+}
+
+.lbtAMTraeger {
+	margin-bottom:10px
+}
+.lbtGesundheit {
+	margin-bottom:10px
+}
+
+.lbtQWSuche {
+	display:block
+}
+
+.facilityItem{
+	display:none
+}
+
+#Einrichtungen {
+	margin-right:0px !Important;
+	overflow:hidden;
+	width:100% !important
+}
+
+.StammdatenlblWerte {
+	width:100px
+}
+
+.StammdatentxtWerte {
+	width:500px
+}
+
+.lblWerte {
+	margin:0px 0 0 5px
+}
+
+.StammdatenNotEditableTXT {
+	float:Right;
+	margin-left:5em;
+	color:var(--color-black)
+}
+
+#M_MC_upCommandButtons {
+	bottom: 0px;
+	padding: 0 0 10px;
+	position: absolute;
+	width: 92%
+}
+
+.lblAMStammEigenschaften {
+	color:var(--color-white);
+	font-weight:bold
+}
+
+#BottomMenue {
+	display:inline-table;
+	float:none;
+	vertical-align:bottom;
+	margin-bottom:5px
+}
+
+.lbTest {
+	border-style:solid;
+	border-bottom-style:none;
+	border-top-style:none;
+	border-width:1px
+}
+
+#M_MC_lblErweiterteSuche {
+	color: var(--color-blue);
+	font-family: var(--font-500)
+}
+
+.ElementToHide { 
+	display:block;
+	margin-left:0 !important;
+	margin-top: 1rem
+}
+
+.addr,
+.tr_SearchResultAddress {
+	font-style:italic;
+	color: var(--color-grey)
+}
+
+input.clearInput {
+	margin-left: -1.7rem !important;
+	background-position-y: 2px;
+	background-image: url("Images/Cross.png");
+	border: none;
+	width: 25px;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	position: relative;
+	vertical-align: top;
+	margin-top: 0.4rem;
+	height: 25px;
+	background-size: 20px;
+}
+#divOuterSearch input#ResetSearch{
+	background-image: url("Images/Cross.png");
+	border: none;
+	width: 20px;
+	background-repeat: no-repeat;
+	height: 25px;
+	margin-left: 10px;
+	background-size: 20px;
+	background-position-y: 5px;
+	cursor:pointer
+}
+
+input:not(:valid) ~ .clearInput {
+	display: none;
+}
+
+input:valid ~ .clearInput {
+	display: inline-block;
+}
+
+
+#M_MC_btnExpander.expanderClosed{
+	background-image: url("Images/Down.png");
+	border: none;
+	width: 25px;
+	background-repeat: no-repeat;
+	height: 25px;
+}
+
+#M_MC_btnExpander.expanderOpened{
+	background-image: url("Images/Up.png");
+	border: none;
+	width: 25px;
+	background-repeat: no-repeat;
+	height: 25px;
+}
+
+.lbt_Show_Hide {
+	background-image:url("Images/plus.jpg")
+}
+
+.trvSearch {
+	overflow:visible;
+	width:800px
+}
+
+.trvSearch td {
+	vertical-align: top !important
+}
+
+.trvSearch td img {
+	height:12px !important
+}
+
+.treefix td {
+	vertical-align: top !important
+}
+
+.treefix td img {
+	margin-right: 5px;
+	height:16px !important
+}
+
+.pnlCurrentFacility {
+	margin-bottom: 20px;
+	margin-left:20px;
+	background-color:#f0f0f0
+}
+
+.pnlAllFacilities {
+	margin-left:20px
+}
+
+.txtLVEingabe {
+	font-family:var(--font-100)
+}
+
+.tblVerguetung {
+	text-align:center;
+	padding-bottom:5px
+}
+
+.lbltblVerguetungHeader {
+	font-family:var(--font-700);
+	overflow:visible;
+	color:var(--color-table-grey)
+}
+
+.lbltblVerguetung {
+	font-family:var(--font-100);
+	margin-left:10px;
+	color:var(--color-table-grey)
+}
+
+.pnlVerguetungTabelle {
+	padding-top:5px
+}
+
+.pnlVerguetung {
+	padding-top:35px
+}
+
+.lblExtension {
+	background-image:url("");
+	float:right;
+	border-style:none;
+	width:10px
+}
+
+.lblLeftLabel  {
+	margin-left:10px;
+	vertical-align:middle
+}
+
+.lblInLine  {
+	vertical-align:middle
+}
+
+.imgFacility {
+	background-image:url("Images/Haus.png");
+	height:16px
+}
+
+.imgFacilityNew {
+	background-image:url("Images/Haus_Neu.png");
+	height:16px
+}
+
+.lblAddFacility a{
+	padding: 10px 5px;
+	margin-left: 40px;
+	position: absolute;
+	display: block;
+	padding-left: 10px;
+	z-index: 1;
+	height: 17px;
+	width: 255px
+}
+
+.GradientLeitbox {
+	height:2px
+}
+
+.DropDownlist {
+	font-family:var(--font-100);
+	font-size:1rem
+}
+ 
+.StandardText {
+	font-family:var(--font-100)
+}
+
+.pnlDropDown {
+	padding:1px;
+	display:inline-table;
+	max-width: 700px;
+	overflow: hidden;
+	margin-top: -1px
+}
+
+#divtblSearchResults  {
+	margin-left:10px; 
+	margin-top:20px
+}
+
+#divDistance .pnlDropDown{
+	vertical-align:middle;
+	width:50px
+}
+
+#lblEntfernungZusatz {
+	padding-left:5px
+}
+
+#lblPlz{
+	display:inline-block
+}
+
+#sliderFac2InstOuter{
+	min-width:50px;
+	width:250px;
+	max-height:10px;
+	display:inline-block
+}
+
+#divSlider{
+	display:none;
+	margin-top:5px;
+	margin-bottom:10px
+}
+
+#divLabels {
+	display:block;
+	margin-bottom:10px;
+	max-height:10px;
+	min-width:50px;
+	width:250px
+}
+
+#divlabelSearchFor{
+	display:none
+}
+
+#labelSearchFor{
+	margin-right:5px;
+	vertical-align:text-top
+}
+
+#M_MC_btnEinrichtungssuche:link {
+	background-image:url("Images/zoom.png");
+	border: 1px solid #0461ac; 
+	background-color:Transparent;
+	cursor: pointer;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding-left:15px
+}
+
+#M_MC_btnSave,
+.Button {
+	border: none;  
+	background: #e9e9e9;
+	text-decoration: none;
+	padding: 5px;
+	margin: 0 0 0 0.2em ;
+	cursor: pointer
+}
+
+#M_MC_btnSave:hover,
+.Button:hover {
+	border: none;  
+	background-color:var(--color-blue);
+	color:var(--color-white);
+	border:1px solid var(--color-blue)
+}
+
+.ButtonInactive {
+	font-family:var(--font-100);
+	text-decoration: none;
+	padding: 2px 0.2em 2px 0.2em;
+	margin: 0 0 0 0.2em;
+	height: 12px;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5
+}
+
+#M_MC_btnToggleVisibility,
+.dialog .ButtonSave {
+	background-color: #e9e9e9;
+	background-image:url("Images/Save_16x16_256.ico");
+	background-position: 10px center;
+	background-repeat:no-repeat;
+	border-radius: 3px;
+	border:none; 
+	font-family:var(--font-100);
+	margin: 0 0 0 0.2em;
+	padding: 6px 0.2em 6px 33px;
+	text-decoration: none;
+	width: 78px;
+	
+}
+
+.button.save:hover {
+	border: 1px solid #36c;
+	background-color:#BDCCFC;
+	color:var(--color-white);
+}
+
+#DivHelp {
+    padding: 15px 30px 15px 8px
+}
+
+.legende .itemsAdditional .item{
+	padding:0
+}
+
+#M_MC_divRemFile .divButtons{
+	margin-top:10px
+}
+
+#M_MC_divRemFile{
+	padding:10px
+}
+
+.buttonAddFile{
+	margin-bottom:10px
+}
+
+#M_MC_divRemFile .divButtons .Button{
+	padding:5px 10px;
+	border-radius:5px;
+	margin:0
+}
+
+.ButtonCancel {
+	font-family:var(--font-100);
+	border:none;
+	background-image:url("Images/cancel2.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding:2px 2px 2px 17px;
+	margin-right:5px
+}
+
+#Einrichtungen #M_MC_pnlAllFacilities #CommandButtons{
+	margin-right:20px
+}
+
+#Einrichtungen #M_MC_pnlAllFacilities table img{
+	margin-right:5px
+}
+
+.ButtonCancel:hover {
+	border: 1px solid #36c;
+	background-color:#BDCCFC;
+	color:var(--color-white)
+}
+
+.TTip {
+	position: relative
+}
+
+.TTip span {
+	display: none;
+	color: var(--color-black)
+}
+ 
+.TTip:hover {
+	background-color: transparent
+}
+
+#M_MC_lstMainLinks{
+	padding-left:0
+}
+
+.TTip:hover span {
+	width: 300px;
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	display: block;
+	background: #e6ecff;
+	border: 1px solid #003399;
+	text-decoration: none;
+	padding: 3px
+}
+
+#imgLeitTextToHide {
+	cursor:pointer;
+	display:table-cell;
+	padding-top:5px;
+	padding-left:17px;
+	position: absolute;
+	vertical-align:top;
+	z-index: 200
+}
+
+.LeitTextToHide {
+	display:block
+}
+
+ .item {
+	margin-left:5px;
+	width:auto
+}
+
+.LeitTextToHideHidden {
+	display:none;
+	margin-bottom:140px
+}
+
+.pnlBegriff {
+	padding-left: 10px;
+	min-width: 100px;
+	max-width: 390px;
+	display:inline-block
+}
+
+.pnlBegriffEdit {
+	padding-left: 10px;
+	min-width: 100px;
+	max-width:390px;
+	display:inline-block
+}
+
+.lblBegriff {
+	font-family:var(--font-100);
+	overflow:visible;
+	min-width: 100px
+	
+}
+
+#M_MC_pnlMain {
+	padding-top:16px;
+	display:table
+}
+
+#M_MC_pnlControls {
+	padding-top:16px
+}
+
+#M_MC_pnlMain div {
+	padding:1px
+}
+
+#divTypSucheDropDown {
+	width:500px
+}
+
+#divTypSuche {
+	display:table;
+	margin-top:10px
+}
+
+#divTypSuche span {
+	padding-right:3px
+}
+
+.pnlOptionLabel {
+	display:inline-block;
+	width:195px;
+	margin-left:10px;
+	vertical-align: middle
+}
+
+.pnlOptionValue {
+	display:inline-block;
+	margin-left:10px
+}
+
+.chkOptionStammdaten {
+	display:block;
+	font-family:var(--font-100);
+	overflow:visible;
+	min-width: 100px
+}
+
+.divMaps {
+	color:var(--color-black);
+	background:url("Images/GoogleMaps_logo.svg");
+	background-repeat:  no-repeat;
+	background-size:20px;
+	width:12px;
+	height:12px;
+	position:relative; 
+	border:0 none transparent
+}
+
+#pnlStammDatenTable1stCol {
+	width:30%;
+	vertical-align:top
+}
+
+#M_MC_pnlPasswordInfo {
+	min-width:320px;
+	max-width:500px
+}
+
+.PasswordPolicyHint {
+	margin-left: 10px;
+	padding:10px;
+	background:#eee;
+	font-size:80%
+}
+
+.UserInformation {
+	float: right;
+	width: 75%
+}
+
+.UserInformation .pnlTextBox {
+	display:block; 
+	padding: 2px
+}
+
+.UserList {
+	display:inline-block;
+	vertical-align:top;
+	width:25%
+}
+
+#M_MC_lblAddFacility {
+	position: relative
+}
+
+#M_MC_pnlNewFacility .lblLeftLabel{
+	margin-left:0px !important
+}
+
+#M_MC_divInstitution .pnlDropDown {
+	margin-top:16px
+}
+
+#M_MC_txtNewName, #M_MC_ddlLeistungstyp {
+	width:499px !important;
+	margin:0 0 2px 0
+}
+
+#M_MC_lblNewStrasse,
+#M_MC_lblNewOrt,
+#M_MC_lblNewPlatzzahl,
+#M_MC_lblNewTelefon,
+#M_MC_lblNewEmail,
+#M_MC_lblNewPLZ,
+#M_MC_lblKreis,
+#M_MC_lblNewTelefax{
+	width:70px !important
+}
+
+#M_MC_txtNewStrasse,
+#M_MC_txtNewOrt,
+#M_MC_txtNewPlatzzahl,
+#M_MC_txtNewTelefon,
+#M_MC_txtNewEmail,
+#M_MC_txtNewPLZ,
+#M_MC_ddlKreise,
+#M_MC_txtNewTelefax {
+	width:170px !important;
+	margin:2px 0
+}
+
+.divOuterControl {
+	margin-top:10px
+}
+
+.ControlComplete {
+	margin-left:10px
+}
+
+.divOuterCheckedListbox{
+	border:1px solid #BBB !important;
+	width:200px
+}
+
+#divddlUserTypes #M_MC_btnRefreshList {
+	display:none !important
+}
+
+.ControlComplete {
+	display:block
+}
+
+.divOuterControl {
+	display:inline-block;
+	vertical-align:text-top
+}
+
+.ControlLabel {
+    margin: 5px 0;
+	display:inline-block;
+	min-width:135px;
+	vertical-align:top
+}
+
+#M_MC_lstUsers {
+	font-size: 0.9rem;
+	width:200px
+}
+
+#btnSaveNewUser{
+	margin:0
+}
+
+#divlstUsers Select{
+	margin-top:0.5rem;
+	height:300px
+}
+
+#M_MC_divInstitution {
+	margin-top:20px
+}
+
+
+#M_MC_pnlOptions .ControlLabel {
+	display:block
+} 
+
+#M_MC_lstFacilities {
+	display: block;
+	max-height: 300px;
+	overflow: auto;
+	width:100%
+}
+
+#M_MC_pnlOptions {
+	display:inline-block;
+	margin-top: 20px;
+	width: 100%
+}
+
+#M_MC_pnlOptions .ControlComplete {
+	vertical-align:top
+}
+
+#divlstFacilities {
+	width:100%
+}
+
+#M_MC_divFacilityTypes {
+	display:inline-block
+}
+
+#M_MC_divFacilities {
+	display:inline-block;
+	margin-left:20px;
+	max-width:400px;
+	width: calc(100%);
+	padding-right:20px
+}
+
+#divModule {
+	display:inline-block
+}
+
+#M_MC_ControlButtons {
+	margin-top:20px;
+}
+
+#divNewUserEntries {
+	display:block;
+	width: calc(95% - 10px)
+}
+
+#divNewUserEntries .ControlLabel {
+	display:inline-block;
+	min-width: 100px;
+	width: 170px
+}
+
+#divNewUserEntries .lblLeftLabel{
+	margin-left:0
+}
+
+#divNewUserEntries .pnlTextBox {
+	display:inline-block;
+	width:95%
+}
+
+#divNewUserEntries .divOuterControl {
+	display:inline-block
+}
+
+#divNewUserEntries .ControlComplete {
+	margin-bottom:3px;
+	display: flex;
+	width: 90%
+}
+
+#divNewUser{
+	width:90% !important
+}
+
+#divSpecialinformation {
+   border-top:1px solid var(--color-black);
+   font-size: 60%;
+   margin-top:15px
+}
+
+#M_MC_divCounties {
+   display:inline-block;
+   padding-right:20px
+}
+
+#divlstCounties{
+	width:100%
+}
+
+#M_pnlInfoNews {
+	font-size:small;
+	min-height:20px;
+	position:absolute;
+	top:68px;
+	width:100%;
+	z-index:99;
+	left: 308px
+}
+
+#M_pnlInfoNews ul {
+	background-color: var(--color-white);
+	box-shadow:10px 10px 5px grey;
+	border:1px solid #0461ac;
+	border-bottom:none;
+	display:none;
+	list-style-type:none;
+	margin: 0 auto;
+	padding: 0;
+	width:420px
+}
+
+#M_pnlInfoNews ul li{
+	border-bottom:1px solid #0461ac;
+	list-style-type:none;
+	background:var(--color-white);
+	margin: 0;
+	padding: 5px
+}
+
+#M_pnlInfoNews ul li a {
+	color:#0461ac
+}
+
+#spanNewsEx {
+	background-color:transparent;
+	background-image:url("Images/messagebox_warning.png");
+	background-repeat:no-repeat;
+	background-size: 32px;
+	height: 32px;
+    display: block;
+	left:calc(50% - 16px);
+	position:relative;
+	cursor:pointer;
+	padding-left: 35px;
+	padding-top: 5px;
+	color: #0461ac;
+	animation-duration:1s;
+	animation-name: jump;
+	animation-iteration-count: infinite;
+	animation-direction: alternate
+}
+
+@keyframes jump {
+	from {
+		background-position-y:0px
+	}
+	
+	20% {
+		background-position-y:-10px
+	}
+}
+
+.pnlSave {
+	display:inline-block
+}
+
+.pnlGenerateNewPasswort {
+	display:inline-block
+}
+
+#M_MC_pnlEinrichtungsdaten span:first-child{
+	display: inherit
+}
+
+#divInnerSearch {
+	display: table;
+	width:100%;   
+	margin-bottom:2rem
+}
+
+#divSearchLabel {
+	margin:0;
+	padding: 0;
+}
+
+#divTextSearchBottom {
+	display:table;
+	width:100%
+}
+
+#divSearchButton {
+	display: inline-block;
+	width:5%
+}
+#M_MC_pnlTextboxSuche{
+	height: 30px;
+	margin-top: 5px;
+}
+#divSearchButton input {
+    background-color: var(--color-pink);
+    display: inline-block;
+	width: 80px;
+    color: var(--color-white);
+    border: none;
+    height: 36px;
+    cursor: pointer;
+    line-height: 1.5rem;
+    font-size: 1.0rem
+}
+
+#M_MC_btnEinrichtungssuche:hover {
+	background-color:var(--color-blue)
+}
+
+#labelSearchFor {
+	padding-right:18px
+}
+
+#divTypSucheDropDown{
+	margin-top:0.5rem
+}
+
+#M_MC_lblTypSuche,
+#divUmkreisOuter {
+	margin-top:2rem
+}
+
+#divUmkreisSelection {
+	display:table
+}
+
+#divUmkreisSelection{margin-top:1rem}
+#divUmkreisSelection span {
+	display:table-cell;
+	padding-bottom:0.5rem
+}
+
+.pnlDropDown select#M_MC_ddlEntfernung.DropDownlist,
+#divPLZ .pnlTextBox {
+	width:50px;
+	z-index:0
+}
+
+#divPLZ {
+	display:inline-block
+}
+
+#divDistance {
+	margin-left: 2rem;
+	display:inline-block;
+	vertical-align:top
+}
+
+#M_MC_lblEntfernungZusatz{
+	line-height: 2.2rem;
+	float: right
+}
+
+#M_MC_lblEntfernungZusatz {
+	line-height: 2.2rem;
+	float: right
+}
+
+.InstituionIdentifier {
+	color:transparent;
+	display:inline-block;
+	background:url("Images/Traeger2.png");
+	background-repeat:no-repeat;
+	background-size:30px;
+	width:30px;
+	height:30px;
+	position:relative; 
+	border:0 none transparent
+}
+
+.faciityIdentifier {
+	color:transparent;
+	display:inline-block;
+	background:url("Images/Haus.png");
+	background-repeat:no-repeat;
+	background-size:30px;
+	width:30px;
+	height:30px;
+	position:relative; 
+	border:0 none transparent
+}
+
+#M_lblImpressumBIT {
+	display: inline-block;
+	margin-top: 10px;
+	border-top: 1px solid var(--color-black);
+	text-align: center;
+	padding-top: 5px
+}
+
+#M_MC_tblEinrichtungenListe td a {
+	white-space:pre-wrap
+}
+
+.ui-widget-header {
+   background:none !important
+}
+
+.ui-slider-horizontal {
+   width: 210px !important;
+   margin-left: 15px !important  
+}
+
+#M_MC_pnlFilesOuter{
+	margin-top:30px;
+	margin-left:39px
+}
+
+#M_MC_pnlAttachments span {
+	max-width: 600px;
+	margin-bottom: 10px;
+	display: block
+}
+
+#M_MC_txtKorCategory_40{
+    font-size: 100% !important;
+    width: 600px;
+    height:20px !important
+}
+
+.pnlFile {
+	display:inline-block
+}
+
+#M_MC_pnlFiles .pnlFile {
+	display: block !important
+}
+
+#M_MC_uppQuestions .lblSubCategory {
+	font-size: 175%
+}
+
+#M_MC_lblSearchResults {
+	color: red;
+	margin-top: 20px;
+	display: block;
+	text-align: center
+}
+
+#M_pnlFooter {
+	position:relative
+}
+
+.UsersOnline .lblBegriff {
+	margin: 5px 0 0 19px
+}
+
+.UsersOnline,.footerOuter {
+	margin:0 auto;
+	background-color: var(--color-white);
+	padding-bottom: 5px;
+	padding-top: 10px
+}
+
+.footerOuter { 
+    border-top:1px solid  #e9e9e9;
+    padding-bottom: 11px;
+    padding-top:20px;
+    position:relative	
+}
+
+.footerInner {
+	padding-left:20px
+}
+
+#footerSpan1 {
+	background-image: url("Images/EFRE.png");
+	background-size: 120px;
+	background-repeat:no-repeat;
+	display: table-cell;
+	height: 75px;
+	margin-left:20px;
+	width: 120px
+}
+
+#footerSpan2 {
+	color:var(--color-blue);
+	font-size:10px;
+	display:table-cell;
+	padding-left:10px;
+	vertical-align:middle;
+	max-width:200px
+}
+
+.ulUsers {
+    list-style: none;
+    padding-left: 18px
+}
+
+.ulUsers li{
+    display:inline-block
+}
+
+.ulUsers li + li:before {
+    content: ", "
+}
+
+.ulUsers li:first-child:before {
+    content: ""
+}
+
+.WaitPanel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	text-align:center;
+	z-index:999
+}
+
+#divWaitPanelBackground {
+	background: #CCC;
+	filter: alpha(opacity=60);
+	/* IE */
+	-moz-opacity: 0.6;
+	/* Mozilla */
+	opacity: 0.6;
+	/* CSS3 */
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%
+}
+
+.WaitLabel1 {
+	background-color: var(--color-white);
+	background-image:url(Images/waiter1.gif);
+	background-repeat:no-repeat;
+	background-size:100px;
+	background-position-y:top;
+	filter: alpha(opacity=99);
+	/* IE */
+	-moz-opacity: 0.9;
+	/* Mozilla */
+	opacity: 0.9;
+	position: fixed;       
+	width: 100px;
+	height: 100px;
+	top: calc(50% - 50px);		
+	left: calc(50%)
+}
+
+.WaitLabel2 {
+	background-color: var(--color-white);
+	color:var(--color-black);
+	position: fixed;       
+	width: 100px;
+	height: 25px;
+	top: calc(50% + 40px);		
+	left: calc(50%)
+}
+
+.aspNetDisabled {
+	filter: alpha(opacity=60);
+	/* IE */
+	-moz-opacity: 0.6;
+	/* Mozilla */
+	opacity: 0.6
+	/* CSS3 */
+}
+
+.heading.h1 {
+    display: none
+}
+
+#M_MC_pnldivContactData div {
+    margin-bottom: 5px
+}

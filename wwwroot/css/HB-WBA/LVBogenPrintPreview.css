@@ -1,0 +1,104 @@
+﻿body {
+	font: 85% arial-narrow,arial,sans-serif;
+}
+
+#lblOuterPrintComment_{
+position: fixed;
+top: 0;
+right: 0;
+background-color: #bdd0f5;
+color: #0461ac;
+padding: 1rem;
+width: 130px;
+height: 25px;
+}
+
+.divKorrekturVerlaufHeader {
+	font-weight:bold;
+	font-size:larger;
+}
+
+.tblKorrekturVerlauf {
+	font: 80% arial-narrow,arial,sans-serif;
+	max-width:99%;
+}
+
+
+.divtblKorrekturVerlaufRightCol {
+	margin-left:5px;
+}
+
+.divtblKorrekturVerlaufLeftCol {
+	
+}
+
+.divtblKorrekturVerlaufDate {
+	font: 90% arial-narrow,arial,sans-serif;
+	color:#88b8d7;
+}
+
+.LVBogenKorrekturWert {
+	font: 80% arial-narrow,arial,sans-serif;
+	color:Red;
+	min-width:20px;
+	max-width:100px;
+}
+
+.lblPrintComment {
+	font: 90% arial-narrow,arial,sans-serif;
+	background-image:url(Images/Printer.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	display: inline-block;
+	height: 15px;
+	margin-left:auto;
+	margin-right:5px;
+	padding-left:20px;
+	cursor: pointer;
+}
+.btnExcelDownload:hover,
+.btnXmlDownload:hover,
+.lblPrintComment:hover {
+}
+
+.btnXmlDownload {
+	background-image:url(Images/file_xml.png);
+	background-color:Transparent;
+	background-size: 20px;
+	background-repeat:no-repeat;
+	background-position: 0% 0% center;
+	border:0px solid Transparent;
+	cursor:pointer;
+	padding-left:20px;
+	padding-top:2px;
+	padding-bottom:3px;
+	position:relative;
+	margin-left:auto;
+	margin-top:auto;
+	max-height:20px;
+	max-width:20px;
+	height:20px;
+	width:20px;
+}
+
+ .btnExcelDownload {
+	background-image:url(Images/file_excel.png);
+	background-color:Transparent;
+	background-size: 24px;
+	cursor:pointer;
+	border:0px solid Transparent;
+	background-repeat:no-repeat;
+	background-position: 0% 0% center;
+	padding-left:20px;
+	padding-top:2px;
+	padding-bottom:3px;
+	position:relative;
+	margin-left:auto;
+	margin-top:auto;
+	max-height:20px;
+	max-width:20px;
+	height:26px;
+	width:31px;
+ }
+ 

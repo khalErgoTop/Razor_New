@@ -1,0 +1,46 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.Auth.FehlermeldungenModel
+@{
+    ViewData["Title"] = "Fehlermeldungen";
+}
+
+<nav aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb">
+        <li><a asp-page="/Index">Start</a></li>
+        <li><a asp-page="/Auth/QWWebAdmin">Administration</a></li>
+        <li aria-current="page">Fehlermeldungen</li>
+    </ol>
+</nav>
+
+<section id="ErrorListSection" class="pageContent">
+    <h1>Fehlermeldungen</h1>
+    <form method="get" id="ErrorTypes">
+        <label><input type="radio" asp-for="ConstraintType" value="1" /> Fehler</label>
+        <label><input type="radio" asp-for="ConstraintType" value="2" /> Debug-Logs</label>
+        <label><input type="radio" asp-for="ConstraintType" value="3" /> Logins/ Logouts</label>
+    </form>
+
+    <table id="LstErrors">
+        <thead>
+            <tr><th>Datum</th><th>Beschreibung</th><th>Benutzer</th><th>Rechner</th><th>Fehlernummer</th></tr>
+        </thead>
+        <tbody>
+        @foreach (var error in Model.Errors)
+        {
+            <tr>
+                <td>@error.Datum?.ToString("g")</td>
+                <td>@error.Beschreibung</td>
+                <td>@error.Benutzer</td>
+                <td>@error.Rechner</td>
+                <td>@error.Nummer</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</section>
+
+<script>
+    document.querySelectorAll('#ErrorTypes input').forEach(input => {
+        input.addEventListener('change', () => input.form.submit());
+    });
+</script>

@@ -1,0 +1,210 @@
+﻿#spanShowPassword{
+	margin-top: 0.25rem;
+}
+#divAnmeldung {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -3rem;
+    font-size: 1.1rem;
+}
+#chkStaylogedIn{
+	margin-right:0.5rem
+}
+#divAnmeldung .Button:hover {
+	color: #FFFFFF
+}
+#pnlPW{
+	position: relative
+	}
+.box {
+    height: auto;
+}
+#pnlHint{
+	margin: 8rem 0.5rem 0 0.5rem !important;
+}
+#headerleft{
+	width: 100%;
+  margin-left: 5rem;
+  display: inline-block;
+}
+#lblPW,
+#lblUser{
+}
+#spanShowPassword{
+	float: right;
+	position: absolute;
+	right: 0.5rem
+}
+#txtPasswort,
+#txtUsername {
+}
+
+#headerlogo {
+    float: none;
+}
+
+#pnlMain {
+    width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#headerleft {
+    text-align: center;
+    padding-bottom:0.5rem
+}
+
+.GradientHeaderBackgroundTH {
+    height: 20px;
+    width: 100%;
+}
+
+.GradientHeaderBackground {
+    width: 100%;
+}
+
+.loginMargin {
+    background-color: var(--color-white);
+    border: 5px solid var(--color-white); /*HW*/
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    width: 350px;
+}
+
+#lblUser {
+    margin-left: auto;
+    margin-right: 1rem;
+}
+.boxKopf {
+  height: 8rem;
+  padding:0
+}
+
+#txtPasswort,
+#txtUsername {
+    font-family: var(--font-300);
+    font-size: 1rem;
+    float: right;
+    height:1.5rem;
+    cursor: auto;
+}
+#pnlUser,
+#pnlPW,
+#lblUser{
+  line-height: 2.8rem;
+}
+#divStayLogedIn {
+  display: flex;
+  align-items: center; /* vertikal zentrieren */
+  gap: 8px; /* Abstand zwischen Checkbox und Text */
+}
+#chkStaylogedIn {
+  width: 16px;
+  height: 16px;
+}
+#lblPW {
+    margin-left: auto;
+    margin-right: 1rem;
+}
+
+#txtPasswort {
+    width: 135px;
+}
+
+#spanShowPassword:after {
+	content: url("../../Images/Icons/Icon_Auge.svg");
+  width: 25px;
+  display: block;
+  margin-top: 5px;
+}
+
+#lblHint {
+    font-weight: bold;
+    color: Red;
+}
+
+#pnlCommands {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0;
+    width:100%
+}
+#pnlHint,
+#pnlUser,
+#pnlPW {
+width: calc(100% - 1rem);
+  margin: 0 auto;
+  padding: 0;
+  margin-left: 0.5rem;
+  height:auto
+}
+#cmdLogin {
+    font-size: 100%;
+    font-family: var(--font-300)
+}
+#txtUsername {
+    margin-left: 4px;
+}
+#cmdCancel {
+    font-size: 100%;
+    font-family: var(--font-300)
+}
+
+.Button {
+    width: 49%;
+    height: 38px;
+    background:var(--color-blue);
+    border:none;
+    color:var(--color-white)
+}
+
+#divStayLogedIn {
+    text-align: center;
+    margin: 10px 0 20px 0.5rem;
+}
+#pnlCommands {
+    font-size: 100%;
+}
+
+.hint {
+    float: left;
+    background-color: #fdf48b;
+    padding: 0.5em;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 175px;
+}
+
+.hmailto {
+    text-decoration: underline;
+    font-size: smaller;
+}
+
+#hylMailTo.msg {
+    display: block;
+}
+
+.capbox {
+    text-align: center;
+    background-color: var(--color-blue);
+    color: var(--color-lightgrey);
+    padding: 7px;
+    margin-bottom: 1rem;
+}
+
+#lblAppname {
+  font-family: var(--font-100);
+  color: var(--color-blue);
+  margin-top: 0.8rem;
+  display: block;
+}
+
+#divlblAppname {
+    /*display: inline-block;*/
+}
+
+#headerlogo {
+    display: inline-block;
+}

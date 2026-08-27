@@ -1,0 +1,22 @@
+﻿#divChangePassword{}
+#divHeader{}
+#lblUserToChange {
+	
+}
+#divOldPasswort{}
+#lblOldPassword{}
+#txtOldPassword{}
+#divNewPW{}
+#lblNewPassword{}
+#txtNewPassword{}
+#divVerifyPW{}
+#lblVerifyPassword{}
+#txtVerifyPassword{}
+#divHint{}
+#lblHint{}
+#divControls{}
+#cmdCancel{}
+
+#M_PnlMain{
+	margin-bottom: 10rem;
+}

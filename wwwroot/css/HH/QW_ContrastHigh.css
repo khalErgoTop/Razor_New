@@ -1,0 +1,61 @@
+﻿@charset "UTF-8";
+
+@font-face {
+    font-family: 'pt_sansregular';
+    src: url('Fonts/PTS55F-webfont.eot');
+    src: url('Fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'), url('Fonts/PTS55F-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'pt_sansbold';
+    src: url('Fonts/ptsans-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal
+}
+
+@media {   
+	:root {
+	--color-red: #000;
+	--color-lightgrey: #FFF;
+	--color-grey: #434345;
+	--color-darkgrey: #000;
+	--color-lightblue: #FFF;
+	--color-blue: #000;
+	--color-darkblue: #000;
+	--color-greyblue: #000;
+	--color-font: #000;
+	--color-black: #000000;
+	--color-white: #FFFFFF;
+	--font-regular: "pt_sansregular", Arial,Helvetica,sans-serif;
+	--font-bold: "pt_sansbold",Arial,Helvetica,sans-serif;
+	--font-georgia: Georgia,Arial,Helvetica,sans-serif;
+	--img-logo: url("images/bremen_logo_schwarz.svg");
+	--filter-blue: black;
+	--filter-red: black;
+	--border: 1px solid #CCC;
+	--filter1: grayscale(1) contrast(3) opacity(.8) brightness(.2);
+	--filter: grayscale(100%);
+	}  
+	}   
+#M_HlRoot {
+  width: 100%;
+  filter: var(--filter);
+}
+body{
+	filter: var(--filter)
+}
+#CrModules { 
+	background-image: url("Images/Dekor_sw.svg");
+	background-repeat: no-repeat;
+	background-size: auto 96px;
+	height: 87px;
+	padding: 0;
+	margin: 0;
+	font-size:1rem;
+	font-weight: bold
+}
+#M_LblUserLogin{
+	color:var(--color-black) !important
+}

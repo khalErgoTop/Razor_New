@@ -1,0 +1,120 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.AuflistungModel
+@{
+    ViewData["Title"] = Model.Listing.Title;
+}
+
+<nav aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb">
+        <li><a asp-page="/Index">Start</a></li>
+        <li><a asp-page="/Sucharten">Leistungsangebote</a></li>
+        <li aria-current="page">@Model.Listing.Title</li>
+    </ol>
+</nav>
+
+<h1>@Model.Listing.Title</h1>
+  
+@foreach (var category in Model.Listing.Categories)
+{
+    <ul class="superCategory" role="list">
+        <li role="listitem">
+            <div class="sc00" tabindex="0" aria-label="Unterkategorie ein-/ausblenden"><h2>@category.Name</h2></div>
+        @foreach (var group in category.Groups)
+        {
+            <ul class="subCategory01" role="list">
+                <li role="listitem">
+                    <div class="sc01" tabindex="0" aria-label="Leistungen ein-/ausblenden">@group.Name</div>
+                    <ul class="facilityItem" role="list">
+                        @foreach (var facility in group.Facilities)
+                        {
+                            var facilityUrl = Url.Page("/Stammdaten", new { EIID = facility.EIID, STUID = facility.STUID });
+                            <li>
+                                <div class="fci">
+                                    <div class="divAuflistungEinrichtung">
+                                        <a href="@facilityUrl">
+                                            <span class="AuflistungEinrichtungname">@facility.Name</span>
+                                            @if (!string.IsNullOrWhiteSpace(facility.FacilityIndicator))
+                                            {
+                                                <span class="AuflistungEinrichtungkennzeichen">(@facility.FacilityIndicator)</span>
+                                            }
+                                            <div class="divAuflistungEinrichtungAdresse">
+                                                <span class="addr">@facility.Address</span>
+                                            </div>
+                                        </a>
+                                        @if (facility.AdditionalLocations.Count > 0)
+                                        {
+                                            <div class="wtStt">
+                                                <div class="wtStt label">weitere Standorte</div>
+                                                <div class="wtSttToggle" tabindex="0">toggle</div>
+                                                <ul class="sub Fci">
+                                                    @foreach (var location in facility.AdditionalLocations)
+                                                    {
+                                                        var locationUrl = Url.Page("/Stammdaten", new { EIID = location.EIID, STUID = location.STUID });
+                                                        <li>
+                                                            <div class="sub fci">
+                                                                <div class="divAuflistungEinrichtung">
+                                                                    <a href="@locationUrl">
+                                                                        <span class="AuflistungEinrichtungname">@location.Name</span>
+                                                                        @if (!string.IsNullOrWhiteSpace(location.FacilityIndicator))
+                                                                        {
+                                                                            <span class="AuflistungEinrichtungkennzeichen">(@location.FacilityIndicator)</span>
+                                                                        }
+                                                                        <div class="divAuflistungEinrichtungAdresse">
+                                                                            <span class="addr">@location.Address</span>
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                    </li>
+                </ul>
+        }
+        </li>
+    </ul>
+}
+
+@section Scripts {
+    <script>
+        function toggleFirstList(element) {
+            var sibling = element.nextElementSibling;
+            if (sibling && sibling.tagName.toLowerCase() === "ul") {
+                var isHidden = window.getComputedStyle(sibling).display === "none";
+                sibling.style.display = isHidden ? "block" : "none";
+            }
+        }
+
+        document.querySelectorAll(".sc00, .sc01").forEach(function (element) {
+            element.addEventListener("click", function () {
+                toggleFirstList(element);
+            });
+
+            element.addEventListener("keydown", function (event) {
+                if (event.key === "Enter" || event.key === "Return") {
+                    toggleFirstList(element);
+                }
+            });
+        });
+
+        document.querySelectorAll(".wtSttToggle").forEach(function (element) {
+            element.addEventListener("click", function () {
+                element.classList.toggle("toggled");
+                toggleFirstList(element);
+            });
+
+            element.addEventListener("keydown", function (event) {
+                if (event.key === "Enter" || event.key === "Return") {
+                    element.click();
+                }
+            });
+        });
+    </script>
+}

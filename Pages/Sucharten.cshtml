@@ -1,0 +1,20 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.SuchartenModel
+@{
+    ViewData["Title"] = "Leistungsangebote";
+}
+
+<nav aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb">
+        <li><a asp-page="/Index">Start</a></li>
+        <li aria-current="page">Leistungsangebote</li>
+    </ol>
+</nav>
+
+<h1>Leistungsangebote</h1>
+
+<ul class="search-type-links">
+    <li><a asp-page="/Suche">Detailsuche</a></li>
+    <li><a asp-page="/Auflistung" asp-route-Typ="Typ">Leistungsangebote nach Art der Leistung</a></li>
+    <li><a asp-page="/Auflistung" asp-route-Typ="Kreis">Leistungsangebote nach @Model.DistrictLabel</a></li>
+</ul>

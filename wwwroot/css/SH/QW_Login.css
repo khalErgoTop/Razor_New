@@ -1,0 +1,169 @@
+﻿#divAnmeldung {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -3rem;
+    font-size: 1.1rem;
+}
+#divAnmeldung .Button {
+	color:var(--color-table-grey)
+}
+
+#divAnmeldung .Button:hover {
+	color: #FFFFFF
+}
+
+.box {
+    height: 40px;
+}
+
+#txtPasswort,
+#txtUsername {
+    height: 1.5rem;
+}
+
+#headerlogo {
+    float: none;
+}
+
+#pnlMain {
+    width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#headerleft {
+    text-align: center;
+}
+
+.GradientHeaderBackgroundTH {
+    height: 20px;
+    width: 100%;
+}
+
+.GradientHeaderBackground {
+    width: 100%;
+}
+
+.loginMargin {
+    background-color: var(--color-white);
+    border: 5px solid var(--color-white); /*HW*/
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 350px;
+}
+
+#lblUser {
+    margin-left: auto;
+    margin-right: 1rem;
+}
+
+#txtPasswort,
+#txtUsername {
+    font-family: "museo_sans300", Arial, Helvetica, sans-serif;
+    font-size: 1rem;
+}
+
+#lblPW {
+    margin-left: auto;
+    margin-right: 1rem;
+}
+
+#txtPasswort {
+    width: 135px;
+}
+
+#spanShowPassword:after {
+content:" 👁"
+}
+
+#pnlHint {
+    /*height:45px;	*/
+    display: block;
+}
+#lblHint {
+    font-weight: bold;
+    color: Red;
+}
+
+#pnlCommands {
+    display: inline-block;
+    margin: 0 auto;
+    padding: 0;
+}
+#pnlUser,
+#pnlPW {
+    width: 300px;
+    margin: 0 auto;
+    padding: 0;
+}
+#cmdLogin {
+    font-size: 100%;
+    font-family: "museo_sans300", Arial, Helvetica, sans-serif;
+}
+#txtUsername {
+    margin-left: 1px;
+}
+#cmdCancel {
+    font-size: 100%;
+    font-family: "museo_sans300", Arial, Helvetica, sans-serif;
+}
+
+.Button {
+    width: 162px;
+    height: 30px;
+}
+
+#divStayLogedIn {
+    text-align: center;
+    margin: 10px 0 20px;
+}
+#pnlCommands {
+    font-size: 100%;
+}
+
+.hint {
+    float: left;
+    background-color: #fdf48b;
+    padding: 0.5em;
+    margin-top: 5px;
+    margin-left: 5px;
+    width: 175px;
+}
+
+.hmailto {
+    text-decoration: underline;
+    font-size: smaller;
+}
+
+#hylMailTo.msg {
+    display: block;
+}
+
+.capbox {
+    border-bottom: 2px solid #d4004b;
+    text-align: center;
+    background-color: #f2f2f2;
+    color: #003064 !important;
+    padding: 7px;
+    margin-bottom: 2rem;
+}
+
+#lblAppname {
+    font-family: "museo_sans100", Arial, Helvetica, sans-serif;
+    position: relative;
+    height: 20px;
+    top: -40px;
+    left: 20px;
+    font-weight: normal;
+    color: var(--color-blue);
+}
+
+#divlblAppname {
+    display: inline-block;
+}
+
+#headerlogo {
+    display: inline-block;
+}

@@ -1,0 +1,505 @@
+﻿::-webkit-scrollbar {
+    width: 4px;
+    height:4px;
+}
+ 
+::-webkit-scrollbar-track {
+   -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3); 
+    /* border-radius: 10px;*/
+}
+ 
+::-webkit-scrollbar-thumb {
+   /* border-radius: 10px; */
+    -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.5); 
+}
+
+#Content {
+    /* width: 750px;
+    float: left;*/
+    height: 550px;
+    /* margin-left: 20px;*/
+    position: relative;
+}
+#LVWerte{width:calc(100% - 200px)}
+.LVNavigation {
+	font: 80% arial-narrow,arial,sans-serif;
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	width:50px;
+	margin-left:10px;
+	width:180px;
+}
+
+.LVNavigation td {
+	vertical-align:top !important;
+}
+
+.LVNavigation td img {
+	height:16px !important;
+}
+
+.pnlLVMatrixBegriff {
+	padding-left: 10px;
+}
+
+.cellUnterbegriff {
+	
+}
+
+.cellMatrixBezeichnung {
+	vertical-align:top;
+}
+
+.cellMatrix {
+	
+}
+
+.pnlTblMatrixInner {
+	
+	/*max-width:500px;*/
+	overflow:auto;
+	float:left;
+}
+
+.pnlTblMatrixOuter {
+	
+	/*max-width:500px;*/
+	overflow:auto;
+}
+
+.lblMatrixLabelx {
+	font: 80% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	overflow:visible;
+	max-width: 100px;
+	padding-right:10px;
+}
+
+.lblMatrixLabely {
+	font: 80% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	max-width: 100px;
+	padding-right:10px;
+}
+
+.lblMatrixLabelOuter {
+	font: 80% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	max-width: 100px;
+	padding-right:10px;
+}
+
+.tblMatrix {
+	/*border:1px solid black;*/
+	border-collapse:collapse;
+}
+
+.tblMatrix td {
+	/*border:1px solid black;*/
+}
+
+.tooltip {
+	position: absolute;
+	display: none;
+	background-color: #FFFFFF;
+	border:1px solid black;
+	margin:5px;
+	padding:5px;
+	/*width:220px;*/
+	overflow:visible;
+	z-index:9999; 
+}
+
+.tooltipEdit {
+	position : absolute;
+	display: none;
+	background-color: #FFFFFF;
+	border:1px solid black;
+	margin:5px;
+	padding:5px;
+	/*width:220px;*/
+	overflow:visible;
+	z-index:9999; 
+}
+
+.tooltipClosingImage {
+	position:relative;
+	top:-14px;
+	left:363px; /*x Rechts oben*/
+	/*left:-14px; /*X links oben*/
+}
+
+.imgKommentarEingabe {
+	margin-right:3px;
+	height:22px;
+}
+
+.imgKommentarEingabe:hover {
+	cursor: pointer; cursor: hand;
+}
+
+.imgKommentar:hover {
+	cursor:hand;
+}
+
+.imgKommentar {
+	height:22px;
+}
+	
+/* LV-BogenAnzeige*/
+.lblUnterbegriff {
+	font: 90% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	overflow:visible;
+	max-width:390;
+	
+}
+
+/* Panel in dem das Label lblBegriff ist LV-BogenAnzeige */
+.pnlLVBegriff {
+	padding-left: 10px;
+	/*min-width: 100px;*/
+	/*width:390px;*/
+	min-width: 100px;
+	max-width: 390px;
+}
+
+.pnlLVBegriffEdit {
+	padding-left: 10px;
+	min-width: 100px;
+	max-width:390px;
+}
+
+/* Label für die Begrifferklärung LV-BogenAnzeige*/
+.lblBegriff {
+	font: 80% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	min-width: 100px;
+	
+}
+
+.lblBegriffStammdaten {
+	font: 85% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	min-width: 100px;
+}
+
+.pnlLVBegriffStammdaten {
+	padding-left: 10px;
+	/*min-width: 100px;*/
+}
+
+/* Textfeld für die Eingabe Eines Textes LV-BogenAnzeige*/
+.LVBogenTxtEingabe {
+	font: 80% arial-narrow,arial,sans-serif;
+	min-width: 20px;
+	max-width: 120px;
+}
+
+.pnlLVBogenChkEingabe {
+	min-width: 120px;
+	text-align:left;
+}
+
+.LVBogenKorrekturWert {
+	font: 80% arial-narrow,arial,sans-serif;
+	color:Red;
+	min-width:20px;
+	max-width:100px;
+}
+
+/*tooltipEdit 
+.pnlLVKorrekturwert {
+	float:right; /*float muß in extra Panel sein, da txtbox sich nicht um float kümmert*/
+	/*min-width:50px;
+	max-width:80px;
+	width:360px;
+}*/
+
+.tblKorrekturVerlauf {
+	font: 80% arial-narrow,arial,sans-serif;
+	max-width:360px;
+}
+
+
+.divtblKorrekturVerlaufRightCol {
+	margin-left:5px;
+}
+
+.divtblKorrekturVerlaufLeftCol {
+	
+}
+
+.divtblKorrekturVerlaufDate {
+	font: 90% arial-narrow,arial,sans-serif;
+	color:#88b8d7;
+}
+
+.divCheckPrivat {
+	font: 80% arial-narrow,arial,sans-serif;
+}
+
+.lblBezeichnungZusatz {
+	font: 80% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	width:50px;
+}
+.lblBezeichnungZusatzHeader {
+	font: 80% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	padding-left:10px;
+	width:100%;
+}
+
+.lblBezeichnungZusatzHeaderNormal {
+	font: 80% arial-narrow,arial,sans-serif;
+}
+
+.pnlBezeichnungHeaderNormal {
+	font: 80% arial-narrow,arial,sans-serif;
+	padding-left:30px;
+}
+
+.PrivateImage {
+	background-image:url("Images/lock_large_locked.png");
+	width:15px;
+	height:15px;
+	float:left;
+}
+
+
+
+.ButtonRefresh {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #36c;*/
+	background-image:url("Images/refresh_forward.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 0px 2px 17px;
+	margin-right:5px;
+	/*cursor:hand;*/
+}
+
+.ButtonRefresh:hover {
+	/*text-decoration: underline;*/
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonNext {
+	font: 95% arial-narrow,arial,sans-serif;
+	border:none;
+	background-image:url("Images/right.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	color:transparent;
+	padding:2px 18px 2px 2px;
+	height: 18px;
+	margin-right:5px;
+	/*cursor:hand;*/
+}
+
+.ButtonNext:hover {
+	/*text-decoration: underline;*/
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonNextInactive {
+	font: 95% arial-narrow,arial,sans-serif;
+	border:none;
+	background-image:url("Images/right.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	color:transparent;
+	padding:2px 18px 2px 2px;
+	height: 18px;
+	margin-right:5px;
+	filter:alpha(opacity=90); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.9;
+	cursor:default;
+}
+.ButtonBack {
+	font: 85% arial-narrow,arial,sans-serif;
+	border:none;
+	background-image:url("Images/left.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	color:transparent;
+	height: 18px;
+	padding:2px 2px 2px 17px;
+	margin-right:5px;
+	/*cursor:hand;*/	
+}
+
+.ButtonBack:hover {
+	/*text-decoration: underline;*/
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonBackInactive {
+	font: 95% arial-narrow,arial,sans-serif;
+	border:none;
+	background-image:url("Images/left.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	color:transparent;
+	padding:2px 2px 2px 17px;
+	height: 18px;
+	margin-right:5px;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+	cursor:default;
+}
+
+.ButtonRefreshInactive {
+	font: 95% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #808080;*/
+	background-image:url("Images/refresh_forward.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding:2px 0px 2px 17px;
+	height: 18px;
+	margin-right:5px;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+	cursor:default;
+}
+
+.ButtonSend {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #36c;*/
+	background-image:url("Images/document_up.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 2px 2px 26px;
+	margin-right:5px;
+	/*cursor:hand;*/
+}
+
+.ButtonSendInactive {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #808080;*/
+	background-image:url("Images/document_up.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 2px 2px 26px;
+	margin-right:5px;
+	cursor:default;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+}
+
+.ButtonSend:hover {
+	/*text-decoration: underline;*/
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonExport {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #36c;*/
+	background-image:url("Images/PrinterZoomIn.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding:2px 0px 2px 17px;
+	height: 18px;
+	margin-right:5px;
+	/*cursor:hand;*/
+}
+
+.ButtonExportInactive {
+	font: 85% arial-narrow,arial,sans-serif;
+	border: 1px solid #36c;
+	/*background-image:url(../Images/Save_16x16_256.ico);*/
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding:2px 0px 2px 17px;
+	height: 18px;
+	margin-right:5px;
+	cursor:default;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+	/*cursor:hand;*/
+}
+
+.ButtonExport:hover {
+	/*text-decoration: underline;*/
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+#CommandButtons {
+	padding-top:12px;
+	border-top:1px solid #808080;
+	
+}
+
+#c0_MC_pnlVersenden {
+	padding-top:5px;
+}
+
+.lblPrintComment {
+	background-image:url("Images/Printer.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	/*padding:2px 18px 2px 2px;*/
+	display: inline-block;
+	height: 15px;
+	width:20px;
+	margin-left:auto;
+	margin-right:5px;
+	cursor: pointer;
+}
+.lblPrintComment:hover {
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.lblOuterPrintComment {
+    display: block;
+    margin-top: -15px;
+    text-align: right;
+    width: 100%;
+}
+
+#c0_MC_txtEditContactPLZ {
+	margin-right:100px;
+}
+
+#LVWerte {
+    scrollbar-3dlight-color:#fff;
+    scrollbar-arrow-color:#000;
+    scrollbar-face-color:#fff;
+    scrollbar-track-color:#000;
+    scrollbar-darkshadow-color:#FFF;
+    scrollbar-highlight-color:#FFF;
+    scrollbar-shadow-color:#FFF;*/
+}

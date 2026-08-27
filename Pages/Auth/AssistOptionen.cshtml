@@ -1,0 +1,87 @@
+@page
+@model TOPqwWeb_Core.Pages.Auth.AssistOptionenModel
+@{
+    ViewData["Title"] = "Assistierte Suche Optionen";
+}
+
+<link rel="stylesheet" href="~/css/HH/AssistOptionen.css" />
+
+<nav aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb">
+        <li><a asp-page="/Index">Start</a></li>
+        <li><a asp-page="/Auth/QWWebAdmin">Administration</a></li>
+        <li aria-current="page">Assistierte Suche Optionen</li>
+    </ol>
+</nav>
+
+<section id="AssistOptionen" class="pageContent">
+    <div class="assist-settings">
+        <h6>Suchassistent – Navigation</h6>
+        <form method="post" asp-page-handler="SaveAssistSettings">
+            <label>
+                <input asp-for="AssistVisible" type="checkbox" />
+                Suchassistent in der Navigation anzeigen
+            </label>
+            <br />
+            <label asp-for="AssistName">Anzeigename im Menü</label>
+            <input asp-for="AssistName" class="assist-name" />
+            <button type="submit">Navbar-Einstellungen speichern</button>
+            @if (Model.SettingsSaved)
+            {
+                <span class="confirmation-label">Gespeichert.</span>
+            }
+        </form>
+    </div>
+    <br />
+
+    <h4>Hier können Sie den Anzeigennamen eines Einrichtungstyps, seine Kategorie und seine Beschreibung bearbeiten.</h4>
+    <div class="container">
+        <div class="services">
+            <ul id="lstServices">
+                @foreach (var service in Model.Services)
+                {
+                    <li selected="@(Model.SelectedId == service.Id ? "selected" : null)">
+                        <a asp-page="/Auth/AssistOptionen" asp-route-selectedId="@service.Id">@service.DisplayName</a>
+                    </li>
+                }
+            </ul>
+        </div>
+
+        <div class="description">
+            <form method="post" asp-page-handler="Apply">
+                <input type="hidden" asp-for="SelectedId" />
+                <label asp-for="Name">Anzeigename</label>
+                <input asp-for="Name" />
+                <br /><br />
+
+                <label asp-for="Category">Kategorie</label>
+                <input asp-for="Category" />
+                <br /><br />
+
+                <label asp-for="Description">Beschreibung</label>
+                <textarea asp-for="Description" rows="10"></textarea>
+                <br />
+                <button id="btnApply" type="submit">Übernehmen</button>
+                @if (Model.ServiceSaved)
+                {
+                    <span class="confirmation-label">Aktion erfolgreich!</span>
+                }
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <script>
+        (() => {
+            const list = document.getElementById('lstServices');
+            const key = 'AssistOptionen.ServicesScrollTop';
+            if (!list) return;
+            const scrollTop = sessionStorage.getItem(key);
+            if (scrollTop) list.scrollTop = Number.parseInt(scrollTop, 10) || 0;
+            const saveScroll = () => sessionStorage.setItem(key, String(list.scrollTop));
+            list.addEventListener('scroll', saveScroll);
+            document.querySelectorAll('form').forEach(form => form.addEventListener('submit', saveScroll));
+        })();
+    </script>
+}

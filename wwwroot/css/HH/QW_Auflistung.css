@@ -1,0 +1,150 @@
+﻿html {
+    width:100%;
+    overflow-x:hidden;}
+body {
+    width:99%;
+	background-color:#FFF;
+	margin-top:0px;
+	margin-left:0px;
+	font-family: Arial,sans-serif,Helvetica,Verdana;
+	font-size:13px;
+	margin:5px;
+}
+.treefix.trvTyp  table tbody tr{border-bottom:1px solid #eee; padding:5px 0}
+html body div#Page form#aspnetForm div#M_pnlMain div.wrapper div.shadowRight div.shadowBottom div.shadowBottomLeft div.shadowBottomRight div.innerMain div div#M_MC_trvAuflistung.treefix.trvTyp div#M_MC_trvAuflistungn1Nodes div#M_MC_trvAuflistungn2Nodes table tbody tr{padding:5px 0}
+h2 {
+font-family: Calibri,Arial,sans-serif;
+font-size: 18px;
+font-size: 1.385em;
+line-height: 20px;
+line-height: 1.111em;
+color: #b5050e;
+margin-top: 18px;
+margin-bottom: 12px;
+font-weight: bold;    
+}
+
+h3 {
+font-family: Calibri,Arial,sans-serif;
+font-size: 16px;
+font-size: 1.231em;
+line-height: 20px;
+line-height: 1.25em;
+margin-top: .5em;
+margin-bottom: .4em;
+color: #b5050e;
+font-weight: bold;
+}
+
+/**/
+td:first-child {border: none !important;}
+td{padding:0 !important;}
+.trv {
+    width:100%;
+}
+
+.trv a img {
+    /*height:25px;
+    width: 25px;*/
+    display: inline-block;
+    max-width: 20px;
+    margin-top: 5px;
+    position: absolute;
+}
+
+.treefix td img {
+	padding-right:4px;
+}
+
+.divAuflistungEinrichtung {
+	margin-left:5px;
+	width:100%;
+}
+
+.divAuflistungEinrichtungAdresse {
+	color:#4C4C4C;
+	font-style:italic;
+	margin-left:20px;
+}
+
+#M_MC_trvAuflistung table {
+    width:98%;
+    border: 1px solid #eee;
+}
+
+#M_MC_trvAuflistung tr {
+    display: table-cell;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.c0_MC_trvAuflistung_1 h2 {margin: 0; padding: 5px 0 1px 19px;}
+.TreeNodeHovered {
+    color: #5371B3;
+}
+
+.TreeNodeHovered h2{
+    color: #200 !important;
+}
+
+
+.ChildNodeStyle1 {
+    background: #EEEEEE none repeat scroll 0 0;
+	color:#31458A;
+	display:block;
+	font-weight:bold;
+	font-size:95%;
+	padding-bottom:2px;
+	border-bottom: 1px solid #DDD;
+}
+
+.ChildNodeStyle2 {
+	display: block;
+    margin: 0;
+    padding: 0;
+}                
+  
+.ChildNodeStyle2 a{
+padding:10px 0 10px 40px;
+}         
+                
+.ChildNodeStyle3 {
+    display:table-cell;
+    font-size:95%;
+    padding-bottom:2px;  /*ChildNodesPadding*/
+    padding-right: 10px;
+    margin-bottom:2px;  /*VerticalPadding*/
+	width: 100%;
+}
+                
+                
+.ChildNodeStyle4 {
+	padding-bottom:0px;  /*ChildNodesPadding*/
+	margin-bottom:8px;  /*VerticalPadding*/
+	font-size:80%;
+	color:#4C4C4C;
+	font-style:italic;
+}
+
+.Button {
+    background-color:transparent !important;
+    min-height:0px !important;
+	cursor: default;
+	cursor:default;
+}
+
+.AuflistungEinrichtungnanme {
+    font-weight:bold;
+}
+
+
+.SelectedNodeStyle {
+    background: none repeat scroll 0 0 #ECECEC;
+    color: #5371B3;
+}
+
+@media screen and (max-width: 1023px) {
+    #M_MC_trvAuflistung td:first-child > div {
+        width:0px!important;
+    }
+}

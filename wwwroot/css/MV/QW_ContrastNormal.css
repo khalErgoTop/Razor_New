@@ -1,0 +1,40 @@
+﻿@charset "UTF-8";
+
+@font-face {
+    font-family: 'pt_sansregular';
+    src: url('Fonts/PTS55F-webfont.eot');
+    src: url('Fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'), url('Fonts/PTS55F-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'pt_sansbold';
+    src: url('Fonts/ptsans-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal
+}
+
+@media screen {
+    :root {
+        --color-red: #ab2600;
+        --color-lightgrey: #f2f0ef;
+        --color-grey: #434345;
+        --color-darkgrey: #252525 --color-lightblue: #f2f4f7;
+        --color-blue: #002b4b;
+        --color-darkblue: #002b4b;
+        --color-greyblue: #3b4d58;
+        --color-font: #434345;
+        --color-black: #000000;
+        --color-white: #FFFFFF;
+        --font-regular: "pt_sansregular", Arial,Helvetica,sans-serif;
+        --font-bold: "pt_sansbold",Arial,Helvetica,sans-serif;
+        --font-georgia: Georgia,Arial,Helvetica,sans-serif;
+        --img-logo: url("images/bremen_logo_schwarz.svg");
+        --filter-blue: invert(11%) sepia(24%) saturate(6126%) hue-rotate(187deg) brightness(100%) contrast(101%);
+        --filter-red: invert(14%) sepia(59%) saturate(5332%) hue-rotate(20deg) brightness(99%) contrast(102%);
+        --filter-active: invert(87%) sepia(12%) saturate(1621%) hue-rotate(26deg) brightness(90%) contrast(87%);
+        --filter-deactive: invert(81%) sepia(0%) saturate(0%) hue-rotate(159deg) brightness(113%) contrast(89%);
+        --border: 1px solid #CCC;
+    }
+}

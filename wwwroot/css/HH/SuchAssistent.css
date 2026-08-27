@@ -1,0 +1,479 @@
+﻿/* Version 250127 */
+
+:root {
+	--primary-color: #002b4b;
+	--accent-color: #8b0000;
+	--service-button-bg: #007bff;
+	--service-button-hover-bg: #0056b3;
+	--bg-color: #f9f9f9;
+	--text-color: #222;
+	--button-bg: var(--primary-color);
+	--button-hover-bg: var(--accent-color);
+	--button-text-color: #fff;
+	--card-bg: #fff;
+	--border-color: #ddd;
+	--button-font-size: 18px;
+	--category-font-size: 22px;
+	--button-min-height: 50px;
+}
+
+#Assistent table.jsgrid-table {
+	width: 100%;
+}
+
+.jsgrid-pager-container {
+  background: var(--color-blue);
+  color: var(--color-white);
+  padding: 5px;
+  text-align: center;
+  margin-top:1rem
+}
+.jsgrid-pager{
+	font-size:0
+}
+.jsgrid-pager:before{
+	content: "Seiten:";
+	font-size:12pt
+}
+
+.jsgrid-pager-nav-button:first-child a,
+.jsgrid-pager-nav-button:nth-child(2) a,
+.jsgrid-pager-nav-button:nth-last-child(2) a,
+.jsgrid-pager-nav-button:last-child a {
+	font-size:0
+}
+
+.jsgrid-pager-nav-button:nth-child(2) a:after{
+	content: "<";
+	font-size:12pt;
+	margin-right:0.5rem
+}
+#Assistent #FoundResults.results-container td{
+	padding:0
+}
+.jsgrid-pager-nav-button:first-child a:after{
+	content: "<<";
+	font-size:12pt;
+	margin: 0 0.5rem
+}
+.jsgrid-pager-page{
+	margin:0 0.5rem
+}
+.jsgrid-pager-current-page{
+	font-weight:bold;
+}
+.jsgrid-pager-nav-button:last-child a:after{
+	content: ">>";
+	font-size:12pt;
+	margin-left:0.5rem
+}
+
+.jsgrid-pager-nav-button:nth-last-child(2) a:after{
+	content: ">";
+	font-size:12pt;
+	margin-left:0.5rem
+}
+
+.jsgrid-pager-nav-button a,
+.jsgrid-pager-nav-inactive-button a,
+.jsgrid-pager-page,
+.jsgrid-pager-nav-button,
+.jsgrid-pager-page a,
+.jsgrid-pager-current-page{
+	font-size:12pt;
+	color:white	!important
+}
+#Assistent #FoundResults.results-container.jsgrid div.jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.jsgrid-header-sortable{
+	font-size:0
+}
+#Assistent #FoundResults.results-container.jsgrid div.jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.jsgrid-header-sortable:after{
+	content: "Suchergebnis";
+	font-size: 15pt;
+	font-weight: bold;
+}
+#Assistent section #DescriptionContainer h2:before {
+	content: "Informationen zu "
+}
+#FoundResults{
+	border: 1px solid #aaa;
+	padding:10px;
+	width:95% !important;
+	border-radius: 8px;
+}
+
+#Assistent section #DescriptionContainer h2 {
+	text-align: left;
+	margin-top: 0;
+	font-size: 18px;
+	color: #333;
+	text-decoration: none;
+	font-weight: bold
+}
+#Assistent section#Leistungen ul#LeistungenContainer.grid-container.fade-in li.service-button[selected="selected"],
+#Assistent section#Location ul li.locBtn[selected="selected"] {
+	background: var(--color-blue);
+	color: #FFFFFF;
+	text-decoration: none;
+}
+#Assistent #Results.fade-in h2{
+	font-size:0
+}
+#Assistent #Results.fade-in h2:after{
+	content: "Suchparameter";
+  font-size: 18px;
+  font-weight: bold;
+}
+#DescriptionContainer {
+	background-color: #f9f9f9;
+	border: 1px solid #e0e0e0;
+	border-radius: 4px;
+	padding: 1.5rem;
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	list-style-type: none;
+	margin-bottom: 0.5rem;
+}
+
+.welcomeMessage {
+	background-color: #d0dee7;
+	color: #000000;
+	padding: 10px;
+	text-align: center;
+	border-radius: 10px;
+	margin: 15px auto;
+	width: 85%;
+	max-width: 600px;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 1);
+	padding-top: 60px;
+}
+
+.welcome-message h1 {
+	font-size: 28px;
+	margin-bottom: 5px;
+}
+
+.welcome-message p {
+	font-size: medium;
+	margin-top: 0;
+}
+
+
+ul li[selected] {
+	text-decoration: underline
+}
+
+.locBtn {
+	margin-bottom: 10px;
+	font-size: medium;
+}
+
+#postalCodeSubmit {
+	font-size: medium;
+	margin-top: 25px;
+}
+
+.hidden {
+	display: none;
+}
+
+
+.description-container {
+	background-color: #f0f0f0;
+	padding: 15px;
+	margin-top: 20px;
+	border-radius: 10px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+	opacity: 0;
+	animation: fadeIn 0.5s forwards;
+}
+
+#Assistent section #DescriptionContainer p.description,
+#Assistent section #DescriptionContainer h2 u {
+	text-decoration: none;
+	text-align: left
+}
+@media (min-width: 866px) {
+    .jsgrid-pager-container {
+
+    }
+}
+
+/*#BtnConfirmFacilityType {
+	background-color: var(--primary-color);
+	color: var(--button-text-color);
+	border-radius: 5px;
+	padding: 10px 20px;
+	margin-top: 15px;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	min-height: var(--button-min-height);
+}
+
+	#BtnConfirmFacilityType:hover,
+	#BtnConfirmFacilityType:focus {
+		background-color: var(--accent-color);
+		outline: none;
+	}*/
+
+/*	#BtnConfirmFacilityType:focus {
+		outline: 3px solid var(--accent-color);
+		outline-offset: 3px;
+	}*/
+
+.postal-code input[type="text"] {
+	font-size: 16px;
+	border: 2px solid var(--border-color);
+	border-radius: 5px;
+	width: calc(100% - 24px);
+	margin-right: 10px;
+	padding: 6px
+}
+
+.postal-code {
+	margin-top: 15px;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+#Assistent section#Leistungen ul li:hover,
+#Assistent section#CategorySelection ul li:hover {
+	color: white;
+	background: var(--color-blue)
+}
+
+#AssistentBookmarks ul li:hover {
+	color: var(--color-blue)
+}
+
+#AssistentBookmarks ul li[selected="selected"] {
+	color: var(--color-blue);
+	font-weight: bold
+}
+
+#AssistentBookmarks ul li {
+	color: #000;
+	text-decoration: none;
+	margin-right: 8px;
+	float: left;
+	list-style-type: none;
+	cursor: pointer
+}
+
+#AssistentBookmarks ul li[selected="selected"]:after,
+#AssistentBookmarks ul li:hover:after {
+	color: #000;
+	font-weight: normal
+}
+
+#AssistentBookmarks ul li:last-child:after {
+	content: " "
+}
+
+#AssistentBookmarks ul li:after {
+	content: " >"
+}
+
+
+#AssistentBookmarks ul {
+	font-size: 14px;
+	margin-bottom: 20px;
+	color: #666;
+}
+
+@media (max-width: 768px) {
+	#navbar {
+		flex-direction: column;
+		align-items: flex-start;
+		padding: 10px;
+	}
+
+	#navbar-links a,
+	#navbar-links button {
+		padding: 10px 12px;
+		font-size: 14px;
+	}
+}
+
+#navbar-links {
+	align-items: center;
+}
+
+#navbar a {
+	font-size: large;
+}
+
+#Assistent section ul {
+	padding-left: 0
+}
+
+#Assistent section ul li {
+	background-color: #f9f9f9;
+	border: 1px solid #e0e0e0;
+	border-radius: 4px;
+	padding: 12px;
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	list-style-type: none;
+	margin-bottom: 0.5rem
+}
+
+#Assistent section .h1-container h1 {
+	font-size: 22px;
+	font-weight: 400;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.fci { 
+	/*border: 1px solid #aaa;*/
+	padding: 1rem;
+	margin-top: 0.25rem;
+	display:flex;
+	border-radius: 8px;
+}
+
+.distCnt {
+	display: table-cell;
+	width: 10%;
+	position: relative;
+	text-align: right;
+}
+.divAuflistungEinrichtung {
+	width: 90%;
+	display: table-cell;
+}
+
+.weiterBtn {
+	font-size: medium;
+	font-weight: bold;
+}
+
+section {
+	margin-bottom: 15px;
+	padding: 20px;
+}
+
+.welcome-message {
+	margin-bottom: 30px;
+}
+
+.grid-container {
+	margin-top: 20px;
+}
+
+.postal-code {
+	margin-top: 0;
+	float: left
+}
+
+#Results {
+	margin-top: -40px;
+	margin-bottom: -60px
+}
+
+
+#FoundResults {
+	padding-top: -10px;
+	margin: 0 20px;
+		display: none;
+}
+
+#Results {
+	margin-top: 15px;
+	margin-bottom: 10px;
+	padding: 0 20px;
+}
+
+#FoundResults .traeger {
+	display: flex;
+	gap: 20px;
+	border: 2px solid var(--primary-color);
+	border-radius: 10px;
+	padding: 5px 10px 10px 10px;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+	margin-bottom: 30px;
+}
+
+#FoundResults .traegerInfos,
+.traegerKontakt {
+	flex: 1;
+	border: 1px solid var(--primary-color);
+	border-radius: 10px;
+	padding: 15px;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#FoundResults img {
+	border: 1px solid var(--primary-color);
+	border-radius: 10px;
+	height: 70px;
+	width: 70px;
+	float: right;
+}
+
+#FoundResults .traegerKontakt {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+	border: 1px solid var(--primary-color);
+	border-radius: 10px;
+	padding: 15px;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#FoundResults .traegerKontakt .telefon {
+	flex: 1;
+}
+
+#FoundResults .traegerKontakt .locationGoogle {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+#Womit3List li {
+	background-color: unset !important;
+	border: none !important;
+	border-radius: unset !important;
+	cursor: unset !important;
+}
+
+#GeolocationSearchButton {
+	background-color: #f9f9f9;
+	border: 1px solid #e0e0e0;
+	border-radius: 4px;
+	padding: 12px;
+	text-align: center;
+	font-size: 16px;
+	cursor: pointer;
+	transition: all 0.2s ease;
+	list-style-type: none;
+	margin-bottom: 0.5rem;
+	width: 100%;
+}
+
+#ResultDetails p {
+	margin: 5px;
+}
+
+#FoundResults .jsgrid-table tr {
+	display: grid;
+}
+
+#FoundResults .jsgrid-table tr:not(:last-child) {
+	border-bottom: 1px solid #aaa;
+}

@@ -1,0 +1,60 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.QM.QMBogenModel
+
+<h1>QM-Bogen</h1>
+
+@if (Model.ErrorMessage is not null)
+{
+    <div asp-validation-summary="All"></div>
+    <p>@Model.ErrorMessage</p>
+    <a asp-page="/TOPqmV3/QMAuswahl">Zur Bogenauswahl</a>
+}
+else if (Model.QmBogen is not null)
+{
+    <dl>
+        <dt>Bogen</dt>
+        <dd>@Model.QmBogen.Bezeichnung</dd>
+        <dt>Status</dt>
+        <dd>@Model.QmBogen.Status</dd>
+        <dt>Einrichtung</dt>
+        <dd>@Model.QmBogen.EIID</dd>
+        <dt>Layout</dt>
+        <dd>@Model.QmBogen.QLID</dd>
+        @if (Model.QmBogen.GeaendertAm.HasValue)
+        {
+            <dt>Geändert am</dt>
+            <dd>@Model.QmBogen.GeaendertAm.Value</dd>
+        }
+    </dl>
+
+    <h2>Inhalt</h2>
+    @if (Model.Oberkategorien.Count == 0)
+    {
+        <p>Für diesen LeistungsTyp sind keine Fragen hinterlegt.</p>
+    }
+    else
+    {
+        @foreach (var oberkategorie in Model.Oberkategorien)
+        {
+            <section>
+                <h3>@oberkategorie.Bezeichnung</h3>
+                @foreach (var unterkategorie in oberkategorie.Unterkategorien)
+                {
+                    <h4>@unterkategorie.Bezeichnung</h4>
+                    <ul>
+                        @foreach (var frage in unterkategorie.Fragen)
+                        {
+                            <li>
+                                <span>@frage.FrageKurz</span>
+                                @if (frage.FrageWert is not null)
+                                {
+                                    <span>: @frage.FrageWert.Wert</span>
+                                }
+                            </li>
+                        }
+                    </ul>
+                }
+            </section>
+        }
+    }
+}

@@ -1,0 +1,1135 @@
+﻿.kalkulationMinDatum {
+	line-height: unset !important;
+}
+.lowerThanOneYearInfo {
+	line-height: unset !important;
+}
+
+div#M_MC_PnlFiles div {
+	margin-bottom: .1rem;
+}
+
+span#M_MC_LblFileError {
+	display: block;
+	color: red;
+}
+
+select#M_MC_DdlStatus{
+	border: 0 !important;
+	cursor: not-allowed;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background-image: url('path/to/your/custom-arrow-icon.png');
+	background-size: 12px;
+	background-repeat: no-repeat;
+	padding-right: 20px;
+	cursor: not-allowed;
+	pointer-events: none	
+}
+#M_MC_LblTerms{
+	margin: 0.5rem 0;
+	font-family: var(--font-100);
+	position: relative;
+	display: block;
+}
+.pnlCurrentFacility,
+.pnlAllFacilities {
+	line-height: 1.5rem;
+	margin-bottom: 1rem;
+	padding: 10px;
+	padding-bottom: 1.5rem;
+}
+#M_MC_PnlVersenden{
+	margin-top:0.5rem;
+	position: relative;
+}
+#CommandButtons #M_MC_BtnVersenden,
+#CommandButtons #M_MC_LbtAddFile,
+#CommandButtons #M_MC_BtnSave{
+	position: absolute;
+	top: 6px;
+	right:0;
+	width: 125px
+}
+label[for="M_MC_ChkTerms"]{
+	top: 1rem;
+	position: absolute
+}
+#M_MC_PnlVersenden .chkTerms{
+	height: 15px;
+	display: inline-block;
+	margin-top: 0.15rem
+}
+#OpenTerms{
+	display: inline;
+	font-weight: bold;
+	cursor: pointer
+}
+#M_MC_TblQwKalk div,
+#M_MC_PnlTrip div{
+	line-height: 3.1rem;
+}
+#M_MC_PnlTrip div div:first-child{
+	float:left
+}
+#M_MC_PnlTrip div div:last-child{
+	float: right
+}
+.pnlAllFacilities {
+	background:var(--color-lightgrey)
+}
+#M_MC_trvFacilities.treefix table,
+#M_MC_trvCurrentFacility.treefix table{
+	margin-top:0.2rem
+}
+.M_MC_trvFacilities_1{
+	background:unset
+}
+.M_MC_trvCurrentFacility_2,
+.M_MC_trvFacilities_2{
+	background:unset;
+	text-decoration:underline
+}
+#DivZWBasisModul .basisMod{
+	margin:0.5rem 0;
+	font-family: var(--font-500)
+}
+#M_MC_TrvQWKalkNavigation td img {
+	display: none
+}
+#M_MC_UpQWKalkNavigation table tr:first-of-type td:first-of-type:before {
+	content: "";
+	width: 23px;
+	height: 23px;
+	display: inline-block;
+	background: url("Images/arrow_state_grey_right.svg");
+	background-repeat: no-repeat;
+	background-size: 23px
+}
+#DivZWErreichbarkeit,
+#DivZWBasisModul{
+	width: 100%;
+	display: grid
+}
+#QWKalkWerte div#M_MC_PnlLVKat2 table#M_MC_TblQwKalk img.ui-datepicker-trigger{
+	height:40px;
+	position:absolute
+}
+#DivZWErreichbarkeit .erreichb,
+#DivZWErreichbarkeit .basisMod,
+#DivZWBasisModul .basisMod {
+	margin: 0.5rem 0;
+	font-family: var(--font-500)
+}
+#DivZWErreichbarkeit .valuepair,
+#M_MC_DivKalkZusatzWerte .valuepair {
+	margin-bottom: 0.5rem
+}
+#DivZWErreichbarkeit .valuepair .label,
+#DivZWBasisModul .valuepair .label{
+	float: left;
+	line-height: 2rem
+}
+#DivZWErreichbarkeit .valuepair .value,
+#DivZWBasisModul .valuepair .value{
+	float: right
+}
+#M_MC_ChkTerms[checked="checked"]{
+	background-image: url("images/Box_check_grey.svg")
+}
+#M_MC_ChkTerms{
+	background-image: url("images/Box_uncheck_grey.svg");
+	border:none;
+	border-radius:0;
+	margin-left:0;
+	top: 0.5rem;
+	position: relative
+}
+#aRefRemoveCosting:after{
+	content:"Kalkulation löschen"
+}
+#CommandButtons{
+	margin-top: 5px;
+	position: relative;
+	width: 34rem;
+}
+
+#M_MC_pnlAllFacilities #CommandButtons {
+	width:100%;
+}
+
+.pnlAbschreibung select,
+.pnlAbschreibung td input[value="Sonstige Anlagen"] {
+	min-width: 200px
+}
+.pnlAbschreibung td input[type="number"],
+.pnlAbschreibung td input[type="text"],
+.pnlAbschreibung td select{
+	width:75% !important
+}
+.tblAbschreibungsHeader {	
+	font-weight:bold;
+	overflow:hidden
+}
+.lblAddItems {
+	/*display:none*/
+}
+.cImgAddButtonAB{
+	/*display:none*/
+}
+#M_MC_TrvQWKalkNavigation.qwNavigation div table{
+	display:none
+}
+#aRefRemoveCosting {
+	cursor: pointer;
+	position: relative;
+	right: -6rem;
+	top: -2.5rem;
+}
+#imgRemoveCosting{
+	display:none
+}
+.lblAddItems {
+	/*display:none*/
+}
+.delete.button,
+.delButtonAB{
+	background-color:var(--color-red)
+}
+#aRefRemoveCosting::after {
+	content: "Kalkulation löschen";
+	background: var(--color-red);
+	padding: 0.5rem;
+	border-radius: var(--radius);
+	color: var(--color-white)
+}
+#aspnetForm .ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-draggable.ui-resizable {
+	min-width: 500px;
+	padding: 0;
+	margin: 0 1rem
+}
+.pnlAbschreibung td:last-child{
+	border:none
+}
+.pnlAbschreibung td{
+	min-width:100px
+}
+#DivZWErreichbarkeit td{
+	padding:0.5rem 0
+}
+#DivZWErreichbarkeit th{
+	border-top: 1px dotted #666;
+	padding:0.5rem
+}
+.pnlStellenplan.ui-dialog-content.ui-widget-content{
+	margin-top:1rem
+}
+.ui-dialog-titlebar-close[title="Close"]{
+	background-image: url("images/Icons/cancel_white.svg") !important;
+}
+#DivRemJobChart{
+	max-width:100% !important
+}
+#DivRemJobChart .divButtons{
+	text-align:left
+}
+.saveKalk,
+.ui-dialog-titlebar-close[title="Close"]{
+	height: 1.5rem;
+	width: 1.5rem;
+	color: black;
+	top: 18px !important;
+	position: absolute !important;
+	right: 0.5rem !important
+}
+.saveKalk{
+	background-image: url("images/Icons/save_white.svg") !important;
+	right:2.5rem !important;
+	top: 0.4rem !important;
+	font-size:0 !important
+}
+#M_MC_BtnXmlExport{
+	background-image: url("images/Icons/Drucker.svg") !important;
+	top: 0.3rem;
+	font-size: 0 !important;
+	height: 3rem;
+	width: 3rem;
+	background-size: 4rem;
+	position: absolute;
+	background-repeat: no-repeat;
+	left: 21rem;
+	filter:var(--filter-blue)
+}
+.ui-dialog-titlebar-close[title="Close"],
+.saveKalk,
+.saveKalk:hover{
+	background: var(--color-blue);
+	border: none;
+	position: absolute;
+	top: 0;
+	right: 0
+}
+#M_MC_btnBack,
+#M_MC_btnNext{
+	background:none!important;
+	padding: 0;
+}
+#M_MC_FuAddFile{
+	width: 70%;
+	font-size: 100%;
+	font-family: var(--font-100);
+	line-height: 2.5rem
+}
+#DivAddFile{
+	position:relative;
+}
+#M_MC_LbtAddFile{
+	position: absolute;
+	right: 0;
+	top: 0.3rem;
+	width: auto
+}
+.itemTop img {
+	height:24px;
+	float:left;
+	margin-right: 0.5rem
+}
+.treefix td img {
+	margin-right: 10px;
+	height: 20px !important
+}
+#QWKalkWerte {
+	right: 0;
+	margin-bottom: 20px
+}
+#M_MC_TblQwKalk td{
+	position: relative;
+}
+#M_MC_TblQwKalk td span{
+	position: relative;
+	float: left;
+}
+#M_MC_TblQwKalk .pnlMemo .ctlOpenerKalk.showSubRows.cancelable{
+	position: absolute;
+	right: 0;
+	font-size: 0;
+	background-image: url("images/Icons/Info.svg");
+	width: 25px;
+	height: 24px;
+	background-repeat: no-repeat;
+	margin-top: -3px;
+	margin-top: 12px
+}
+.ui-icon-closethick{
+	background-image: url("images/Icons/Info.svg");
+}
+.lblKalkSummaryHeader,
+#M_MC_CellKalkHeader,
+.subHeader,
+#M_MC_HeaderColBezeichnung{
+	font-weight:bold;
+	margin:0.25rem 0;
+	line-height:1.5rem
+}
+#M_MC_TrvQWKalkNavigation{
+	position:static;
+	z-index:3;
+	display:inline-block
+}
+#M_MC_TrvQWKalkNavigation.qwNavigation table tbody tr td{
+	background:unset
+}
+#M_MC_TrvQWKalkNavigation.qwNavigation table tbody tr td a:hover{
+	background:unset;
+	font-weight:bold
+}
+/*.M_MC_TrvQWKalkNavigation_0:hover{display:none}*/
+.M_MC_TrvQWKalkNavigation_0,
+.M_MC_TrvQWKalkNavigation_1{
+	background:unset
+}
+#M_MC_TblQwKalk{
+	display:flex
+}
+#QWKalkNavigation {
+	margin-bottom: 20px;
+	width: 214px;
+	z-index: 2;
+	border-right: 1px dotted var(--color-black);
+	float: left;
+	margin-right: 2rem;
+}
+#QWKalkBogenOuter {
+	width: 700px;
+	float: right;
+height:auto;
+}
+
+#M_MC_UpQWKalkNavigation{
+	position: relative;
+	z-index: 2
+}
+#M_MC_TrvQWKalkNavigation{
+	line-height: 2rem;
+	font-family: var(--font-500)
+}
+#M_MC_TrvQWKalkNavigation table tbody tr td a{
+	line-height:1.3rem
+}
+#M_MC_DivKalkZusatzWerte #DivZWErreichbarkeit table{
+	margin-top: 0.5rem
+}
+#M_MC_DivKalkZusatzWerte #DivZWErreichbarkeit table .zwErWert,
+#M_MC_DivKalkZusatzWerte #DivZWErreichbarkeit table .zwErBez{
+	text-align:left
+}
+.cImgAddButtonAB{
+	display:none
+}
+#imgRemoveCosting{
+	height:1.5rem !important
+}
+#M_MC_LblFileError{
+	margin-top: 3rem;
+	position: absolute;
+	left: 1rem;
+	clear: both;
+	color:var(--color-red)
+}
+.QWNavigation {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	width:50px;
+	margin-left:10px;
+	width:275px
+}
+#M_MC_PnlVersenden{
+	margin-top:3rem;
+	height:3rem
+}
+#M_MC_PnlVersenden label{
+	float: left;
+	font-size: 0;
+	line-height: 0.65rem
+}
+#M_MC_PnlVersenden #OpenTerms{
+	font-size: 1rem
+}
+.qwNavigation table tbody tr td a:hover{
+	font-family:var(--font-bold)
+}
+#M_MC_PnlTrip div{
+	margin-top:0.5rem
+}
+#M_MC_PnlTrip div div{
+	margin-top:0rem
+}
+#M_MC_TxtDatepickerGueltigAb,
+#M_MC_TxtDatepickerGueltigBis{
+	width:100px !important
+}
+#M_MC_TxtDatepickerGueltigAb,
+#M_MC_TblQwKalk input,
+#M_MC_TblQwKalk span{
+	font-size: 1rem !important;
+	color: var(--color-font);
+	margin-top: 0.2rem;
+	width: auto
+}
+.pnlMemo .showSubRows{
+	font-size:0
+}
+.pnlMemo .showSubRows:hover {
+	filter: var(--filter-red-invert)
+}
+/*.pnlMemo .showSubRows:after {
+	background-image: url("images/Icons/Kalkulation/Extended.svg");
+	filter: var(--filter-blue);
+	background-size: 24px 24px;
+	display: inline-block;
+	width: 30px;
+	height: 24px;
+	content: "";
+	background-repeat: no-repeat;
+	line-height: 8rem;
+	top: 8px;
+	position: relative;
+}*/
+.pnlMemo .showSubRows:after:hover{
+	filter: var(--filter-red)
+}
+.ctlOpenerKalk.showSubRows{
+	cursor:pointer
+}
+#M_MC_UpCommandButtons #CommandButtons{
+	position:relative;
+}
+#M_MC_UpCommandButtons .pnlDropDown:before{
+	content:"Status: "
+}
+#M_MC_BtnNext,
+#M_MC_BtnBack{
+	margin-left:0.5rem;
+	background-size: 13px
+}
+#M_MC_LblKalkStatus{
+	display:none
+}
+.kwdTable .sp,
+.pnlStellenplan .sp{
+	min-width:200px;
+}
+#M_MC_TblQwKalk .lblBegriffKalkSumVal {
+	float: none;
+	padding-right: 0
+}
+#M_MC_HeaderColBezeichnung,
+#M_MC_HeaderColAntragGesamt{
+	font-family:var(--font-500)
+}
+
+/* INPUTFELDER */
+
+#M_MC_TxtStdErreichbarkeitTg,
+#M_MC_TxtVorhaltenPersonal,
+#M_MC_TxtSatzRufbereitschaft,
+#M_MC_TxtStdPraesenzTg,
+#M_MC_TblQwKalk .txtEingabe,
+.kwdTable .txtEingabe,
+.pnlStellenplan .txtEingabe,
+.pnlStellenplan .stellenanteil,
+.pnlStellenplan .jahreskosten{
+	width:calc(100% - 1.3rem) !important;
+	margin-top:0 !important;
+	border-radius:var(--radius);
+	border:1px solid var(--color-blue);
+	height: 2.5rem;
+}
+#M_MC_HeaderColAntragGesamt{
+	text-align:right !important
+}
+.kwdTable table,
+#QWKalkWerte table,
+#QWKalkWerte tr td table{
+	width:100%
+}
+#M_MC_TblQwKalk .lblBegriff,
+.pnlMemo .lblBegriff{
+	min-width: unset !important;
+	margin-right: 1.5rem
+}
+#M_MC_TblQwKalk .lblBegriff,
+#M_MC_TblQwKalk .ctlOpenerKalk,
+.pnlMemo .lblBegriff,
+.pnlMemo .ctlOpenerKalk{
+	float:left
+}
+#QWKalkWerte  table tr td table {
+	margin:0 !important
+}
+.QWNavigation td {
+	vertical-align:top !important
+}
+#DivFileUploadOuter{
+	margin-top:2.5rem
+}
+.QWNavigation td img {
+	height:16px !important
+}
+#QWKalkWerte tr td table{
+	margin:0
+}
+#M_MC_TblQwKalk{
+	font-family:var(--font-100)
+}
+#QWKalkWerte tr td tr td{
+	width:125px
+}
+#QWKalkWerte #c0_pnlMain .innerMain table{
+	margin:0
+}
+.cellBegriffPauschale{
+	background:#EEE
+}
+#QWKalkWerte table table tr{
+	background: #EEE;
+	padding:5px
+}
+#QWKalkWerte table table tr td{
+	background: #EEE;
+	padding:5px
+}
+#CommandButtons {
+	padding-top:5px;
+	border-top:1px solid #808080;
+	height:3rem
+}
+.ui-widget,
+.ui-widget input {
+	font-family: var(--font-100)
+}
+.lblqwKalkBegriff {
+	margin-right:20px
+}
+.pnlqwKalk {
+	margin-bottom:10px;
+	display:none
+}
+#M_MC_LblInvestPauschaktuell[value="False"]{
+	color:red
+}
+#DivRemAmortisation{
+	max-width:100% !important
+}
+#DivRemAmortisation .divButtons{
+	text-align:left
+}
+.tblAbschreibungsHeader{
+	font-weight: var(--font-100) !important
+}
+.lblKalkSummaryHeader {
+	font-weight:bold
+}
+.lblBegriffKalkSumVal {
+	float:right;
+	padding-right:50px
+}
+.CellKalkSum {
+	padding-bottom:5px
+}
+.lblqwKalkHeader{
+	font-weight:bold
+}
+.lblBegriff {
+	overflow:visible;
+	min-width: 100px;
+	vertical-align:top
+}
+#M_MC_UpCommandButtons,
+#M_MC_upKalkulationBogen{
+	padding: 0 1rem;
+}
+#QWKalkBogenOuter #M_MC_UpCommandButtons #CommandButtons .controls.status{
+	height:4rem
+}
+.txtEingabe {
+	vertical-align:top;
+	width:90%
+}
+.txtEingabeReadonly {
+	vertical-align:top;
+	border:none
+}
+.pnlMemo {
+	vertical-align:top
+}
+.LastRow {
+	padding: 0.1rem 0 0.4rem 0
+}
+#c0_MC_tblQwKalk {
+	border-collapse:collapse
+}
+#M_MC_TblQwKalk .header{font-family: var(--font-500);
+	margin-top: 1rem;
+	display: block
+}
+#M_MC_upKalkulationBogen table#M_MC_TblQwKalk tr td span#M_MC_LblNoMinutenwerte,
+#M_MC_upKalkulationBogen table#M_MC_TblQwKalk tr td span#M_MC_LblMP1pdppValue.txtStandard.disabled,
+#M_MC_upKalkulationBogen table#M_MC_TblQwKalk tr td span#M_MC_LblMP1paValue.txtStandard.disabled,
+#M_MC_TblQwKalk tbody tr td.CellKalkSum span.lblBegriffKalkSumVal{
+	width:100%;
+	display:block;
+	text-align:right
+}
+#M_MC_TblQwKalk td:last-child .lblBegriff{
+	float:right;
+	margin-right:0
+}
+.celCol3SummaryInnerTable,
+#M_MC_TblQwKalk td:first-child{
+	text-align:left
+}
+#M_MC_PnlLVKat2 #M_MC_TblQwKalk td{
+	text-align:left
+}
+#M_MC_PnlLVKat2 #M_MC_TblQwKalk td:last-child .lblKalkSummaryHeader,
+#M_MC_TblQwKalk td{
+	text-align:right
+}
+.celCol1SummaryInnerTable {
+	width: 235px;
+	padding-right:20px
+}
+.celCol2SummaryInnerTable {
+	width:100px
+}
+.celCol3SummaryInnerTable {
+	width:100px
+}
+.celCol4SummaryInnerTable {
+	width:70px
+}
+.lblBegriffPauschale {
+	font: 85% arial-narrow,arial,sans-serif
+}
+.cellBegriffPauschale {
+	width: 50px;
+	vertical-align: middle;
+	margin: 5px 0;
+	background: #DDD;
+	border-bottom: 0px solid white;
+	border-top: 8px solid white;
+	text-align: center
+}
+.lblProzentwert {
+	overflow:visible;
+	min-width: 100px;
+	vertical-align:top
+}
+.lblProzentanteil {
+	overflow:visible;
+	min-width: 100px;
+	vertical-align:top
+}
+.lblProzentname {
+	overflow:visible;
+	min-width: 100px;
+	vertical-align:top
+}
+.lblTagPlatz {
+	overflow:visible;
+	min-width: 100px;
+	vertical-align:top
+}
+.lblKalkAktuell {
+	overflow:visible;
+	min-width: 100px;
+	vertical-align:top
+}
+#c0_MC_FirstColumnVertragsdaten {
+	width:200px
+}
+#c0_MC_lblFile {
+	margin-top:2px
+}
+#c0_MC_HeaderColBezeichnung {
+	width:250px
+}
+#c0_MC_HeaderColAktuellGesamt {
+	min-width:50px
+}
+#c0_MC_HeaderColAktuellTag {
+	min-width:40px
+}
+#c0_MC_HeaderColAntragGesamt {
+	min-width:80px
+}
+#c0_MC_HeaderColAntragTag { 
+	min-width:40px
+}
+#c0_MC_HeaderColPKVK {
+	min-width:10px
+}
+#c0_MC_HeaderColArt {
+	min-width:10px
+}
+#c0_MC_HeaderColProzentAneil {
+	min-width:20px
+}
+#c0_MC_HeaderColBetragAnteilig {
+	min-width:20px
+}
+#c0_MC_HeaderColABControls {
+	width:20px
+}
+.AddButtonAB {
+	width: 100%;
+	display: block;
+	text-align: center;
+	background-repeat: no-repeat;
+	background-position: left;
+	padding: 7px 2px 7px 5px;
+	margin-right: 5px;
+	border-radius: var(--radius);
+	height: 1.3rem
+}
+.AddButtonAB:after{
+	content:"Posten hinzufügen";
+	color:var(--color-white);
+	line-height: 1.5rem;
+}
+
+.tdTable .AddButtonAB::after {
+	display: block;
+}
+.tdTable .lblAddItems {
+	display: none;
+}
+.DelButtonAB {
+	color: transparent;
+	background-repeat: no-repeat;
+	background-position: left;
+	height: 10px;
+	padding: 2px 2px 2px 5px;
+	margin-right: 5px
+}
+.ButtonDelete {
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	text-align:center
+}
+.ButtonDelete:hover {
+	border: 1px solid #36c;
+	background-color: #BDCCFC
+}
+.ButtonCancel {
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	text-align:center
+}
+.ButtonCancel:hover {
+	border: 1px solid #36c;
+	background-color: #BDCCFC
+}
+.ButtonSave {
+	background-image:url(Images/Save_16x16_256.ico);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 0px 2px 17px;
+	margin-right:5px
+}
+.ButtonSave:hover {
+	border: 1px solid #36c;
+	background-color: #BDCCFC
+}
+.ButtonBack {
+	background-image:url(Images/left.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 0px 2px 17px;
+	margin-right:5px
+}
+.ButtonBack:hover {
+	border: 1px solid #36c;
+	background-color: #BDCCFC
+}
+.ButtonBackInactive {
+	background-image:url(Images//left.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 2px 2px 26px;
+	margin-right:5px;
+	cursor:default;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5
+}
+.ButtonNext {
+	background-image:url(Images/right.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 0px 2px 17px;
+	margin-right:5px
+}
+.ButtonNext:hover {
+	border: 1px solid #36c;
+	background-color: #BDCCFC
+}
+.ButtonNextInactive {
+	background-image:url(Images/right.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 2px 2px 26px;
+	margin-right:5px;
+	cursor:default;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5
+}
+.ButtonExport {
+	background-image: url(Images/PrinterZoomIn.png);
+	background-color: Transparent;
+	background-repeat: no-repeat;
+	background-position: left;
+	padding: 2px 0px 2px 17px;
+	height: 20px;
+	margin-right: 5px;
+	cursor: hand;
+	background-size: 20px;
+	width: 23px;
+	display: inline list-item;
+	list-style-type: none;
+	position: absolute
+}
+#M_MC_PnlVersenden .chkTerms label{
+	font-size:0
+}
+#M_MC_PnlVersenden .chkTerms label #OpenTerms:before{
+	content:"Die "
+}
+#M_MC_PnlVersenden .chkTerms label #OpenTerms:after{
+	content:" habe ich gelesen und akzeptiert."
+}
+#M_MC_PnlVersenden .chkTerms{
+	font-size: smaller;
+	text-align: left;
+	margin-right: 5px;
+	width: 80%;
+	display: inline-flex;
+	float: left;
+	width: 2rem
+}
+#QWKalkBogenOuter #M_MC_PnlVersenden label #OpenTerms.terms.ctlOpener:before{
+	content:"Die";
+	font-weight:normal
+}
+#QWKalkBogenOuter #M_MC_PnlVersenden label #OpenTerms.terms.ctlOpener:after{
+	content:" habe ich gelesen und akzeptiert.";
+	font-weight:normal
+}
+#QWKalkBogenOuter #M_MC_PnlVersenden label #OpenTerms.terms.ctlOpener{
+	font-weight:bold;
+	cursor:pointer
+}
+#M_MC_PnlVersenden .chkTerms label #OpenTerms{
+	font-size:1rem;
+	line-height: 2rem
+}
+#M_MC_BtnVersenden {
+	position: absolute;
+	right: 0rem
+}
+.ButtonExportInactive {
+	border: 1px solid #36c;
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding:2px 0px 2px 17px;
+	height: 18px;
+	margin-right:5px;
+	cursor:default;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5
+}
+.ButtonExport:hover {
+	border: 1px solid #36c;
+	background-color: #BDCCFC
+}
+.DropDownlist {
+	width:150px
+}
+#divFileUpload {
+	float:right;
+	margin-top:5px;
+	margin-bottom:5px;
+	width:99%
+}
+#divFileUploadOuter {
+	overflow:visible
+}
+#c0_MC_lbtFileDownload {
+	margin-left:5px
+}
+#divAddFile {
+	margin-bottom:5px
+}
+#c0_MC_pnlFiles div {
+	margin-bottom:1px
+}
+.PlatzzahlAuslastungHeader {
+	font-weight:bold;
+	padding-top:10px
+}
+#c0_MC_pnlVersenden {
+	float:right
+}
+#c0_MC_lblFileError {
+	color:Red
+}
+#c0_MC_HeaderColABAnschaffungsjahr{
+	width:20px
+}
+#c0_MC_HeaderColABAbschreibungstyp{
+	width:20px
+}
+#c0_MC_HeaderColABBasiswertg{
+	width:20px
+}
+#c0_MC_HeaderColABFoerdermittel{
+	width:20px
+}
+#c0_MC_HeaderColABWiederbeschaffungswert{
+	width:20px
+}
+#c0_MC_HeaderColABAFA{
+	width:20px
+}
+#c0_MC_HeaderColABJAbschreibung{
+	max-width:20px
+}
+.AbSchreibungHeader {
+	line-height: 2rem;
+	font-weight:bold;
+	margin-top:2px;
+	margin-bottom:5px;
+	margin-right:10px
+}
+#c0_MC_tblAbschreibung {
+	width:99%;
+	border-collapse:collapse
+}
+.FileUpload {
+	background: white;
+	text-decoration: none
+}
+.divButtons {
+	margin-top:20px;
+	padding-right:10px;
+	text-align:right
+}
+.ui-datepicker-trigger{
+	margin-left:0.3rem
+}
+.HeaderColSPlKJ {
+	font-weight:bold;
+	width:20px;
+	padding-right:5px
+}
+.ui-state-hover{
+	border:none !important;
+	background-image: url("images/ui-icons_444444_256x240.png")
+}
+.HeaderColSPDienstaltersstufe {
+	font-weight:bold;
+	width:20px;
+	padding-right:5px
+}
+.HeaderColSPVerguetungsgruppe {
+	font-weight:bold;
+	width:20px;
+	padding-right:5px
+}
+.HeaderColSPStellenanteil {
+	font-weight:bold;
+	width:20px;
+	padding-right:5px
+}
+.HeaderColSPEintrittsdatum {
+	font-weight:bold;
+	width: 20px;
+	padding-right:5px
+}
+.HeaderColSPQualifikation {
+	font-weight:bold;
+	width:20px;
+	padding-right:5px
+}
+.HeaderColSPFunktion {
+	font-weight:bold;
+	width:20px;
+	padding-right:5px
+}
+input[type="number"]{
+	cursor:text !important
+}
+.pnlStellenplan table .headCol.sp.controls{
+	min-width:100px;
+}
+.DelAttachment:after{
+	content:"löschen"
+}
+.DelAttachment img{
+	display:none
+}
+.DelAttachment{
+	margin-left:0.5rem;
+	cursor: pointer;
+	background: var(--color-red);
+	color: var(--color-white) !important;
+	border-radius: var(--radius);
+	border: none;
+	padding: 0.5rem;
+	font-family: var(--font-100) !important;
+	font-size: 1rem
+}
+.HeaderColSPControls {
+	font-weight:bold;
+	width:20px
+}
+.HeaderColSPBesonderheiten {
+	font-weight:bold;
+	width:20px;
+	padding-right:5px
+}
+.HeaderColSPLohnsummeAJ {
+	font-weight:bold;
+	width:20px;
+	padding-right:5px
+}
+.pnlStellenplan {
+	background-color:#f1f1f1;
+	margin-top:-15px;
+	padding-left:5px;
+	margin-bottom:25px;
+	margin-right:5px
+}
+#M_MC_TblQwKalk  .lblKalkSummaryHeader{
+	margin-top: 1rem !important;
+	display: block
+}
+#M_MC_TblQwKalk tr{
+	line-height:1.5rem
+}
+.pnlAddItems {
+	border-radius: var(--radius)
+}
+.lblToggleImage {
+	margin-left:3px
+}
+#c0_MC_trvFacilities td {
+	white-space:pre-wrap !important
+}
+.pnlMemo{
+	font-family: var(--font-500);
+	line-height:2rem
+}
+.subHeader{
+	margin-top: 1rem !important;
+	display: block;
+}
+#M_MC_PnlFLSVal,
+#M_MC_PnlPersMengVal,
+#M_MC_PnlSumFahrzeitVal{
+	float: right;
+	right: 2.6rem;
+	position: absolute;
+}
+input[type="number"],
+#M_MC_TblQwKalk .txtEingabe,
+#M_MC_TblQwKalk .txtEingabe{
+	width: calc(100% - 1rem) !important;
+	text-align: right;
+	padding-right: 1rem;
+	margin-right: 1rem;
+}

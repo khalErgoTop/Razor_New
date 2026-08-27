@@ -1,0 +1,52 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<article class="login-page">
+    <h1>Anmeldung</h1>
+
+    <form method="post">
+        <input type="hidden" asp-for="ReturnUrl" />
+
+        <div>
+            <label asp-for="Input.Username"></label>
+            <input asp-for="Input.Username" autocomplete="username" autofocus />
+        </div>
+        <div>
+            <label asp-for="Input.Passwort"></label>
+            <input asp-for="Input.Passwort" type="password" autocomplete="current-password" />
+        </div>
+        <div>
+            <input asp-for="Input.StayLoggedIn" />
+            <label asp-for="Input.StayLoggedIn"></label>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+        {
+            <p role="alert">@Model.ErrorMessage</p>
+        }
+        @if (Model.WaitSeconds > 0)
+        {
+            <p role="status">Sie können sich in @Model.WaitSeconds Sekunden erneut einloggen.</p>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.PasswordRequestMessage))
+        {
+            <p role="status">@Model.PasswordRequestMessage</p>
+        }
+        @if (Model.ShowMailLink && !string.IsNullOrWhiteSpace(Model.SupportMail))
+        {
+            <p><a href="mailto:@Model.SupportMail?subject=Kennung%20fuer%20TOPqm-Login">Kennung anfordern</a></p>
+        }
+
+        <button type="submit">Anmelden</button>
+    </form>
+
+    <form method="post" asp-page-handler="PasswordRequest">
+        <input type="hidden" asp-for="Input.Username" />
+        <button type="submit">Passwort anfordern</button>
+    </form>
+
+    <a asp-page="/Index">Abbrechen</a>
+</article>

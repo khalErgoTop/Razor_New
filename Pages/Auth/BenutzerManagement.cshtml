@@ -1,0 +1,164 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.Auth.BenutzerManagementModel
+@{
+    ViewData["Title"] = "Benutzer-Management";
+}
+
+<nav aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb">
+        <li><a asp-page="/Index">Start</a></li>
+        <li><a asp-page="/Auth/QWWebAdmin">Administration</a></li>
+        <li aria-current="page">Benutzer-Management</li>
+    </ol>
+</nav>
+
+<section class="pageContent user-management">
+    <h1>Benutzer-Management</h1>
+
+    @if (!string.IsNullOrWhiteSpace(Model.InfoMessage))
+    {
+        <p class="confirmation-label">@Model.InfoMessage</p>
+    }
+
+    <div class="user-management-selection">
+        <form method="post" asp-page-handler="SelectType">
+            <label for="UserType">Benutzertypen</label>
+            <select id="UserType" name="UserType" onchange="this.form.submit()">
+                @foreach (var type in Model.Context.UserTypes)
+                {
+                    <option value="@type.Value" selected="@(Model.UserType == type.Value)">@type.Text</option>
+                }
+            </select>
+            <input type="hidden" name="Constraint" value="@Model.Constraint" />
+        </form>
+
+        <form method="get">
+            <input type="hidden" name="UserType" value="@Model.UserType" />
+            <label for="Constraint">Benutzernamen</label>
+            <input id="Constraint" name="Constraint" value="@Model.Constraint" placeholder="Benutzernamen eingrenzen" autocomplete="off" />
+            <button type="submit">Suchen</button>
+        </form>
+
+        <form method="get">
+            <input type="hidden" name="UserType" value="@Model.UserType" />
+            <label for="SelectedUserId">Benutzer auswählen</label>
+            <select id="SelectedUserId" name="SelectedUserId" onchange="this.form.submit()" size="6">
+                @foreach (var user in Model.Users)
+                {
+                    <option value="@user.Beid" selected="@(Model.SelectedUserId == user.Beid)" title="@user.Lastname">@user.Username</option>
+                }
+            </select>
+        </form>
+    </div>
+
+    @if (Model.CanCreateUsers)
+    {
+        <form method="post" asp-page-handler="CreateUser">
+            <fieldset>
+                <legend>Neuer Benutzer</legend>
+                <label asp-for="NewUser.Username">Benutzername</label>
+                <input asp-for="NewUser.Username" autocomplete="off" required />
+                <label asp-for="NewUser.Firstname">Vorname</label>
+                <input asp-for="NewUser.Firstname" />
+                <label asp-for="NewUser.Lastname">Nachname</label>
+                <input asp-for="NewUser.Lastname" />
+                <label asp-for="NewUser.Email">E-Mail</label>
+                <input asp-for="NewUser.Email" type="email" />
+                <label asp-for="NewUser.UserType">Benutzertyp</label>
+                <select asp-for="NewUser.UserType">
+                    @foreach (var type in Model.Context.UserTypes)
+                    {
+                        <option value="@type.Value">@type.Text</option>
+                    }
+                </select>
+            </fieldset>
+            <button type="submit">Speichern</button>
+        </form>
+    }
+
+    @if (Model.SelectedUser is not null)
+    {
+        <form method="post" asp-page-handler="Save">
+            <input type="hidden" asp-for="UserType" />
+            <input type="hidden" asp-for="SelectedUserId" />
+            <input type="hidden" asp-for="Constraint" />
+            <fieldset>
+                <legend>Benutzerdaten</legend>
+                <label asp-for="Input.Username">Benutzername</label>
+                <input asp-for="Input.Username" disabled="disabled" />
+                <label asp-for="Input.Firstname">Vorname</label>
+                <input asp-for="Input.Firstname" />
+                <label asp-for="Input.Lastname">Nachname</label>
+                <input asp-for="Input.Lastname" />
+                <label asp-for="Input.Email">E-Mail</label>
+                <input asp-for="Input.Email" type="email" />
+                @if (Model.Context.IsAdmin)
+                {
+                    <label><input asp-for="Input.IsAdmin" /> Admin</label>
+                    <label><input asp-for="Input.IsKosoz" /> Übergeordneter Träger</label>
+                }
+                <label><input asp-for="Input.IsDeactivated" /> Benutzer deaktivieren</label>
+            </fieldset>
+
+            <fieldset>
+                <legend>Module</legend>
+                @foreach (var module in Model.Modules)
+                {
+                    <label><input type="checkbox" name="Modules" value="@module.Id" checked="@module.IsSelected" /> @module.Name</label>
+                }
+            </fieldset>
+
+            @if (Model.Assignments.Facilities.Count > 0)
+            {
+                <fieldset>
+                    <legend>Einrichtungen</legend>
+                    <select name="Facilities" multiple size="8" disabled="@(!Model.Assignments.CanEditFacilities)">
+                        @foreach (var facility in Model.Assignments.Facilities)
+                        {
+                            <option value="@facility.Value" selected="@facility.IsSelected">@facility.Text</option>
+                        }
+                    </select>
+                </fieldset>
+            }
+
+            @if (Model.Assignments.Districts.Count > 0)
+            {
+                <fieldset>
+                    <legend>Kreise</legend>
+                    <select name="Districts" multiple size="8" disabled="@(!Model.Assignments.CanEditDistrictsAndTypes)">
+                        @foreach (var district in Model.Assignments.Districts)
+                        {
+                            <option value="@district.Value" selected="@district.IsSelected">@district.Text</option>
+                        }
+                    </select>
+                </fieldset>
+            }
+
+            @if (Model.Assignments.FacilityTypes.Count > 0)
+            {
+                <fieldset>
+                    <legend>Einrichtungstypen</legend>
+                    <select name="FacilityTypes" multiple size="8" disabled="@(!Model.Assignments.CanEditDistrictsAndTypes)">
+                        @foreach (var facilityType in Model.Assignments.FacilityTypes)
+                        {
+                            <option value="@facilityType.Value" selected="@facilityType.IsSelected">@facilityType.Text</option>
+                        }
+                    </select>
+                </fieldset>
+            }
+
+            <button type="submit">Speichern</button>
+            <a asp-page="/PasswortAendern" asp-route-UserId="@Model.SelectedUserId">Passwort ändern</a>
+        </form>
+
+        @if (Model.SelectedUserId != Model.Context.Beid)
+        {
+            <form method="post" asp-page-handler="DeleteUser" onsubmit="return confirm('Soll dieser Benutzer wirklich gelöscht werden?');">
+                <input type="hidden" asp-for="UserType" />
+                <input type="hidden" asp-for="SelectedUserId" />
+                <input type="hidden" asp-for="Constraint" />
+                <button type="submit">Benutzer löschen</button>
+            </form>
+        }
+    }
+</section>

@@ -1,0 +1,132 @@
+﻿.trv {
+    width:100%;
+}
+
+.divAuflistungEinrichtung {
+	margin-left:5px;
+	width:100%;
+}
+
+.divAuflistungEinrichtungAdresse {
+	color:Gray;
+	font-size:90%;
+	font-style:italic;
+	margin-left:20px;
+}
+
+#c0_MC_trvAuflistung table {
+    width:100%;
+}
+
+.ChildNodeStyle2{width:100%;}
+#c0_MC_trvAuflistung tr {
+    display:block;
+    width:100%;
+    min-height:35px;
+}
+
+.c0_MC_trvAuflistung_1 {
+    display:block;
+}
+
+/*.c0_MC_trvAuflistung_3 {
+    background-color: #eff6fa;
+    display: block!important;
+    min-height: 30px;
+    text-decoration: none;
+    width: 100%!important;
+}*/
+
+/*.divAuflistungEinrichtung, .divAuflistungEinrichtung{margin:9px 0 9px 10px;}*/
+/*#c0_MC_trvAuflistungn2Nodes table tbody tr td{padding:9px 0;}*/
+
+.ChildNodeStyle3 a{padding:9px 0;display: block;}
+.ChildNodeStyle2 a{padding:9px 0;display: block;}
+.ChildNodeStyle3{width: 100%;}
+.TreeNodeHovered {
+	color: #fff !important;
+	background:#89B5D8 !important;
+}
+.ChildNodeStyle3.TreeNodeHovered {
+	/*border-radius: 10px 0 0 10px;*/
+}
+
+.ChildNodeStyle3.TreeNodeHovered a{
+	display:block;
+}
+
+.TreeNodeHovered .divAuflistungEinrichtungAdresse{
+	color: #fff !important;
+}
+.trv  table tbody tr td a img {
+    height: 25px !important;
+      margin-right: 8px;
+      margin-top: 11px;
+}
+
+.ChildNodeStyle1 {
+	color:#0461AC;
+	background-color:#eff6fa;
+	border-bottom: 1px solid #fff; /*HW*/
+	border-top: 1px solid #fff; /*HW*/
+	font-weight:bold;
+	font-size:100%;
+    min-height:35px;
+    display:block;
+    padding-left:10px;
+	width:100%;
+}
+
+.ChildNodeStyle1 h2{margin:0; padding:17px 0;}
+.trvTyp .ChildNodeStyle2 {	 
+	 background-color:#f5f9f9;
+	 display: block!important;
+	 font-size:95%;
+	 /*min-height: 30px;*/ /*HW*/
+	 min-height:17px;
+	 padding-right:10px;
+     width: 100%!important;
+          
+}
+.trvTyp .ChildNodeStyle2 a{padding: 10px 10px 10px 20px;} 
+                
+.ChildNodeStyle3 {
+/*	padding-bottom:0px;  /*ChildNodesPadding*/
+/*	margin-bottom:0px;  /*VerticalPadding*/
+/*	font-size:80%;
+	text-decoration:"underline"; */
+    display:table-cell;	 
+	font-size:95%;
+	padding-right:10px;
+    width:100%;
+}
+   
+.treefix td > a > img {
+    height:25px!important;
+}            
+                
+.ChildNodeStyle4 {
+	padding-bottom:0px;  /*ChildNodesPadding*/
+	margin-bottom:8px;  /*VerticalPadding*/
+	font-size:80%;
+	color:Gray;
+	font-style:italic;
+}
+
+.AuflistungEinrichtungnanme {
+    font-weight:bold;
+    padding-right:10px;
+}
+
+.treefix td img {margin-top:11px;margin-right: 8px;}
+
+.SelectedNodeStyle {
+    /*text-decoration:underline!important;*/ /*HW*/
+    /*font-style:italic!important;*/ /*HW*/
+}
+
+@media screen and (max-width: 1023px) {
+    #c0_MC_trvAuflistung td > div {
+        width:0px!important;
+    }
+}

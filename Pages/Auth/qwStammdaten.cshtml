@@ -1,0 +1,284 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.Auth.qwStammdatenModel
+@{
+    ViewData["Title"] = Model.Facility?.Facility.Name ?? "qwStammdaten";
+}
+
+        @if (Model.Facility.FreePlaces is not null)
+        {
+            <section>
+                <h2>Freie Plätze</h2>
+                <p>Letzte Meldung: @Model.Facility.FreePlaces.ReportingDate.ToString("g")</p>
+                <p>Verfügbarkeit: @Model.Facility.FreePlaces.Availability</p>
+                @if (Model.Facility.CanEditFacility)
+                {
+                    <form id="free-place-form" method="post" asp-page-handler="SaveFreePlaces">
+                        <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
+                        <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
+                        @{ var questionIndex = 0; }
+                        @foreach (var category in Model.Facility.FreePlaces.Categories)
+                        {
+                            <fieldset>
+                                <legend>@category.Label</legend>
+                                @foreach (var question in category.Questions)
+                                {
+                                    <input type="hidden" name="FreePlaceQuestions[@questionIndex].QuestionId" value="@question.Id" />
+                                    <input type="hidden" name="FreePlaceQuestions[@questionIndex].TypeId" value="@question.TypeId" />
+                                    <label>@question.Label</label>
+                                    @if (question.TypeId == 0)
+                                    {
+                                        <input type="hidden" name="FreePlaceQuestions[@questionIndex].BooleanValue" value="false" />
+                                        <input type="checkbox" name="FreePlaceQuestions[@questionIndex].BooleanValue" value="true" checked="@question.BooleanValue" />
+                                    }
+                                    else if (question.TypeId == 1)
+                                    {
+                                        <input type="number" min="0" name="FreePlaceQuestions[@questionIndex].IntegerValue" value="@question.IntegerValue" />
+                                    }
+                                    questionIndex++;
+                                }
+                            </fieldset>
+                        }
+                        <button type="submit">Platzmeldung speichern</button>
+                    </form>
+                }
+            </section>
+        }
+
+        @if (Model.Facility.CanChangeFacilityVisibility)
+        {
+            <section>
+                <h2>Steuerung</h2>
+                <form method="post" asp-page-handler="ToggleFacilityVisibility">
+                    <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
+                    <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
+                    <button type="submit">Sichtbarkeit des Angebots in der Suche ändern</button>
+                </form>
+            </section>
+
+        @if (Model.Facility.VisitorCount.HasValue)
+        {
+            <section id="ViewCount">
+                <h2>Besucherzähler</h2>
+                <p><span class="label">Besuche insgesamt:</span> <span class="value">@Model.Facility.VisitorCount</span></p>
+                @if (Model.Facility.VisitorChart.Count > 0)
+                {
+                    <ul>
+                        @foreach (var point in Model.Facility.VisitorChart)
+                        {
+                            <li>@point.Date.ToString("d") – @point.Count</li>
+                        }
+                    </ul>
+                }
+            </section>
+        }
+        }
+
+        @if (Model.Facility.CanEditImage)
+        {
+            <section>
+                <h2>Bild des Leistungsangebotes</h2>
+                @if (!string.IsNullOrWhiteSpace(Model.Facility.Facility.ImageFileName))
+                {
+                    <img src="@Url.Page("/Stammdaten", "Image", new { eiid = Model.Facility.Facility.EIID })" alt="Bild des Leistungsangebotes" />
+                    <form method="post" asp-page-handler="DeleteFacilityImage">
+                        <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
+                        <button type="submit">Bild löschen</button>
+                    </form>
+                }
+                <form method="post" enctype="multipart/form-data" asp-page-handler="SaveFacilityImage">
+                    <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
+                    <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
+                    <input asp-for="FacilityImage" type="file" accept=".jpg,.jpeg" />
+                    <button type="submit">Bild speichern</button>
+                </form>
+            </section>
+        }
+
+        @if (Model.Facility.CanEditContactData)
+        {
+            <section>
+                <h2>Kontaktdaten bearbeiten</h2>
+                <form method="post" asp-page-handler="SaveContactData">
+                    <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
+                    <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
+                    <div><label asp-for="ContactData.Phone">Telefon</label><input asp-for="ContactData.Phone" /></div>
+                    <div><label asp-for="ContactData.Mobile">Mobil</label><input asp-for="ContactData.Mobile" /></div>
+                    <div><label asp-for="ContactData.Fax">Telefax</label><input asp-for="ContactData.Fax" /></div>
+                    <div><label asp-for="ContactData.Email">E-Mail</label><input asp-for="ContactData.Email" type="email" /></div>
+                    <div><label asp-for="ContactData.Internet">Internet</label><input asp-for="ContactData.Internet" type="url" /></div>
+                    <button type="submit">Kontaktdaten speichern</button>
+                </form>
+            </section>
+        }
+
+<nav aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb">
+        <li><a asp-page="/Index">Start</a></li>
+        <li><a asp-page="/Stammdaten" asp-route-eiid="@Model.Facility?.Facility.EIID" asp-route-stuid="@Model.Facility?.Facility.Locations.FirstOrDefault()?.STUID">Stammdaten</a></li>
+        <li aria-current="page">Bearbeitung</li>
+    </ol>
+</nav>
+
+@if (Model.Facility is not null)
+{
+    <article class="qw-stammdaten">
+        <h1>@Model.Facility.Facility.Name</h1>
+        <p><strong>Einrichtungskennzeichen:</strong> @Model.Facility.Facility.FacilityIndicator</p>
+
+        @if (Model.Facility.CanEditFacility || Model.Facility.CanEditContactData)
+        {
+            <section>
+                <h2>Bearbeitungsrechte</h2>
+                @if (Model.Facility.CanEditFacility)
+                {
+                    <p>Allgemeine Einrichtungsdaten dürfen bearbeitet werden.</p>
+                }
+                @if (Model.Facility.CanEditContactData)
+                {
+                    <p>Kontaktdaten dürfen bearbeitet werden.</p>
+                }
+            </section>
+        }
+
+        @if (Model.Facility.CanViewAttachments)
+        {
+            <section>
+                <h2>Anhänge</h2>
+                <ul>
+                    @foreach (var attachment in Model.Facility.Facility.Attachments)
+                    {
+                        <li>
+                            <a asp-page="/Stammdaten" asp-page-handler="Attachment" asp-route-eiid="@Model.Facility.Facility.EIID" asp-route-attachmentId="@attachment.Id">@attachment.Filename</a>
+                            @if (Model.Facility.CanEditAttachments)
+                            {
+                                <form method="post" asp-page-handler="DeleteAttachment" style="display:inline">
+                                    <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
+                                    <input type="hidden" name="attachmentId" value="@attachment.Id" />
+                                    <input type="hidden" name="document" value="false" />
+                                    <button type="submit">Löschen</button>
+                                </form>
+                            }
+                        </li>
+                    }
+                </ul>
+                @if (Model.Facility.CanEditAttachments)
+                {
+                    <form method="post" enctype="multipart/form-data" asp-page-handler="SaveAttachment">
+                        <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
+                        <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
+                        <input asp-for="AttachmentFile" type="file" accept=".doc,.docx,.xls,.xlsx,.xml,.pdf,.jpg" />
+                        <button type="submit">Anhang hochladen</button>
+                    </form>
+                }
+            </section>
+        }
+
+        @if (Model.Facility.CanViewDocuments)
+        {
+            <section>
+                <h2>Dokumente</h2>
+                <ul>
+                    @foreach (var document in Model.Facility.Documents)
+                    {
+                        <li>
+                            <a asp-page="/Stammdaten" asp-page-handler="Attachment" asp-route-eiid="@Model.Facility.Facility.EIID" asp-route-attachmentId="@document.Id">@document.Filename</a>
+                            @if (Model.Facility.CanEditDocuments)
+                            {
+                                <form method="post" asp-page-handler="DeleteAttachment" style="display:inline">
+                                    <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
+                                    <input type="hidden" name="attachmentId" value="@document.Id" />
+                                    <input type="hidden" name="document" value="true" />
+                                    <button type="submit">Löschen</button>
+                                </form>
+                            }
+                        </li>
+                    }
+                </ul>
+                @if (Model.Facility.CanEditDocuments)
+                {
+                    <form method="post" enctype="multipart/form-data" asp-page-handler="SaveDocument">
+                        <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
+                        <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
+                        <input asp-for="DocumentFile" type="file" accept=".doc,.docx,.xls,.xlsx,.xml,.pdf,.jpg" />
+                        <select asp-for="DocumentType">
+                            <option value="0">Dokument</option>
+                            <option value="1">Broschüre</option>
+                            <option value="2">Formular</option>
+                            <option value="22">Sonstiges</option>
+                        </select>
+                        <button type="submit">Dokument hochladen</button>
+                    </form>
+                }
+            </section>
+        }
+
+        <section>
+            <h2>Einrichtungsdaten</h2>
+            <p>@Html.Raw(Model.Facility.Facility.Description)</p>
+            @if (Model.Facility.CanEditFacility)
+            {
+                <form method="post" asp-page-handler="SaveFacilityDescription">
+                    <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
+                    <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
+                    <label asp-for="FacilityDescription">Beschreibung</label>
+                    <textarea asp-for="FacilityDescription" rows="8"></textarea>
+                    <button type="submit">Beschreibung speichern</button>
+                </form>
+            }
+            @foreach (var location in Model.Facility.Facility.Locations)
+            {
+                <h3>@location.Name</h3>
+                <p>@location.Address</p>
+                @if (Model.Facility.CanEditLocations && location.STUID is not null)
+                {
+                    <form method="post" asp-page-handler="SaveLocation">
+                        <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
+                        <input type="hidden" name="stuid" value="@location.STUID" />
+                        <div><label>Name</label><input name="EditedLocation.Name" value="@location.Name" /></div>
+                        <div><label>Straße</label><input name="EditedLocation.Street" value="@location.Street" /></div>
+                        <div><label>Hausnummer</label><input name="EditedLocation.HouseNumber" value="@location.HouseNumber" /></div>
+                        <div><label>Zusatz</label><input name="EditedLocation.HouseNumberAddition" value="@location.HouseNumberAddition" /></div>
+                        <div><label>PLZ</label><input name="EditedLocation.PostalCode" value="@location.PostalCode" /></div>
+                        <div><label>Ort</label><input name="EditedLocation.City" value="@location.City" required /></div>
+                        <div><label>Platzzahl</label><input name="EditedLocation.Capacity" value="@location.Capacity" type="number" min="0" /></div>
+                        <div>
+                            <label>
+                                <input type="hidden" name="EditedLocation.ShowAddressInWeb" value="false" />
+                                <input type="checkbox" name="EditedLocation.ShowAddressInWeb" value="true" checked="@location.ShowAddressInWeb" />
+                                Adresse im Web anzeigen
+                            </label>
+                        </div>
+                        <button type="submit">Standort speichern</button>
+                    </form>
+                }
+                @if (Model.Facility.CanEditFacility && location.STID.HasValue)
+                {
+                    <form method="post" asp-page-handler="ToggleLocationVisibility">
+                        <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
+                        <input type="hidden" name="stuid" value="@location.STUID" />
+                        <input type="hidden" name="stid" value="@location.STID" />
+                        <input type="hidden" name="currentlyVisible" value="@location.ShowAddressInWeb.ToString().ToLowerInvariant()" />
+                        <button type="submit">Sichtbarkeit der Adresse ändern</button>
+                    </form>
+                }
+            }
+            @if (Model.Facility.CanAddLocation)
+            {
+                <section>
+                    <h3>Standort hinzufügen</h3>
+                    <form method="post" asp-page-handler="AddLocation">
+                        <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
+                        <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
+                        <div><label asp-for="NewLocation.Name">Bezeichnung</label><input asp-for="NewLocation.Name" /></div>
+                        <div><label asp-for="NewLocation.Street">Straße</label><input asp-for="NewLocation.Street" /></div>
+                        <div><label asp-for="NewLocation.HouseNumber">Hausnummer</label><input asp-for="NewLocation.HouseNumber" /></div>
+                        <div><label asp-for="NewLocation.HouseNumberAddition">Zusatz</label><input asp-for="NewLocation.HouseNumberAddition" /></div>
+                        <div><label asp-for="NewLocation.PostalCode">PLZ</label><input asp-for="NewLocation.PostalCode" /></div>
+                        <div><label asp-for="NewLocation.City">Ort</label><input asp-for="NewLocation.City" required /></div>
+                        <button type="submit">Standort hinzufügen</button>
+                    </form>
+                </section>
+            }
+        </section>
+    </article>
+}

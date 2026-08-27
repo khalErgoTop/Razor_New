@@ -1,0 +1,163 @@
+﻿#txtPasswort,
+#txtUsername{
+	position: absolute;
+	left: 6rem;
+}
+
+#Crmenu{
+	display:none
+}
+#header,
+#divAnmeldung {
+	margin-left:auto;
+	margin-right:auto;
+}
+label[for="chkStaylogedIn"]{
+	position: absolute;
+	line-height: 2rem;
+	text-align: center;
+	margin-left: 0.5rem
+}
+#header{
+	margin-top:2rem;
+	height: 85px
+}
+#pnlMain {
+	width: 1140px;
+	margin-left:auto;
+	margin-right:auto;
+	background-color:#FFF
+}
+input#chkStaylogedIn{
+	margin-left: 1rem
+}
+#pnlTop {
+  background-image: url("Images/Logo.png");
+  background-repeat: no-repeat;
+  background-size: 200px;
+  top: 1rem;
+  position: static;
+  text-align: center !important;
+  margin: auto !important;
+  width: 310px !important;
+  height: 120px !important;
+  border: none !important;
+  background-position-x: center;
+  background-position-y: 2rem;
+}
+#headerlogo{
+	display:inline-block
+}
+.loginMargin {
+	background-color:White;
+	border:1px solid #404040;
+	border-radius:14px 14px 0 0 ;
+	display: block;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top: 50px;
+	margin-bottom: 4rem;
+	width:310px;
+	padding-bottom: 1rem;
+	position: relative;
+}
+#divBottom{
+	padding-bottom:2rem
+}
+#lblCaption {
+	color:#FFF
+}
+#pnlUser{
+	margin-bottom: 0.5rem;
+	margin-top:1rem
+}
+#lblPW,
+#lblUser {
+	line-height:1.8rem
+}
+
+#pnlPW{
+	margin-bottom: 0.5rem
+}
+#lblPW {
+	margin-left:auto;
+	margin-right:auto;
+	padding-right: 20px
+}
+#spanShowPassword:after {
+	content: " 👁";
+	position: absolute;
+	right: 1.5rem;
+	font-size: 1.5rem;
+}
+#pnlHint {
+	display: block
+}
+#lblHint {
+	color:Red
+}
+#pnlCommands {
+	display:inline-block;
+}
+#divAnmeldung #pnlLogin.loginMargin .box{
+	padding-left:1rem;
+	text-align:left;
+	width: calc(100% - 28px);
+}
+#cmdCancel,
+#cmdLogin{
+	font-size:100%;
+	width: calc(50% - 12px);
+}
+.divMaps {
+    color: var(--color-black);
+    background: url("Images/GoogleMaps_logo.svg");
+	background-repeat: repeat;
+    background-size: auto;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    width: 12px;
+    height: 12px;
+    position: relative;
+    border: 0 none transparent
+}
+#divStayLogedIn {
+	margin-top:10px;
+	margin-bottom: 10px;
+	text-align: left
+}
+.hint {
+	float: left;
+	background-color: #FFF;
+	padding: 0.5em;
+	margin-top: 5px;
+	margin-left: 5px;
+	width: 175px
+}
+.hmailto {
+	text-decoration: underline
+}
+#hylMailTo.msg {
+	display: block
+}
+.capbox {
+display: block;
+padding: 0.5em 1em;
+background-color: #404040;
+text-align: center;
+border-top-left-radius: 12px;
+border-top-right-radius: 12px;
+top: 6rem;
+}
+#divlblAppname{
+	display:inline
+}
+#lblAppname {
+	position: relative;
+	color: #0461ac;
+	display:inline;
+	top:-50px;
+	height:20px;
+	left:200px;
+	font-size:0
+}

@@ -1,0 +1,180 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.SuchAssistentModel
+@{
+    ViewData["Title"] = "Assistierte Suche";
+}
+
+<nav aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb">
+        <li><a asp-page="/Index">Start</a></li>
+        <li aria-current="page">Assistierte Suche</li>
+    </ol>
+</nav>
+
+<h1>Assistierte Suche</h1>
+
+@if (string.IsNullOrWhiteSpace(Model.Suchtyp))
+{
+    <section>
+        <h2>Wissen Sie, was ein Leistungstyp ist?</h2>
+        <p>Wenn Sie nach einem Leistungstyp suchen möchten, wählen Sie „Ja“.</p>
+        <a asp-page="/SuchAssistent" asp-route-Suchtyp="einfach">Nein, ich möchte die einfache Suche benutzen</a>
+        <a asp-page="/SuchAssistent" asp-route-Suchtyp="typ">Ja, ich möchte nach einem Leistungstyp suchen</a>
+    </section>
+}
+else if (string.Equals(Model.Suchtyp, "typ", StringComparison.OrdinalIgnoreCase) && !Model.Alter.HasValue)
+{
+    <section>
+        <h2>Wie alt sind Sie zum Zeitpunkt, zu dem Sie die Leistung in Anspruch nehmen möchten?</h2>
+        <a asp-page="/SuchAssistent" asp-route-Suchtyp="typ" asp-route-Alter="1">Unter 18 Jahre</a>
+        <a asp-page="/SuchAssistent" asp-route-Suchtyp="typ" asp-route-Alter="0">Über 18 Jahre</a>
+    </section>
+}
+else if (string.IsNullOrWhiteSpace(Model.Kategorie) && Model.Assistant is not null)
+{
+    <section>
+        <h2>Womit benötigen Sie Unterstützung?</h2>
+        <ul>
+            @foreach (var category in Model.Assistant.Categories)
+            {
+                <li>
+                    <a asp-page="/SuchAssistent"
+                       asp-route-Suchtyp="@Model.Suchtyp"
+                       asp-route-Alter="@Model.Alter"
+                       asp-route-Kategorie="@category.Name">@category.Name</a>
+                </li>
+            }
+        </ul>
+    </section>
+}
+else if (Model.Assistant is not null && Model.Leistung.HasValue && !Model.BeschreibungBestaetigt)
+{
+    <section>
+        <h2>Beschreibung der Leistung</h2>
+        @if (!string.IsNullOrWhiteSpace(Model.Leistungsbeschreibung))
+        {
+            <p>@Model.Leistungsbeschreibung</p>
+        }
+        <a asp-page="/SuchAssistent"
+           asp-route-Suchtyp="@Model.Suchtyp"
+           asp-route-Alter="@Model.Alter"
+           asp-route-Kategorie="@Model.Kategorie"
+           asp-route-Leistung="@Model.Leistung"
+           asp-route-BeschreibungBestaetigt="true">Weiter</a>
+    </section>
+}
+else if (Model.Assistant is not null)
+{
+    <section>
+        <h2>Welche Leistung benötigen Sie?</h2>
+        <p>Kategorie: @Model.Kategorie</p>
+        <ul>
+            @foreach (var leistung in Model.Assistant.Leistungen)
+            {
+                <li>
+                    <a asp-page="/SuchAssistent"
+                       asp-route-Suchtyp="@Model.Suchtyp"
+                       asp-route-Alter="@Model.Alter"
+                       asp-route-Kategorie="@Model.Kategorie"
+                       asp-route-Leistung="@leistung.Id">@leistung.Name</a>
+                </li>
+            }
+        </ul>
+    </section>
+
+    @if (Model.Leistung.HasValue)
+    {
+        <section>
+            <h2>Wo möchten Sie die Leistung in Anspruch nehmen?</h2>
+            <form method="get">
+                <input type="hidden" name="Suchtyp" value="@Model.Suchtyp" />
+                <input type="hidden" name="Alter" value="@Model.Alter" />
+                <input type="hidden" name="Kategorie" value="@Model.Kategorie" />
+                <input type="hidden" name="Leistung" value="@Model.Leistung" />
+                <input type="hidden" name="BeschreibungBestaetigt" value="true" />
+                <label for="Postleitzahl">Postleitzahl</label>
+                <input id="Postleitzahl" name="Postleitzahl" value="@Model.Postleitzahl" maxlength="5" />
+                <button type="submit">Postleitzahl suchen</button>
+            </form>
+
+            <form method="get" id="GeolocationForm">
+                <input type="hidden" name="Suchtyp" value="@Model.Suchtyp" />
+                <input type="hidden" name="Alter" value="@Model.Alter" />
+                <input type="hidden" name="Kategorie" value="@Model.Kategorie" />
+                <input type="hidden" name="Leistung" value="@Model.Leistung" />
+                <input type="hidden" name="BeschreibungBestaetigt" value="true" />
+                <label for="Latitude">Latitude</label>
+                <input id="Latitude" name="Latitude" value="@Model.Latitude" type="number" step="any" required />
+                <label for="Longitude">Longitude</label>
+                <input id="Longitude" name="Longitude" value="@Model.Longitude" type="number" step="any" required />
+                <button type="button" id="GeolocationSearchButton">Meinen Standort verwenden</button>
+                <button type="submit">Koordinaten suchen</button>
+                <p id="GeolocationMessage" role="status" aria-live="polite"></p>
+            </form>
+
+            @if (Model.Kreise.Count > 0)
+            {
+                <h3>Oder wählen Sie einen Kreis</h3>
+                <ul>
+                    @foreach (var kreis in Model.Kreise)
+                    {
+                        <li>
+                            <a asp-page="/SuchAssistent"
+                               asp-route-Suchtyp="@Model.Suchtyp"
+                               asp-route-Alter="@Model.Alter"
+                               asp-route-Kategorie="@Model.Kategorie"
+                               asp-route-Leistung="@Model.Leistung"
+                               asp-route-BeschreibungBestaetigt="true"
+                               asp-route-Kreis="@kreis.Id">@kreis.Name</a>
+                        </li>
+                    }
+                </ul>
+            }
+
+            @if (Model.Kreis.HasValue || Model.Ergebnisse.Count > 0)
+            {
+                <h3>Gefundene Einrichtungen</h3>
+                @if (Model.Ergebnisse.Count == 0)
+                {
+                    <p>Für die gewählte Kombination wurden keine Einrichtungen gefunden.</p>
+                }
+                else
+                {
+                    <ul>
+                        @foreach (var ergebnis in Model.Ergebnisse)
+                        {
+                            <li>
+                                <h4>
+                                    <a asp-page="/Stammdaten"
+                                       asp-route-EIID="@ergebnis.EIID"
+                                       asp-route-STUID="@ergebnis.STUID">@ergebnis.Name</a>
+                                </h4>
+                                @if (!string.IsNullOrWhiteSpace(ergebnis.Standortname))
+                                {
+                                    <p>@ergebnis.Standortname</p>
+                                }
+                                <p>
+                                    @ergebnis.Strasse @ergebnis.Hausnummer @ergebnis.Hausnummerzusatz<br />
+                                    @ergebnis.PLZ @ergebnis.Ort
+                                </p>
+                                @if (!string.IsNullOrWhiteSpace(ergebnis.Telefon))
+                                {
+                                    <p>Telefon: @ergebnis.Telefon</p>
+                                }
+                                @if (ergebnis.Entfernung.HasValue)
+                                {
+                                    <p>Entfernung: @ergebnis.Entfernung.Value.ToString("0.0") km</p>
+                                }
+                            </li>
+                        }
+                    </ul>
+                }
+            }
+
+        </section>
+    }
+}
+
+@section Scripts {
+    <script src="~/js/suchassistent.js" asp-append-version="true"></script>
+}

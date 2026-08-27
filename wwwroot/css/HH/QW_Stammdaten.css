@@ -1,0 +1,1433 @@
+﻿/* Version: 240313 */
+#M_MC_PnlInst_EditInst.pnlEdit.ui-dialog-content.ui-widget-content label.lblInLine[for="M_MC_PnlInst_EditInstEmail"]:after{
+	content:"E-Mail";
+	font-size:1rem
+}
+#M_MC_PnlInst_EditInst.pnlEdit.ui-dialog-content.ui-widget-content label.lblInLine[for="M_MC_PnlInst_EditInstEmail"]{
+	font-size:0
+}
+#M_MC_PnlInst_EditInst.pnlEdit.ui-dialog-content.ui-widget-content label.lblInLine[for="M_MC_PnlInst_EditInstWeb"]:after{
+	content:"Internet";
+	font-size:1rem
+}
+#M_MC_PnlInst_EditInst.pnlEdit.ui-dialog-content.ui-widget-content label.lblInLine[for="M_MC_PnlInst_EditInstWeb"]{
+	font-size:0
+}
+#M_MC_FFView_DeleteFacOpener{
+	background-image: url("Images/Icons/Stammdaten/Einrichtung_loeschen.svg") !important;
+}
+.pgCounter.container{
+	padding-top: 0.5rem;
+}
+.pgCounter.container .pgCounter.lbl{
+	width: calc(100% / 3 - 10px) !important;
+	display: inline-block
+}
+.pgCounter.container .pgCounter.lbl{
+	text-align:center
+}
+.pgCounter.container .pgCounter.lbl.pgIndex{
+	text-align:right
+}
+.pgCounter.container .pgCounter.lbl.pgCount{
+	text-align:left
+}
+#DivStrNotFound, #DivHfStrVzValidiert {
+	display: none;
+}
+.status4 input.fileAttmt:hover,
+.status3 input.fileAttmt:hover,
+.status0 input.fileAttmt:hover {
+	text-decoration: underline
+}
+.status0 input.fileAttmt{
+	background-image: url("Images/Icons/Stammdaten/Stern.svg");
+	background-repeat: no-repeat;
+	background-position: 0.5rem 41%;
+	background-size: 20px;
+	padding-left: 2.5rem !important;
+}
+.status3 input.fileAttmt{
+	background-color: green !important;
+	background-image: url("Images/Icons/Stammdaten/Check.svg");
+	background-repeat: no-repeat;
+	background-position: 0.5rem 41%;
+	background-size: 20px;
+	padding-left: 2.5rem !important;
+}
+.status4 input.fileAttmt{
+	background-color: #ddd !important;
+	background-image: url("Images/Icons/Stammdaten/Abgelehnt.svg");
+	background-repeat: no-repeat;
+	background-position: 0.5rem 41%;
+	background-size: 20px;
+	padding-left: 2.5rem !important;
+	color: #6E6E6E !important
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid td.state{
+	vertical-align: top;
+	padding: 0 0.5rem !important;
+}
+#M_MC_FFView_SecLocs_UlSecLocs a:hover{
+	text-decoration:underline;
+	color: #005ca9;
+}
+html body div.ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-dialog-buttons.ui-draggable.ui-resizable div.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix.ui-draggable-handle{
+	background: white !important;
+	width: 100% !important;
+	line-height: 1.7rem !important
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid .jsgrid-table{
+	width:100%
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid .bez{
+	width:150px !important
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid .capa{
+	width:40px !important
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid .jsgrid-header-cell.capa{
+	font-size:0
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid .jsgrid-header-cell.capa:after{
+	font-size:1rem;
+	content:"Plätze"	
+}
+#M_MC_PnlInst_InstAddress_AddrRef.divMaps
+{
+	font-size:unset;
+	float:unset
+}
+#M_MC_pnlInstitutionInner .pnlStreetCity{
+	margin-top:0
+}
+.lblFacilityName.LinkClass:hover{
+	text-decoration:underline
+}
+#M_MC_uppEinrichtungsdaten #M_MC_pnlEinrichtungsdaten.FacilityData span.lblFacilityName.LinkClass{
+	line-height:2rem
+}
+
+/* Google Maps */
+#InstitutionInner{
+	width:fit-content;
+}
+#M_MC_PnlInst_InstAddress_pnlAddress{
+	position:relative
+}
+#M_MC_PnlInst_InstAddress_pnlAddress .divMaps{
+	position: absolute;
+	top: 0;
+	right: -2rem;
+}
+#M_MC_PnlInst_InstAddress_AddrRef:after{
+	background-image: url("Images/GoogleMaps_logo.svg");
+}
+.maps a{
+	display: block;
+	height: 32px;
+	width: 24px
+}
+li[selected="selected"] .maps{
+	background-image: url("Images/GoogleMaps_logo_selected.svg") !important;
+}
+li .maps{
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	height: 33px;
+	background-image: url("Images/GoogleMaps_logo.svg");
+	background-size: 23px;
+	background-repeat:no-repeat;
+}
+.maps,
+.divMaps{
+	width: 24px;
+	height: 34px;
+	background-image: url("Images/GoogleMaps_logo.svg");
+	background-repeat: no-repeat;
+	font-size: 0;
+	float: right;
+	margin-left: 0.5rem
+}
+/* google Maps ENDE */
+
+/* Tabelle Stammdaten */
+.tblVerguetung tr td:first-child{
+	border-left:1px solid #AAA;
+}
+.pnlVerguetungTabelle .tblVerguetung tr td:first-child:after{
+	content:"" !important
+}
+.pnlVerguetungTabelle .tblVerguetung tr td .unit_€:after {
+	content: " €"
+}
+.pnlVerguetungTabelle table.tblVerguetung tr:first-child td:after{
+	content:""
+}
+.pnlVerguetungTabelle table.tblVerguetung tr td{
+	border-bottom:1px solid #aaa;
+	border-right:1px solid #aaa;
+	min-width: 70px
+}
+#M_PnlMain .innerMain table {
+	margin-top: 0;
+}
+.tblVerguetung {
+	text-align: right;
+	padding-bottom:5px
+}
+.lbltblVerguetungHeader {
+	font-weight:bold;
+	overflow:visible
+}
+.pnlVerguetungTabelle table.tblVerguetung tr:nth-child(odd){
+	background-color:#F4F4F4
+}
+.tblVerguetung td,
+#M_MC_tblVerguetung td,
+#M_MC_tblVerguetung td,
+#M_MC_PnlStammDaten table td {
+	padding:0.5rem;
+	border-bottom:1px solid #ccc;
+	margin:0
+}
+.tblVerguetung tr:first-child{
+	background:#EEE;
+}
+/* Tabelle Stammdaten ENDE */
+.pnlFac.hss{
+	font-weight:bold
+}
+.fullTitle {
+    font-size: 14px;
+    position: relative;
+}
+#M_MC_pnlInstitutionInner {
+	position: relative;
+}
+/* Kacheln */
+#M_MC_FFView_SecLocs_SecondaryLocs.secLocs ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li,
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #Einrichtungsdaten #M_MC_FacilityData #M_MC_FFView_SecLocs_SecondaryLocs.secLocs .addressOuter ul.standortContent li,
+#M_MC_uppEinrichtungsdaten ul#M_MC_SLF_UlSecLocs li{
+	list-style-type: none;
+	border: 1px solid #aaa;
+	padding: 0.5rem 2rem 0.5rem 0.5rem;
+	margin: 0rem 0.5rem 0.5rem 0;
+	float: left;
+	height: 14rem;
+	position: relative;
+	overflow: hidden
+}
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent li.status1[selected="selected"]:after{
+	content: "⌛";
+	opacity:1;
+	bottom:0.5rem;
+	position:absolute;
+	right: 0.5rem;
+	font-size:1.5rem;
+	color:white;
+}
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent li.status4:after,
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent li.status1:after{
+	content: "⌛";
+	opacity:1;
+	bottom:0.5rem;
+	position:absolute;
+	right: 0.5rem;
+	font-size:1.5rem
+}
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent li.status0:after{
+	content: "✔";
+	color:#00AE21;
+	bottom:0.5rem;
+	position:absolute;
+	right: 0.5rem;
+	font-size:1.5rem
+}
+#M_MC_FFView_SecLocs_SecondaryLocs.secLocs ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li .mobil:before{
+	content:"Mobil: "
+}
+#M_MC_FFView_SecLocs_SecondaryLocs.secLocs ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li .capacity:before{
+	content:"Platzzahl: "
+}
+ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li .contactData .telephone:before,
+#M_MC_FFView_ContactDirect_CtTelephone:before,
+.lblTelephone:before,
+ul#M_MC_SLF_UlSecLocs .contactData .telephone:before{
+	content:"Telefon: "
+}
+ul#M_MC_SLF_UlSecLocs .contactData .mobil::before,
+.lblTelephoneMobile:before,
+#M_MC_FFView_ContactDirect_CtMobil:before{
+	content:"Mobil: "
+}
+#M_MC_FFView_SecLocs_SecLocAddLoc.pnlEdit label,
+#M_MC_FFView_SecLocs_SecLocAddLoc.pnlEdit input{
+	margin-bottom:0.5rem
+}
+#M_MC_FFView_SecLocs_BtnAddLoc,
+#M_MC_FFView_SecLocs_BtnCancelAdd{
+	width:unset !important
+}
+#M_MC_FFView_SecLocs_SecLocAddLoc.pnlEdit label{
+	width:25%
+}
+
+#M_MC_FFView_SecLocs_SecLocAddLoc.pnlEdit input{
+	width:60%;
+}
+ul#M_MC_FFView_SecLocs_UlSecLocs li .contactData .telefax:before,
+ul#M_MC_SLF_UlSecLocs .contactData .telefax .telefax:before,
+#M_MC_SLF_SecondaryLocs.secLocs #M_MC_SLF_UlSecLocs.standortContent li .telefax:before,
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent .telefax .telefax:before,
+.lblTelefax:before,
+#M_MC_FFView_ContactDirect_CtTelefax:before{
+	content:"Fax: "
+}
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent li.status0[selected="selected"]:after{
+	content: "✔";
+	bottom:0.5rem;
+	position:absolute;
+	right: 0.5rem;
+	font-size:1.5rem;
+	color:white;
+}
+
+.secLocs.outer {
+	display:inline-block;
+	width:100%;
+}
+
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #Einrichtungsdaten #M_MC_FacilityData .facData .secLocs.outer #M_MC_FFView_SecLocs_SecondaryLocs.secLocs ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li {
+	width: calc((100% / 2) - 3.2rem);
+	cursor: pointer
+}
+#M_MC_pnlStammDaten #Einrichtungsdaten #M_MC_uppEinrichtungsdaten #M_MC_pnlEinrichtungsdaten .secLocs.outer #M_MC_SLF_SecondaryLocs.secLocs ul#M_MC_SLF_UlSecLocs.standortContent li{
+	width: calc((100% / 2) - 3.25rem);
+	cursor:pointer
+}
+#M_MC_SLF_UlSecLocs li .stName{
+	font-weight:bold
+}
+#M_MC_FFView_SecLocs_UlSecLocs li[selected="selected"],
+#M_MC_pnlEinrichtungsdaten ul#M_MC_SLF_UlSecLocs li[selected="selected"]{
+	list-style-type: none;
+	border:1px solid black;
+	background: var(--color-blue);
+	color:#fff
+}
+
+/* Kacheln */
+#M_MC_pnlFacilityTypeSub{
+	display:none
+}
+#M_MC_FFView_FacCtls div {
+	font-size: 0 !important;
+	background:unset;
+	width: 100%;
+	margin-bottom: 1rem !important;
+	filter: invert(100%) !important;
+	background-position-x: 21px !important;
+	background-repeat: no-repeat;
+	min-height: 38px;
+}
+
+/* Seitenleiste */
+#M_MC_FFView_FacCtls div:hover{
+	filter: var(--filter-white) !important;
+	opacity:0.5;
+	cursor:pointer
+}
+#M_MC_FFView_AddFacilityOpener {
+	background-image: url("Images/Icons/Stammdaten/Einrichtung_hinzufuegen.svg") !important;
+}
+#M_MC_FFView_OpenAddLocation{
+	background-image: url("Images/Icons/Stammdaten/Standort_hinzufuegen.svg") !important;
+}
+#M_MC_FFView_OpenChgVisibility {
+	background-image: url("Images/Icons/Stammdaten/Sichbarheit_Einrichtung.svg") !important;
+}
+#M_MC_FFView_OpenEdtLocsContacts {
+	background-image: url("Images/Icons/Stammdaten/Kontakte_bearbeitenn.svg") !important;
+}
+#M_MC_FFView_OpenEdtLocsData {
+	background-image: url("Images/Icons/Stammdaten/Standort_bearbeiten.svg") !important;
+}
+#M_MC_FFView_OpenAddDocFile {
+	background-image: url("Images/Icons/Stammdaten/Dokument_hinzufuegen.svg") !important;
+}
+#M_MC_FFView_OpenEdtFacData {
+	background-image: url("Images/Icons/Stammdaten/Standort_bearbeiten.svg") !important;
+}
+#M_MC_FFView_OpenAddFIV {
+	background-image: url("Images/Icons/Stammdaten/Einrichtungsbild.svg") !important;
+}
+#M_MC_FFView_OpenAddFile {
+	background-image: url("Images/Icons/Stammdaten/Broschuere.svg") !important;
+}
+#M_MC_FFView_OpenFacFeatures {
+	background-image: url("Images/Icons/Stammdaten/Merkmale.svg") !important;
+}
+#M_MC_FFView_OpenChgLocVisibility {
+	background-image: url("Images/Icons/Stammdaten/Sichbarheit_Adresse.svg") !important;
+}
+#M_MC_FFView_OpenEdtFacData {
+	background-image: url("Images/Icons/Stammdaten/Bearbeiten.svg") !important;
+}
+#M_MC_FFView_OpenAddFFR {
+	background-image: url("Images/Icons/Stammdaten/Platzzahl.svg") !important;
+}
+#M_MC_FFView_EdtInstOp {
+	background-image: url("Images/Icons/Stammdaten/Traeger.svg") !important;
+}
+#M_MC_FFView_OpenAddFDV {
+	background-image: url("Images/Icons/Stammdaten/Info.svg") !important;
+}
+#M_MC_FFView_OpenChgLocVisibility {
+	background-image: url("Images/Icons/Stammdaten/Sichbarheit_Adresse.svg") !important;
+}
+#M_MC_FFView_OpenChgLocVisibility.hidden {
+	background-image: url("Images/Icons/Stammdaten/Nicht_Sichbarheit_Adresse.svg") !important;
+}
+#M_MC_Attachments_Files input:hover,
+#M_MC_FFView_FacCtls .ctlOpener:hover{
+	color:#FFF;
+	text-decoration:underline
+}
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #M_MC_PnlViews #ViewCount span.value:before{
+	content:" "
+}
+#FacilityListOpenener:hover{
+	text-decoration:underline
+}
+#FacilityListOpenener{
+	background-image: url("Images/Icons/Stammdaten/Suche.svg");
+	text-align: center;
+	font-size: 0.8rem;
+	background-repeat: no-repeat;
+	top: 16rem;
+	background-color: var(--color-green);
+	-webkit-transition: all .35s ease;
+	transition: all .35s ease;
+	border-radius: 0 6px 0 0;
+	box-shadow: 1px 1px 6px 1px rgba(45,45,45,0.35);
+	position: fixed;
+	left: 0;
+	width: 80px !important;
+	cursor: pointer;
+	background-size: 50px;
+	color: var(--color-blue);
+	hyphens: auto;
+	margin-top: 3rem;
+	background-position-y: 6px;
+	padding: 3rem 0 0 0;
+	background-position-x: 15px;
+	font-weight: bold;
+	font-size:0;
+	z-index:1
+}
+#M_MC_FFView_FacCtls{
+	top: 22rem;
+	background-color: var(--color-blue);
+	-webkit-transition: all .35s ease;
+	transition: all .35s ease;
+	border-radius: 0 0 6px 0;
+	box-shadow: 1px 1px 6px 1px rgba(45,45,45,0.35);
+	position:fixed;
+	left: 0;
+	width:80px !important;
+	z-index: 1
+}
+#Facilities{
+	display:none;	
+}
+#LblFacilityLabel{
+	display:none !important
+}
+#Facilities{
+	z-index: 1;
+	position:fixed;
+	left:5rem;
+	width:unset;
+	top: 15rem
+}
+#M_MC_CurrentFacility {
+  width: unset !important;
+}
+/* Test Ende */
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr.jsgrid-edit-row td.jsgrid-cell.stt.state .button{
+	color:white
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr .num {
+	width: 30px !important;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr .state {
+	width: 75px !important;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr .street {
+	width: 130px !important;
+}
+#M_MC_FFView_SecLocs_SecondaryLocs.secLocs ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li .stName,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr td {
+	white-space: normal;
+	margin-bottom: 5px;
+	text-overflow: ellipsis;
+}
+
+/*#M_MC_FFView_SecLocs_UlSecLocs li[selected="selected"] .stName {
+	white-space: normal!important;
+	overflow: auto!important;
+	margin-bottom:5px;
+}*/
+
+#M_MC_FFView_SecLocs_SecLocsGrid .selected{
+	color:black
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table input[disabled=""]{
+	cursor:not-allowed !important
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table input,
+#M_MC_FFView_SecLocs_SecLocsGridGrid table .button{
+	cursor:pointer
+}
+#M_MC_Documents_FUAddDoc,
+#M_MC_FFView_FIV_FuFacImg{
+	display: block;
+	margin-top: 0.5rem;
+}
+#M_MC_PnlStammDaten #M_MC_Documents_Files .pnlFiles .file.data{
+	height:3rem
+}
+
+
+.file.data:hover:after {
+	color: #fff;
+	position: relative;
+	top: -5px;
+	text-align: center;
+	left: 15px;
+	/* float: left; */
+	width: 150px;
+	height: 25px;
+	display: block;
+	padding: 5px;
+}
+
+.file.data.status4:hover:after {
+	content: 'abgelehnt';
+	background-color: var(--color-red);
+}
+
+.file.data.status3:hover:after {
+	content: 'angenommen';
+	background-color: green;
+}
+
+#M_MC_Documents_Files .date{
+	line-height: 2.5rem;
+	font-size: 11pt;
+	color: gray;
+	margin-left: 0.5rem;
+}
+#M_MC_FFView_OpenEdtContact{
+	display:none !important
+}
+#M_MC_Documents_Files .date:before{
+	content:"("
+}
+#M_MC_Documents_Files .date:after{
+	content:")"
+}
+#M_MC_CurrentFacility #M_MC_PnlDocuments #M_MC_Documents_Documents #M_MC_Documents_Files .pnlFiles .type.file label{
+	margin: 1rem 0 0.25rem 0;
+	font-weight: bold;
+	display: block;
+}
+#M_MC_Documents_Files .delAttmt,
+#M_MC_Documents_Files .fileAttmt,
+#M_MC_Documents_Files .date {
+	/*float: left;*/
+	display: inline-block;
+}
+#M_MC_Documents_AddFile.ui-dialog-content.ui-widget-content .command.buttons input#M_MC_Documents_BtnAddFile.button.hidden{
+	display:none
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr th.addrVis{
+	font-size:0;
+	padding:0 !important;
+	margin:0 !important
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid .stt .button{
+	font-size: 0;
+	color: unset !important;
+	background-color: var(--color-red) !important;
+	width: 32px;
+	border-radius: 50% !important;
+	border: none !important;
+	padding: unset !important;
+	cursor: pointer !important;
+	min-height: 20px !important;
+	display: inline-block !important;
+	height: 32px !important;
+	margin-right: unset;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid .stt .button:after{
+	content: "";
+	background-image: url("Images/Icons/Stammdaten/uncheck.svg");
+	width: 30px;
+	height: 30px;
+	display: block;
+	background-position-x: -6px;
+	background-repeat: no-repeat;
+	padding: 0;
+	margin: 0;
+	background-position-y: 4px;
+	background-size: 44px;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr th.addrVis:after{
+	content: "";
+	background-image: url("Images/Icon_Auge.svg");
+	width: 45px;
+	height: 36px;
+	display: block;
+	background-position-x: 7px;
+	background-repeat: no-repeat;
+	padding: 0;
+	margin: 0;
+	background-position-y: 1px;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr th.gslSt{
+	font-size:0;
+	padding:0 !important;
+	margin:0 !important
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid .stt.addrVis.jsgrid-align-center input{
+	margin-left: 0.75rem;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid .jsgrid-cell.stt.jsgrid-align-center{
+	padding: 1rem 0 !important;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid .stt.gslSt.jsgrid-align-center{
+	padding: 0.5rem !important;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr th.gslSt:after{
+/*
+	content: "";
+	background-image: url("Images/Icons/Stammdaten/bearbeiten.svg");
+	width: 45px;
+	height: 36px;
+	display: block;
+	background-position-x: 7px;
+	background-repeat: no-repeat;
+	padding: 0;
+	margin: 0;
+	background-position-y: 1px;
+	*/
+	content:"geschlossen";
+	font-size:1rem;
+}
+#M_MC_Documents_FUAddDoc{
+	margin-bottom:0.5rem
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid .city.jsgrid-header-sortable,
+#M_MC_FFView_SecLocs_SecLocsGridGrid .stt.poBox.jsgrid-header-sortable,
+#M_MC_FFView_SecLocs_SecLocsGridGrid .stt.state.jsgrid-header-sortable,
+#M_MC_FFView_SecLocs_SecLocsGridGrid .numAdd.jsgrid-header-sortable,
+#M_MC_FFView_SecLocs_SecLocsGridGrid .num.jsgrid-header-sortable{
+	font-size:0
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid .city.jsgrid-header-sortable:after{
+	content:"Ort";
+	font-size:1rem;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid .numAdd.jsgrid-header-sortable:after{
+	content:"Zusatz";
+	font-size:1rem;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid .poBox.jsgrid-header-sortable:after{
+	content:"PLZ";
+	font-size:1rem;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid .state.jsgrid-header-sortable:after{
+	content:"Änderung";
+	font-size:1rem;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid .num.jsgrid-header-sortable:after{
+	content:"Nr.";
+	font-size:1rem;
+}
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr th,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr td{
+	padding: 0;
+	margin: 0;
+	display: inline-block;
+}
+#M_MC_FFView_SecLocs_SecondaryLocs.secLocs ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li[selected="selected"] .contactData .emailAddress a{
+	color:#FFF
+}
+#Page form#aspnetForm .ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-draggable.ui-resizable{
+	display: unset
+}
+#M_MC_Einrichtungen .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.jsgrid-header-sortable,
+#M_MC_FFView_SecLocs_SecContactsDataGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.jsgrid-header-sortable,
+#M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.jsgrid-header-sortable{
+	text-align:left;
+}
+#M_MC_FFView_SecLocs_SecLocsGrid{
+	width: 1280px !important;
+}
+#M_MC_Einrichtungen .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.jsgrid-header-sortable,
+#M_MC_FFView_SecLocs_SecContactsData.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecContactsDataGrid.jsgrid .jsgrid-grid-body,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body{
+	height:unset !important
+}
+#M_MC_FFView_SecLocs_UlSecLocs,
+#M_MC_SLF_UlSecLocs{
+	display:inline-block
+}
+#M_MC_pnlInstitutionOuter #M_MC_pnlInstitution #M_MC_pnlInstitutionInner #M_MC_pnlInstitutionAddress.pnlInstitutionAddress.pnlAddress.icon a{
+	display: block
+}
+table#M_MC_tblVerguetung.tblVerguetung tr td{
+	width: calc(100% / 6 - 0.25rem) !important
+}
+#Einrichtungsdaten #M_MC_tblVerguetung {
+	width: 100%
+}
+#M_MC_PnlDocuments #M_MC_Documents_Documents .label,
+#M_MC_pnlEinrichtungsdaten .secLocs.outer .secLoc.label,
+.lblUnterbegriff,
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #M_MC_PnlAttachments #M_MC_Attachments_Attachments .label.attmts,
+#M_MC_AttachmentsPanel_Attachments .label.attmts,
+#FDVHeaderLbl,
+.FFRHeaderLbl,
+#ViewCount,
+h3 {
+	font-size: 1em;	
+	line-height: 20px;
+	line-height: 1.25em;
+	margin-top: 1rem;
+	margin-bottom: .4em;
+	color: var(--color-blue);
+	font-family: var(--font-bold)
+}
+#M_MC_pnlEinrichtungsdaten #M_MC_ctl07.pnlAddressOuter ul{
+	display: inline-block;
+	width: 100%
+}
+#M_MC_uppEinrichtungsdaten ul#M_MC_SLF_UlSecLocs{
+	margin:0;
+	padding:0
+}
+#M_MC_SLF_UlSecLocs li .stTyp{
+	font-weight:bold
+}
+/*#M_MC_PnlVerguetung{
+	display:none
+}*/
+#M_MC_FFView_SecLocs_UlSecLocs,
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #Einrichtungsdaten #M_MC_FacilityData #M_MC_FFView_SecLocs_SecondaryLocs.secLocs .addressOuter ul.standortContent{
+	padding:0
+}
+.fullTitle .eName{
+	height: 34px;
+	overflow: hidden;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid table.jsgrid-table tbody tr.jsgrid-edit-row{
+	background:#00ABE1
+}
+#M_MC_SLF_UlSecLocs,
+#M_MC_FFView_SecLocs_UlSecLocs{
+	width:100%
+}
+#M_MC_uppEinrichtungsdaten li[selected="selected"] .emailAddress a{
+	color:white
+}
+ul#M_MC_SLF_UlSecLocs{
+	padding:0;
+	margin:0
+}
+.jsgrid-grid-body {
+	min-height: 370px;
+}
+
+
+#M_MC_FFView_ChangeLocationVisibility,
+#M_MC_FFView_ChangeVisibility{
+	min-width:500px
+}
+#DivFacilityPlatzzahl.valuepair span.labelIdentifier.label:after,
+#DivFacilityCode.valuepair span.labelIdentifier.label:after,
+#DivFacilityType .labelIdentifier:after,
+#FacilityType .labelIdentifier:after,
+#FacilityCode .labelIdentifier:after,
+#FacilityPlatzzahl .labelIdentifier:after{
+	content:": "
+}
+#FIVHeader{
+	display:none
+}
+#PnlInformation{
+	float:left;
+	width:calc(60% - 1rem);
+	padding-right:1rem
+}
+#M_MC_pnlFacilityType,
+#M_MC_pnlFacilityCode{
+	margin-bottom:0.5rem
+}
+#M_MC_pnlStammDaten #Einrichtungsdaten #FIVContent{
+	float:left;
+	width:40%
+}
+#M_MC_FIV_ImgFac{
+	width:100%
+}
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs .pnlFac div{
+	padding: 0 0 0 10px;
+	width: 260px;
+	margin-left: 2rem
+}
+.unit_€::after {
+	content: '€'
+}
+.unit_%::after {
+	content: '%'
+}
+.zeroVal {
+	display: none
+}
+#M_MC_CurrentFacility{
+	width: 570px;
+	padding-bottom: 7rem
+}
+#M_MC_FFView_ContactDirect_Pers{
+	font-weight: bold;
+	margin: 10px 0
+}
+#M_MC_FFView_SpclData{
+	margin: 1rem 0
+}
+#M_MC_FFView_FacCtls{
+	display: block;
+	height: auto;
+	width: 580px
+}
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs .pnlFac .fullTitle div{
+	margin-left:0;
+	padding-left:0
+}
+#M_MC_FPReporting_DivFFRPlaces.ffrPlaces .label,
+#M_MC_FPReporting_DivFFRDate.ffrDate .label,
+#M_MC_FFView_SpclData .valuepair .label{
+	float:left;
+	font-weight:bold
+}
+#M_MC_FPReporting_FFRData.ffrData	.label:after,
+#M_MC_FFView_SpclData .valuepair .label:after{
+	content:":\00a0"
+}
+#M_MC_FFView_SpclData .valuepair .value:before{
+	content:" "
+}
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #M_MC_PnlViews canvas#ViewsChart.chartjs-render-monitor{
+	max-width:800px
+}
+#M_MC_Documents_Files .delAttmt,
+#M_MC_Attachments_Files input.delAttmt{
+	background:var(--color-red);
+	color:#FFF
+}
+#M_MC_FFView_SpclData .valuepair{
+	margin-bottom:0.5rem
+}
+#M_MC_CurrentFacility .facilityName,
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #Einrichtungsdaten #M_MC_FacilityData .facData{
+	margin-top:1rem
+}
+#M_MC_AttachmentsPanel_Files .fileAttmt{
+	margin-top: 1rem;
+	background:var(--color-blue);
+	color: #FFF
+}
+.pnlFac:hover{
+	cursor:pointer;
+	color:#0461ac
+}
+#M_MC_Einrichtungen #GridFacs .jsgrid-header-sortable{
+	padding:0.5rem
+}
+#Facilities{
+	box-shadow: 1px 1px 6px 1px rgba(45,45,45,0.35);
+	transition: all .35s ease;
+	padding:0 1rem;
+	border-radius: 0 0.5rem 0.5rem 0;
+	background:#eee
+}
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs input{
+	width:95%;
+	line-height:2rem
+}
+#ViewCount{
+	margin-top:1.5rem !important
+}
+#M_MC_PnlStammDaten table tr{
+	margin:0;
+	padding:0
+}
+#M_MC_NewFacility #M_MC_LblNewname.lblLeftLabel.value{
+	font-size:0
+}
+#M_MC_NewFacility #M_MC_LblNewname.lblLeftLabel.value:after{
+	font-size:1rem;
+	content: "Name"
+}
+h2 {
+	line-height: 20px;
+	line-height: 1.111em;
+	color: var(--color-red);
+	margin-top: 18px;
+	margin-bottom: 12px;
+	font-weight: bold	 
+}
+#currentFacility canvas{
+	margin-top:0.5rem
+}
+#M_MC_FPReporting_DivFFRSR,
+#M_MC_FPReporting_DivFFRDR,
+#M_MC_FPReporting_DivFFRSexF,
+#M_MC_FPReporting_DivFFRDate{
+	height:22px
+}
+#M_MC_FFView_FIV_EditFacImg h2,
+#M_MC_Documents_AddFile h2,
+#M_MC_Attachments_AddFile h2,
+#M_MC_NewFacility.ui-dialog-content.ui-widget-content h2,
+.pnlEdit h2 {
+	display: none !important
+}
+.lblInLine,
+.lblLeftLabel,
+.pnlEdit .lblLeftLabel {
+	width: 20%;
+	display: inline-block
+}
+#PnlAddFFRCnt div input[type="checkbox"]{
+	height:24px;
+	width:24px
+}
+#PnlAddFFRCnt div span{
+	height: 33px;
+	line-height: 33px;
+	vertical-align: top
+}
+#PnlAddFFRCnt .ffrSR .label,
+#PnlAddFFRCnt .ffrPlaces .label,
+#PnlAddFFRCnt .ffrDR .label,
+#PnlAddFFRCnt .ffrSexM .label,
+#PnlAddFFRCnt .ffrSexF .label,
+#PnlAddFFRCnt .ffrSexDiv .label {
+	width: 35%;
+	display: inline-block
+}
+#M_MC_FFView_EditContact,
+#M_MC_FFView_ContactData {
+	padding: 1rem 1rem 0.5em;
+	width: 980px!important;
+	height: 400px;
+	display: block
+}
+#BtnInfoNewsKeep{
+	padding: 0.3rem;
+	margin-right:1rem
+}
+#M_LblInfoNews{
+	margin: 0 0 0.5rem 0;
+	display: inline-block
+}
+.pnlEdit .command.buttons {
+	margin-top: 2rem;
+	margin-left: auto
+}
+#M_MC_pnlStammDaten #Einrichtungsdaten #M_MC_AttachmentsPanel_Attachments .label.attmts,
+#FDVHeaderLbl{
+	margin-top:2rem !important
+}
+#M_MC_pnlEinrichtungsdaten .secLocs.outer .secLoc.label,
+#M_MC_pnlStammDaten #Einrichtungsdaten #M_MC_AttachmentsPanel_Attachments .label.attmts,
+#M_MC_pnlStammDaten .topic.inst,
+#M_MC_DivFacilityTopic {
+	line-height: 20px;
+	line-height: 1.25em;
+	margin-top: .5em;
+	margin-bottom: .4em
+}
+.lblBegriff {
+	overflow:visible;
+	min-width: 120px
+}
+.pnlLV {
+	margin-top:30px;
+	float:left;
+	display:inline-block
+}
+.PnlLVContent {
+	display:block
+}
+.pnlLVBegriff {
+	float:left;
+	display:block;
+	width:700px
+}
+.lblLVOberBegriff {
+	float:left;
+	min-width:500px
+}
+.lblLVUnterBegriff {
+	float:left;
+	margin-left:20px;
+	min-width:500px
+}
+.lblLVBegriff {
+	display:list-item;
+	margin-left:55px;
+	min-width:500px
+}
+.lblLVBegriffHeader {
+	margin-left:30px;
+	min-width:500px
+}
+.lblLVBegriffHeaderBez {
+	margin-left:10px
+}
+.lblBegriffStammdaten {
+	overflow:visible;
+	min-width: 100px
+}
+.pnlLVBegriffStammdaten {
+	padding-left: 10px
+}
+.lblUnterbegriff {
+	overflow:visible
+}
+.lblPnlLVHeader {
+	font-weight:bold;
+	display:inline-block
+}
+#imgShowHide {
+	margin-left:5px
+}
+#M_MC_PnlStammDaten {
+	width:100%
+}
+#M_MC_PnlStammDaten table#M_MC_tblVerguetung td:first-child span {
+	padding-left: 0 !important;	
+	padding-top: 0 !important
+}
+#M_MC_PnlStammDaten table#M_MC_tblVerguetung td:first-child {
+	min-width: 100px
+}
+#M_MC_PnlVerguetung table#M_MC_tblVerguetung td:first-child .lbltblVerguetung:after,
+#M_MC_PnlStammDaten table#M_MC_tblVerguetung td:first-child .lbltblVerguetung:after{
+	content:"" !important
+}
+#M_MC_PnlVerguetung table#M_MC_tblVerguetung td .lbltblVerguetung:after,
+#M_MC_PnlStammDaten table#M_MC_tblVerguetung td .lbltblVerguetung:after{
+	content:" €" !important
+}
+.verguetungLegende {
+	display:block
+}
+.verguetungLegendeMitte {
+	display:block;
+	max-width: 500px
+}
+.verguetungLegendeOben {
+	display: block;
+	max-width: 800px;
+	margin: 20px 0 10px 0
+}
+.lbltblVerguetungBezeichnung {
+	 text-align: left
+}
+.lbltblVerguetungHeaderBezeichnung {
+	float:left
+}
+.lbltblVerguetungHeaderZuschlag {
+	position:relative;
+	left:-10px;
+	font-weight:bolder;
+	overflow:visible
+}
+#M_MC_TblZuschlag {
+	margin-top:10px
+}
+.pnlVerguetungTabelle {
+	padding-left:0px;
+	padding-top:5px
+}
+.pnlVerguetung {
+	padding-top:30px
+}
+.pnlVerguetung .lblUnterbegriff {
+	color: var(--color-red);
+	font-weight:bold;
+	display: table-cell;
+	vertical-align: top
+}
+#M_MC_pnlUserNamesInner{
+	display:none
+}
+.fdvData{
+	margin-top:0.5rem
+}
+#M_MC_PnlEinrichtungsdaten table tr td {
+	padding-right:20px
+}
+#M_MC_TblWerte {
+	display: table-cell;
+	vertical-align: top
+}
+#M_MC_PnlIframe {
+	border:none;
+	display: table-cell;
+	padding-right: 20px;
+	overflow:hidden
+}
+#M_MC_PnlIframe iframe{
+	display: table-cell;
+	min-width: 350px;
+	height:300px;
+	border: transparent
+}
+#CurrentFacility {
+	width: calc(100% - 340px);
+	display: inline-block;
+	vertical-align: top;
+	margin-left:1.5rem
+}
+#M_MC_Einrichtungen #GridFacs{
+	width:300px !important;
+	padding:0.5rem
+}
+#M_MC_pnlStammDaten #M_MC_pnlInstitutionInner #M_MC_pnlInstitutionData.pnlContactData{
+	display:block;
+	width: max-content;
+}
+#M_MC_pnlStammDaten #M_MC_pnlInstitutionInner .pnlInstitutionAddress{
+	margin-bottom:0;
+	width: max-content;
+}
+#M_MC_pnlInstitutionData{
+	margin-bottom:1rem
+}
+#facilities {
+	display: inline-block;
+	width:300px;
+	border-right: 1px solid #ccc
+}
+#Einrichtungsdaten {
+	margin-right:20px
+}
+#M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr td.jsgrid-cell .pnlFac .fac.img img{
+	margin-right: 0px;
+	height: 30px !important;
+	margin-top: 0px;
+	margin-left: -3rem;
+	position: absolute
+}
+#M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-grid-body table.jsgrid-table{
+	width:100%;
+	margin-bottom: 1rem
+}
+.pnlFacilityHead {
+	display:block
+}
+#M_MC_pnlEinrichtungsdaten span#M_MC_lblEinrichtungsName.lblFacilityName h3{
+	line-height: 2rem;
+	margin-left: 0.5rem;
+	padding:0;
+	margin:0;
+	height:2rem;
+	overflow:hidden
+}
+.lblFacilityName {
+	background-image: url("Images/Haus.png");
+	background-repeat: no-repeat;
+	background-size: 32px;
+	display: block;
+	padding-left: 40px;
+	margin-top: 0.5rem;
+	height: 2rem;
+	margin-bottom: 0.5rem;
+}
+#M_MC_pnlEinrichtungsdaten.FacilityData .pnlInstitutionFacility .pnlFacilityHead .pnlInnerHeadLine .lblFacilityName.LinkClass{
+	height:30px
+}
+.pnlContactData {
+	display:inline-block
+}
+#FacilityInfo{
+	display:inline-flex;
+	Width: 100%
+}
+#M_MC_FFView_SpclData{
+	width: 100%;
+	margin-right: 0.5rem
+}
+.fivData img{
+	width:100%
+}
+#M_MC_PnlSpecialData {
+	margin-left:35px;
+	margin-top:5px;
+	display:table
+}
+#M_MC_pnlEinrichtungsdaten .pnlAddressOuter ul#M_MC_SLF_UlSecLocs:before{
+	content:"Standorte";
+	display:block;
+	font-size: 1em;
+	color: var(--color-blue);
+	font-family: var(--font-bold);
+	margin-bottom: 0.5em
+}
+#M_MC_PnlSpecialData div:first-child {
+	display:table-row
+}
+#M_MC_PnlSpecialData .LabelValue {
+	display:table-cell !important
+}
+#M_MC_PnlSpecialData .LabelIdentifier {
+	display:table-cell !important
+}
+.LabelIdentifier {
+	padding-bottom:3px;
+	font-weight:bold;
+	display: inline-block
+}
+.LabelValue {
+	margin-left:5px
+}
+#M_MC_PnlInstitution {
+	margin-bottom:20px
+}
+#M_MC_lblWebContactPersonResponsibleLabel,
+#M_MC_lblWebContactLabel{
+	font-weight:bold
+}
+.pnlContactPersonInner{
+	margin-top:0.5rem
+}
+#M_MC_lblContactPersonResponsibleEmailAddress:before,
+#M_MC_lblContactPersonEmailAddress:before{
+	content:"E-Mail: "
+}
+#M_MC_lblContactPersonName:before{
+	content:"Name: "
+}
+.lblInstitutionName {
+	background-image:url("Images/Traeger2.png");
+	background-repeat:no-repeat;
+	background-position-x: 0px;
+	background-size:32px;
+	color:var(--color-red);
+	font-weight:bold;
+	padding-left:48px;
+	background-position-y: 0px
+}
+.pnlInstitutionAddress{
+	margin-top: 15px;
+	margin-bottom:20px
+}
+#M_MC_PnlInstitutionData {
+	 display:inline-block
+}
+.pnlContactPerson {
+	margin-top:20px
+}
+#M_MC_PnlInstitutionInner {
+	 display: inline-block;
+	 margin-top:10px
+}
+.pnlInstitutionHeadLine {
+	display:block
+}
+.pnlInstitutionFacility {
+	margin-bottom:1rem
+}
+.pnlInstitutionFacility .pnlAddress {
+	background-image:none!important;
+	margin-top:0;
+	padding-left:0!important
+}
+.lblStreet,
+ .pnlStreet {
+	display: inline-block
+}
+.pnlStreetCity {
+	display: inline-block;
+	margin-top: 0.5rem;
+}
+.pnlMaps {
+	 display: inline-block;
+	 vertical-align: top;
+	 margin-top: 0.5rem;
+}
+.pnlMaps span {
+	display:flex!important
+}
+#M_MC_FFView_Contact_Pers{
+	margin-top:1rem
+}
+.lbInstitutionFacility {
+	background-color:#FFF;
+	background-image:url("Images/link.png");
+	background-position:left;
+	background-repeat:no-repeat;
+	background-size:16px;
+	border:none;
+	cursor:pointer;
+	display:inline-block;
+	height:16px;
+	width:16px
+}
+.LinkClass {
+	cursor:pointer	
+}
+#M_MC_FDescr_FIV_BtnAddFacilityImage{
+	height: 24px;
+	display: inherit;
+	width: 78px;
+	text-align: center;
+	float: left;
+	margin-right: 0.5rem
+}
+.lblHeadLineOpenImgOpen {
+	background-image: url("Images/TreeViewLineImages/arrow_state_grey_expanded.svg");
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: 24px;
+	display: inline-block;
+	height: 38px;
+	width: 32px;
+	cursor: pointer;
+	background-position-x: 10px
+}
+.lblHeadLineOpenImgClose {
+	background-image: url("Images/TreeViewLineImages/arrow_state_grey_right.svg");
+	background-position: left;
+	background-position-x: left;
+	background-repeat: no-repeat;
+	background-size: 24px;
+	display: inline-block;
+	height: 38px;
+	width: 32px;
+	cursor: pointer;
+	background-position-x: 10px
+}
+.pnlInnerHeadLine {
+	display:inline-block;
+	max-width: calc(100% - 20px)
+}
+.pnlInnerHeadLine span {
+	display:table-cell
+}
+.pnlVerguetung .lblUnterbegriff .TTip img {
+	display:none
+}
+.pnlVerguetung .lblUnterbegriff .TTip span {
+	display:block
+}
+.tTipVerguetung {
+	 display:block;
+	 color:#3B3B3B;
+	 max-width:800px
+}
+.tTipVerguetung img {
+	display:none
+}
+.selected {
+	color: var(--color-red)
+}
+#aRefEditContact {
+	vertical-align:middle;
+	color:transparent;
+	margin-left:5px
+}
+#lblFacilityLabel {
+	font-weight: bold
+}
+#M_MC_PnlAttachments,
+#M_MC_PnlFilesOuter {
+	margin-top:30px
+}
+#M_MC_PnlAttachments #M_MC_Attachments_Attachments .label.attmts{
+	margin-bottom:1rem
+}
+#M_MC_PnlAttachments span:first-child {
+	max-width: 600px;
+	margin-bottom: 10px;
+	display: block
+}
+.pnlFile {
+	height:3rem
+}
+#M_MC_PnlFiles .pnlFile {
+	display: block !important
+}
+
+
+@media screen and (max-width: 360px) {
+	#M_MC_PnlStammDaten {
+		width: 100%
+	}
+	#Einrichtungsdaten {
+		margin-left: 10px !Important;
+		margin-right:0
+	}
+	#M_MC_PnlInstitution {
+		margin-left: 10px!important
+	}
+	.pnlVerguetungTabelle {
+		padding-left: 10px!important
+	}
+	.lbltblVerguetungBezeichnung .lbltblVerguetung {
+		max-width:20px !important;
+		white-space:pre-wrap !important;
+		margin-left:0
+	}
+	.lbltblVerguetungBezeichnung {
+		word-wrap: break-word;
+		word-break: break-all
+	}
+}
+@media print {
+	.pnlVerguetung {
+		page-break-before: avoid;
+		page-break-inside: avoid;
+		padding-top: 0 !important;
+		margin-top: 0 !important
+	}
+
+	.pnlAddress {
+		margin-left: 35px
+	}
+
+		.pnlAddress::before {
+			content: "Adresse:";
+			margin-top: 5px;
+			font-style: normal
+		}
+
+	.clickableAddress {
+		position: relative;
+		left: 113px;
+		display: inline-block !important
+	}
+
+	#M_MC_PnlIframe {
+		display: none
+	}
+
+}

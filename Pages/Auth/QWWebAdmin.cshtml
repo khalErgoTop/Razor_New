@@ -1,0 +1,19 @@
+@page
+@model TOPqwWeb_Core.Pages.Auth.QWWebAdminModel
+@{
+    ViewData["Title"] = "Administration";
+}
+
+<nav aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb"><li><a asp-page="/Index">Start</a></li><li aria-current="page">Administration</li></ol>
+</nav>
+
+<section class="pageContent">
+    <h1>Administration</h1>
+    <ul>
+        @foreach (var link in Model.Links)
+        {
+            <li><a asp-page="@link.Page">@link.Text</a></li>
+        }
+    </ul>
+</section>

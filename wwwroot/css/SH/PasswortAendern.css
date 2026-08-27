@@ -1,0 +1,50 @@
+﻿#divChangePassword{}
+#divHeader{}
+#lblUserToChange {
+	
+}
+#divOldPasswort{}
+#lblOldPassword{}
+#txtOldPassword{}
+#divNewPW{}
+#lblNewPassword{}
+#txtNewPassword{}
+#divVerifyPW{}
+#lblVerifyPassword{}
+#txtVerifyPassword{}
+#divHint{}
+#lblHint{}
+#divControls{}
+#cmdCancel{}
+.PasswordPolicyHint {
+	border: 1px solid red;
+	margin-left: 190px;
+	padding: 5px;
+	margin-bottom: 20px;
+}
+
+.innerMain table {
+	position: relative;
+	top: -50px;
+}
+
+#M_MC_pnlPasswordInfo {
+	max-width:360px;
+}
+
+div.legende {
+	padding:0;
+	width:auto;
+
+}
+
+@media screen and (max-width: 800px) {
+	.PasswordPolicyHint {
+		margin-left: 20px;
+	}
+	.innerMain table {
+		position: relative;
+		top: 0px;
+		margin-top:10px;
+	}
+}

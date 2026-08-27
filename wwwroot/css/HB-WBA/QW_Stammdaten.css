@@ -1,0 +1,1958 @@
+﻿/* Version: 240517 */
+
+html body div#Page form#aspnetForm div.ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-draggable.ui-resizable div#M_MC_NewFacility.ui-dialog-content.ui-widget-content div.valuepair div.pnlDropDown.value{
+	float:right
+}
+
+#M_MC_DdlLeistungstyp,
+#M_MC_DdlNewTraeger{
+	width: 313px;
+	float: right;
+}
+@media (min-width: 1001px) {
+	#M_MC_CurrentFacility {
+		width: calc(100% - 270px)
+	}
+}
+/* ADRESSE MIT ICON */
+
+.divMaps {
+	background-size:24px;
+}
+
+.divMaps.clickableAddress {
+	background: none;
+	color: var(--color-black);
+	margin-left: 0;
+	font-size: 100%;
+	width: inherit
+}
+#M_MC_PnlInst_InstAddress_pnlAddress,
+.pnlInstitutionAddress{
+position: relative;
+  width: fit-content;
+	margin:15px 35px 20px 0
+}
+.divMaps{
+	top: 0;
+  position: absolute;
+  right: -30px;
+}
+
+/* ADRESSE MIT ICON END */
+
+/* KACHEL */
+#M_MC_FFView_SecLocs_UlSecLocs,
+#M_MC_SLF_UlSecLocs{
+	padding:0;
+	width: 100%;
+}
+li[selected="selected"] .maps {
+  background-image: url("Images/GoogleMaps_logo_selected.svg") !important;
+}
+li .maps {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  height: 33px;
+  background-image: url("Images/GoogleMaps_logo.svg");
+  background-size: 23px;
+  background-repeat: no-repeat;
+}
+.divMaps {
+  width: 24px;
+  height: 34px;
+  background-image: url("Images/GoogleMaps_logo.svg");
+  background-repeat: no-repeat;
+  font-size: 0;
+  float: right
+}
+#M_MC_FFView_SecLocs_SecondaryLocs.secLocs ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li,
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #Einrichtungsdaten #M_MC_FacilityData #M_MC_FFView_SecLocs_SecondaryLocs.secLocs .addressOuter ul.standortContent li,
+#M_MC_uppEinrichtungsdaten ul#M_MC_SLF_UlSecLocs li{
+	list-style-type: none;
+	border: 1px solid #aaa;
+	padding: 0.5rem 2rem 0.5rem 0.5rem;
+	margin: 0rem 0.5rem 0.5rem 0;
+	float: left;
+	height: 14rem;
+	position: relative;
+	overflow: hidden
+}
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent li.status1[selected="selected"]:after {
+	content: "⌛" /* "Änderungen werden validiert"*/;
+	opacity: 1;
+	bottom: 0.5rem;
+	position: absolute;
+	right: 0.5rem;
+	font-size: 1.5rem;
+	color: white;
+}
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent li.status4:after,
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent li.status1:after{
+	content: "⌛" /* "Änderungen werden validiert"*/;
+	opacity:1;
+	bottom:0.5rem;
+	position:absolute;
+	right: 0.5rem;
+	font-size:1.5rem
+}
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent li.status0:after{
+	content: "✔" /* "Leistung angenommen"*/;
+	color:#00AE21;
+	bottom:0.5rem;
+	position:absolute;
+	right: 0.5rem;
+	font-size:1.5rem
+}
+#M_MC_FFView_SecLocs_SecondaryLocs.secLocs ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li .mobil:before{
+	content:"Mobil: "
+}
+#M_MC_FFView_SecLocs_SecondaryLocs.secLocs ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li .capacity:before{
+	content:"Platzzahl: "
+}
+ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li .contactData .telephone:before,
+#M_MC_FFView_ContactDirect_CtTelephone:before,
+.lblTelephone:before,
+ul#M_MC_SLF_UlSecLocs .contactData .telephone:before{
+	content:"Telefon: "
+}
+ul#M_MC_SLF_UlSecLocs .contactData .mobil::before,
+.lblTelephoneMobile:before,
+#M_MC_FFView_ContactDirect_CtMobil:before{
+	content:"Mobil: "
+}
+#M_MC_FFView_SecLocs_SecLocAddLoc.pnlEdit label,
+#M_MC_FFView_SecLocs_SecLocAddLoc.pnlEdit input{
+	margin-bottom:0.5rem
+}
+#M_MC_FFView_SecLocs_BtnAddLoc,
+#M_MC_FFView_SecLocs_BtnCancelAdd{
+	width:unset !important
+}
+#M_MC_FFView_SecLocs_SecLocAddLoc.pnlEdit label{
+	width:25%
+}
+
+#M_MC_FFView_SecLocs_SecLocAddLoc.pnlEdit input{
+	width:60%;
+}
+ul#M_MC_FFView_SecLocs_UlSecLocs li .contactData .telefax:before,
+ul#M_MC_SLF_UlSecLocs .contactData .telefax .telefax:before,
+#M_MC_SLF_SecondaryLocs.secLocs #M_MC_SLF_UlSecLocs.standortContent li .telefax:before,
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent .telefax .telefax:before,
+.lblTelefax:before,
+#M_MC_FFView_ContactDirect_CtTelefax:before{
+	content:"Fax: "
+}
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent li.status0[selected="selected"]:after{
+	content: "✔" /*Leistung angenommen*/;
+	bottom:0.5rem;
+	position:absolute;
+	right: 0.5rem;
+	font-size:1.5rem;
+	color:white;
+}
+
+.secLocs.outer {
+	display:inline-block;
+	width:100%;
+}
+
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #Einrichtungsdaten #M_MC_FacilityData .facData .secLocs.outer #M_MC_FFView_SecLocs_SecondaryLocs.secLocs ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li {
+	width: calc((100% / 2) - 3.2rem);
+	cursor: pointer
+}
+#M_MC_pnlStammDaten #Einrichtungsdaten #M_MC_uppEinrichtungsdaten #M_MC_pnlEinrichtungsdaten .secLocs.outer #M_MC_SLF_SecondaryLocs.secLocs ul#M_MC_SLF_UlSecLocs.standortContent li{
+	width: calc((100% / 2) - 3.25rem);
+	cursor:pointer
+}
+#M_MC_SLF_UlSecLocs li .stName{
+	font-weight:bold
+}
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent li[selected="selected"],
+#M_MC_SLF_UlSecLocs.standortContent li[selected="selected"]{
+	background:var(--color-blue)
+}
+#M_MC_FFView_SecLocs_UlSecLocs li[selected="selected"] a,
+#M_MC_pnlEinrichtungsdaten ul#M_MC_SLF_UlSecLocs li[selected="selected"] a,
+#M_MC_FFView_SecLocs_UlSecLocs li[selected="selected"],
+#M_MC_pnlEinrichtungsdaten ul#M_MC_SLF_UlSecLocs li[selected="selected"]{
+	list-style-type: none;
+	color:#fff
+}
+/* KACHEL ENDE */
+#M_MC_SLF_UlSecLocs.standortContent li.status0[selected="selected"] .address.status0 .maps a{
+	border:none !important
+}
+.msgbox	#M_MC_FPReporting_PnlAddFfrType #M_MC_FPReporting_FprObk_3.fprCat #M_MC_FPReporting_ctl09,
+.msgbox #M_MC_FPReporting_PnlAddFfrType #M_MC_FPReporting_FprObk_4.fprCat #M_MC_FPReporting_ctl10{
+	margin-top:0.6rem
+}
+#M_MC_pnlSpecialData {
+	margin-top:1rem;
+}
+#M_MC_FPR .headers{
+	display:inline-block !important
+}
+#M_MC_pnlStammDaten #Einrichtungsdaten #M_MC_uppEinrichtungsdaten #M_MC_pnlEinrichtungsdaten .pnlFacilityData #PnlInformation .headers{
+	width:100%;
+	height:30px;
+}
+/* Tagespflege */
+	
+#FFRContent .fprQst{
+	width:45px !important;
+}
+/*#FFRContent .fprQst label[checked="checked"]{
+	background:green
+}*/
+#FFRContent label[title="Montag"],
+#FFRContent label[title="Dienstag"],
+#FFRContent label[title="Mittwoch"],
+#FFRContent label[title="Donnerstag"],
+#FFRContent label[title="Freitag"],
+#FFRContent label[title="Samstag"],
+#FFRContent label[title="Sonntag"]
+{
+	background:#EEE;
+	margin-left: 0;
+	height: 40px !important;
+	width: 40px !important;
+	display: block;
+}
+#FFRContent .header[title="Montag"],
+#FFRContent .header[title="Dienstag"],
+#FFRContent .header[title="Mittwoch"],
+#FFRContent .header[title="Donnerstag"],
+#FFRContent .header[title="Freitag"],
+#FFRContent .header[title="Samstag"],
+#FFRContent .header[title="Sonntag"]{
+	width: 45px !important;
+	float:left     
+}
+
+#M_MC_pnlSpecialData #FFRContent [data-type="2"],
+#M_MC_pnlSpecialData #FFRContent [data-type="2"] .headers div,
+#M_MC_pnlSpecialData #FFRContent [data-type="2"] .headers,
+#M_MC_FPReporting_FfrType[data-type="2"],
+#M_MC_FPReporting_FfrType[data-type="2"] .headers div,
+#M_MC_FPReporting_FfrType[data-type="2"] .headers,
+#M_MC_FPReporting_PnlAddFfrType[data-type="2"],
+#M_MC_FPReporting_PnlAddFfrType[data-type="2"] .headers div,
+#M_MC_FPReporting_PnlAddFfrType[data-type="2"] .headers {
+  height: 25px !important;
+}
+#M_MC_FPReporting_PnlAddFfrType[data-type="2"] .headers,
+#M_MC_FPReporting_FfrType[data-type="2"] .headers,
+#M_MC_ctl02_FfrType .headers{
+	display:unset
+}
+html body #Page form#aspnetForm #M_PnlMain.main .wrapper .innerMain #M_MC_PnlStammDaten #M_MC_CurrentFacility #Einrichtungsdaten #M_MC_FacilityData #DivFPR #FFRContent #M_MC_FPReporting_FFRData.ffrData #M_MC_FPReporting_FfrType .headers .header.row.empty,
+html body #Page form#aspnetForm #M_PnlMain.main .wrapper .innerMain #M_MC_pnlStammDaten #Einrichtungsdaten #M_MC_uppEinrichtungsdaten #M_MC_pnlEinrichtungsdaten .pnlFacilityData #PnlInformation #M_MC_pnlSpecialData #FFRContent #M_MC_ctl02_FFRData.ffrData #M_MC_ctl02_FfrType .headers .header.row.empty{
+	margin-right:1rem
+}
+#M_MC_pnlSpecialData #FFRContent [data-type="2"] .header.row,
+#M_MC_pnlSpecialData #FFRContent [data-type="2"] .fprCat div[data-ctl="c3"],
+#M_MC_pnlSpecialData #FFRContent [data-type="2"] .fprCat div[data-ctl="c4"],
+#M_MC_FPReporting_FfrType[data-type="2"] .header.row,
+#M_MC_FPReporting_FfrType[data-type="2"] .fprCat div[data-ctl="c3"],
+#M_MC_FPReporting_FfrType[data-type="2"] .fprCat div[data-ctl="c4"],
+#M_MC_FPReporting_PnlAddFfrType[data-type="2"]	.header.row,
+#M_MC_FPReporting_PnlAddFfrType[data-type="2"] .fprCat div[data-ctl="c3"],
+#M_MC_FPReporting_PnlAddFfrType[data-type="2"] .fprCat div[data-ctl="c4"]{
+	height:10px !important;
+	width: 96px
+}
+
+#M_MC_pnlSpecialData #FFRContent [data-type="2"] .fprCat .fprQst,
+#M_MC_pnlSpecialData #FFRContent [data-type="2"] .header.col,
+#M_MC_FPReporting_FfrType[data-type="2"] .fprCat .fprQst,
+#M_MC_FPReporting_FfrType[data-type="2"] .header.col,
+#M_MC_FPReporting_PnlAddFfrType[data-type="2"] .fprCat .fprQst,
+#M_MC_FPReporting_PnlAddFfrType[data-type="2"]	.header.col{
+		width: calc((100% - 100px) / 8) !important;
+	}
+	
+#M_MC_pnlSpecialData #FFRContent [data-type="2"] .fprCat .fprQst,
+#M_MC_pnlSpecialData #FFRContent [data-type="2"] .fprCat div[data-ctl="c3"],
+#M_MC_pnlSpecialData #FFRContent [data-type="2"] .fprCat div[data-ctl="c4"],
+#M_MC_pnlSpecialData #FFRContent [data-type="2"] .header,
+	
+#M_MC_FPReporting_FfrType[data-type="2"] .fprCat .fprQst,
+#M_MC_FPReporting_FfrType[data-type="2"] .fprCat div[data-ctl="c3"],
+#M_MC_FPReporting_FfrType[data-type="2"] .fprCat div[data-ctl="c4"],
+#M_MC_FPReporting_FfrType[data-type="2"] .header,
+#M_MC_FPReporting_PnlAddFfrType[data-type="2"] .fprCat .fprQst,
+#M_MC_FPReporting_PnlAddFfrType[data-type="2"] .fprCat div[data-ctl="c3"],
+#M_MC_FPReporting_PnlAddFfrType[data-type="2"] .fprCat div[data-ctl="c4"],
+#M_MC_FPReporting_PnlAddFfrType[data-type="2"]	.header{
+		float:left;
+		height:50px;
+	}
+	
+#M_MC_pnlSpecialData #FFRContent [data-type="2"] label,
+#M_MC_pnlSpecialData #FFRContent [data-type="2"] .fprCat .fprQst .qstVal input[type="checkbox"],	
+	
+#M_MC_FPReporting_FfrType[data-type="2"] label,
+#M_MC_FPReporting_FfrType[data-type="2"] .fprCat .fprQst .qstVal input[type="checkbox"],
+#M_MC_FPReporting_PnlAddFfrType[data-type="2"] .fprCat .fprQst .qstVal input[type="checkbox"]{
+		background:#EEE;
+		margin-left: 0;
+		height: 40px;
+	width: 40px;
+	display: block;
+	}
+	#FFRContent .header[title="Anzahl"],
+	#M_MC_FPReporting_FfrType .header[title="Anzahl"],
+	#M_MC_FPReporting_PnlAddFfrType div[title="Anzahl"]{
+		padding-top: 10px; height:30px
+	}
+#PnlAddFFRCnt{
+	height:10rem
+}
+	#M_MC_FPReporting_PnlAddFfrType{
+		height:3rem;
+	}
+	
+#M_MC_pnlSpecialData #FFRContent [data-type="2"] label[checked="checked"],
+#M_MC_pnlSpecialData #FFRContent [data-type="2"] .fprCat .fprQst .qstVal input[type="checkbox"]:checked,	
+#M_MC_FPReporting_FfrType[data-type="2"] label[checked="checked"],
+#M_MC_FPReporting_FfrType[data-type="2"] .fprCat .fprQst .qstVal input[type="checkbox"]:checked,	
+#M_MC_FPReporting_PnlAddFfrType[data-type="2"] .fprCat .fprQst .qstVal input[type="checkbox"]:checked{
+		background: #accb5f
+
+	}
+	#FFRContent{width:480px}
+/* Tagespflege */
+
+/* Platzzahlen */
+
+#FFRContent .fprCat .fprQst,
+#M_MC_FPReporting_FfrType .headers .header.col,
+#M_MC_FPReporting_FfrType .fprCat .fprQst
+{
+	width:10%
+}
+#FFRContent [data-type="1"] .fprCat div[data-ctl="c1"],
+#M_MC_FPReporting_FfrType[data-type="1"] .fprCat div[data-ctl="c1"],
+#M_MC_FPReporting_PnlAddFfrType[data-type="1"] .fprCat div[data-ctl="c1"]{
+	content: url(images/Icons/Doppelzimmer_active.svg);
+	float:left;
+	display:block;
+	height:40px;
+}
+
+#FFRContent [data-type="1"] .fprCat div[data-ctl="c2"],
+#M_MC_FPReporting_FfrType[data-type="1"] .fprCat div[data-ctl="c2"],
+#M_MC_FPReporting_PnlAddFfrType[data-type="1"] .fprCat div[data-ctl="c2"]{
+	content: url(images/Icons/Einzelzimmer_active.svg);
+	float:left;
+	display:block;
+	height:40px
+}
+.header[title="Weiblich"]{
+	content: url(images/Icons/Frau.svg);
+	float:left;
+	width:30px;
+	display:block;
+}
+
+.eName{
+	margin-left: 0 !important;
+padding-left: 0 !important;
+}
+#M_MC_FFView_AddFacilityOpener:hover,
+#M_MC_FFView_DeleteFacOpener:hover{
+		filter: var(--filter-red)
+}
+#M_MC_FFView_DeleteFacOpener{
+	background-image: url("Images/Icons/Stammdaten/Einrichtung_loeschen.svg");
+	filter: var(--filter-blue)
+}
+#M_MC_FFView_AddFacilityOpener{
+	background-image: url("Images/Icons/Stammdaten/Einrichtung_hinzufuegen.svg");
+	filter: var(--filter-blue)
+}
+
+.qstVal[title="Weiblich"] input[type="checkbox"]:checked:after{
+	content: url(images/Icons/Frau_active.svg);
+	position: absolute;
+	height: 40px;
+	width: 40px;
+	opacity:1
+}
+.qstVal[title="Weiblich"] input[type="checkbox"]:after,
+.qstVal[title="Divers"] input[type="checkbox"]:after,
+.qstVal[title="Männlich"] input[type="checkbox"]:after{
+	cursor:pointer !important
+}
+
+.qstVal[title="Weiblich"] input[type="checkbox"],
+.qstVal[title="Divers"] input[type="checkbox"],
+.qstVal[title="Männlich"] input[type="checkbox"]{
+	margin-left: 1.6rem !important;
+}
+#FFRContent .fprCat .fprQst label[title="Männlich"],
+#M_MC_FPReporting_FfrType label[title="Männlich"],
+.qstVal[title="Männlich"] input[type="checkbox"]:after{
+	content: url(images/Icons/Mann.svg);
+	position: absolute;
+	height: 40px;
+	width: 40px;
+	opacity:0.2;
+	cursor:default
+}
+#FFRContent .fprCat .fprQst label[title="Weiblich"],
+#M_MC_FPReporting_FfrType label[title="Weiblich"],
+.qstVal[title="Weiblich"] input[type="checkbox"]:after{
+	content: url(images/Icons/Frau.svg);
+	position: absolute;
+	height: 40px;
+	width: 40px;
+	opacity:0.2;
+	cursor:default
+}
+#FFRContent .fprCat .fprQst label[title="Divers"],
+#M_MC_FPReporting_FfrType label[title="Divers"],
+.qstVal[title="Divers"] input[type="checkbox"]:after{
+	content: url(images/Icons/Divers.svg);
+	position: absolute;
+	height: 40px;
+	width: 40px;
+	opacity:0.2;
+	cursor:default
+}
+
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #Einrichtungsdaten #M_MC_PnlTraeger #InstitutionInner .pnlAddress.icon a#M_MC_PnlInst_InstAddress_AddrRef.divMaps.clickableAddress{
+	
+}
+html body #Page form#aspnetForm #M_PnlMain.main .wrapper .innerMain #M_MC_pnlStammDaten #Einrichtungsdaten #M_MC_uppEinrichtungsdaten #M_MC_pnlEinrichtungsdaten .pnlFacilityData #PnlInformation #M_MC_pnlSpecialData #FFRContent #M_MC_ctl02_FFRData.ffrData #M_MC_ctl02_FfrType .fprCat .fprQst label.qstVal.valType0{
+	cursor:unset;
+}
+
+#FFRContent .fprCat .fprQst,
+#M_MC_FPReporting_FfrType .fprCat .fprQst{
+	height:40px;
+	float:left;
+	/*width: 20%;*/
+}
+#FFRContent .fprCat .fprQst label[title="Männlich"][checked="checked"],
+#M_MC_FPReporting_FfrType label[title="Männlich"][checked="checked"],
+.qstVal[title="Männlich"] input[type="checkbox"]:checked:after{
+	content: url(images/Icons/Mann_active.svg);
+	position: absolute;
+	height: 40px;
+	width: 40px;
+	opacity:1;
+	
+}
+#M_MC_ctl02_FfrType[data-type="1"] .headers{
+	display:none !important
+}
+.ffrPlaces .label{
+	margin-top:0.5rem
+}
+#M_MC_ctl02_DivFFRAvailability,
+#FFRHeader{
+	display:none;
+}
+#FFRContent .ffrAvail.ffrSub span{
+	display:none
+}
+#FFRContent .fprCat .fprQst label[title="Weiblich"][checked="checked"],
+#M_MC_FPReporting_FfrType label[title="Weiblich"][checked="checked"],
+.qstVal[title="Weiblich"] input[type="checkbox"]:checked:after{
+	content: url(images/Icons/Frau_active.svg);
+	position: absolute;
+	height: 40px;
+	width: 40px;
+	opacity:1;
+}
+#FFRContent .fprCat .fprQst label[title="Divers"][checked="checked"],
+#M_MC_FPReporting_FfrType label[title="Divers"][checked="checked"],
+.qstVal[title="Divers"] input[type="checkbox"]:checked:after{
+	content: url("images/Icons/Divers_active.svg");
+	position: absolute;
+	height: 40px;
+	width: 40px;
+	opacity:1;
+}
+#M_MC_FPReporting_DivFFRAvailability,
+#M_MC_FPReporting_DivFFRPlaces,
+#M_MC_FPReporting_FfrType,
+#M_MC_FPReporting_FfrType{
+	height:40px;
+}
+.header[title="Männlich"]{
+	content: url(images/Icons/Mann.svg);
+	float:left;
+	width:30px;
+	display:block;
+}
+.header[title="Divers"]{
+	content: url(images/Icons/Divers.svg);
+	float:left;
+	width:30px;
+	display:block;
+}
+
+#M_MC_FPReporting_PnlAddFFR{
+	height:11rem !important;
+	width: 460px !important
+}
+#M_MC_FPReporting_FprObk_1,
+#M_MC_FPReporting_FprObk_2{
+	height:unset;
+	margin-top: 0.5rem
+}
+#M_MC_FFView_OpenEdtLocsData {
+	background-image: url("Images/Icons/Stammdaten/Standort_bearbeiten.svg") !important;
+}
+#FFRContent label[data-ctl="q2"],
+#FFRContent label[data-ctl="q3"],
+#FFRContent label[data-ctl="q4"],
+#FFRContent label[data-ctl="q6"],
+#FFRContent label[data-ctl="q7"],
+#FFRContent label[data-ctl="q8"]{
+	margin-left: 0.7rem;
+}
+
+#FFRContent .headers{display:none}
+#FFRContent .fprCat,
+#M_MC_FPReporting_FfrType .headers,
+#M_MC_FPReporting_FfrType .fprCat{
+	height:50px
+}
+.qstVal[title="Anzahl"]:before{
+	content:"Frei: ";
+}
+#FFRContent .fprCat .header.row{
+	/*width: unset;*/
+	width:80px;
+	margin-right:1rem;
+	float: left;
+	height: 40px;
+	line-height: 2.5rem;
+}
+#M_MC_FPReporting_ctl00{
+	display:none;
+}
+.fprCat:nth-child(2) > div:nth-child(2),
+.fprCat:nth-child(3) > div:nth-child(2){
+	width:50px !important
+}
+
+#FFRContent .headers .header.row.empty,
+#M_MC_FPReporting_FprObk_1 .fprQst,
+#M_MC_FPReporting_FprObk_2 .fprQst,
+.header.col[title="Weiblich"],
+.header.col[title="Männlich"],
+.header.col[title="Divers"],
+.header.col[title="Anzahl"],
+#M_MC_FPReporting_FfrType .row,
+#M_MC_FPReporting_PnlAddFfrType .row,
+#M_MC_FPReporting_FprObk_2 div[data-ctl="c2"],
+#M_MC_FPReporting_FprObk_1 div[data-ctl="c1"]{
+	width: 20%;
+	float: left;
+	height: 40px;
+}
+#M_MC_FPReporting_FprObk_2 .fprQst input.qstVal.valType1,
+#M_MC_FPReporting_FprObk_1 .fprQst input.qstVal.valType1{
+	position: absolute !important;
+	left: unset !important;
+	width: 56px;
+	height: 2rem
+}
+#PnlAddFFRCnt input[type="checkbox"] {
+	width: 40px !important;
+	height: 40px !important;
+	-webkit-appearance: none;
+	margin-left: 2rem
+}
+#M_MC_FPReporting_PnlAddFFR input[type="number"] {
+	position: absolute !important;
+	left: 0 !important;
+	width: 20%
+}
+#M_MC_FPReporting_PnlAddFFR input[type="checkbox"] {
+	left: 0 !important;
+	margin-top: 0;
+	background: white;
+}	
+#M_MC_FPReporting_PnlAddFfrType .fprQst .qstVal.valType0{
+	padding-top: 0;
+}
+
+/* Platzzahlen */
+
+#FFRContent label.qstVal.valType1,
+#M_MC_FacilityData #M_MC_FPReporting_FFRData.ffrData #M_MC_FPReporting_FfrType .fprCat .fprQst label.qstVal.valType1{
+		padding-top: 10px;
+		height: 30px;
+		position:absolute
+	}
+	
+#M_MC_FPReporting_DivFFRPlaces #M_MC_FPReporting_FFRPlaces,
+#M_MC_FFView_FIV_EditFacImg h2,
+#M_MC_FFView_FFS_EditFeatures h2,
+#M_MC_FDescr_EditFacDesc h2,
+#M_MC_FFView_ChangeLocationVisibility h2,
+#M_MC_PnlInst_EditInst h2,
+#M_MC_FFView_ContactData h2,
+#M_MC_FFView_EditContact h2,
+#M_MC_FFView_ChangeVisibility h2 {
+	font-size: 1rem;
+	padding: 0;
+	margin: 0 0 0.5rem 0;
+	color: var(--color-black)
+}
+
+#M_MC_FFView_FIV_EditFacImg h2 {
+	display: none
+}
+
+.msgbox[aria-describedby="M_MC_FFView_FIV_EditFacImg"] .ui-dialog-titlebar:before {
+	content: "Bild der Einrichtung ändern";
+	padding: 0.25rem;
+	display: block
+}
+
+#M_MC_FFView_FFS_LblFacilityfeatures {
+	margin-left: 0
+}
+
+.msgbox[aria-describedby="M_MC_FFView_FIV_EditFacImg"] .ui-dialog-titlebar .ui-dialog-title,
+.msgbox[aria-describedby="M_MC_FFView_FIV_EditFacImg"] .ui-dialog-titlebar:after {
+	display: none
+}
+
+.msgbox[aria-describedby="M_MC_FPReporting_PnlAddFFR"] .ui-dialog-titlebar:before {
+	content: "Änderung der Platzzahl";
+	padding: 0.25rem;
+	display: block
+}
+
+.msgbox[aria-describedby="M_MC_FPReporting_PnlAddFFR"] .ui-dialog-titlebar:after {
+	display: none
+}
+
+#M_MC_FFView_Contact_Pers:before {
+	content: "Ansprechpartner:in";
+	position: relative;
+	display: block;
+	font-family: var(--font-bold)
+}
+
+/* Bilder der Einrichtung -> display: none */
+#M_MC_pnlEinrichtungsdaten .pnlFacilityData #FIVHeader.sub.header{
+	display:none
+}
+
+#M_MC_pnlEinrichtungsdaten .pnlFacilityData #FIVContent.sub.content{
+	float:right;
+	width:30%
+}
+
+#M_MC_pnlEinrichtungsdaten .pnlFacilityData {
+	display:inline-block
+}
+
+#FfrType .label:after {
+	content: "" !important
+}
+#M_MC_FacilityData
+#FfrType .ffrSub:not(:first-child):before {
+	content: " / ";
+	margin-right:5px
+}
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #Einrichtungsdaten #M_MC_FacilityData #FFRContent #M_MC_FPReporting_FFRData.ffrData #M_MC_FPReporting_DivFFRAvailability.ffrAvail span.label{
+	display:none
+}
+
+#M_MC_FPReporting_FFRAvailability.low{
+	background-position-x: 0%;
+	background-position-y: 0%;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	background-image: url("Images/wuerfel.svg");
+	background-size: auto;
+	background-origin: padding-box;
+	background-clip: border-box;
+	background-size: auto;
+	background-size: 32px;
+	height: 35px;
+	width: 32px;
+	font-size: 0;
+	position: absolute
+}
+
+#Einrichtungsdaten{
+	width: 100%;
+	position: relative
+}
+
+#M_MC_pnlStammDaten #Einrichtungsdaten #M_MC_uppEinrichtungsdaten #M_MC_pnlEinrichtungsdaten.FacilityData fieldset{
+	padding:0;
+	margin:0;
+	border: none
+}
+
+#M_MC_pnlStammDaten #Einrichtungsdaten #M_MC_uppEinrichtungsdaten #M_MC_pnlEinrichtungsdaten.FacilityData fieldset legend span{
+	height:20px
+}
+
+#M_MC_pnlStammDaten #Einrichtungsdaten #M_MC_uppEinrichtungsdaten #M_MC_pnlEinrichtungsdaten.FacilityData fieldset legend{
+	width: calc(100% - 1.1rem);
+	background: var(--color-blue);
+	color: var(--color-white);
+	height: 40px;
+	padding-left: 1rem;
+	line-height: 2.5rem
+}
+
+#M_Header_content{
+	font-size:80%
+}
+
+.ffrDate{
+	font-size:80%;
+	font-style:italic;
+	margin-top: 0.3rem;
+}
+#M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-page.jsgrid-pager-current-page{
+	background-color:var(--color-blue);
+	color:var(--color-white)
+}
+.ffrDate .label {
+	display: none;
+}
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs .jsgrid-pager span.jsgrid-pager-page a{
+	display:block
+}
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs .jsgrid-pager{
+	text-align:center;
+	font-size:0
+}
+
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container{
+	display: block;
+	max-width: 300px;
+	margin: 10px 0
+}
+
+#Einrichtungsdaten{
+	margin-top:1rem
+}
+#M_MC_Einrichtungen .jsgrid-pager .jsgrid.pgCounter.container .lbl{
+	border:0 !important
+}
+#M_MC_Einrichtungen .jsgrid-pager .jsgrid.pgCounter.container{
+	font-size: 1rem;
+}
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager span.jsgrid-pager-nav-button,
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager span.jsgrid-pager-nav-button.jsgrid-pager-nav-inactive-button,
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager span.jsgrid-pager-page{
+	padding: 0.2rem;
+	margin-right: 0.2rem;
+	height: 21px;
+	display: inline-block;
+	margin-bottom: 0.2rem;
+	font-size: 1rem;
+}
+
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container span{
+	border-radius: 0.1rem;
+	border:1px solid var(--color-blue)
+}
+
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs .pnlFac div{
+	padding: 0 0 0 10px;
+	/*display: inline-block;*/
+	width: 170px;
+	margin-left: 2rem
+}
+
+.unit_€::after {
+    content: '€'
+}
+
+.unit_%::after {
+    content: '%'
+}
+
+.zeroVal {
+	display: none
+}
+
+#M_MC_FFView_ContactDirect_Pers{
+	margin: 10px 0
+}
+
+#M_MC_FFView_SpclData{
+	margin: 1rem 0
+}
+
+#LblFacilityLabel{
+	display:inline-block
+}
+
+#GridFacs .jsgrid-header-cell{
+	display:none
+}
+
+#M_MC_FPReporting_FFRData.ffrData .label {
+	font-family: var(--font-normal)
+}
+
+#M_MC_FFView_ContactDirect_ContactPerson{
+	font-family: var(--font-bold) !important
+}
+
+#M_MC_FPReporting_DivFFRPlaces{
+	display:inline-block
+}
+
+#M_MC_FPReporting_DivFFRPlaces .label,
+#M_MC_FFView_SpclData .valuepair .label {
+	font-family: var(--font-bold) !important
+}
+
+.ui-widget.ui-widget-content{
+	border: 1px solid #ddd;
+	padding: 0;
+	box-shadow: 0px 0px 10px #999
+}
+
+.msgbox .ui-helper-clearfix:first-child{
+	background: var(--color-blue) !important;
+	color: var(--color-white);
+	padding: 0.2rem
+}
+
+#M_MC_FPReporting_DivFFRDate{
+	width: 100%;
+	display: inline-block
+}
+#M_MC_uppEinrichtungsdaten #FfrType .ffrSub:before {
+	content:"- "
+}
+
+.ffrAvail.ffrSub::before {
+    content: ''
+}
+
+.ffrAvail.ffrSub {
+    display: block
+}
+
+#M_MC_FPReporting_FFRData.ffrData  .label:after,
+#M_MC_FFView_SpclData .valuepair .label:after{
+	content:":\00a0"
+}
+
+#M_MC_FFView_SpclData .valuepair .value:before{
+	content:" "
+}
+
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #M_MC_PnlViews canvas#ViewsChart.chartjs-render-monitor{
+	max-width:800px
+}
+
+#M_MC_Attachments_Files input.delAttmt{
+	background:var(--color-red);
+	color:var(--color-white)
+}
+
+#M_MC_FFView_SpclData .valuepair{
+	margin-bottom:0.5rem
+}
+
+#M_MC_FFView_OpenAddFFR {
+	background-image: url("Images/Icons/Stammdaten/Platzzahl.svg");
+	filter: var(--filter-blue)
+}
+
+#M_MC_FFView_OpenAddFFR:hover {
+	filter: var(--filter-red)
+}
+
+#M_MC_FFView_EdtInstOp:hover {
+	filter: var(--filter-red)
+}
+
+#M_MC_FFView_EdtInstOp {
+	background-image: url("Images/Icons/Stammdaten/Traeger.svg");
+	filter: var(--filter-blue)
+}
+
+#M_MC_FFView_OpenAddFDV {
+	background-image: url("Images/Icons/Stammdaten/Info.svg");
+	filter: var(--filter-blue)
+}
+
+#M_MC_FFView_OpenAddFDV:hover {
+	filter: var(--filter-red)
+}
+
+#M_MC_FFView_OpenChgLocVisibility {
+	background-image: url("Images/Icons/Stammdaten/Sichbarheit_Adresse.svg");
+	filter: var(--filter-blue)
+}
+
+#M_MC_FFView_OpenChgLocVisibility:hover {
+	filter: var(--filter-red)
+}
+
+#M_MC_FFView_OpenChgLocVisibility.hidden {
+	background-image: url("Images/Icons/Stammdaten/Nicht_Sichbarheit_Adresse.svg")
+}
+
+#M_MC_FFView_OpenChgLocVisibility.hidden:hover {
+	filter: var(--filter-red)
+}
+#M_MC_DdlNewTraeger{
+	margin-right: 20px;
+}
+#M_MC_NewFacility .valuepair{
+	margin-bottom:0.5rem;
+	height:36px
+}
+#M_MC_DivNewTraeger,
+#M_MC_LblNewLeistungstyp{
+	padding: 0 0 0 10px
+}
+#M_MC_DdlLeistungstyp{
+	margin:0
+}
+#M_MC_DivNewTraeger{
+	width:100%
+}
+#M_MC_DdlLeistungstyp{
+	margin-right:0.5rem
+}
+
+
+#M_MC_DdlKreise{
+	width:312px !important;
+	height:30px;
+	margin-left:0.6rem;
+	margin-right: 0rem !important
+}
+#M_MC_DivNewTraeger,
+#M_MC_LblNewLeistungstyp,
+#M_MC_NewFacility #M_MC_LblKreis,
+#M_MC_NewFacility .PnlDropDown{
+	float:left;
+	line-height: 2rem
+}
+
+#M_MC_NewFacility input{
+	margin-right: 0.5rem !important;
+	width:300px !important
+}
+#M_MC_FFView_OpenEdtContact {
+	background-image: url("Images/Icons/Stammdaten/Ansprechpartner.svg");
+	filter: var(--filter-blue)
+}
+
+#M_MC_FFView_OpenEdtContact:hover {
+	filter: var(--filter-red)
+}
+
+#M_MC_FFView_ChangeLocationVisibility,
+#M_MC_FFView_ChangeVisibility{
+	min-width:500px
+}
+
+#M_MC_FFView_OpenChgVisibility.ctlOpener.facHidden.visible,
+#M_MC_FFView_OpenChgVisibility.ctlOpener.facVisible {
+	background-image: url("Images/Icons/Stammdaten/Sichbarheit_Einrichtung.svg");
+	filter: var(--filter-blue)
+}
+
+#M_MC_FFView_OpenChgVisibility.ctlOpener.facHidden.visible:hover,
+#M_MC_FFView_OpenChgVisibility.ctlOpener.facVisible:hover {
+	filter: var(--filter-red)
+}
+
+#M_MC_FFView_OpenChgVisibility.ctlOpener.facVisible.hidden,
+#M_MC_FFView_OpenChgVisibility.ctlOpener.facHidden {
+	background-image: url("Images/Icons/Stammdaten/Nicht_Sichbarheit_Einrichtung.svg");
+	filter: var(--filter-blue)
+}
+
+#M_MC_FFView_OpenChgVisibility.ctlOpener.facVisible.hidden:hover,
+#M_MC_FFView_OpenChgVisibility.ctlOpener.facHidden:hover {
+	filter: var(--filter-red)
+}
+
+#M_MC_FFView_OpenEdtFacData {
+	background-image: url("Images/Icons/Stammdaten/Bearbeiten.svg");
+	filter: var(--filter-blue)
+}
+
+#M_MC_FFView_OpenEdtFacData:hover {
+	filter: var(--filter-red)
+}
+
+#M_MC_FFView_OpenAddFIV {
+	background-image: url("Images/Icons/Stammdaten/Einrichtungsbild.svg");
+	filter: var(--filter-blue)
+}
+li.Accessibility:hover,
+li.Summary:hover,
+#M_MC_FFView_OpenEdtLocsContacts:hover,
+#M_MC_FFView_OpenAddLocation:hover,
+#M_MC_FFView_OpenEdtLocsData:hover,
+#M_MC_FFView_AddFacilityOpener:hover,
+#M_MC_FFView_DeleteFacOpener:hover,
+#M_MC_FFView_OpenFacFeatures:hover,
+#M_MC_FFView_OpenAddFDV:hover,
+#M_MC_FFView_OpenAddFFR:hover,
+#M_MC_FFView_EdtInstOp:hover,
+#M_MC_FFView_OpenChgLocVisibility:hover,
+#M_MC_FFView_OpenChgVisibility:hover,
+#M_MC_FFView_OpenEdtContact:hover,
+#M_MC_FFView_OpenEdtFacData:hover,
+#M_MC_FFView_OpenAddFIV:hover,
+#M_MC_FFView_OpenAddFile:hover,
+#M_MC_FFView_OpenAddFIV:hover {
+	filter: var(--filter-red)
+}
+
+#M_MC_FFView_OpenAddFile {
+	background-image: url("Images/Icons/Stammdaten/Broschuere.svg");
+	filter: var(--filter-blue)
+}
+
+#M_MC_FFView_OpenAddFile:hover {
+	filter: var(--filter-red)
+}
+
+#M_MC_FFView_OpenFacFeatures {
+	background-image: url("Images/Icons/Stammdaten/Merkmale.svg");
+	filter: var(--filter-blue)
+}
+#M_MC_FFView_OpenAddLocation {
+  background-image: url("Images/Icons/Stammdaten/Standort_hinzufuegen.svg") !important;
+}
+#M_MC_FFView_OpenEdtLocsContacts {
+  background-image: url("Images/Icons/Stammdaten/Kontakte_bearbeitenn.svg") !important;
+}
+#M_MC_FFView_OpenFacFeatures:hover {
+	filter: var(--filter-red)
+}
+
+.lblInLine, .lblLeftLabel, .pnlEdit .lblLeftLabel {
+    width: 13%;
+    display: inline-block
+}
+#M_MC_FFView_OpenEdtLocsContacts,
+#M_MC_FFView_OpenAddLocation,
+#M_MC_FFView_OpenEdtLocsData,
+#M_MC_FFView_AddFacilityOpener,
+#M_MC_FFView_DeleteFacOpener,
+#M_MC_FFView_OpenFacFeatures,
+#M_MC_FFView_OpenAddFDV,
+#M_MC_FFView_OpenAddFFR,
+#M_MC_FFView_EdtInstOp,
+#M_MC_FFView_OpenChgLocVisibility,
+#M_MC_FFView_OpenChgVisibility,
+#M_MC_FFView_OpenEdtContact,
+#M_MC_FFView_OpenEdtFacData,
+#M_MC_FFView_OpenAddFIV,
+#M_MC_FFView_OpenAddFile {
+	background-position: left;
+	background-repeat: no-repeat;
+	background-size: 32px;
+	display: inline-block;
+	height: 32px;
+	width: 32px;
+	font-size:0 !important
+}
+
+#M_MC_Attachments_Files input,
+#M_MC_FFView_FacCtls .ctlOpener {
+    float: left;
+    padding: 0.4rem;
+    font-size:0;
+    border-radius: 0.2rem;
+    margin: 0.2rem;
+    cursor:pointer;
+    border:0;
+    font-size: 100%
+}
+
+#PnlAddFFRCnt div{
+	height:40px
+}
+
+#PnlAddFFRCnt input[type="checkbox"],
+#PnlAddFFRCnt input[type="number"]{
+	position: absolute;
+	left: 180px
+}
+#FacilityInfo .value{
+	margin-left:0
+}
+#M_MC_FFView_FFS_FacFeatList li{
+	list-style-type:none;
+	cursor:pointer;
+	line-height: 1.7rem
+}
+
+#M_MC_FFView_FFS_FacFeatList li:before{
+	width:24px;
+	height:24px;
+	position: absolute;
+	content: url("images/Box_uncheck_grey.svg");
+	margin-left: -2rem
+}
+
+#M_MC_FFView_FFS_FacFeatList li[selected="selected"]:before{
+	content: url("images/Box_check_grey.svg")
+}
+
+.ffs .identifier {
+	font-family: var(--font-bold)
+}
+
+.ffs .identifier::after {
+	content:":"
+}
+#M_MC_DdlNewTraeger,
+#M_MC_TxtNewPLZ,
+#M_MC_TxtNewOrt,
+#M_MC_TxtNewPlatzzahl,
+#M_MC_TxtNewTelefon,
+#M_MC_TxtNewTelefax,
+#M_MC_TxtNewEmail,
+#M_MC_TxtNewStrasse,
+#M_MC_TxtNewName,
+#M_MC_FFView_TxtEditContactTitle,
+#M_MC_FFView_TxtEditContactFirstName,
+#M_MC_FFView_TxtEditContactSurName,
+#M_MC_FFView_TxtEditContactTelephone,
+#M_MC_FFView_TxtEditContactTelefax,
+#M_MC_FFView_TxtEditContactMobil,
+#M_MC_FFView_TxtEditContactEmail,
+#M_MC_FFView_TxtEditContactInternet,
+#M_MC_FFView_TxtContactDataTelefax,
+#M_MC_FFView_TxtContactDataMobil,
+#M_MC_FFView_TxtContactDataEmail,
+#M_MC_FFView_TxtContactDataTelefon,
+#M_MC_FFView_TxtContactDataTelefax,
+#M_MC_FFView_TxtContactDataWWW,
+#M_MC_PnlInst_EditInstTel,
+#M_MC_PnlInst_EditInstWeb,
+#M_MC_PnlInst_EditInstEmail,
+#M_MC_FPReporting_TxtFFRAddPlaces{
+	border:1px solid #DDD
+}
+
+#M_MC_FDescr_TxtEditFacDesc{
+	height:400px;
+	width:400px
+}
+
+.ffrPlaces .label{
+	margin-right:0.5rem
+}
+
+#M_MC_FPReporting_TxtFFRAddPlaces{
+	left:147px !important
+}
+
+#M_MC_PnlInst_EditInstTel,
+#M_MC_PnlInst_EditInstWeb,
+#M_MC_PnlInst_EditInstEmail{
+	font-family: var(--font-100) !important;
+	width: 30%
+}
+
+#M_MC_NewFacility #M_MC_BtnCancelNew{
+	margin-top:1rem
+}
+
+#M_MC_NewFacility .controls{
+	margin-top:3rem
+}
+
+
+#M_MC_FFView_EditContact,
+#M_MC_FFView_ContactData {
+	padding: 1rem 1rem 0.5em;
+	height: 400px;
+	display: block;
+	font-family: var(--font-100) !important
+}
+
+.lblInLine,
+.lblLeftLabel,
+.pnlEdit .lblLeftLabel,
+.ffrPlaces .label,
+.ffrDR .label,
+.ffrSexM .label,
+.ffrSexF .label,
+.ffrSexDiv .label {
+	display: inline-block
+}
+
+#FfrType{
+	display: inline-block;
+	left: 0.5rem;
+	position: relative
+}
+
+#M_MC_FPReporting_DivFFRSR {
+	font-family: var(--font-regular)
+}
+
+#M_MC_FFView_EditContact div,
+#M_MC_FFView_ContactData.pnlEdit div {
+	margin-bottom: 0.5rem
+}
+
+.pnlEdit .command.buttons {
+    margin-top: 2rem;
+    margin-left: auto
+}
+#M_MC_FFView_FIV_EditFacImg h2,
+#M_MC_PnlInst_EditInst h2,
+#M_MC_PnlInst_EditInst h2,
+#M_MC_Attachments_AddFile h2 {
+	display:none !important
+}
+
+#M_MC_PnlViews #ViewCount .label{
+	margin-right:0.5rem
+}
+#M_MC_NewFacility h2,
+.pnlEdit h2 {
+	display: none
+}
+
+#Einrichtungsdaten #M_MC_TblVerguetung {
+	width:100%;
+}
+
+#M_MC_Attachments_Files input:hover {
+    background: var(--color-red);
+    color:#FFF
+}
+
+.pnlFac:hover {
+	cursor:pointer;
+	color:var(--color-blue)
+}
+
+#M_MC_Einrichtungen #GridFacs .jsgrid-header-sortable {
+	padding:0.5rem
+}
+
+#Facilities{
+	float:right
+}
+
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs input{
+	width:90%
+}
+
+#ViewCount{
+	margin-top:1.5rem !important
+}
+
+#M_MC_TblVerguetung table,
+.pnlVerguetungTabelle table,
+#M_MC_PnlStammDaten table{
+	border-spacing: 0px;
+    border:1px solid #ddd;
+    width:250px
+}
+
+.pnlVerguetungTabelle table tr,
+#M_MC_PnlStammDaten table tr{
+    margin:0;
+    padding:0
+}
+
+.pnlVerguetungTabelle table tr:nth-child(even),
+#M_MC_PnlStammDaten table tr:nth-child(even){
+	background-color: #f2f2f2
+}
+
+.pnlVerguetungTabelle table td,
+#M_MC_PnlStammDaten table td {
+    padding:10px;
+    border-bottom:1px solid #ccc;
+    border-left:0px;
+    border-right:0px;
+    margin:0;
+    min-height: 4rem;
+	height: 2rem
+}
+
+.pnlVerguetungTabelle,
+.tblVerguetung {
+    padding-bottom: 0px !important;
+    margin:0 !important;
+    text-align: right
+}
+
+h2 {
+	font-family: Calibri,Arial,sans-serif;
+	font-size: 18px;
+	font-size: 1.385em;
+	line-height: 20px;
+	line-height: 1.111em;
+	color: var(--color-red);
+	margin-top: 18px;
+	margin-bottom: 12px;
+	font-weight: var(--font-bold)
+}
+
+#currentFacility canvas{
+	margin-top:0.5rem
+}
+
+#M_MC_FPReporting_DivFFRSexDiv,
+#M_MC_FPReporting_DivFFRSexM,
+#M_MC_FPReporting_DivFFRSR,
+#M_MC_FPReporting_DivFFRDR,
+#M_MC_FPReporting_DivFFRSexF,
+#M_MC_FPReporting_DivFFRDate{
+	font-size: 80%;
+	height: 22px;
+	margin-right: 0.3rem
+}
+
+#FDVHeaderLbl{
+	margin-top:2rem !important
+}
+
+.lblUnterbegriff,
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #M_MC_PnlAttachments #M_MC_Attachments_Attachments .label.attmts,
+#M_MC_AttachmentsPanel_Attachments .label.attmts,
+#FDVHeaderLbl,
+.FFRHeaderLbl,
+#ViewCount,
+h3 {
+	font-size: 1em;
+	line-height: 20px;
+	line-height: 1.25em;
+	margin-top: 1rem;
+	margin-bottom: .4em;
+	color: var(--color-blue);
+	font-family: var(--font-bold)
+}
+.lblBegriff {
+	font-size: 95%;
+	overflow:visible;
+	min-width: 120px
+}
+
+.pnlLV {
+	margin-top:30px;
+	font-size: 85%;
+	float:left;
+	display:inline-block
+}
+
+.PnlLVContent {
+	display:block
+}
+
+.pnlLVBegriff {
+	float:left;
+	display:block;
+	width:700px
+}
+
+.lblLVOberBegriff {
+	float:left;
+	min-width:500px
+}
+
+.lblLVUnterBegriff {
+	float:left;
+	margin-left:20px;
+	min-width:500px
+}
+
+.lblLVBegriff {
+	display:list-item;
+	margin-left:55px;
+	min-width:500px
+}
+
+.lblLVBegriffHeader {
+	margin-left:30px;
+	min-width:500px
+}
+
+.lblLVBegriffHeaderBez {
+	margin-left:10px
+}
+
+.lblBegriffStammdaten {
+	font-size: 95%;
+	overflow:visible;
+	min-width: 100px
+}
+
+.pnlLVBegriffStammdaten {
+	padding-left: 10px
+}
+
+.lblUnterbegriff {
+	overflow:visible
+}
+
+.lblPnlLVHeader {
+	display:inline-block
+}
+
+#imgShowHide {
+	margin-left:5px
+}
+
+#M_MC_PnlStammDaten {
+	width:100%
+}
+
+#M_MC_PnlStammDaten table td:first-child {
+	min-width: 100px
+}
+
+#Einrichtungen table a {
+	font-size: 85%
+}
+
+.verguetungLegende {
+	display:block;
+	font: 90% arial-narrow,arial,sans-serif
+}
+
+.verguetungLegendeMitte {
+	display:block;
+	font-size: 85%;
+    max-width: 500px
+}
+
+.verguetungLegendeOben {
+    display: block;
+    font-size: 85%;
+    max-width: 800px;
+    margin: 20px 0 10px 0
+}
+
+.lbltblVerguetungBezeichnung {
+   text-align: left
+}
+
+.lbltblVerguetungHeaderBezeichnung {
+	float:left
+}
+
+.lbltblVerguetungHeaderZuschlag {
+	position:relative;
+	left:-10px;
+	font-size: 85%;
+	overflow:visible
+}
+
+#M_MC_TblZuschlag {
+	margin-top:10px
+}
+
+.tblVerguetung {
+	text-align: right;
+	padding-bottom:5px
+}
+
+.lbltblVerguetungHeader {
+	overflow:visible
+}
+
+.lbltblVerguetung {
+	margin-left:0px
+}
+
+.pnlVerguetungTabelle {
+	padding-left:0px;
+	padding-top:5px
+}
+
+.pnlVerguetung {
+	padding-top:30px
+}
+
+.pnlVerguetung .lblUnterbegriff {
+    color: #b5050e; /*#31458A;*/
+	display: table-cell;
+	vertical-align: top
+}
+
+#M_MC_PnlEinrichtungsdaten table tr td {
+	padding-right:20px
+}
+
+
+
+#M_MC_TblWerte {
+	display: table-cell;
+	vertical-align: top
+}
+
+#M_MC_PnlIframe {
+	border:none;
+	display: table-cell;
+	padding-right: 20px;
+	overflow:hidden
+}
+
+#M_MC_PnlIframe iframe{
+	display: table-cell;
+	min-width: 350px;
+	height:300px;
+	border: transparent
+}
+
+#CurrentFacility {
+    width: calc(100% - 340px);
+	display: inline-block;
+	vertical-align: top;
+	margin-left:1.5rem
+}
+
+
+#facilities {
+    display: inline-block;
+	width:300px;
+	border-right: 1px solid #ccc
+}
+
+#M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr td.jsgrid-cell .pnlFac .fac.img img{
+	margin-right: 0px;
+	height: 30px !important;
+	margin-top: 0px;
+	margin-left: -3rem;
+	position: absolute
+}
+
+#M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-grid-body table.jsgrid-table{
+	width:100%
+}
+
+.pnlFacilityHead {
+	display:block
+}
+
+.lblFacilityName {
+	background-image:url("Images/Haus.png");
+	background-repeat:no-repeat;
+	background-size:16px;
+    display: block;
+	padding-left:20px
+}
+
+.pnlContactData {
+	display:inline-block;
+    margin-top:15px
+}
+
+.lblEmailAddress:before{
+	content:"E-Mail: "
+}
+
+.lblTelephoneMobile:before{
+	content:"Mobil: "
+}
+
+#M_MC_lblWebContactLabel{
+	font-family: var(--font-bold)
+}
+
+.lblTelefax:before{
+	content:"Fax: "
+}
+
+#M_MC_PnlInst_InstContact_WebAddr{
+	margin-top:1rem
+}
+
+#PnlInformation .pnlContactData{
+	margin-top:0
+}
+
+#M_MC_FFView_Contact_Pers{
+	margin-top:0.5rem
+}
+
+.lblTelephone:before{
+	content:"Telefon: "
+}
+
+.lblMobil:before{
+	content:"Mobil: "
+}
+
+#M_MC_pnlSpecialData span.labelIdentifier {
+	width: auto !important;
+	font-family: var(--font-bold)
+}
+
+#M_MC_pnlSpecialData span.labelIdentifier:after {
+	content: ": "
+}
+
+#M_MC_pnlInstitution .pnlInstitutionHeadLine #M_MC_lblInstitutionName.lblInstitutionName.icon{
+	display: block
+}
+
+#M_MC_PnlSpecialData {
+	margin-left:35px;
+	margin-top:5px;
+	display:table
+}
+
+#M_MC_PnlSpecialData div:first-child {
+	display:table-row
+}
+
+#M_MC_PnlSpecialData .labelValue {
+	display:table-cell !important
+}
+
+#M_MC_PnlSpecialData .labelIdentifier {
+	display:table-cell !important
+}
+
+.labelIdentifier {
+	padding-bottom:3px;
+	width: 170px;
+	display: inline-block
+}
+
+.labelValue {
+	margin-left:5px
+}
+
+#M_MC_PnlInstitution {
+	margin-bottom:20px
+}
+
+.lblInstitutionName {
+	background-image: url("Images/Traeger2.png");
+	background-repeat: no-repeat;
+	background-position-x: 0px;
+	background-size: 23px;
+	cursor: pointer;
+	font-size: 100%;
+	padding-left: 30px;
+	height: 27px
+}
+
+
+
+#M_MC_PnlInstitutionData {
+   display:inline-block
+}
+
+.pnlContactPerson {
+	display:block;
+	margin-top:20px
+}
+
+.pnlContactPersonWeb {
+	background-image:url("Images/contactuser.png");
+	background-repeat:no-repeat;
+	background-position:left;
+	background-size:16px;
+	padding-left:25px;
+	margin-left:30px
+}
+
+#M_MC_PnlInstitutionInner {
+   display: inline-block;
+   margin-top:10px
+}
+
+.pnlInstitutionHeadLine {
+	display:block
+}
+
+.pnlInstitutionFacility {
+	border-bottom: 1px solid var(--color-grey);
+	padding: 0.5rem
+}
+
+.pnlInstitutionFacility:nth-child(odd) {
+	background:var(--color-lightgrey)
+}
+
+.pnlInstitutionFacility .pnlAddress {
+	background-image:none!important;
+	margin-top:0;
+	padding-left:0!important
+}
+
+.lblStreet,
+.pnlStreet {
+	display: inline-block
+}
+
+.pnlStreetCity {
+	display: inline-block
+}
+
+.pnlMaps {
+   display: inline-block;
+   vertical-align: top;
+   margin-left: 1rem
+}
+
+.pnlMaps span {
+	display:flex!important
+}
+
+.lbInstitutionFacility {
+	background-color:#FFF;
+	background-image:url("Images/link.png");
+	background-position:left;
+	background-repeat:no-repeat;
+	background-size:16px;
+	border:none;
+	cursor:pointer;
+	display:inline-block;
+	height:16px;
+	width:16px
+}
+
+.LinkClass {
+	cursor:pointer 
+}
+
+legend #lblAddressFacilityOpenerAll{
+	height: 25px !important;
+	display:none
+}
+
+.lblHeadLineOpenImgOpen {
+	background-image: url("Images/Pfeil_runter.svg");
+	background-repeat: no-repeat;
+	height: 32px;
+	width: 27px;
+	background-position-y: 11px;	
+	background-position-x: 5px;
+	background-size: 20px;
+	margin-top:5px
+}
+
+#AddFacility{
+	cursor:pointer;
+	width:200px;
+	margin-top:1rem
+}
+
+#AddFacility:hover{
+	color:var(--color-red)
+}
+.ui-dialog-buttonset button.button.cancel.ui-button.ui-corner-all.ui-widget{
+	background-color:var(--color-red);
+	padding: 0.4rem;
+border-radius: 0.2rem;
+margin: 0.2rem;
+cursor: pointer;
+border: 0;
+	
+}
+.ui-dialog-buttonset button.ui-button.ui-corner-all.ui-widget,
+.ui-dialog-buttonset button.button.remove.ui-button.ui-corner-all.ui-widget{
+	background-color:var(--color-blue);
+	padding: 0.4rem;
+border-radius: 0.2rem;
+margin: 0.2rem;
+cursor: pointer;
+border: 0;
+color:var(--color-white)
+}
+.lblHeadLineOpenImgClose {
+	background-image: url("Images/Pfeil_links.svg");
+	background-repeat: no-repeat;
+	height: 32px;
+	width: 27px;
+	background-position-y: 11px;
+	background-position-x: 5px;
+	background-size: 20px;
+	margin-top: 5px
+}
+
+.pnlInnerHeadLine {
+	display:inline-block;
+	max-width: calc(100% - 20px);
+	margin-bottom: 0.5rem
+}
+
+.pnlInnerHeadLine span {
+	display:table-cell
+}
+
+.pnlVerguetung .lblUnterbegriff .TTip img {
+	display:none
+}
+
+.pnlVerguetung .lblUnterbegriff .TTip span {
+	display:block;
+	font-size: xx-small
+}
+
+pnlOptionLabel
+.tTipVerguetung {
+   display:block;
+   color:#3B3B3B;
+   max-width:800px
+}
+.tTipVerguetung img {
+	display:none
+}
+.selected {
+	color:var(--color-red)
+}
+#aRefEditContact {
+	vertical-align:middle;
+	color:transparent;
+	margin-left:5px
+}
+#lblFacilityLabel {
+	font-weight: var(--font-bold)
+}
+#M_MC_PnlAttachments,
+#M_MC_PnlFilesOuter {
+	margin-top:30px
+}
+#M_MC_AttachmentsPanel_Files{
+	margin-top:1rem
+}
+#M_MC_PnlAttachments #M_MC_Attachments_Attachments .label.attmts{
+	margin-bottom:1rem
+}
+
+html body .ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-dialog-buttons.ui-draggable.ui-resizable{
+	min-width:500px
+}
+#M_MC_Attachments_Attachments #M_MC_Attachments_Files input{
+	max-width: unset;
+}
+#DivFeats{
+	margin-bottom:1rem;
+}
+#M_MC_PnlAttachments span:first-child {
+	max-width: 600px;
+	margin-bottom: 10px;
+	display: block
+}
+.pnlFile {
+	height:2.2rem
+}
+#M_MC_PnlFiles .pnlFile {
+	display: block !important
+}
+.ButtonAttachment {
+	display:block;
+	height:31px;
+	padding-left:20px;
+	overflow:hidden;
+	width:250px;
+	word-wrap:break-word
+}
+#M_MC_FIV_ImgFac{
+	width:100%
+}
+@media screen and (max-width: 360px) {
+    #M_MC_PnlStammDaten {
+        width: 100%
+    }
+    
+	#Einrichtungsdaten {
+        margin-left: 10px !Important;
+        margin-right:0
+	}
+	
+	#M_MC_PnlInstitution {
+		margin-left: 10px!important
+	}
+	
+	.pnlVerguetungTabelle {
+		padding-left: 10px!important
+	}
+	
+	.lbltblVerguetungBezeichnung .lbltblVerguetung {
+		max-width:20px!important;
+		white-space:pre-wrap!important;
+		margin-left:0
+	}
+	
+	.lbltblVerguetungBezeichnung {
+		word-wrap: break-word;
+		word-break: break-all
+	}
+}
+#M_MC_PnlStammDaten #Facilities .filterWithReset .button.clear.clearInput{
+	left: -5px;
+	top: 5px;
+	margin-top: -1.95rem;
+	margin-right: 0.4rem;
+}
+#M_MC_PnlStammDaten #Facilities .filterWithReset .button.clear.clearInput:hover{
+	background-color:unset
+}
+@media print {
+	.pnlVerguetung	{
+		page-break-before: avoid;
+		page-break-inside:avoid;
+		padding-top:0!important;
+		margin-top:0!important
+	}
+	
+	.pnlAddress{margin-left:35px;}
+	.pnlAddress::before { 
+		content: "Adresse:";
+		margin-top:5px;
+		font-style:normal;
+	}
+	
+	.clickableAddress {
+		position:relative;
+		left:113px;
+		display:inline-block !important
+	}
+	
+	#M_MC_PnlIframe{
+		display:none
+	}
+}
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs input {
+	width: 215px;
+	padding: 0.2rem;
+}
+.clearInput {
+	background-image: url(Images/Cross.png);
+	background-color: white;
+	background-repeat: no-repeat;
+	background-size: 20px;
+	display:none;
+	border: none;
+	cursor: pointer;
+	position: relative;
+	vertical-align: top;
+	margin: 0;
+	padding: 0;
+	width: 20px;
+	height: 20px;
+	top: -27px;
+	left: -5px;
+	float:right;
+}

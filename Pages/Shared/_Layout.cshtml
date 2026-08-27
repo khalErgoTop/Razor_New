@@ -1,0 +1,65 @@
+﻿@inject TOPqwWeb_Core.Infrastructure.Theming.ThemeAssetService ThemeAssets
+@inject TOPqwWeb_Core.Infrastructure.Security.CurrentUserAccessor CurrentUser
+@{
+    var themeName = ThemeAssets.ThemeName;
+}
+<!DOCTYPE html>
+<html lang="de" data-theme="@themeName">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TOPqwWeb</title>
+    <link rel="stylesheet" href="@ThemeAssets.GetAssetPath("theme.css")" asp-append-version="true" />
+    <link rel="stylesheet" href="@ThemeAssets.GetAssetPath("menu.css")" asp-append-version="true" />
+    <link rel="stylesheet" href="@ThemeAssets.GetAssetPath("auflistung.css")" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/public.css" asp-append-version="true" />
+</head>
+<body>
+    <div id="DivBannerPlaceHolder"></div>
+    <div id="Page" class="page-shell">
+        <header class="razor-page-header page-header">
+            <div class="page-header-main public-shell">
+                <a class="public-brand" asp-page="/Index" accesskey="0" aria-label="Startseite">TOPqwWeb</a>
+                <div class="application-title">@ViewData["Title"]</div>
+                <div class="header-actions">
+                    @if (CurrentUser.IsAuthenticated)
+                    {
+                        <span class="user-login">Angemeldet als @CurrentUser.Username</span>
+                        <a asp-page="/Logout">Abmelden</a>
+                    }
+                    else
+                    {
+                        <a asp-page="/Login">Anmelden</a>
+                    }
+                    <a href="#" class="layout-action" data-layout-action="contrast">Kontrast</a>
+                </div>
+            </div>
+            <partial name="_Navigation" />
+        </header>
+
+        <div class="public-shell page-content">
+            <main role="main">
+                @RenderBody()
+            </main>
+        </div>
+
+        <footer class="public-footer">
+            <div class="public-shell">
+                <span>&copy; @DateTime.UtcNow.Year TOPqwWeb</span>
+            </div>
+        </footer>
+    </div>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        document.querySelector('.module-navigation-toggle')?.addEventListener('click', function () {
+            const menu = document.querySelector('.module-navigation-list');
+            const expanded = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', (!expanded).toString());
+            menu?.classList.toggle('is-open', !expanded);
+        });
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

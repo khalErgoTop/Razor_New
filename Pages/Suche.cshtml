@@ -1,0 +1,96 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.SucheModel
+@{
+    ViewData["Title"] = "Detailsuche";
+}
+
+<nav aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb">
+        <li><a asp-page="/Index">Start</a></li>
+        <li><a asp-page="/Sucharten">Leistungsangebote</a></li>
+        <li aria-current="page">Detailsuche</li>
+    </ol>
+</nav>
+
+<h1>Detailsuche</h1>
+
+<form method="get" class="searchform">
+    <label asp-for="Suchbegriff">Suche</label>
+    <input asp-for="Suchbegriff" type="search" placeholder="Sie können nach Namen und Kennzeichen suchen" autofocus />
+    <label asp-for="Einrichtungstyp">Leistungen</label>
+    <select asp-for="Einrichtungstyp">
+        <option value="0">Alle Leistungen</option>
+        @foreach (var type in Model.SearchResult?.FacilityTypes ?? [])
+        {
+            <option value="@type.Id">@type.Name</option>
+        }
+    </select>
+    <label asp-for="Postleitzahl">Postleitzahl</label>
+    <input asp-for="Postleitzahl" inputmode="numeric" maxlength="5" />
+    <label asp-for="Entfernung">im Umkreis von</label>
+    <select asp-for="Entfernung">
+        <option value="0">keine Umkreissuche</option>
+        @foreach (var distance in Model.SearchResult?.Distances ?? [])
+        {
+            <option value="@distance">@distance km</option>
+        }
+    </select>
+    <label>
+        <input asp-for="MitFreienPlaetzen" type="checkbox" />
+        mit freien Plätzen
+    </label>
+    @if (Model.SearchResult?.FacilityFeatures.Count > 0)
+    {
+        <fieldset>
+            <legend>Mit folgenden Merkmalen</legend>
+            @foreach (var feature in Model.SearchResult.FacilityFeatures)
+            {
+                <label>
+                    <input type="checkbox" name="Merkmale" value="@feature.Id" @(Model.Merkmale.Contains(feature.Id) ? "checked" : null) />
+                    @feature.Name
+                </label>
+            }
+        </fieldset>
+    }
+    <button type="submit">Suchen</button>
+</form>
+
+@if (Model.SearchResult is not null)
+{
+    <section aria-labelledby="search-results-heading">
+        <h2 id="search-results-heading">Suchergebnisse</h2>
+        @if (Model.SearchResult.Results.Count == 0)
+        {
+            <p>Leider konnte mit den ausgewählten Filtern kein Ergebnis gefunden werden.</p>
+        }
+        else
+        {
+            <ul class="search-results">
+                @foreach (var result in Model.SearchResult.Results)
+                {
+                    <li class="ResultRow">
+                        <a asp-page="/Stammdaten" asp-route-EIID="@result.EIID" asp-route-STUID="@result.STUID">
+                            <strong>@result.Name</strong>
+                            @if (!string.IsNullOrWhiteSpace(result.FacilityIndicator))
+                            {
+                                <span> (@result.FacilityIndicator)</span>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(result.FacilityType))
+                            {
+                                <span> – @result.FacilityType</span>
+                            }
+                            @if (!string.IsNullOrWhiteSpace(result.Address))
+                            {
+                                <small>@result.Address</small>
+                            }
+                        </a>
+                    </li>
+                }
+            </ul>
+            @if (Model.SearchResult.HasMoreResults)
+            {
+                <p>Es werden nicht alle Suchergebnisse angezeigt. Bitte spezifizieren Sie Ihre Suche stärker.</p>
+            }
+        }
+    </section>
+}

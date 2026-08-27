@@ -1,0 +1,28 @@
+﻿@using TOPqwWeb_Core.Services.Layout
+@inject LayoutNavigationService NavigationService
+@{
+    var navigation = await NavigationService.BuildAsync();
+}
+
+<nav class="module-navigation" aria-label="Hauptnavigation">
+    <button class="module-navigation-toggle" type="button" aria-expanded="false" aria-controls="CrModules">
+        Menü
+    </button>
+    <ul class="module-navigation-list">
+        @foreach (var link in navigation.Links)
+        {
+            <li class="@link.Id @link.CssClass">
+                <a href="@link.Url" id="ModLink@link.Id" title="@link.Name">@link.Name</a>
+                @if (link.Children is { Count: > 0 })
+                {
+                    <ul>
+                        @foreach (var child in link.Children)
+                        {
+                            <li><a href="@child.Url" id="ModLink@child.Id">@child.Name</a></li>
+                        }
+                    </ul>
+                }
+            </li>
+        }
+    </ul>
+</nav>
