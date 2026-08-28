@@ -20,20 +20,32 @@ namespace TOPqwWeb_Core.Services.Auth
         private const string Stammdaten_Standort_Hinzufuegen = "42502EB1-0758-4F62-9059-93DB259D01D4";
         private const string Stammdaten_BesucherZaehler_anzeigen = "46BE18E8-AE12-4D95-9E28-C0CFEDC3DE0";
         private const string Stammdaten_FreiePlaetze_Bearbeiten = "B50C1106-1268-4324-8543-12A4FB36A98F";
+        private const string Stammdaten_Einrichtung_Anlegen = "50d3832f-09b6-430a-9f63-ac95ea594171";
+        private const string Stammdaten_Traeger_Kontaktdaten_Bearbeiten = "8e962c46-dc9a-4a94-8e0e-6e4294418bf3";
+        private const string Stammdaten_Sachbearbeiter_Anzeigen = "e712ff03-a110-427b-b783-f22b70620ff7";
+        private const string Stammdaten_Merkmale_Anzeigen = "1FA65E25-6487-4410-9F8E-5B73363D997C";
+        private const string Stammdaten_Merkmale_Bearbeiten = "CC5525A3-768E-4094-95D4-E9BE30930F39";
+        private const string Stammdaten_KostenHBG_Anzeigen = "15d4d8ac-6229-4517-a728-1c863f4a20d4";
+        private const string StammdatenAnzeige_Einrichtung_Verguetung = "StammdatenAnzeige.Einrichtung.Verguetung";
+        private const string Stammdaten_FreePlacesAvailable = "Stammdaten.FreiePlatzmeldungen";
+        private const string Stammdaten_FacilityDescription = "Stammdaten.Einrichtungsbeschreibung";
+        private const string MultipleFacilityTypesConfigurationKey = "Stammdaten:MultipleFacilityTypes";
 
         private readonly StammdatenPageService _stammdatenPageService;
         private readonly PublicStammdatenAdapter _publicStammdatenAdapter;
         private readonly LegacyPermissionService _permissionService;
         private readonly CurrentUserAccessor _currentUserAccessor;
         private readonly ILogger<QwStammdatenPageService> _logger;
+        private readonly IConfiguration _configuration;
 
-        public QwStammdatenPageService(StammdatenPageService stammdatenPageService, PublicStammdatenAdapter publicStammdatenAdapter, LegacyPermissionService permissionService, CurrentUserAccessor currentUserAccessor, ILogger<QwStammdatenPageService> logger)
+        public QwStammdatenPageService(StammdatenPageService stammdatenPageService, PublicStammdatenAdapter publicStammdatenAdapter, LegacyPermissionService permissionService, CurrentUserAccessor currentUserAccessor, ILogger<QwStammdatenPageService> logger, IConfiguration configuration)
         {
             _stammdatenPageService = stammdatenPageService;
             _publicStammdatenAdapter = publicStammdatenAdapter;
             _permissionService = permissionService;
             _currentUserAccessor = currentUserAccessor;
             _logger = logger;
+            _configuration = configuration;
         }
 
         public async Task<QwStammdatenResponse?> GetAsync(string eiid, string? stuid, CancellationToken cancellationToken)
@@ -51,7 +63,7 @@ namespace TOPqwWeb_Core.Services.Auth
                 return null;
             }
             var permissions = await _permissionService.GetPermissionsAsync(beid.Value,
-                [Stammdaten_Einrichtung_Eigene_Anzeigen, Stammdaten_Einrichtung_Bearbeiten, Stammdaten_Einrichtung_Kontaktdaten_Bearbeiten, Stammdaten_Einrichtung_Attachments_Anzeigen, Stammdaten_Einrichtung_Attachments_Bearbeiten, Stammdaten_Einrichtung_Dokumente_Anzeigen, Stammdaten_Einrichtung_Dokumente_Bearbeiten, Stammdaten_Einrichtung_Suche_Verbergen, Stammdaten_Einrichtung_Bilder_Anzeigen, Stammdaten_Standort_Hinzufuegen, Stammdaten_BesucherZaehler_anzeigen], cancellationToken);
+                [Stammdaten_Einrichtung_Eigene_Anzeigen, Stammdaten_Einrichtung_Bearbeiten, Stammdaten_Einrichtung_Kontaktdaten_Bearbeiten, Stammdaten_Einrichtung_Attachments_Anzeigen, Stammdaten_Einrichtung_Attachments_Bearbeiten, Stammdaten_Einrichtung_Dokumente_Anzeigen, Stammdaten_Einrichtung_Dokumente_Bearbeiten, Stammdaten_Einrichtung_Suche_Verbergen, Stammdaten_Einrichtung_Bilder_Anzeigen, Stammdaten_Standort_Hinzufuegen, Stammdaten_BesucherZaehler_anzeigen, Stammdaten_FreiePlaetze_Bearbeiten, Stammdaten_Einrichtung_Anlegen, Stammdaten_Traeger_Kontaktdaten_Bearbeiten, Stammdaten_Sachbearbeiter_Anzeigen, Stammdaten_Merkmale_Anzeigen, Stammdaten_Merkmale_Bearbeiten, Stammdaten_KostenHBG_Anzeigen], cancellationToken);
             _logger.LogInformation("qwStammdaten permissions: BEID={BEID}, OwnFacilities={OwnFacilities}, All={All}", beid, permissions[Stammdaten_Einrichtung_Eigene_Anzeigen], string.Join(",", permissions.Select(pair => $"{pair.Key}={pair.Value}")));
             if (!permissions[Stammdaten_Einrichtung_Eigene_Anzeigen])
             {
@@ -71,7 +83,23 @@ namespace TOPqwWeb_Core.Services.Auth
                 ? await _publicStammdatenAdapter.GetVisitorDataAsync(eiid, cancellationToken)
                 : (0, new List<VisitorChartPoint>());
             var visibleInSearch = await _publicStammdatenAdapter.GetFacilityVisibleInSearchAsync(eiid, cancellationToken);
-            var freePlaces = await _publicStammdatenAdapter.GetFreePlacesAsync(eiid, cancellationToken);
+            var showFreePlaces = await _publicStammdatenAdapter.GetBooleanOptionAsync(Stammdaten_FreePlacesAvailable, cancellationToken);
+            var showFacilityDescription = await _publicStammdatenAdapter.GetBooleanOptionAsync(Stammdaten_FacilityDescription, cancellationToken);
+            var freePlaces = showFreePlaces
+                ? await _publicStammdatenAdapter.GetFreePlacesAsync(eiid, cancellationToken)
+                : null;
+            var canViewCosts = permissions[Stammdaten_KostenHBG_Anzeigen]
+                && await _publicStammdatenAdapter.GetBooleanOptionAsync(StammdatenAnzeige_Einrichtung_Verguetung, cancellationToken);
+            var institution = await _publicStammdatenAdapter.GetInstitutionContactDataAsync(eiid, cancellationToken);
+            var representatives = permissions[Stammdaten_Sachbearbeiter_Anzeigen]
+                ? await _publicStammdatenAdapter.GetFacilityRepresentativesAsync(eiid, cancellationToken)
+                : [];
+            var features = permissions[Stammdaten_Merkmale_Anzeigen]
+                ? await _publicStammdatenAdapter.GetFacilityFeaturesAsync(eiid, cancellationToken)
+                : [];
+            var availableFeatures = permissions[Stammdaten_Merkmale_Bearbeiten]
+                ? await _publicStammdatenAdapter.GetAvailableFacilityFeaturesAsync(cancellationToken)
+                : [];
             return new QwStammdatenResponse
             {
                 Facility = facility,
@@ -82,6 +110,18 @@ namespace TOPqwWeb_Core.Services.Auth
                 CanViewDocuments = permissions[Stammdaten_Einrichtung_Dokumente_Anzeigen],
                 CanEditDocuments = permissions[Stammdaten_Einrichtung_Dokumente_Bearbeiten],
                 CanEditFreePlaces = permissions[Stammdaten_FreiePlaetze_Bearbeiten],
+                ShowFreePlaces = showFreePlaces,
+                ShowFacilityDescription = showFacilityDescription,
+                CanRemoveFacility = permissions[Stammdaten_Einrichtung_Anlegen] && facility.Status != 5,
+                CanCreateFacility = permissions[Stammdaten_Einrichtung_Anlegen],
+                MultipleFacilityTypesEnabled = _configuration.GetValue(MultipleFacilityTypesConfigurationKey, false),
+                CanEditInstitutionContactData = permissions[Stammdaten_Traeger_Kontaktdaten_Bearbeiten],
+                Institution = institution,
+                Representatives = representatives,
+                Features = features,
+                AvailableFeatures = availableFeatures,
+                CanEditFeatures = permissions[Stammdaten_Einrichtung_Bearbeiten] && permissions[Stammdaten_Merkmale_Bearbeiten],
+                CanViewCosts = canViewCosts,
                 CanViewOwnFacilities = permissions[Stammdaten_Einrichtung_Eigene_Anzeigen],
                 CanChangeFacilityVisibility = permissions[Stammdaten_Einrichtung_Suche_Verbergen],
                 CanEditImage = permissions[Stammdaten_Einrichtung_Bearbeiten] && permissions[Stammdaten_Einrichtung_Bilder_Anzeigen],
@@ -93,6 +133,27 @@ namespace TOPqwWeb_Core.Services.Auth
                 VisitorChart = visitorData.Item2,
                 FreePlaces = freePlaces
             };
+        }
+
+        public async Task<bool> SaveFacilityFeaturesAsync(string eiid, IReadOnlyCollection<int> featureIds, CancellationToken cancellationToken)
+        {
+            var beid = _currentUserAccessor.BEID;
+            if (!beid.HasValue) return false;
+            var permissions = await _permissionService.GetPermissionsAsync(
+                beid.Value,
+                [Stammdaten_Einrichtung_Bearbeiten, Stammdaten_Merkmale_Anzeigen, Stammdaten_Merkmale_Bearbeiten],
+                cancellationToken);
+            if (!permissions[Stammdaten_Einrichtung_Bearbeiten] || !permissions[Stammdaten_Merkmale_Anzeigen] || !permissions[Stammdaten_Merkmale_Bearbeiten]) return false;
+            if (!await HasFacilityAccessAsync(eiid, beid.Value, cancellationToken)) return false;
+            return await _publicStammdatenAdapter.SaveFacilityFeaturesAsync(eiid, featureIds, cancellationToken);
+        }
+
+        public async Task<bool> SaveInstitutionContactDataAsync(string eiid, InstitutionContactDataInput input, CancellationToken cancellationToken)
+        {
+            var beid = _currentUserAccessor.BEID;
+            if (!beid.HasValue || !await _permissionService.HasPermissionAsync(beid.Value, Stammdaten_Traeger_Kontaktdaten_Bearbeiten, cancellationToken)) return false;
+            if (!await HasFacilityAccessAsync(eiid, beid.Value, cancellationToken)) return false;
+            return await _publicStammdatenAdapter.SaveInstitutionContactDataAsync(eiid, input, cancellationToken);
         }
 
         public async Task<QwStammdatenResponse?> GetFirstForUserAsync(CancellationToken cancellationToken)
@@ -130,6 +191,29 @@ namespace TOPqwWeb_Core.Services.Auth
             if (!permissions[Stammdaten_Einrichtung_Eigene_Anzeigen]) return [];
             var isAdmin = await _permissionService.HasPermissionAsync(beid.Value, AdminRechte, cancellationToken);
             return await _publicStammdatenAdapter.GetFacilitiesForUserAsync(beid.Value, isAdmin, cancellationToken);
+        }
+
+        public async Task<(bool Allowed, StammdatenFacilityCreateOptions Options)> GetFacilityCreateOptionsAsync(CancellationToken cancellationToken)
+        {
+            var beid = _currentUserAccessor.BEID;
+            if (!beid.HasValue || !await _permissionService.HasPermissionAsync(beid.Value, Stammdaten_Einrichtung_Anlegen, cancellationToken))
+                return (false, new StammdatenFacilityCreateOptions());
+            return (true, await _publicStammdatenAdapter.GetFacilityCreateOptionsAsync(cancellationToken));
+        }
+
+        public async Task<string?> CreateFacilityAsync(StammdatenFacilityCreateInput input, CancellationToken cancellationToken)
+        {
+            var beid = _currentUserAccessor.BEID;
+            if (!beid.HasValue || !await _permissionService.HasPermissionAsync(beid.Value, Stammdaten_Einrichtung_Anlegen, cancellationToken)) return null;
+            return await _publicStammdatenAdapter.CreateFacilityAsync(input, cancellationToken);
+        }
+
+        public async Task<bool> RemoveFacilityAsync(string eiid, CancellationToken cancellationToken)
+        {
+            var beid = _currentUserAccessor.BEID;
+            if (!beid.HasValue || !await _permissionService.HasPermissionAsync(beid.Value, Stammdaten_Einrichtung_Anlegen, cancellationToken)) return false;
+            if (!await HasFacilityAccessAsync(eiid, beid.Value, cancellationToken)) return false;
+            return await _publicStammdatenAdapter.RemoveFacilityAsync(eiid, cancellationToken);
         }
 
         public async Task<bool> SaveAttachmentAsync(string eiid, IFormFile file, bool document, int documentType, CancellationToken cancellationToken)
@@ -183,6 +267,34 @@ namespace TOPqwWeb_Core.Services.Auth
             if (!Guid.TryParse(stuid, out _)) return false;
             if (!await HasLocationAccessAsync(eiid, stuid, beid.Value, cancellationToken)) return false;
             return await _publicStammdatenAdapter.SaveLocationAsync(eiid, stuid, location, cancellationToken);
+        }
+
+        public async Task<IReadOnlyList<string>?> GetStreetNameSuggestionsAsync(string prefix, CancellationToken cancellationToken)
+        {
+            var beid = _currentUserAccessor.BEID;
+            if (!beid.HasValue || !await _permissionService.HasPermissionAsync(beid.Value, Stammdaten_Einrichtung_Eigene_Anzeigen, cancellationToken)) return null;
+            return await _publicStammdatenAdapter.GetStreetNameSuggestionsAsync(prefix, cancellationToken);
+        }
+
+        public async Task<IReadOnlyList<string>?> GetHouseNumberSuggestionsAsync(string streetName, string prefix, CancellationToken cancellationToken)
+        {
+            var beid = _currentUserAccessor.BEID;
+            if (!beid.HasValue || !await _permissionService.HasPermissionAsync(beid.Value, Stammdaten_Einrichtung_Eigene_Anzeigen, cancellationToken)) return null;
+            return await _publicStammdatenAdapter.GetHouseNumberSuggestionsAsync(streetName, prefix, cancellationToken);
+        }
+
+        public async Task<StreetDirectoryDetails?> GetStreetDetailsAsync(string streetName, string houseNumber, CancellationToken cancellationToken)
+        {
+            var beid = _currentUserAccessor.BEID;
+            if (!beid.HasValue || !await _permissionService.HasPermissionAsync(beid.Value, Stammdaten_Einrichtung_Eigene_Anzeigen, cancellationToken)) return null;
+            return await _publicStammdatenAdapter.GetStreetDetailsAsync(streetName, houseNumber, cancellationToken);
+        }
+
+        public async Task<bool?> StreetAddressExistsAsync(string streetName, string houseNumber, string? addition, string? postalCode, string? city, CancellationToken cancellationToken)
+        {
+            var beid = _currentUserAccessor.BEID;
+            if (!beid.HasValue || !await _permissionService.HasPermissionAsync(beid.Value, Stammdaten_Einrichtung_Eigene_Anzeigen, cancellationToken)) return null;
+            return await _publicStammdatenAdapter.StreetAddressExistsAsync(streetName, houseNumber, addition, postalCode, city, cancellationToken);
         }
 
         public async Task<bool> SaveFacilityDescriptionAsync(string eiid, string description, CancellationToken cancellationToken)

@@ -78,6 +78,10 @@ namespace TOPqwWeb_Core.Pages
                 };
                 _legacySessionContext.LogOutWanted = false;
                 _legacySessionContext.LastPage = LastPage;
+                if (LastPage is not null)
+                {
+                    _legacySessionContext.SetLastPage(LastPage);
+                }
                 await HttpContext.SignInAsync(
                     "LegacyCookie",
                     _claimsPrincipalFactory.Create(user, LastPage, sessionId),

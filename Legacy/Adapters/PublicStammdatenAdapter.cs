@@ -22,6 +22,203 @@ namespace TOPqwWeb_Core.Legacy.Adapters
             _logger = logger;
         }
 
+        public async Task<InstitutionContactDataResponse?> GetInstitutionContactDataAsync(string eiid, CancellationToken cancellationToken)
+        {
+            const string sql = """
+                SELECT tr.TRID, tr.Traegername, ISNULL(tr.Telefon, ''), ISNULL(tr.Email, ''),
+                       ISNULL(tr.Internet, ''), ISNULL(tr.VerbandszugriffErlauben, 1)
+                FROM Einrichtungen ei
+                INNER JOIN Traeger tr ON tr.TRID = ei.FKTRID
+                WHERE ei.EIID = @eiid;
+                """;
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@eiid", eiid);
+            await using var reader = await command.ExecuteReaderAsync(cancellationToken);
+            if (!await reader.ReadAsync(cancellationToken)) return null;
+            return new InstitutionContactDataResponse
+            {
+                Trid = Convert.ToString(reader.GetValue(0)) ?? string.Empty,
+                Name = Convert.ToString(reader.GetValue(1)) ?? string.Empty,
+                Phone = Convert.ToString(reader.GetValue(2)) ?? string.Empty,
+                Email = Convert.ToString(reader.GetValue(3)) ?? string.Empty,
+                Internet = Convert.ToString(reader.GetValue(4)) ?? string.Empty,
+                AssociationAccessAllowed = Convert.ToBoolean(reader.GetValue(5))
+            };
+        }
+
+        public async Task<bool> GetBooleanOptionAsync(string optionName, CancellationToken cancellationToken)
+        {
+            const string sql = "SELECT TOP 1 WertBOOL FROM TOPqw_Einstellungen WHERE Einstellung = @optionName AND ISNULL(fkUSID, 0) = 0";
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@optionName", optionName);
+            var value = await command.ExecuteScalarAsync(cancellationToken);
+            return value is not null && value != DBNull.Value && Convert.ToBoolean(value);
+        }
+
+        public async Task<IReadOnlyList<string>> GetStreetNameSuggestionsAsync(string prefix, CancellationToken cancellationToken)
+        {
+            const string sql = "SELECT DISTINCT TOP 10 Strassenname FROM Strassenverzeichnis WHERE Strassenname LIKE @prefix + '%'";
+            return await ReadStringListAsync(sql, [new("@prefix", prefix)], "Strassenname", cancellationToken);
+        }
+
+        public async Task<IReadOnlyList<string>> GetHouseNumberSuggestionsAsync(string streetName, string prefix, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(streetName) || streetName.Length <= 2) return [];
+            const string sql = "SELECT DISTINCT TOP 10 CASE WHEN Alphazusatz IS NOT NULL THEN Hausnummer + '' + ISNULL(Alphazusatz, '') ELSE Hausnummer END AS FullHausnummer FROM Strassenverzeichnis WHERE Strassenname = @streetName AND (Hausnummer LIKE @prefix + '%' OR Alphazusatz LIKE @prefix + '%')";
+            return await ReadStringListAsync(sql, [new("@streetName", streetName), new("@prefix", prefix)], "FullHausnummer", cancellationToken);
+        }
+
+        public async Task<StreetDirectoryDetails?> GetStreetDetailsAsync(string streetName, string houseNumber, CancellationToken cancellationToken)
+        {
+            const string sql = "SELECT TOP 1 Alphazusatz, PLZ, Ort, Stadtteil, Bezirksname FROM Strassenverzeichnis WHERE Strassenname = @streetName AND Hausnummer + ISNULL(Alphazusatz, '') = @houseNumber";
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@streetName", streetName);
+            command.Parameters.AddWithValue("@houseNumber", houseNumber);
+            await using var reader = await command.ExecuteReaderAsync(cancellationToken);
+            if (!await reader.ReadAsync(cancellationToken)) return null;
+            string? GetValue(int ordinal) => reader.IsDBNull(ordinal) ? null : reader.GetValue(ordinal).ToString();
+            return new StreetDirectoryDetails(GetValue(0), GetValue(1), GetValue(2), GetValue(3), GetValue(4));
+        }
+
+        public async Task<bool> StreetAddressExistsAsync(string streetName, string houseNumber, string? addition, string? postalCode, string? city, CancellationToken cancellationToken)
+        {
+            const string sql = "SELECT COUNT(Id) FROM Strassenverzeichnis WHERE Strassenname = @streetName AND Hausnummer = @houseNumber AND Alphazusatz = @addition AND PLZ = @postalCode AND Ort = @city";
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@streetName", streetName);
+            command.Parameters.AddWithValue("@houseNumber", houseNumber);
+            command.Parameters.AddWithValue("@addition", (object?)addition ?? DBNull.Value);
+            command.Parameters.AddWithValue("@postalCode", (object?)postalCode ?? DBNull.Value);
+            command.Parameters.AddWithValue("@city", (object?)city ?? DBNull.Value);
+            return Convert.ToInt32(await command.ExecuteScalarAsync(cancellationToken)) > 0;
+        }
+
+        private async Task<IReadOnlyList<string>> ReadStringListAsync(string sql, IEnumerable<SqlParameter> parameters, string column, CancellationToken cancellationToken)
+        {
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var command = new SqlCommand(sql, connection);
+            command.Parameters.AddRange(parameters.ToArray());
+            await using var reader = await command.ExecuteReaderAsync(cancellationToken);
+            var values = new List<string>();
+            while (await reader.ReadAsync(cancellationToken))
+                values.Add(Convert.ToString(reader[column]) ?? string.Empty);
+            return values;
+        }
+
+        public async Task<bool> SaveInstitutionContactDataAsync(string eiid, InstitutionContactDataInput input, CancellationToken cancellationToken)
+        {
+            const string sql = """
+                UPDATE tr
+                SET Telefon=@phone, Email=@email, Internet=@internet,
+                    VerbandszugriffErlauben=@associationAccessAllowed
+                FROM Traeger tr
+                INNER JOIN Einrichtungen ei ON ei.FKTRID = tr.TRID
+                WHERE ei.EIID = @eiid;
+                """;
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@eiid", eiid);
+            command.Parameters.AddWithValue("@phone", input.Phone?.Trim() ?? string.Empty);
+            command.Parameters.AddWithValue("@email", input.Email?.Trim() ?? string.Empty);
+            command.Parameters.AddWithValue("@internet", input.Internet?.Trim() ?? string.Empty);
+            command.Parameters.AddWithValue("@associationAccessAllowed", input.AssociationAccessAllowed);
+            return await command.ExecuteNonQueryAsync(cancellationToken) > 0;
+        }
+
+        public async Task<IReadOnlyList<FacilityRepresentativeResponse>> GetFacilityRepresentativesAsync(string eiid, CancellationToken cancellationToken)
+        {
+            const string sql = """
+                SELECT TOP 1 ISNULL(b.Vorname + ' ', '') + ISNULL(b.Nachname, ''),
+                       ISNULL(b.Email, ''), ISNULL(b.Benutzername, '')
+                FROM Benutzer b
+                INNER JOIN IndexBenutzerEinrichtung ibe ON ibe.FKBEID = b.BEID
+                WHERE ibe.FKEIID = @eiid
+                ORDER BY b.Nachname, b.Vorname;
+                """;
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@eiid", eiid);
+            await using var reader = await command.ExecuteReaderAsync(cancellationToken);
+            var representatives = new List<FacilityRepresentativeResponse>();
+            while (await reader.ReadAsync(cancellationToken))
+                representatives.Add(new FacilityRepresentativeResponse(Convert.ToString(reader.GetValue(0)) ?? string.Empty, Convert.ToString(reader.GetValue(1)) ?? string.Empty, Convert.ToString(reader.GetValue(2)) ?? string.Empty));
+            return representatives;
+        }
+
+        public async Task<IReadOnlyList<FacilityFeatureResponse>> GetFacilityFeaturesAsync(string eiid, CancellationToken cancellationToken)
+        {
+            const string sql = """
+                SELECT lm.LMID, lm.Typbezeichnung, lm.Beschreibung, ISNULL(lm.Kategorie, '')
+                FROM Leistungsmerkmal lm
+                INNER JOIN EinrichtungsMerkmale em ON em.FKLMID = lm.LMID
+                WHERE em.FKEIID = @eiid
+                ORDER BY lm.Kategorie, lm.Reihenfolge, lm.Typbezeichnung, lm.Beschreibung;
+                """;
+            return await ReadFeatureListAsync(sql, eiid, cancellationToken);
+        }
+
+        public async Task<IReadOnlyList<FacilityFeatureResponse>> GetAvailableFacilityFeaturesAsync(CancellationToken cancellationToken)
+        {
+            const string sql = """
+                SELECT LMID, Typbezeichnung, Beschreibung, ISNULL(Kategorie, '')
+                FROM Leistungsmerkmal
+                ORDER BY Kategorie, Reihenfolge, Typbezeichnung, Beschreibung;
+                """;
+            return await ReadFeatureListAsync(sql, null, cancellationToken);
+        }
+
+        private async Task<IReadOnlyList<FacilityFeatureResponse>> ReadFeatureListAsync(string sql, string? eiid, CancellationToken cancellationToken)
+        {
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var command = new SqlCommand(sql, connection);
+            if (eiid is not null) command.Parameters.AddWithValue("@eiid", eiid);
+            await using var reader = await command.ExecuteReaderAsync(cancellationToken);
+            var features = new List<FacilityFeatureResponse>();
+            while (await reader.ReadAsync(cancellationToken))
+                features.Add(new FacilityFeatureResponse(Convert.ToInt32(reader.GetValue(0)), Convert.ToString(reader.GetValue(1)) ?? string.Empty, Convert.ToString(reader.GetValue(2)) ?? string.Empty, Convert.ToString(reader.GetValue(3)) ?? string.Empty));
+            return features;
+        }
+
+        public async Task<bool> SaveFacilityFeaturesAsync(string eiid, IReadOnlyCollection<int> featureIds, CancellationToken cancellationToken)
+        {
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var transaction = (SqlTransaction)await connection.BeginTransactionAsync(cancellationToken);
+            try
+            {
+                await using (var deleteCommand = new SqlCommand("DELETE FROM EinrichtungsMerkmale WHERE FKEIID=@eiid;", connection, transaction))
+                {
+                    deleteCommand.Parameters.AddWithValue("@eiid", eiid);
+                    await deleteCommand.ExecuteNonQueryAsync(cancellationToken);
+                }
+                foreach (var featureId in featureIds.Distinct())
+                {
+                    await using var insertCommand = new SqlCommand("INSERT INTO EinrichtungsMerkmale (FKEIID, FKLMID) SELECT @eiid, @lmid WHERE EXISTS (SELECT 1 FROM Leistungsmerkmal WHERE LMID=@lmid);", connection, transaction);
+                    insertCommand.Parameters.AddWithValue("@eiid", eiid);
+                    insertCommand.Parameters.AddWithValue("@lmid", featureId);
+                    await insertCommand.ExecuteNonQueryAsync(cancellationToken);
+                }
+                await transaction.CommitAsync(cancellationToken);
+                return true;
+            }
+            catch
+            {
+                await transaction.RollbackAsync(cancellationToken);
+                throw;
+            }
+        }
+
         public async Task<(int Count, List<VisitorChartPoint> Chart)> GetVisitorDataAsync(string eiid, CancellationToken cancellationToken)
         {
             await using var connection = new SqlConnection(_connectionString);
@@ -224,7 +421,7 @@ namespace TOPqwWeb_Core.Legacy.Adapters
             var stuid = Guid.NewGuid().ToString();
             const string sql = """
                 INSERT INTO StandortAenderungen (FKSTUID, FKEIID, Status, Standortname, Strasse, Hausnummer, Hausnummerzusatz, PLZ, Ort, GeaendertAm, MitStrassenVerzeichnisValidiert)
-                VALUES (@stuid, @eiid, 4, @name, @street, @number, @addition, @postalCode, @city, GETDATE(), 0);
+                VALUES (@stuid, @eiid, 4, @name, @street, @number, @addition, @postalCode, @city, GETDATE(), @validated);
                 """;
 
             await using var connection = new SqlConnection(_connectionString);
@@ -238,6 +435,7 @@ namespace TOPqwWeb_Core.Legacy.Adapters
             command.Parameters.AddWithValue("@addition", (object?)location.HouseNumberAddition ?? DBNull.Value);
             command.Parameters.AddWithValue("@postalCode", (object?)location.PostalCode ?? DBNull.Value);
             command.Parameters.AddWithValue("@city", (object?)location.City ?? DBNull.Value);
+            command.Parameters.AddWithValue("@validated", location.StreetDirectoryValidated);
             return await command.ExecuteNonQueryAsync(cancellationToken) > 0;
         }
 
@@ -252,7 +450,7 @@ namespace TOPqwWeb_Core.Legacy.Adapters
                 IF NOT EXISTS (SELECT 1 FROM StandortAenderungen WHERE FKSTUID=@stuid)
                 BEGIN
                     INSERT INTO StandortAenderungen (FKSTUID, FKEIID, Status, GeaendertAm, Standortname, Strasse, Hausnummer, Hausnummerzusatz, PLZ, Ort, MitStrassenVerzeichnisValidiert)
-                    VALUES (@stuid, @eiid, 1, GETDATE(), @name, @street, @number, @addition, @postalCode, @city, 0);
+                    VALUES (@stuid, @eiid, 1, GETDATE(), @name, @street, @number, @addition, @postalCode, @city, @validated);
                 END
                 ELSE
                 BEGIN
@@ -277,6 +475,7 @@ namespace TOPqwWeb_Core.Legacy.Adapters
             command.Parameters.AddWithValue("@city", (object?)location.City ?? DBNull.Value);
             command.Parameters.AddWithValue("@capacity", (object?)location.Capacity ?? DBNull.Value);
             command.Parameters.AddWithValue("@showAddress", location.ShowAddressInWeb);
+            command.Parameters.AddWithValue("@validated", location.StreetDirectoryValidated);
             return await command.ExecuteNonQueryAsync(cancellationToken) > 0;
         }
 
@@ -473,6 +672,155 @@ namespace TOPqwWeb_Core.Legacy.Adapters
             return choices;
         }
 
+        public async Task<StammdatenFacilityCreateOptions> GetFacilityCreateOptionsAsync(CancellationToken cancellationToken)
+        {
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            var institutions = new List<StammdatenInstitutionOption>();
+            await using (var command = new SqlCommand("SELECT CONVERT(varchar(36), TRID), Traegername FROM Traeger WHERE ISNULL(Gesperrt, 0) = 0 ORDER BY Traegername;", connection))
+            await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
+            {
+                while (await reader.ReadAsync(cancellationToken))
+                    institutions.Add(new StammdatenInstitutionOption(Convert.ToString(reader.GetValue(0)) ?? string.Empty, Convert.ToString(reader.GetValue(1)) ?? string.Empty));
+            }
+
+            var facilityTypes = new List<StammdatenFacilityTypeResponse>();
+            await using (var command = new SqlCommand("SELECT ETID, Typkennzeichnung FROM Einrichtungstypen WHERE ISNULL(Typkennzeichnung, '') <> '' ORDER BY Reihenfolge, Typkennzeichnung;", connection))
+            await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
+            {
+                while (await reader.ReadAsync(cancellationToken))
+                    facilityTypes.Add(new StammdatenFacilityTypeResponse(Convert.ToInt32(reader.GetValue(0)), Convert.ToString(reader.GetValue(1)) ?? string.Empty));
+            }
+
+            var districts = new List<StammdatenDistrictResponse>();
+            await using (var command = new SqlCommand("SELECT KRID, Kreis FROM Kreise ORDER BY Reihenfolge, Kreis;", connection))
+            await using (var reader = await command.ExecuteReaderAsync(cancellationToken))
+            {
+                while (await reader.ReadAsync(cancellationToken))
+                    districts.Add(new StammdatenDistrictResponse(Convert.ToInt32(reader.GetValue(0)), Convert.ToString(reader.GetValue(1)) ?? string.Empty));
+            }
+
+            return new StammdatenFacilityCreateOptions { Institutions = institutions, FacilityTypes = facilityTypes, Districts = districts };
+        }
+
+        public async Task<string> CreateFacilityAsync(StammdatenFacilityCreateInput input, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(input.Name) || string.IsNullOrWhiteSpace(input.City) || input.Capacity < 0 ||
+                !Guid.TryParse(input.TraegerId, out var traegerId) || input.FacilityTypeIds.Count == 0 || input.FacilityTypeIds.Any(id => id <= 0) || input.DistrictId <= 0)
+                throw new ArgumentException("Die Angaben zur Einrichtung sind unvollständig oder ungültig.");
+
+            var eiid = Guid.NewGuid();
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var transaction = (SqlTransaction)await connection.BeginTransactionAsync(cancellationToken);
+            try
+            {
+                const string referenceSql = """
+                    SELECT
+                        CASE WHEN EXISTS (SELECT 1 FROM Traeger WHERE TRID=@trid) THEN 1 ELSE 0 END,
+                        CASE WHEN NOT EXISTS (SELECT 1 FROM Einrichtungstypen WHERE ETID IN (SELECT value FROM STRING_SPLIT(@etids, ','))) THEN 0 ELSE 1 END,
+                        CASE WHEN EXISTS (SELECT 1 FROM Kreise WHERE KRID=@krid) THEN 1 ELSE 0 END;
+                    """;
+                await using (var referenceCommand = new SqlCommand(referenceSql, connection, transaction))
+                {
+                    referenceCommand.Parameters.AddWithValue("@trid", traegerId);
+                    referenceCommand.Parameters.AddWithValue("@etids", string.Join(',', input.FacilityTypeIds));
+                    referenceCommand.Parameters.AddWithValue("@krid", input.DistrictId);
+                    await using var referenceReader = await referenceCommand.ExecuteReaderAsync(cancellationToken);
+                    if (!await referenceReader.ReadAsync(cancellationToken) || referenceReader.GetInt32(0) != 1 || referenceReader.GetInt32(1) != 1 || referenceReader.GetInt32(2) != 1)
+                        throw new ArgumentException("Eine ausgewählte Referenz ist nicht vorhanden.");
+                }
+
+                await using (var facilityCommand = new SqlCommand("dbo.SaveFacility", connection, transaction) { CommandType = System.Data.CommandType.StoredProcedure })
+                {
+                    facilityCommand.Parameters.AddWithValue("@Einrichtungsname", input.Name.Trim());
+                    facilityCommand.Parameters.AddWithValue("@Kurzname", input.Name.Trim().Length > 100 ? input.Name.Trim()[..100] : input.Name.Trim());
+                    facilityCommand.Parameters.AddWithValue("@FKKRID", input.DistrictId);
+                    facilityCommand.Parameters.AddWithValue("@FKETID", input.FacilityTypeIds[0]);
+                    facilityCommand.Parameters.AddWithValue("@Aktenzeichen", string.Empty);
+                    facilityCommand.Parameters.AddWithValue("@Einrichtungskennzeichen", string.Empty);
+                    facilityCommand.Parameters.AddWithValue("@Platzzahl", input.Capacity);
+                    facilityCommand.Parameters.AddWithValue("@VertretenDurch", string.Empty);
+                    facilityCommand.Parameters.AddWithValue("@GeoeffnetSeit", DBNull.Value);
+                    facilityCommand.Parameters.AddWithValue("@GeschlossenAm", DBNull.Value);
+                    facilityCommand.Parameters.AddWithValue("@Anmerkung", string.Empty);
+                    facilityCommand.Parameters.AddWithValue("@GeaendertAm", DateTime.Now);
+                    facilityCommand.Parameters.AddWithValue("@GeaendertVon", string.Empty);
+                    facilityCommand.Parameters.AddWithValue("@erstelltAm", DateTime.Now);
+                    facilityCommand.Parameters.AddWithValue("@ErstelltVon", string.Empty);
+                    facilityCommand.Parameters.AddWithValue("@Aktenstandort", string.Empty);
+                    facilityCommand.Parameters.AddWithValue("@RueckspracheUSID", 0);
+                    facilityCommand.Parameters.AddWithValue("@RueckspracheText", string.Empty);
+                    facilityCommand.Parameters.AddWithValue("@unchecked", false);
+                    facilityCommand.Parameters.AddWithValue("@ParentEIID", string.Empty);
+                    facilityCommand.Parameters.AddWithValue("@Traegernummer", 0);
+                    facilityCommand.Parameters.AddWithValue("@FKTRID", traegerId);
+                    facilityCommand.Parameters.AddWithValue("@UebergeordneterTRID", DBNull.Value);
+                    facilityCommand.Parameters.AddWithValue("@Institutskennzahl", string.Empty);
+                    facilityCommand.Parameters.AddWithValue("@Koordinierungsmittel", false);
+                    facilityCommand.Parameters.AddWithValue("@EIKomplexitaet", 0m);
+                    facilityCommand.Parameters.AddWithValue("@PflegeFinderParameter", string.Empty);
+                    facilityCommand.Parameters.AddWithValue("@Ueberbelegung", 0);
+                    facilityCommand.Parameters.AddWithValue("@Schliessungsgrund", string.Empty);
+                    facilityCommand.Parameters.AddWithValue("@EinrichtungsnameZusatz", string.Empty);
+                    facilityCommand.Parameters.AddWithValue("@ElektronischerLeistungsnachweis", false);
+                    facilityCommand.Parameters.AddWithValue("@Status", 0);
+                    facilityCommand.Parameters.AddWithValue("@PlatzzahlGeschlossen", 0);
+                    facilityCommand.Parameters.AddWithValue("@EinrichtngsBeschreibung", string.Empty);
+                    var eiidParameter = facilityCommand.Parameters.Add("@EIID", System.Data.SqlDbType.UniqueIdentifier);
+                    eiidParameter.Direction = System.Data.ParameterDirection.InputOutput;
+                    eiidParameter.Value = eiid;
+                    await facilityCommand.ExecuteScalarAsync(cancellationToken);
+                }
+
+                await using (var typeCommand = new SqlCommand("dbo.SaveFacilityTypes", connection, transaction) { CommandType = System.Data.CommandType.StoredProcedure })
+                {
+                    typeCommand.Parameters.AddWithValue("@etids", string.Join(',', input.FacilityTypeIds));
+                    typeCommand.Parameters.AddWithValue("@eiid", eiid.ToString());
+                    await typeCommand.ExecuteNonQueryAsync(cancellationToken);
+                }
+
+                const string locationSql = """
+                    INSERT INTO Standorte (FKEIID, Strasse, Hausnummer, Hausnummerzusatz, PLZ, Ort, Platzzahl, PlatzzahlMax,
+                        Hauptstandort, GeaendertAm, GeaendertVon, erstelltAm, ErstelltVon, AdresseImWebAnzeigen, FKTRID, FKKRID)
+                    VALUES (@eiid, @street, @houseNumber, '', @postalCode, @city, @capacity, @capacity,
+                        1, @changedAt, '', @createdAt, '', 1, @trid, @krid);
+                    """;
+                await using (var locationCommand = new SqlCommand(locationSql, connection, transaction))
+                {
+                    locationCommand.Parameters.AddWithValue("@eiid", eiid);
+                    locationCommand.Parameters.AddWithValue("@street", (object?)input.Street?.Trim() ?? DBNull.Value);
+                    locationCommand.Parameters.AddWithValue("@houseNumber", (object?)input.HouseNumber?.Trim() ?? DBNull.Value);
+                    locationCommand.Parameters.AddWithValue("@postalCode", (object?)input.PostalCode?.Trim() ?? DBNull.Value);
+                    locationCommand.Parameters.AddWithValue("@city", input.City.Trim());
+                    locationCommand.Parameters.AddWithValue("@capacity", input.Capacity);
+                    locationCommand.Parameters.AddWithValue("@changedAt", DateTime.Now);
+                    locationCommand.Parameters.AddWithValue("@createdAt", DateTime.Now);
+                    locationCommand.Parameters.AddWithValue("@trid", traegerId);
+                    locationCommand.Parameters.AddWithValue("@krid", input.DistrictId);
+                    await locationCommand.ExecuteNonQueryAsync(cancellationToken);
+                }
+
+                await transaction.CommitAsync(cancellationToken);
+                return eiid.ToString();
+            }
+            catch
+            {
+                await transaction.RollbackAsync(cancellationToken);
+                throw;
+            }
+        }
+
+        public async Task<bool> RemoveFacilityAsync(string eiid, CancellationToken cancellationToken)
+        {
+            const string sql = "UPDATE Einrichtungen SET Status = 11 WHERE EIID = @eiid;";
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@eiid", eiid);
+            return await command.ExecuteNonQueryAsync(cancellationToken) > 0;
+        }
+
         private async Task<StammdatenResponse?> GetForUserWithLoggingAsync(string eiid, int beid, bool isAdmin, CancellationToken cancellationToken)
         {
             var result = await GetForUserAsync(eiid, null, beid, isAdmin, cancellationToken);
@@ -525,6 +873,7 @@ namespace TOPqwWeb_Core.Legacy.Adapters
             const string sql = """
                 SELECT ei.EIID AS FacilityEIID, ei.Einrichtungsname AS FacilityName,
                        ei.Einrichtungskennzeichen AS FacilityIndicator,
+                       ei.Status AS FacilityStatus,
                        ei.Einrichtungsbeschreibung AS FacilityDescription,
                        st.STUID AS LocationSTUID, st.Standortname AS LocationName,
                        st.Strasse AS LocationStreet, st.Hausnummer AS LocationHouseNumber,
@@ -580,6 +929,7 @@ namespace TOPqwWeb_Core.Legacy.Adapters
                 EIID = GetString(reader, "FacilityEIID") ?? string.Empty,
                 Name = GetString(reader, "FacilityName") ?? string.Empty,
                 FacilityIndicator = GetString(reader, "FacilityIndicator"),
+                Status = GetInt(reader, "FacilityStatus") ?? 0,
                 Description = GetString(reader, "FacilityDescription"),
                 Locations = []
             };

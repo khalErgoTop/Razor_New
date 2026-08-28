@@ -1,5 +1,6 @@
 ﻿using TOPqwWeb_Core.Legacy.Adapters;
 using TOPqwWeb_Core.Infrastructure.Theming;
+using TOPqwWeb_Core.Infrastructure.Session;
 using TOPqwWeb_Core.Infrastructure.Security;
 using TOPqwWeb_Core.Services.Account;
 using TOPqwWeb_Core.Services.Public;
@@ -30,6 +31,7 @@ namespace TOPqwWeb_Core.Infrastructure.Configuration
             services.AddScoped<ClaimsPrincipalFactory>();
             services.AddHttpContextAccessor();
             services.AddScoped<CurrentUserAccessor>();
+            services.AddScoped<SearchStateStore>();
             services.AddScoped<LegacySignOutService>();
             services.AddScoped<LegacyPermissionService>();
             services.AddScoped<QwStammdatenPageService>();
@@ -45,6 +47,7 @@ namespace TOPqwWeb_Core.Infrastructure.Configuration
             services.AddScoped<BenutzerManagementRechteService>();
             services.AddScoped<LayoutNavigationService>();
             services.AddScoped<LvService>();
+            services.AddScoped<QArcAdapter>();
             services.AddScoped<QmAdapter>();
             services.AddScoped<QmService>();
 

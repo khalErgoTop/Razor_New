@@ -18,12 +18,12 @@
 {
     <ul class="superCategory" role="list">
         <li role="listitem">
-            <div class="sc00" tabindex="0" aria-label="Unterkategorie ein-/ausblenden"><h2>@category.Name</h2></div>
+            <div class="sc00" tabindex="0" role="button" aria-expanded="true" aria-label="Unterkategorie ein-/ausblenden"><h2>@category.Name</h2></div>
         @foreach (var group in category.Groups)
         {
             <ul class="subCategory01" role="list">
                 <li role="listitem">
-                    <div class="sc01" tabindex="0" aria-label="Leistungen ein-/ausblenden">@group.Name</div>
+                    <div class="sc01" tabindex="0" role="button" aria-expanded="true" aria-label="Leistungen ein-/ausblenden">@group.Name</div>
                     <ul class="facilityItem" role="list">
                         @foreach (var facility in group.Facilities)
                         {
@@ -45,7 +45,7 @@
                                         {
                                             <div class="wtStt">
                                                 <div class="wtStt label">weitere Standorte</div>
-                                                <div class="wtSttToggle" tabindex="0">toggle</div>
+                <div class="wtSttToggle" tabindex="0" role="button" aria-expanded="false" aria-label="Weitere Standorte ein-/ausblenden">toggle</div>
                                                 <ul class="sub Fci">
                                                     @foreach (var location in facility.AdditionalLocations)
                                                     {
@@ -89,6 +89,7 @@
             if (sibling && sibling.tagName.toLowerCase() === "ul") {
                 var isHidden = window.getComputedStyle(sibling).display === "none";
                 sibling.style.display = isHidden ? "block" : "none";
+                element.setAttribute("aria-expanded", isHidden ? "true" : "false");
             }
         }
 
@@ -98,7 +99,7 @@
             });
 
             element.addEventListener("keydown", function (event) {
-                if (event.key === "Enter" || event.key === "Return") {
+                if (event.key === "Enter" || event.key === " ") {
                     toggleFirstList(element);
                 }
             });

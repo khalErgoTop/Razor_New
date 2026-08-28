@@ -18,6 +18,7 @@
     <div id="DivBannerPlaceHolder"></div>
     <div id="Page" class="page-shell">
         <header class="razor-page-header page-header">
+            <partial name="_Header" />
             <div class="page-header-main public-shell">
                 <a class="public-brand" asp-page="/Index" accesskey="0" aria-label="Startseite">TOPqwWeb</a>
                 <div class="application-title">@ViewData["Title"]</div>
@@ -31,7 +32,7 @@
                     {
                         <a asp-page="/Login">Anmelden</a>
                     }
-                    <a href="#" class="layout-action" data-layout-action="contrast">Kontrast</a>
+                    <a href="#" class="layout-action" data-layout-action="contrast" aria-pressed="false">Kontrast</a>
                 </div>
             </div>
             <partial name="_Navigation" />
@@ -43,11 +44,7 @@
             </main>
         </div>
 
-        <footer class="public-footer">
-            <div class="public-shell">
-                <span>&copy; @DateTime.UtcNow.Year TOPqwWeb</span>
-            </div>
-        </footer>
+        <partial name="_Footer" />
     </div>
 
     <script src="~/js/site.js" asp-append-version="true"></script>
@@ -57,6 +54,11 @@
             const expanded = this.getAttribute('aria-expanded') === 'true';
             this.setAttribute('aria-expanded', (!expanded).toString());
             menu?.classList.toggle('is-open', !expanded);
+        });
+        document.querySelector('[data-layout-action="contrast"]')?.addEventListener('click', function (event) {
+            event.preventDefault();
+            document.documentElement.classList.toggle('high-contrast');
+            this.setAttribute('aria-pressed', document.documentElement.classList.contains('high-contrast').toString());
         });
     </script>
 

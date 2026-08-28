@@ -5,6 +5,7 @@
         public string EIID { get; set; } = string.Empty;
         public string Name { get; set; } = string.Empty;
         public string? FacilityIndicator { get; set; }
+        public int Status { get; set; }
         public string? Address { get; set; }
         public string? Phone { get; set; }
         public string? Email { get; set; }
@@ -14,6 +15,28 @@
         public List<StammdatenAttachmentResponse> Attachments { get; set; } = [];
         public string? ImageFileName { get; set; }
     }
+
+    public sealed class StammdatenFacilityCreateInput
+    {
+        public string Name { get; set; } = string.Empty;
+        public string? Street { get; set; }
+        public string? HouseNumber { get; set; }
+        public string? PostalCode { get; set; }
+        public string City { get; set; } = string.Empty;
+        public int Capacity { get; set; }
+        public string TraegerId { get; set; } = string.Empty;
+        public List<int> FacilityTypeIds { get; set; } = [];
+        public int DistrictId { get; set; }
+    }
+
+    public sealed class StammdatenFacilityCreateOptions
+    {
+        public IReadOnlyList<StammdatenInstitutionOption> Institutions { get; init; } = [];
+        public IReadOnlyList<StammdatenFacilityTypeResponse> FacilityTypes { get; init; } = [];
+        public IReadOnlyList<StammdatenDistrictResponse> Districts { get; init; } = [];
+    }
+
+    public sealed record StammdatenInstitutionOption(string Id, string Name);
 
     public sealed class StammdatenFacilityChoice
     {
@@ -61,7 +84,10 @@
         public string? City { get; set; }
         public int? Capacity { get; set; }
         public bool? ShowAddressInWeb { get; set; }
+        public bool StreetDirectoryValidated { get; set; }
     }
+
+    public sealed record StreetDirectoryDetails(string? HouseNumberAddition, string? PostalCode, string? City, string? District, string? DistrictName);
 
     public class StammdatenAttachmentResponse
     {

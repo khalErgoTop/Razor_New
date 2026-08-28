@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("TOPqwWeb_Core-Development")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("TOPqwWeb_Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+160910665e3f5846b91ba9fc0510fb92f42a905b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9a04ccc56b35569faa901b5e4ad1272449a513d8")]
 [assembly: System.Reflection.AssemblyProductAttribute("TOPqwWeb_Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TOPqwWeb_Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

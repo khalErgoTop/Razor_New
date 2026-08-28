@@ -1,0 +1,63 @@
+@page
+@model TOPqwWeb_Core.Pages.bitQArc.bitQArcDefaultSheetModel
+@{
+    ViewData["Title"] = "QArc-Bogen";
+}
+
+<link rel="stylesheet" href="~/css/bitQArcDefaultSheet.css" />
+
+<ul id="linkpath">
+    <li id="linkPathNavStart">Navigation</li>
+    <li>Start</li>
+    <li><a asp-page="/bitQArc/bitQArcDefaultSheetListing" asp-route-f="@Model.TablePrefix">Bögen auswählen</a></li>
+    <li class="current">QArc-Bogen</li>
+</ul>
+
+<section>
+    <h1>@(Model.Sheet?.Label ?? "QArc-Bogen")</h1>
+    <dl>
+        <dt>Sheet-ID</dt>
+        <dd>@Model.Sheet?.Id</dd>
+        <dt>Einrichtung</dt>
+        <dd>@Model.Sheet?.EIID</dd>
+        <dt>Layout-ID</dt>
+        <dd>@Model.Sheet?.LayoutId</dd>
+        <dt>Status</dt>
+        <dd>@Model.Sheet?.Status</dd>
+    </dl>
+
+    @foreach (var category in Model.Categories.Where(category => category.ParentId == 0))
+    {
+        <section class="q-arc-category">
+            <h2>@category.Label</h2>
+            @if (!string.IsNullOrWhiteSpace(category.AdditionalText))
+            {
+                <p>@category.AdditionalText</p>
+            }
+            @foreach (var term in category.Terms)
+            {
+                <div class="q-arc-term">
+                    <h3>@term.Label</h3>
+                    @if (!string.IsNullOrWhiteSpace(term.AdditionalText))
+                    {
+                        <p>@term.AdditionalText</p>
+                    }
+                    <p>@(term.Value ?? "-")</p>
+                </div>
+            }
+            @foreach (var child in Model.Categories.Where(child => child.ParentId == category.Id))
+            {
+                <section class="q-arc-subcategory">
+                    <h3>@child.Label</h3>
+                    @foreach (var term in child.Terms)
+                    {
+                        <div class="q-arc-term">
+                            <strong>@term.Label</strong>
+                            <span>@(term.Value ?? "-")</span>
+                        </div>
+                    }
+                </section>
+            }
+        </section>
+    }
+</section>

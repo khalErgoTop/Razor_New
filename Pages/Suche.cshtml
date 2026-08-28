@@ -39,6 +39,11 @@
         <input asp-for="MitFreienPlaetzen" type="checkbox" />
         mit freien Plätzen
     </label>
+    <fieldset>
+        <legend>Suchen nach</legend>
+        <label><input asp-for="Einrichtungen" type="checkbox" /> Einrichtungen</label>
+        <label><input asp-for="Leistungserbringer" type="checkbox" /> Leistungserbringer</label>
+    </fieldset>
     @if (Model.SearchResult?.FacilityFeatures.Count > 0)
     {
         <fieldset>
@@ -53,6 +58,7 @@
         </fieldset>
     }
     <button type="submit">Suchen</button>
+    <a asp-page="/Suche">Suche zurücksetzen</a>
 </form>
 
 @if (Model.SearchResult is not null)

@@ -4,6 +4,26 @@
     color: #1f1f1f;
 }
 
+html.high-contrast body {
+    background: #000;
+    color: #fff;
+}
+
+html.high-contrast a,
+html.high-contrast .page-header,
+html.high-contrast .module-navigation,
+html.high-contrast .module-navigation-list ul {
+    color: #fff;
+    background: #000;
+}
+
+html.high-contrast .page-header,
+html.high-contrast .module-navigation,
+html.high-contrast .module-navigation-list ul,
+html.high-contrast .public-footer {
+    border-color: #fff;
+}
+
 .razor-page-header {
     position: relative !important;
     top: auto !important;

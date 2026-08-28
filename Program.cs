@@ -17,6 +17,7 @@ builder.Services.AddScoped<TOPqwWeb_Core.Services.Modules.AnbieterManagementServ
 builder.Services.AddScoped<TOPqwWeb_Core.Legacy.Adapters.KalkulationAdapter>();
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<TOPqwWeb_Core.Infrastructure.Session.LegacySessionContext>();
+builder.Services.AddScoped<TOPqwWeb_Core.Infrastructure.Session.LegacySessionPersistenceService>();
 builder.Services.AddAuthentication("LegacyCookie")
     .AddCookie("LegacyCookie", options =>
     {
@@ -53,6 +54,26 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseSession();
+app.Use(async (context, next) =>
+{
+    var sessionPersistence = context.RequestServices
+        .GetRequiredService<TOPqwWeb_Core.Infrastructure.Session.LegacySessionPersistenceService>();
+    await sessionPersistence.LoadAsync(context.Session, context.RequestAborted);
+
+    try
+    {
+        await next();
+    }
+    finally
+    {
+        if (!context.Session.TryGetValue(
+                TOPqwWeb_Core.Infrastructure.Session.LegacySessionPersistenceService.SkipSaveKey,
+                out _))
+        {
+            await sessionPersistence.SaveAsync(context.Session, context.RequestAborted);
+        }
+    }
+});
 app.Use(async (context, next) =>
 {
     const string dbCheckCompletedKey = "DBCheck.Completed";

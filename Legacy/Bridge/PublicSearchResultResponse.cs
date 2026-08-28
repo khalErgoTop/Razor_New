@@ -8,5 +8,8 @@ namespace TOPqwWeb_Core.Legacy.Bridge
         public string? FacilityType { get; set; }
         public string? FacilityIndicator { get; set; }
         public string? Address { get; set; }
+        public bool IsMainLocation { get; set; }
+        public decimal? DistanceKm { get; set; }
+        public string ResultKind { get; set; } = "Einrichtung";
     }
 }

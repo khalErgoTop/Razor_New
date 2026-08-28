@@ -2,5 +2,7 @@
 {
     public class SucheResultsResponse
     {
+        public List<PublicSearchResultResponse> Results { get; set; } = [];
+        public bool HasMoreResults { get; set; }
     }
 }

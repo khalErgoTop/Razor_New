@@ -11,6 +11,7 @@ public sealed class LegacySessionContext
     private const string LogOutWantedKey = "LogOutWanted";
     private const string LastPageKey = "LastPage";
     private const string PreviouspageKey = "Previouspage";
+    private const string LastPagesKey = "User.LastPages";
     private const string QmBogenCurrentObidKey = "QMBogen.CurrentOKID";
     private const string QmBogenCurrentUbidKey = "QMBogen.CurrentUKID";
     private const string QmBogenIdKey = "QMBogen.ID";
@@ -20,12 +21,58 @@ public sealed class LegacySessionContext
     private const string QmAuswahlSourceKey = "QMAuswahl.Source";
     private const string QwKalkulationIdKey = "QWKalkulation.ID";
     private const string QwKalkulationCurrentObidKey = "QWKalkulation.CurrentOKID";
+    private const string FacilitiesPageIndexKey = "FacilitiesPageIndex";
+    private const string FacilitiesPageFilterKey = "FacilitiesPageFilter";
 
     private readonly IHttpContextAccessor _httpContextAccessor;
 
     public LegacySessionContext(IHttpContextAccessor httpContextAccessor)
     {
         _httpContextAccessor = httpContextAccessor;
+    }
+
+    public IReadOnlyList<LegacyPageVisit> LastPages
+    {
+        get
+        {
+            var value = Session.GetString(LastPagesKey);
+            return string.IsNullOrWhiteSpace(value)
+                ? Array.Empty<LegacyPageVisit>()
+                : JsonSerializer.Deserialize<List<LegacyPageVisit>>(value) ?? [];
+        }
+    }
+
+    public void SetLastPage(string lastPage)
+    {
+        if (string.IsNullOrWhiteSpace(lastPage))
+        {
+            return;
+        }
+
+        var pages = LastPages.ToList();
+        pages.Add(new LegacyPageVisit(lastPage, DateTimeOffset.UtcNow));
+        if (pages.Count > 20)
+        {
+            pages.RemoveRange(0, pages.Count - 20);
+        }
+
+        Session.SetString(LastPagesKey, JsonSerializer.Serialize(pages));
+        LastPage = lastPage;
+        Previouspage = pages.Count > 1 ? pages[^2].Path : null;
+    }
+
+    public int FacilitiesPageIndex
+    {
+        get => GetInt(FacilitiesPageIndexKey) ?? 0;
+        set => SetInt(FacilitiesPageIndexKey, value);
+    }
+
+public sealed record LegacyPageVisit(string Path, DateTimeOffset VisitedAt);
+
+    public string? FacilitiesPageFilter
+    {
+        get => GetString(FacilitiesPageFilterKey);
+        set => SetString(FacilitiesPageFilterKey, value);
     }
 
     public int? QMBogenID

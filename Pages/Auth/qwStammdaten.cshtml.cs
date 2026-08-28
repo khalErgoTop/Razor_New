@@ -26,6 +26,13 @@ namespace TOPqwWeb_Core.Pages.Auth
 
         public QwStammdatenResponse? Facility { get; private set; }
         public IReadOnlyList<StammdatenFacilityChoice> Facilities { get; private set; } = [];
+        public StammdatenFacilityCreateOptions? FacilityCreateOptions { get; private set; }
+        public bool CanCreateFacility { get; private set; }
+        public bool MultipleFacilityTypesEnabled => Facility?.MultipleFacilityTypesEnabled == true;
+        public const int FacilityListPageSize = 9;
+        public string FacilityFilter { get; private set; } = string.Empty;
+        public int FacilityPageIndex { get; private set; }
+        public int FacilityPageCount { get; private set; }
         [BindProperty]
         public ContactDataInput ContactData { get; set; } = new();
         [BindProperty]
@@ -44,6 +51,12 @@ namespace TOPqwWeb_Core.Pages.Auth
         public string FacilityDescription { get; set; } = string.Empty;
         [BindProperty]
         public List<FreePlaceQuestionInput> FreePlaceQuestions { get; set; } = [];
+        [BindProperty]
+        public List<int> SelectedFeatureIds { get; set; } = [];
+        [BindProperty]
+        public StammdatenFacilityCreateInput NewFacility { get; set; } = new();
+        [BindProperty]
+        public InstitutionContactDataInput InstitutionContactData { get; set; } = new();
 
         public sealed class ContactDataInput
         {
@@ -53,7 +66,7 @@ namespace TOPqwWeb_Core.Pages.Auth
             public string Email { get; set; } = string.Empty;
             public string Mobile { get; set; } = string.Empty;
         }
-        public async Task<IActionResult> OnGetAsync(string? eiid, string? stuid, CancellationToken cancellationToken)
+        public async Task<IActionResult> OnGetAsync(string? eiid, string? stuid, string? filter, int? pageIndex, CancellationToken cancellationToken)
         {
             _logger.LogInformation("qwStammdaten request: Authenticated={Authenticated}, Name={Name}, EIID={EIID}, STUID={STUID}", User.Identity?.IsAuthenticated, User.Identity?.Name, eiid, stuid);
             var selectedEIID = string.IsNullOrWhiteSpace(eiid)
@@ -63,7 +76,35 @@ namespace TOPqwWeb_Core.Pages.Auth
                 ? await _service.GetFirstForUserAsync(cancellationToken)
                 : await _service.GetAsync(selectedEIID, stuid, cancellationToken);
             FacilityDescription = Facility?.Facility.Description ?? string.Empty;
-            Facilities = await _service.GetFacilitiesForUserAsync(cancellationToken);
+            if (Facility?.Institution is not null)
+                InstitutionContactData = new InstitutionContactDataInput
+                {
+                    Phone = Facility.Institution.Phone,
+                    Email = Facility.Institution.Email,
+                    Internet = Facility.Institution.Internet,
+                    AssociationAccessAllowed = Facility.Institution.AssociationAccessAllowed
+                };
+            SelectedFeatureIds = Facility?.Features.Select(feature => feature.Id).ToList() ?? [];
+            FacilityFilter = filter ?? _legacySessionContext.FacilitiesPageFilter ?? string.Empty;
+            FacilityPageIndex = Math.Max(0, pageIndex ?? _legacySessionContext.FacilitiesPageIndex);
+            _legacySessionContext.FacilitiesPageFilter = FacilityFilter;
+            _legacySessionContext.FacilitiesPageIndex = FacilityPageIndex;
+            var allFacilities = await _service.GetFacilitiesForUserAsync(cancellationToken);
+            var filteredFacilities = string.IsNullOrWhiteSpace(FacilityFilter)
+                ? allFacilities
+                : allFacilities.Where(choice =>
+                    choice.Name.Contains(FacilityFilter, StringComparison.CurrentCultureIgnoreCase)
+                    || (choice.FacilityIndicator?.Contains(FacilityFilter, StringComparison.CurrentCultureIgnoreCase) ?? false)).ToList();
+            FacilityPageCount = (int)Math.Ceiling(filteredFacilities.Count / (double)FacilityListPageSize);
+            if (FacilityPageCount > 0 && FacilityPageIndex >= FacilityPageCount)
+            {
+                FacilityPageIndex = FacilityPageCount - 1;
+                _legacySessionContext.FacilitiesPageIndex = FacilityPageIndex;
+            }
+            Facilities = filteredFacilities.Skip(FacilityPageIndex * FacilityListPageSize).Take(FacilityListPageSize).ToList();
+            var createOptions = await _service.GetFacilityCreateOptionsAsync(cancellationToken);
+            CanCreateFacility = createOptions.Allowed;
+            FacilityCreateOptions = createOptions.Options;
             var mainLocation = Facility?.Facility.Locations.FirstOrDefault(location => location.IsMainLocation)
                 ?? Facility?.Facility.Locations.FirstOrDefault();
             if (mainLocation is not null)
@@ -77,6 +118,7 @@ namespace TOPqwWeb_Core.Pages.Auth
                     Mobile = mainLocation.Mobile ?? string.Empty
                 };
             }
+
             if (Facility is null)
             {
                 _logger.LogWarning("qwStammdaten PageModel found no accessible facility. EIID={EIID}, STUID={STUID}", eiid, stuid);
@@ -86,6 +128,57 @@ namespace TOPqwWeb_Core.Pages.Auth
             _legacySessionContext.CurrentEIID = Facility.Facility.EIID;
 
             return Page();
+        }
+
+        public async Task<IActionResult> OnPostCreateFacilityAsync(CancellationToken cancellationToken)
+        {
+            if (!ModelState.IsValid) return await OnGetAsync(null, null, null, null, cancellationToken);
+            var eiid = await _service.CreateFacilityAsync(NewFacility, cancellationToken);
+            if (eiid is null) return Forbid();
+            _legacySessionContext.CurrentEIID = eiid;
+            return RedirectToPage(new { eiid });
+        }
+
+        public async Task<IActionResult> OnPostSaveInstitutionContactDataAsync(string? eiid, string? stuid, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(eiid)) return BadRequest();
+            if (!await _service.SaveInstitutionContactDataAsync(eiid, InstitutionContactData, cancellationToken)) return Forbid();
+            return RedirectToPage(new { eiid, stuid });
+        }
+
+        public async Task<IActionResult> OnGetStreetNameSuggestionsAsync(string? prefix, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(prefix) || prefix.Length < 3) return new JsonResult(Array.Empty<string>());
+            var suggestions = await _service.GetStreetNameSuggestionsAsync(prefix, cancellationToken);
+            return suggestions is null ? Forbid() : new JsonResult(suggestions);
+        }
+
+        public async Task<IActionResult> OnGetHouseNumberSuggestionsAsync(string? streetName, string? prefix, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(streetName)) return new JsonResult(Array.Empty<string>());
+            var suggestions = await _service.GetHouseNumberSuggestionsAsync(streetName, prefix ?? string.Empty, cancellationToken);
+            return suggestions is null ? Forbid() : new JsonResult(suggestions);
+        }
+
+        public async Task<IActionResult> OnGetStreetDetailsAsync(string? streetName, string? houseNumber, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(streetName) || string.IsNullOrWhiteSpace(houseNumber)) return BadRequest();
+            var details = await _service.GetStreetDetailsAsync(streetName, houseNumber, cancellationToken);
+            return details is null ? NotFound() : new JsonResult(details);
+        }
+
+        public async Task<IActionResult> OnGetStreetAddressExistsAsync(string? streetName, string? houseNumber, string? addition, string? postalCode, string? city, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(streetName) || string.IsNullOrWhiteSpace(houseNumber)) return BadRequest();
+            var exists = await _service.StreetAddressExistsAsync(streetName, houseNumber, addition, postalCode, city, cancellationToken);
+            return exists is null ? Forbid() : new JsonResult(exists.Value);
+        }
+
+        public async Task<IActionResult> OnPostSaveFacilityFeaturesAsync(string? eiid, string? stuid, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(eiid)) return BadRequest();
+            if (!await _service.SaveFacilityFeaturesAsync(eiid, SelectedFeatureIds, cancellationToken)) return Forbid();
+            return RedirectToPage(new { eiid, stuid });
         }
 
         public async Task<IActionResult> OnGetAttachmentAsync(string? eiid, string? attachmentId, bool document, int attachmentType = 102, CancellationToken cancellationToken = default)
@@ -111,6 +204,14 @@ namespace TOPqwWeb_Core.Pages.Auth
             if (!saved) return Forbid();
 
             return RedirectToPage(new { eiid, stuid });
+        }
+
+        public async Task<IActionResult> OnPostRemoveFacilityAsync(string? eiid, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(eiid)) return BadRequest();
+            if (!await _service.RemoveFacilityAsync(eiid, cancellationToken)) return Forbid();
+            _legacySessionContext.CurrentEIID = null;
+            return RedirectToPage();
         }
 
         public async Task<IActionResult> OnPostSaveFreePlacesAsync(string? eiid, string? stuid, CancellationToken cancellationToken)

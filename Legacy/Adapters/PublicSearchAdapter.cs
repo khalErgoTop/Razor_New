@@ -30,8 +30,9 @@ namespace TOPqwWeb_Core.Legacy.Adapters
 
         public PublicSearchAdapter(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("TOPqwWeb")
-                ?? throw new InvalidOperationException("ConnectionStrings:TOPqwWeb muss konfiguriert werden.");
+            _connectionString = configuration.GetConnectionString("TOPqwWeb") is { Length: > 0 } connectionString
+                ? connectionString
+                : throw new InvalidOperationException("ConnectionStrings:TOPqwWeb ist leer. Konfigurieren Sie den Wert über User Secrets oder die Umgebungsvariable ConnectionStrings__TOPqwWeb.");
         }
 
         public async Task<AuflistungResponse> GetAuflistungAsync(string type, string? typeId, string? districtId, CancellationToken cancellationToken)
@@ -62,7 +63,7 @@ namespace TOPqwWeb_Core.Legacy.Adapters
                 SELECT TOP 51 ei.EIID, st.STUID, ei.Einrichtungsname, et.Einrichtungstyp,
                        ei.Einrichtungskennzeichen, st.Standortname, st.Strasse,
                        st.Hausnummer + ' ' + st.HausnummerZusatz AS Hausnummer,
-                       st.PLZ, st.Ort, st.AdresseImWebAnzeigen,
+                       st.PLZ, st.Ort, st.AdresseImWebAnzeigen, ISNULL(st.Hauptstandort, 0) AS Hauptstandort,
                        dbo.GetGeoDistance(origin.lat, origin.lon, ISNULL(st.GeoLat, geo.lat), ISNULL(st.GeoLon, geo.lon)) AS Distanz
                 FROM Einrichtungen ei
                 INNER JOIN Traeger tr ON tr.TRID = ei.FKTRID
@@ -123,7 +124,9 @@ namespace TOPqwWeb_Core.Legacy.Adapters
                             : $"{Convert.ToString(reader.GetValue(2))} - {Convert.ToString(reader.GetValue(5))}",
                         FacilityType = reader.IsDBNull(3) ? null : Convert.ToString(reader.GetValue(3)),
                         FacilityIndicator = reader.IsDBNull(4) ? null : Convert.ToString(reader.GetValue(4)),
-                        Address = address
+                        Address = address,
+                        IsMainLocation = !reader.IsDBNull(11) && Convert.ToBoolean(reader.GetValue(11)),
+                        DistanceKm = reader.IsDBNull(12) ? null : Convert.ToDecimal(reader.GetValue(12))
                     });
                 }
             }

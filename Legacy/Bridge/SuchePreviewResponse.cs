@@ -2,5 +2,6 @@
 {
     public class SuchePreviewResponse
     {
+        public List<string> Suggestions { get; set; } = [];
     }
 }

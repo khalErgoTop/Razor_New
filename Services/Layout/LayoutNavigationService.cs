@@ -66,7 +66,7 @@ public sealed class LayoutNavigationService
                 Kalkulation => new LayoutNavigationLink("kalkulation", "Kalkulation", "/QWKalkulation/QWKalkulationsauswahl", ""),
                 Leistungsvereinbarung => new LayoutNavigationLink("leistungsvereinbarung", "Leistungsvereinbarung", "/TOPLV/LVAuswahl", ""),
                 Qualitaetsmanagement => new LayoutNavigationLink("topqm", "TOPqm", "/TopQMV3/QMMain", ""),
-                Kostenblaetter => new LayoutNavigationLink("kostenblaetter", "Kostenblätter", "/bitQArc/bitQArcDefaultSheetListing?f=KB", ""),
+                Kostenblaetter => new LayoutNavigationLink("kostenblaetter", "Kostenblätter", "/bitQArc/bitQArcDefaultSheetListing?f=KV", ""),
                 Betriebserlaubnis => new LayoutNavigationLink("betriebserlaubnis", "Betriebserlaubnisverfahren", "/bitQArc/bitQArcDefaultSheetListing?f=BE", ""),
                 _ => null
             };
