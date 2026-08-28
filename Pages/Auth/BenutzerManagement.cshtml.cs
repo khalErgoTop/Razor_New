@@ -28,6 +28,7 @@ namespace TOPqwWeb_Core.Pages.Auth
         [BindProperty] public string[] Facilities { get; set; } = [];
         [BindProperty] public int[] Districts { get; set; } = [];
         [BindProperty] public int[] FacilityTypes { get; set; } = [];
+        [BindProperty] public int[] SelectedModuleIds { get; set; } = [];
         [BindProperty] public NewUserInput NewUser { get; set; } = new(string.Empty, string.Empty, string.Empty, string.Empty, 0);
 
         public async Task<IActionResult> OnGetAsync(CancellationToken cancellationToken)
@@ -99,8 +100,9 @@ namespace TOPqwWeb_Core.Pages.Auth
                 IsDeactivated = userId != (await _service.GetCurrentUserContextAsync(cancellationToken)).Beid && Input.IsDeactivated
             };
             await _service.SaveUserAsync(updated, cancellationToken);
-            if (Assignments.CanEditFacilities || Assignments.CanEditDistrictsAndTypes)
-                await _service.SaveAssignmentsAsync(userId, Facilities, Districts, FacilityTypes, cancellationToken);
+            await _service.SaveModulesAsync(userId, SelectedModuleIds, cancellationToken);
+            await _service.SaveAssignmentsAsync(userId, Facilities, Districts, FacilityTypes,
+                Assignments.CanEditFacilities, Assignments.CanEditDistrictsAndTypes, cancellationToken);
             InfoMessage = $"Benutzer '{current.Username}' gespeichert.";
             await LoadAsync(cancellationToken);
             return Page();

@@ -47,7 +47,7 @@ public sealed class PasswordPolicy
         return password.Length >= MinVal &&
                password.Length <= MaxVal &&
                (WithSizedLetters <= 0 || password.Count(char.IsUpper) >= WithSizedLetters) &&
-               (WithSonderzeichen <= 0 || password.Count(character => !char.IsLetterOrDigit(character) && character != '_') >= WithSonderzeichen) &&
+               (WithSonderzeichen <= 0 || password.Count(character => !char.IsLetterOrDigit(character) || character == '_') >= WithSonderzeichen) &&
                (WithZiffern <= 0 || password.Count(char.IsDigit) >= WithZiffern);
     }
 

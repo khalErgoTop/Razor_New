@@ -28,6 +28,11 @@ else if (Model.QmBogen is not null)
     </dl>
 
     <h2>Inhalt</h2>
+    @if (!string.IsNullOrWhiteSpace(Model.SaveMessage))
+    {
+        <p class="lblControlMsg">@Model.SaveMessage</p>
+    }
+    <form method="post" asp-page-handler="Save">
     @if (Model.Oberkategorien.Count == 0)
     {
         <p>Für diesen LeistungsTyp sind keine Fragen hinterlegt.</p>
@@ -46,7 +51,27 @@ else if (Model.QmBogen is not null)
                         {
                             <li>
                                 <span>@frage.FrageKurz</span>
-                                @if (frage.FrageWert is not null)
+                                @if (Model.CanEdit && TOPqwWeb_Core.Pages.QM.QMBogenModel.IsSimpleFormat(frage.Format))
+                                {
+                                    @if (frage.Mussfeld)
+                                    {
+                                        <strong aria-label="Pflichtfeld">*</strong>
+                                    }
+                                    @if (frage.Format is "dbBoolean" or "dbBool")
+                                    {
+                                        <input type="hidden" name="Values[@frage.ID]" value="false" />
+                                        <input type="checkbox" name="Values[@frage.ID]" value="true" checked="@(frage.FrageWert?.WertBOOL == true ? "checked" : null)" />
+                                    }
+                                    else
+                                    {
+                                        <input type="@(frage.Format is "dbLong" or "dbReal" or "dbSingle" or "dbDouble" ? "number" : "text")" name="Values[@frage.ID]" value="@(GetInputValue(frage))" />
+                                    }
+                                    @if (Model.ValidationErrors.TryGetValue(frage.ID, out var validationError))
+                                    {
+                                        <span class="field-validation-error">@validationError</span>
+                                    }
+                                }
+                                else if (frage.FrageWert is not null)
                                 {
                                     <span>: @frage.FrageWert.Wert</span>
                                 }
@@ -57,4 +82,21 @@ else if (Model.QmBogen is not null)
             </section>
         }
     }
+    @if (Model.CanEdit && Model.Oberkategorien.Count > 0)
+    {
+        <button type="submit">Speichern</button>
+    }
+    </form>
+    <p><a asp-page="/TOPqmV3/QMPrintPreview">Druckansicht</a></p>
+}
+
+@functions {
+    private static string GetInputValue(TOPqwWeb_Core.Legacy.Bridge.QmFrageResponse frage) => frage.FrageWert is null ? string.Empty : frage.Format switch
+    {
+        "dbText" => frage.FrageWert.WertTXT,
+        "dbMemo" => frage.FrageWert.WertMEMO,
+        "dbLong" => frage.FrageWert.WertINT.ToString(System.Globalization.CultureInfo.CurrentCulture),
+        "dbReal" or "dbSingle" or "dbDouble" => frage.FrageWert.WertREAL.ToString(System.Globalization.CultureInfo.CurrentCulture),
+        _ => string.Empty
+    };
 }

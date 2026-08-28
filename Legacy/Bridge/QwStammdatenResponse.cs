@@ -9,6 +9,7 @@ public sealed class QwStammdatenResponse
     public bool CanEditAttachments { get; init; }
     public bool CanViewDocuments { get; init; }
     public bool CanEditDocuments { get; init; }
+    public bool CanEditFreePlaces { get; init; }
     public bool CanViewOwnFacilities { get; init; }
     public bool CanChangeFacilityVisibility { get; init; }
     public bool CanEditImage { get; init; }

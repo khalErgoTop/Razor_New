@@ -278,15 +278,52 @@ public sealed class BenutzerManagementService
             CanEditFacilities(user.UserType), user.UserType is 7 or 22);
     }
 
-    public async Task SaveAssignmentsAsync(int userId, IEnumerable<string> facilityIds, IEnumerable<int> districtIds, IEnumerable<int> facilityTypeIds, CancellationToken cancellationToken)
+    public async Task SaveAssignmentsAsync(int userId, IEnumerable<string> facilityIds, IEnumerable<int> districtIds, IEnumerable<int> facilityTypeIds, bool canEditFacilities, bool canEditDistrictsAndTypes, CancellationToken cancellationToken)
     {
         await using var connection = await OpenAsync(cancellationToken);
         await using var transaction = (SqlTransaction)await connection.BeginTransactionAsync(cancellationToken);
         try
         {
-            await ReplaceAssignmentsAsync(connection, transaction, "IndexBenutzerEinrichtung", "FKEIID", userId, facilityIds, cancellationToken);
-            await ReplaceAssignmentsAsync(connection, transaction, "IndexBenutzerKreise", "FKKRID", userId, districtIds.Select(id => id.ToString()), cancellationToken);
-            await ReplaceAssignmentsAsync(connection, transaction, "IndexBenutzerEinrichtungstyp", "FKETID", userId, facilityTypeIds.Select(id => id.ToString()), cancellationToken);
+            if (canEditFacilities)
+                await ReplaceAssignmentsAsync(connection, transaction, "IndexBenutzerEinrichtung", "FKEIID", userId, facilityIds, cancellationToken);
+            if (canEditDistrictsAndTypes)
+            {
+                await ReplaceAssignmentsAsync(connection, transaction, "IndexBenutzerKreise", "FKKRID", userId, districtIds.Select(id => id.ToString()), cancellationToken);
+                await ReplaceAssignmentsAsync(connection, transaction, "IndexBenutzerEinrichtungstyp", "FKETID", userId, facilityTypeIds.Select(id => id.ToString()), cancellationToken);
+            }
+            await transaction.CommitAsync(cancellationToken);
+        }
+        catch
+        {
+            await transaction.RollbackAsync(cancellationToken);
+            throw;
+        }
+    }
+
+    public async Task SaveModulesAsync(int userId, IEnumerable<int> moduleIds, CancellationToken cancellationToken)
+    {
+        var context = await GetCurrentUserContextAsync(cancellationToken);
+        var target = await GetUserDetailsAsync(userId, cancellationToken);
+        if (target is null || !CanEditModules(context, target.UserType)) return;
+
+        await using var connection = await OpenAsync(cancellationToken);
+        await using var transaction = (SqlTransaction)await connection.BeginTransactionAsync(cancellationToken);
+        try
+        {
+            await using (var delete = new SqlCommand("DELETE FROM IndexBenutzerModule WHERE FKBEID = @beid", connection, transaction))
+            {
+                delete.Parameters.AddWithValue("@beid", userId);
+                await delete.ExecuteNonQueryAsync(cancellationToken);
+            }
+
+            foreach (var moduleId in moduleIds.Distinct())
+            {
+                await using var insert = new SqlCommand("INSERT INTO IndexBenutzerModule (FKBEID, ModuleID) VALUES (@beid, @moduleId)", connection, transaction);
+                insert.Parameters.AddWithValue("@beid", userId);
+                insert.Parameters.AddWithValue("@moduleId", moduleId);
+                await insert.ExecuteNonQueryAsync(cancellationToken);
+            }
+
             await transaction.CommitAsync(cancellationToken);
         }
         catch
@@ -320,6 +357,10 @@ public sealed class BenutzerManagementService
 
     private bool CanEditFacilities(int targetUserType)
         => targetUserType is 1 or 2 or 3 or 14;
+
+    private static bool CanEditModules(UserContext context, int targetUserType)
+        => context.IsAdmin || context.UserType == 7 ||
+           ((context.UserType is 1 or 22) && (targetUserType is 2 or 3));
 
     public async Task SaveUserAsync(UserDetails user, CancellationToken cancellationToken)
     {

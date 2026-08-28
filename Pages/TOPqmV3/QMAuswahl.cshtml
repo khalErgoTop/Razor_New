@@ -11,6 +11,7 @@
             {
                 <option value="@status.Value">@status.Text</option>
             }
+        </select>
 
 @if (Model.SelectableBoegen.Count > 0)
 {
@@ -29,7 +30,6 @@
         }
     </ul>
 }
-        </select>
     </div>
     <button type="submit" asp-page-handler="Filter">Filtern</button>
 </form>

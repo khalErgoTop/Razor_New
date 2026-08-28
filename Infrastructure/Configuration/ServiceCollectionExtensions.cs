@@ -42,6 +42,7 @@ namespace TOPqwWeb_Core.Infrastructure.Configuration
             services.AddScoped<PasswortAendernPageService>();
             services.AddScoped<OptionenService>();
             services.AddScoped<BenutzerManagementService>();
+            services.AddScoped<BenutzerManagementRechteService>();
             services.AddScoped<LayoutNavigationService>();
             services.AddScoped<LvService>();
             services.AddScoped<QmAdapter>();

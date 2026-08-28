@@ -4,13 +4,28 @@
     ViewData["Title"] = Model.Facility?.Facility.Name ?? "qwStammdaten";
 }
 
+@if (Model.Facilities.Count > 1)
+{
+    <form method="get" class="facility-selector">
+        <label for="facility-selector">Leistungsangebot</label>
+        <select id="facility-selector" name="eiid" onchange="this.form.submit()">
+            @foreach (var facility in Model.Facilities)
+            {
+                <option value="@facility.EIID" selected="@(facility.EIID == Model.Facility?.Facility.EIID)">
+                    @facility.Name @(!string.IsNullOrWhiteSpace(facility.FacilityIndicator) ? $"({facility.FacilityIndicator})" : string.Empty)
+                </option>
+            }
+        </select>
+    </form>
+}
+
         @if (Model.Facility.FreePlaces is not null)
         {
             <section>
                 <h2>Freie Plätze</h2>
                 <p>Letzte Meldung: @Model.Facility.FreePlaces.ReportingDate.ToString("g")</p>
                 <p>Verfügbarkeit: @Model.Facility.FreePlaces.Availability</p>
-                @if (Model.Facility.CanEditFacility)
+                @if (Model.Facility.CanEditFreePlaces)
                 {
                     <form id="free-place-form" method="post" asp-page-handler="SaveFreePlaces">
                         <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
@@ -51,7 +66,13 @@
                 <form method="post" asp-page-handler="ToggleFacilityVisibility">
                     <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
                     <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
-                    <button type="submit">Sichtbarkeit des Angebots in der Suche ändern</button>
+                    <p>
+                        Aktueller Status:
+                        @(Model.Facility.FacilityVisibleInSearch ? "in der Suche sichtbar" : "in der Suche verborgen")
+                    </p>
+                    <button type="submit">
+                        @(Model.Facility.FacilityVisibleInSearch ? "Angebot in der Suche verstecken" : "Angebot in der Suche anzeigen")
+                    </button>
                 </form>
             </section>
 
@@ -148,7 +169,7 @@
                     @foreach (var attachment in Model.Facility.Facility.Attachments)
                     {
                         <li>
-                            <a asp-page="/Stammdaten" asp-page-handler="Attachment" asp-route-eiid="@Model.Facility.Facility.EIID" asp-route-attachmentId="@attachment.Id">@attachment.Filename</a>
+                            <a asp-page="/Auth/qwStammdaten" asp-page-handler="Attachment" asp-route-eiid="@Model.Facility.Facility.EIID" asp-route-attachmentId="@attachment.Id" asp-route-document="false" asp-route-attachmentType="@attachment.Type">@attachment.Filename</a>
                             @if (Model.Facility.CanEditAttachments)
                             {
                                 <form method="post" asp-page-handler="DeleteAttachment" style="display:inline">
@@ -181,7 +202,7 @@
                     @foreach (var document in Model.Facility.Documents)
                     {
                         <li>
-                            <a asp-page="/Stammdaten" asp-page-handler="Attachment" asp-route-eiid="@Model.Facility.Facility.EIID" asp-route-attachmentId="@document.Id">@document.Filename</a>
+                            <a asp-page="/Auth/qwStammdaten" asp-page-handler="Attachment" asp-route-eiid="@Model.Facility.Facility.EIID" asp-route-attachmentId="@document.Id" asp-route-document="true" asp-route-attachmentType="@document.Type">@document.Filename</a>
                             @if (Model.Facility.CanEditDocuments)
                             {
                                 <form method="post" asp-page-handler="DeleteAttachment" style="display:inline">

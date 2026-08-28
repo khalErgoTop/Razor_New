@@ -25,6 +25,7 @@ namespace TOPqwWeb_Core.Pages.Auth
         }
 
         public QwStammdatenResponse? Facility { get; private set; }
+        public IReadOnlyList<StammdatenFacilityChoice> Facilities { get; private set; } = [];
         [BindProperty]
         public ContactDataInput ContactData { get; set; } = new();
         [BindProperty]
@@ -62,6 +63,7 @@ namespace TOPqwWeb_Core.Pages.Auth
                 ? await _service.GetFirstForUserAsync(cancellationToken)
                 : await _service.GetAsync(selectedEIID, stuid, cancellationToken);
             FacilityDescription = Facility?.Facility.Description ?? string.Empty;
+            Facilities = await _service.GetFacilitiesForUserAsync(cancellationToken);
             var mainLocation = Facility?.Facility.Locations.FirstOrDefault(location => location.IsMainLocation)
                 ?? Facility?.Facility.Locations.FirstOrDefault();
             if (mainLocation is not null)
@@ -81,7 +83,16 @@ namespace TOPqwWeb_Core.Pages.Auth
                 return Forbid();
             }
 
+            _legacySessionContext.CurrentEIID = Facility.Facility.EIID;
+
             return Page();
+        }
+
+        public async Task<IActionResult> OnGetAttachmentAsync(string? eiid, string? attachmentId, bool document, int attachmentType = 102, CancellationToken cancellationToken = default)
+        {
+            if (string.IsNullOrWhiteSpace(eiid) || string.IsNullOrWhiteSpace(attachmentId)) return NotFound();
+            var attachment = await _service.GetAttachmentAsync(eiid, attachmentId, document, attachmentType, cancellationToken);
+            return attachment is null ? NotFound() : File(attachment.Value.Content, "application/octet-stream", attachment.Value.FileName);
         }
 
         public async Task<IActionResult> OnPostSaveContactDataAsync(string? eiid, string? stuid, CancellationToken cancellationToken)

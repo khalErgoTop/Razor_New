@@ -6,7 +6,7 @@ namespace TOPqwWeb_Core.Infrastructure.Security
 {
     public class ClaimsPrincipalFactory
     {
-        public ClaimsPrincipal Create(AuthResponse user, string? LastPage = null)
+        public ClaimsPrincipal Create(AuthResponse user, string? LastPage = null, string? sessionId = null)
         {
             var claims = new List<Claim>
             {
@@ -27,7 +27,7 @@ namespace TOPqwWeb_Core.Infrastructure.Security
                 claims.Add(new Claim("LastPage", LastPage));
             }
 
-            claims.Add(new Claim("SessionId", Guid.NewGuid().ToString("N")));
+            claims.Add(new Claim("SessionId", sessionId ?? Guid.NewGuid().ToString("N")));
             foreach (var module in user.Modules)
             {
                 claims.Add(new Claim("LegacyModule", module.ToString()));

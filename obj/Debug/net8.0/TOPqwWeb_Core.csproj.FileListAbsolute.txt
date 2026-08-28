@@ -70,3 +70,4 @@ D:\Repositories\TOPqwWeb_Full\TOPqwWeb_Core\obj\Debug\net8.0\refint\TOPqwWeb_Cor
 D:\Repositories\TOPqwWeb_Full\TOPqwWeb_Core\obj\Debug\net8.0\TOPqwWeb_Core.pdb
 D:\Repositories\TOPqwWeb_Full\TOPqwWeb_Core\obj\Debug\net8.0\TOPqwWeb_Core.genruntimeconfig.cache
 D:\Repositories\TOPqwWeb_Full\TOPqwWeb_Core\obj\Debug\net8.0\ref\TOPqwWeb_Core.dll
+D:\Repositories\TOPqwWeb_Full\TOPqwWeb_Core\obj\Debug\net8.0\TOPqwWeb_Core.sourcelink.json

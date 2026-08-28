@@ -8,6 +8,29 @@ public sealed record QmBogenResponse(
     int Status,
     DateTime? GeaendertAm);
 
+public sealed record QmXmlHeaderResponse(
+    int LayoutJahr,
+    bool IstTraegerBogen,
+    string EinrichtungsId,
+    string Einrichtungsname,
+    string Einrichtungskennzeichen,
+    string? Aktenzeichen,
+    string? EinrichtungsStrasse,
+    string? EinrichtungsHausnummer,
+    string? EinrichtungsHausnummerZusatz,
+    string? EinrichtungsPlz,
+    string? EinrichtungsOrt,
+    string? TraegerId,
+    string? Traegername,
+    string? TraegerStrasse,
+    string? TraegerPlz,
+    string? TraegerOrt,
+    IReadOnlyList<QmXmlFacilityTypeResponse> Einrichtungstypen,
+    int? KreisId,
+    string? Kreis);
+
+public sealed record QmXmlFacilityTypeResponse(string Typkennzeichnung, string Einrichtungstyp);
+
 public sealed record QmFrageResponse(
     int ID,
     int Position,

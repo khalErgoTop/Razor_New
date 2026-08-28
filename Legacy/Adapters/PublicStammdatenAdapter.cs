@@ -319,7 +319,28 @@ namespace TOPqwWeb_Core.Legacy.Adapters
                 DELETE FROM SearchFacilityOverride WHERE FKEIID = @eiid;
                 SELECT CONVERT(bit, CASE WHEN @standardVisibility > 0 THEN 1 ELSE 0 END);
                 """;
-            return await ExecuteVisibilityCommandAsync(sql, eiid, cancellationToken);
+            await ExecuteVisibilityCommandAsync(sql, eiid, cancellationToken);
+            return true;
+        }
+
+        public async Task<bool> GetFacilityVisibleInSearchAsync(string eiid, CancellationToken cancellationToken)
+        {
+            const string sql = """
+                SELECT CASE WHEN
+                    ((e.Status = 5 AND ISNULL(e.GeschlossenAm, GETDATE() + 1) > GETDATE())
+                     OR EXISTS (SELECT 1 FROM SearchFacilityOverride o WHERE o.FKEIID = e.EIID AND o.ShowInSearch = 1))
+                    AND e.FKETID IN (SELECT FKETID FROM HTML_EinrichtungstypenExport INNER JOIN HTML_Dokument ON FKHDID = HDID WHERE Exportieren = 1 AND Dokumenttitel = 'Einrichtung')
+                    AND NOT EXISTS (SELECT 1 FROM SearchFacilityOverride o WHERE o.FKEIID = e.EIID AND o.ShowInSearch = 0)
+                THEN CAST(1 AS bit) ELSE CAST(0 AS bit) END
+                FROM Einrichtungen e
+                WHERE e.EIID = @eiid;
+                """;
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@eiid", eiid);
+            var value = await command.ExecuteScalarAsync(cancellationToken);
+            return value is not null && value != DBNull.Value && Convert.ToBoolean(value);
         }
 
         public async Task<bool> ToggleLocationVisibilityAsync(int stid, bool currentlyVisible, CancellationToken cancellationToken)
@@ -416,6 +437,40 @@ namespace TOPqwWeb_Core.Legacy.Adapters
             return string.IsNullOrWhiteSpace(eiid)
                 ? null
                 : await GetForUserWithLoggingAsync(eiid, beid, isAdmin, cancellationToken);
+        }
+
+        public async Task<IReadOnlyList<StammdatenFacilityChoice>> GetFacilitiesForUserAsync(int beid, bool isAdmin, CancellationToken cancellationToken)
+        {
+            const string sql = """
+                SELECT DISTINCT ei.EIID, ei.Einrichtungsname, ei.Einrichtungskennzeichen
+                FROM Einrichtungen ei
+                INNER JOIN Traeger tr ON tr.TRID = ei.FKTRID
+                WHERE @isAdmin = 1
+                   OR EXISTS (SELECT 1 FROM IndexBenutzerEinrichtung ibe WHERE ibe.FKEIID = ei.EIID AND ibe.FKBEID = @beid)
+                   OR EXISTS (
+                       SELECT 1
+                       FROM IndexBenutzerGruppe ibg
+                       INNER JOIN IndexBenutzerEinrichtung ibe ON ibe.FKBEID = ibg.FKG AND ibe.FKEIID = ei.EIID
+                       WHERE ibg.FKBEID = @beid)
+                ORDER BY ei.Einrichtungsname, ei.EIID;
+                """;
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@beid", beid);
+            command.Parameters.AddWithValue("@isAdmin", isAdmin);
+            await using var reader = await command.ExecuteReaderAsync(cancellationToken);
+            var choices = new List<StammdatenFacilityChoice>();
+            while (await reader.ReadAsync(cancellationToken))
+            {
+                choices.Add(new StammdatenFacilityChoice
+                {
+                    EIID = Convert.ToString(reader.GetValue(0)) ?? string.Empty,
+                    Name = Convert.ToString(reader.GetValue(1)) ?? string.Empty,
+                    FacilityIndicator = reader.IsDBNull(2) ? null : Convert.ToString(reader.GetValue(2))
+                });
+            }
+            return choices;
         }
 
         private async Task<StammdatenResponse?> GetForUserWithLoggingAsync(string eiid, int beid, bool isAdmin, CancellationToken cancellationToken)
@@ -568,10 +623,19 @@ namespace TOPqwWeb_Core.Legacy.Adapters
             string attachmentId,
             CancellationToken cancellationToken)
         {
+            return await GetAttachmentAsync(eiid, attachmentId, 102, cancellationToken);
+        }
+
+        public async Task<(string FileName, byte[] Content)?> GetAttachmentAsync(
+            string eiid,
+            string attachmentId,
+            int attachmentType,
+            CancellationToken cancellationToken)
+        {
             const string sql = """
                 SELECT TOP 1 DateinameOriginal, DateiInhalt
                 FROM DateiAnhaengeStammdaten
-                WHERE ID = @id AND FKID = @eiid AND AnhangTyp = 102;
+                WHERE ID = @id AND FKID = @eiid AND AnhangTyp = @type;
                 """;
 
             await using var connection = new SqlConnection(_connectionString);
@@ -579,6 +643,7 @@ namespace TOPqwWeb_Core.Legacy.Adapters
             await using var command = new SqlCommand(sql, connection);
             command.Parameters.AddWithValue("@id", attachmentId);
             command.Parameters.AddWithValue("@eiid", eiid);
+            command.Parameters.AddWithValue("@type", attachmentType);
             await using var reader = await command.ExecuteReaderAsync(cancellationToken);
             if (!await reader.ReadAsync(cancellationToken) || reader.IsDBNull(1)) return null;
 
@@ -662,7 +727,7 @@ namespace TOPqwWeb_Core.Legacy.Adapters
                 STID = GetInt(reader, "LocationSTID"),
                 STUID = GetString(reader, "LocationSTUID"),
                 Name = GetString(reader, "LocationName") ?? string.Empty,
-                Description = GetString(reader, "LocationName"),
+                Description = null,
                 Address = address,
                 Street = GetString(reader, "LocationStreet"),
                 HouseNumber = GetString(reader, "LocationHouseNumber"),

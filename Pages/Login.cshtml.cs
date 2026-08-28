@@ -54,6 +54,13 @@ namespace TOPqwWeb_Core.Pages
             }
 
             var user = await _service.LoginEncAsync(Input.Username.Trim(), Input.Passwort, cancellationToken);
+            if (user is not null && user.WaitSeconds > 0)
+            {
+                WaitSeconds = user.WaitSeconds;
+                ErrorMessage = "Benutzername unbekannt oder falsches Passwort!";
+                return Page();
+            }
+
             if (user is not null && user.UserId > 0)
             {
                 var LastPage = GetLocalReturnUrl(ReturnUrl);
@@ -73,7 +80,7 @@ namespace TOPqwWeb_Core.Pages
                 _legacySessionContext.LastPage = LastPage;
                 await HttpContext.SignInAsync(
                     "LegacyCookie",
-                    _claimsPrincipalFactory.Create(user, LastPage),
+                    _claimsPrincipalFactory.Create(user, LastPage, sessionId),
                     new AuthenticationProperties { IsPersistent = Input.StayLoggedIn });
 
                 return LocalRedirect(LastPage ?? "/Index");

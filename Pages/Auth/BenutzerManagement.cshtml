@@ -104,7 +104,7 @@
                 <legend>Module</legend>
                 @foreach (var module in Model.Modules)
                 {
-                    <label><input type="checkbox" name="Modules" value="@module.Id" checked="@module.IsSelected" /> @module.Name</label>
+                    <label><input type="checkbox" name="SelectedModuleIds" value="@module.Id" @(module.IsSelected ? "checked" : null) /> @module.Name</label>
                 }
             </fieldset>
 
@@ -115,7 +115,7 @@
                     <select name="Facilities" multiple size="8" disabled="@(!Model.Assignments.CanEditFacilities)">
                         @foreach (var facility in Model.Assignments.Facilities)
                         {
-                            <option value="@facility.Value" selected="@facility.IsSelected">@facility.Text</option>
+                             <option value="@facility.Value" selected="@(facility.IsSelected ? "selected" : null)">@facility.Text</option>
                         }
                     </select>
                 </fieldset>
@@ -128,7 +128,7 @@
                     <select name="Districts" multiple size="8" disabled="@(!Model.Assignments.CanEditDistrictsAndTypes)">
                         @foreach (var district in Model.Assignments.Districts)
                         {
-                            <option value="@district.Value" selected="@district.IsSelected">@district.Text</option>
+                             <option value="@district.Value" selected="@(district.IsSelected ? "selected" : null)">@district.Text</option>
                         }
                     </select>
                 </fieldset>
@@ -141,7 +141,7 @@
                     <select name="FacilityTypes" multiple size="8" disabled="@(!Model.Assignments.CanEditDistrictsAndTypes)">
                         @foreach (var facilityType in Model.Assignments.FacilityTypes)
                         {
-                            <option value="@facilityType.Value" selected="@facilityType.IsSelected">@facilityType.Text</option>
+                             <option value="@facilityType.Value" selected="@(facilityType.IsSelected ? "selected" : null)">@facilityType.Text</option>
                         }
                     </select>
                 </fieldset>

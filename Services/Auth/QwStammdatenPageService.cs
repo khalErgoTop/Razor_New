@@ -19,17 +19,18 @@ namespace TOPqwWeb_Core.Services.Auth
         private const string Stammdaten_Einrichtung_Bilder_Anzeigen = "3D1FB251-53F7-40B6-A078-BEF077E4D953";
         private const string Stammdaten_Standort_Hinzufuegen = "42502EB1-0758-4F62-9059-93DB259D01D4";
         private const string Stammdaten_BesucherZaehler_anzeigen = "46BE18E8-AE12-4D95-9E28-C0CFEDC3DE0";
+        private const string Stammdaten_FreiePlaetze_Bearbeiten = "B50C1106-1268-4324-8543-12A4FB36A98F";
 
         private readonly StammdatenPageService _stammdatenPageService;
-    private readonly PublicStammdatenAdapter _publicStammdatenAdapter;
+        private readonly PublicStammdatenAdapter _publicStammdatenAdapter;
         private readonly LegacyPermissionService _permissionService;
         private readonly CurrentUserAccessor _currentUserAccessor;
         private readonly ILogger<QwStammdatenPageService> _logger;
 
-    public QwStammdatenPageService(StammdatenPageService stammdatenPageService, PublicStammdatenAdapter publicStammdatenAdapter, LegacyPermissionService permissionService, CurrentUserAccessor currentUserAccessor, ILogger<QwStammdatenPageService> logger)
+        public QwStammdatenPageService(StammdatenPageService stammdatenPageService, PublicStammdatenAdapter publicStammdatenAdapter, LegacyPermissionService permissionService, CurrentUserAccessor currentUserAccessor, ILogger<QwStammdatenPageService> logger)
         {
             _stammdatenPageService = stammdatenPageService;
-        _publicStammdatenAdapter = publicStammdatenAdapter;
+            _publicStammdatenAdapter = publicStammdatenAdapter;
             _permissionService = permissionService;
             _currentUserAccessor = currentUserAccessor;
             _logger = logger;
@@ -57,7 +58,7 @@ namespace TOPqwWeb_Core.Services.Auth
                 _logger.LogWarning("qwStammdaten denied because own-facility permission is false. BEID={BEID}", beid);
                 return null;
             }
-        var facility = await _publicStammdatenAdapter.GetForUserAsync(eiid, stuid, beid.Value, isAdmin, cancellationToken);
+            var facility = await _publicStammdatenAdapter.GetForUserAsync(eiid, stuid, beid.Value, isAdmin, cancellationToken);
             if (facility is null)
             {
                 _logger.LogWarning("qwStammdaten denied because facility was not found or is not assigned. BEID={BEID}, EIID={EIID}", beid, eiid);
@@ -69,6 +70,8 @@ namespace TOPqwWeb_Core.Services.Auth
             var visitorData = permissions.ContainsKey(Stammdaten_BesucherZaehler_anzeigen) && permissions[Stammdaten_BesucherZaehler_anzeigen]
                 ? await _publicStammdatenAdapter.GetVisitorDataAsync(eiid, cancellationToken)
                 : (0, new List<VisitorChartPoint>());
+            var visibleInSearch = await _publicStammdatenAdapter.GetFacilityVisibleInSearchAsync(eiid, cancellationToken);
+            var freePlaces = await _publicStammdatenAdapter.GetFreePlacesAsync(eiid, cancellationToken);
             return new QwStammdatenResponse
             {
                 Facility = facility,
@@ -78,16 +81,17 @@ namespace TOPqwWeb_Core.Services.Auth
                 CanEditAttachments = permissions[Stammdaten_Einrichtung_Attachments_Bearbeiten],
                 CanViewDocuments = permissions[Stammdaten_Einrichtung_Dokumente_Anzeigen],
                 CanEditDocuments = permissions[Stammdaten_Einrichtung_Dokumente_Bearbeiten],
-                CanViewOwnFacilities = permissions[Stammdaten_Einrichtung_Eigene_Anzeigen]
-                ,CanChangeFacilityVisibility = permissions[Stammdaten_Einrichtung_Suche_Verbergen]
-                ,CanEditImage = permissions[Stammdaten_Einrichtung_Bearbeiten] && permissions[Stammdaten_Einrichtung_Bilder_Anzeigen]
-                ,CanAddLocation = permissions[Stammdaten_Standort_Hinzufuegen]
-                ,CanEditLocations = permissions[Stammdaten_Einrichtung_Bearbeiten]
-                ,FacilityVisibleInSearch = true
-                ,Documents = documents
-                ,VisitorCount = visitorData.Item1
-                ,VisitorChart = visitorData.Item2
-                ,FreePlaces = await _publicStammdatenAdapter.GetFreePlacesAsync(eiid, cancellationToken)
+                CanEditFreePlaces = permissions[Stammdaten_FreiePlaetze_Bearbeiten],
+                CanViewOwnFacilities = permissions[Stammdaten_Einrichtung_Eigene_Anzeigen],
+                CanChangeFacilityVisibility = permissions[Stammdaten_Einrichtung_Suche_Verbergen],
+                CanEditImage = permissions[Stammdaten_Einrichtung_Bearbeiten] && permissions[Stammdaten_Einrichtung_Bilder_Anzeigen],
+                CanAddLocation = permissions[Stammdaten_Standort_Hinzufuegen],
+                CanEditLocations = permissions[Stammdaten_Einrichtung_Bearbeiten],
+                FacilityVisibleInSearch = visibleInSearch,
+                Documents = documents,
+                VisitorCount = visitorData.Item1,
+                VisitorChart = visitorData.Item2,
+                FreePlaces = freePlaces
             };
         }
 
@@ -118,6 +122,16 @@ namespace TOPqwWeb_Core.Services.Auth
             return await GetAsync(facility.EIID, facility.Locations.FirstOrDefault()?.STUID, isAdmin, cancellationToken);
         }
 
+        public async Task<IReadOnlyList<StammdatenFacilityChoice>> GetFacilitiesForUserAsync(CancellationToken cancellationToken)
+        {
+            var beid = _currentUserAccessor.BEID;
+            if (!beid.HasValue) return [];
+            var permissions = await _permissionService.GetPermissionsAsync(beid.Value, [Stammdaten_Einrichtung_Eigene_Anzeigen], cancellationToken);
+            if (!permissions[Stammdaten_Einrichtung_Eigene_Anzeigen]) return [];
+            var isAdmin = await _permissionService.HasPermissionAsync(beid.Value, AdminRechte, cancellationToken);
+            return await _publicStammdatenAdapter.GetFacilitiesForUserAsync(beid.Value, isAdmin, cancellationToken);
+        }
+
         public async Task<bool> SaveAttachmentAsync(string eiid, IFormFile file, bool document, int documentType, CancellationToken cancellationToken)
         {
             var beid = _currentUserAccessor.BEID;
@@ -138,6 +152,21 @@ namespace TOPqwWeb_Core.Services.Auth
             return await _publicStammdatenAdapter.DeleteAttachmentAsync(eiid, attachmentId, cancellationToken);
         }
 
+        public async Task<(string FileName, byte[] Content)?> GetAttachmentAsync(
+            string eiid,
+            string attachmentId,
+            bool document,
+            int attachmentType,
+            CancellationToken cancellationToken)
+        {
+            var beid = _currentUserAccessor.BEID;
+            var permission = document ? Stammdaten_Einrichtung_Dokumente_Anzeigen : Stammdaten_Einrichtung_Attachments_Anzeigen;
+            if (!beid.HasValue || !await _permissionService.HasPermissionAsync(beid.Value, permission, cancellationToken)) return null;
+            if (!await HasFacilityAccessAsync(eiid, beid.Value, cancellationToken)) return null;
+            if (document && attachmentType is not (0 or 1 or 2 or 22)) return null;
+            return await _publicStammdatenAdapter.GetAttachmentAsync(eiid, attachmentId, document ? attachmentType : 102, cancellationToken);
+        }
+
         public async Task<bool> AddLocationAsync(string eiid, StammdatenLocationInput location, CancellationToken cancellationToken)
         {
             var beid = _currentUserAccessor.BEID;
@@ -150,7 +179,7 @@ namespace TOPqwWeb_Core.Services.Auth
         public async Task<bool> SaveLocationAsync(string eiid, string stuid, StammdatenLocationInput location, CancellationToken cancellationToken)
         {
             var beid = _currentUserAccessor.BEID;
-            if (!beid.HasValue || !await _permissionService.HasPermissionAsync(beid.Value, Stammdaten_Einrichtung_Bearbeiten, cancellationToken)) return false;
+            if (!beid.HasValue || !await _permissionService.HasPermissionAsync(beid.Value, Stammdaten_FreiePlaetze_Bearbeiten, cancellationToken)) return false;
             if (!Guid.TryParse(stuid, out _)) return false;
             if (!await HasLocationAccessAsync(eiid, stuid, beid.Value, cancellationToken)) return false;
             return await _publicStammdatenAdapter.SaveLocationAsync(eiid, stuid, location, cancellationToken);

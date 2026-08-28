@@ -242,6 +242,20 @@ namespace TOPqwWeb_Core.Legacy.Adapters
             await command.ExecuteNonQueryAsync(cancellationToken);
         }
 
+        public async Task SaveNewPasswordAsync(int uid, string password, CancellationToken cancellationToken)
+        {
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var command = new SqlCommand("SaveUserPassword", connection)
+            {
+                CommandType = System.Data.CommandType.StoredProcedure
+            };
+            command.Parameters.AddWithValue("@uid", uid);
+            command.Parameters.AddWithValue("@pass", password);
+            command.Parameters.AddWithValue("@symKeyPass", LegacyCrypto.AesEncode(password));
+            await command.ExecuteNonQueryAsync(cancellationToken);
+        }
+
         public async Task<bool> VerifyCurrentPasswordAsync(int uid, string password, CancellationToken cancellationToken)
         {
             await using var connection = new SqlConnection(_connectionString);

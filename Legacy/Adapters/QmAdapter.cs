@@ -84,6 +84,46 @@ namespace TOPqwWeb_Core.Legacy.Adapters
                 ReadDouble(reader, 4), ReadBool(reader, 5), ReadString(reader, 6), ReadString(reader, 7));
         }
 
+        public async Task<bool> SaveFrageWertAsync(int QMBogenID, int QIID, string format, string value, CancellationToken cancellationToken)
+        {
+            const string questionSql = "SELECT f.Format FROM QMLV3IndexUnterkategorieFrage iuf INNER JOIN QMLV3Frage f ON f.QFID = iuf.FKQFID WHERE iuf.QIID = @QIID AND EXISTS (SELECT 1 FROM QMWV3Bogen b WHERE b.QBID = @QMBogenID AND b.FKQLID = iuf.FKQLID) AND ISNULL(iuf.isDeleted, 0) = 0 AND ISNULL(f.isDeleted, 0) = 0";
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var questionCommand = new SqlCommand(questionSql, connection);
+            questionCommand.Parameters.AddWithValue("@QIID", QIID);
+            questionCommand.Parameters.AddWithValue("@QMBogenID", QMBogenID);
+            var storedFormat = Convert.ToString(await questionCommand.ExecuteScalarAsync(cancellationToken));
+            if (string.IsNullOrWhiteSpace(storedFormat) || !string.Equals(storedFormat, format, StringComparison.OrdinalIgnoreCase)) return false;
+
+            const string sql = "DECLARE @ID int; SELECT @ID = QWID FROM QMWV3Wert WHERE FKQBID = @QMBogenID AND FKQIID = @QIID; IF @ID IS NULL INSERT INTO QMWV3Wert (FKQBID, FKQIID, WertINT, WertREAL, WertBOOL, WertTXT, WertMEMO, GeaendertAm) VALUES (@QMBogenID, @QIID, @WertINT, @WertREAL, @WertBOOL, @WertTXT, @WertMEMO, GETDATE()); ELSE UPDATE QMWV3Wert SET WertINT = @WertINT, WertREAL = @WertREAL, WertBOOL = @WertBOOL, WertTXT = @WertTXT, WertMEMO = @WertMEMO, GeaendertAm = GETDATE() WHERE QWID = @ID;";
+            await using var command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@QMBogenID", QMBogenID);
+            command.Parameters.AddWithValue("@QIID", QIID);
+            command.Parameters.AddWithValue("@WertINT", ParseInt(format, value));
+            command.Parameters.AddWithValue("@WertREAL", ParseDouble(format, value));
+            command.Parameters.AddWithValue("@WertBOOL", ParseBool(format, value));
+            command.Parameters.AddWithValue("@WertTXT", format.Equals("dbText", StringComparison.OrdinalIgnoreCase) ? value : string.Empty);
+            command.Parameters.AddWithValue("@WertMEMO", format.Equals("dbMemo", StringComparison.OrdinalIgnoreCase) ? value : string.Empty);
+            await command.ExecuteNonQueryAsync(cancellationToken);
+            return true;
+        }
+
+        public async Task<bool> SetBogenInBearbeitungAsync(int QMBogenID, string EIID, CancellationToken cancellationToken)
+        {
+            const string sql = "UPDATE [dbo].[QMWV3Bogen] SET [Status] = @Status, [GeaendertAm] = GETDATE() WHERE [QBID] = @QMBogenID AND [FKEIID] = @EIID AND [Status] IN (1, 2, 5, 6)";
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@Status", 2);
+            command.Parameters.AddWithValue("@QMBogenID", QMBogenID);
+            command.Parameters.AddWithValue("@EIID", EIID);
+            return await command.ExecuteNonQueryAsync(cancellationToken) == 1;
+        }
+
+        private static int ParseInt(string format, string value) => format.Equals("dbLong", StringComparison.OrdinalIgnoreCase) && int.TryParse(value, out var result) ? result : 0;
+        private static double ParseDouble(string format, string value) => (format.Equals("dbReal", StringComparison.OrdinalIgnoreCase) || format.Equals("dbSingle", StringComparison.OrdinalIgnoreCase) || format.Equals("dbDouble", StringComparison.OrdinalIgnoreCase)) && double.TryParse(value, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentCulture, out var result) ? result : 0;
+        private static bool ParseBool(string format, string value) => (format.Equals("dbBoolean", StringComparison.OrdinalIgnoreCase) || format.Equals("dbBool", StringComparison.OrdinalIgnoreCase)) && bool.TryParse(value, out var result) && result;
+
         public async Task<IReadOnlyDictionary<int, QmFrageWertResponse>> GetFrageWerteAsync(int QMBogenID, CancellationToken cancellationToken)
         {
             const string sql = "SELECT QWID, FKQBID, FKQIID, WertINT, WertREAL, WertBOOL, WertTXT, WertMEMO FROM [dbo].[QMWV3Wert] WHERE FKQBID = @QMBogenID";
@@ -223,6 +263,40 @@ namespace TOPqwWeb_Core.Legacy.Adapters
                 Convert.ToString(reader.GetValue(3)) ?? string.Empty,
                 Convert.ToInt32(reader.GetValue(4)),
                 reader.IsDBNull(5) ? null : Convert.ToDateTime(reader.GetValue(5)));
+        }
+
+        public async Task<QmXmlHeaderResponse?> GetQmXmlHeaderAsync(string EIID, int QLID, CancellationToken cancellationToken)
+        {
+            const string sql = "SELECT l.Layoutjahr, ISNULL(l.IstTraegerBogen, 0), ei.EIID, ei.Einrichtungsname, ei.Einrichtungskennzeichen, ei.Aktenzeichen, st.Strasse, st.Hausnummer, st.HausnummerZusatz, st.PLZ, st.Ort, tr.TRID, tr.Traegername, tr.Strasse, tr.PLZ, tr.Ort, kr.KRID, kr.Kreis FROM QMLV3Layout l INNER JOIN Einrichtungen ei ON ei.EIID = @EIID INNER JOIN Traeger tr ON tr.TRID = ei.FKTRID LEFT JOIN Kreise kr ON kr.KRID = ei.FKKRID OUTER APPLY (SELECT TOP 1 Strasse, Hausnummer, HausnummerZusatz, PLZ, Ort FROM Standorte WHERE FKEIID = ei.EIID ORDER BY Hauptstandort DESC, STUID) st WHERE l.QLID = @QLID";
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@EIID", EIID);
+            command.Parameters.AddWithValue("@QLID", QLID);
+            await using var reader = await command.ExecuteReaderAsync(cancellationToken);
+            if (!await reader.ReadAsync(cancellationToken)) return null;
+            return new QmXmlHeaderResponse(
+                ReadInt(reader, 0), ReadBool(reader, 1), ReadString(reader, 2), ReadString(reader, 3), ReadString(reader, 4),
+                ReadNullableString(reader, 5), ReadNullableString(reader, 6), ReadNullableString(reader, 7), ReadNullableString(reader, 8),
+                ReadNullableString(reader, 9), ReadNullableString(reader, 10), ReadNullableString(reader, 11), ReadNullableString(reader, 12),
+                ReadNullableString(reader, 13), ReadNullableString(reader, 14), ReadNullableString(reader, 15),
+                await GetQmXmlFacilityTypesAsync(EIID, cancellationToken), ReadNullableInt(reader, 16), ReadNullableString(reader, 17));
+        }
+
+        private async Task<IReadOnlyList<QmXmlFacilityTypeResponse>> GetQmXmlFacilityTypesAsync(string EIID, CancellationToken cancellationToken)
+        {
+            const string sql = "SELECT et.Typkennzeichnung, et.Einrichtungstyp FROM Einrichtungen ei INNER JOIN Einrichtungstypen et ON et.ETID = ei.FKETID WHERE ei.EIID = @EIID ORDER BY et.Reihenfolge, et.Kurzbezeichnung, et.Typkennzeichnung";
+            await using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync(cancellationToken);
+            await using var command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@EIID", EIID);
+            await using var reader = await command.ExecuteReaderAsync(cancellationToken);
+            var result = new List<QmXmlFacilityTypeResponse>();
+            while (await reader.ReadAsync(cancellationToken))
+            {
+                result.Add(new QmXmlFacilityTypeResponse(ReadString(reader, 0), ReadString(reader, 1)));
+            }
+            return result;
         }
 
         private static string ReadString(SqlDataReader reader, int ordinal) => reader.IsDBNull(ordinal) ? string.Empty : Convert.ToString(reader.GetValue(ordinal)) ?? string.Empty;

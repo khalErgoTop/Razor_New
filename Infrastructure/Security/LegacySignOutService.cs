@@ -23,7 +23,6 @@ namespace TOPqwWeb_Core.Infrastructure.Security
             }
 
             httpContext.Session.Clear();
-            _legacySessionContext.LogOutWanted = true;
             await httpContext.SignOutAsync("LegacyCookie");
         }
     }

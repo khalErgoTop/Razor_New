@@ -15,6 +15,13 @@
         public string? ImageFileName { get; set; }
     }
 
+    public sealed class StammdatenFacilityChoice
+    {
+        public string EIID { get; init; } = string.Empty;
+        public string Name { get; init; } = string.Empty;
+        public string? FacilityIndicator { get; init; }
+    }
+
     public class StammdatenContactResponse
     {
         public string Label { get; set; } = string.Empty;

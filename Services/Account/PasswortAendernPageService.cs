@@ -49,7 +49,7 @@ public sealed class PasswortAendernPageService
         if (!await _adapter.VerifyCurrentPasswordAsync(userId, oldPassword, cancellationToken))
             return new PasswordChangeResult(false, "Die Eingabe Ihres alten Passwortes stimmt nicht mit dem hinterlegten überein.", policy);
 
-        await _adapter.ChangePasswordAsync(userId, newPassword, cancellationToken);
+        await _adapter.SaveNewPasswordAsync(userId, newPassword, cancellationToken);
         return new PasswordChangeResult(true, "Ihr Passwort wurde geändert.", policy);
     }
 
@@ -62,7 +62,7 @@ public sealed class PasswortAendernPageService
         if (!policy.IsValid(newPassword))
             return new PasswordChangeResult(false, "Das neue Passwort entspricht nicht der Passwortvorgabe.", policy);
 
-        await _adapter.ChangePasswordAsync(userId, newPassword, cancellationToken);
+        await _adapter.SaveNewPasswordAsync(userId, newPassword, cancellationToken);
         return new PasswordChangeResult(true, "Das Passwort wurde geändert.", policy);
     }
 }
