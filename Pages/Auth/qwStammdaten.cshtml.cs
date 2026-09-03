@@ -188,6 +188,13 @@ namespace TOPqwWeb_Core.Pages.Auth
             return attachment is null ? NotFound() : File(attachment.Value.Content, "application/octet-stream", attachment.Value.FileName);
         }
 
+        public async Task<IActionResult> OnGetImageAsync(string? eiid, CancellationToken cancellationToken)
+        {
+            if (string.IsNullOrWhiteSpace(eiid)) return NotFound();
+            var image = await _service.GetImageAsync(eiid, cancellationToken);
+            return image is null ? NotFound() : File(image.Value.Content, image.Value.ContentType, image.Value.FileName);
+        }
+
         public async Task<IActionResult> OnPostSaveContactDataAsync(string? eiid, string? stuid, CancellationToken cancellationToken)
         {
             if (string.IsNullOrWhiteSpace(eiid)) return RedirectToPage("/Index");

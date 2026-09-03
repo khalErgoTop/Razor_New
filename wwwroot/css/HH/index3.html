@@ -1,0 +1,211 @@
+﻿<!DOCTYPE html>
+<html lang="de" data-kern-theme="light">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Teilhabeportal Hamburg</title>
+
+		<!-- KERN - Pfade anpassen wenn bei euch unter /lib/kern/ -->
+		<link rel="stylesheet" href="/lib/kern/kern.css" />
+		<link rel="stylesheet" href="/lib/kern/fonts/fira-sans.css" />
+		<script type="module" src="/lib/kern/js/kern-kopfzeile.js"></script>
+
+		<style>
+			body { max-width: 1280px; margin: 0 auto; padding: 0 16px 32px; }
+			#textToSpeechButton {
+			background-image: url(Images/speech.svg);
+			filter: invert(11%) sepia(24%) saturate(6126%) hue-rotate(187deg) brightness(100%) contrast(101%);
+			background-size: 100%; background-repeat: no-repeat;
+			font-size: 0; height: 24px; width: 24px;
+			position: fixed; top: 1rem; left: 22rem; z-index: 10;
+			cursor: pointer; border: none; background-color: transparent;
+			}
+			#textToSpeechButton.active { background-image: url(Images/nospeech.svg); }
+			.p-for-tts {
+			background-color: var(--kern-color-neutral-100);
+			border-radius: 4px; padding: 8px; cursor: pointer;
+			}
+			.p-for-tts.highlight { background-color: var(--kern-color-neutral-200); }
+			.infobox_barrierefreiheit_header {
+			padding: 8px 12px; border-radius: 6px 6px 0 0;
+			background-color: var(--kern-color-action-default);
+			color: var(--kern-color-action-on-default);
+			font-weight: 600; width: fit-content;
+			}
+			.beschreibung_vorlesen {
+			border: 1px solid var(--kern-color-layout-border);
+			padding: 12px; border-radius: 0 6px 6px 6px; margin-bottom: 16px;
+			}
+		</style>
+	</head>
+	<body class="kern-level-0">
+
+		<kern-kopfzeile>TOPqwWeb - Offizielles Angebot der Sozialbehörde Hamburg</kern-kopfzeile>
+
+		<header style="display:flex; align-items:center; justify-content:space-between; padding:16px 0; border-bottom:1px solid var(--kern-color-layout-border);">
+			<a href="/Index" style="font-weight:600; font-size:1.25rem; text-decoration:none;">TOPqwWeb</a>
+			<button id="textToSpeechButton" title="Vorlesen aktivieren" aria-label="Vorlesemodus gestartet">Vorlesen</button>
+		</header>
+
+		<main style="padding-top:24px">
+			<div class="kern-card" style="padding:16px; margin-bottom:24px">
+				<h1>Teilhabeportal</h1>
+				<h2>Liebe Besucherin, lieber Besucher,</h2>
+				<p>herzlich willkommen auf dem Teilhabeportal der Sozialbehörde Hamburg.</p>
+				<p>Hier erhalten Sie einen Überblick über die Angebote der Eingliederungshilfe in Hamburg.</p>
+				<p>Mit Hilfe der Suchfunktion können Sie sich gezielt über einzelne Leistungen informieren.</p>
+				<p>
+					Wir möchten Sie darauf hinweisen, dass für die Leistungen der <a target="_blank" href="https://www.hamburg.de/fachamt-eingliederungshilfe/">Eingliederungshilfe</a> immer ein Antrag erforderlich ist.
+				</p>
+				<p>
+					Fragen: <a href="mailto:vertragsmanagement.egh@soziales.hamburg.de">vertragsmanagement.egh@soziales.hamburg.de</a>
+				</p>
+			</div>
+
+			<div id="mainAccordionList" style="display:flex; flex-direction:column; gap:8px">
+				<details class="kern-accordion">
+					<summary class="kern-accordion__header">
+						<span class="kern-title">Assistenz in der Sozialpsychiatrie</span>
+					</summary>
+					<div class="kern-accordion__body">
+						<p>Im Zentrum der Assistenz in der Sozialpsychiatrie (ASP) stehen die Unterstützungsleistungen in den Begegnungsstätten.</p>
+					</div>
+				</details>
+				<details class="kern-accordion">
+					<summary class="kern-accordion__header">
+						<span class="kern-title">Einfache Assistenz</span>
+					</summary>
+					<div class="kern-accordion__body">
+						<p>Die Fachleistungsstunden für einfache Assistenz (EA) stellen eine lebenspraktisch orientierte Leistung dar.</p>
+					</div>
+				</details>
+				<details class="kern-accordion">
+					<summary class="kern-accordion__header">
+						<span class="kern-title">Qualifizierte pädagogische Assistenz</span>
+					</summary>
+					<div class="kern-accordion__body">
+						<p>Die QPA stellt eine pädagogische und lernzielorientierte Leistung dar.</p>
+					</div>
+				</details>
+				<details class="kern-accordion">
+					<summary class="kern-accordion__header">
+						<span class="kern-title">Wohnen mit Assistenz</span>
+					</summary>
+					<div class="kern-accordion__body">
+						<p>Wohnen mit Assistenz ist eine Leistung für Menschen mit umfassenden Bedarfen im eigenen Wohnraum.</p>
+					</div>
+				</details>
+				<details class="kern-accordion">
+					<summary class="kern-accordion__header">
+						<span class="kern-title">Qualifizierte Assistenz in Besonderen Wohnformen</span>
+					</summary>
+					<div class="kern-accordion__body">
+						<p>Leistungen zur Förderung der Selbstbestimmung und sozialen Teilhabe.</p>
+					</div>
+				</details>
+				<details class="kern-accordion">
+					<summary class="kern-accordion__header">
+						<span class="kern-title">Tagesförderung</span>
+					</summary>
+					<div class="kern-accordion__body">
+						<p>Die Tagesförderung bereitet auf die Teilhabe am Arbeitsleben vor.</p>
+					</div>
+				</details>
+				<details class="kern-accordion">
+					<summary class="kern-accordion__header">
+						<span class="kern-title">Gastweise Unterbringung</span>
+					</summary>
+					<div class="kern-accordion__body">
+						<p>Kurzzeitige Betreuung außerhalb des familiären Umfelds zur Entlastung.</p>
+					</div>
+				</details>
+				<details class="kern-accordion">
+					<summary class="kern-accordion__header">
+						<span class="kern-title">Familienassistenz</span>
+					</summary>
+					<div class="kern-accordion__body">
+						<p>Qualifizierte pädagogisch orientierte Assistenzleistung für Familien.</p>
+					</div>
+				</details>
+				<details class="kern-accordion">
+					<summary class="kern-accordion__header">
+						<span class="kern-title">Besondere Wohnform für Kinder und Jugendliche</span>
+					</summary>
+					<div class="kern-accordion__body">
+						<p>Wohngruppen für Kinder und Jugendliche mit Assistenzbedarf.</p>
+					</div>
+				</details>
+				<details class="kern-accordion">
+					<summary class="kern-accordion__header">
+						<span class="kern-title">Komplexleistung Frühförderung</span>
+					</summary>
+					<div class="kern-accordion__body">
+						<p>System von ärztlichen, therapeutischen und heilpädagogischen Leistungen aus einer Hand.</p>
+					</div>
+				</details>
+				<details class="kern-accordion">
+					<summary class="kern-accordion__header">
+						<span class="kern-title">Teilhabe am arbeitsweltlichen Kontext</span>
+					</summary>
+					<div class="kern-accordion__body">
+						<p>Ziel ist die Eingliederung in das Arbeitsleben für Menschen mit seelischer Behinderung.</p>
+					</div>
+				</details>
+				<details class="kern-accordion">
+					<summary class="kern-accordion__header">
+						<span class="kern-title">andere Leistungsanbieter</span>
+					</summary>
+					<div class="kern-accordion__body">
+						<p>Alternatives Beschäftigungsangebot zu einer WfbM, näher am allgemeinen Arbeitsmarkt.</p>
+					</div>
+				</details>
+				<details class="kern-accordion">
+					<summary class="kern-accordion__header">
+						<span class="kern-title">Werkstatt für Menschen mit Behinderung</span>
+					</summary>
+					<div class="kern-accordion__body">
+						<p>Beschäftigung für Menschen, die nicht auf dem allgemeinen Arbeitsmarkt tätig sein können.</p>
+					</div>
+				</details>
+				<details class="kern-accordion">
+					<summary class="kern-accordion__header">
+						<span class="kern-title">Heilpädagogische Leistungen</span>
+					</summary>
+					<div class="kern-accordion__body">
+						<p>Förderung für Kinder mit Behinderungen vor der Einschulung, inklusive Familien.</p>
+					</div>
+				</details>
+			</div>
+		</main>
+
+		<audio id="audioClip">
+			<source src="Text.mp3" type="audio/mpeg">
+		</audio>
+
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+			const btn = document.getElementById("textToSpeechButton");
+			let timeout, isTTSActive = false;
+			function speak(text){ if(!isTTSActive) return; timeout=setTimeout(()=>{window.speechSynthesis.speak(new SpeechSynthesisUtterance(text));},250); }
+			btn.addEventListener("click", () => {
+			if(isTTSActive){ location.reload(); return; }
+			isTTSActive=true; btn.classList.add("active");
+			speak(btn.getAttribute("aria-label"));
+			document.querySelectorAll("main p").forEach(node=>{
+			node.classList.add("p-for-tts");
+			node.addEventListener("mouseenter",()=>{ timeout=setTimeout(()=>{if(isTTSActive) speak(node.textContent);},100); node.classList.add("highlight"); });
+			node.addEventListener("mouseleave",()=>{ clearTimeout(timeout); node.classList.remove("highlight"); window.speechSynthesis.cancel(); });
+			});
+			const info=document.createElement("div");
+			info.innerHTML="<div class='infobox_barrierefreiheit_header'>
+				<strong>Wie funktioniert der Vorlesemodus?</strong>
+			</div><div class='beschreibung_vorlesen'>Bewegen Sie die Maus über eine farbige Box, um den Text vorlesen zu lassen.</div>";
+			document.querySelector("main").prepend(info);
+			});
+			document.querySelectorAll('#mainAccordionList .kern-accordion').forEach(acc=>{
+			acc.addEventListener('toggle', function(){ if(this.open){ document.querySelectorAll('#mainAccordionList .kern-accordion').forEach(o=>{ if(o!==this) o.open=false; }); } });
+			});
+			});
+		</script>
+	</body>
+</html>

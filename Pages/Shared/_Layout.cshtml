@@ -1,4 +1,4 @@
-﻿@inject TOPqwWeb_Core.Infrastructure.Theming.ThemeAssetService ThemeAssets
+﻿@* @inject TOPqwWeb_Core.Infrastructure.Theming.ThemeAssetService ThemeAssets
 @inject TOPqwWeb_Core.Infrastructure.Security.CurrentUserAccessor CurrentUser
 @{
     var themeName = ThemeAssets.ThemeName;
@@ -60,6 +60,83 @@
             document.documentElement.classList.toggle('high-contrast');
             this.setAttribute('aria-pressed', document.documentElement.classList.contains('high-contrast').toString());
         });
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html> *@
+
+@inject TOPqwWeb_Core.Infrastructure.Theming.ThemeAssetService ThemeAssets
+@inject TOPqwWeb_Core.Infrastructure.Security.CurrentUserAccessor CurrentUser
+@{
+    var themeName = ThemeAssets.ThemeName;
+}
+<!DOCTYPE html>
+<html lang="de" data-theme="@themeName">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - TOPqwWeb</title>
+
+    <!-- KERN CSS - muss VOR theme.css -->
+    <link rel="stylesheet" href="~/lib/kern/kern.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/lib/kern/fonts/fira-sans.css" asp-append-version="true" />
+
+    <!-- Bundesland überschreibt KERN Tokens -->
+    <link rel="stylesheet" href="@ThemeAssets.GetAssetPath("theme.css")" asp-append-version="true" />
+    <link rel="stylesheet" href="@ThemeAssets.GetAssetPath("menu.css")" asp-append-version="true" />
+    <link rel="stylesheet" href="@ThemeAssets.GetAssetPath("auflistung.css")" asp-append-version="true" />
+</head>
+<body class="kern-level-0">
+
+    <div id="Page" style="max-width: 1280px; margin: 0 auto; padding: 0 16px;">
+        <header style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; padding:16px 0; border-bottom: 1px solid var(--kern-color-layout-border);">
+            <div style="display:flex; align-items:center; gap:16px">
+                
+                <span style="opacity:0.7">@ViewData["Title"]</span>
+            </div>
+
+            <div style="display:flex; align-items:center; gap:8px">
+                @if (CurrentUser.IsAuthenticated)
+                {
+                    <span class="kern-badge">@CurrentUser.Username</span>
+                    <a class="kern-button kern-button--secondary" asp-page="/Logout">Abmelden</a>
+                }
+                else
+                {
+                    <a class="kern-button kern-button--primary" asp-page="/Login">Anmelden</a>
+                }
+                <button class="kern-button kern-button--tertiary" data-layout-action="contrast" aria-pressed="false">
+                    <span class="kern-icon kern-icon--brightness-medium" aria-hidden="true"></span> Kontrast
+                </button>
+            </div>
+        </header>
+
+        <partial name="_Navigation" />
+
+        <main role="main" style="padding:24px 0">
+            @RenderBody()
+        </main>
+
+        <partial name="_Footer" />
+    </div>
+
+    <!-- Web Component nur 1x als module -->
+    <script type="module" src="~/lib/kern/js/kern-kopfzeile.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    <script>
+            document.querySelector('.module-navigation-toggle')?.addEventListener('click', function () {
+                const menu = document.querySelector('.module-navigation-list');
+                const expanded = this.getAttribute('aria-expanded') === 'true';
+                this.setAttribute('aria-expanded', (!expanded).toString());
+                menu?.classList.toggle('is-open', !expanded);
+            });
+            document.querySelector('[data-layout-action="contrast"]')?.addEventListener('click', function (event) {
+                event.preventDefault();
+                document.documentElement.classList.toggle('high-contrast');
+                this.setAttribute('aria-pressed', document.documentElement.classList.contains('high-contrast').toString());
+            });
     </script>
 
     @await RenderSectionAsync("Scripts", required: false)

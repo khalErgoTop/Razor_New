@@ -1,0 +1,15 @@
+@use "../utilities/mixins";
+
+.kern-label {
+    @include mixins.normalize;
+    @include mixins.label-default;
+    width: fit-content;
+
+    &--large {
+        @include mixins.label-large;
+    }
+    
+    &--small {
+        @include mixins.label-small;
+    }
+}

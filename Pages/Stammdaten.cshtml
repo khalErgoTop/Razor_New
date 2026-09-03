@@ -4,99 +4,144 @@
     ViewData["Title"] = Model.Facility?.Name ?? "Stammdaten";
 }
 
-<nav aria-label="Brotkrümelnavigation">
-    <ol class="breadcrumb">
-        <li><a asp-page="/Index">Start</a></li>
-        <li><a asp-page="/Sucharten">Leistungsangebote</a></li>
-        <li aria-current="page">Stammdaten</li>
+<nav aria-label="Brotkrümelnavigation" style="margin-bottom:24px">
+    <ol class="breadcrumb" style="list-style:none; padding:0; margin:0; display:flex; gap:8px; flex-wrap:wrap; font-size:15px">
+        <li><a asp-page="/Index">Start</a> <span style="margin-left:8px">/</span></li>
+        <li><a asp-page="/Sucharten">Leistungsangebote</a> <span style="margin-left:8px">/</span></li>
+        <li aria-current="page" style="font-weight:600">@(Model.Facility?.Name ?? "Stammdaten")</li>
     </ol>
 </nav>
 
-@if (Model.Facility is not null)
+@if (Model.Facility is null)
 {
-    <article class="stammdaten">
-        <h1>@Model.Facility.Name</h1>
-        @if (!string.IsNullOrWhiteSpace(Model.Facility.ImageFileName))
-        {
-            <p><img src="?handler=Image&amp;eiid=@Model.Facility.EIID" alt="Bild von @Model.Facility.Name" /></p>
-        }
-        @if (!string.IsNullOrWhiteSpace(Model.Facility.FacilityIndicator))
-        {
-            <p><strong>Einrichtungskennzeichen:</strong> @Model.Facility.FacilityIndicator</p>
-        }
+    <div class="kern-alert kern-alert--warning"><div class="kern-alert__body">Einrichtung nicht gefunden.</div></div>
+}
+else
+{
+    <article class="stammdaten" style="display:flex; flex-direction:column; gap:24px">
 
-        @if (Model.Facility.Attachments.Count > 0)
-        {
-            <section>
-                <h2>Anhänge</h2>
-                <ul>
-                    @foreach (var attachment in Model.Facility.Attachments)
+        <!-- HEADER CARD -->
+        <div class="kern-card" style="padding:24px">
+            <div style="display:flex; gap:24px; flex-wrap:wrap; align-items:flex-start">
+                <div style="flex:1; min-width:280px">
+                    <h1 style="margin:0 0 12px; font-size:28px; line-height:1.2">@Model.Facility.Name</h1>
+                    @if (!string.IsNullOrWhiteSpace(Model.Facility.FacilityIndicator))
                     {
-                        <li>
-                            <a asp-page-handler="Attachment"
-                               asp-route-eiid="@Model.Facility.EIID"
-                               asp-route-attachmentId="@attachment.Id">@attachment.Filename</a>
-                        </li>
+                        <p style="margin:0"><span class="kern-badge">@Model.Facility.FacilityIndicator</span></p>
                     }
-                </ul>
-                <p>Die angehängten Dateien werden ohne Gewähr für Inhalt und Richtigkeit bereitgestellt.</p>
-            </section>
-        }
-        @if (!string.IsNullOrWhiteSpace(Model.Facility.Address))
-        {
-            <p><strong>Adresse:</strong> @Model.Facility.Address</p>
-        }
+                    @if (!string.IsNullOrWhiteSpace(Model.Facility.Address))
+                    {
+                        <p style="margin:16px 0 0; font-size:16px; line-height:1.5"><strong>Adresse:</strong> @Model.Facility.Address</p>
+                    }
+                </div>
+                @if (!string.IsNullOrWhiteSpace(Model.Facility.ImageFileName))
+                {
+                    <img src="?handler=Image&amp;eiid=@Model.Facility.EIID" alt="Bild von @Model.Facility.Name" style="width:320px; max-width:100%; height:auto; border-radius:8px; border:1px solid var(--kern-color-layout-border)" />
+                }
+            </div>
+        </div>
+
         @if (!string.IsNullOrWhiteSpace(Model.Facility.Description))
         {
-            <section>
-                <h2>Beschreibung</h2>
-                <div>@Html.Raw(Model.Facility.Description)</div>
-            </section>
+            <div class="kern-card" style="padding:24px">
+                <h2 style="margin:0 0 12px; font-size:20px">Beschreibung</h2>
+                <div style="font-size:16px; line-height:1.6">@Html.Raw(Model.Facility.Description)</div>
+            </div>
         }
-        @if (Model.Facility.Contacts.Count > 0)
-        {
-            <section>
-                <h2>Kontakt</h2>
-                <dl>
-                    @foreach (var contact in Model.Facility.Contacts)
-                    {
-                        <dt>@contact.Label</dt>
-                        <dd>@contact.Value</dd>
-                    }
-                </dl>
-            </section>
-        }
+
+        <div style="display:flex; gap:24px; flex-wrap:wrap; align-items:flex-start">
+            @if (Model.Facility.Contacts.Count > 0)
+            {
+                <div class="kern-card" style="flex:1; min-width:300px; padding:24px">
+                    <h2 style="margin:0 0 16px; font-size:20px">Kontakt</h2>
+                    <dl style="margin:0; display:flex; flex-direction:column; gap:12px">
+                        @foreach (var contact in Model.Facility.Contacts)
+                        {
+                            <div>
+                                <dt style="font-weight:600; font-size:14px; color:var(--kern-color-neutral-700)">@contact.Label</dt>
+                                <dd style="margin:4px 0 0; font-size:16px">@contact.Value</dd>
+                            </div>
+                        }
+                    </dl>
+                </div>
+            }
+
+            @if (Model.Facility.Attachments.Count > 0)
+            {
+                <div class="kern-card" style="flex:1; min-width:300px; padding:24px">
+                    <h2 style="margin:0 0 16px; font-size:20px">Anhänge</h2>
+                    <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:8px">
+                        @foreach (var attachment in Model.Facility.Attachments)
+                        {
+                            <li>
+                                <a class="kern-button kern-button--tertiary" style="width:100%; justify-content:flex-start" asp-page-handler="Attachment" asp-route-eiid="@Model.Facility.EIID" asp-route-attachmentId="@attachment.Id">
+                                    <span class="kern-icon kern-icon--attachment" aria-hidden="true"></span> @attachment.Filename
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                    <p style="margin:12px 0 0; font-size:13px; color:var(--kern-color-neutral-700)">Die angehängten Dateien werden ohne Gewähr für Inhalt und Richtigkeit bereitgestellt.</p>
+                </div>
+            }
+        </div>
 
         @if (Model.Facility.Locations.Count > 0)
         {
-            <section>
-                <h2>Standorte</h2>
-                <ul>
+            <div class="kern-card" style="padding:24px">
+                <h2 style="margin:0 0 16px; font-size:20px">Standorte (@Model.Facility.Locations.Count)</h2>
+                <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:16px">
                     @foreach (var location in Model.Facility.Locations)
                     {
-                        <li>
+                        <li class="kern-card" style="padding:16px; background:var(--kern-color-neutral-50)">
                             @if (!string.IsNullOrWhiteSpace(location.Name))
                             {
-                                <h3>@location.Name@(location.IsMainLocation ? " (Hauptstandort)" : string.Empty)</h3>
-                            }
-                            @if (!string.IsNullOrWhiteSpace(location.Address))
-                            {
-                                <p>Adresse: @location.Address</p>
-                            }
-                            @if (location.Contacts.Count > 0)
-                            {
-                                <dl>
-                                    @foreach (var contact in location.Contacts)
-                                    {
-                                        <dt>@contact.Label</dt>
-                                        <dd>@contact.Value</dd>
-                                    }
-                                </dl>
-                            }
-                        </li>
-                    }
-                </ul>
-            </section>
-        }
-    </article>
+                                <h3 style="margin:0 0 8px; font-size:17px">@location.Name @if(location.IsMainLocation){
+                                    <span class="kern-badge" style="margin-left:8px">Hauptstandort</span>
+                                }
+                            </h3>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(location.Address))
+                        {
+                            <p style="margin:0 0 12px">Adresse: @location.Address</p>
+                        }
+                        @if (location.Contacts.Count > 0)
+                        {
+                            <dl style="margin:0; display:flex; flex-wrap:wrap; gap:16px">
+                                @foreach (var contact in location.Contacts)
+                                {
+                                    <div>
+                                        <dt style="font-weight:600; font-size:13px">@contact.Label</dt>
+                                        <dd style="margin:2px 0 0">@contact.Value</dd>
+                                    </div>
+                                }
+                            </dl>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
+    }
+</article>
 }
+
+<style>
+    /* No purple links anywhere */
+    .stammdaten a, .stammdaten a:visited {
+        color: var(--kern-color-action-default) !important;
+        text-decoration: none;
+    }
+
+        .stammdaten a:hover {
+            text-decoration: underline !important;
+        }
+
+    .breadcrumb a, .breadcrumb a:visited {
+        color: #1a1a1a !important;
+        text-decoration: none;
+    }
+
+        .breadcrumb a:hover {
+            color: var(--kern-color-action-default) !important;
+            text-decoration: underline;
+        }
+</style>

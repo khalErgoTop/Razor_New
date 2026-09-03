@@ -28,36 +28,25 @@
 
     @foreach (var category in Model.Categories.Where(category => category.ParentId == 0))
     {
-        <section class="q-arc-category">
-            <h2>@category.Label</h2>
-            @if (!string.IsNullOrWhiteSpace(category.AdditionalText))
-            {
-                <p>@category.AdditionalText</p>
-            }
-            @foreach (var term in category.Terms)
-            {
-                <div class="q-arc-term">
-                    <h3>@term.Label</h3>
-                    @if (!string.IsNullOrWhiteSpace(term.AdditionalText))
-                    {
-                        <p>@term.AdditionalText</p>
-                    }
-                    <p>@(term.Value ?? "-")</p>
-                </div>
-            }
-            @foreach (var child in Model.Categories.Where(child => child.ParentId == category.Id))
-            {
-                <section class="q-arc-subcategory">
-                    <h3>@child.Label</h3>
-                    @foreach (var term in child.Terms)
-                    {
-                        <div class="q-arc-term">
-                            <strong>@term.Label</strong>
-                            <span>@(term.Value ?? "-")</span>
-                        </div>
-                    }
-                </section>
-            }
-        </section>
+        @await Html.PartialAsync("_QArcCategory", (category, Model.Categories, Model.Matrices))
     }
 </section>
+
+<script>
+    document.querySelectorAll('.q-arc-subcategory-toggle').forEach(toggle => {
+        const toggleList = () => {
+            const list = toggle.closest('.q-arc-subcategory')?.querySelector('ul.facilityItem');
+            if (!list) return;
+            const expanded = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', (!expanded).toString());
+            list.hidden = expanded;
+        };
+        toggle.addEventListener('click', toggleList);
+        toggle.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                toggleList();
+            }
+        });
+    });
+</script>

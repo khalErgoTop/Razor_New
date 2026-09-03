@@ -15,64 +15,73 @@
 
 @if (string.IsNullOrWhiteSpace(Model.Suchtyp))
 {
-    <section>
+    <div class="kern-card" style="padding:16px; margin-bottom:16px">
         <h2>Wissen Sie, was ein Leistungstyp ist?</h2>
         <p>Wenn Sie nach einem Leistungstyp suchen möchten, wählen Sie „Ja“.</p>
-        <a asp-page="/SuchAssistent" asp-route-Suchtyp="einfach">Nein, ich möchte die einfache Suche benutzen</a>
-        <a asp-page="/SuchAssistent" asp-route-Suchtyp="typ">Ja, ich möchte nach einem Leistungstyp suchen</a>
-    </section>
+        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px">
+            <a class="kern-button kern-button--secondary" asp-page="/Suche">Nein, ich möchte die einfache Suche benutzen</a>
+            <a class="kern-button kern-button--primary" asp-page="/SuchAssistent" asp-route-Suchtyp="typ">Ja, ich möchte nach einem Leistungstyp suchen</a>
+        </div>
+    </div>
 }
 else if (string.Equals(Model.Suchtyp, "typ", StringComparison.OrdinalIgnoreCase) && !Model.Alter.HasValue)
 {
-    <section>
+    <div class="kern-card" style="padding:16px; margin-bottom:16px">
         <h2>Wie alt sind Sie zum Zeitpunkt, zu dem Sie die Leistung in Anspruch nehmen möchten?</h2>
-        <a asp-page="/SuchAssistent" asp-route-Suchtyp="typ" asp-route-Alter="1">Unter 18 Jahre</a>
-        <a asp-page="/SuchAssistent" asp-route-Suchtyp="typ" asp-route-Alter="0">Über 18 Jahre</a>
-    </section>
+        <div style="display:flex; gap:8px; margin-top:12px">
+            <a class="kern-button kern-button--primary" asp-page="/SuchAssistent" asp-route-Suchtyp="typ" asp-route-Alter="1">Unter 18 Jahre</a>
+            <a class="kern-button kern-button--primary" asp-page="/SuchAssistent" asp-route-Suchtyp="typ" asp-route-Alter="0">Über 18 Jahre</a>
+        </div>
+    </div>
 }
 else if (string.IsNullOrWhiteSpace(Model.Kategorie) && Model.Assistant is not null)
 {
-    <section>
+    <div class="kern-card" style="padding:16px; margin-bottom:16px">
         <h2>Womit benötigen Sie Unterstützung?</h2>
-        <ul>
+        <ul role="list" style="list-style:none; padding:0; margin:12px 0 0">
             @foreach (var category in Model.Assistant.Categories)
             {
-                <li>
-                    <a asp-page="/SuchAssistent"
+                <li style="margin-bottom:8px">
+                    <a class="kern-button kern-button--tertiary" style="width:100%; justify-content:flex-start"
+                       asp-page="/SuchAssistent"
                        asp-route-Suchtyp="@Model.Suchtyp"
                        asp-route-Alter="@Model.Alter"
                        asp-route-Kategorie="@category.Name">@category.Name</a>
                 </li>
             }
         </ul>
-    </section>
+    </div>
 }
 else if (Model.Assistant is not null && Model.Leistung.HasValue && !Model.BeschreibungBestaetigt)
 {
-    <section>
+    <div class="kern-card" style="padding:16px; margin-bottom:16px">
         <h2>Beschreibung der Leistung</h2>
         @if (!string.IsNullOrWhiteSpace(Model.Leistungsbeschreibung))
         {
-            <p>@Model.Leistungsbeschreibung</p>
+            <div class="kern-alert kern-alert--info" style="margin:12px 0">
+                <div class="kern-alert__body">@Model.Leistungsbeschreibung</div>
+            </div>
         }
-        <a asp-page="/SuchAssistent"
+        <a class="kern-button kern-button--primary"
+           asp-page="/SuchAssistent"
            asp-route-Suchtyp="@Model.Suchtyp"
            asp-route-Alter="@Model.Alter"
            asp-route-Kategorie="@Model.Kategorie"
            asp-route-Leistung="@Model.Leistung"
            asp-route-BeschreibungBestaetigt="true">Weiter</a>
-    </section>
+    </div>
 }
 else if (Model.Assistant is not null)
 {
-    <section>
+    <div class="kern-card" style="padding:16px; margin-bottom:16px">
         <h2>Welche Leistung benötigen Sie?</h2>
-        <p>Kategorie: @Model.Kategorie</p>
-        <ul>
+        <p><span class="kern-badge">Kategorie: @Model.Kategorie</span></p>
+        <ul role="list" style="list-style:none; padding:0; margin:12px 0 0">
             @foreach (var leistung in Model.Assistant.Leistungen)
             {
-                <li>
-                    <a asp-page="/SuchAssistent"
+                <li style="margin-bottom:8px">
+                    <a class="kern-button kern-button--tertiary" style="width:100%; justify-content:flex-start"
+                       asp-page="/SuchAssistent"
                        asp-route-Suchtyp="@Model.Suchtyp"
                        asp-route-Alter="@Model.Alter"
                        asp-route-Kategorie="@Model.Kategorie"
@@ -80,98 +89,115 @@ else if (Model.Assistant is not null)
                 </li>
             }
         </ul>
-    </section>
+    </div>
 
     @if (Model.Leistung.HasValue)
     {
-        <section>
-            <h2>Wo möchten Sie die Leistung in Anspruch nehmen?</h2>
-            <form method="get">
+        <h2 style="margin-top:24px">Wo möchten Sie die Leistung in Anspruch nehmen?</h2>
+
+        <div style="display:flex; flex-wrap:wrap; gap:16px; margin-top:12px">
+            <!-- PLZ Suche -->
+            <form method="get" class="kern-card" style="flex:1; min-width:280px; padding:16px">
+                <h3>Suche per Postleitzahl</h3>
                 <input type="hidden" name="Suchtyp" value="@Model.Suchtyp" />
                 <input type="hidden" name="Alter" value="@Model.Alter" />
                 <input type="hidden" name="Kategorie" value="@Model.Kategorie" />
                 <input type="hidden" name="Leistung" value="@Model.Leistung" />
                 <input type="hidden" name="BeschreibungBestaetigt" value="true" />
-                <label for="Postleitzahl">Postleitzahl</label>
-                <input id="Postleitzahl" name="Postleitzahl" value="@Model.Postleitzahl" maxlength="5" />
-                <button type="submit">Postleitzahl suchen</button>
+
+                <div style="margin:12px 0">
+                    <label class="kern-label" for="Postleitzahl">Postleitzahl</label>
+                    <input class="kern-input-text" id="Postleitzahl" name="Postleitzahl" value="@Model.Postleitzahl" maxlength="5" inputmode="numeric" list="postal-code-options" autocomplete="off" style="width:100%; margin-top:4px" />
+                    @if (Model.Postleitzahlen.Count > 0)
+                    {
+                        <datalist id="postal-code-options">
+                            @foreach (var postalCode in Model.Postleitzahlen)
+                            {
+                                <option value="@postalCode"></option>
+                            }
+                        </datalist>
+                    }
+                </div>
+                <button class="kern-button kern-button--primary" type="submit">Postleitzahl suchen</button>
             </form>
 
-            <form method="get" id="GeolocationForm">
+            <!-- Geo Suche - IDs must stay exact for suchassistent.js -->
+            <form method="get" id="GeolocationForm" class="kern-card" style="flex:1; min-width:280px; padding:16px">
+                <h3>Suche per Standort</h3>
                 <input type="hidden" name="Suchtyp" value="@Model.Suchtyp" />
                 <input type="hidden" name="Alter" value="@Model.Alter" />
                 <input type="hidden" name="Kategorie" value="@Model.Kategorie" />
                 <input type="hidden" name="Leistung" value="@Model.Leistung" />
                 <input type="hidden" name="BeschreibungBestaetigt" value="true" />
-                <label for="Latitude">Latitude</label>
-                <input id="Latitude" name="Latitude" value="@Model.Latitude" type="number" step="any" required />
-                <label for="Longitude">Longitude</label>
-                <input id="Longitude" name="Longitude" value="@Model.Longitude" type="number" step="any" required />
-                <button type="button" id="GeolocationSearchButton">Meinen Standort verwenden</button>
-                <button type="submit">Koordinaten suchen</button>
-                <p id="GeolocationMessage" role="status" aria-live="polite"></p>
-            </form>
 
-            @if (Model.Kreise.Count > 0)
-            {
+                <div style="margin:12px 0">
+                    <label class="kern-label" for="Latitude">Latitude</label>
+                    <input class="kern-input-text" id="Latitude" name="Latitude" value="@Model.Latitude" type="number" step="any" required style="width:100%; margin-top:4px" />
+                </div>
+                <div style="margin:12px 0">
+                    <label class="kern-label" for="Longitude">Longitude</label>
+                    <input class="kern-input-text" id="Longitude" name="Longitude" value="@Model.Longitude" type="number" step="any" required style="width:100%; margin-top:4px" />
+                </div>
+                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px">
+                    <button class="kern-button kern-button--secondary" type="button" id="GeolocationSearchButton">Meinen Standort verwenden</button>
+                    <button class="kern-button kern-button--primary" type="submit">Koordinaten suchen</button>
+                </div>
+                <p id="GeolocationMessage" role="status" aria-live="polite" style="margin-top:8px; font-size:0.875rem"></p>
+            </form>
+        </div>
+
+        @if (Model.Kreise.Count > 0)
+        {
+            <div class="kern-card" style="padding:16px; margin-top:16px">
                 <h3>Oder wählen Sie einen Kreis</h3>
-                <ul>
+                <ul role="list" style="list-style:none; padding:0; margin:12px 0 0; display:flex; flex-wrap:wrap; gap:8px">
                     @foreach (var kreis in Model.Kreise)
                     {
-                        <li>
-                            <a asp-page="/SuchAssistent"
-                               asp-route-Suchtyp="@Model.Suchtyp"
-                               asp-route-Alter="@Model.Alter"
-                               asp-route-Kategorie="@Model.Kategorie"
-                               asp-route-Leistung="@Model.Leistung"
-                               asp-route-BeschreibungBestaetigt="true"
-                               asp-route-Kreis="@kreis.Id">@kreis.Name</a>
-                        </li>
+                        <li><a class="kern-button kern-button--tertiary" asp-page="/SuchAssistent" asp-route-Suchtyp="@Model.Suchtyp" asp-route-Alter="@Model.Alter" asp-route-Kategorie="@Model.Kategorie" asp-route-Leistung="@Model.Leistung" asp-route-BeschreibungBestaetigt="true" asp-route-Kreis="@kreis.Id">@kreis.Name</a></li>
                     }
                 </ul>
-            }
+            </div>
+        }
 
-            @if (Model.Kreis.HasValue || Model.Ergebnisse.Count > 0)
-            {
+        @if (Model.Kreis.HasValue || Model.Ergebnisse.Count > 0)
+        {
+            <div class="kern-card" style="padding:16px; margin-top:16px">
                 <h3>Gefundene Einrichtungen</h3>
                 @if (Model.Ergebnisse.Count == 0)
                 {
-                    <p>Für die gewählte Kombination wurden keine Einrichtungen gefunden.</p>
+                    <div class="kern-alert kern-alert--warning" style="margin-top:12px">
+                        <div class="kern-alert__body">Für die gewählte Kombination wurden keine Einrichtungen gefunden.</div>
+                    </div>
                 }
                 else
                 {
-                    <ul>
+                    <ul role="list" style="list-style:none; padding:0; margin:12px 0 0">
                         @foreach (var ergebnis in Model.Ergebnisse)
                         {
-                            <li>
-                                <h4>
-                                    <a asp-page="/Stammdaten"
-                                       asp-route-EIID="@ergebnis.EIID"
-                                       asp-route-STUID="@ergebnis.STUID">@ergebnis.Name</a>
-                                </h4>
+                            <li class="kern-card" style="padding:12px; margin-bottom:8px">
+                                <h4 style="margin:0 0 4px"><a asp-page="/Stammdaten" asp-route-EIID="@ergebnis.EIID" asp-route-STUID="@ergebnis.STUID">@ergebnis.Name</a></h4>
                                 @if (!string.IsNullOrWhiteSpace(ergebnis.Standortname))
                                 {
-                                    <p>@ergebnis.Standortname</p>
+                                    <div>@ergebnis.Standortname</div>
                                 }
-                                <p>
+                                <div style="font-size:0.875rem; opacity:0.8">
                                     @ergebnis.Strasse @ergebnis.Hausnummer @ergebnis.Hausnummerzusatz<br />
                                     @ergebnis.PLZ @ergebnis.Ort
-                                </p>
+                                </div>
                                 @if (!string.IsNullOrWhiteSpace(ergebnis.Telefon))
                                 {
-                                    <p>Telefon: @ergebnis.Telefon</p>
+                                    <div style="margin-top:4px">Telefon: <a href="tel:@ergebnis.Telefon">@ergebnis.Telefon</a></div>
                                 }
                                 @if (ergebnis.Entfernung.HasValue)
                                 {
-                                    <p>Entfernung: @ergebnis.Entfernung.Value.ToString("0.0") km</p>
+                                    <span class="kern-badge" style="margin-top:8px">@ergebnis.Entfernung.Value.ToString("0.0") km</span>
                                 }
                             </li>
                         }
                     </ul>
                 }
-            }
-
-        </section>
+            </div>
+        }
     }
 }
 

@@ -48,6 +48,7 @@ namespace TOPqwWeb_Core.Infrastructure.Configuration
             services.AddScoped<LayoutNavigationService>();
             services.AddScoped<LvService>();
             services.AddScoped<QArcAdapter>();
+            services.AddScoped<QArcAccessService>();
             services.AddScoped<QmAdapter>();
             services.AddScoped<QmService>();
 

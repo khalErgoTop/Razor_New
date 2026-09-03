@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TOPqwWeb_Core.Infrastructure.Session;
 using TOPqwWeb_Core.Legacy.Adapters;
+using TOPqwWeb_Core.Services.Modules;
 
 namespace TOPqwWeb_Core.Pages.bitQArc;
 
@@ -11,11 +12,13 @@ public sealed class bitQArcDefaultSheetListingModel : PageModel
 {
     private readonly QArcAdapter _adapter;
     private readonly LegacySessionContext _session;
+    private readonly QArcAccessService _access;
 
-    public bitQArcDefaultSheetListingModel(QArcAdapter adapter, LegacySessionContext session)
+    public bitQArcDefaultSheetListingModel(QArcAdapter adapter, LegacySessionContext session, QArcAccessService access)
     {
         _adapter = adapter;
         _session = session;
+        _access = access;
     }
 
     public string TablePrefix { get; private set; } = "KV";
@@ -36,6 +39,7 @@ public sealed class bitQArcDefaultSheetListingModel : PageModel
         TablePrefix = requestedPrefix == "KB" ? "KV" : requestedPrefix;
         EIID = string.IsNullOrWhiteSpace(e) ? _session.CurrentEIID ?? string.Empty : e;
         if (string.IsNullOrWhiteSpace(EIID)) return BadRequest("Eine Einrichtung ist erforderlich.");
+        if (!(await _access.GetAccessAsync(EIID, TablePrefix, null, cancellationToken)).CanView) return Forbid();
 
         Layouts = await _adapter.GetLayoutsAsync(TablePrefix, cancellationToken);
         LayoutId = l ?? Layouts.FirstOrDefault()?.Id ?? 0;

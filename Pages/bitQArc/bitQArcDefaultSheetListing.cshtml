@@ -46,7 +46,7 @@
             @foreach (var sheet in Model.Sheets)
             {
                 <li>
-                    <a asp-page="/bitQArc/bitQArcDefaultSheet"
+                    <a asp-page="@(Model.TablePrefix.Equals("BE", StringComparison.OrdinalIgnoreCase) ? "/bitQArc/bitQArcBE_MVSheet" : "/bitQArc/bitQArcDefaultSheet")"
                        asp-route-f="@Model.TablePrefix"
                        asp-route-e="@sheet.EIID"
                        asp-route-l="@sheet.LayoutId"

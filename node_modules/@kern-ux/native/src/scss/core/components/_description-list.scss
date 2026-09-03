@@ -1,0 +1,83 @@
+/**
+ * @file _description-list.scss
+ * @author Darko Pervan, darko.pervan@dataport.de / KERN-Team
+ * @author Tom Marienfeld, tom.marienfeld@dataport.de / KERN-Team
+ * @date 16.12.2024
+ * @modified 23.05.2025
+ * @@VERSION@@
+ * @brief Styles für die Description-list Komponente.
+ *
+ * Diese Datei enthält die CSS-Regeln, um die description-list Komponente
+ * visuell darzustellen. Sie definiert das Grundaussehen.
+ * Description-list ist ein Key / Value pairs darstellung
+ * Variationen (horizontal und vertikal) 
+ */
+
+@use "sass:map";
+@use '../utilities/maps';
+@use "../utilities/mixins";
+
+.kern-description-list {
+    @include mixins.normalize;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--kern-metric-space-small, 8px);
+
+    p {
+        @include mixins.normalize;
+    }
+
+    &--col {
+        .kern-description-list-item {
+            gap: var(--kern-metric-border-width-none, 0px);
+        }
+
+        .kern-description-list-item__key, .kern-description-list-item__value {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+
+    &-item {
+        display: flex;
+        padding: var(--kern-metric-space-none, 0px);
+        align-items: flex-start;
+        align-content: flex-start;
+        gap: var(--kern-metric-space-none, 0px);
+        align-self: stretch;
+        flex-wrap: wrap;
+        flex-direction: column;
+        word-break: break-word;
+
+        @media (min-width: map.get(maps.$grid-breakpoints, md)) {
+            flex-direction: row;
+            gap: var(--kern-metric-space-x-large, 32px);
+        }
+
+        &__key {
+            @include mixins.normalize;
+            @include mixins.body-default;
+            font-weight: var(--kern-typography-font-weight-semi-bold, 600);
+    
+            @media (min-width: map.get(maps.$grid-breakpoints, md)) {
+                width: 30%;
+                max-width: var(--kern-component-description-list-term-max-width, 352px);
+            }
+        }
+        
+        &__value {
+            @include mixins.normalize;
+            @include mixins.body-default;
+
+            ul {
+                list-style: none;
+                padding-left: var(--kern-metric-border-width-none, 0px);
+            }
+            
+            @media (min-width: map.get(maps.$grid-breakpoints, md)) {
+                width: calc(70% - var(--kern-metric-space-x-large, 32px));
+            }
+        }
+    }
+}

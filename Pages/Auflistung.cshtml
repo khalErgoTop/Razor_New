@@ -4,118 +4,79 @@
     ViewData["Title"] = Model.Listing.Title;
 }
 
-<nav aria-label="Brotkrümelnavigation">
-    <ol class="breadcrumb">
-        <li><a asp-page="/Index">Start</a></li>
-        <li><a asp-page="/Sucharten">Leistungsangebote</a></li>
-        <li aria-current="page">@Model.Listing.Title</li>
+<nav aria-label="Brotkrümelnavigation" style="margin-bottom:24px">
+    <ol style="list-style:none; padding:0; margin:0; display:flex; gap:8px; flex-wrap:wrap; font-size:15px">
+        <li><a asp-page="/Index">Start</a> <span style="margin-left:8px">/</span></li>
+        <li><a asp-page="/Sucharten">Leistungsangebote</a> <span style="margin-left:8px">/</span></li>
+        <li aria-current="page" style="font-weight:600">@Model.Listing.Title</li>
     </ol>
 </nav>
 
-<h1>@Model.Listing.Title</h1>
-  
-@foreach (var category in Model.Listing.Categories)
-{
-    <ul class="superCategory" role="list">
-        <li role="listitem">
-            <div class="sc00" tabindex="0" role="button" aria-expanded="true" aria-label="Unterkategorie ein-/ausblenden"><h2>@category.Name</h2></div>
-        @foreach (var group in category.Groups)
-        {
-            <ul class="subCategory01" role="list">
-                <li role="listitem">
-                    <div class="sc01" tabindex="0" role="button" aria-expanded="true" aria-label="Leistungen ein-/ausblenden">@group.Name</div>
-                    <ul class="facilityItem" role="list">
-                        @foreach (var facility in group.Facilities)
-                        {
-                            var facilityUrl = Url.Page("/Stammdaten", new { EIID = facility.EIID, STUID = facility.STUID });
-                            <li>
-                                <div class="fci">
-                                    <div class="divAuflistungEinrichtung">
-                                        <a href="@facilityUrl">
-                                            <span class="AuflistungEinrichtungname">@facility.Name</span>
-                                            @if (!string.IsNullOrWhiteSpace(facility.FacilityIndicator))
-                                            {
-                                                <span class="AuflistungEinrichtungkennzeichen">(@facility.FacilityIndicator)</span>
-                                            }
-                                            <div class="divAuflistungEinrichtungAdresse">
-                                                <span class="addr">@facility.Address</span>
-                                            </div>
-                                        </a>
-                                        @if (facility.AdditionalLocations.Count > 0)
-                                        {
-                                            <div class="wtStt">
-                                                <div class="wtStt label">weitere Standorte</div>
-                <div class="wtSttToggle" tabindex="0" role="button" aria-expanded="false" aria-label="Weitere Standorte ein-/ausblenden">toggle</div>
-                                                <ul class="sub Fci">
-                                                    @foreach (var location in facility.AdditionalLocations)
+<h1 style="margin:0 0 24px; font-size:28px; font-weight:700">@Model.Listing.Title</h1>
+
+<div>
+    @foreach (var category in Model.Listing.Categories)
+    {
+        <ul class="superCategory" role="list">
+            <li role="listitem">
+                <div class="sc00" tabindex="0" role="button" aria-expanded="true" aria-label="Unterkategorie ein-/ausblenden"><h2>@category.Name</h2></div>
+                <ul class="subCategory01" role="list">
+                    @foreach (var group in category.Groups)
+                    {
+                        <li role="listitem">
+                            <div class="sc01" tabindex="0" role="button" aria-expanded="true" aria-label="Leistungen ein-/ausblenden">@group.Name</div>
+                            <ul class="facilityItem" role="list">
+                                @foreach (var facility in group.Facilities)
+                                {
+                                    var facilityUrl = Url.Page("/Stammdaten", new { EIID = facility.EIID, STUID = facility.STUID });
+                                    <li>
+                                        <div class="fci">
+                                            <div class="divAuflistungEinrichtung">
+                                                <a href="@facilityUrl">
+                                                    <span class="AuflistungEinrichtungname">@facility.Name</span>
+                                                    @if (!string.IsNullOrWhiteSpace(facility.FacilityIndicator))
                                                     {
-                                                        var locationUrl = Url.Page("/Stammdaten", new { EIID = location.EIID, STUID = location.STUID });
-                                                        <li>
-                                                            <div class="sub fci">
-                                                                <div class="divAuflistungEinrichtung">
-                                                                    <a href="@locationUrl">
-                                                                        <span class="AuflistungEinrichtungname">@location.Name</span>
-                                                                        @if (!string.IsNullOrWhiteSpace(location.FacilityIndicator))
-                                                                        {
-                                                                            <span class="AuflistungEinrichtungkennzeichen">(@location.FacilityIndicator)</span>
-                                                                        }
-                                                                        <div class="divAuflistungEinrichtungAdresse">
-                                                                            <span class="addr">@location.Address</span>
-                                                                        </div>
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
+                                                        <span class="AuflistungEinrichtungkennzeichen">(@facility.FacilityIndicator)</span>
                                                     }
-                                                </ul>
+                                                    <div class="divAuflistungEinrichtungAdresse"><span class="addr">@facility.Address</span></div>
+                                                </a>
                                             </div>
-                                        }
-                                    </div>
-                                </div>
-                            </li>
-                        }
-                    </ul>
-                    </li>
+                                            @if (facility.AdditionalLocations.Count > 0)
+                                            {
+                                                <div class="wtStt">
+                                                    <div class="wtStt label">weitere Standorte</div>
+                                                    <div class="wtSttToggle" tabindex="0" role="button" aria-expanded="false" aria-label="Weitere Standorte ein-/ausblenden">toggle</div>
+                                                    <ul class="sub Fci">
+                                                        @foreach (var location in facility.AdditionalLocations)
+                                                        {
+                                                            var locationUrl = Url.Page("/Stammdaten", new { EIID = location.EIID, STUID = location.STUID });
+                                                            <li>
+                                                                <div class="sub fci">
+                                                                    <div class="divAuflistungEinrichtung">
+                                                                        <a href="@locationUrl">
+                                                                            <span class="AuflistungEinrichtungname">@location.Name</span>
+                                                                            <div class="divAuflistungEinrichtungAdresse"><span class="addr">@location.Address</span></div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            }
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
                 </ul>
-        }
-        </li>
-    </ul>
-}
+            </li>
+        </ul>
+    }
+</div>
 
 @section Scripts {
-    <script>
-        function toggleFirstList(element) {
-            var sibling = element.nextElementSibling;
-            if (sibling && sibling.tagName.toLowerCase() === "ul") {
-                var isHidden = window.getComputedStyle(sibling).display === "none";
-                sibling.style.display = isHidden ? "block" : "none";
-                element.setAttribute("aria-expanded", isHidden ? "true" : "false");
-            }
-        }
-
-        document.querySelectorAll(".sc00, .sc01").forEach(function (element) {
-            element.addEventListener("click", function () {
-                toggleFirstList(element);
-            });
-
-            element.addEventListener("keydown", function (event) {
-                if (event.key === "Enter" || event.key === " ") {
-                    toggleFirstList(element);
-                }
-            });
-        });
-
-        document.querySelectorAll(".wtSttToggle").forEach(function (element) {
-            element.addEventListener("click", function () {
-                element.classList.toggle("toggled");
-                toggleFirstList(element);
-            });
-
-            element.addEventListener("keydown", function (event) {
-                if (event.key === "Enter" || event.key === "Return") {
-                    element.click();
-                }
-            });
-        });
-    </script>
+    <script src="~/js/auflistung.js" asp-append-version="true"></script>
 }
+

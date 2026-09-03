@@ -1,0 +1,52 @@
+@page
+@model TOPqwWeb_Core.Pages.bitQArc.bitQArcBE_MVSheetModel
+@{
+    ViewData["Title"] = "BE-Bogen";
+}
+
+<link rel="stylesheet" href="~/css/bitQArcDefaultSheet.css" />
+
+<ul id="linkpath">
+    <li id="linkPathNavStart">Navigation</li>
+    <li>Start</li>
+    <li><a asp-page="/bitQArc/bitQArcDefaultSheetListing" asp-route-f="BE">BE-Bogenauswahl</a></li>
+    <li class="current">BE-Bogen</li>
+</ul>
+
+<section>
+    <h1>@(Model.Sheet?.Label ?? "BE-Bogen")</h1>
+    <dl>
+        <dt>Sheet-ID</dt>
+        <dd>@Model.Sheet?.Id</dd>
+        <dt>Einrichtung</dt>
+        <dd>@Model.Sheet?.EIID</dd>
+        <dt>Layout-ID</dt>
+        <dd>@Model.Sheet?.LayoutId</dd>
+        <dt>Status</dt>
+        <dd>@Model.Sheet?.Status</dd>
+    </dl>
+
+    @foreach (var category in Model.Categories.Where(category => category.ParentId == 0))
+    {
+        @await Html.PartialAsync("_QArcCategory", (category, Model.Categories, Model.Matrices))
+    }
+</section>
+
+<script>
+    document.querySelectorAll('.q-arc-subcategory-toggle').forEach(toggle => {
+        const toggleList = () => {
+            const list = toggle.closest('.q-arc-subcategory')?.querySelector('ul.facilityItem');
+            if (!list) return;
+            const expanded = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', (!expanded).toString());
+            list.hidden = expanded;
+        };
+        toggle.addEventListener('click', toggleList);
+        toggle.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                toggleList();
+            }
+        });
+    });
+</script>

@@ -50,7 +50,9 @@ namespace TOPqwWeb_Core.Services.Auth
 
         public async Task<QwStammdatenResponse?> GetAsync(string eiid, string? stuid, CancellationToken cancellationToken)
         {
-            return await GetAsync(eiid, stuid, false, cancellationToken);
+            var beid = _currentUserAccessor.BEID;
+            var isAdmin = beid.HasValue && await _permissionService.HasPermissionAsync(beid.Value, AdminRechte, cancellationToken);
+            return await GetAsync(eiid, stuid, isAdmin, cancellationToken);
         }
 
         private async Task<QwStammdatenResponse?> GetAsync(string eiid, string? stuid, bool isAdmin, CancellationToken cancellationToken)
@@ -251,6 +253,15 @@ namespace TOPqwWeb_Core.Services.Auth
             return await _publicStammdatenAdapter.GetAttachmentAsync(eiid, attachmentId, document ? attachmentType : 102, cancellationToken);
         }
 
+        public async Task<(string FileName, string ContentType, byte[] Content)?> GetImageAsync(string eiid, CancellationToken cancellationToken)
+        {
+            var beid = _currentUserAccessor.BEID;
+            if (!beid.HasValue || !await _permissionService.HasPermissionAsync(beid.Value, Stammdaten_Einrichtung_Bilder_Anzeigen, cancellationToken)) return null;
+            if (!await HasFacilityAccessAsync(eiid, beid.Value, cancellationToken)) return null;
+            var image = await _publicStammdatenAdapter.GetImageAsync(eiid, cancellationToken);
+            return image is null ? null : (image.Value.FileName, image.Value.ContentType, image.Value.Content);
+        }
+
         public async Task<bool> AddLocationAsync(string eiid, StammdatenLocationInput location, CancellationToken cancellationToken)
         {
             var beid = _currentUserAccessor.BEID;
@@ -263,7 +274,7 @@ namespace TOPqwWeb_Core.Services.Auth
         public async Task<bool> SaveLocationAsync(string eiid, string stuid, StammdatenLocationInput location, CancellationToken cancellationToken)
         {
             var beid = _currentUserAccessor.BEID;
-            if (!beid.HasValue || !await _permissionService.HasPermissionAsync(beid.Value, Stammdaten_FreiePlaetze_Bearbeiten, cancellationToken)) return false;
+            if (!beid.HasValue || !await _permissionService.HasPermissionAsync(beid.Value, Stammdaten_Einrichtung_Bearbeiten, cancellationToken)) return false;
             if (!Guid.TryParse(stuid, out _)) return false;
             if (!await HasLocationAccessAsync(eiid, stuid, beid.Value, cancellationToken)) return false;
             return await _publicStammdatenAdapter.SaveLocationAsync(eiid, stuid, location, cancellationToken);

@@ -1,501 +1,122 @@
-﻿@page
+@page
 @model TOPqwWeb_Core.Pages.Auth.qwStammdatenModel
+@inject TOPqwWeb_Core.Infrastructure.Theming.ThemeAssetService ThemeAssets
 @{
-    ViewData["Title"] = Model.Facility?.Facility.Name ?? "qwStammdaten";
+    ViewData["Title"] = Model.Facility?.Facility.Name ?? "Stammdaten Verwaltung";
 }
+<link rel="stylesheet" href="@ThemeAssets.GetAssetPath("QW_Stammdaten.css")" asp-append-version="true" />
 
-@if (Model.Facility?.CanViewCosts == true)
-{
-    <p><a href="@Url.Page("/Auth/StammdatenKosten", new { eiid = Model.Facility.Facility.EIID })">HBG-Kosten anzeigen</a></p>
-}
-
-@if (Model.Facility?.Features.Count > 0 || Model.Facility?.CanEditFeatures == true)
-{
-    <section>
-        <h2>Merkmale</h2>
-        @if (Model.Facility.Features.Count > 0)
-        {
-            <p>@string.Join(", ", Model.Facility.Features.Select(feature => feature.Label))</p>
-        }
-        @if (Model.Facility.CanEditFeatures)
-        {
-            <form method="post" asp-page-handler="SaveFacilityFeatures">
-                <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
-                <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
-                @foreach (var feature in Model.Facility.AvailableFeatures)
-                {
-                    <label>
-                        <input type="checkbox" name="SelectedFeatureIds" value="@feature.Id" checked="@(Model.Facility.Features.Any(selected => selected.Id == feature.Id))" />
-                        @feature.Label
-                    </label>
-                }
-                <button type="submit">Merkmale speichern</button>
-            </form>
-        }
-    </section>
-}
-
-@if (Model.Facility?.Representatives.Count > 0)
-{
-    <section>
-        <h2>Sachbearbeiter</h2>
-        @foreach (var representative in Model.Facility.Representatives)
-        {
-            <p>
-                @representative.Name
-                @if (!string.IsNullOrWhiteSpace(representative.Email))
-                {
-                    <a href="mailto:@representative.Email">@representative.Email</a>
-                }
-            </p>
-        }
-    </section>
-}
-
-@if (Model.Facility?.Institution is not null)
-{
-    <section>
-        <h2>Leistungserbringer</h2>
-        <p>@Model.Facility.Institution.Name</p>
-        <p>Telefon: @Model.Facility.Institution.Phone</p>
-        <p>E-Mail: @Model.Facility.Institution.Email</p>
-        <p>Web: @Model.Facility.Institution.Internet</p>
-        @if (Model.Facility.CanEditInstitutionContactData)
-        {
-            <form method="post" asp-page-handler="SaveInstitutionContactData">
-                <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
-                <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
-                <label asp-for="InstitutionContactData.Phone">Telefon</label>
-                <input asp-for="InstitutionContactData.Phone" />
-                <label asp-for="InstitutionContactData.Email">E-Mail</label>
-                <input asp-for="InstitutionContactData.Email" type="email" />
-                <label asp-for="InstitutionContactData.Internet">Web</label>
-                <input asp-for="InstitutionContactData.Internet" />
-                <label asp-for="InstitutionContactData.AssociationAccessAllowed">Verbandszugriff erlauben</label>
-                <input asp-for="InstitutionContactData.AssociationAccessAllowed" type="checkbox" />
-                <button type="submit">Speichern</button>
-            </form>
-        }
-    </section>
-}
-
-@if (Model.CanCreateFacility && Model.FacilityCreateOptions is not null)
-{
-    <section>
-        <h2>Neue Einrichtung</h2>
-        <form method="post" asp-page-handler="CreateFacility">
-            <label asp-for="NewFacility.Name">Name</label>
-            <input asp-for="NewFacility.Name" required />
-            <label asp-for="NewFacility.Street">Straße</label>
-            <input asp-for="NewFacility.Street" class="street-directory-street" list="street-directory-streets" autocomplete="off" />
-            <label asp-for="NewFacility.HouseNumber">Hausnummer</label>
-            <input asp-for="NewFacility.HouseNumber" class="street-directory-number" list="street-directory-numbers" autocomplete="off" />
-            <input type="hidden" name="NewFacility.StreetDirectoryValidated" class="street-directory-validated" value="false" />
-            <label asp-for="NewFacility.PostalCode">PLZ</label>
-            <input asp-for="NewFacility.PostalCode" />
-            <label asp-for="NewFacility.City">Ort</label>
-            <input asp-for="NewFacility.City" required />
-            <label asp-for="NewFacility.Capacity">Platzzahl</label>
-            <input asp-for="NewFacility.Capacity" min="0" type="number" required />
-            <label asp-for="NewFacility.TraegerId">Träger</label>
-            <select asp-for="NewFacility.TraegerId" required>
-                <option value="">Bitte auswählen</option>
-                @foreach (var institution in Model.FacilityCreateOptions.Institutions)
-                {
-                    <option value="@institution.Id">@institution.Name</option>
-                }
-            </select>
-            <label asp-for="NewFacility.FacilityTypeIds">Einrichtungstyp</label>
-            @if (Model.MultipleFacilityTypesEnabled)
-            {
-                <select asp-for="NewFacility.FacilityTypeIds" multiple required>
-                    <option value="0">Bitte auswählen</option>
-                    @foreach (var type in Model.FacilityCreateOptions.FacilityTypes)
-                    {
-                        <option value="@type.ETID">@type.Typkennzeichnung</option>
-                    }
-                </select>
-            }
-            else
-            {
-                <select name="NewFacility.FacilityTypeIds" required>
-                    <option value="0">Bitte auswählen</option>
-                    @foreach (var type in Model.FacilityCreateOptions.FacilityTypes)
-                    {
-                        <option value="@type.ETID">@type.Typkennzeichnung</option>
-                    }
-                </select>
-            }
-            <label asp-for="NewFacility.DistrictId">Kreis</label>
-            <select asp-for="NewFacility.DistrictId" required>
-                <option value="0">Bitte auswählen</option>
-                @foreach (var district in Model.FacilityCreateOptions.Districts)
-                {
-                    <option value="@district.KRID">@district.Kreis</option>
-                }
-            </select>
-            <button type="submit">Einrichtung anlegen</button>
-        </form>
-    </section>
-}
-
-@if (Model.Facility?.CanRemoveFacility == true)
-{
-    <form method="post" asp-page-handler="RemoveFacility">
-        <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
-        <button type="submit">Leistungsangebot entfernen</button>
-    </form>
-}
-
-@if (Model.FacilityPageCount > 0)
-{
-    <form method="get" class="facility-selector">
-        <label for="facility-selector">Leistungsangebot</label>
-        <input type="search" name="filter" value="@Model.FacilityFilter" placeholder="Filtern" />
-        <select id="facility-selector" name="eiid" onchange="this.form.submit()">
-            @foreach (var facility in Model.Facilities)
-            {
-                <option value="@facility.EIID" selected="@(facility.EIID == Model.Facility?.Facility.EIID)">
-                    @facility.Name @(!string.IsNullOrWhiteSpace(facility.FacilityIndicator) ? $"({facility.FacilityIndicator})" : string.Empty)
-                </option>
-            }
-        </select>
-        <input type="hidden" name="pageIndex" value="@Model.FacilityPageIndex" />
-        @if (Model.FacilityPageCount > 1)
-        {
-            @if (Model.FacilityPageIndex > 0)
-            {
-                <button type="submit" name="pageIndex" value="@(Model.FacilityPageIndex - 1)">Zurück</button>
-            }
-            <span>Seite @(Model.FacilityPageIndex + 1) von @Model.FacilityPageCount</span>
-            @if (Model.FacilityPageIndex + 1 < Model.FacilityPageCount)
-            {
-                <button type="submit" name="pageIndex" value="@(Model.FacilityPageIndex + 1)">Weiter</button>
-            }
-        }
-    </form>
-}
-
-        @if (Model.Facility.ShowFreePlaces && Model.Facility.FreePlaces is not null)
-        {
-            <section>
-                <h2>Freie Plätze</h2>
-                <p>Letzte Meldung: @Model.Facility.FreePlaces.ReportingDate.ToString("g")</p>
-                <p>Verfügbarkeit: @Model.Facility.FreePlaces.Availability</p>
-                @if (Model.Facility.CanEditFreePlaces)
-                {
-                    <form id="free-place-form" method="post" asp-page-handler="SaveFreePlaces">
-                        <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
-                        <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
-                        @{ var questionIndex = 0; }
-                        @foreach (var category in Model.Facility.FreePlaces.Categories)
-                        {
-                            <fieldset>
-                                <legend>@category.Label</legend>
-                                @foreach (var question in category.Questions)
-                                {
-                                    <input type="hidden" name="FreePlaceQuestions[@questionIndex].QuestionId" value="@question.Id" />
-                                    <input type="hidden" name="FreePlaceQuestions[@questionIndex].TypeId" value="@question.TypeId" />
-                                    <label>@question.Label</label>
-                                    @if (question.TypeId == 0)
-                                    {
-                                        <input type="hidden" name="FreePlaceQuestions[@questionIndex].BooleanValue" value="false" />
-                                        <input type="checkbox" name="FreePlaceQuestions[@questionIndex].BooleanValue" value="true" checked="@question.BooleanValue" />
-                                    }
-                                    else if (question.TypeId == 1)
-                                    {
-                                        <input type="number" min="0" name="FreePlaceQuestions[@questionIndex].IntegerValue" value="@question.IntegerValue" />
-                                    }
-                                    questionIndex++;
-                                }
-                            </fieldset>
-                        }
-                        <button type="submit">Platzmeldung speichern</button>
-                    </form>
-                }
-            </section>
-        }
-
-        @if (Model.Facility.CanChangeFacilityVisibility)
-        {
-            <section>
-                <h2>Steuerung</h2>
-                <form method="post" asp-page-handler="ToggleFacilityVisibility">
-                    <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
-                    <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
-                    <p>
-                        Aktueller Status:
-                        @(Model.Facility.FacilityVisibleInSearch ? "in der Suche sichtbar" : "in der Suche verborgen")
-                    </p>
-                    <button type="submit">
-                        @(Model.Facility.FacilityVisibleInSearch ? "Angebot in der Suche verstecken" : "Angebot in der Suche anzeigen")
-                    </button>
-                </form>
-            </section>
-
-        @if (Model.Facility.VisitorCount.HasValue)
-        {
-            <section id="ViewCount">
-                <h2>Besucherzähler</h2>
-                <p><span class="label">Besuche insgesamt:</span> <span class="value">@Model.Facility.VisitorCount</span></p>
-                @if (Model.Facility.VisitorChart.Count > 0)
-                {
-                    var points = Model.Facility.VisitorChart.ToList();
-                    var maxCount = Math.Max(1, points.Max(point => point.Count));
-                    var chartWidth = 720;
-                    var chartHeight = 220;
-                    var horizontalPadding = 24;
-                    var verticalPadding = 20;
-                    var plotWidth = chartWidth - (horizontalPadding * 2);
-                    var plotHeight = chartHeight - (verticalPadding * 2);
-                    var coordinates = points.Select((point, index) => new
-                    {
-                        Point = point,
-                        X = points.Count == 1
-                            ? chartWidth / 2
-                            : horizontalPadding + (index * plotWidth / (double)(points.Count - 1)),
-                        Y = verticalPadding + plotHeight - (point.Count * plotHeight / (double)maxCount)
-                    }).ToList();
-                    <svg viewBox="0 0 @chartWidth @chartHeight" role="img" aria-label="Besucherverlauf">
-                        <line x1="@horizontalPadding" y1="@(chartHeight - verticalPadding)" x2="@(chartWidth - horizontalPadding)" y2="@(chartHeight - verticalPadding)" stroke="currentColor" />
-                        <line x1="@horizontalPadding" y1="@verticalPadding" x2="@horizontalPadding" y2="@(chartHeight - verticalPadding)" stroke="currentColor" />
-                        @if (coordinates.Count > 1)
-                        {
-                            <polyline points="@string.Join(" ", coordinates.Select(coordinate => $"{coordinate.X:0.##},{coordinate.Y:0.##}"))" fill="none" stroke="currentColor" stroke-width="2" />
-                        }
-                        @foreach (var coordinate in coordinates)
-                        {
-                            <circle cx="@coordinate.X.ToString("0.##")" cy="@coordinate.Y.ToString("0.##")" r="3" fill="currentColor">
-                                <title>@coordinate.Point.Date.ToString("d"): @coordinate.Point.Count</title>
-                            </circle>
-                        }
-                    </svg>
-                    <ul>
-                        @foreach (var point in points)
-                        {
-                            <li>@point.Date.ToString("d") – @point.Count</li>
-                        }
-                    </ul>
-                }
-            </section>
-        }
-        }
-
-        @if (Model.Facility.CanEditImage)
-        {
-            <section>
-                <h2>Bild des Leistungsangebotes</h2>
-                @if (!string.IsNullOrWhiteSpace(Model.Facility.Facility.ImageFileName))
-                {
-                    <img src="@Url.Page("/Stammdaten", "Image", new { eiid = Model.Facility.Facility.EIID })" alt="Bild des Leistungsangebotes" />
-                    <form method="post" asp-page-handler="DeleteFacilityImage">
-                        <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
-                        <button type="submit">Bild löschen</button>
-                    </form>
-                }
-                <form method="post" enctype="multipart/form-data" asp-page-handler="SaveFacilityImage">
-                    <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
-                    <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
-                    <input asp-for="FacilityImage" type="file" accept=".jpg,.jpeg" />
-                    <button type="submit">Bild speichern</button>
-                </form>
-            </section>
-        }
-
-        @if (Model.Facility.CanEditContactData)
-        {
-            <section>
-                <h2>Kontaktdaten bearbeiten</h2>
-                <form method="post" asp-page-handler="SaveContactData">
-                    <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
-                    <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
-                    <div><label asp-for="ContactData.Phone">Telefon</label><input asp-for="ContactData.Phone" /></div>
-                    <div><label asp-for="ContactData.Mobile">Mobil</label><input asp-for="ContactData.Mobile" /></div>
-                    <div><label asp-for="ContactData.Fax">Telefax</label><input asp-for="ContactData.Fax" /></div>
-                    <div><label asp-for="ContactData.Email">E-Mail</label><input asp-for="ContactData.Email" type="email" /></div>
-                    <div><label asp-for="ContactData.Internet">Internet</label><input asp-for="ContactData.Internet" type="url" /></div>
-                    <button type="submit">Kontaktdaten speichern</button>
-                </form>
-            </section>
-        }
-
-<nav aria-label="Brotkrümelnavigation">
-    <ol class="breadcrumb">
-        <li><a asp-page="/Index">Start</a></li>
-        <li><a asp-page="/Stammdaten" asp-route-eiid="@Model.Facility?.Facility.EIID" asp-route-stuid="@Model.Facility?.Facility.Locations.FirstOrDefault()?.STUID">Stammdaten</a></li>
-        <li aria-current="page">Bearbeitung</li>
+<nav class="kern-breadcrumb" aria-label="Brotkrümelnavigation">
+    <ol class="kern-breadcrumb__list">
+        <li class="kern-breadcrumb__item"><a class="kern-breadcrumb__link" asp-page="/Index">Start</a></li>
+        <li class="kern-breadcrumb__item kern-breadcrumb__item--current" aria-current="page">Stammdaten</li>
     </ol>
 </nav>
 
-@if (Model.Facility is not null)
+@if (Model.Facility is null)
 {
-    <article class="qw-stammdaten">
-        <h1>@Model.Facility.Facility.Name</h1>
-        <p><strong>Einrichtungskennzeichen:</strong> @Model.Facility.Facility.FacilityIndicator</p>
+    <div class="kern-alert"><div class="kern-alert__body">Keine Einrichtung ausgewählt.</div></div>
+}
+else
+{
+    var mainLocation = Model.Facility.Facility.Locations.FirstOrDefault(x => x.IsMainLocation) ?? Model.Facility.Facility.Locations.FirstOrDefault();
+    <div id="M_MC_PnlStammDaten">
+        <div id="M_MC_CurrentFacility">
+            <div id="Einrichtungsdaten">
+                <div id="M_MC_PnlTraeger">
+                    <div id="M_MC_pnlInstitutionInner" class="pnlInstitutionInner">
+                        <div class="pnlInstitutionHeadLine"><div class="pnlInnerHeadLine"><div class="lblInstitutionName icon" title="Leistungserbringer"><h3 class="lblInstitutionName">@Model.Facility.Institution?.Name</h3></div></div></div>
+                        <div id="InstitutionInner">
+                        <div class="facilityName pnlFacilityHead" title="Leistungsangebot"><div class="pnlInnerHeadLine"><div class="fullTitle"><span class="lblFacilityName LinkClass">@Model.Facility.Facility.Name</span></div></div></div>
+                        @if (mainLocation is not null)
+                        {
+                            <div id="M_MC_pnlInstitutionAddress" class="pnlInstitutionAddress pnlAddressData pnlAddress icon"><div class="pnlStreetCity"><div class="street">@mainLocation.Street @mainLocation.HouseNumber @mainLocation.HouseNumberAddition</div><div class="city">@mainLocation.PostalCode @mainLocation.City</div></div></div>
+                        }
+                        @if (Model.Facility.Institution is not null)
+                        {
+                            <div id="M_MC_pnlInstitutionData" class="pnlContactData"><div class="webAddress">@Model.Facility.Institution.Internet</div><div class="telephone">@Model.Facility.Institution.Phone</div><div class="emailAddress">@Model.Facility.Institution.Email</div></div>
+                        }
+                        </div>
+                    </div>
+                </div>
+                <div id="M_MC_FacilityData">
+                    <div class="facData"><div class="secLocs outer"><div class="secLoc label">weitere Standorte</div><div id="M_MC_FFView_SecLocs_SecondaryLocs" class="secLocs"><ul id="M_MC_FFView_SecLocs_UlSecLocs" class="standortContent">
+                        @foreach (var location in Model.Facility.Facility.Locations.Where(x => !x.IsMainLocation))
+                        {
+                            <li stuid="@location.STUID" class="ol{2} status0" selected="selected">
+                                <div class="stTyp st"></div><div class="stName">@location.Name</div><div class="stBez">@location.Description</div>
+                                <div class="address status0"><div class="street">@location.Street @location.HouseNumber @location.HouseNumberAddition</div><div class="city">@location.PostalCode @location.City</div><div class="maps"><a href="https://maps.google.de/maps?q=@Uri.EscapeDataString($"{location.Street} {location.HouseNumber} {location.PostalCode} {location.City}")" target="_blank">bei GoogleMaps anzeigen</a></div></div>
+                                <div class="stt details"><div class="capacity" title="maximale Kapazität">@(location.Capacity ?? 0)</div></div>
+                                <div class="contactData"><div class="webAddress">@location.Internet</div><div class="telephone">@location.Phone</div><div class="mobil">@location.Mobile</div><div class="telefax">@location.Fax</div><div class="email">@location.Email</div></div>
+                            </li>
+                        }
+                    </ul></div></div></div>
+                </div>
+            </div>
 
-        @if (Model.Facility.CanEditFacility || Model.Facility.CanEditContactData)
-        {
-            <section>
-                <h2>Bearbeitungsrechte</h2>
-                @if (Model.Facility.CanEditFacility)
-                {
-                    <p>Allgemeine Einrichtungsdaten dürfen bearbeitet werden.</p>
-                }
-                @if (Model.Facility.CanEditContactData)
-                {
-                    <p>Kontaktdaten dürfen bearbeitet werden.</p>
-                }
-            </section>
-        }
-
-        @if (Model.Facility.CanViewAttachments)
-        {
-            <section>
-                <h2>Anhänge</h2>
-                <ul>
+            @if (Model.Facility.VisitorCount.HasValue)
+            {
+                <div id="M_MC_PnlViews"><div id="ViewCount"><span class="label">Besuche insgesamt:</span><span class="value">@Model.Facility.VisitorCount</span></div><canvas id="ViewsChart" class="chartjs-render-monitor" width="606" height="302"></canvas><script type="application/json" id="ViewsChartData">@Html.Raw(System.Text.Json.JsonSerializer.Serialize(Model.Facility.VisitorChart))</script></div>
+            }
+            @if (Model.Facility.CanViewAttachments)
+            {
+                <div id="M_MC_PnlAttachments"><div id="M_MC_Attachments_Attachments"><div class="label attmts">Broschüren</div><div id="M_MC_Attachments_Files" class="value"><div class="pnlFiles">
                     @foreach (var attachment in Model.Facility.Facility.Attachments)
                     {
-                        <li>
-                            <a asp-page="/Auth/qwStammdaten" asp-page-handler="Attachment" asp-route-eiid="@Model.Facility.Facility.EIID" asp-route-attachmentId="@attachment.Id" asp-route-document="false" asp-route-attachmentType="@attachment.Type">@attachment.Filename</a>
-                            @if (Model.Facility.CanEditAttachments)
-                            {
-                                <form method="post" asp-page-handler="DeleteAttachment" style="display:inline">
-                                    <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
-                                    <input type="hidden" name="attachmentId" value="@attachment.Id" />
-                                    <input type="hidden" name="document" value="false" />
-                                    <button type="submit">Löschen</button>
-                                </form>
-                            }
-                        </li>
+                        <div class="file data status@attachment.Status"><a class="fileAttmt" asp-page-handler="Attachment" asp-route-eiid="@Model.Facility.Facility.EIID" asp-route-attachmentId="@attachment.Id" asp-route-document="false" asp-route-attachmentType="@attachment.Type">@attachment.Filename</a></div>
                     }
-                </ul>
-                @if (Model.Facility.CanEditAttachments)
-                {
-                    <form method="post" enctype="multipart/form-data" asp-page-handler="SaveAttachment">
-                        <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
-                        <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
-                        <input asp-for="AttachmentFile" type="file" accept=".doc,.docx,.xls,.xlsx,.xml,.pdf,.jpg" />
-                        <button type="submit">Anhang hochladen</button>
-                    </form>
-                }
-            </section>
-        }
-
-        @if (Model.Facility.CanViewDocuments)
-        {
-            <section>
-                <h2>Dokumente</h2>
-                <ul>
+                </div></div></div></div>
+            }
+            <div id="M_MC_PnlDocuments"><div id="M_MC_Documents_Documents"><div class="label attmts">Dokumente</div><div id="M_MC_Documents_Files" class="value"><ul class="pnlFiles">
                     @foreach (var document in Model.Facility.Documents)
                     {
-                        <li>
-                            <a asp-page="/Auth/qwStammdaten" asp-page-handler="Attachment" asp-route-eiid="@Model.Facility.Facility.EIID" asp-route-attachmentId="@document.Id" asp-route-document="true" asp-route-attachmentType="@document.Type">@document.Filename</a>
-                            @if (Model.Facility.CanEditDocuments)
-                            {
-                                <form method="post" asp-page-handler="DeleteAttachment" style="display:inline">
-                                    <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
-                                    <input type="hidden" name="attachmentId" value="@document.Id" />
-                                    <input type="hidden" name="document" value="true" />
-                                    <button type="submit">Löschen</button>
-                                </form>
-                            }
-                        </li>
+                        <li class="file data status@document.Status"><a class="fileAttmt" asp-page-handler="Attachment" asp-route-eiid="@Model.Facility.Facility.EIID" asp-route-attachmentId="@document.Id" asp-route-document="true" asp-route-attachmentType="@document.Type">@document.Filename</a></li>
                     }
-                </ul>
-                @if (Model.Facility.CanEditDocuments)
-                {
-                    <form method="post" enctype="multipart/form-data" asp-page-handler="SaveDocument">
-                        <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
-                        <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
-                        <input asp-for="DocumentFile" type="file" accept=".doc,.docx,.xls,.xlsx,.xml,.pdf,.jpg" />
-                        <select asp-for="DocumentType">
-                            <option value="0">Dokument</option>
-                            <option value="1">Broschüre</option>
-                            <option value="2">Formular</option>
-                            <option value="22">Sonstiges</option>
-                        </select>
-                        <button type="submit">Dokument hochladen</button>
-                    </form>
-                }
-            </section>
-        }
+                </ul></div></div></div>
+        </div>
 
-        @if (Model.Facility.ShowFacilityDescription)
-        {
-        <section>
-            <h2>Einrichtungsdaten</h2>
-            <p>@Html.Raw(Model.Facility.Facility.Description)</p>
-            @if (Model.Facility.CanEditFacility)
+        <div id="M_MC_FFView_FacCtls" class="ctlPanel pgCtlOpener" style="top: 19rem;">
+            @if (Model.Facility.CanEditContactData) { <div id="M_MC_FFView_OpenEdtContact" title="Ansprechpartner des Angebots bearbeiten" class="ctlOpener" data-dialog-target="M_MC_FFView_EditContact">Ansprechpartner bearbeiten</div> }
+            @if (Model.Facility.CanChangeFacilityVisibility) { <div id="M_MC_FFView_OpenChgVisibility" title="Sichtbarkeit des Angebots in der Suche ändern" class="ctlOpener facVisible @(Model.Facility.FacilityVisibleInSearch ? "visible" : "")" data-dialog-target="M_MC_FFView_ChangeVisibility">Sichtbarkeit des Angebots in der Suche ändern</div> }
+            @if (Model.Facility.CanEditInstitutionContactData) { <div id="M_MC_FFView_EdtInstOp" title="Kontaktdaten des Leistungserbringers bearbeiten" class="ctlOpener" data-dialog-target="M_MC_PnlInst_EditInst">Leistungserbringer bearbeiten</div> }
+            @if (Model.Facility.CanEditImage) { <div id="M_MC_FFView_OpenAddFIV" title="Bild des Leistungsangebotes ändern" class="ctlOpener" data-dialog-target="M_MC_FFView_FIV_EditFacImg">Bild des Leistungsangebotes ändern</div> }
+            @if (Model.Facility.CanEditLocations) { <div id="M_MC_FFView_OpenEdtLocsData" title="Adressen der Standorte bearbeiten" class="ctlOpener" data-dialog-target="M_MC_FFView_SecLocs_SecLocsGrid">Standortadressen bearbeiten</div> }
+            @if (Model.Facility.CanAddLocation) { <div id="M_MC_FFView_OpenAddLocation" title="Standort hinzufügen" class="ctlOpener" data-dialog-target="M_MC_FFView_SecLocs_SecLocAddLoc">Standort hinzufügen</div> }
+            @if (Model.Facility.CanEditDocuments) { <div id="M_MC_FFView_OpenAddDocFile" title="Dokument hinzufügen" class="ctlOpener" data-dialog-target="M_MC_Documents_AddFile">Dokument hinzufügen</div> }
+        </div>
+
+        <div class="templates" aria-live="polite">
+            @if (Model.Facility.CanEditContactData)
             {
-                <form method="post" asp-page-handler="SaveFacilityDescription">
-                    <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
-                    <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
-                    <label asp-for="FacilityDescription">Beschreibung</label>
-                    <textarea asp-for="FacilityDescription" rows="8"></textarea>
-                    <button type="submit">Beschreibung speichern</button>
-                </form>
+                <div id="M_MC_FFView_EditContact" class="pnlEdit" hidden role="dialog" aria-modal="true"><h2>Ansprechpartner bearbeiten</h2><form method="post" asp-page-handler="SaveContactData"><input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" /><input type="hidden" name="stuid" value="@mainLocation?.STUID" /><div><label class="lblLeftLabel">Telefon</label><input asp-for="ContactData.Phone" /></div><div><label class="lblLeftLabel">E-Mail</label><input asp-for="ContactData.Email" /></div><div><label class="lblLeftLabel">Internet</label><input asp-for="ContactData.Internet" /></div><div class="command buttons"><button type="submit" class="button save">Speichern</button><button type="button" class="button cancel dialog-close">Abbrechen</button></div></form></div>
             }
-            @foreach (var location in Model.Facility.Facility.Locations)
+            @if (Model.Facility.CanChangeFacilityVisibility)
             {
-                <h3>@location.Name</h3>
-                <p>@location.Address</p>
-                @if (Model.Facility.CanEditLocations && location.STUID is not null)
-                {
-                    <form method="post" asp-page-handler="SaveLocation">
-                        <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
-                        <input type="hidden" name="stuid" value="@location.STUID" />
-                        <div><label>Name</label><input name="EditedLocation.Name" value="@location.Name" /></div>
-                        <div><label>Straße</label><input name="EditedLocation.Street" value="@location.Street" class="street-directory-street" list="street-directory-streets" autocomplete="off" /></div>
-                        <div><label>Hausnummer</label><input name="EditedLocation.HouseNumber" value="@location.HouseNumber" class="street-directory-number" list="street-directory-numbers" autocomplete="off" /></div>
-                        <input type="hidden" name="EditedLocation.StreetDirectoryValidated" class="street-directory-validated" value="false" />
-                        <div><label>Zusatz</label><input name="EditedLocation.HouseNumberAddition" value="@location.HouseNumberAddition" /></div>
-                        <div><label>PLZ</label><input name="EditedLocation.PostalCode" value="@location.PostalCode" /></div>
-                        <div><label>Ort</label><input name="EditedLocation.City" value="@location.City" required /></div>
-                        <div><label>Platzzahl</label><input name="EditedLocation.Capacity" value="@location.Capacity" type="number" min="0" /></div>
-                        <div>
-                            <label>
-                                <input type="hidden" name="EditedLocation.ShowAddressInWeb" value="false" />
-                                <input type="checkbox" name="EditedLocation.ShowAddressInWeb" value="true" checked="@location.ShowAddressInWeb" />
-                                Adresse im Web anzeigen
-                            </label>
-                        </div>
-                        <button type="submit">Standort speichern</button>
-                    </form>
-                }
-                @if (Model.Facility.CanEditFacility && location.STID.HasValue)
-                {
-                    <form method="post" asp-page-handler="ToggleLocationVisibility">
-                        <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
-                        <input type="hidden" name="stuid" value="@location.STUID" />
-                        <input type="hidden" name="stid" value="@location.STID" />
-                        <input type="hidden" name="currentlyVisible" value="@location.ShowAddressInWeb.ToString().ToLowerInvariant()" />
-                        <button type="submit">Sichtbarkeit der Adresse ändern</button>
-                    </form>
-                }
+                <div id="M_MC_FFView_ChangeVisibility" class="pnlEdit" hidden role="dialog" aria-modal="true"><h2>Sichtbarkeit des Angebots ändern</h2><form method="post" asp-page-handler="ToggleFacilityVisibility"><input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" /><div class="command buttons"><button type="submit" class="button save">Status ändern</button><button type="button" class="button cancel dialog-close">Abbrechen</button></div></form></div>
+            }
+            @if (Model.Facility.CanEditInstitutionContactData)
+            {
+                <div id="M_MC_PnlInst_EditInst" class="pnlEdit" hidden role="dialog" aria-modal="true"><h2>Leistungserbringer bearbeiten</h2><form method="post" asp-page-handler="SaveInstitutionContactData"><input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" /><div><label class="lblLeftLabel">Telefon</label><input asp-for="InstitutionContactData.Phone" /></div><div><label class="lblInLine">E-Mail</label><input asp-for="InstitutionContactData.Email" /></div><div><label class="lblInLine">Web</label><input asp-for="InstitutionContactData.Internet" /></div><div class="command buttons"><button type="submit" class="button save">Speichern</button><button type="button" class="button cancel dialog-close">Abbrechen</button></div></form></div>
             }
             @if (Model.Facility.CanAddLocation)
             {
-                <section>
-                    <h3>Standort hinzufügen</h3>
-                    <form method="post" asp-page-handler="AddLocation">
-                        <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
-                        <input type="hidden" name="stuid" value="@Model.Facility.Facility.Locations.FirstOrDefault()?.STUID" />
-                        <div><label asp-for="NewLocation.Name">Bezeichnung</label><input asp-for="NewLocation.Name" /></div>
-                        <div><label asp-for="NewLocation.Street">Straße</label><input asp-for="NewLocation.Street" class="street-directory-street" list="street-directory-streets" autocomplete="off" /></div>
-                        <div><label asp-for="NewLocation.HouseNumber">Hausnummer</label><input asp-for="NewLocation.HouseNumber" class="street-directory-number" list="street-directory-numbers" autocomplete="off" /></div>
-                        <input type="hidden" name="NewLocation.StreetDirectoryValidated" class="street-directory-validated" value="false" />
-                        <div><label asp-for="NewLocation.HouseNumberAddition">Zusatz</label><input asp-for="NewLocation.HouseNumberAddition" /></div>
-                        <div><label asp-for="NewLocation.PostalCode">PLZ</label><input asp-for="NewLocation.PostalCode" /></div>
-                        <div><label asp-for="NewLocation.City">Ort</label><input asp-for="NewLocation.City" required /></div>
-                        <button type="submit">Standort hinzufügen</button>
-                    </form>
-                </section>
+                <div id="M_MC_FFView_SecLocs_SecLocAddLoc" class="pnlEdit" hidden role="dialog" aria-modal="true"><h2>Hinzufügen eines Standortes</h2><form method="post" asp-page-handler="AddLocation"><input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" /><div><label class="lblLeftLabel">Bezeichnung</label><input asp-for="NewLocation.Name" /></div><div><label class="lblLeftLabel">Straße</label><input asp-for="NewLocation.Street" /></div><div><label class="lblInLine">Hausnummer</label><input asp-for="NewLocation.HouseNumber" /></div><div><label class="lblInLine">PLZ</label><input asp-for="NewLocation.PostalCode" /></div><div><label class="lblInLine">Ort</label><input asp-for="NewLocation.City" /></div><div class="command buttons"><button type="submit" class="button save">Speichern</button><button type="button" class="button cancel dialog-close">Abbrechen</button></div></form></div>
             }
-        </section>
-        }
-    </article>
+            @if (Model.Facility.CanEditImage)
+            {
+                <div id="M_MC_FFView_FIV_EditFacImg" class="pnlEdit" hidden role="dialog" aria-modal="true"><h2>Bild des Leistungsangebotes ändern</h2><form method="post" enctype="multipart/form-data" asp-page-handler="SaveFacilityImage"><input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" /><input id="M_MC_FFView_FIV_FuFacImg" class="fileAttmt" asp-for="FacilityImage" type="file" accept=".jpg,.jpeg" /><div class="command buttons"><button type="submit" class="button save">Speichern</button><button type="button" class="button cancel dialog-close">Abbrechen</button></div></form></div>
+            }
+            @if (Model.Facility.CanEditLocations)
+            {
+                <div id="M_MC_FFView_SecLocs_SecLocsGrid" class="pnlEdit" hidden role="dialog" aria-modal="true"><h2>Standortadressen bearbeiten</h2>@foreach (var location in Model.Facility.Facility.Locations.Where(x => !x.IsMainLocation && x.STUID is not null)) { <details><summary>@location.Name</summary><form method="post" asp-page-handler="SaveLocation"><input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" /><input type="hidden" name="stuid" value="@location.STUID" /><input type="hidden" name="EditedLocation.Name" value="@location.Name" /><div><label class="lblLeftLabel">Straße</label><input name="EditedLocation.Street" value="@location.Street" /></div><div><label class="lblLeftLabel">Hausnummer</label><input name="EditedLocation.HouseNumber" value="@location.HouseNumber" /></div><div><label class="lblLeftLabel">PLZ</label><input name="EditedLocation.PostalCode" value="@location.PostalCode" /></div><div><label class="lblLeftLabel">Ort</label><input name="EditedLocation.City" value="@location.City" /></div><div class="command buttons"><button type="submit" class="button save">Speichern</button></div></form></details> }<button type="button" class="button cancel dialog-close">Abbrechen</button></div>
+            }
+            @if (Model.Facility.CanEditDocuments)
+            {
+                <div id="M_MC_Documents_AddFile" class="pnlEdit" hidden role="dialog" aria-modal="true"><h2>Dokument hinzufügen</h2><form method="post" enctype="multipart/form-data" asp-page-handler="SaveDocument"><input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" /><input id="M_MC_Documents_FUAddDoc" class="FileUpload" asp-for="DocumentFile" type="file" /><select asp-for="DocumentType"><option value="0">Dokument</option><option value="1">Broschüre</option><option value="2">Formular</option><option value="22">Sonstiges</option></select><div class="command buttons"><button type="submit" class="button save">Speichern</button><button type="button" class="button cancel dialog-close">Abbrechen</button></div></form></div>
+            }
+        </div>
+    </div>
 }
-
 @section Scripts {
     <script src="~/js/qwstammdaten.js" asp-append-version="true"></script>
 }

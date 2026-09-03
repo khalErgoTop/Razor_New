@@ -1,0 +1,101 @@
+@model (TOPqwWeb_Core.Legacy.Adapters.QArcCategory Category, IReadOnlyList<TOPqwWeb_Core.Legacy.Adapters.QArcCategory> Categories, IReadOnlyList<TOPqwWeb_Core.Legacy.Adapters.QArcMatrix> Matrices)
+
+<section class="@(Model.Category.ParentId == 0 ? "q-arc-category" : "q-arc-subcategory")">
+    @if (Model.Category.ParentId == 0)
+    {
+        <h2>@Model.Category.Label</h2>
+    }
+    else
+    {
+        <h3 class="q-arc-subcategory-toggle" role="button" tabindex="0" aria-expanded="true">@Model.Category.Label</h3>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.Category.AdditionalText))
+    {
+        <p>@Model.Category.AdditionalText</p>
+    }
+
+    @if (Model.Category.ParentId == 0)
+    {
+        @foreach (var term in Model.Category.Terms)
+        {
+            <div class="q-arc-term">
+                <h3>@term.Label</h3>
+                @if (!string.IsNullOrWhiteSpace(term.AdditionalText))
+                {
+                    <p>@term.AdditionalText</p>
+                }
+                <p>@(term.Value ?? "-")</p>
+                @foreach (var matrix in Model.Matrices.Where(matrix => matrix.TermId == term.Id))
+                {
+                    <div class="term termMatrix">
+                        <h4>@matrix.Label</h4>
+                        <div class="pnlMatrix">
+                            <div class="pnlMatrixRowHeader pnlMatrixRow">
+                                <div class="pnlMatrixCol pnlMatrixColLabel"></div>
+                                @foreach (var column in matrix.Columns)
+                                {
+                                    <div class="pnlMatrixCol pnlMatrixColLabel">@column.Label</div>
+                                }
+                            </div>
+                            @foreach (var row in matrix.Rows)
+                            {
+                                <div class="pnlMatrixRow">
+                                    <div class="pnlMatrixCol pnlMatrixRowLabel@(row.IsExpanded ? " rowExpanded" : "")">@row.Label</div>
+                                    @foreach (var column in matrix.Columns)
+                                    {
+                                        <div class="pnlMatrixCol pnlMatrixColValue">@(matrix.Values.TryGetValue((row.Id, column.Id), out var value) ? value ?? "-" : "-")</div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    }
+    else
+    {
+        <ul class="facilityItem">
+            @foreach (var term in Model.Category.Terms)
+            {
+                <li>
+                    <div class="q-arc-term">
+                        <strong>@term.Label</strong>
+                        <span>@(term.Value ?? "-")</span>
+                        @foreach (var matrix in Model.Matrices.Where(matrix => matrix.TermId == term.Id))
+                        {
+                            <div class="term termMatrix">
+                                <h4>@matrix.Label</h4>
+                                <div class="pnlMatrix">
+                                    <div class="pnlMatrixRowHeader pnlMatrixRow">
+                                        <div class="pnlMatrixCol pnlMatrixColLabel"></div>
+                                        @foreach (var column in matrix.Columns)
+                                        {
+                                            <div class="pnlMatrixCol pnlMatrixColLabel">@column.Label</div>
+                                        }
+                                    </div>
+                                    @foreach (var row in matrix.Rows)
+                                    {
+                                        <div class="pnlMatrixRow">
+                                            <div class="pnlMatrixCol pnlMatrixRowLabel@(row.IsExpanded ? " rowExpanded" : "")">@row.Label</div>
+                                            @foreach (var column in matrix.Columns)
+                                            {
+                                                <div class="pnlMatrixCol pnlMatrixColValue">@(matrix.Values.TryGetValue((row.Id, column.Id), out var value) ? value ?? "-" : "-")</div>
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </li>
+            }
+        </ul>
+    }
+
+    @foreach (var child in Model.Categories.Where(child => child.ParentId == Model.Category.Id))
+    {
+        @await Html.PartialAsync("_QArcCategory", (child, Model.Categories, Model.Matrices))
+    }
+</section>

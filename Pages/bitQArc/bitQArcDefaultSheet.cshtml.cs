@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using TOPqwWeb_Core.Infrastructure.Session;
 using TOPqwWeb_Core.Legacy.Adapters;
+using TOPqwWeb_Core.Services.Modules;
 
 namespace TOPqwWeb_Core.Pages.bitQArc;
 
@@ -11,15 +12,19 @@ public sealed class bitQArcDefaultSheetModel : PageModel
 {
     private readonly QArcAdapter _adapter;
     private readonly LegacySessionContext _session;
+    private readonly QArcAccessService _access;
 
-    public bitQArcDefaultSheetModel(QArcAdapter adapter, LegacySessionContext session)
+    public bitQArcDefaultSheetModel(QArcAdapter adapter, LegacySessionContext session, QArcAccessService access)
     {
         _adapter = adapter;
         _session = session;
+        _access = access;
     }
 
     public QArcSheet? Sheet { get; private set; }
     public IReadOnlyList<QArcCategory> Categories { get; private set; } = [];
+    public IReadOnlyList<QArcMatrix> Matrices { get; private set; } = [];
+    public bool CanEdit { get; private set; }
     public string TablePrefix { get; private set; } = "KV";
 
     public async Task<IActionResult> OnGetAsync(
@@ -38,7 +43,11 @@ public sealed class bitQArcDefaultSheetModel : PageModel
 
         Sheet = await _adapter.GetSheetAsync(TablePrefix, eiid, layoutId, foreignKeyId, cancellationToken);
         if (Sheet is null) return NotFound();
+        var access = await _access.GetAccessAsync(eiid, TablePrefix, Sheet.Status, cancellationToken);
+        if (!access.CanView) return Forbid();
+        CanEdit = access.CanEdit;
         Categories = await _adapter.GetCategoriesAsync(TablePrefix, eiid, layoutId, foreignKeyId, cancellationToken);
+        Matrices = await _adapter.GetMatricesAsync(TablePrefix, eiid, layoutId, foreignKeyId, cancellationToken);
         _session.CurrentEIID = eiid;
         return Page();
     }

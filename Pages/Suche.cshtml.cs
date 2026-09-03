@@ -42,6 +42,7 @@ namespace TOPqwWeb_Core.Pages
         public List<int> Merkmale { get; set; } = [];
 
         public PublicSearchResponse? SearchResult { get; private set; }
+        public bool SearchWasExecuted { get; private set; }
 
         public async Task OnGetAsync(CancellationToken cancellationToken)
         {
@@ -61,6 +62,7 @@ namespace TOPqwWeb_Core.Pages
                     Search4Institutions = Leistungserbringer
                 };
                 SearchResult = await _service.SearchAsync(request, cancellationToken);
+                SearchWasExecuted = true;
                 _searchState.Request = request;
                 _searchState.Results = SearchResult;
             }
@@ -75,6 +77,7 @@ namespace TOPqwWeb_Core.Pages
                 Einrichtungen = request.Search4Facilities;
                 Leistungserbringer = request.Search4Institutions;
                 SearchResult = _searchState.Results ?? await _service.SearchAsync(request, cancellationToken);
+                SearchWasExecuted = true;
             }
             else
             {

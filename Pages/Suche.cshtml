@@ -4,99 +4,107 @@
     ViewData["Title"] = "Detailsuche";
 }
 
-<nav aria-label="Brotkrümelnavigation">
-    <ol class="breadcrumb">
-        <li><a asp-page="/Index">Start</a></li>
-        <li><a asp-page="/Sucharten">Leistungsangebote</a></li>
-        <li aria-current="page">Detailsuche</li>
-    </ol>
-</nav>
-
 <h1>Detailsuche</h1>
+<div class="kern-card" style="padding:16px; margin-bottom:24px">
+    <form method="get" class="searchform">
+        <div style="margin-bottom:16px">
+            <label class="kern-label" asp-for="Suchbegriff">Suche</label>
+            <input class="kern-form-input__input" asp-for="Suchbegriff" type="search" placeholder="Sie können nach Namen und Kennzeichen suchen" autofocus />
+        </div>
 
-<form method="get" class="searchform">
-    <label asp-for="Suchbegriff">Suche</label>
-    <input asp-for="Suchbegriff" type="search" placeholder="Sie können nach Namen und Kennzeichen suchen" autofocus />
-    <label asp-for="Einrichtungstyp">Leistungen</label>
-    <select asp-for="Einrichtungstyp">
-        <option value="0">Alle Leistungen</option>
-        @foreach (var type in Model.SearchResult?.FacilityTypes ?? [])
-        {
-            <option value="@type.Id">@type.Name</option>
-        }
-    </select>
-    <label asp-for="Postleitzahl">Postleitzahl</label>
-    <input asp-for="Postleitzahl" inputmode="numeric" maxlength="5" />
-    <label asp-for="Entfernung">im Umkreis von</label>
-    <select asp-for="Entfernung">
-        <option value="0">keine Umkreissuche</option>
-        @foreach (var distance in Model.SearchResult?.Distances ?? [])
-        {
-            <option value="@distance">@distance km</option>
-        }
-    </select>
-    <label>
-        <input asp-for="MitFreienPlaetzen" type="checkbox" />
-        mit freien Plätzen
-    </label>
-    <fieldset>
-        <legend>Suchen nach</legend>
-        <label><input asp-for="Einrichtungen" type="checkbox" /> Einrichtungen</label>
-        <label><input asp-for="Leistungserbringer" type="checkbox" /> Leistungserbringer</label>
-    </fieldset>
-    @if (Model.SearchResult?.FacilityFeatures.Count > 0)
-    {
-        <fieldset>
-            <legend>Mit folgenden Merkmalen</legend>
-            @foreach (var feature in Model.SearchResult.FacilityFeatures)
-            {
-                <label>
-                    <input type="checkbox" name="Merkmale" value="@feature.Id" @(Model.Merkmale.Contains(feature.Id) ? "checked" : null) />
-                    @feature.Name
-                </label>
-            }
-        </fieldset>
-    }
-    <button type="submit">Suchen</button>
-    <a asp-page="/Suche">Suche zurücksetzen</a>
-</form>
-
-@if (Model.SearchResult is not null)
-{
-    <section aria-labelledby="search-results-heading">
-        <h2 id="search-results-heading">Suchergebnisse</h2>
-        @if (Model.SearchResult.Results.Count == 0)
-        {
-            <p>Leider konnte mit den ausgewählten Filtern kein Ergebnis gefunden werden.</p>
-        }
-        else
-        {
-            <ul class="search-results">
-                @foreach (var result in Model.SearchResult.Results)
+        <div style="margin-bottom:16px" class="kern-form-input__select-wrapper">
+            <label class="kern-label" asp-for="Einrichtungstyp">Leistungen</label>
+            <select class="kern-form-input__select" asp-for="Einrichtungstyp">
+                <option value="0">Alle Leistungen</option>
+                @foreach (var type in Model.SearchResult?.FacilityTypes ?? [])
                 {
-                    <li class="ResultRow">
-                        <a asp-page="/Stammdaten" asp-route-EIID="@result.EIID" asp-route-STUID="@result.STUID">
-                            <strong>@result.Name</strong>
-                            @if (!string.IsNullOrWhiteSpace(result.FacilityIndicator))
-                            {
-                                <span> (@result.FacilityIndicator)</span>
-                            }
-                            @if (!string.IsNullOrWhiteSpace(result.FacilityType))
-                            {
-                                <span> – @result.FacilityType</span>
-                            }
-                            @if (!string.IsNullOrWhiteSpace(result.Address))
-                            {
-                                <small>@result.Address</small>
-                            }
-                        </a>
-                    </li>
+                    <option value="@type.Id">@type.Name</option>
                 }
-            </ul>
-            @if (Model.SearchResult.HasMoreResults)
-            {
-                <p>Es werden nicht alle Suchergebnisse angezeigt. Bitte spezifizieren Sie Ihre Suche stärker.</p>
-            }
+            </select>
+        </div>
+
+        <div style="display:flex; gap:16px; margin-bottom:16px">
+            <div style="flex:1">
+                <label class="kern-label" asp-for="Postleitzahl">Postleitzahl</label>
+                <input class="kern-form-input__input" asp-for="Postleitzahl" inputmode="numeric" maxlength="5" />
+            </div>
+            <div style="flex:1" class="kern-form-input__select-wrapper">
+                <label class="kern-label" asp-for="Entfernung">im Umkreis von</label>
+                <select class="kern-form-input__select" asp-for="Entfernung">
+                    <option value="0">keine Umkreissuche</option>
+                    @foreach (var distance in Model.SearchResult?.Distances ?? [])
+                    {
+                        <option value="@distance">@distance km</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div style="margin-bottom:16px">
+            <label class="kern-checkbox"><input asp-for="MitFreienPlaetzen" type="checkbox" class="kern-form-check__checkbox" /> mit freien Plätzen</label>
+        </div>
+
+        <fieldset style="margin-bottom:16px; border:1px solid var(--kern-color-layout-border); padding:12px">
+            <legend>Suchen nach</legend>
+            <label class="kern-checkbox"><input asp-for="Einrichtungen" type="checkbox" class="kern-form-check__checkbox"/> Einrichtungen</label>
+            <label class="kern-checkbox"><input asp-for="Leistungserbringer" type="checkbox" class="kern-form-check__checkbox" /> Leistungserbringer</label>
+        </fieldset>
+
+        @if (Model.SearchResult?.FacilityFeatures.Count > 0)
+        {
+            <fieldset style="margin-bottom:16px; border:1px solid var(--kern-color-layout-border); padding:12px">
+                <legend>Mit folgenden Merkmalen</legend>
+                @foreach (var feature in Model.SearchResult.FacilityFeatures)
+                {
+                    <label class="kern-checkbox" style="display:block; margin-bottom:4px">
+                        <input type="checkbox" name="Merkmale" value="@feature.Id" @(Model.Merkmale.Contains(feature.Id) ? "checked" : null) />
+                        @feature.Name
+                    </label>
+                }
+            </fieldset>
         }
-    </section>
+
+        <button id="search-submit" class="kern-btn kern-btn--primary" type="submit"><span class="kern-label">Suchen</span></button>
+        <a class="kern-btn kern-btn--secondary" asp-page="/Suche"><span class="kern-label">Suche zurücksetzen</span></a>
+    </form>
+</div>
+
+@if (Model.SearchWasExecuted && Model.SearchResult is not null)
+{
+    <h2>Suchergebnisse</h2>
+    @if (Model.SearchResult.Results.Count == 0)
+    {
+        <div class="kern-alert kern-alert--info">
+            <div class="kern-alert__body">Leider konnte mit den ausgewählten Filtern kein Ergebnis gefunden werden.</div>
+        </div>
+    }
+    else
+    {
+        <ul class="search-results" style="list-style:none; padding:0">
+            @foreach (var result in Model.SearchResult.Results)
+            {
+                <li class="kern-card" style="margin-bottom:8px; padding:12px">
+                    <a asp-page="/Stammdaten" asp-route-EIID="@result.EIID" asp-route-STUID="@result.STUID">
+                        <strong>@result.Name</strong>
+                        @if (!string.IsNullOrWhiteSpace(result.FacilityIndicator))
+                        {
+                            <span class="kern-badge">@result.FacilityIndicator</span>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(result.FacilityType))
+                        {
+                            <span> – @result.FacilityType</span>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(result.Address))
+                        {
+                            <div><small>@result.Address</small></div>
+                        }
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+}
+
+@section Scripts {
+    <script src="~/js/suche.js" asp-append-version="true"></script>
 }

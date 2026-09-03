@@ -30,6 +30,13 @@
             if (street.value.length < 3) return;
             try { addOptions(streetList, await getJson('StreetNameSuggestions', { prefix: street.value })); } catch { }
         });
+        document.querySelectorAll('#M_MC_FFView_SecLocs_UlSecLocs li').forEach(location => {
+            location.addEventListener('click', event => {
+                if (event.target.closest('a, button, input')) return;
+                document.querySelectorAll('#M_MC_FFView_SecLocs_UlSecLocs li[selected="selected"]').forEach(item => item.removeAttribute('selected'));
+                location.setAttribute('selected', 'selected');
+            });
+        });
         number.addEventListener('input', async () => {
             validated.value = 'false';
             if (street.value.length <= 2) return;
@@ -50,5 +57,46 @@
         });
     }
 
+    function initialiseLegacyInteractions() {
+        document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+            link.classList.add('mobile-phone-link');
+        });
+
+        document.querySelectorAll('.pnlAgreementHead, .pnlInstitutionHeadLine').forEach(header => {
+            header.addEventListener('click', () => {
+                const panel = header.nextElementSibling;
+                if (!panel) return;
+                panel.hidden = !panel.hidden;
+            });
+        });
+
+        document.querySelectorAll('.pnlInstitutionFacility').forEach(panel => {
+            panel.hidden = true;
+        });
+
+        const closeDialog = dialog => {
+            dialog.hidden = true;
+            document.body.classList.remove('legacy-dialog-open');
+        };
+        document.querySelectorAll('[data-dialog-target]').forEach(opener => {
+            opener.addEventListener('click', () => {
+                const dialog = document.getElementById(opener.dataset.dialogTarget);
+                if (!dialog) return;
+                document.querySelectorAll('.legacy-dialog[role="dialog"]').forEach(closeDialog);
+                dialog.hidden = false;
+                document.body.classList.add('legacy-dialog-open');
+                dialog.querySelector('input, select, textarea, button')?.focus();
+            });
+        });
+        document.querySelectorAll('.dialog-close').forEach(button => {
+            button.addEventListener('click', () => closeDialog(button.closest('[role="dialog"]')));
+        });
+        document.addEventListener('keydown', event => {
+            if (event.key !== 'Escape') return;
+            document.querySelectorAll('.legacy-dialog[role="dialog"]:not([hidden])').forEach(closeDialog);
+        });
+    }
+
     document.querySelectorAll('form').forEach(initialise);
+    initialiseLegacyInteractions();
 })();
