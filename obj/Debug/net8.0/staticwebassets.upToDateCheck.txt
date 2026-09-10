@@ -2683,6 +2683,7 @@ wwwroot\js\kalkulation.js
 wwwroot\js\login.js
 wwwroot\js\lv.js
 wwwroot\js\qm.js
+wwwroot\js\qwstammdaten.js
 wwwroot\js\site.js
 wwwroot\js\stammdaten.js
 wwwroot\js\suchassistent.js
@@ -2817,4 +2818,3 @@ wwwroot\themes\SH\menu.css
 wwwroot\themes\SH\stammdaten.css
 wwwroot\themes\SH\suchassistent.css
 wwwroot\themes\SH\theme.css
-wwwroot\js\qwstammdaten.js

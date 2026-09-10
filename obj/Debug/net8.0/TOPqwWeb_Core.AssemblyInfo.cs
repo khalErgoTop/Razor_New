@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TOPqwWeb_Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ef24425a3f6509510aea418bb78b4437313b9391")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f80869fa18d3600898e566b7e26cebd530a28953")]
 [assembly: System.Reflection.AssemblyProductAttribute("TOPqwWeb_Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TOPqwWeb_Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

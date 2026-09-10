@@ -82,7 +82,7 @@
             opener.addEventListener('click', () => {
                 const dialog = document.getElementById(opener.dataset.dialogTarget);
                 if (!dialog) return;
-                document.querySelectorAll('.legacy-dialog[role="dialog"]').forEach(closeDialog);
+                document.querySelectorAll('[role="dialog"]').forEach(closeDialog);
                 dialog.hidden = false;
                 document.body.classList.add('legacy-dialog-open');
                 dialog.querySelector('input, select, textarea, button')?.focus();
@@ -93,7 +93,7 @@
         });
         document.addEventListener('keydown', event => {
             if (event.key !== 'Escape') return;
-            document.querySelectorAll('.legacy-dialog[role="dialog"]:not([hidden])').forEach(closeDialog);
+            document.querySelectorAll('[role="dialog"]:not([hidden])').forEach(closeDialog);
         });
     }
 
