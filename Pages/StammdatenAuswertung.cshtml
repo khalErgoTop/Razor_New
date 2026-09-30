@@ -1,0 +1,194 @@
+@page
+@model TOPqwWeb_Core.Pages.StammdatenAuswertungModel
+
+<h1>Auswertungen</h1>
+
+<form method="post">
+    <div>
+        <label asp-for="AnalysisType">Auswertungstyp</label>
+        <select asp-for="AnalysisType">
+            @foreach (var analysisType in Model.AnalysisTypes)
+            {
+                <option value="@analysisType.Id">@analysisType.Titel</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="AnalysisId">TOPqw-Auswertung</label>
+        <select asp-for="AnalysisId">
+            <option value="">Bitte auswählen</option>
+            @foreach (var analysis in Model.TqwAnalyses)
+            {
+                <option value="@analysis.Id">@analysis.Displayname</option>
+            }
+        </select>
+    </div>
+
+    <div>
+        <label asp-for="DashboardName">Dashboard</label>
+        <select asp-for="DashboardName">
+            <option value="">Bitte auswählen</option>
+            @foreach (var dashboard in Model.Dashboards)
+            {
+                <option value="@dashboard.AbfrageName">@dashboard.Ueberschrift</option>
+            }
+        </select>
+    </div>
+
+    <fieldset>
+        <legend>Einrichtungstypen</legend>
+        @foreach (var facilityType in Model.Filters.FacilityTypes)
+        {
+            <label>
+                <input type="checkbox" name="FacilityTypeSelection" value="@facilityType.ETID" />
+                @facilityType.Typkennzeichnung
+            </label>
+        }
+    </fieldset>
+
+    <fieldset>
+        <legend>Kreise</legend>
+        @foreach (var district in Model.Filters.Districts)
+        {
+            <label>
+                <input type="checkbox" name="DistrictSelection" value="@district.KRID" />
+                @district.Kreis
+            </label>
+        }
+    </fieldset>
+
+    <button type="submit" asp-page-handler="Reload">Aktualisieren</button>
+    <button type="submit" asp-page-handler="LoadAnalysis">Auswertung laden</button>
+    <button type="submit" asp-page-handler="LoadDashboard">Dashboard laden</button>
+    <button type="submit" asp-page-handler="SaveDashboardRestrictions">Dashboard-Filter speichern</button>
+</form>
+
+@section Scripts {
+    <script src="~/js/dashboard-charts.js" asp-append-version="true"></script>
+}
+
+@if (Model.DashboardResult is not null)
+{
+    <h2>@Model.DashboardResult.Ueberschrift</h2>
+    <p>Typ: @Model.DashboardResult.Type</p>
+    @if (Model.DashboardResult.AvailableRestrictions.Count > 0)
+    {
+        <h3>Dashboard-Filter</h3>
+        <ul>
+            @foreach (var restriction in Model.DashboardResult.AvailableRestrictions)
+            {
+                <li>@restriction.Name: @(restriction.Selected ? restriction.UserSelection : "keine Auswahl")</li>
+            }
+        </ul>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.DashboardResult.ExecutionMessage))
+    {
+        <p class="Error">@Model.DashboardResult.ExecutionMessage</p>
+    }
+    @if (!string.IsNullOrWhiteSpace(Model.DashboardResult.TextValue))
+    {
+        <div class="DashBoxText">@Model.DashboardResult.TextValue</div>
+    }
+    @if (Model.DashboardResult.ChartLabels.Count > 0)
+    {
+        <h3>Diagrammdaten (@Model.DashboardResult.ChartType)</h3>
+        <div class="dashboard-chart"
+             data-dashboard-chart="@Model.DashboardResult.ChartType"
+             data-dashboard-labels='@System.Text.Json.JsonSerializer.Serialize(Model.DashboardResult.ChartLabels)'
+             data-dashboard-values='@System.Text.Json.JsonSerializer.Serialize(Model.DashboardResult.ChartValues)'
+             role="img"
+             aria-label="Diagramm @Model.DashboardResult.Ueberschrift">
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Beschriftung</th>
+                    <th>Wert</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (var index = 0; index < Model.DashboardResult.ChartLabels.Count; index++)
+                {
+                    <tr>
+                        <td>@Model.DashboardResult.ChartLabels[index]</td>
+                        <td>@(index < Model.DashboardResult.ChartValues.Count ? Model.DashboardResult.ChartValues[index] : null)</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    @if (Model.DashboardResult.ChartLabels.Count == 0 && Model.DashboardResult.Structure.Count > 0)
+    {
+        <table>
+            <thead>
+                <tr>
+                    @foreach (var column in Model.DashboardResult.Structure)
+                    {
+                        <th>@column</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var row in Model.DashboardResult.Rows)
+                {
+                    <tr>
+                        @foreach (var column in Model.DashboardResult.Structure)
+                        {
+                            <td>@(row.TryGetValue(column, out var value) ? value : null)</td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+}
+
+@if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+{
+    <p class="Error">@Model.ErrorMessage</p>
+}
+
+@if (Model.AnalysisResult is not null)
+{
+    <h2>Ergebnis</h2>
+    <table>
+        <thead>
+            <tr>
+                @foreach (var column in Model.AnalysisResult.Structure)
+                {
+                    <th>@column</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model.AnalysisResult.Data)
+            {
+                <tr>
+                    @foreach (var column in Model.AnalysisResult.Structure)
+                    {
+                        <td>@(row.TryGetValue(column, out var value) ? value : null)</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<h2>Verfügbare Dashboards</h2>
+@if (Model.Dashboards.Count == 0)
+{
+    <p>Keine Dashboards verfügbar.</p>
+}
+else
+{
+    <ul>
+        @foreach (var dashboard in Model.Dashboards)
+        {
+            <li>
+                <strong>@dashboard.Ueberschrift</strong>
+                <span>(@dashboard.AbfrageName)</span>
+            </li>
+        }
+    </ul>
+}

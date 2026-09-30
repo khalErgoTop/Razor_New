@@ -1,0 +1,197 @@
+﻿/* Version: 240304 */
+#M_Header_content ul#Crmenu li.Summary{
+	float: right;
+  margin-right: 0;
+  position: relative;
+}
+#Crmenu li:hover {
+	cursor:pointer
+}
+#Crmenu li {
+float: left;
+  padding: 0;
+  line-height: 1.25rem;
+  margin-right: 0.75rem;
+  list-style-type: none;
+}
+#Crmenu{
+	width:290px
+}
+#ModLinkLeistungsvereinbarung,
+#ModLinkKalkulation{
+	display:none !important
+}
+#Crmenu li {
+  font-size: 80%}
+@media (max-width: 1050px){
+#ModLinkAnbietermanagment:after,
+#ModLinkTOPqm:after,
+#CrModules li,
+#Crmenu li {
+  font-size: 0.8rem !important}
+	#ModLinkAnbietermanagment::after,
+	#ModLinkTOPqm::after,
+	#CrModules{
+		background-position-x: -100px;
+	}
+	#CrModules li li:first-child{
+		  margin-left: 0 !important
+	}
+	#CrModules li:first-child {
+  margin-left: 4rem !important
+}
+	#ModLinkAnbietermanagment::after {
+  font-size: 1rem;
+  content: "Standortinfo..." !important;
+}
+
+	#CrModules.itmCnt3 li {
+		width: calc((100%) / 4) !important;
+	}
+
+	#CrModules.itmCnt4 li {
+		width: calc((100%) / 5) !important;
+	}
+
+	#CrModules.itmCnt5 li {
+		width: calc((100%) / 6) !important;
+	}
+	
+	#CrModules.itmCnt6 li {
+		width: calc((100%) / 7) !important;
+	}
+
+	#CrModules.itmCnt7 li {
+		width: calc((100%) / 8) !important;
+	}
+
+	#CrModules.itmCnt8 li {
+		width: calc((100%) / 9) !important;
+	}
+}
+@media (max-width: 900px){
+#M_LblUserLogin {
+  top: 3.2rem;
+  left: 2.5rem;
+}
+}
+
+#ModLinkKalkulation,
+#ModLinkLeistungsvereinbarung{
+	display:none;
+}
+#WrapperHead {
+	position:fixed;
+	z-index:1;
+	background:white;
+	width:100%;
+	top:-14rem;
+	transition: top 0.3s ease-out; /* Animationsübergang definieren */	
+}
+#WrapperHead.active {
+	top:0rem;
+	width:100%;
+}
+
+#ModLinkTOPqm{
+	font-size:0;
+}
+#ModLinkTOPqm:after{
+	font-size:1rem;
+	content:"QSB+KZM"
+}
+#ModLinkAnbietermanagment{
+	font-size:0;
+}
+#ModLinkAnbietermanagment:after{
+	font-size:1rem;
+	content:"Standortinformationen"
+}
+#M_PnlModules {
+	height: 85px;
+	position: relative;
+	margin-left: auto;
+	background-repeat: no-repeat
+}
+#CrModules a{
+	margin-top: -1.5rem;
+	text-align: center;
+	transition: opacity 250ms;
+	opacity: 1;
+}
+#CrModules li {
+	display: inline-grid;
+	line-height: 0.7rem;	
+}
+
+#CrModules.itmCnt3 li {
+	width: calc((100% - 15rem) / 4);
+}
+
+#CrModules.itmCnt4 li {
+	width: calc((100% - 15rem) / 5);
+}
+
+#CrModules.itmCnt5 li {
+	width: calc((100% - 15rem) / 6);
+}
+
+#CrModules.itmCnt6 li {
+	width: calc((100% - 15rem) / 7);
+}
+
+#CrModules.itmCnt7 li {
+	width: calc((100% - 15rem) / 8);
+}
+
+#CrModules.itmCnt8 li {
+	width: calc((100% - 15rem) / 9);
+}
+
+#CrModules li:first-child{
+	margin-left: 10rem
+}
+#CrModules li li:first-child{
+	margin-left: 0rem
+}
+#CrModules li li:last-child {
+	top: .5rem;
+	position: relative;
+}
+#CrModules li ul li a:hover{
+outline:unset !important;
+	text-decoration:unset;
+}
+#CrModules a a:focus{
+  text-decoration: unset;
+}
+
+#Linkpath li a:hover,
+#CrModules li a:hover{
+	text-decoration:underline;
+	opacity: .7;
+	transition: opacity 250ms;
+}
+#CrModules li ul li a{
+	color:white;
+	/*text-align: left*/;
+	display: inline-block;
+}
+.boxNavigation {
+	display:inline-block;
+	width:100%
+}
+#CrModules li ul li {
+	display: block;
+
+	text-align: center;
+	padding: 0;
+}
+#WrapperHead #M_PnlTop #M_PnlModules.boxNavigation ul#CrModules li ul{
+	position: absolute;
+	padding-left:0;
+	width: 100%
+}
+#M_PnlModules.boxNavigation ul#CrModules li ul{
+	margin-top:10px;
+}

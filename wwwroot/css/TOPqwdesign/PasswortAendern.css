@@ -1,0 +1,18 @@
+﻿#divChangePassword{}
+#divHeader{}
+#lblUserToChange {
+	
+}
+#divOldPasswort{}
+#lblOldPassword{}
+#txtOldPassword{}
+#divNewPW{}
+#lblNewPassword{}
+#txtNewPassword{}
+#divVerifyPW{}
+#lblVerifyPassword{}
+#txtVerifyPassword{}
+#divHint{}
+#lblHint{}
+#divControls{}
+#cmdCancel{}

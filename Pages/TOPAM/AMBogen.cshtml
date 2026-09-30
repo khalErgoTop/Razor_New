@@ -1,0 +1,118 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.AM.AMBogenModel
+@{
+    ViewData["Title"] = "Anbietermanagement";
+}
+
+<link rel="stylesheet" href="~/css/@(ViewData["Theme"] ?? "TOPqwdesign")/AMBogen.css" />
+
+<ul id="Linkpath">
+    <li id="LinkPathNavStart">Navigation</li>
+    <li><a asp-page="/Index">Start</a></li>
+    <li class="current">AM-Bogen</li>
+</ul>
+
+<div class="page-title-box">
+    <h1 class="page-title am icon">@(Model.Category?.Name ?? "Anbietermanagement")</h1>
+</div>
+
+<section class="pageContent">
+    <h2>Standorte</h2>
+    @if (Model.Facilities.Count == 0)
+    {
+        <p>Es sind keine Standorte verfügbar.</p>
+    }
+    else
+    {
+        <ul id="GridFacs">
+            @foreach (var facility in Model.Facilities)
+            {
+                <li class="@(facility.EIID == Model.SelectedFacility?.EIID ? "selected" : null)">
+                    <a asp-page="/AM/AMBogen" asp-route-EIID="@facility.EIID" asp-route-OID="@Model.OID">
+                        @facility.Name (@facility.Indicator)
+                    </a>
+                </li>
+            }
+        </ul>
+    }
+
+    <nav class="okats" aria-label="AM-Kategorien">
+        @foreach (var category in Model.Categories)
+        {
+            <a asp-page="/AM/AMBogen" asp-route-EIID="@Model.EIID" asp-route-OID="@category.Id" class="@(category.Id == Model.Category?.Id ? "selected" : null)">
+                @category.Name
+            </a>
+        }
+    </nav>
+
+    @if (Model.Category is not null)
+    {
+        <form method="post" asp-page-handler="Save">
+        <input type="hidden" name="eiid" value="@Model.EIID" />
+        <input type="hidden" name="oid" value="@Model.Category.Id" />
+        @foreach (var subcategory in Model.Category.Subcategories)
+        {
+            <section class="am-subcategory">
+                <h2 class="am-subcategory-toggle" role="button" tabindex="0" aria-expanded="true">@subcategory.Name</h2>
+                <ul class="facilityItem">
+                    @foreach (var item in subcategory.Items)
+                    {
+                        <li>
+                            <span>@item.Name</span>
+                            @if (Model.CanEdit && item.Editable)
+                            {
+                                    @if (item.DisplayTypeCode is 1 or 3)
+                                    {
+                                        <input type="hidden" name="Values[@item.Id]" value="false" />
+                                        <input type="checkbox" name="Values[@item.Id]" value="true" checked="@(IsTrue(item.Value))" />
+                                    }
+                                    else if (item.DisplayTypeCode == 8)
+                                    {
+                                        <input type="number" step="1" name="Values[@item.Id]" value="@item.Value" />
+                                    }
+                                    else if (item.DisplayTypeCode == 14)
+                                    {
+                                        <input type="number" step="any" name="Values[@item.Id]" value="@item.Value" />
+                                    }
+                                    else
+                                    {
+                                        <input type="text" name="Values[@item.Id]" value="@item.Value" />
+                                    }
+                            }
+                            else
+                            {
+                                <span>@item.Value</span>
+                            }
+                        </li>
+                    }
+                </ul>
+            </section>
+        }
+        <button type="submit">Speichern</button>
+        </form>
+    }
+
+<script>
+    document.querySelectorAll('.am-subcategory-toggle').forEach(toggle => {
+        const toggleList = () => {
+            const list = toggle.closest('.am-subcategory')?.querySelector('ul.facilityItem');
+            if (!list) return;
+            const expanded = toggle.getAttribute('aria-expanded') === 'true';
+            toggle.setAttribute('aria-expanded', (!expanded).toString());
+            list.hidden = expanded;
+        };
+        toggle.addEventListener('click', toggleList);
+        toggle.addEventListener('keydown', event => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                toggleList();
+            }
+        });
+    });
+</script>
+
+@functions {
+    private static bool IsTrue(string value) =>
+        value.Equals("true", StringComparison.OrdinalIgnoreCase) || value == "1" || value.Equals("ja", StringComparison.OrdinalIgnoreCase);
+}
+</section>

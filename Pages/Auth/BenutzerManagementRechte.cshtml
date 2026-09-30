@@ -1,0 +1,89 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.Auth.BenutzerManagementRechteModel
+@{
+    ViewData["Title"] = "Benutzer-Rechteverwaltung";
+}
+
+<nav aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb">
+        <li><a asp-page="/Index">Start</a></li>
+        <li><a asp-page="/Auth/QWWebAdmin">Administration</a></li>
+        <li><a asp-page="/Auth/BenutzerManagement">Benutzer-Management</a></li>
+        <li aria-current="page">Benutzer-Rechteverwaltung</li>
+    </ol>
+</nav>
+
+<section class="pageContent user-rights-management">
+    <h1>Benutzer-Rechteverwaltung</h1>
+
+    @if (!string.IsNullOrWhiteSpace(Model.Message))
+    {
+        <p class="confirmation-label">@Model.Message</p>
+    }
+
+    @if (Model.UserId > 0)
+    {
+        <p>Benutzer-ID: @Model.UserId</p>
+    }
+
+    <h2>Zugeordnete Gruppen</h2>
+    <ul>
+        @foreach (var group in Model.SelectedGroups)
+        {
+            <li>
+                @group.Username
+                @if (group.Beid != Model.UserId)
+                {
+                    <form method="post" asp-page-handler="RemoveGroup" style="display:inline">
+                        <input type="hidden" name="UserId" value="@Model.UserId" />
+                        <input type="hidden" name="GroupId" value="@group.Beid" />
+                        <button type="submit">Entfernen</button>
+                    </form>
+                }
+            </li>
+        }
+    </ul>
+
+    <h2>Verfügbare Gruppen</h2>
+    <form method="post" asp-page-handler="AddGroup">
+        <input type="hidden" name="UserId" value="@Model.UserId" />
+        <select asp-for="GroupId" required>
+            <option value="">Bitte auswählen</option>
+            @foreach (var group in Model.AvailableGroups)
+            {
+                <option value="@group.Beid">@group.Username</option>
+            }
+        </select>
+        <button type="submit">Hinzufügen</button>
+    </form>
+
+    <h2>Benutzerrechte</h2>
+    @foreach (var right in Model.Rights)
+    {
+        <form method="post" asp-page-handler="SaveRight">
+            <input type="hidden" name="UserId" value="@Model.UserId" />
+            <input type="hidden" name="RightId" value="@right.Brid" />
+            <fieldset>
+                <legend>@right.Bezeichnung</legend>
+                @if (!string.IsNullOrWhiteSpace(right.Beschreibung))
+                {
+                    <p>@right.Beschreibung</p>
+                }
+                <label>
+                    <input type="hidden" name="Allowed" value="false" />
+                    <input type="checkbox" name="Allowed" value="true" checked="@(right.Erlaubt ? "checked" : null)" disabled="@(right.RechtAendern ? null : "disabled")" />
+                    Erlaubt
+                </label>
+                <label>
+                    <input type="hidden" name="Denied" value="false" />
+                    <input type="checkbox" name="Denied" value="true" checked="@(right.Verweigert ? "checked" : null)" disabled="@(right.RechtAendern ? null : "disabled")" />
+                    Verweigert
+                </label>
+                @if (right.RechtAendern)
+                {
+                    <button type="submit">Speichern</button>
+                }
+            </fieldset>
+        </form>
+    }
+</section>

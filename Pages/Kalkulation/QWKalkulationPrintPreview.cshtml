@@ -1,0 +1,71 @@
+@page
+@model TOPqwWeb_Core.Pages.Kalkulation.QWKalkulationPrintPreviewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <title>Kalkulation – Druckansicht</title>
+    <link rel="stylesheet" href="~/css/TOPqwdesign/QWKalkulationPrintPreview.css" />
+    <style>
+        @@media print { .print-actions { display: none; } }
+        .print-actions { margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+@if (Model.ErrorMessage is not null)
+{
+    <p>@Model.ErrorMessage</p>
+}
+else if (Model.Data is not null)
+{
+    <div class="print-actions">
+        <button type="button" onclick="window.print()">Drucken</button>
+        <a asp-page-handler="DownloadXml" asp-route-EIID="@Model.EIID">XML herunterladen</a>
+        <a asp-page="/Kalkulation/QWKalkulation" asp-route-EIID="@Model.EIID">Zurück zur Kalkulation</a>
+    </div>
+    <h1>Kalkulation: @Model.Data.Bezeichnung</h1>
+    <dl>
+        <dt>Einrichtung</dt>
+        <dd>@Model.Data.Einrichtungskennzeichen - @Model.Data.Einrichtungsname</dd>
+        <dt>Status</dt>
+        <dd>@Model.Data.Status</dd>
+        @if (Model.Data.GueltigVon is not null)
+        {
+            <dt>Gültig ab</dt>
+            <dd>@Model.Data.GueltigVon.Value.ToString("d")</dd>
+        }
+        @if (Model.Data.GueltigBis is not null)
+        {
+            <dt>Gültig bis</dt>
+            <dd>@Model.Data.GueltigBis.Value.ToString("d")</dd>
+        }
+    </dl>
+    <table>
+        <thead>
+            <tr>
+                <th>Bezeichnung</th>
+                <th>Angebot ET</th>
+                <th>Angebot KT</th>
+                <th>Abschluss</th>
+                <th>Tagessatz</th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var post in Model.Data.Posts.Where(post => !string.IsNullOrWhiteSpace(post.Kostenbestandteil)))
+        {
+            <tr>
+                <td>@post.Ordnungszahl @post.Kostenbestandteil</td>
+                <td>@post.AngebotET?.ToString("N2")</td>
+                <td>@post.AngebotKT?.ToString("N2")</td>
+                <td>@post.Abschluss?.ToString("N2")</td>
+                <td>@post.Tagessatz?.ToString("N2")</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}
+</body>
+</html>

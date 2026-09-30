@@ -1,0 +1,483 @@
+ /* -- SH Blau -- */
+:root {
+   /* SH Blau 025 */
+    --kern-sh-blau-025-lightness: 97.55%;
+    --kern-sh-blau-025-chroma: 0.0045;
+    --kern-sh-blau-025-hue: 258.3;
+
+    /* SH Blau 050 */
+    --kern-sh-blau-050-lightness: 95.73%;
+    --kern-sh-blau-050-chroma: 0.0074;
+    --kern-sh-blau-050-hue: 260.7;
+
+    /* SH Blau 100 */
+    --kern-sh-blau-100-lightness: 90.96%;
+    --kern-sh-blau-100-chroma: 0.0161;
+    --kern-sh-blau-100-hue: 253.9;
+
+    /* SH Blau 150 */
+    --kern-sh-blau-150-lightness: 86.81%;
+    --kern-sh-blau-150-chroma: 0.0234;
+    --kern-sh-blau-150-hue: 252.2;
+
+    /* SH Blau 200 */
+    --kern-sh-blau-200-lightness: 82.42%;
+    --kern-sh-blau-200-chroma: 0.0314;
+    --kern-sh-blau-200-hue: 254.3;
+
+    /* SH Blau 250 */
+    --kern-sh-blau-250-lightness: 78.58%;
+    --kern-sh-blau-250-chroma: 0.0384;
+    --kern-sh-blau-250-hue: 254.6;
+
+    /* SH Blau 300 */
+    --kern-sh-blau-300-lightness: 74.03%;
+    --kern-sh-blau-300-chroma: 0.0475;
+    --kern-sh-blau-300-hue: 254.6;
+
+    /* SH Blau 350 */
+    --kern-sh-blau-350-lightness: 69.8%;
+    --kern-sh-blau-350-chroma: 0.055;
+    --kern-sh-blau-350-hue: 254.7;
+
+    /* SH Blau 400 */
+    --kern-sh-blau-400-lightness: 65.52%;
+    --kern-sh-blau-400-chroma: 0.0627;
+    --kern-sh-blau-400-hue: 254.9;
+
+    /* SH Blau 450 */
+    --kern-sh-blau-450-lightness: 61.23%;
+    --kern-sh-blau-450-chroma: 0.0688;
+    --kern-sh-blau-450-hue: 255.2;
+
+    /* SH Blau 500 */
+    --kern-sh-blau-500-lightness: 56.77%;
+    --kern-sh-blau-500-chroma: 0.0762;
+    --kern-sh-blau-500-hue: 254.2;
+
+    /* SH Blau 550 */
+    --kern-sh-blau-550-lightness: 52.39%;
+    --kern-sh-blau-550-chroma: 0.0827;
+    --kern-sh-blau-550-hue: 254.6;
+
+    /* SH Blau 600 */
+    --kern-sh-blau-600-lightness: 48.04%;
+    --kern-sh-blau-600-chroma: 0.0889;
+    --kern-sh-blau-600-hue: 255.5;
+
+    /* SH Blau 650 */
+    --kern-sh-blau-650-lightness: 43.88%;
+    --kern-sh-blau-650-chroma: 0.0941;
+    --kern-sh-blau-650-hue: 255.5;
+
+    /* SH Blau 700 */
+    --kern-sh-blau-700-lightness: 39.69%;
+    --kern-sh-blau-700-chroma: 0.0997;
+    --kern-sh-blau-700-hue: 255.3;
+
+    /* SH Blau 750 */
+    --kern-sh-blau-750-lightness: 35.38%;
+    --kern-sh-blau-750-chroma: 0.1018;
+    --kern-sh-blau-750-hue: 255.1;
+
+    /* SH Blau 800 */
+    --kern-sh-blau-800-lightness: 31.08%;
+    --kern-sh-blau-800-chroma: 0.1035;
+    --kern-sh-blau-800-hue: 255.3;
+
+    /* SH Blau 850 */
+    --kern-sh-blau-850-lightness: 27.18%;
+    --kern-sh-blau-850-chroma: 0.0994;
+    --kern-sh-blau-850-hue: 257.7;
+
+    /* SH Blau 900 */
+    --kern-sh-blau-900-lightness: 22.64%;
+    --kern-sh-blau-900-chroma: 0.0923;
+    --kern-sh-blau-900-hue: 260;
+
+    /* SH Blau 950 */
+    --kern-sh-blau-950-lightness: 18.2%;
+    --kern-sh-blau-950-chroma: 0.0789;
+    --kern-sh-blau-950-hue: 261.1;
+}
+
+ /* -- SH Red -- */
+:root {
+    /* SH Red 025 */
+    --kern-sh-red-025-lightness: 97.79%;
+    --kern-sh-red-025-chroma: 0.0107;
+    --kern-sh-red-025-hue: 17.34;
+
+    /* SH Red 050 */
+    --kern-sh-red-050-lightness: 96.07%;
+    --kern-sh-red-050-chroma: 0.0196;
+    --kern-sh-red-050-hue: 13.63;
+
+    /* SH Red 100 */
+    --kern-sh-red-100-lightness: 91.59%;
+    --kern-sh-red-100-chroma: 0.0437;
+    --kern-sh-red-100-hue: 12.74;
+
+    /* SH Red 150 */
+    --kern-sh-red-150-lightness: 87.85%;
+    --kern-sh-red-150-chroma: 0.0654;
+    --kern-sh-red-150-hue: 12.61;
+
+    /* SH Red 200 */
+    --kern-sh-red-200-lightness: 83.66%;
+    --kern-sh-red-200-chroma: 0.0917;
+    --kern-sh-red-200-hue: 12.47;
+
+    /* SH Red 250 */
+    --kern-sh-red-250-lightness: 79.86%;
+    --kern-sh-red-250-chroma: 0.1174;
+    --kern-sh-red-250-hue: 12.8;
+
+    /* SH Red 300 */
+    --kern-sh-red-300-lightness: 75.83%;
+    --kern-sh-red-300-chroma: 0.1471;
+    --kern-sh-red-300-hue: 12.87;
+
+    /* SH Red 350 */
+    --kern-sh-red-350-lightness: 72.05%;
+    --kern-sh-red-350-chroma: 0.1747;
+    --kern-sh-red-350-hue: 13.58;
+
+    /* SH Red 400 */
+    --kern-sh-red-400-lightness: 68.01%;
+    --kern-sh-red-400-chroma: 0.1929;
+    --kern-sh-red-400-hue: 13.35;
+
+    /* SH Red 450 */
+    --kern-sh-red-450-lightness: 63.93%;
+    --kern-sh-red-450-chroma: 0.2074;
+    --kern-sh-red-450-hue: 13.47;
+
+    /* SH Red 500 */
+    --kern-sh-red-500-lightness: 59.56%;
+    --kern-sh-red-500-chroma: 0.2177;
+    --kern-sh-red-500-hue: 13.65;
+
+    /* SH Red 550 */
+    --kern-sh-red-550-lightness: 55.2%;
+    --kern-sh-red-550-chroma: 0.2206;
+    --kern-sh-red-550-hue: 13.35;
+
+    /* SH Red 600 */
+    --kern-sh-red-600-lightness: 50.73%;
+    --kern-sh-red-600-chroma: 0.2029;
+    --kern-sh-red-600-hue: 15.35;
+
+    /* SH Red 650 */
+    --kern-sh-red-650-lightness: 46.21%;
+    --kern-sh-red-650-chroma: 0.185;
+    --kern-sh-red-650-hue: 16.93;
+
+    /* SH Red 700 */
+    --kern-sh-red-700-lightness: 41.84%;
+    --kern-sh-red-700-chroma: 0.1676;
+    --kern-sh-red-700-hue: 17.68;
+
+    /* SH Red 750 */
+    --kern-sh-red-750-lightness: 36.93%;
+    --kern-sh-red-750-chroma: 0.148;
+    --kern-sh-red-750-hue: 18.31;
+
+    /* SH Red 800 */
+    --kern-sh-red-800-lightness: 32.55%;
+    --kern-sh-red-800-chroma: 0.1305;
+    --kern-sh-red-800-hue: 18.56;
+
+    /* SH Red 850 */
+    --kern-sh-red-850-lightness: 28.23%;
+    --kern-sh-red-850-chroma: 0.1132;
+    --kern-sh-red-850-hue: 19.13;
+
+    /* SH Red 900 */
+    --kern-sh-red-900-lightness: 23.27%;
+    --kern-sh-red-900-chroma: 0.0934;
+    --kern-sh-red-900-hue: 19.44;
+
+    /* SH Red 950 */
+    --kern-sh-red-950-lightness: 18.55%;
+    --kern-sh-red-950-chroma: 0.0745;
+    --kern-sh-red-950-hue: 19.55;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* brand */
+    --kern-color-accent: oklch(var(--kern-sh-red-450-lightness) var(--kern-sh-red-450-chroma) var(--kern-sh-red-450-hue));
+    /* brandbar-stripe */
+    --kern-color-brandbar-dicing: var(--kern-metric-space-none); /* Erzeugt eine Gap zwischen Segments und einen gewürfelten Effekt. */
+    /* Block 1 */
+    --kern-color-brandbar-full-color: transparent; /* TO BE DELETED ... ledigilich für die aktuelle Themingdemo relevant */
+    --kern-color-brandbar-block-1-segment-1: oklch(var(--kern-darkblue-450-lightness) var(--kern-darkblue-450-chroma) var(--kern-darkblue-450-hue));
+    --kern-color-brandbar-block-1-segment-2: oklch(var(--kern-darkblue-700-lightness) var(--kern-darkblue-700-chroma) var(--kern-darkblue-700-hue));
+    --kern-color-brandbar-block-1-segment-3: oklch(var(--kern-darkblue-800-lightness) var(--kern-darkblue-800-chroma) var(--kern-darkblue-800-hue));
+    --kern-color-brandbar-block-1-segment-4: oklch(var(--kern-darkblue-900-lightness) var(--kern-darkblue-900-chroma) var(--kern-darkblue-900-hue));
+    --kern-color-brandbar-block-1-segment-5: oklch(var(--kern-darkblue-450-lightness) var(--kern-darkblue-450-chroma) var(--kern-darkblue-450-hue));
+    --kern-color-brandbar-block-1-segment-6: oklch(var(--kern-darkblue-800-lightness) var(--kern-darkblue-800-chroma) var(--kern-darkblue-800-hue));
+    /* Block 2 */
+    --kern-color-brandbar-block-2-segment-1: oklch(var(--kern-sh-red-750-lightness) var(--kern-sh-red-750-chroma) var(--kern-sh-red-750-hue));
+    --kern-color-brandbar-block-2-segment-2: oklch(var(--kern-sh-red-450-lightness) var(--kern-sh-red-450-chroma) var(--kern-sh-red-450-hue));
+    --kern-color-brandbar-block-2-segment-3: oklch(var(--kern-sh-red-800-lightness) var(--kern-sh-red-800-chroma) var(--kern-sh-red-800-hue));
+    --kern-color-brandbar-block-2-segment-4: oklch(var(--kern-sh-red-900-lightness) var(--kern-sh-red-900-chroma) var(--kern-sh-red-900-hue));
+    --kern-color-brandbar-block-2-segment-5: oklch(var(--kern-sh-red-450-lightness) var(--kern-sh-red-450-chroma) var(--kern-sh-red-450-hue));
+    --kern-color-brandbar-block-2-segment-6: oklch(var(--kern-sh-red-800-lightness) var(--kern-sh-red-800-chroma) var(--kern-sh-red-800-hue));
+    /* Block 3 */
+    --kern-color-brandbar-block-3-segment-1: oklch(var(--kern-darkblue-800-lightness) var(--kern-darkblue-800-chroma) var(--kern-darkblue-800-hue));
+    --kern-color-brandbar-block-3-segment-2: oklch(var(--kern-darkblue-900-lightness) var(--kern-darkblue-900-chroma) var(--kern-darkblue-900-hue));
+    --kern-color-brandbar-block-3-segment-3: oklch(var(--kern-darkblue-700-lightness) var(--kern-darkblue-700-chroma) var(--kern-darkblue-700-hue));
+    --kern-color-brandbar-block-3-segment-4: oklch(var(--kern-darkblue-450-lightness) var(--kern-darkblue-450-chroma) var(--kern-darkblue-450-hue));
+    --kern-color-brandbar-block-3-segment-5: oklch(var(--kern-darkblue-900-lightness) var(--kern-darkblue-900-chroma) var(--kern-darkblue-900-hue));
+    --kern-color-brandbar-block-3-segment-6: oklch(var(--kern-darkblue-800-lightness) var(--kern-darkblue-800-chroma) var(--kern-darkblue-800-hue));
+    /* action */
+    --kern-color-action-default: oklch(var(--kern-darkblue-300-lightness) var(--kern-darkblue-300-chroma) var(--kern-darkblue-300-hue));
+    --kern-color-action-on-default: oklch(var(--kern-white-lightness) var(--kern-white-chroma) var(--kern-white-hue));
+    --kern-color-action-visited: oklch(var(--kern-violet-300-lightness) var(--kern-violet-300-chroma) var(--kern-violet-300-hue));
+    /* action-focus */
+    --kern-color-action-focus-background: oklch(var(--kern-neutral-400-lightness) var(--kern-neutral-400-chroma) var(--kern-neutral-400-hue));
+    --kern-color-action-focus-border-inside: oklch(var(--kern-neutral-500-lightness) var(--kern-neutral-500-chroma) var(--kern-neutral-500-hue));
+    --kern-color-action-focus-border-outside: oklch(var(--kern-neutral-800-lightness) var(--kern-neutral-800-chroma) var(--kern-neutral-800-hue));
+    /* feedback */
+    --kern-color-feedback-danger: oklch(var(--kern-sh-red-400-lightness) var(--kern-sh-red-400-chroma) var(--kern-sh-red-400-hue));
+    --kern-color-feedback-danger-background: oklch(var(--kern-sh-red-900-lightness) var(--kern-sh-red-900-chroma) var(--kern-sh-red-900-hue));
+    --kern-color-feedback-info: oklch(var(--kern-lightblue-400-lightness) var(--kern-lightblue-400-chroma) var(--kern-lightblue-400-hue));
+    --kern-color-feedback-info-background: oklch(var(--kern-lightblue-900-lightness) var(--kern-lightblue-900-chroma) var(--kern-lightblue-900-hue));
+    --kern-color-feedback-success: oklch(var(--kern-turquoise-400-lightness) var(--kern-turquoise-400-chroma) var(--kern-turquoise-400-hue));
+    --kern-color-feedback-success-background: oklch(var(--kern-turquoise-900-lightness) var(--kern-turquoise-900-chroma) var(--kern-turquoise-900-hue));
+    --kern-color-feedback-warning: oklch(var(--kern-orange-400-lightness) var(--kern-orange-400-chroma) var(--kern-orange-400-hue));
+    --kern-color-feedback-warning-background: oklch(var(--kern-orange-900-lightness) var(--kern-orange-900-chroma) var(--kern-orange-900-hue));
+    /* feedback-loader */
+    --kern-color-feedback-loader: oklch(var(--kern-neutral-050-lightness) var(--kern-neutral-050-chroma) var(--kern-neutral-050-hue));
+    --kern-color-feedback-loader-background: oklch(var(--kern-neutral-700-lightness) var(--kern-neutral-700-chroma) var(--kern-neutral-700-hue));
+    /* form-inputs */
+    --kern-color-form-input-background: oklch(var(--kern-neutral-900-lightness) var(--kern-neutral-900-chroma) var(--kern-neutral-900-hue));
+    --kern-color-form-input-background-inverted: oklch(var(--kern-white-lightness) var(--kern-white-chroma) var(--kern-white-hue));
+    --kern-color-form-input-border: oklch(var(--kern-neutral-050-lightness) var(--kern-neutral-050-chroma) var(--kern-neutral-050-hue));
+    /* layout */
+    --kern-color-layout-border: oklch(var(--kern-neutral-700-lightness) var(--kern-neutral-700-chroma) var(--kern-neutral-700-hue));
+    /* layout-text */
+    --kern-color-layout-text-default: oklch(var(--kern-neutral-050-lightness) var(--kern-neutral-050-chroma) var(--kern-neutral-050-hue));
+    --kern-color-layout-text-inverse: oklch(var(--kern-neutral-950-lightness) var(--kern-neutral-950-chroma) var(--kern-neutral-950-hue));
+    --kern-color-layout-text-muted: oklch(var(--kern-neutral-300-lightness) var(--kern-neutral-300-chroma) var(--kern-neutral-300-hue));
+    /* layout-background */
+    --kern-color-layout-background-default: oklch(var(--kern-white-lightness) var(--kern-white-chroma) var(--kern-white-hue));
+    --kern-color-layout-background-hued: oklch(var(--kern-neutral-950-lightness) var(--kern-neutral-950-chroma) var(--kern-neutral-950-hue));
+    --kern-color-layout-background-inverted: oklch(var(--kern-black-lightness) var(--kern-black-chroma) var(--kern-black-hue));
+    /* JUST FOR THE SHOWCASE ------------------------------------- */
+    --kern-shadow-lightness: var(--kern-neutral-900-lightness);
+    --kern-shadow-chroma: var(--kern-neutral-900-chroma);
+    --kern-shadow-hue: var(--kern-neutral-900-hue);
+    /* ----------------------------------------------------------- */
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    /* brand */
+    --kern-color-accent: oklch(var(--kern-sh-red-550-lightness) var(--kern-sh-red-550-chroma) var(--kern-sh-red-550-hue));
+    /* brandbar-stripe */
+    --kern-color-brandbar-dicing: var(--kern-metric-space-none); /* Erzeugt eine Gap zwischen Segments und einen gewürfelten Effekt. */
+    /* Block 1 */
+    --kern-color-brandbar-full-color: transparent; /* TO BE DELETED ... ledigilich für die aktuelle Themingdemo relevant */
+    --kern-color-brandbar-block-1-segment-1: oklch(var(--kern-darkblue-700-lightness) var(--kern-darkblue-700-chroma) var(--kern-darkblue-700-hue));
+    --kern-color-brandbar-block-1-segment-2: oklch(var(--kern-darkblue-300-lightness) var(--kern-darkblue-300-chroma) var(--kern-darkblue-300-hue));
+    --kern-color-brandbar-block-1-segment-3: oklch(var(--kern-darkblue-150-lightness) var(--kern-darkblue-150-chroma) var(--kern-darkblue-150-hue));
+    --kern-color-brandbar-block-1-segment-4: oklch(var(--kern-darkblue-025-lightness) var(--kern-darkblue-025-chroma) var(--kern-darkblue-025-hue));
+    --kern-color-brandbar-block-1-segment-5: oklch(var(--kern-darkblue-700-lightness) var(--kern-darkblue-700-chroma) var(--kern-darkblue-700-hue));
+    --kern-color-brandbar-block-1-segment-6: oklch(var(--kern-darkblue-150-lightness) var(--kern-darkblue-150-chroma) var(--kern-darkblue-150-hue));
+    /* Block 2 */
+    --kern-color-brandbar-block-2-segment-1: oklch(var(--kern-sh-red-250-lightness) var(--kern-sh-red-250-chroma) var(--kern-sh-red-250-hue));
+    --kern-color-brandbar-block-2-segment-2: oklch(var(--kern-sh-red-550-lightness) var(--kern-sh-red-550-chroma) var(--kern-sh-red-550-hue));
+    --kern-color-brandbar-block-2-segment-3: oklch(var(--kern-sh-red-150-lightness) var(--kern-sh-red-150-chroma) var(--kern-sh-red-150-hue));
+    --kern-color-brandbar-block-2-segment-4: oklch(var(--kern-sh-red-050-lightness) var(--kern-sh-red-050-chroma) var(--kern-sh-red-050-hue));
+    --kern-color-brandbar-block-2-segment-5: oklch(var(--kern-sh-red-550-lightness) var(--kern-sh-red-550-chroma) var(--kern-sh-red-550-hue));
+    --kern-color-brandbar-block-2-segment-6: oklch(var(--kern-sh-red-150-lightness) var(--kern-sh-red-150-chroma) var(--kern-sh-red-150-hue));
+    /* Block 3 */
+    --kern-color-brandbar-block-3-segment-1: oklch(var(--kern-darkblue-150-lightness) var(--kern-darkblue-150-chroma) var(--kern-darkblue-150-hue));
+    --kern-color-brandbar-block-3-segment-2: oklch(var(--kern-darkblue-050-lightness) var(--kern-darkblue-050-chroma) var(--kern-darkblue-050-hue));
+    --kern-color-brandbar-block-3-segment-3: oklch(var(--kern-darkblue-700-lightness) var(--kern-darkblue-700-chroma) var(--kern-darkblue-700-hue));
+    --kern-color-brandbar-block-3-segment-4: oklch(var(--kern-darkblue-300-lightness) var(--kern-darkblue-300-chroma) var(--kern-darkblue-300-hue));
+    --kern-color-brandbar-block-3-segment-5: oklch(var(--kern-darkblue-025-lightness) var(--kern-darkblue-025-chroma) var(--kern-darkblue-025-hue));
+    --kern-color-brandbar-block-3-segment-6: oklch(var(--kern-darkblue-150-lightness) var(--kern-darkblue-150-chroma) var(--kern-darkblue-150-hue));
+    /* action */
+    --kern-color-action-default: oklch(var(--kern-darkblue-700-lightness) var(--kern-darkblue-700-chroma) var(--kern-darkblue-700-hue));
+    --kern-color-action-on-default: oklch(var(--kern-black-lightness) var(--kern-black-chroma) var(--kern-black-hue));
+    --kern-color-action-visited: oklch(var(--kern-violet-700-lightness) var(--kern-violet-700-chroma) var(--kern-violet-700-hue));
+    /* action-focus */
+    --kern-color-action-focus-background: oklch(var(--kern-neutral-700-lightness) var(--kern-neutral-700-chroma) var(--kern-neutral-700-hue));
+    --kern-color-action-focus-border-inside: oklch(var(--kern-neutral-500-lightness) var(--kern-neutral-500-chroma) var(--kern-neutral-500-hue));
+    --kern-color-action-focus-border-outside: oklch(var(--kern-neutral-200-lightness) var(--kern-neutral-200-chroma) var(--kern-neutral-200-hue));
+    /* feedback */
+    --kern-color-feedback-danger: oklch(var(--kern-red-600-lightness) var(--kern-red-600-chroma) var(--kern-red-600-hue));
+    --kern-color-feedback-danger-background: oklch(var(--kern-red-050-lightness) var(--kern-red-050-chroma) var(--kern-red-050-hue));
+    --kern-color-feedback-info: oklch(var(--kern-lightblue-600-lightness) var(--kern-lightblue-600-chroma) var(--kern-lightblue-600-hue));
+    --kern-color-feedback-info-background: oklch(var(--kern-lightblue-050-lightness) var(--kern-lightblue-050-chroma) var(--kern-lightblue-050-hue));
+    --kern-color-feedback-success: oklch(var(--kern-turquoise-600-lightness) var(--kern-turquoise-600-chroma) var(--kern-turquoise-600-hue));
+    --kern-color-feedback-success-background: oklch(var(--kern-turquoise-050-lightness) var(--kern-turquoise-050-chroma) var(--kern-turquoise-050-hue));
+    --kern-color-feedback-warning: oklch(var(--kern-orange-600-lightness) var(--kern-orange-600-chroma) var(--kern-orange-600-hue));
+    --kern-color-feedback-warning-background: oklch(var(--kern-orange-050-lightness) var(--kern-orange-050-chroma) var(--kern-orange-050-hue));
+    /* feedback-loader */
+    --kern-color-feedback-loader: oklch(var(--kern-neutral-700-lightness) var(--kern-neutral-700-chroma) var(--kern-neutral-700-hue));
+    --kern-color-feedback-loader-background: oklch(var(--kern-neutral-100-lightness) var(--kern-neutral-100-chroma) var(--kern-neutral-100-hue));
+    /* form-inputs */
+    --kern-color-form-input-background: oklch(var(--kern-neutral-025-lightness) var(--kern-neutral-025-chroma) var(--kern-neutral-025-hue));
+    --kern-color-form-input-background-inverted: oklch(var(--kern-black-lightness) var(--kern-black-chroma) var(--kern-black-hue));
+    --kern-color-form-input-border: oklch(var(--kern-neutral-900-lightness) var(--kern-neutral-900-chroma) var(--kern-neutral-900-hue));
+    /* layout */
+    --kern-color-layout-border: oklch(var(--kern-neutral-300-lightness) var(--kern-neutral-300-chroma) var(--kern-neutral-300-hue));
+    /* layout-text */
+    --kern-color-layout-text-default: oklch(var(--kern-neutral-900-lightness) var(--kern-neutral-900-chroma) var(--kern-neutral-900-hue));
+    --kern-color-layout-text-inverse: oklch(var(--kern-neutral-025-lightness) var(--kern-neutral-025-chroma) var(--kern-neutral-025-hue));
+    --kern-color-layout-text-muted: oklch(var(--kern-neutral-700-lightness) var(--kern-neutral-700-chroma) var(--kern-neutral-700-hue));
+    /* layout-background */
+    --kern-color-layout-background-default: oklch(var(--kern-black-lightness) var(--kern-black-chroma) var(--kern-black-hue));
+    --kern-color-layout-background-hued: oklch(var(--kern-neutral-025-lightness) var(--kern-neutral-025-chroma) var(--kern-neutral-025-hue));
+    --kern-color-layout-background-inverted: oklch(var(--kern-white-lightness) var(--kern-white-chroma) var(--kern-white-hue));
+    /* JUST FOR THE SHOWCASE ------------------------------------- */
+    --kern-shadow-lightness: var(--kern-neutral-200-lightness);
+    --kern-shadow-chroma: var(--kern-neutral-200-chroma);
+    --kern-shadow-hue: var(--kern-neutral-200-hue);
+    /* ----------------------------------------------------------- */
+  }
+}
+[data-kern-theme=light],
+.kern-light {
+  /* brand */
+  --kern-color-accent: oklch(var(--kern-sh-red-550-lightness) var(--kern-sh-red-550-chroma) var(--kern-sh-red-550-hue));
+  /* brandbar-stripe */
+  --kern-color-brandbar-dicing: var(--kern-metric-space-none); /* Erzeugt eine Gap zwischen Segments und einen gewürfelten Effekt. */
+  /* Block 1 */
+  --kern-color-brandbar-full-color: transparent; /* TO BE DELETED ... ledigilich für die aktuelle Themingdemo relevant */
+  --kern-color-brandbar-block-1-segment-1: oklch(var(--kern-darkblue-700-lightness) var(--kern-darkblue-700-chroma) var(--kern-darkblue-700-hue));
+  --kern-color-brandbar-block-1-segment-2: oklch(var(--kern-darkblue-300-lightness) var(--kern-darkblue-300-chroma) var(--kern-darkblue-300-hue));
+  --kern-color-brandbar-block-1-segment-3: oklch(var(--kern-darkblue-150-lightness) var(--kern-darkblue-150-chroma) var(--kern-darkblue-150-hue));
+  --kern-color-brandbar-block-1-segment-4: oklch(var(--kern-darkblue-025-lightness) var(--kern-darkblue-025-chroma) var(--kern-darkblue-025-hue));
+  --kern-color-brandbar-block-1-segment-5: oklch(var(--kern-darkblue-700-lightness) var(--kern-darkblue-700-chroma) var(--kern-darkblue-700-hue));
+  --kern-color-brandbar-block-1-segment-6: oklch(var(--kern-darkblue-150-lightness) var(--kern-darkblue-150-chroma) var(--kern-darkblue-150-hue));
+  /* Block 2 */
+  --kern-color-brandbar-block-2-segment-1: oklch(var(--kern-sh-red-250-lightness) var(--kern-sh-red-250-chroma) var(--kern-sh-red-250-hue));
+  --kern-color-brandbar-block-2-segment-2: oklch(var(--kern-sh-red-550-lightness) var(--kern-sh-red-550-chroma) var(--kern-sh-red-550-hue));
+  --kern-color-brandbar-block-2-segment-3: oklch(var(--kern-sh-red-150-lightness) var(--kern-sh-red-150-chroma) var(--kern-sh-red-150-hue));
+  --kern-color-brandbar-block-2-segment-4: oklch(var(--kern-sh-red-050-lightness) var(--kern-sh-red-050-chroma) var(--kern-sh-red-050-hue));
+  --kern-color-brandbar-block-2-segment-5: oklch(var(--kern-sh-red-550-lightness) var(--kern-sh-red-550-chroma) var(--kern-sh-red-550-hue));
+  --kern-color-brandbar-block-2-segment-6: oklch(var(--kern-sh-red-150-lightness) var(--kern-sh-red-150-chroma) var(--kern-sh-red-150-hue));
+  /* Block 3 */
+  --kern-color-brandbar-block-3-segment-1: oklch(var(--kern-darkblue-150-lightness) var(--kern-darkblue-150-chroma) var(--kern-darkblue-150-hue));
+  --kern-color-brandbar-block-3-segment-2: oklch(var(--kern-darkblue-050-lightness) var(--kern-darkblue-050-chroma) var(--kern-darkblue-050-hue));
+  --kern-color-brandbar-block-3-segment-3: oklch(var(--kern-darkblue-700-lightness) var(--kern-darkblue-700-chroma) var(--kern-darkblue-700-hue));
+  --kern-color-brandbar-block-3-segment-4: oklch(var(--kern-darkblue-300-lightness) var(--kern-darkblue-300-chroma) var(--kern-darkblue-300-hue));
+  --kern-color-brandbar-block-3-segment-5: oklch(var(--kern-darkblue-025-lightness) var(--kern-darkblue-025-chroma) var(--kern-darkblue-025-hue));
+  --kern-color-brandbar-block-3-segment-6: oklch(var(--kern-darkblue-150-lightness) var(--kern-darkblue-150-chroma) var(--kern-darkblue-150-hue));
+  /* action */
+  --kern-color-action-default: oklch(var(--kern-darkblue-700-lightness) var(--kern-darkblue-700-chroma) var(--kern-darkblue-700-hue));
+  --kern-color-action-on-default: oklch(var(--kern-black-lightness) var(--kern-black-chroma) var(--kern-black-hue));
+
+  --kern-color-action-visited: oklch(var(--kern-violet-700-lightness) var(--kern-violet-700-chroma) var(--kern-violet-700-hue));
+  /* action-focus */
+  --kern-color-action-focus-background: oklch(var(--kern-neutral-700-lightness) var(--kern-neutral-700-chroma) var(--kern-neutral-700-hue));
+  --kern-color-action-focus-border-inside: oklch(var(--kern-neutral-500-lightness) var(--kern-neutral-500-chroma) var(--kern-neutral-500-hue));
+  --kern-color-action-focus-border-outside: oklch(var(--kern-neutral-200-lightness) var(--kern-neutral-200-chroma) var(--kern-neutral-200-hue));
+  /* feedback */
+  --kern-color-feedback-danger: oklch(var(--kern-red-600-lightness) var(--kern-red-600-chroma) var(--kern-red-600-hue));
+  --kern-color-feedback-danger-background: oklch(var(--kern-red-050-lightness) var(--kern-red-050-chroma) var(--kern-red-050-hue));
+  --kern-color-feedback-info: oklch(var(--kern-lightblue-600-lightness) var(--kern-lightblue-600-chroma) var(--kern-lightblue-600-hue));
+  --kern-color-feedback-info-background: oklch(var(--kern-lightblue-050-lightness) var(--kern-lightblue-050-chroma) var(--kern-lightblue-050-hue));
+  --kern-color-feedback-success: oklch(var(--kern-turquoise-600-lightness) var(--kern-turquoise-600-chroma) var(--kern-turquoise-600-hue));
+  --kern-color-feedback-success-background: oklch(var(--kern-turquoise-050-lightness) var(--kern-turquoise-050-chroma) var(--kern-turquoise-050-hue));
+  --kern-color-feedback-warning: oklch(var(--kern-orange-600-lightness) var(--kern-orange-600-chroma) var(--kern-orange-600-hue));
+  --kern-color-feedback-warning-background: oklch(var(--kern-orange-050-lightness) var(--kern-orange-050-chroma) var(--kern-orange-050-hue));
+  /* feedback-loader */
+  --kern-color-feedback-loader: oklch(var(--kern-neutral-700-lightness) var(--kern-neutral-700-chroma) var(--kern-neutral-700-hue));
+  --kern-color-feedback-loader-background: oklch(var(--kern-neutral-100-lightness) var(--kern-neutral-100-chroma) var(--kern-neutral-100-hue));
+  /* form-inputs */
+  --kern-color-form-input-background: oklch(var(--kern-neutral-025-lightness) var(--kern-neutral-025-chroma) var(--kern-neutral-025-hue));
+  --kern-color-form-input-background-inverted: oklch(var(--kern-black-lightness) var(--kern-black-chroma) var(--kern-black-hue));
+  --kern-color-form-input-border: oklch(var(--kern-neutral-900-lightness) var(--kern-neutral-900-chroma) var(--kern-neutral-900-hue));
+  /* layout */
+  --kern-color-layout-border: oklch(var(--kern-neutral-300-lightness) var(--kern-neutral-300-chroma) var(--kern-neutral-300-hue));
+  /* layout-text */
+  --kern-color-layout-text-default: oklch(var(--kern-neutral-900-lightness) var(--kern-neutral-900-chroma) var(--kern-neutral-900-hue));
+  --kern-color-layout-text-inverse: oklch(var(--kern-neutral-025-lightness) var(--kern-neutral-025-chroma) var(--kern-neutral-025-hue));
+  --kern-color-layout-text-muted: oklch(var(--kern-neutral-700-lightness) var(--kern-neutral-700-chroma) var(--kern-neutral-700-hue));
+  /* layout-background */
+  --kern-color-layout-background-default: oklch(var(--kern-black-lightness) var(--kern-black-chroma) var(--kern-black-hue));
+  --kern-color-layout-background-hued: oklch(var(--kern-neutral-025-lightness) var(--kern-neutral-025-chroma) var(--kern-neutral-025-hue));
+  --kern-color-layout-background-inverted: oklch(var(--kern-white-lightness) var(--kern-white-chroma) var(--kern-white-hue));
+  /* JUST FOR THE SHOWCASE ------------------------------------- */
+  --kern-shadow-lightness: var(--kern-neutral-200-lightness);
+  --kern-shadow-chroma: var(--kern-neutral-200-chroma);
+  --kern-shadow-hue: var(--kern-neutral-200-hue);
+  /* ----------------------------------------------------------- */
+}
+
+[data-kern-theme=dark],
+.kern-dark {
+  /* brand */
+  --kern-color-accent: oklch(var(--kern-sh-red-450-lightness) var(--kern-sh-red-450-chroma) var(--kern-sh-red-450-hue));
+  /* brandbar-stripe */
+  --kern-color-brandbar-dicing: var(--kern-metric-space-none); /* Erzeugt eine Gap zwischen Segments und einen gewürfelten Effekt. */
+  /* Block 1 */
+  --kern-color-brandbar-full-color: transparent; /* TO BE DELETED ... ledigilich für die aktuelle Themingdemo relevant */
+  --kern-color-brandbar-block-1-segment-1: oklch(var(--kern-darkblue-450-lightness) var(--kern-darkblue-450-chroma) var(--kern-darkblue-450-hue));
+  --kern-color-brandbar-block-1-segment-2: oklch(var(--kern-darkblue-700-lightness) var(--kern-darkblue-700-chroma) var(--kern-darkblue-700-hue));
+  --kern-color-brandbar-block-1-segment-3: oklch(var(--kern-darkblue-800-lightness) var(--kern-darkblue-800-chroma) var(--kern-darkblue-800-hue));
+  --kern-color-brandbar-block-1-segment-4: oklch(var(--kern-darkblue-900-lightness) var(--kern-darkblue-900-chroma) var(--kern-darkblue-900-hue));
+  --kern-color-brandbar-block-1-segment-5: oklch(var(--kern-darkblue-450-lightness) var(--kern-darkblue-450-chroma) var(--kern-darkblue-450-hue));
+  --kern-color-brandbar-block-1-segment-6: oklch(var(--kern-darkblue-800-lightness) var(--kern-darkblue-800-chroma) var(--kern-darkblue-800-hue));
+  /* Block 2 */
+  --kern-color-brandbar-block-2-segment-1: oklch(var(--kern-sh-red-750-lightness) var(--kern-sh-red-750-chroma) var(--kern-sh-red-750-hue));
+  --kern-color-brandbar-block-2-segment-2: oklch(var(--kern-sh-red-450-lightness) var(--kern-sh-red-450-chroma) var(--kern-sh-red-450-hue));
+  --kern-color-brandbar-block-2-segment-3: oklch(var(--kern-sh-red-800-lightness) var(--kern-sh-red-800-chroma) var(--kern-sh-red-800-hue));
+  --kern-color-brandbar-block-2-segment-4: oklch(var(--kern-sh-red-900-lightness) var(--kern-sh-red-900-chroma) var(--kern-sh-red-900-hue));
+  --kern-color-brandbar-block-2-segment-5: oklch(var(--kern-sh-red-450-lightness) var(--kern-sh-red-450-chroma) var(--kern-sh-red-450-hue));
+  --kern-color-brandbar-block-2-segment-6: oklch(var(--kern-sh-red-800-lightness) var(--kern-sh-red-800-chroma) var(--kern-sh-red-800-hue));
+  /* Block 3 */
+  --kern-color-brandbar-block-3-segment-1: oklch(var(--kern-darkblue-800-lightness) var(--kern-darkblue-800-chroma) var(--kern-darkblue-800-hue));
+  --kern-color-brandbar-block-3-segment-2: oklch(var(--kern-darkblue-900-lightness) var(--kern-darkblue-900-chroma) var(--kern-darkblue-900-hue));
+  --kern-color-brandbar-block-3-segment-3: oklch(var(--kern-darkblue-700-lightness) var(--kern-darkblue-700-chroma) var(--kern-darkblue-700-hue));
+  --kern-color-brandbar-block-3-segment-4: oklch(var(--kern-darkblue-450-lightness) var(--kern-darkblue-450-chroma) var(--kern-darkblue-450-hue));
+  --kern-color-brandbar-block-3-segment-5: oklch(var(--kern-darkblue-900-lightness) var(--kern-darkblue-900-chroma) var(--kern-darkblue-900-hue));
+  --kern-color-brandbar-block-3-segment-6: oklch(var(--kern-darkblue-800-lightness) var(--kern-darkblue-800-chroma) var(--kern-darkblue-800-hue));
+  /* action */
+  --kern-color-action-default: oklch(var(--kern-darkblue-300-lightness) var(--kern-darkblue-300-chroma) var(--kern-darkblue-300-hue));
+  --kern-color-action-on-default: oklch(var(--kern-white-lightness) var(--kern-white-chroma) var(--kern-white-hue));
+
+  --kern-color-action-visited: oklch(var(--kern-violet-300-lightness) var(--kern-violet-300-chroma) var(--kern-violet-300-hue));
+  /* action-focus */
+  --kern-color-action-focus-background: oklch(var(--kern-neutral-400-lightness) var(--kern-neutral-400-chroma) var(--kern-neutral-400-hue));
+  --kern-color-action-focus-border-inside: oklch(var(--kern-neutral-500-lightness) var(--kern-neutral-500-chroma) var(--kern-neutral-500-hue));
+  --kern-color-action-focus-border-outside: oklch(var(--kern-neutral-800-lightness) var(--kern-neutral-800-chroma) var(--kern-neutral-800-hue));
+  /* feedback */
+  --kern-color-feedback-danger: oklch(var(--kern-sh-red-400-lightness) var(--kern-sh-red-400-chroma) var(--kern-sh-red-400-hue));
+  --kern-color-feedback-danger-background: oklch(var(--kern-sh-red-900-lightness) var(--kern-sh-red-900-chroma) var(--kern-sh-red-900-hue));
+  --kern-color-feedback-info: oklch(var(--kern-lightblue-400-lightness) var(--kern-lightblue-400-chroma) var(--kern-lightblue-400-hue));
+  --kern-color-feedback-info-background: oklch(var(--kern-lightblue-900-lightness) var(--kern-lightblue-900-chroma) var(--kern-lightblue-900-hue));
+  --kern-color-feedback-success: oklch(var(--kern-turquoise-400-lightness) var(--kern-turquoise-400-chroma) var(--kern-turquoise-400-hue));
+  --kern-color-feedback-success-background: oklch(var(--kern-turquoise-900-lightness) var(--kern-turquoise-900-chroma) var(--kern-turquoise-900-hue));
+  --kern-color-feedback-warning: oklch(var(--kern-orange-400-lightness) var(--kern-orange-400-chroma) var(--kern-orange-400-hue));
+  --kern-color-feedback-warning-background: oklch(var(--kern-orange-900-lightness) var(--kern-orange-900-chroma) var(--kern-orange-900-hue));
+  /* feedback-loader */
+  --kern-color-feedback-loader: oklch(var(--kern-neutral-050-lightness) var(--kern-neutral-050-chroma) var(--kern-neutral-050-hue));
+  --kern-color-feedback-loader-background: oklch(var(--kern-neutral-700-lightness) var(--kern-neutral-700-chroma) var(--kern-neutral-700-hue));
+  /* form-inputs */
+  --kern-color-form-input-background: oklch(var(--kern-neutral-900-lightness) var(--kern-neutral-900-chroma) var(--kern-neutral-900-hue));
+  --kern-color-form-input-background-inverted: oklch(var(--kern-white-lightness) var(--kern-white-chroma) var(--kern-white-hue));
+  --kern-color-form-input-border: oklch(var(--kern-neutral-050-lightness) var(--kern-neutral-050-chroma) var(--kern-neutral-050-hue));
+  /* layout */
+  --kern-color-layout-border: oklch(var(--kern-neutral-700-lightness) var(--kern-neutral-700-chroma) var(--kern-neutral-700-hue));
+  /* layout-text */
+  --kern-color-layout-text-default: oklch(var(--kern-neutral-050-lightness) var(--kern-neutral-050-chroma) var(--kern-neutral-050-hue));
+  --kern-color-layout-text-inverse: oklch(var(--kern-neutral-950-lightness) var(--kern-neutral-950-chroma) var(--kern-neutral-950-hue));
+  --kern-color-layout-text-muted: oklch(var(--kern-neutral-300-lightness) var(--kern-neutral-300-chroma) var(--kern-neutral-300-hue));
+  /* layout-background */
+  --kern-color-layout-background-default: oklch(var(--kern-white-lightness) var(--kern-white-chroma) var(--kern-white-hue));
+  --kern-color-layout-background-hued: oklch(var(--kern-neutral-950-lightness) var(--kern-neutral-950-chroma) var(--kern-neutral-950-hue));
+  --kern-color-layout-background-inverted: oklch(var(--kern-black-lightness) var(--kern-black-chroma) var(--kern-black-hue));
+  /* JUST FOR THE SHOWCASE ------------------------------------- */
+  --kern-shadow-lightness: var(--kern-neutral-900-lightness);
+  --kern-shadow-chroma: var(--kern-neutral-900-chroma);
+  --kern-shadow-hue: var(--kern-neutral-900-hue);
+  /* ----------------------------------------------------------- */
+}

@@ -1,0 +1,599 @@
+ /* -- dataport-red -- */
+:root {
+    /* Dataport Red 025 */
+    --kern-dataport-red-025-lightness: 97.36%;
+    --kern-dataport-red-025-chroma: 0.0077;
+    --kern-dataport-red-025-hue: 29.5;
+
+    /* Dataport Red 050 */
+    --kern-dataport-red-050-lightness: 95.43%;
+    --kern-dataport-red-050-chroma: 0.0159;
+    --kern-dataport-red-050-hue: 28.02;
+
+    /* Dataport Red 100 */
+    --kern-dataport-red-100-lightness: 91.44%;
+    --kern-dataport-red-100-chroma: 0.0306;
+    --kern-dataport-red-100-hue: 22.62;
+
+    /* Dataport Red 150 */
+    --kern-dataport-red-150-lightness: 86.8%;
+    --kern-dataport-red-150-chroma: 0.0473;
+    --kern-dataport-red-150-hue: 22.9;
+
+    /* Dataport Red 200 */
+    --kern-dataport-red-200-lightness: 83.04%;
+    --kern-dataport-red-200-chroma: 0.0631;
+    --kern-dataport-red-200-hue: 23.22;
+
+    /* Dataport Red 250 */
+    --kern-dataport-red-250-lightness: 79.69%;
+    --kern-dataport-red-250-chroma: 0.0735;
+    --kern-dataport-red-250-hue: 24.72;
+
+    /* Dataport Red 300 */
+    --kern-dataport-red-300-lightness: 75.31%;
+    --kern-dataport-red-300-chroma: 0.0892;
+    --kern-dataport-red-300-hue: 25.13;
+
+    /* Dataport Red 350 */
+    --kern-dataport-red-350-lightness: 70.75%;
+    --kern-dataport-red-350-chroma: 0.106;
+    --kern-dataport-red-350-hue: 24.48;
+
+    /* Dataport Red 400 */
+    --kern-dataport-red-400-lightness: 67.43%;
+    --kern-dataport-red-400-chroma: 0.1144;
+    --kern-dataport-red-400-hue: 24.87;
+
+    /* Dataport Red 450 */
+    --kern-dataport-red-450-lightness: 63.04%;
+    --kern-dataport-red-450-chroma: 0.1271;
+    --kern-dataport-red-450-hue: 24.44;
+
+    /* Dataport Red 500 */
+    --kern-dataport-red-500-lightness: 58.21%;
+    --kern-dataport-red-500-chroma: 0.1391;
+    --kern-dataport-red-500-hue: 25.34;
+
+    /* Dataport Red 550 */
+    --kern-dataport-red-550-lightness: 53.77%;
+    --kern-dataport-red-550-chroma: 0.1479;
+    --kern-dataport-red-550-hue: 24.4;
+
+    /* Dataport Red 600 */
+    --kern-dataport-red-600-lightness: 49.64%;
+    --kern-dataport-red-600-chroma: 0.1499;
+    --kern-dataport-red-600-hue: 24.41;
+
+    /* Dataport Red 650 */
+    --kern-dataport-red-650-lightness: 45.16%;
+    --kern-dataport-red-650-chroma: 0.1509;
+    --kern-dataport-red-650-hue: 24.05;
+
+    /* Dataport Red 700 */
+    --kern-dataport-red-700-lightness: 41.55%;
+    --kern-dataport-red-700-chroma: 0.1502;
+    --kern-dataport-red-700-hue: 24.71;
+
+    /* Dataport Red 750 */
+    --kern-dataport-red-750-lightness: 37%;
+    --kern-dataport-red-750-chroma: 0.1412;
+    --kern-dataport-red-750-hue: 24.71;
+
+    /* Dataport Red 800 */
+    --kern-dataport-red-800-lightness: 32.96%;
+    --kern-dataport-red-800-chroma: 0.1314;
+    --kern-dataport-red-800-hue: 24.33;
+
+    /* Dataport Red 850 */
+    --kern-dataport-red-850-lightness: 27.54%;
+    --kern-dataport-red-850-chroma: 0.1116;
+    --kern-dataport-red-850-hue: 24.96;
+
+    /* Dataport Red 900 */
+    --kern-dataport-red-900-lightness: 23.93%;
+    --kern-dataport-red-900-chroma: 0.0973;
+    --kern-dataport-red-900-hue: 26.03;
+
+    /* Dataport Red 950 */
+    --kern-dataport-red-950-lightness: 18.91%;
+    --kern-dataport-red-950-chroma: 0.0772;
+    --kern-dataport-red-950-hue: 27.71;
+}
+
+ /* -- dataport-grey -- */
+:root {
+    /* --kern-dataport-grey-025 */
+    --kern-dataport-grey-025-lightness: 97.72%;
+    --kern-dataport-grey-025-chroma: 0;
+    --kern-dataport-grey-025-hue: none;
+  
+    /* --kern-dataport-grey-050 */
+    --kern-dataport-grey-050-lightness: 96.19%;
+    --kern-dataport-grey-050-chroma: 0;
+    --kern-dataport-grey-050-hue: none;
+  
+    /* --kern-dataport-grey-100 */
+    --kern-dataport-grey-100-lightness: 91.57%;
+    --kern-dataport-grey-100-chroma: 0;
+    --kern-dataport-grey-100-hue: none;
+  
+    /* --kern-dataport-grey-150 */
+    --kern-dataport-grey-150-lightness: 86.89%;
+    --kern-dataport-grey-150-chroma: 0;
+    --kern-dataport-grey-150-hue: none;
+  
+    /* --kern-dataport-grey-200 */
+    --kern-dataport-grey-200-lightness: 82.94%;
+    --kern-dataport-grey-200-chroma: 0;
+    --kern-dataport-grey-200-hue: none;
+  
+    /* --kern-dataport-grey-250 */
+    --kern-dataport-grey-250-lightness: 78.94%;
+    --kern-dataport-grey-250-chroma: 0;
+    --kern-dataport-grey-250-hue: none;
+  
+    /* --kern-dataport-grey-300 */
+    --kern-dataport-grey-300-lightness: 74.07%;
+    --kern-dataport-grey-300-chroma: 0;
+    --kern-dataport-grey-300-hue: none;
+  
+    /* --kern-dataport-grey-350 */
+    --kern-dataport-grey-350-lightness: 69.96%;
+    --kern-dataport-grey-350-chroma: 0;
+    --kern-dataport-grey-350-hue: none;
+  
+    /* --kern-dataport-grey-400 */
+    --kern-dataport-grey-400-lightness: 65.78%;
+    --kern-dataport-grey-400-chroma: 0;
+    --kern-dataport-grey-400-hue: none;
+  
+    /* --kern-dataport-grey-450 */
+    --kern-dataport-grey-450-lightness: 61.54%;
+    --kern-dataport-grey-450-chroma: 0;
+    --kern-dataport-grey-450-hue: none;
+  
+    /* --kern-dataport-grey-500 */
+    --kern-dataport-grey-500-lightness: 56.34%;
+    --kern-dataport-grey-500-chroma: 0;
+    --kern-dataport-grey-500-hue: none;
+  
+    /* --kern-dataport-grey-550 */
+    --kern-dataport-grey-550-lightness: 52.81%;
+    --kern-dataport-grey-550-chroma: 0;
+    --kern-dataport-grey-550-hue: none;
+  
+    /* --kern-dataport-grey-600 */
+    --kern-dataport-grey-600-lightness: 48.32%;
+    --kern-dataport-grey-600-chroma: 0;
+    --kern-dataport-grey-600-hue: none;
+  
+    /* --kern-dataport-grey-650 */
+    --kern-dataport-grey-650-lightness: 43.71%;
+    --kern-dataport-grey-650-chroma: 0;
+    --kern-dataport-grey-650-hue: none;
+  
+    /* --kern-dataport-grey-700 */
+    --kern-dataport-grey-700-lightness: 39.94%;
+    --kern-dataport-grey-700-chroma: 0;
+    --kern-dataport-grey-700-hue: none;
+  
+    /* --kern-dataport-grey-750 */
+    --kern-dataport-grey-750-lightness: 35.1%;
+    --kern-dataport-grey-750-chroma: 0;
+    --kern-dataport-grey-750-hue: none;
+
+    /* --kern-dataport-grey-800 */
+    --kern-dataport-grey-800-lightness: 31.1%;
+    --kern-dataport-grey-800-chroma: 0;
+    --kern-dataport-grey-800-hue: none;
+  
+    /* --kern-dataport-grey-850 */
+    --kern-dataport-grey-850-lightness: 26.97%;
+    --kern-dataport-grey-850-chroma: 0;
+    --kern-dataport-grey-850-hue: none;
+  
+    /* --kern-dataport-grey-900 */
+    --kern-dataport-grey-900-lightness: 22.67%;
+    --kern-dataport-grey-900-chroma: 0;
+    --kern-dataport-grey-900-hue: none;
+  
+    /* --kern-dataport-grey-950 */
+    --kern-dataport-grey-950-lightness: 18.15%;
+    --kern-dataport-grey-950-chroma: 0;
+    --kern-dataport-grey-950-hue: none;
+}
+
+ /* -- dataport-viridian -- */
+:root {
+    /* Dataport viridian 025 */
+    --kern-dataport-viridian-025-lightness: 97.7%;
+    --kern-dataport-viridian-025-chroma: 0.003;
+    --kern-dataport-viridian-025-hue: 197;
+
+    /* Dataport viridian 050 */
+    --kern-dataport-viridian-050-lightness: 95.6%;
+    --kern-dataport-viridian-050-chroma: 0.007;
+    --kern-dataport-viridian-050-hue: 185;
+
+    /* Dataport viridian 100 */
+    --kern-dataport-viridian-100-lightness: 91.1%;
+    --kern-dataport-viridian-100-chroma: 0.015;
+    --kern-dataport-viridian-100-hue: 187;
+
+    /* Dataport viridian 150 */
+    --kern-dataport-viridian-150-lightness: 86.6%;
+    --kern-dataport-viridian-150-chroma: 0.023;
+    --kern-dataport-viridian-150-hue: 186;
+
+    /* Dataport viridian 200 */
+    --kern-dataport-viridian-200-lightness: 82%;
+    --kern-dataport-viridian-200-chroma: 0.03;
+    --kern-dataport-viridian-200-hue: 189;
+
+    /* Dataport viridian 250 */
+    --kern-dataport-viridian-250-lightness: 82%;
+    --kern-dataport-viridian-250-chroma: 0.0735;
+    --kern-dataport-viridian-250-hue: 24.72;
+
+    /* Dataport viridian 300 */
+    --kern-dataport-viridian-300-lightness: 78.2%;
+    --kern-dataport-viridian-300-chroma: 0.037;
+    --kern-dataport-viridian-300-hue: 188;
+
+    /* Dataport viridian 350 */
+    --kern-dataport-viridian-350-lightness: 73.6%;
+    --kern-dataport-viridian-350-chroma: 0.045;
+    --kern-dataport-viridian-350-hue: 187;
+
+    /* Dataport viridian 400 */
+    --kern-dataport-viridian-400-lightness: 69.3%;
+    --kern-dataport-viridian-400-chroma: 0.051;
+    --kern-dataport-viridian-400-hue: 186;
+
+    /* Dataport viridian 450 */
+    --kern-dataport-viridian-450-lightness: 64.9%;
+    --kern-dataport-viridian-450-chroma: 0.055;
+    --kern-dataport-viridian-450-hue: 188;
+
+    /* Dataport viridian 500 */
+    --kern-dataport-viridian-500-lightness: 60.6%;
+    --kern-dataport-viridian-500-chroma: 0.06;
+    --kern-dataport-viridian-500-hue: 187;
+
+    /* Dataport viridian 550 */
+    --kern-dataport-viridian-550-lightness: 55.9%;
+    --kern-dataport-viridian-550-chroma: 0.062;
+    --kern-dataport-viridian-550-hue: 187;
+
+    /* Dataport viridian 600 */
+    --kern-dataport-viridian-600-lightness: 51.4%;
+    --kern-dataport-viridian-600-chroma: 0.063;
+    --kern-dataport-viridian-600-hue: 187;
+
+    /* Dataport viridian 650 */
+    --kern-dataport-viridian-650-lightness: 47.3%;
+    --kern-dataport-viridian-650-chroma: 0.062;
+    --kern-dataport-viridian-650-hue: 188;
+
+    /* Dataport viridian 700 */
+    --kern-dataport-viridian-700-lightness: 42.9%;
+    --kern-dataport-viridian-700-chroma: 0.059;
+    --kern-dataport-viridian-700-hue: 187;
+
+    /* Dataport viridian 750 */
+    --kern-dataport-viridian-750-lightness: 39.1%;
+    --kern-dataport-viridian-750-chroma: 0.056;
+    --kern-dataport-viridian-750-hue: 186;
+
+    /* Dataport viridian 800 */
+    --kern-dataport-viridian-800-lightness: 34.6%;
+    --kern-dataport-viridian-800-chroma: 0.051;
+    --kern-dataport-viridian-800-hue: 187;
+
+    /* Dataport viridian 850 */
+    --kern-dataport-viridian-850-lightness: 30.3%;
+    --kern-dataport-viridian-850-chroma: 0.046;
+    --kern-dataport-viridian-850-hue: 186;
+
+    /* Dataport viridian 900 */
+    --kern-dataport-viridian-900-lightness: 26.3%;
+    --kern-dataport-viridian-900-chroma: 0.04;
+    --kern-dataport-viridian-900-hue: 187;
+
+    /* Dataport viridian 950 */
+    --kern-dataport-viridian-950-lightness: 17.4%;
+    --kern-dataport-viridian-950-chroma: 0.026;
+    --kern-dataport-viridian-950-hue: 191;
+}
+
+ /* -- dataport-frostblau -- */
+:root {
+    /* Dataport frostblau 025 */
+    --kern-dataport-frostblau-025-lightness: 97.54%;
+    --kern-dataport-frostblau-025-chroma: 0.0134;
+    --kern-dataport-frostblau-025-hue: 226.6;
+
+    /* Dataport frostblau 050 */
+    --kern-dataport-frostblau-050-lightness: 95.33%;
+    --kern-dataport-frostblau-050-chroma: 0.0277;
+    --kern-dataport-frostblau-050-hue: 225.7;
+
+    /* Dataport frostblau 100 */
+    --kern-dataport-frostblau-100-lightness: 90.88%;
+    --kern-dataport-frostblau-100-chroma: 0.0517;
+    --kern-dataport-frostblau-100-hue: 224.7;
+
+    /* Dataport frostblau 150 */
+    --kern-dataport-frostblau-150-lightness: 86.55%;
+    --kern-dataport-frostblau-150-chroma: 0.0631;
+    --kern-dataport-frostblau-150-hue: 226.5;
+
+    /* Dataport frostblau 200 */
+    --kern-dataport-frostblau-200-lightness: 81.92%;
+    --kern-dataport-frostblau-200-chroma: 0.0707;
+    --kern-dataport-frostblau-200-hue: 225.8;
+
+    /* Dataport frostblau 250 */
+    --kern-dataport-frostblau-250-lightness: 78.14%;
+    --kern-dataport-frostblau-250-chroma: 0.0719;
+    --kern-dataport-frostblau-250-hue: 225.6;
+
+    /* Dataport frostblau 300 */
+    --kern-dataport-frostblau-300-lightness: 73.48%;
+    --kern-dataport-frostblau-300-chroma: 0.0717;
+    --kern-dataport-frostblau-300-hue: 226.1;
+
+    /* Dataport frostblau 350 */
+    --kern-dataport-frostblau-350-lightness: 69.37%;
+    --kern-dataport-frostblau-350-chroma: 0.0692;
+    --kern-dataport-frostblau-350-hue: 225;
+
+    /* Dataport frostblau 400 */
+    --kern-dataport-frostblau-400-lightness: 65.07%;
+    --kern-dataport-frostblau-400-chroma: 0.0666;
+    --kern-dataport-frostblau-400-hue: 226.8;
+
+    /* Dataport frostblau 450 */
+    --kern-dataport-frostblau-450-lightness: 60.83%;
+    --kern-dataport-frostblau-450-chroma: 0.064;
+    --kern-dataport-frostblau-450-hue: 225.6;
+
+    /* Dataport frostblau 500 */
+    --kern-dataport-frostblau-500-lightness: 56.29%;
+    --kern-dataport-frostblau-500-chroma: 0.0598;
+    --kern-dataport-frostblau-500-hue: 225.2;
+
+    /* Dataport frostblau 550 */
+    --kern-dataport-frostblau-550-lightness: 52.01%;
+    --kern-dataport-frostblau-550-chroma: 0.0555;
+    --kern-dataport-frostblau-550-hue: 224.7;
+
+    /* Dataport frostblau 600 */
+    --kern-dataport-frostblau-600-lightness: 47.73%;
+    --kern-dataport-frostblau-600-chroma: 0.0511;
+    --kern-dataport-frostblau-600-hue: 226.1;
+
+    /* Dataport frostblau 650 */
+    --kern-dataport-frostblau-650-lightness: 43.29%;
+    --kern-dataport-frostblau-650-chroma: 0.0474;
+    --kern-dataport-frostblau-650-hue: 227.2;
+
+    /* Dataport frostblau 700 */
+    --kern-dataport-frostblau-700-lightness: 39.43%;
+    --kern-dataport-frostblau-700-chroma: 0.0428;
+    --kern-dataport-frostblau-700-hue: 226.7;
+
+    /* Dataport frostblau 750 */
+    --kern-dataport-frostblau-750-lightness: 34.72%;
+    --kern-dataport-frostblau-750-chroma: 0.0381;
+    --kern-dataport-frostblau-750-hue: 226;
+
+    /* Dataport frostblau 800 */
+    --kern-dataport-frostblau-800-lightness: 30.67%;
+    --kern-dataport-frostblau-800-chroma: 0.0341;
+    --kern-dataport-frostblau-800-hue: 227.6;
+
+    /* Dataport frostblau 850 */
+    --kern-dataport-frostblau-850-lightness: 26.44%;
+    --kern-dataport-frostblau-850-chroma: 0.029;
+    --kern-dataport-frostblau-850-hue: 226.8;
+
+    /* Dataport frostblau 900 */
+    --kern-dataport-frostblau-900-lightness: 22.02%;
+    --kern-dataport-frostblau-900-chroma: 0.0236;
+    --kern-dataport-frostblau-900-hue: 225.5;
+
+    /* Dataport frostblau 950 */
+    --kern-dataport-frostblau-950-lightness: 17.41%;
+    --kern-dataport-frostblau-950-chroma: 0.0194;
+    --kern-dataport-frostblau-950-hue: 228;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* brand */
+    --kern-color-accent: oklch(var(--kern-dataport-red-700-lightness) var(--kern-dataport-red-700-chroma) var(--kern-dataport-red-700-hue));
+    /* brandbar-stripe */
+    --kern-color-brandbar-full-color: oklch(var(--kern-dataport-red-300-lightness) var(--kern-dataport-red-300-chroma) var(--kern-dataport-red-300-hue));
+    /* action */
+    --kern-color-action-default: oklch(var(--kern-dataport-red-300-lightness) var(--kern-dataport-red-300-chroma) var(--kern-dataport-red-300-hue));
+    --kern-color-action-on-default: oklch(var(--kern-white-lightness) var(--kern-white-chroma) var(--kern-white-hue));
+    --kern-color-action-visited: oklch(var(--kern-violet-300-lightness) var(--kern-violet-300-chroma) var(--kern-violet-300-hue));
+    /* action-focus */
+    --kern-color-action-focus-background: oklch(var(--kern-dataport-grey-400-lightness) var(--kern-dataport-grey-400-chroma) var(--kern-dataport-grey-400-hue));
+    --kern-color-action-focus-border-inside: oklch(var(--kern-dataport-grey-500-lightness) var(--kern-dataport-grey-500-chroma) var(--kern-dataport-grey-500-hue));
+    --kern-color-action-focus-border-outside: oklch(var(--kern-dataport-grey-800-lightness) var(--kern-dataport-grey-800-chroma) var(--kern-dataport-grey-800-hue));
+    /* feedback */
+    --kern-color-feedback-danger: oklch(var(--kern-violet-400-lightness) var(--kern-violet-400-chroma) var(--kern-violet-400-hue));
+    --kern-color-feedback-danger-background: oklch(var(--kern-violet-900-lightness) var(--kern-violet-900-chroma) var(--kern-violet-900-hue));
+    --kern-color-feedback-info: oklch(var(--kern-lightblue-400-lightness) var(--kern-lightblue-400-chroma) var(--kern-lightblue-400-hue));
+    --kern-color-feedback-info-background: oklch(var(--kern-lightblue-900-lightness) var(--kern-lightblue-900-chroma) var(--kern-lightblue-900-hue));
+    --kern-color-feedback-success: oklch(var(--kern-dataport-viridian-400-lightness) var(--kern-dataport-viridian-400-chroma) var(--kern-dataport-viridian-400-hue));
+    --kern-color-feedback-success-background: oklch(var(--kern-dataport-viridian-900-lightness) var(--kern-dataport-viridian-900-chroma) var(--kern-dataport-viridian-900-hue));
+    --kern-color-feedback-warning: oklch(var(--kern-orange-400-lightness) var(--kern-orange-400-chroma) var(--kern-orange-400-hue));
+    --kern-color-feedback-warning-background: oklch(var(--kern-orange-900-lightness) var(--kern-orange-900-chroma) var(--kern-orange-900-hue));
+    /* feedback-loader */
+    --kern-color-feedback-loader: oklch(var(--kern-dataport-grey-050-lightness) var(--kern-dataport-grey-050-chroma) var(--kern-dataport-grey-050-hue));
+    --kern-color-feedback-loader-background: oklch(var(--kern-dataport-grey-700-lightness) var(--kern-dataport-grey-700-chroma) var(--kern-dataport-grey-700-hue));
+    /* form-inputs */
+    --kern-color-form-input-background: oklch(var(--kern-dataport-grey-900-lightness) var(--kern-dataport-grey-900-chroma) var(--kern-dataport-grey-900-hue));
+    --kern-color-form-input-background-inverted: oklch(var(--kern-dataport-grey-1000-lightness) var(--kern-dataport-grey-1000-chroma) var(--kern-dataport-grey-1000-hue));
+    --kern-color-form-input-border: oklch(var(--kern-dataport-grey-050-lightness) var(--kern-dataport-grey-050-chroma) var(--kern-dataport-grey-050-hue));
+    /* layout */
+    --kern-color-layout-border: oklch(var(--kern-dataport-grey-700-lightness) var(--kern-dataport-grey-700-chroma) var(--kern-dataport-grey-700-hue));
+    /* layout-text */
+    --kern-color-layout-text-default: oklch(var(--kern-dataport-grey-050-lightness) var(--kern-dataport-grey-050-chroma) var(--kern-dataport-grey-050-hue));
+    --kern-color-layout-text-inverse: oklch(var(--kern-dataport-grey-950-lightness) var(--kern-dataport-grey-950-chroma) var(--kern-dataport-grey-950-hue));
+    --kern-color-layout-text-muted: oklch(var(--kern-dataport-grey-300-lightness) var(--kern-dataport-grey-300-chroma) var(--kern-dataport-grey-300-hue));
+    /* layout-background */
+    --kern-color-layout-background-default: oklch(var(--kern-white-lightness) var(--kern-white-chroma) var(--kern-white-hue));
+    --kern-color-layout-background-hued: oklch(var(--kern-dataport-grey-950-lightness) var(--kern-dataport-grey-950-chroma) var(--kern-dataport-grey-950-hue));
+    --kern-color-layout-background-inverted: oklch(var(--kern-black-lightness) var(--kern-black-chroma) var(--kern-black-hue));
+    /* JUST FOR THE SHOWCASE ------------------------------------- */
+    --kern-shadow-lightness: var(--kern-dataport-grey-900-lightness);
+    --kern-shadow-chroma: var(--kern-dataport-grey-900-chroma);
+    --kern-shadow-hue: var(--kern-dataport-grey-900-hue);
+    /* ----------------------------------------------------------- */
+  }
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    /* brand */
+    --kern-color-accent: oklch(var(--kern-dataport-red-700-lightness) var(--kern-dataport-red-700-chroma) var(--kern-dataport-red-700-hue));
+    /* brandbar-stripe */
+    --kern-color-brandbar-full-color: oklch(var(--kern-dataport-red-700-lightness) var(--kern-dataport-red-700-chroma) var(--kern-dataport-red-700-hue));
+    /* action */
+    --kern-color-action-default: oklch(var(--kern-dataport-red-700-lightness) var(--kern-dataport-red-700-chroma) var(--kern-dataport-red-700-hue));
+    --kern-color-action-on-default: oklch(var(--kern-black-lightness) var(--kern-black-chroma) var(--kern-black-hue));
+    --kern-color-action-visited: oklch(var(--kern-violet-700-lightness) var(--kern-violet-700-chroma) var(--kern-violet-700-hue));
+    /* action-focus */
+    --kern-color-action-focus-background: oklch(var(--kern-dataport-grey-700-lightness) var(--kern-dataport-grey-700-chroma) var(--kern-dataport-grey-700-hue));
+    --kern-color-action-focus-border-inside: oklch(var(--kern-dataport-grey-500-lightness) var(--kern-dataport-grey-500-chroma) var(--kern-dataport-grey-500-hue));
+    --kern-color-action-focus-border-outside: oklch(var(--kern-dataport-grey-200-lightness) var(--kern-dataport-grey-200-chroma) var(--kern-dataport-grey-200-hue));
+    /* feedback */
+    --kern-color-feedback-danger: oklch(var(--kern-sh-red-600-lightness) var(--kern-sh-red-600-chroma) var(--kern-sh-red-600-hue));
+    --kern-color-feedback-danger-background: oklch(var(--kern-sh-red-050-lightness) var(--kern-sh-red-050-chroma) var(--kern-sh-red-050-hue));
+    --kern-color-feedback-info: oklch(var(--kern-lightblue-600-lightness) var(--kern-lightblue-600-chroma) var(--kern-lightblue-600-hue));
+    --kern-color-feedback-info-background: oklch(var(--kern-lightblue-050-lightness) var(--kern-lightblue-050-chroma) var(--kern-lightblue-050-hue));
+    --kern-color-feedback-success: oklch(var(--kern-dataport-viridian-600-lightness) var(--kern-dataport-viridian-600-chroma) var(--kern-dataport-viridian-600-hue));
+    --kern-color-feedback-success-background: oklch(var(--kern-dataport-viridian-050-lightness) var(--kern-dataport-viridian-050-chroma) var(--kern-dataport-viridian-050-hue));
+    --kern-color-feedback-warning: oklch(var(--kern-orange-600-lightness) var(--kern-orange-600-chroma) var(--kern-orange-600-hue));
+    --kern-color-feedback-warning-background: oklch(var(--kern-orange-050-lightness) var(--kern-orange-050-chroma) var(--kern-orange-050-hue));
+    /* feedback-loader */
+    --kern-color-feedback-loader: oklch(var(--kern-dataport-grey-700-lightness) var(--kern-dataport-grey-700-chroma) var(--kern-dataport-grey-700-hue));
+    --kern-color-feedback-loader-background: oklch(var(--kern-dataport-grey-100-lightness) var(--kern-dataport-grey-100-chroma) var(--kern-dataport-grey-100-hue));
+    /* form-inputs */
+    --kern-color-form-input-background: oklch(var(--kern-dataport-grey-025-lightness) var(--kern-dataport-grey-025-chroma) var(--kern-dataport-grey-025-hue));
+    --kern-color-form-input-background-inverted: oklch(var(--kern-dataport-grey-000-lightness) var(--kern-dataport-grey-000-chroma) var(--kern-dataport-grey-000-hue));
+    --kern-color-form-input-border: oklch(var(--kern-dataport-grey-900-lightness) var(--kern-dataport-grey-900-chroma) var(--kern-dataport-grey-900-hue));
+    /* layout */
+    --kern-color-layout-border: oklch(var(--kern-dataport-grey-300-lightness) var(--kern-dataport-grey-300-chroma) var(--kern-dataport-grey-300-hue));
+    /* layout-text */
+    --kern-color-layout-text-default: oklch(var(--kern-dataport-grey-900-lightness) var(--kern-dataport-grey-900-chroma) var(--kern-dataport-grey-900-hue));
+    --kern-color-layout-text-inverse: oklch(var(--kern-dataport-grey-025-lightness) var(--kern-dataport-grey-025-chroma) var(--kern-dataport-grey-025-hue));
+    --kern-color-layout-text-muted: oklch(var(--kern-dataport-grey-700-lightness) var(--kern-dataport-grey-700-chroma) var(--kern-dataport-grey-700-hue));
+    /* layout-background */
+    --kern-color-layout-background-default: oklch(var(--kern-black-lightness) var(--kern-black-chroma) var(--kern-black-hue));
+    --kern-color-layout-background-hued: oklch(var(--kern-dataport-grey-025-lightness) var(--kern-dataport-grey-025-chroma) var(--kern-dataport-grey-025-hue));
+    --kern-color-layout-background-inverted: oklch(var(--kern-white-lightness) var(--kern-white-chroma) var(--kern-white-hue));
+    /* JUST FOR THE SHOWCASE ------------------------------------- */
+    --kern-shadow-lightness: var(--kern-dataport-grey-200-lightness);
+    --kern-shadow-chroma: var(--kern-dataport-grey-200-chroma);
+    --kern-shadow-hue: var(--kern-dataport-grey-200-hue);
+    /* ----------------------------------------------------------- */
+  }
+}
+[data-kern-theme=light],
+.kern-light {
+  /* brand */
+  --kern-color-accent: oklch(var(--kern-dataport-red-700-lightness) var(--kern-dataport-red-700-chroma) var(--kern-dataport-red-700-hue));
+  /* brandbar-stripe */
+  --kern-color-brandbar-full-color: oklch(var(--kern-dataport-red-700-lightness) var(--kern-dataport-red-700-chroma) var(--kern-dataport-red-700-hue));
+  /* action */
+  --kern-color-action-default: oklch(var(--kern-dataport-red-700-lightness) var(--kern-dataport-red-700-chroma) var(--kern-dataport-red-700-hue));
+  --kern-color-action-on-default: oklch(var(--kern-black-lightness) var(--kern-black-chroma) var(--kern-black-hue));
+  --kern-color-action-visited: oklch(var(--kern-violet-700-lightness) var(--kern-violet-700-chroma) var(--kern-violet-700-hue));
+  /* action-focus */
+  --kern-color-action-focus-background: oklch(var(--kern-dataport-grey-700-lightness) var(--kern-dataport-grey-700-chroma) var(--kern-dataport-grey-700-hue));
+  --kern-color-action-focus-border-inside: oklch(var(--kern-dataport-grey-500-lightness) var(--kern-dataport-grey-500-chroma) var(--kern-dataport-grey-500-hue));
+  --kern-color-action-focus-border-outside: oklch(var(--kern-dataport-grey-200-lightness) var(--kern-dataport-grey-200-chroma) var(--kern-dataport-grey-200-hue));
+  /* feedback */
+  --kern-color-feedback-danger: oklch(var(--kern-sh-red-600-lightness) var(--kern-sh-red-600-chroma) var(--kern-sh-red-600-hue));
+  --kern-color-feedback-danger-background: oklch(var(--kern-sh-red-050-lightness) var(--kern-sh-red-050-chroma) var(--kern-sh-red-050-hue));
+  --kern-color-feedback-info: oklch(var(--kern-lightblue-600-lightness) var(--kern-lightblue-600-chroma) var(--kern-lightblue-600-hue));
+  --kern-color-feedback-info-background: oklch(var(--kern-lightblue-050-lightness) var(--kern-lightblue-050-chroma) var(--kern-lightblue-050-hue));
+  --kern-color-feedback-success: oklch(var(--kern-dataport-viridian-600-lightness) var(--kern-dataport-viridian-600-chroma) var(--kern-dataport-viridian-600-hue));
+  --kern-color-feedback-success-background: oklch(var(--kern-dataport-viridian-050-lightness) var(--kern-dataport-viridian-050-chroma) var(--kern-dataport-viridian-050-hue));
+  --kern-color-feedback-warning: oklch(var(--kern-orange-600-lightness) var(--kern-orange-600-chroma) var(--kern-orange-600-hue));
+  --kern-color-feedback-warning-background: oklch(var(--kern-orange-050-lightness) var(--kern-orange-050-chroma) var(--kern-orange-050-hue));
+  /* feedback-loader */
+  --kern-color-feedback-loader: oklch(var(--kern-dataport-grey-700-lightness) var(--kern-dataport-grey-700-chroma) var(--kern-dataport-grey-700-hue));
+  --kern-color-feedback-loader-background: oklch(var(--kern-dataport-grey-100-lightness) var(--kern-dataport-grey-100-chroma) var(--kern-dataport-grey-100-hue));
+  /* form-inputs */
+  --kern-color-form-input-background: oklch(var(--kern-dataport-grey-025-lightness) var(--kern-dataport-grey-025-chroma) var(--kern-dataport-grey-025-hue));
+  --kern-color-form-input-background-inverted: oklch(var(--kern-dataport-grey-000-lightness) var(--kern-dataport-grey-000-chroma) var(--kern-dataport-grey-000-hue));
+  --kern-color-form-input-border: oklch(var(--kern-dataport-grey-900-lightness) var(--kern-dataport-grey-900-chroma) var(--kern-dataport-grey-900-hue));
+  /* layout */
+  --kern-color-layout-border: oklch(var(--kern-dataport-grey-300-lightness) var(--kern-dataport-grey-300-chroma) var(--kern-dataport-grey-300-hue));
+  /* layout-text */
+  --kern-color-layout-text-default: oklch(var(--kern-dataport-grey-900-lightness) var(--kern-dataport-grey-900-chroma) var(--kern-dataport-grey-900-hue));
+  --kern-color-layout-text-inverse: oklch(var(--kern-dataport-grey-025-lightness) var(--kern-dataport-grey-025-chroma) var(--kern-dataport-grey-025-hue));
+  --kern-color-layout-text-muted: oklch(var(--kern-dataport-grey-700-lightness) var(--kern-dataport-grey-700-chroma) var(--kern-dataport-grey-700-hue));
+  /* layout-background */
+  --kern-color-layout-background-default: oklch(var(--kern-black-lightness) var(--kern-black-chroma) var(--kern-black-hue));
+  --kern-color-layout-background-hued: oklch(var(--kern-dataport-grey-025-lightness) var(--kern-dataport-grey-025-chroma) var(--kern-dataport-grey-025-hue));
+  --kern-color-layout-background-inverted: oklch(var(--kern-white-lightness) var(--kern-white-chroma) var(--kern-white-hue));
+  /* JUST FOR THE SHOWCASE ------------------------------------- */
+  --kern-shadow-lightness: var(--kern-dataport-grey-200-lightness);
+  --kern-shadow-chroma: var(--kern-dataport-grey-200-chroma);
+  --kern-shadow-hue: var(--kern-dataport-grey-200-hue);
+  /* ----------------------------------------------------------- */
+}
+
+[data-kern-theme=dark],
+.kern-dark {
+  /* brand */
+  --kern-color-accent: oklch(var(--kern-dataport-red-700-lightness) var(--kern-dataport-red-700-chroma) var(--kern-dataport-red-700-hue));
+  /* brandbar-stripe */
+  --kern-color-brandbar-full-color: oklch(var(--kern-dataport-red-300-lightness) var(--kern-dataport-red-300-chroma) var(--kern-dataport-red-300-hue));
+  /* action */
+  --kern-color-action-default: oklch(var(--kern-dataport-red-300-lightness) var(--kern-dataport-red-300-chroma) var(--kern-dataport-red-300-hue));
+  --kern-color-action-on-default: oklch(var(--kern-white-lightness) var(--kern-white-chroma) var(--kern-white-hue));
+  --kern-color-action-visited: oklch(var(--kern-violet-300-lightness) var(--kern-violet-300-chroma) var(--kern-violet-300-hue));
+  /* action-focus */
+  --kern-color-action-focus-background: oklch(var(--kern-dataport-grey-400-lightness) var(--kern-dataport-grey-400-chroma) var(--kern-dataport-grey-400-hue));
+  --kern-color-action-focus-border-inside: oklch(var(--kern-dataport-grey-500-lightness) var(--kern-dataport-grey-500-chroma) var(--kern-dataport-grey-500-hue));
+  --kern-color-action-focus-border-outside: oklch(var(--kern-dataport-grey-800-lightness) var(--kern-dataport-grey-800-chroma) var(--kern-dataport-grey-800-hue));
+  /* feedback */
+  --kern-color-feedback-danger: oklch(var(--kern-violet-400-lightness) var(--kern-violet-400-chroma) var(--kern-violet-400-hue));
+  --kern-color-feedback-danger-background: oklch(var(--kern-violet-900-lightness) var(--kern-violet-900-chroma) var(--kern-violet-900-hue));
+  --kern-color-feedback-info: oklch(var(--kern-lightblue-400-lightness) var(--kern-lightblue-400-chroma) var(--kern-lightblue-400-hue));
+  --kern-color-feedback-info-background: oklch(var(--kern-lightblue-900-lightness) var(--kern-lightblue-900-chroma) var(--kern-lightblue-900-hue));
+  --kern-color-feedback-success: oklch(var(--kern-dataport-viridian-400-lightness) var(--kern-dataport-viridian-400-chroma) var(--kern-dataport-viridian-400-hue));
+  --kern-color-feedback-success-background: oklch(var(--kern-dataport-viridian-900-lightness) var(--kern-dataport-viridian-900-chroma) var(--kern-dataport-viridian-900-hue));
+  --kern-color-feedback-warning: oklch(var(--kern-orange-400-lightness) var(--kern-orange-400-chroma) var(--kern-orange-400-hue));
+  --kern-color-feedback-warning-background: oklch(var(--kern-orange-900-lightness) var(--kern-orange-900-chroma) var(--kern-orange-900-hue));
+  /* feedback-loader */
+  --kern-color-feedback-loader: oklch(var(--kern-dataport-grey-050-lightness) var(--kern-dataport-grey-050-chroma) var(--kern-dataport-grey-050-hue));
+  --kern-color-feedback-loader-background: oklch(var(--kern-dataport-grey-700-lightness) var(--kern-dataport-grey-700-chroma) var(--kern-dataport-grey-700-hue));
+  /* form-inputs */
+  --kern-color-form-input-background: oklch(var(--kern-dataport-grey-900-lightness) var(--kern-dataport-grey-900-chroma) var(--kern-dataport-grey-900-hue));
+  --kern-color-form-input-background-inverted: oklch(var(--kern-dataport-grey-1000-lightness) var(--kern-dataport-grey-1000-chroma) var(--kern-dataport-grey-1000-hue));
+  --kern-color-form-input-border: oklch(var(--kern-dataport-grey-050-lightness) var(--kern-dataport-grey-050-chroma) var(--kern-dataport-grey-050-hue));
+  /* layout */
+  --kern-color-layout-border: oklch(var(--kern-dataport-grey-700-lightness) var(--kern-dataport-grey-700-chroma) var(--kern-dataport-grey-700-hue));
+  /* layout-text */
+  --kern-color-layout-text-default: oklch(var(--kern-dataport-grey-050-lightness) var(--kern-dataport-grey-050-chroma) var(--kern-dataport-grey-050-hue));
+  --kern-color-layout-text-inverse: oklch(var(--kern-dataport-grey-950-lightness) var(--kern-dataport-grey-950-chroma) var(--kern-dataport-grey-950-hue));
+  --kern-color-layout-text-muted: oklch(var(--kern-dataport-grey-300-lightness) var(--kern-dataport-grey-300-chroma) var(--kern-dataport-grey-300-hue));
+  /* layout-background */
+  --kern-color-layout-background-default: oklch(var(--kern-white-lightness) var(--kern-white-chroma) var(--kern-white-hue));
+  --kern-color-layout-background-hued: oklch(var(--kern-dataport-grey-950-lightness) var(--kern-dataport-grey-950-chroma) var(--kern-dataport-grey-950-hue));
+  --kern-color-layout-background-inverted: oklch(var(--kern-black-lightness) var(--kern-black-chroma) var(--kern-black-hue));
+  /* JUST FOR THE SHOWCASE ------------------------------------- */
+  --kern-shadow-lightness: var(--kern-dataport-grey-900-lightness);
+  --kern-shadow-chroma: var(--kern-dataport-grey-900-chroma);
+  --kern-shadow-hue: var(--kern-dataport-grey-900-hue);
+  /* ----------------------------------------------------------- */
+}

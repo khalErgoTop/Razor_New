@@ -1,0 +1,40 @@
+﻿body {
+	font: 85% arial-narrow,arial,sans-serif;
+}
+
+.divKorrekturVerlaufHeader {
+	font-weight:bold;
+	font-size:larger;
+}
+
+.tblKorrekturVerlauf {
+	font: 80% arial-narrow,arial,sans-serif;
+	max-width:99%;
+}
+
+.divtblKorrekturVerlaufRightCol {
+	margin-left:5px;
+}
+
+.divtblKorrekturVerlaufLeftCol {
+	
+}
+
+.divtblKorrekturVerlaufDate {
+	font: 90% arial-narrow,arial,sans-serif;
+	color:#88b8d7;
+}
+
+.LVBogenKorrekturWert {
+	font: 80% arial-narrow,arial,sans-serif;
+	color:Red;
+	min-width:20px;
+	max-width:100px;
+}
+
+.btnExcelDownload:hover,
+.btnXmlDownload:hover,
+.lblPrintComment:hover {
+}
+
+ 

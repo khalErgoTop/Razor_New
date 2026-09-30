@@ -1,0 +1,14 @@
+@use "../utilities/mixins";
+
+.kern-title {
+    @include mixins.normalize;
+    @include mixins.title-default;
+
+    &--large {
+        @include mixins.title-large;
+    }
+    
+    &--small {
+        @include mixins.title-small;
+    }
+}

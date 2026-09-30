@@ -1,0 +1,244 @@
+﻿@* @using TOPqwWeb_Core.Services.Layout
+@inject LayoutNavigationService NavigationService
+@{
+    var navigation = await NavigationService.BuildAsync();
+}
+
+<nav class="module-navigation" aria-label="Hauptnavigation">
+    <button class="module-navigation-toggle" type="button" aria-expanded="false" aria-controls="CrModules">
+        Menü
+    </button>
+    <ul class="module-navigation-list">
+        @foreach (var link in navigation.Links)
+        {
+            <li class="@link.Id @link.CssClass">
+                <a href="@link.Url" id="ModLink@link.Id" title="@link.Name">@link.Name</a>
+                @if (link.Children is { Count: > 0 })
+                {
+                    <ul>
+                        @foreach (var child in link.Children)
+                        {
+                            <li><a href="@child.Url" id="ModLink@child.Id">@child.Name</a></li>
+                        }
+                    </ul>
+                }
+            </li>
+        }
+    </ul>
+</nav>
+ *@
+
+@using TOPqwWeb_Core.Services.Layout
+@inject LayoutNavigationService NavigationService
+@{
+    var navigation = await NavigationService.BuildAsync();
+}
+
+<nav class="module-navigation" aria-label="Hauptnavigation">
+
+    <button class="module-navigation-toggle kern-button kern-button--primary" type="button" aria-expanded="false" aria-controls="CrModules">
+        <span class="kern-icon kern-icon--dehaze"></span> Menü
+    </button>
+
+    <ul id="CrModules" class="module-navigation-list">
+        @foreach (var link in navigation.Links)
+        {
+            <li class="nav-item">
+                @if (link.Children is { Count: > 0 })
+                {
+                    <div class="nav-parent">
+                        <a href="@link.Url" class="nav-link">@link.Name</a>
+                        <button type="button" class="nav-arrow" aria-expanded="false" aria-controls="submenu-@link.Id">
+                            <span class="kern-icon kern-icon--arrow-down"></span>
+                        </button>
+                    </div>
+                    <ul id="submenu-@link.Id" class="nav-sub">
+                        @foreach (var child in link.Children)
+                        {
+                            <li><a href="@child.Url" class="nav-link nav-link--sub">@child.Name</a></li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <a href="@link.Url" class="nav-link">@link.Name</a>
+                }
+            </li>
+        }
+    </ul>
+</nav>
+
+<style>
+    /* ===== BAR ===== */
+    .module-navigation {
+        background: #ffffff;
+        border-bottom: 1px solid var(--kern-color-layout-border);
+        padding: 0 24px;
+        margin-bottom: 32px;
+    }
+
+    /* ===== LIST ===== */
+    .module-navigation-list {
+        list-style: none;
+        margin: 0 auto;
+        padding: 0;
+        max-width: 1280px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 32px;
+        min-height: 64px;
+    }
+
+    /* ===== LINKS - BIG, BLACK, NEVER PURPLE ===== */
+    .nav-link,
+    .nav-link:visited,
+    .nav-link:active {
+        color: #1a1a1a !important;
+        text-decoration: none !important;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.5;
+        padding: 10px 4px;
+        display: inline-block;
+        border-bottom: 2px solid transparent;
+        transition: border-color 0.2s, color 0.2s;
+    }
+
+        .nav-link:hover {
+            color: var(--kern-color-action-default) !important;
+            border-bottom-color: var(--kern-color-action-default);
+        }
+
+    .nav-link--sub {
+        font-size: 15px;
+        padding: 10px 16px;
+        width: 100%;
+        border-bottom: none;
+    }
+
+        .nav-link--sub:hover {
+            background: var(--kern-color-neutral-100);
+            border-bottom: none;
+        }
+
+    /* ===== PARENT WITH ARROW ===== */
+    .nav-parent {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .nav-arrow {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        color: #1a1a1a;
+    }
+
+    /* ===== DROPDOWN ===== */
+    .nav-sub {
+        list-style: none;
+        margin: 0;
+        padding: 8px;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 280px;
+        background: white;
+        border: 1px solid var(--kern-color-layout-border);
+        border-radius: 8px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+        z-index: 100;
+    }
+
+        .nav-sub.is-open {
+            display: block;
+        }
+
+    .nav-item {
+        position: relative;
+    }
+
+    /* ===== MOBILE ===== */
+    .module-navigation-toggle {
+        display: none;
+        margin: 12px 0;
+    }
+
+    @@media (max-width: 900px) {
+        .module-navigation {
+            padding: 0 16px;
+        }
+
+        .module-navigation-toggle {
+            display: inline-flex;
+        }
+
+        .module-navigation-list {
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0;
+            padding-bottom: 16px;
+        }
+
+            .module-navigation-list.is-open {
+                display: flex;
+            }
+
+        .nav-item {
+            width: 100%;
+            border-top: 1px solid var(--kern-color-layout-border);
+        }
+
+        .nav-link {
+            width: 100%;
+            padding: 16px 0;
+            font-size: 17px;
+        }
+
+        .nav-sub {
+            position: static;
+            box-shadow: none;
+            border: none;
+            padding: 0 0 0 16px;
+            min-width: auto;
+        }
+
+        .nav-parent {
+            width: 100%;
+            justify-content: space-between;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const toggle = document.querySelector('.module-navigation-toggle');
+        const list = document.getElementById('CrModules');
+        toggle?.addEventListener('click', function(){
+            const exp = this.getAttribute('aria-expanded') === 'true';
+            this.setAttribute('aria-expanded', String(!exp));
+            list.classList.toggle('is-open', !exp);
+        });
+        document.querySelectorAll('.nav-arrow').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const id = btn.getAttribute('aria-controls');
+                const sub = document.getElementById(id);
+                const exp = btn.getAttribute('aria-expanded') === 'true';
+                document.querySelectorAll('.nav-sub').forEach(s => { if(s!==sub){ s.classList.remove('is-open'); }});
+                document.querySelectorAll('.nav-arrow').forEach(b => { if(b!==btn) b.setAttribute('aria-expanded','false'); });
+                btn.setAttribute('aria-expanded', String(!exp));
+                sub.classList.toggle('is-open', !exp);
+            });
+        });
+        document.addEventListener('click', () => {
+            document.querySelectorAll('.nav-sub').forEach(s => s.classList.remove('is-open'));
+            document.querySelectorAll('.nav-arrow').forEach(b => b.setAttribute('aria-expanded','false'));
+        });
+    });
+</script>

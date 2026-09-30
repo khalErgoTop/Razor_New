@@ -1,0 +1,48 @@
+﻿@charset "UTF-8";
+
+@font-face {
+    font-family: 'pt_sansregular';
+    src: url('Fonts/PTS55F-webfont.eot');
+    src: url('Fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'), url('Fonts/PTS55F-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'pt_sansbold';
+    src: url('Fonts/ptsans-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal
+}
+
+@media {
+	:root {
+		--filter-blue: invert(11%) sepia(24%) saturate(6126%) hue-rotate(187deg) brightness(100%) contrast(101%);
+		--filter-red: invert(14%) sepia(59%) saturate(5332%) hue-rotate(20deg) brightness(99%) contrast(102%);
+		--filter-active: invert(87%) sepia(12%) saturate(1621%) hue-rotate(26deg) brightness(90%) contrast(87%);
+		--filter-white: invert(99%) sepia(0%) saturate(7496%) hue-rotate(86deg) brightness(105%) contrast(98%);
+		--color-red: #e10019;
+		--color-lightgrey: #888;
+		--color-grey: #434345;
+		--color-darkgrey: #252525;
+		--color-green: #49dfad;
+		--color-lightblue: #bdd0f5;
+		--color-blue: #003063;
+		--color-darkblue: #002b4b;
+		--color-greyblue: #3b4d58;
+		--color-font: #434345;
+		--color-black: #000000;
+		--color-white: #FFFFFF;
+		--border-radius:0.25rem
+	}
+}
+#CrModules { 
+	background-image: url("Images/Dekor.svg");
+	background-repeat: no-repeat;
+	background-size: auto 96px;
+	height: 87px;
+	padding: 0;
+	margin: 0;
+	font-size:1rem;
+	font-weight: bold
+}

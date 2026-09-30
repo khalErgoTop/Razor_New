@@ -1,0 +1,24 @@
+﻿	:root {
+--color-main:#000;
+	--color-red: #000;
+	--color-lightgrey: #FFF;
+	--color-grey: #434345;
+	--color-darkgrey: #000;
+	--color-lightblue: #FFF;
+	--color-blue: #000;
+	--color-darkblue: #000;
+	--color-greyblue: #000;
+	--color-font: #000;
+	--color-black: #000000;
+	--color-white: #FFFFFF;
+	}
+
+#M_HlRoot {
+  filter: var(--filter);
+}
+body{
+	filter: var(--filter)
+}
+#M_LblUserLogin{
+	color:var(--color-black) !important
+}

@@ -1,0 +1,14 @@
+@use "../utilities/mixins";
+
+.kern-subline {
+    @include mixins.normalize;
+    @include mixins.subline-default;
+
+    &--large {
+        @include mixins.subline-large;
+    }
+
+    &--small {
+        @include mixins.subline-small;
+    }
+}

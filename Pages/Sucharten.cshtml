@@ -1,0 +1,68 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.SuchartenModel
+@{
+    ViewData["Title"] = "Leistungsangebote";
+}
+
+<nav aria-label="Brotkrümelnavigation" style="margin-bottom:24px">
+    <ol class="breadcrumb" style="list-style:none; padding:0; margin:0; display:flex; gap:8px; font-size:15px">
+        <li><a asp-page="/Index">Start</a> <span style="margin-left:8px">/</span></li>
+        <li aria-current="page" style="font-weight:600">Leistungsangebote</li>
+    </ol>
+</nav>
+
+<div class="kern-card" style="padding:32px; max-width:800px">
+    <h1 style="margin:0 0 8px; font-size:28px">Leistungsangebote</h1>
+    <p style="margin:0 0 24px; font-size:16px; color:var(--kern-color-neutral-700)">Wählen Sie eine Suchart:</p>
+
+    <ul class="search-type-links" style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px">
+        <li>
+            <a asp-page="/Suche" class="kern-card" style="display:flex; align-items:center; gap:16px; padding:16px 20px; text-decoration:none; border:1px solid var(--kern-color-layout-border); border-radius:8px">
+                <span class="kern-icon kern-icon--search" aria-hidden="true" style="font-size:24px"></span>
+                <div>
+                    <div style="font-size:17px; font-weight:600; color:#1a1a1a">Detailsuche</div>
+                    <div style="font-size:14px; color:var(--kern-color-neutral-700)">Gezielt nach Leistungen, Region und Stichworten filtern</div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a asp-page="/Auflistung" asp-route-Typ="Typ" class="kern-card" style="display:flex; align-items:center; gap:16px; padding:16px 20px; text-decoration:none; border:1px solid var(--kern-color-layout-border); border-radius:8px">
+                <span class="kern-icon kern-icon--category" aria-hidden="true" style="font-size:24px"></span>
+                <div>
+                    <div style="font-size:17px; font-weight:600; color:#1a1a1a">Nach Art der Leistung</div>
+                    <div style="font-size:14px; color:var(--kern-color-neutral-700)">Assistenz, Wohnen, Tagesförderung, WfbM u.a.</div>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a asp-page="/Auflistung" asp-route-Typ="Kreis" class="kern-card" style="display:flex; align-items:center; gap:16px; padding:16px 20px; text-decoration:none; border:1px solid var(--kern-color-layout-border); border-radius:8px">
+                <span class="kern-icon kern-icon--location" aria-hidden="true" style="font-size:24px"></span>
+                <div>
+                    <div style="font-size:17px; font-weight:600; color:#1a1a1a">Nach @Model.DistrictLabel</div>
+                    <div style="font-size:14px; color:var(--kern-color-neutral-700)">Angebote in Ihrer Nähe finden</div>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>
+
+<style>
+    .breadcrumb a, .breadcrumb a:visited {
+        color: #1a1a1a !important;
+        text-decoration: none;
+    }
+
+        .breadcrumb a:hover {
+            color: var(--kern-color-action-default) !important;
+            text-decoration: underline;
+        }
+
+    .search-type-links a, .search-type-links a:visited {
+        color: #1a1a1a !important;
+    }
+
+        .search-type-links a:hover {
+            border-color: var(--kern-color-action-default) !important;
+            background: var(--kern-color-neutral-50);
+        }
+</style>

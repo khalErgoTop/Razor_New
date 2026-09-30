@@ -1,0 +1,50 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.PasswortAendernModel
+@{
+    ViewData["Title"] = "Passwort ändern";
+}
+
+<nav aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb">
+        <li><a asp-page="/Index">Start</a></li>
+        <li><a asp-page="/Auth/QWWebAdmin">Administration</a></li>
+        <li aria-current="page">Passwort ändern</li>
+    </ol>
+</nav>
+
+<section class="pageContent">
+    <h1>Passwort ändern</h1>
+    <div class="box">
+        <div class="password-info">@Html.Raw(Model.PasswordPolicy.GetHint())</div>
+        <form method="post">
+            @if (Model.IsAdministrativeChange)
+            {
+                <input type="hidden" asp-for="UserId" />
+            }
+            <fieldset>
+                <legend>@(Model.IsAdministrativeChange ? $"Passwort ändern für: {Model.TargetUsername}" : "Eigenes Passwort ändern")</legend>
+                @if (!Model.IsAdministrativeChange)
+                {
+                    <div>
+                        <label asp-for="Input.AltesPasswort">Altes Passwort</label>
+                        <input asp-for="Input.AltesPasswort" type="password" autocomplete="current-password" />
+                    </div>
+                }
+                <div>
+                    <label asp-for="Input.NeuesPasswort">Neues Passwort</label>
+                    <input asp-for="Input.NeuesPasswort" type="password" autocomplete="new-password" />
+                </div>
+                <div>
+                    <label asp-for="Input.PasswortBestaetigung">Passwort bestätigen</label>
+                    <input asp-for="Input.PasswortBestaetigung" type="password" autocomplete="new-password" />
+                </div>
+                @if (!string.IsNullOrWhiteSpace(Model.Message))
+                {
+                    <p class="@(Model.IsSuccess ? "confirmation-label" : "validation-summary-errors")">@Model.Message</p>
+                }
+                <button type="submit" asp-page-handler="@(Model.IsAdministrativeChange ? "Administrative" : null)">Speichern</button>
+                <button type="submit" asp-page-handler="Cancel" formnovalidate>Abbrechen</button>
+            </fieldset>
+        </form>
+    </div>
+</section>

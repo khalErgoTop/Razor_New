@@ -1,0 +1,80 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.LV.LVAuswahlModel
+@{
+    ViewData["Title"] = "LV-Bogenauswahl";
+}
+
+<nav aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb"><li><a asp-page="/Index">Start</a></li><li aria-current="page">LVs</li></ol>
+</nav>
+
+<h1>LV-Bogenauswahl</h1>
+
+<form method="get">
+    <input type="hidden" name="PageNumber" value="1" />
+    <label for="Bogenstatus">Bogenstatus</label>
+    <select id="Bogenstatus" name="Bogenstatus" onchange="this.form.submit()">
+        <option value="-1" selected="@(Model.Bogenstatus is null)">Alle</option>
+        @foreach (var status in new[] { (0, "Neu"), (1, "In Bearbeitung"), (2, "Überarbeiten"), (3, "Versandt"), (4, "Angenommen"), (5, "Abgelehnt") })
+        {
+            <option value="@status.Item1" selected="@(Model.Bogenstatus == status.Item1)">@status.Item2</option>
+        }
+    </select>
+    <label for="Kreis">Kreis</label>
+    <select id="Kreis" name="Kreis" onchange="this.form.submit()">
+        <option value="-1" selected="@(Model.Kreis is null)">Alle Kreise</option>
+        @foreach (var district in Model.Districts)
+        {
+            <option value="@district.Id" selected="@(Model.Kreis == district.Id)">@district.Name</option>
+        }
+    </select>
+</form>
+
+@if (Model.Items.Count == 0)
+{
+    <p>Keine LV-Bögen für die gewählten Filter gefunden.</p>
+}
+else
+{
+    <table>
+        <thead><tr><th>Einrichtung</th><th>Kreis</th><th>LV-Bogen</th><th>Status</th><th></th></tr></thead>
+        <tbody>
+        @foreach (var facility in Model.Items.GroupBy(item => new { item.EIID, item.FacilityName, item.FacilityCode, item.DistrictName }))
+        {
+            <tr>
+                <th colspan="5">@facility.Key.FacilityName (@facility.Key.FacilityCode) – @facility.Key.DistrictName</th>
+            </tr>
+            @foreach (var item in facility)
+            {
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td>@item.BogenName</td>
+                    <td>@item.Status</td>
+                    <td>
+                        <form method="post" asp-page-handler="Open">
+                            <input type="hidden" name="bid" value="@item.BogenId" />
+                            <button type="submit">Öffnen</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        }
+        </tbody>
+    </table>
+
+    @if (Model.PageCount > 1)
+    {
+        <nav aria-label="Seiten">
+            @if (Model.PageNumber > 1)
+            {
+                <a asp-route-Bogenstatus="@Model.Bogenstatus" asp-route-Kreis="@Model.Kreis" asp-route-PageNumber="@(Model.PageNumber - 1)">Zurück</a>
+            }
+            <span>Seite @Model.PageNumber von @Model.PageCount</span>
+            @if (Model.PageNumber < Model.PageCount)
+            {
+                <a asp-route-Bogenstatus="@Model.Bogenstatus" asp-route-Kreis="@Model.Kreis" asp-route-PageNumber="@(Model.PageNumber + 1)">Weiter</a>
+            }
+        </nav>
+    }
+}

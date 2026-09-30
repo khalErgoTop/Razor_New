@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<link rel="shortcut icon" href="favicon.ico">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Seite nicht gefunden</title>
+    <style>
+		.button {
+			background-color: #04AA6D;
+			border: none;
+			color: white;
+			padding: 15px 32px;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 16px;
+			margin: 4px 2px;
+			cursor: pointer;
+		}
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .container {
+        	position: relative;
+            display: flex;
+            align-items: center;
+            max-width: 800px;
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 2rem;
+            height: 350px;
+        }
+        .container a{
+			position: absolute;
+			bottom: 2rem;
+			right: 2rem;
+			color: #fff;
+			background-color: #003063;
+			border-radius: 0.25rem;
+			padding: 0.5rem 0.5rem;
+			cursor: pointer;
+			text-decoration:none
+		}
+        .image-container {
+            border-radius: 2rem;
+            height: 352px;
+            width: 369px;
+            padding-right: 1.5rem;
+        }
+        .image-container img {
+            height: 100%;
+            border-radius: 1rem 0 0 1rem;
+        }
+        .text-container {
+            flex: 1;
+            margin-right: 2rem
+        }
+        .text-container p {
+            margin: 0 2rem 0 0;
+            line-height: 1.5;
+        }
+    </style>
+    <script type="text/javascript">
+        let saetze = ["Diese Seite hat wohl zu viel Glühwein auf dem Hamburger Dom getrunken und den Weg verloren.",
+					"404 - Hier ist wohl jemand im Wattenmeer der Webseiten gestrandet. Ebbe statt Webseitenflut!",
+					"Hamburg, Landungsbrücke für verirrte Seiten. Diese hat wohl das Schiff verpasst.",
+					"404 - Wie der Hamburger sagt: 'Da ist wohl der Wurm drin!'",
+					"Diese Seite hat wohl zu viel Labskaus gegessen und sich in den Weiten des Internets verirrt.",
+					"Hoppla! Diese Seite hat wohl den Anker zu früh gelichtet und treibt nun auf dem Ozean der Fehlermeldungen.",
+					"404 - Hier ist wohl jemand im Muschelschlick der digitalen Welt stecken geblieben.",
+					"404 - Einmal um den Michel rum und dann wieder zurück zur Startseite!",
+					"Diese Seite hat wohl die Welle des Internets unterschätzt und ist nun auf hoher See verschollen.",
+					"404 - Hier ist wohl jemand im Hamburger Schietwedder steckengeblieben. Zurück ins Trockene!",
+					"404 - Wir haben einen Knoten im Netz.",
+					"Oops! Diese Seite hat wohl eine falsche Abfahrt genommen und ist im Hamburger Hafen gelandet.",
+					"Hamburg, wir haben ein Problem! Diese Seite ist wohl im Nebel des Nordens verschwunden.",
+					"404 - Diese Seite ist wohl im Labyrinth der Speicherstadt verloren gegangen.",
+					"Ups! Diese Seite hat wohl den Anschluss an die S-Bahn verpasst.",
+					"Oh nein! Diese Seite hat wohl den Weg zum Michel nicht gefunden.",
+					"Ahoi! Diese Seite ist wohl auf hoher See verschollen.",
+					"404 - Watt'n da los? Hier ist wohl Ebbe im Server.",
+					"Hamburg, wir haben ein Problem! Diese Seite ist unauffindbar.",
+					"404 - Zurück zum Anfang, bevor die Fischbrötchen kalt werden.",
+					"404 - Hier ist wohl jemand an den Landungsbrücken ins Netz gegangen.",
+					"Huch! Diese Seite ist wohl im Elbtunnel stecken geblieben.",
+					"Wenn Hamburg eine Software wäre, würden die Fehlermeldungen wahrscheinlich 'Moin Moin!' statt 'Error 404' sagen."
+        ];
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+
+        window.onload = (event) => {
+            let container = document.querySelector(".text-container p");
+            if (container) {
+                container.innerHTML  = saetze[getRandomInt(saetze.length - 1)]; 
+            }
+            console.log('The page has fully loaded');
+        };
+    </script>
+</head>
+<body>
+    <div class="container">
+        <div class="image-container">
+            <img src="IMG.jpg" alt="404 Fehlerseite">
+        </div>
+        <div class="text-container">
+            <p>
+            </p>
+            <a href="https://hamburg.de">zurück</a>
+        </div>
+    </div>
+</body>
+</html>

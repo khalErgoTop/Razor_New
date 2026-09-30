@@ -1,0 +1,65 @@
+﻿@charset "UTF-8";
+
+@font-face {
+    font-family: 'pt_sansregular';
+    src: url('Fonts/PTS55F-webfont.eot');
+    src: url('Fonts/PTS55F-webfont.eot?#iefix') format('embedded-opentype'), url('Fonts/PTS55F-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal
+}
+
+@font-face {
+    font-family: 'pt_sansbold';
+    src: url('Fonts/ptsans-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal
+}
+
+@media {   
+	:root {
+	--color-red: #000;
+	--color-lightgrey: #FFF;
+	--color-grey: #434345;
+	--color-darkgrey: #000;
+	--color-lightblue: #FFF;
+	--color-blue: #000;
+	--color-darkblue: #000;
+	--color-greyblue: #000;
+	--color-font: #000;
+	--color-black: #000000;
+	--color-white: #FFFFFF;
+	--font-regular: "pt_sansregular", Arial,Helvetica,sans-serif;
+	--font-bold: "pt_sansbold",Arial,Helvetica,sans-serif;
+	--font-georgia: Georgia,Arial,Helvetica,sans-serif;
+	--img-logo: url("images/bremen_logo_schwarz.svg");
+	--filter-blue: black;
+	--img-high_contrast_logo: url("images/bremen_logo_weiss.svg");
+	--filter-red: black;
+	--border: 1px solid #CCC;
+	--filter: grayscale(1) contrast(3) opacity(.8) brightness(.2);
+	--filter-white: invert(100%) sepia(0%) saturate(0%) hue-rotate(159deg) brightness(100%) contrast(100%)
+	}   
+}
+img,
+#FFRContent .fprCat div.fprQst label[title="Divers"][checked="checked"], #M_MC_FPReporting_FfrType label[title="Divers"][checked="checked"], .qstVal[title="Divers"] input[type="checkbox"]:checked::after,
+#FFRContent .fprCat div.fprQst label[title="Männlich"][checked="checked"], #M_MC_FPReporting_FfrType label[title="Männlich"][checked="checked"], .qstVal[title="Männlich"] input[type="checkbox"]:checked::after,
+#FFRContent [data-type="1"] .fprCat div[data-ctl="c2"], #M_MC_FPReporting_FfrType[data-type="1"] .fprCat div[data-ctl="c2"], #M_MC_FPReporting_PnlAddFfrType[data-type="1"] .fprCat div[data-ctl="c2"],
+#FFRContent [data-type="1"] .fprCat div[data-ctl="c1"], #M_MC_FPReporting_FfrType[data-type="1"] .fprCat div[data-ctl="c1"], #M_MC_FPReporting_PnlAddFfrType[data-type="1"] .fprCat div[data-ctl="c1"],
+#FFRContent .fprCat div.fprQst label[title="Weiblich"][checked="checked"],
+#M_MC_FPReporting_FfrType label[title="Weiblich"][checked="checked"],
+.qstVal[title="Weiblich"] input[type="checkbox"]:checked::after,
+#M_MC_pnlSpecialData #FFRContent [data-type="2"] label[checked="checked"],
+#M_MC_pnlSpecialData #FFRContent [data-type="2"] .fprCat .fprQst .qstVal input[type="checkbox"]:checked,
+#M_MC_FPReporting_FfrType[data-type="2"] label[checked="checked"],
+#M_MC_FPReporting_FfrType[data-type="2"] .fprCat .fprQst .qstVal input[type="checkbox"]:checked,
+#M_MC_FPReporting_PnlAddFfrType[data-type="2"] .fprCat .fprQst .qstVal input[type="checkbox"]:checked{
+	filter:var(--filter)
+}
+
+#PnlInformation .divMaps,
+#M_MC_pnlInstitutionAddress .divMaps {
+	background:url("Images/Karte.svg") !important;
+}
+	#SpanNewsEx{
+		background-image: url("Images/Icons/Stammdaten/Info.svg") !important;
+	}

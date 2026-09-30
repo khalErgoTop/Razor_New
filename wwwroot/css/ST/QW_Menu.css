@@ -1,0 +1,99 @@
+﻿#WrapperHead {
+	position:fixed;
+	z-index:1;
+	top: 0rem;
+	background:white;
+	width:1140px;
+	transition: top 0.3s ease-out; /* Animationsübergang definieren */
+	
+}
+
+#WrapperHead.active {
+  top: 0rem;
+  max-width: 1112px;
+  margin: 0 auto;
+  padding: 0 14px;
+  position: relative;
+  background-image: url("images/banner_2017.jpg");
+  background-repeat: no-repeat;
+  background-position-y: 31px;
+  background-position-x: 300px;
+}
+}
+
+#ModLinkTOPqm{
+	font-size:0;
+}
+#ModLinkTOPqm:after{
+	font-size:1rem;
+	content:"QSB + KZM"
+}
+#ModLinkAnbietermanagment{
+	font-size:0;
+}
+#ModLinkAnbietermanagment:after{
+	font-size:1rem;
+	content:"Standorte"
+}
+#M_PnlModules {
+}
+#CrModules { 
+	background-repeat: no-repeat;
+	background-size: auto 96px;
+	height: 75px;
+	font-size:1rem;
+	font-weight: bold;
+	background-image: linear-gradient(to bottom, rgba(204, 204, 204, 0.25), #cccccc);
+	display: flex;
+	padding: 0;
+	margin: 0;
+ 	list-style-type: none;
+}
+#CrModules a{
+}
+#CrModules li:hover {
+	background-color: #e8c425;
+}
+#CrModules li {
+	display: inline-grid;
+	line-height: 4.75rem;
+	width: calc(100% / 3 - 5px);
+	list-style: none;
+	position: inherit;
+	border-right: solid 2px #fff;
+	text-align: center;
+	margin-left: 0;
+	flex: 1;
+}
+#CrModules li:first-child{
+}
+#CrModules li:last-child{
+	border-right: unset;
+}
+#CrModules li li:first-child{
+	margin-left: 0rem
+}
+#CrModules li li:last-child{
+	top: 1.5rem
+}
+#CrModules li ul li a:hover{
+	text-decoration:unset;
+}
+#Linkpath li a:hover,
+#CrModules li a:hover{
+	transition: opacity 250ms;
+}
+#CrModules li ul li a{
+}
+.boxNavigation {
+}
+#CrModules li ul li {
+}
+
+#WrapperHead #M_PnlTop #M_PnlModules.boxNavigation ul#CrModules li ul{
+	padding: 0;
+	display:none
+}
+#M_PnlModules.boxNavigation ul#CrModules li ul{
+	margin-top:10px;
+}

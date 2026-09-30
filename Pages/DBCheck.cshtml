@@ -1,0 +1,32 @@
+@page
+@model TOPqwWeb_Core.Pages.DBCheckModel
+@{
+    ViewData["Title"] = "Datenbankprüfung";
+}
+
+<h1>Datenbankprüfung</h1>
+@if (Model.Result.ErrorMessage is not null)
+{
+    <p class="dbFailed">@Model.Result.ErrorMessage</p>
+}
+else
+{
+    <p class="@(Model.Result.IsCurrent ? "dbOk" : "dbFailed")">
+        @(Model.Result.IsCurrent
+            ? "Alles Ok. Die Datenbankversion ist aktuell."
+            : "Problem. Die Datenbankversion ist veraltet. Das Ausführen von TOPqwWeb wird zu Fehlern führen.")
+    </p>
+}
+
+<div id="MinV">
+    <label for="minimum-version">Vorausgesetzte Mindestversion</label>
+    <span id="minimum-version">@Model.Result.MinimumVersion</span>
+</div>
+<div id="CurV">
+    <label for="current-version">Aktuelle Version der Datenbank</label>
+    <span id="current-version">@Model.Result.CurrentVersion</span>
+</div>
+
+<form method="post" asp-page-handler="Continue">
+    <button type="submit">Weiter</button>
+</form>

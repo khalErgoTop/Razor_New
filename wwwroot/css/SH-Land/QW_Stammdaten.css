@@ -1,0 +1,849 @@
+﻿#DivStrNotFound, #DivHfStrVzValidiert {
+	display: none;
+}
+
+.unit_€::after {
+    content: '€';
+}
+.unit_%::after {
+    content: '%';
+}
+
+#c0_MC_pnlStammDaten .pnlFile input.button.delAttmt{
+	border: none;
+	background: var(--color-pink);
+	margin: 0 0 0 0.5rem;
+	color: white
+}
+
+#c0_MC_ctl4128_PnlKB_Excel_Outer{
+	display:none
+}
+
+#c0_MC_pnlStammDaten #currentFacility #Einrichtungsdaten #c0_MC_pnlEinrichtungsdaten table td img {
+	margin-bottom:1rem
+}
+
+.TTipVerguetung:after{
+	content:"ℹ";
+	font-size:2rem;
+	color:var(--color-pink)
+}
+
+.lblTelephone a {
+    color: var(--color-blue)
+}
+.FacilityPreview{display:none;}
+#c0_MC_pnlInstitution{
+	margin-bottom:1.5rem
+}
+
+#fancybox-title-inside {
+    display: none
+}
+
+#c0_MC_pnlStammDaten #currentFacility #Einrichtungsdaten #c0_MC_pnlEinrichtungsdaten table tbody tr td {
+    vertical-align: top
+}
+
+#c0_MC_Einrichtungsbilder {
+    text-align: right
+}
+
+#facilities {
+    display: inline-block;
+    width: 275px;
+    max-height: 600px
+}
+
+#c0_MC_pnlEinrichtungsdaten #c0_MC_Einrichtungsbilder {
+    width: 30%
+}
+
+#c0_MC_pnlStammDaten #currentFacility #c0_MC_pnlAttachments .label.attmts{
+	font-size:1.2rem;
+	margin-bottom: 1rem;
+	border-bottom: 1px solid #efefef;
+	background-position-y: 7px;
+	font-style: var(--font-100) !important
+}
+
+#c0_MC_pnlStammDaten #currentFacility #c0_MC_pnlAttachments{
+	margin-left:0px; 
+}
+
+#c0_MC_pnlStammDaten #currentFacility #c0_MC_pnlAttachments .label.attmts,
+#c0_MC_pnlStammDaten #currentFacility #Einrichtungsdaten #c0_MC_pnlEinrichtungsdaten table tr td span {
+    margin-top: 0.1rem
+}
+
+#c0_MC_pnlStammDaten #currentFacility #ViewCount {
+    margin-left: 0.1rem
+}
+
+#currentFacility {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 320px)
+}
+
+#FacilityFilter {
+    width: 90%
+}
+
+#c0_MC_pnlEinrichtungenListe .pnlFac a {
+    padding: 0 0 0 10px;
+    display: inline-block;
+    width: 220px
+}
+
+.lblBegriff {
+    overflow: visible;
+    min-width: 230px
+}
+
+.pnlLV {
+    margin-top: 30px;
+    float: left;
+    display: inline-block
+}
+
+.pnlLVContent {
+    display: block
+}
+
+#c0_MC_pnlEinrichtungsdaten table tr td {
+    border-bottom: 1px solid #efefef
+}
+
+#fancybox-content {
+    padding: 10px
+}
+#c0_MC_lblWebContactLabel{font-family:var(--font-700)}
+#c0_MC_lbtSaveEditContact {
+    background: #e9e9e9 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: 3px;
+    float: left;
+    margin-right: 0.5rem !important;
+    height: 28px;
+    margin: 0 0 0 0.2em;
+    padding: 2px 0.2em;
+    text-decoration: none;
+    width: 130px
+}
+
+#fancybox-content .Button:hover {
+    border: none;
+    background-color: var(--color-blue);
+    color: var(--color-white) !important
+}
+
+#fancybox-content .ButtonCancel:hover,
+#fancybox-content .ButtonSave:hover,
+#fancybox-content .ButtonDelete:hover {
+    border: none;
+    background-color: var(--color-blue);
+    color: var(--color-white)
+}
+#c0_MC_ChkFacilityIsVisible{
+	/*-webkit-appearance: none; 
+	-moz-appearance: none;
+	appearance: none;*/
+	border:1px solid var(--color-blue);
+	height:30px;
+	width:30px;
+	margin:0;
+	padding:0
+}
+	
+#c0_MC_BtnSaveFacilityVisibility{
+	background-color: #e9e9e9;
+    background-position: 10px center;
+    background-image: url("Images/Save_16x16_256.ico");
+    border-radius: 3px;
+    margin: 0 0 0 0.2em;
+    padding: 8px 15px 8px 33px;
+    text-decoration: none;
+    font-family: var(--font-100);
+	border: none;
+	background-repeat: no-repeat;
+	font-size:1rem
+}
+
+#c0_MC_lbtRemFileYes,
+#c0_MC_lbtRemFileNo,
+#fancybox-content .ButtonCancel {
+    background-color: #e9e9e9;
+    background-image: url("Images/cancel2.png");
+    background-position: 10px center;
+    border-radius: 3px;
+    margin: 0 0 0 0.2em;
+    padding: 6px 15px 6px 33px;
+    text-decoration: none
+}
+
+#fancybox-content .ButtonDelete {
+    background-color: #e9e9e9;
+    background-position: 10px center;
+    border-radius: 3px;
+    margin: 0 0 0 0.2em;
+    padding: 6px 15px 6px 33px;
+    text-decoration: none;
+    color: var(--color-table-grey);
+}
+
+.pnlLVBegriff {
+    float: left;
+    display: block;
+    width: 700px
+}
+
+.lblLVOberBegriff {
+    float: left;
+    min-width: 500px
+}
+
+.lblLVUnterBegriff {
+    float: left;
+    margin-left: 20px;
+    min-width: 500px
+}
+
+.lblLVBegriff {
+    display: list-item;
+    margin-left: 55px;
+    min-width: 500px
+}
+
+.lblLVBegriffHeader {
+    margin-left: 30px;
+    min-width: 500px
+}
+
+.lblLVBegriffHeaderBez {
+    margin-left: 10px
+}
+
+.lblBegriffStammdaten {
+    overflow: visible;
+    min-width: 100px
+}
+
+#Einrichtungsdaten .lblUnterbegriff {
+    overflow: visible;
+    margin-bottom: 10px
+}
+
+.lblUnterbegriff img {
+    height: 0px;
+    width: 0px
+}
+
+.lblPnlLVHeader {
+    display: inline-block
+}
+
+#imgShowHide {
+    margin-left: 5px
+}
+
+#Einrichtungen {
+    font-size: 85%;
+    margin-top: 5px
+}
+
+.VerguetungLegende {
+    display: block;
+    font-size:.75rem
+}
+
+.VerguetungLegendeMitte {
+    display: block
+}
+
+#pnlStammDatenTable1stCol {
+    vertical-align: top
+}
+
+.lbltblVerguetungBezeichnung {
+    text-align: left
+}
+
+.tblVerguetung {
+    text-align: right
+}
+
+.tblVerguetung tr td:first-child {
+    text-align: left
+}
+.tblVerguetung tr td {
+    padding: 3px 5px;
+    min-width: 80px
+}
+
+.lbltblVerguetungHeaderBezeichnung {
+    display: none
+}
+
+#c0_MC_tblZuschlag {
+    margin-top: 10px
+}
+
+#c0_MC_tblZuschlag .lbltblVerguetungHeader {
+    display: none
+}
+
+.divMaps {
+background-size: 19px;
+border: 0 none transparent;
+height: 34px;
+margin-left: 5px;
+width: 20px;
+padding-left: 38px;
+overflow: hidden;
+font-size:0;
+position: absolute;
+margin-top: 5px;
+}
+
+#c0_MC_tblWerte {
+    display: table-cell;
+    vertical-align: top
+}
+
+#c0_MC_pnlIframe {
+    border: none;
+    display: table-cell;
+    padding-right: 20px;
+    overflow: hidden
+}
+
+#c0_MC_pnlIframe iframe {
+    display: table-cell;
+    min-width: 350px;
+    height: 300px;
+    border: transparent
+}
+
+.pnlContactData {
+    display: inline-block
+}
+
+#lblFacilityType {
+    padding-right: 20px
+}
+
+#linkPathNavStart {
+	padding-left: 0 !important
+}
+
+.pnlContactPersonEmailAddress,
+.pnlContactPersonWebAddress,
+.pnlContactPersonTelephone,
+#c0_MC_pnlInstitutionStreet {
+	padding: 0 0 2px 0
+}
+
+
+.lblCity {
+	padding: 2px 0
+}
+
+#c0_MC_pnlSpecialData,
+.pnlContactPersonTelephone,
+.pnlContactPersonTelefax,
+.pnlTelephone,
+.lblEmailAddress,
+.pnlContactPersonWebAddress,
+.pnlAddress {
+	font-size: 100%
+}
+
+.LabelIdentifier {
+	padding: 2px 0
+}
+
+.pnlStreetCity {
+	display: inline-block;
+	margin-top:0.5rem
+}
+
+.pnlMaps {
+	display: inline-block;
+	vertical-align: top
+}
+
+.pnlMaps span {
+	display: flex !important
+}
+
+.LabelIdentifier {
+	width: 250px;
+	display: table-cell !important;
+	font-family:var(--font-700)
+}
+
+.LabelValue {
+	margin-left: 5px;
+	display: table-cell !important
+}
+
+#c0_MC_pnlInstitutionOuter {
+	margin-bottom: 1.5rem
+}
+
+c0_MC_pnlInstitutionInner {
+	display: block !important
+}
+
+.facilityIcon {
+	margin-top: 0.2rem;
+	background-image: url("Images/Haus.png");
+	background-repeat: no-repeat;
+	display: block;
+	background-size: 25px;
+	height: 25px;
+	padding-left: 31px;
+	float: left
+}
+
+#c0_MC_lblInstitutionName {
+	margin-top: 2rem;
+	background-image: url("Images/Traeger2.png");
+	background-repeat: no-repeat;
+	background-position: left;
+	display: block;
+	background-position-x: -2px;
+	background-size: 30px;
+	height: 38px;
+	line-height: 2rem;
+	padding-left: 38px
+}
+
+.lblUnterbegriff {
+	height: 36px
+}
+
+#c0_MC_lblEinrichtungsName {
+	display: block;
+	line-height: 1.5rem;
+	margin: 0 0 0 2.3rem
+}
+
+.pnlInstitutionAddress {
+	margin-top: 15px;
+}
+
+#c0_MC_pnlInstitutionData {
+	display: inline-block
+}
+
+#c0_MC_DivLeistungsbeschreibung {
+	margin-top: 1rem
+}
+
+#c0_MC_PnlAddress,
+#c0_MC_PnlContactPerson {
+	width: 33%;
+	margin-top: 1.2rem
+}
+
+.pnlInstitutionFacility {
+	margin-bottom: 1rem
+}
+
+.pnlInstitutionFacility .pnlAddress {
+	background-image: none !important;
+	margin-top: 0;
+	padding-left: 0 !important
+}
+
+#lblAddressFacilityOpenerAll {
+	display: none !important
+}
+
+.LinkClass {
+	cursor: pointer !important
+}
+
+.pnlInnerHeadLine {
+	display: table-cell;
+	max-width: calc(100% - 20px)
+}
+
+.pnlVerguetung .lblUnterbegriff .TTip img {
+	display: none
+}
+
+.pnlVerguetung .lblUnterbegriff .TTip span {
+	display: block;
+	font-size: xx-small
+}
+
+.TTipVerguetung {
+	position: relative
+}
+
+.TTipVerguetung span {
+	display: none;
+	color: var(--color-blue) !important;
+	padding: 0.3rem 1rem
+}
+
+#c0_MC_pnlEinrichtungenListe div {
+	padding: 10px 0
+}
+
+.TTipVerguetung:hover {
+	background-color: transparent
+}
+
+.TTipVerguetung:hover span {
+	width: 150px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	display: block;
+	background: white;
+	border: 1px solid var(--color-grey);
+	text-decoration: none;
+}
+
+#Einrichtungen #c0_MC_pnlEinrichtungenListe .pnlFac span img {
+	height: 30px !important;
+	margin-top: 6px
+}
+
+#c0_MC_pnlAttachments {
+	margin-top: 20px
+}
+
+#c0_MC_pnlAttachments span:first-child {
+	display: block
+}
+
+.FileUpload {
+	display: inline-block;
+	height: 28px !important
+}
+
+.pnlFile {
+	display: block;
+	margin-right: 5px;
+	margin-bottom: 5px
+}
+
+#c0_MC_TxtEditFacilityDescription {
+	width: 90%;
+	margin-left: 0.5rem
+}
+
+#c0_MC_PnlEditFacilityDescription {
+	height: 100px
+}
+
+#fancybox-content .ButtonCancel {
+	margin-left: unset !important;
+	float: none !important
+}
+
+#fancybox-content .ButtonSave {
+	margin-left: unset !important;
+	margin-right: unset !important;
+	float: none !important
+}
+
+.divCommandbuttons {
+	margin-top: 1.2rem
+}
+
+.ButtonAttachment {
+	display: inline-block;
+	height: 31px;
+	padding-left: 20px;
+	overflow: hidden;
+	width: 250px;
+	word-wrap: break-word
+}
+
+#c0_MC_PnlEditFacilityImage {
+	height: 140px
+}
+
+#divContactData.fancyB_Inner #c0_MC_pnldivContactData div::last-child {
+	margin-top: 20px;
+	padding: 0px 0 50px 0
+}
+
+.ButtonDeleteFile {
+	vertical-align: middle
+}
+
+.lblInLine,
+.lblLeftLabel {
+	width: 150px;
+	display: inline-block
+}
+
+.lblInLine {
+	display: inline-block;
+	width: 125px
+}
+
+#c0_MC_pnlEditContact div {
+	margin-bottom: 5px
+}
+
+#divEditContact {
+	width: auto;
+	overflow: auto
+}
+
+#fancybox-content {
+	padding: 1rem !important
+}
+
+#divContactData {
+	width: auto;
+	overflow: auto
+}
+
+#divEditFacility {
+	width: auto;
+	overflow: auto
+}
+
+#divNewFacility {
+	width: auto;
+	overflow: auto
+}
+
+#divHelp {
+	width: 750px;
+	overflow: auto
+}
+
+
+.divButtons a#c0_MC_lbtRemFileYes.Button,
+.divButtons a#c0_MC_lbtRemFileNo.Button {
+	background-color: #e9e9e9;
+	background-repeat: no-repeat;
+	font-family: var(--font-100);
+	padding-left: 28px
+}
+
+.divButtons a#c0_MC_lbtRemFileYes.Button {
+	background-image: url("Images/trash.ico");
+	background-position: 5px 6px
+}
+
+.divButtons a#c0_MC_lbtRemFileNo.Button {
+	background-image: url("Images/cancel2.png");
+	background-position: 8px 8px
+}
+
+.divButtons a#c0_MC_lbtRemFileYes.Button:hover,
+.divButtons a#c0_MC_lbtRemFileNo.Button:hover {
+	background-color: var(--color-blue);
+	color: var(--color-white)
+}
+
+.FileUpload {
+	border: 0px solid var(--color-white)
+}
+
+#divRemFile {
+	max-width: 250px;
+	overflow: visible;
+	padding-bottom: 10px
+}
+
+#divAddFile .Button {
+	width: 95%;
+	margin-top: 16px
+}
+
+#divAddFile .FileUpload {
+	width: 50%
+}
+
+#c0_MC_lblFileError {
+	position: absolute;
+	right: 11px;
+	top: 5px
+}
+
+#fancybox-title {
+	padding: 0;
+	margin: 0 !important
+}
+
+#fancybox-title-inside {
+	padding: 5px 5px 5px 12px
+}
+
+.divButtons {
+	margin: 14px 58px 14px 0;
+	padding: 0
+}
+
+#divChangeVisibility {
+	margin-top: 10px
+}
+
+#divAddFile {
+	height: 100px;
+	margin-top: 5px
+}
+
+#aRefRemoveFacility,
+#aRefEditFacility {
+	vertical-align: top;
+	color: transparent;
+	margin-left: 5px;
+	float: left
+}
+
+.fancybox-title-inside {
+	text-align: left
+}
+
+.Visible {
+	background-image: url("Images/eye.png")
+}
+
+#aRefEditContact:after {
+	content: "Ansprechpartner";
+	color: var(--color-white);
+	margin: 8px
+}
+
+#aRefFacilityImage:after {
+	content: "Foto";
+	color: var(--color-white);
+	margin: 8px
+}
+
+#currentFacility #Einrichtungsdaten #c0_MC_pnlEinrichtungsdaten table tr td span.lblBegriff span {
+	line-height: 1rem
+}
+
+#c0_MC_pnlStammDaten #currentFacility #Einrichtungsdaten #c0_MC_pnlEinrichtungsdaten table tr td span.lblBegriff a {
+	line-height: 1.2rem
+}
+
+#c0_MC_pnlEinrichtungsdaten table tbody tr td span a {
+	height: 50px;
+	line-height: 2rem
+}
+
+#aRefContactData:after {
+	content: "Kontaktdaten";
+	color: var(--color-white);
+	margin: 8px
+}
+
+#aRefFacilityDescription:after {
+	content: "Leistungsbeschreibung";
+	color: var(--color-white);
+	margin: 8px
+}
+
+#DivLBHead {
+	margin-bottom: 1rem
+}
+
+#aRefChangeVisibility.ahrefFancyInline span#lblChangeVisiblityInner.Image.FacilityControl.NotVisible:after {
+    content: "Unsichtbarkeit";
+    color: var(--color-white);
+    margin: 8px
+}
+
+#aRefChangeVisibility.ahrefFancyInline span#lblChangeVisiblityInner.Image.FacilityControl.Visible:after {
+    content: "Sichtbarkeit";
+    color: var(--color-white);
+    margin: 8px
+}
+
+#aRefOpenHBGCost:after {
+	content: "HBG Kosten";
+	color: var(--color-white);
+	margin: 8px
+}
+
+#aRefAddAttachmentFile:after {
+    content: "Anhang";
+    color: var(--color-white);
+    margin: 8px
+}
+
+#aRefChangeVisibility:after{
+	content:"Sichtbarkeit";
+	color: var(--color-white);
+    margin: 8px
+}
+
+#aRefOpenHBGCost,
+#aRefAddAttachmentFile,
+#aRefEditContact,
+#aRefFacilityImage,
+#aRefContactData,
+#aRefChangeVisibility,
+#aRefFacilityDescription {
+    hyphens: unset;
+    margin-right: 0.2rem;
+    background: var(--color-grey);
+    text-align: center;
+    border-radius: 0.2rem
+}
+
+#aRefOpenHBGCost:hover,
+#aRefAddAttachmentFile:hover,
+#aRefEditContact:hover,
+#aRefFacilityImage:hover,
+#aRefContactData:hover,
+#aRefChangeVisibility:hover,
+#aRefFacilityDescription:hover {
+    background: var(--color-pink)
+}
+
+#lblEditContactInner,
+#lblContactDataInner,
+#lblEditFacilityInner,
+#lblRemoveFacilityInner,
+#lblAddAttachmentFileInner,
+#lblOpenHBGCostInner,
+#lblFacilityDescriptionInner,
+#lblFacilityImageInner,
+#lblContactDataInner,
+#lblChangeVisiblityInner {
+    height: 0px !important;
+    width: 0px !important;
+    background-size: 0px !important;
+    margin-left: 0px !important;
+    overflow: hidden
+}
+
+.FacilityControl {
+    height: 16px;
+    width: 16px;
+    background-size: 16px;
+    margin-left: 6px
+}
+
+@media screen and (max-width: 500px) {
+    #facilities {
+        height: 200px;
+        margin-bottom: 20px;
+        width: 100%
+    }
+
+    .slimScrollDiv {
+        height: 200px !important
+    }
+
+    .LabelValue {
+        display: block
+    }
+}

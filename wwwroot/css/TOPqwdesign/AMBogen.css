@@ -1,0 +1,652 @@
+﻿/* Version: 240306 */
+
+.pgCounter.container .pgCounter.lbl{
+	width: calc((100% / 3) - 5px) !important;
+}
+.pgCounter.container .pgCounter.lbl.pgIndex{
+	text-align:right
+}
+.pgCounter.container .pgCounter.lbl.pgCount{
+	text-align:left
+}
+.list .list{
+	border:1px solid black;
+	padding:0.5rem 0.25rem
+}
+.list .list:empty{
+	display:none
+}
+#M_MC_UpBogen .begriff.janein .janein.bg div label{
+	line-height: 2rem;
+}
+#M_MC_UpBogen .begriff.janein .janein.bg div input{
+	height: 24px;
+	width: 24px;
+	float: left;
+}
+#M_MC_UpBogen .begriff.janein .janein.bg div{
+	height:unset
+}
+textarea{
+	max-height: 100px;
+	min-height: 100px;
+	height:100px;
+	width:calc(100% - 1rem);
+	max-width:calc(100% - 1rem);
+	min-width:calc(100% - 1rem);
+}
+#M_MC_Standorte td{
+	padding:0
+}
+#M_MC_Standorte .pnlFac{
+	padding:0.5rem
+}
+#M_MC_Standorte #GridFacs .filterWithReset input{
+	width:95%
+}
+#M_MC_Standorte #GridFacs .jsgrid-load-panel{
+	background: #FFF;
+	padding: 1rem;
+	border-radius: 0.25rem}
+
+#M_MC_Standorte #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager span.jsgrid-pager-page.jsgrid-pager-page span{
+	padding: 0.2rem 0;
+}
+#M_MC_Standorte #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager .jsgrid-pager-nav-button a,
+#M_MC_Standorte #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager span.jsgrid-pager-page.jsgrid-pager-page a {
+	padding: 0.2rem 0;
+	display:block
+}
+#M_PnlMain .innerMain table {
+	width:100%
+}
+#M_MC_Standorte #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager .jsgrid-pager-nav-button a:hover,
+#M_MC_Standorte #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager span.jsgrid-pager-page.jsgrid-pager-page a:hover {
+	background:var(--color-blue);
+	color:var(--color-white);
+	display:block
+}
+#M_MC_Standorte #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager span.jsgrid-pager-page.jsgrid-pager-current-page {
+	padding: 0.2rem 0;
+	background: var(--color-red);
+	color: #FFF;
+}
+#M_MC_Standorte #GridFacs.jsgrid .jsgrid-pager-container {
+	display: block;
+	max-width: 300px;
+	margin: 10px 0;
+	position: relative;
+}
+#M_MC_Standorte #GridFacs .container {
+	font-size: 1rem;
+	width: 100%;
+	position: relative;
+	margin-top: 2.5rem;
+}
+#M_MC_Standorte #GridFacs .jsgrid-pager span{
+	width: calc((100% / 10) - 1px);
+	font-size: 1rem;
+	float: left;
+}
+#M_MC_Standorte #GridFacs .jsgrid-pager{
+	text-align:center;
+	font-size:0
+}
+#M_MC_Bogen.pageContent .uKat .begriff.list.bg{
+	width: 100%;
+	position: relative;
+}
+#M_MC_BtnCancel,
+#M_MC_BtnSave,
+#M_MC_BtnEdit{
+	top: 3.7rem;
+	position: absolute;
+	right: 0.5rem;
+}
+#M_MC_Standorte{
+	width: 250px;
+	padding: 1rem;
+	border-radius: 0.5rem 0.5rem 0 0;
+	background: #eee;
+	height: auto;
+	box-shadow: 1px 1px 6px 1px rgba(45,45,45,0.35);
+}
+#M_MC_Okats ul#M_MC_LstOkats.okats li[selected="selected"],
+#M_MC_Okats ul#M_MC_LstOkats.okats li:hover{
+	text-decoration:underline
+}
+.col1,
+.col2{
+	width:49%;
+	position: inherit;
+}
+.col1{
+	float: left;
+}
+.col2{
+	float:right
+}
+#M_MC_LstOkats{
+	margin-top:1rem !important;
+}
+#M_MC_BtnCancel:hover,
+#M_MC_BtnSave:hover,
+#M_MC_BtnEdit:hover{
+	cursor:pointer;
+	text-decoration: underline
+}
+#M_MC_Standorte-Container{
+	transition: all .35s ease;
+}
+#M_MC_BtnCancel,
+#M_MC_BtnSave,
+#M_MC_BtnEdit,
+#M_MC_Okats ul#M_MC_LstOkats.okats li{
+	color: #fff;
+	background-color: #003063;
+	border-color: #003063;
+	display: inline-block;
+	font-family: "HamburgSans-Bold",sans-serif;
+	font-weight: bold;
+	line-height: 1.25;
+	text-align: center;
+	white-space: nowrap;
+	vertical-align: middle;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	border: 1px solid transparent;
+	border-top-color: transparent;
+	border-right-color: transparent;
+	border-bottom-color: transparent;
+	border-left-color: transparent;
+	font-size: 1rem;
+	border-radius: 3px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	margin-right:0.5rem;
+	margin-bottom:0.5rem
+}
+.begriff.list div.valuepair div.value .list.bg .yElem input[type="checkbox"]{
+	height: 24px;
+	width: 24px;
+}
+.fullTitle {
+	font-size: 14px;
+	cursor:pointer
+}
+.eName {
+	display: none;
+}
+.pnlFac.selected,
+.jsgrid-row.selected, 
+.jsgrid-alt-row.selected {
+	color: var(--color-red);
+}
+.jsgrid.pgCounter.container {
+	text-align: center;
+}
+ul#M_MC_LstOkats {
+	margin:0;
+	padding:0;
+	list-style: none;
+	display: inline-block;
+	width: 100%;
+}#M_MC_BtnEdit, #M_MC_BtnSave, #M_MC_BtnCancel {
+	display: block;
+}
+#M_MC_UpBogen .janein.bg fieldset div {
+	height: 3rem
+}
+#M_MC_UpBogenn .janein.bg fieldset label {
+	float: left;
+	margin-right: 1rem;
+	margin-top: 0.3rem
+}
+#M_MC_UpBogen .uKat .matrix.bg[name="Personal"] {
+	width: 1680px
+}
+#M_MC_UpBogen .uKat .matrix.bg[name="Leistungsform"] {
+	width: 1260px
+}
+#M_MC_UpBogen .uKat .matrix.bg[name="Personal"] .row div,
+#M_MC_UpBogen .uKat .matrix.bg[name="Leistungsform"] .row div {
+	width: 140px
+}
+#M_MC_UpBogen .kennzeichen .label,
+#M_MC_UpBogen .einrichtungsart .label,
+#M_MC_UpBogen .einrName .label,
+#M_MC_UpBogen .traeger .label,
+#M_MC_UpBogen .strasse .label,
+#M_MC_UpBogen .ort .label,
+#M_MC_UpBogen .kreis .label,
+#M_MC_UpBogen .telefon .label,
+#M_MC_UpBogen .datumLV .label,
+#M_MC_UpBogen .datumVV .label,
+#M_MC_UpBogen .platzzahl .label,
+#M_MC_UpBogen .datumkonzept .label,
+#M_MC_UpBogen .importiertAm .label,
+#M_MC_UpBogen .importiertVon .label,
+#M_MC_UpBogen .validiert .label,
+#M_MC_UpBogen .validiertAm .label {
+	background: white !important;
+	color: black !important;
+	padding-bottom: 0.5rem
+}
+#M_MC_UpBogen #O2.oKat .col0 #U1.uKat .begriff .valuepair .value #Bg9.janein.bg fieldset input {
+	height: 2rem;
+	width: 2rem;
+	margin-right: 0.5rem
+}
+#AMSearch .uKat .begriff .valuepair .tree.bg .yElem label,
+#M_MC_UpBogen .oKat .begriff .bg .yElem label {
+	width: calc(100% - 2.5rem);
+	padding: 4px;
+	margin: 0 !important
+}
+#M_MC_UpBogen .oKat .uKat .begriff .label {
+	overflow: hidden;
+	padding-left: 1rem;
+}
+#M_MC_UpBogen #O3.oKat .col1,
+#M_MC_UpBogen #O3.oKat .col2 {
+	width: calc(50% - 1rem);
+	margin: 0 1rem 0 0
+}
+#M_MC_UpBogen #O3.oKat .col1 {
+	float: left;
+}
+#M_MC_UpBogen #O3.oKat .col2 {
+	float: right;
+}
+#AMSearch ul.tabs {
+	height: 40px
+}
+#AMSearch ul.tabs li {
+	width: 25%;
+	float: left;
+	text-align: center;
+	border-radius: 5px;
+	padding: 8px;
+	font-size: 1.5rem
+}
+#M_MC_UpBogen .matrix.bg .row div {
+	text-overflow: ellipsis;
+	padding: 0.5rem 0.5rem 0.5rem 1rem;
+	background: #EEEEEE;
+	max-width: 200px
+}
+#M_MC_UpBogen .matrix.bg .row.head div {
+	background: var(--color-blue)
+}
+#M_MC_UpBogen .matrix.bg .row {
+	overflow: hidden
+}
+#M_MC_UpBogen .matrix.bg .row input {
+	padding-left: 1rem;
+	border: 1px solid #DDD
+}
+.head div:first-of-type {
+	border: 0 !important;
+	background-color: var(--color-white);
+	color: var(--color-white);
+	font-weight: bold
+}
+.head div {
+	background-color: var(--color-blue);
+	color: var(--color-white);
+	font-weight: bold
+}
+.DashBoxContent.Table .RowLabel span .row.btrff,
+.DashBoxContent.Table .RowLabel span .row.fac {
+	margin: 0
+}
+#M_MC_Standorte tr:nth-child(even){
+	background-color:#fafafa;
+}
+.rowlabel {
+	background-color: var(--color-white);
+	color: var(--color-black);
+	font-weight: bold
+}
+#M_MC_UpBogen.pageContent .uKat .begriff .valuepair .value {
+	overflow-x: auto;
+}
+#M_MC_UpBogen .uKat .begriff .valuepair .value .matrix {
+	overflow: hidden
+}
+.xElem input {
+	max-width: 100px;
+	border: none;
+	background: var(--color-white)
+}
+#M_MC_UpBogen .row {
+	margin: 0;
+}
+.filterWithReset input {
+	line-height: 2rem;
+}
+#M_MC_Standorte #GridFacs .pnlFac {
+	border-bottom: 1px solid #ccc;
+	border-left: 0px;
+	border-right: 0px;
+	margin: 0;
+}
+.innerMain #M_MC_Standorte #GridFacs.jsgrid{
+	width:250px !important
+}
+#M_MC_BtnCancel{
+	background-color:var(--color-red);
+}
+#M_MC_UpBogen .uKat .begriff .bg.memo {
+   height: auto;
+}
+#M_MC_UpBogen .uKat .begriff .bg.memo textarea[disabled=""] {
+	color:black;
+	background:#EEE;
+	border:none
+}
+#M_MC_UpBogen .uKat .begriff .bg.memo textarea {
+	width: calc(100% - 1.2rem);
+	max-width: calc(100% - 1rem) !important;
+	height: 100%;
+	padding: 0.5rem;
+	font-family: inherit
+}
+#M_MC_UpBogen {
+	min-width: 500px
+}
+#AMSearch .uKat .begriff .tree.sub .yElem label,
+#M_MC_UpBogen .uKat .begriff .tree.sub .yElem label {
+	margin-left: 1rem;
+	color: var(--color-blue) !important
+}
+#M_MC_UpBogen .oKat .begriff .label {
+	background-color: var(--color-grey);
+	color: var(--color-white);
+	width: calc(100% - 1rem);
+	display: block;
+	border-radius: 0;
+	margin-bottom: 0.5rem;
+	padding: 1rem 0 1rem 0;
+	text-align: left
+}
+.uKat .tree .yElem .tree.sub .yElem:after {
+	width: 3rem;
+	height: 3rem;
+	background-repeat: no-repeat
+}
+.treeToggle {
+	position: absolute;
+	margin-top: -4rem;
+	margin-left: -2rem;
+	width: 1rem;
+	height: 3rem;
+	cursor: pointer
+}
+.uKat {
+	padding: 0
+}
+#M_MC_Bogen.pageContent .uKat .yElem input{
+	position:absolute
+}
+#M_MC_UpBogen .begriff {
+	margin-bottom: 3rem
+}
+#M_MC_UpBogen #AMSearch .uKat .begriff .valuepair .value .tree.bg,
+#M_MC_UpBogen #AMSearch #U8.uKat .begriff .valuepair .value #Bg16.tree.bg {
+	margin-left: 1rem
+}
+#AMSearch .checker.fts div,
+#M_MC_UpBogen .uKat span {
+	color: var(--color-white);
+}
+/* Anbietermanagement -> Stammdaten */
+
+#M_MC_UpBogen .matrix.bg input {
+	max-width: none;
+	width: 115px
+}
+#cphMC_PageTitle.am.icon.Stammdaten {
+	background-image: url("../../Images/Icons/AM/Am_Stammdaten_white.svg")
+}
+#cphMC_PageTitle.am.icon.Personal {
+	background-image: url("../../Images/Icons/AM/AM_Personal_white.svg")
+}
+#cphMC_PageTitle.am.icon.Angebote {
+	background-image: url("../../Images/Icons/AM/AM_Angebote_white.svg")
+}
+#cphMC_PageTitle.am.icon.Träger {
+	background-image: url("../../Images/Icons/AM/AM_Traeger_white.svg")
+}
+#cphMC_PageTitle.am.icon.Suche {
+	background-image: url("../../Images/Icons/AM/AM_Suche_white.svg")
+}
+#M_MC_UpBogen .janein.bg fieldset input[value='Ja']::before {
+	content: "☑ "
+}
+#M_MC_UpBogen .valuepair.validiert .value {
+	max-width: calc(100% - 6rem);
+}
+#M_MC_UpBogen input#cphMC_ctl01_TxtRsp {
+	max-width: calc(100% - 6rem);
+	min-width: 100%;
+	padding: 0.5rem;
+}
+#cphMC_ctl01_ChkRuecksprache {
+	position: relative;
+	margin-bottom: 0;
+	margin-top: 2.5rem;
+	height: 43px;
+	width: 43px
+}
+#M_MC_UpBogen .am_stammdaten .valuepair,
+#M_MC_UpBogen .ruecksprache_AM .valuepair {
+	padding: 0.5rem 0 0.3rem 0;
+	height: 3.3rem;
+	border-bottom: 1px solid var(--color-lightgrey)
+}
+#M_MC_UpBogen.pageContent #cphMC_PnlStammdaten span.aspNetDisabled label {
+	font-family: var(--font-bold)
+}
+#M_MC_UpBogen #cphMC_PnlStammdaten .ruecksprache_AM .label {
+	float: left;
+	width: 30% !important;
+	padding: 0 !important;
+	margin: 0 !important;
+	line-height: 2.5rem;
+	font-weight: bold !important;
+	background-color: white !important
+}
+#M_MC_UpBogen .am_stammdaten .label {
+	width: 30%;
+	float: left;
+	padding: 0 !important;
+	margin: 0 !important;
+	line-height: 1.6;
+	font-weight: bold !important
+}
+#M_MC_UpBogen .ruecksprache_AM .label:after,
+#M_MC_UpBogen .am_stammdaten .label:after {
+	content: ": "
+}
+.ruecksprache_AM .value,
+#M_MC_UpBogen .am_stammdaten .value {
+	float: left;
+	width: 70%
+}
+#M_MC_UpBogen.pageContent .bg.memo textarea[disabled="disabled"],
+#M_MC_UpBogen.pageContent .bg.memo textarea[disabled=""] {
+	border: 1px solid var(--color-lightergrey);
+	background: var(--color-lightgrey);
+}
+#M_MC_UpBogen .am_stammdaten input#cphMC_ctl01_TxtRsp {
+	display: block;
+	text-align: left;
+	margin-bottom: 0.5rem !important;
+	box-shadow: inset 0v 1px 1px rgba(0, 0, 0, .075);
+	background: var(--color-white) !important;
+	border: 1px solid var(--color-lightgrey) !important;
+	color: var(--color-grey);
+	font-weight: normal;
+	padding: 1rem;
+	border-radius: 0;
+	min-height: 4rem;
+}
+.ruecksprache_AM {
+	top: 2rem;
+	position: relative
+}
+#M_MC_UpBogen .valuepair .label {
+	border-radius: 0;
+	width: 100%;
+	padding: 1rem;
+}
+#cphMC_PnlStammdaten .ruecksprache_AM input#cphMC_ctl01_TxtRsp.aspNetDisabled[disabled="disabled"],
+#cphMC_PnlStammdaten .ruecksprache_AM input#cphMC_ctl01_TxtRsp.aspNetDisabled[disabled=""] {
+	background: var(--color-lightgrey) !important;
+	padding: 0.5rem;
+	border: 1px solid var(--color-lightgrey)
+}
+#cphMC_PnlStammdaten .ruecksprache_AM input#cphMC_ctl01_TxtRsp.aspNetDisabled
+#cphMC_PnlStammdaten .ruecksprache_AM input#cphMC_ctl01_TxtRsp {
+	position: absolute;
+	border: 1px solid var(--color-lightgrey);
+	background: var(--color-lightergrey);
+	padding: 0.5rem
+}
+#M_MC_UpBogen .contactData {
+	margin-bottom: 1rem
+}
+#M_MC_UpBogen .instInfo .form-row,
+#M_MC_UpBogen .address .form-row,
+#M_MC_UpBogen .contactData .form-row {
+	border-bottom: 1px solid lightgrey;
+	margin-top: 0.7rem
+}
+#M_MC_UpBogen .instInfo .label,
+#M_MC_UpBogen .address .label,
+#M_MC_UpBogen .contactData .label {
+	font-weight: bold !important
+}
+#M_MC_UpBogen .instInfo .label,
+#M_MC_UpBogen .address .label,
+#M_MC_UpBogen .contactData .label,
+#M_MC_UpBogen .valuepair .label,
+#M_MC_UpBogen label {
+	font-family: var(--normal);
+	color: var(--color-grey) !important;
+	font-weight: normal;
+	padding-left: 0;
+	margin-left: 0;
+	display: inline-block;
+	text-align: left
+}
+#M_MC_UpBogen #AMSearchCommands input#AMSearchBack {
+	float: left;
+	margin-right: 0.5rem	
+}
+#M_MC_UpBogen .matrix.bg input[type="checkbox"] {
+	width: 32px;
+	float: left;
+	height: 32px
+}
+#FrmAMSuche #AMFacList ul li {
+	padding: 5px;
+	border-bottom: 1px dashed var(--color-lightgrey);
+	margin-left: 2rem;
+	cursor: pointer;
+}
+#FrmAMSuche #AMFacList ul li::before {
+	content: "• ";
+	float: left;
+	position: absolute;
+	margin-left: -1rem;
+}
+#AMFacList {
+	margin-bottom: 3rem
+}
+#FrmAMSuche #PageTitleBox.page-title-box span#PageTitle.page-title.am.icon.amSearchValues {
+	width: calc(100% - 2.5rem);
+	font-weight: bold;
+	font-size: 1.1rem;
+	color: var(--color-white);
+	background: var(--color-grey);
+	margin-bottom: 0.5rem !important
+}
+.icon.hilfe a {
+	margin-right: 0.5rem
+}
+#ReloadAnalysis {
+	margin-right: 0.5rem
+}
+#BtnPrint {
+	background-image: url("../../Images/Icons/Icon_Drucker.svg") !important;
+	margin-right: 0.5rem
+}
+#BtnExcel {
+	background-image: url("../../Images/Icons/Icon_Excel.svg") !important;
+	margin-right: 0.5rem
+}
+.importiertAm, .importiertVon {
+	display: none
+}
+#ToggleFilter,
+#cphMC_BtnFacilitesByType,
+#cphMC_BtnFacilitesByDistrict,
+#BtnExcelExport,
+#BtnPrint,
+#BtnExcel,
+#BtnWor1d {
+	min-width: unset;
+	-webkit-border-radius: 0;
+	width: 30px;
+	height: 30px;
+	-webkit-appearance: none;
+	float: right;
+	text-decoration: none;
+	border: none;
+	border-radius: 0;
+	color: var(--color-grey);
+	background-color: var(--color-grey);
+	background-repeat: no-repeat !important;
+	font-size: 0
+}
+#ToggleFilter {
+	background-image: url("../../Images/Icons/Icon_Menu.svg") !important;
+}
+.facilityGrid #Filters {
+	display: table-cell;
+	width: 220px;
+	float: left;
+}
+.facilityGrid #Filters .lbl {
+	font-size: small;
+}
+.facilityGrid #Filters input {
+	height: 25px;
+}
+.facilityGrid #FacilitiesOuter {
+	vertical-align: top;
+}
+.facilityGrid #Filters td {
+	display: inline-block;
+}
+.facilityGrid #FacilitiesOuter {
+	display: block;
+	width: auto;
+	overflow: scroll;
+}
+#AMSearch .yElem .tree.sub .yElem label,
+#M_MC_UpBogen .oKat .uKat .begriff .tree.bg .yElem .tree.sub .yElem {
+	padding-left: 2rem !important
+}
+#M_MC_UpBogen .oKat .uKat .begriff .tree.bg .yElem .tree.sub .yElem label {
+	color: var(--color-blue) !important
+}
+#AMSearch .yElem .tree.sub .yElem label:before,
+#M_MC_UpBogen .oKat .uKat .begriff .tree.bg .yElem .tree.sub .yElem label:before {
+	content: "⮕ "
+}

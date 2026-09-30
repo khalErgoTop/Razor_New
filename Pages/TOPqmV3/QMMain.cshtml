@@ -1,0 +1,16 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.QM.QMMainModel
+
+<h1>Qualitätsmanagement</h1>
+
+<nav aria-label="Qualitätsmanagement">
+    <ul class="mainlink-list">
+        @foreach (var link in Model.Links)
+        {
+            <li>
+                <span aria-hidden="true">&#9654;</span>
+                <a href="@link.NavigateUrl" class="mainlink">@link.Caption</a>
+            </li>
+        }
+    </ul>
+</nav>

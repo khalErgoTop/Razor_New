@@ -1,0 +1,52 @@
+﻿
+.lblPrintComment {
+	font: 90% arial-narrow,arial,sans-serif;
+	background-image:url(Images/Printer.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding-left:20px;
+	/*padding:2px 18px 2px 2px;*/
+	display: inline-block;
+	height: 15px;
+	
+	margin-left:auto;
+	margin-right:5px;
+	cursor: pointer;
+}
+
+.lblPrintComment:hover {
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+#lblOuterPrintComment_ {}
+
+.lblOuterPrintComment {
+	border-top: 1px solid #36c;
+	display: block;
+	margin-left:20px;
+	margin-top:20px;
+}
+
+.lbtXmlDownload {
+	font: 90% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	color:Orange;
+	/*background-image:url(../Images/file_xml.png);*/
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding:2px 2px 2px 2px;
+	display: inline-block;
+	height: 15px;
+	
+	margin-left:auto;
+	margin-right:5px;
+	cursor: pointer;
+}
+
+.lbtXmlDownload:hover {
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}

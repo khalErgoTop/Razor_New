@@ -1,0 +1,79 @@
+@page
+@model TOPqwWeb_Core.Pages.Auth.OptionenModel
+@{
+    ViewData["Title"] = "Optionen";
+}
+
+<nav aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb"><li><a asp-page="/Index">Start</a></li><li><a asp-page="/Auth/QWWebAdmin">Administration</a></li><li aria-current="page">Optionen</li></ol>
+</nav>
+
+<section class="pageContent">
+    <h1>Optionen</h1>
+    <form method="get">
+        <label for="category">Kategorie</label>
+        <select id="category" name="Category">
+            <option value="">Alle</option>
+            @foreach (var category in Model.Categories)
+            {
+                <option value="@category.Category" selected="@(Model.Category == category.Category)">@category.Category</option>
+            }
+        </select>
+        <label for="search">Suche</label>
+        <input id="search" name="Search" value="@Model.Search" />
+        <button type="submit">Suchen</button>
+    </form>
+    <table>
+        <thead><tr><th>Einstellung</th><th>Wert</th><th>Beschreibung</th><th>Ändern</th></tr></thead>
+        <tbody>
+        @foreach (var option in Model.Options.Data)
+        {
+            var value = option.EinstellungDatentyp == "WertBOOL" ? option.WertBOOL.ToString() : option.WertTXT ?? option.WertMEMO ?? option.WertLONG ?? option.WertSNG ?? string.Empty;
+            <tr>
+                <td>@option.Bezeichnung</td><td>@value</td><td>@option.Beschreibung</td>
+                <td>
+                    <form method="post" action="@Url.Page("/Auth/Optionen", "Save", new { Category = Model.Category, Search = Model.Search, PageIndex = Model.PageIndex, PageSize = Model.PageSize, SortField = Model.SortField, SortDescending = Model.SortDescending })">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="setting" value="@option.Einstellung" />
+                        <input type="hidden" name="dataType" value="@(option.EinstellungDatentyp ?? "WertTXT")" />
+                        @if (option.EinstellungDatentyp == "WertBOOL")
+                        {
+                            <input type="hidden" name="changedValue" value="false" />
+                            <input type="checkbox" name="changedValue" value="true" checked="@option.WertBOOL" />
+                        }
+                        else
+                        {
+                            <input name="changedValue" value="@value" />
+                        }
+                        <button type="submit">Speichern</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+    <p>@Model.Options.ItemsCount Optionen gefunden.</p>
+
+    <h2>Sonderoptionen</h2>
+    <form method="post" asp-page-handler="SaveSpecial">
+        <div>
+            <label for="mapsSearchService">Maps-Suchdienst</label>
+            <select id="mapsSearchService" name="mapsSearchService">
+                <option value="bing" selected="@(Model.MapsSearchService == "bing")">bing</option>
+                <option value="google" selected="@(Model.MapsSearchService == "google")">google</option>
+                <option value="berlin.de" selected="@(Model.MapsSearchService == "berlin.de")">berlin.de</option>
+            </select>
+        </div>
+        <fieldset>
+            <legend>Anzeigbare Stammdaten</legend>
+            @foreach (var option in Model.DisplayOptions)
+            {
+                <label>
+                    <input type="checkbox" name="displayOptionSettings" value="@option.Einstellung" checked="@option.WertBOOL" disabled="@(!option.Aenderbar)" />
+                    @option.Bezeichnung
+                </label>
+            }
+        </fieldset>
+        <button type="submit">Sonderoptionen speichern</button>
+    </form>
+</section>

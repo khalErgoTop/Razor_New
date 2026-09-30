@@ -1,0 +1,2709 @@
+﻿@font-face {
+    font-family: 'Roboto';
+    src:  local('Roboto'), url('fonts/Roboto-Regular-webfont.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@media {
+	:root {
+		--filter-blue: invert(11%) sepia(24%) saturate(6126%) hue-rotate(187deg) brightness(100%) contrast(101%);
+		--filter-red: invert(14%) sepia(59%) saturate(5332%) hue-rotate(20deg) brightness(99%) contrast(102%);
+		--filter-active: invert(87%) sepia(12%) saturate(1621%) hue-rotate(26deg) brightness(90%) contrast(87%);
+		--filter-white: invert(99%) sepia(0%) saturate(7496%) hue-rotate(86deg) brightness(105%) contrast(98%);
+		--color-red: #e10019;
+		--color-lightgrey: #888;
+		--color-grey: #404040;
+		--color-darkgrey: #252525;
+		--color-green: #49dfad;
+		--color-lightblue: #bdd0f5;
+		--color-blue: #e8c425;
+		--color-darkblue: #002b4b;
+		--color-greyblue: #3b4d58;
+		--color-font: #434345;
+		--color-black: #000000;
+		--color-white: #FFFFFF;
+		--border-radius:0.25rem;
+		--color-lighter-grey: #DDDDDD;
+		--font: 'Roboto', Arial, sans-serif;
+	}
+}
+input:invalid {
+	color: red;
+}
+
+.wrapper{
+}
+#M_PnlMain{
+  top: 2rem;
+  position: relative;
+  background: white;
+  width: 1140px;
+  margin: 0 auto;
+}
+input#M_MC_rblAuswahl_1,
+input#M_MC_rblAuswahl_0{
+	height: 20px;
+	width: 20px;
+	padding: 0;
+	margin: 0
+}
+label[for="M_MC_rblAuswahl_1"],
+label[for="M_MC_rblAuswahl_0"]{
+	  height: 24px;
+  display: inline-block;
+  position: relative;
+  top: -1px;
+  left: 0.5rem;
+  margin-right:1rem
+}
+#M_MC_txtOldPassword{
+	line-height:1.5rem
+}
+label[for="M_MC_chkTerms"]{
+	line-height: 2rem;
+	margin-right: 0.5rem;
+	margin-left: 0.5rem
+}
+#Die{
+	float: left;
+	line-height: 2rem
+}
+#DivTermsOpener{
+	padding: 0 0.25rem !important;
+	float: left
+}
+#akzeptiert{
+	float: left
+}
+label[for="M_MC_ChkWithInstitution"]{
+	font-size:0
+}
+label[for="M_MC_ChkWithInstitution"]:after{
+	font-size:1rem;
+	content:"Leistungserbringer"
+}
+input[name="M$MC$ChkWithInstitution"]{
+	font-size:0
+}
+#DivSlider.control-group span[title="nur nach Leistungsträger suchen"]{
+	width: 155px;
+	position: absolute
+}
+label[for="M_MC_ChkWithInstitution"]{
+	position: absolute;
+	top: 0;
+	left: 2rem
+}
+#M_MC_DivNewTraeger{
+	left:0;
+}
+#M_MC_DdlLeistungstyp{
+	position: absolute;
+	right: 0;
+	width: calc(100% - 11.4rem)
+}
+#M_MC_NewFacility .valuepair{
+	margin-top:0.5rem;
+	height:2rem;
+	position: relative
+}
+#M_MC_DivNewTraeger .lblLeftLabel{
+	line-height:2rem
+}
+#M_MC_SLF_UlSecLocs li[selected="selected"] .contactData div.telephone a,
+#M_MC_SLF_UlSecLocs li[selected="selected"] .contactData div.telefax a,
+#M_MC_SLF_UlSecLocs li[selected="selected"] .contactData div.webAddress a,
+#M_MC_FFView_SecLocs_UlSecLocs li[selected="selected"] .contactData .webAddress a,
+#M_MC_FFView_SecLocs_UlSecLocs li[selected="selected"] .contactData .telephone a,
+#M_MC_FFView_SecLocs_UlSecLocs li[selected="selected"] .contactData .telefax a{
+	color:white !important
+}
+#M_MC_DdlNewTraeger,
+#M_MC_DivNewTraeger,
+#M_MC_DdlKreise {
+	width: calc(100% - 11.4rem) !important
+}
+#M_MC_LblKreis{
+	margin-top:0 !important
+}
+#M_MC_LblNewTelefon{
+	margin-top:0;
+	line-height: 2rem
+}
+#M_MC_NewFacility.ui-dialog-content.ui-widget-content div.valuepair div.pnlDropDown.value{
+	width: 50%;
+	float: right
+}
+#M_MC_LblNewEmail,
+#M_MC_LblNewLeistungstyp,
+#M_MC_LblNewEmail,
+#M_MC_LblNewTelefax,
+#M_MC_LblKreis,
+#M_MC_LblNewPlatzzahl,
+#M_MC_LblNewPLZ{
+	line-height:2rem
+}
+#M_MC_DivNewTraeger{width:100% !important}
+#M_MC_LblNewOrt,
+#M_MC_TblNewStrasse,
+#M_MC_LblNewname{
+	line-height:1.5rem
+}
+#M_MC_DdlNewTraeger,
+#M_MC_DdlKreise,
+#M_MC_TxtNewPlatzzahl,
+#M_MC_TxtNewPLZ{
+	float: right;
+	width: calc(100% - 12rem)
+}
+#M_MC_TxtNewEmail,
+#M_MC_TxtNewTelefon,
+#M_MC_TxtNewTelefax,
+#M_MC_TxtNewOrt,
+#M_MC_TxtNewName,
+#M_MC_TxtNewStrasse{
+	float: right;
+	width: calc(100% - 12rem)
+}
+#M_MC_FFView_OpenChgVisibility{
+	margin-top:0.5rem
+}
+input#M_MC_BtnExpander{
+	background-color:unset !important;
+	width:30px !important
+}
+#M_RepCrMenu_ctl00_BtnContrastChange{
+	display:none !important
+}
+
+/* CHECKBOX */
+input[type="checkbox"][disabled=""]:checked {
+	-webkit-appearance: none;
+	background-image: url("../../Images/Icons/Box_check_grey.svg") !important
+}
+input[type="checkbox"][disabled=""] {
+	-webkit-appearance: none;
+	background-image: url("../../Images/Icons/Box_check_grey_unchecked.svg") !important
+}
+input[type="checkbox"] {
+	-webkit-appearance: none;
+	background-image: url("../../Images/Icons/Box_check.svg");
+	width: 24px !important;
+	height: 24px !important
+}
+input[type="checkbox"]:checked {
+	background-image: url("../../Images/Icons/Box_check_checked.svg");
+	font-size:0
+}
+/* CHECKBOX END */
+
+/* INPUTS */
+
+#M_MC_pnlAllFacilities.pnlAllFacilities #CommandButtons .divDropDown{
+	top:0.5rem;
+	height: 5rem
+}
+select,
+textarea:focus,
+select.dropDownlist:focus,
+select.DropDownlist:focus,
+input[type="text"]:focus;
+input[type="number"]:focus,
+input[type="search"]:focus {
+	outline:none;
+	border:1px solid rgba(90, 137, 173, 0.882353);
+	box-shadow: 0 0 2px rgba(90, 137, 173, 0.882353)
+}
+#M_MC_Documents_DdlDocType:after{
+	content: "Test";
+	margin-left: 50px;
+	display: inline-block;
+	background: aquamarine;
+	height: 250px;
+	width: 250px;
+	position: static;
+	top: 0
+}
+button[title="Close"]{
+	display:none
+}
+select,
+textarea,
+select.dropDownlist,
+select.DropDownlist,
+input[type="password"],
+input[type="text"],
+input[type="number"],
+input[type="search"]{
+	font-size:1rem;
+	-webkit-appearance: none;
+	border: 1px solid var(--color-blue);
+	background: var(--color-white);
+	padding:0.25rem
+}
+/* INPUTS END */
+
+/* BUTTONS */
+.filterWithReset .button{
+	width: calc(100% - 1.1rem);
+	text-align: center;
+	border-radius: 0 0 var(--border-radius) var(--border-radius) !important
+}
+.ui-dialog-titlebar-close {
+	background:unset !important;
+	padding:0 !important
+}
+.ui-dialog-titlebar-close span.ui-button-icon.ui-icon.ui-icon-closethick{
+	background:unset;
+	width:24px !important;
+	height:24px !important;
+	margin-top: -12px;
+	margin-left: -12px;
+	background-image: url("Images/Icons/cancel.svg");
+	filter: var(--filter-blue) !important
+}
+input[type="submit"],
+input[type="button"]{
+	cursor:pointer
+}
+.clearInput:after{
+	content: "löschen"
+}
+#DivSearchButton {
+	display:block;
+	float:right
+}
+#M_MC_BtnRefreshList{
+	float:right
+}
+#M_MC_btnAddGroup{
+	background-image: url("Images/add.svg");
+	width: 105px !important;
+	background-size: 84px;
+	background-position: 10px;
+	background-repeat: no-repeat;
+	min-height: 32px !important;
+	margin-top: 0.5rem
+}
+#M_MC_BtnRefreshList{
+	background-image: url("Images/refresh.svg");
+	width: 97px !important;
+	background-size: 84px;
+	background-position: 10px;
+	background-repeat: no-repeat;
+	min-height: 32px !important;
+	font-size:0
+}
+.userList .controlLabel{
+	float:unset !important
+}
+#M_MC_btnRemoveCanel{
+	background-image: url("Images/cancel.svg");
+	width: 105px !important;
+	background-size: 84px;
+	background-position: 10px;
+	background-repeat: no-repeat;
+	min-height: 32px !important;
+	margin-top: 0.5rem;
+	font-size:0
+}
+#M_MC_btnRemoveGroup{
+	background-image: url("Images/remove.svg");
+	width: 105px !important;
+	background-size: 84px;
+	background-position: 10px;
+	background-repeat: no-repeat;
+	min-height: 32px !important;
+	margin-top: 0.5rem
+}
+#HrefAddGroup:after{
+	font-size:1rem;
+	content:"hinzufügen"
+}
+
+#HrefRemoveGroup:after{
+	font-size:1rem;
+	content:"entfernen"
+}
+#M_MC_btnRemoveGroup{
+	font-size:0
+}
+#M_MC_btnRemoveGroup:after{
+	font-size:100%;
+	content="Test: "
+}
+#M_MC_btnAddGroup,
+#HrefRemoveGroup,
+#HrefAddGroup{
+	font-size:0rem !important
+}
+#M_MC_Documents_DdlDocType{
+	margin:0.5rem 0;
+	width:100%;
+}
+,ButtonSave,
+button:hover,
+#M_MC_LstOkats.okats li:hover,
+.btn:hover,
+.button:hover,
+.Button:hover{
+	text-decoration:underline !important
+}
+.ctlOpener{
+	padding:0.5rem 0.5rem !important;
+	cursor:pointer  !important;
+	min-height: 20px !important
+}
+#HrefAddGroup,
+#HrefRemoveGroup,
+input[type="submit"],
+.ButtonSave,
+button,
+#M_MC_LstOkats.okats li,
+.btn,
+.button,
+.Button{
+	color: #000 !important;
+	background-color: var(--color-blue) !important;
+	width: auto;
+	border-radius: var(--border-radius) !important;
+	border:none !important;
+	padding:0.5rem 0.5rem !important;
+	cursor:pointer  !important;
+	display: inline-block !important;
+	font-size: 100%;
+	height: unset !important;
+	margin-right:0.5rem
+}
+#M_MC_Standorte #GridFacs.jsgrid .search.opener{
+	display:none
+}
+input[name="M$MC$BtnExpander"]{
+	padding:0
+}
+input[value="Löschen"]{
+	background-color: var(--color-red) !important
+}
+/* BUTTONS END */
+
+select{
+	-webkit-appearance: none
+}
+#M_MC_uppnlTextBox #divPageTitleSetting span{
+	line-height:2rem;
+}
+#DdlNewUserType{
+	border:1px solid #444;
+	background:white;
+	width:100%
+}
+#spanGroupsSelectedControls{
+	margin: 0.5rem 0;
+	display: block
+}
+#M_MC_ddlEinrichtungstypen,
+#M_MC_ddlKreise{
+		-webkit-appearance: none;
+		font-size:100%
+}
+#M_MC_lblInstitutionName.lblInstitutionName h3{
+	margin-top:0.5rem;
+	cursor:pointer
+}
+#DivSlider span[title="nur nach Leistungsangeboten suchen"]{
+	margin-left:12rem
+}
+span#M_MC_LblErweiterteSuche{
+	position: relative;
+	top: 0;
+	display: -webkit-inline-flex
+}
+label[for="M_MC_chkLeittextVisible"]{
+	margin-left:0.5rem
+}
+label[for="M_MC_ChkWithFacility"]{
+	position: absolute;
+	top: 0;
+	margin-left: 2.5rem !important
+}
+label[for="M_MC_ChkWithFacility"],
+label[for="M_MC_ChkWithInstitution"]{
+	display: table-caption;
+	margin-left:0.5rem
+}
+#DivSlider span{
+	float:left;
+	line-height:2rem;
+	position:relative
+}
+select {
+	border-top-left-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+	border-bottom-left-radius: 0 !important
+}
+#M_MC_DdlEntfernung{
+	min-width:30px;
+	padding-left:0.25rem;
+	font-size:100%
+}
+#M_MC_BtnUserRights{
+	  float: right
+}
+.controlComplete:empty{
+	display:none
+}
+.controlComplete{
+	min-height:2rem
+}
+.controlComplete .controlLabel {
+	min-height: 2rem;
+	float: left
+}
+.controlComplete .divOuterControl {
+	min-height: 2rem;
+	float: right
+}
+.LeitTextToHide{
+	display:none
+}
+.innerMain {
+margin:0 14px 0 14px
+}
+.innerMain .innerMain {
+margin:0
+}
+#M_cphLeittext_PnlLeittext,
+#M_PnlTop .LeitboxOuter #M_cphLeittext_PnlLeittext.leitbox{
+  background: var(--color-blue);
+  cursor: pointer;
+  padding: 0.3rem 0.5rem;
+  width: calc(100% - 16px);
+  float: left;
+}
+
+#imgLeitTextToHide{
+	padding: 0.15rem 0.5rem;
+	width: 30px;
+	float: left;
+	filter: invert(1)
+}
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent li .stTyp.st{
+	font-weight:bold
+}
+.legende .item span.itemContent {
+	float: left;
+	line-height: 1.6rem
+}
+#M_MC_LblHeading{
+	margin-top:2rem;
+	display:block
+}
+#linkpath li a:after,
+#Linkpath li a:after{
+	content: " ⮕\00a0"
+}
+a {
+	text-decoration:none;
+	color: var(--color-black)
+}
+h1 {
+border-bottom: solid 2px #e8c425;
+font-size: 1.500em;
+padding-bottom: 0.25em;
+margin-bottom: 1em;
+}
+h2 {
+font-size: 1.250em;
+}
+h3 {
+	color: var(--color-black);
+	font-weight: bold;
+	font-size:1.25rem
+}
+h4 {
+	padding-left: 5px;
+	font-weight:normal;
+	text-decoration: underline
+}
+.facilityItem li:hover{
+	background: yellow
+}
+.facilityItem li:nth-child(odd){
+	list-style-type: none;
+	padding:0.3rem 0.5rem;
+	border-bottom: 1px solid #BBB;
+	background: #EEE !important
+}
+.facilityItem li:nth-child(even){
+	list-style-type: none;
+	padding:0.3rem 0.5rem;
+	border-bottom: 1px solid #BBB;
+	background: #E0E0E0 !important
+}
+.subCategory01 {
+	list-style-type: none;
+	background: #EEE;
+	margin:0;
+	padding:0
+}
+.superCategory li  ul li{
+	padding:5px;
+	cursor:pointer
+}
+.superCategory li  ul li div:hover{
+	/*color: var(--color-blue) !important*/
+}
+ul.superCategory li div ul.subCategory01 li{
+	background-color: rgb(241, 241, 241);
+	padding: 0.5rem;
+	border-bottom: 1px solid rgba(102, 102, 102, 0.4);
+}
+.superCategory li div ul li .sM1{
+	background-color: #bdd0f5;
+	padding:0.5rem;
+	cursor:pointer;
+	border-bottom:1px solid #7f92a9;
+	font-weight:bold
+}
+.superCategory{
+	list-style-type:none !important;
+	margin:0;padding:0
+}
+.superCategory li div{
+	list-style-type: none;
+	cursor:pointer
+}
+.superCategory li div:hover h2{
+	text-decoration:underline
+}
+.fci .divAuflistungEinrichtung .wtStt ul.sub.Fci li{
+	background: unset !important
+}
+.divAuflistungEinrichtung .sub .divAuflistungEinrichtung span.AuflistungEinrichtungname.nst{
+	font-weight:unset
+}
+.AuflistungEinrichtungname{
+	font-weight:bold
+}
+.divAuflistungEinrichtung .wtStt a.textile .wtStt.label{
+	margin-top:0.5rem;
+	font-weight: bold
+}
+.divAuflistungEinrichtung .divAuflistungEinrichtungAdresse span.addr{
+	padding-left: 0rem !important
+}
+.divAuflistungEinrichtung .divAuflistungEinrichtungAdresse div span.addr{
+	padding-left: 2rem
+}
+.AuflistungEinrichtungname.nst,
+.AuflistungEinrichtungname.hst{
+	display:unset
+}
+ul.superCategory li div ul.subCategory01 li div ul.facilityItem{
+	margin-top: 0.5rem
+}
+.divAuflistungEinrichtungAdresse .addr {
+	font-style: italic;
+	padding-left: 2rem
+}
+.ui-widget-overlay.ui-front{
+	background: var(--color-grey);
+	opacity: 0.5
+}
+.ui-widget input,
+.ui-widget{
+	font-family: unset !important
+}
+html body div.ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-dialog-buttons.ui-draggable.ui-resizable div.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix.ui-draggable-handle button.ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-close[type="button"]{
+	top: 1rem;
+	background: var(--color-blue);
+	border: none;
+	color: white;
+	position:absolute
+}
+html body div.ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-dialog-buttons.ui-draggable.ui-resizable div.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix.ui-draggable-handle{
+	padding:0
+}
+.ui-widget.ui-widget-content {
+	padding: unset;
+	margin: unset;
+}
+#M_MC_FFView_SecLocs_SecContactsDataGrid table tr .name{
+	width:300px !important;
+}
+#M_MC_FFView_SecLocs_SecContactsDataGrid table tr .email{
+	width:300px !important;
+}
+#M_MC_FFView_SecLocs_SecContactsDataGrid table tr .inet{
+	width:275px !important;
+}
+#M_MC_FFView_SecLocs_SecContactsDataGrid table tr .mobil{
+	width:175px !important;
+}
+#M_MC_FFView_SecLocs_SecContactsDataGrid table tr .fon{
+	width:150px !important;
+}
+#M_MC_FFView_SecLocs_SecContactsDataGrid table tr .fax{
+	width:150px !important;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table input[type="checkbox"],
+#M_MC_FFView_SecLocs_SecContactsDataGrid table input[type="checkbox"]{
+	width: 1.5rem;
+	height: 1.5rem
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table input,
+#M_MC_FFView_SecLocs_SecContactsDataGrid table input{
+	width:100%
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr .addrVis{
+	width:85px !important
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr .capa{
+	width:85px !important
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr .poBox{
+	width:50px !important
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr .numAdd{
+	width:50px !important
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr .name{
+	width:230px !important
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr th,
+#M_MC_FFView_SecLocs_SecContactsData #M_MC_FFView_SecLocs_SecContactsDataGrid table tr th{
+	background: #EEE;
+	padding:0.5rem !important
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr:nth-child(even),
+#M_MC_FFView_SecLocs_SecContactsData #M_MC_FFView_SecLocs_SecContactsDataGrid table tr:nth-child(even){
+	background: #F5F5F5
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr:nth-child(odd),
+#M_MC_FFView_SecLocs_SecContactsData #M_MC_FFView_SecLocs_SecContactsDataGrid table tr:nth-child(odd){
+	background: #FBFBFB
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table td,
+#M_MC_FFView_SecLocs_SecContactsData #M_MC_FFView_SecLocs_SecContactsDataGrid table td{
+	padding: 0.5rem !important;
+	height: fit-content;
+	line-height:2rem
+}
+table#M_MC_TblSearchResults tr:first-child{
+	font-weight:bold
+}
+#M_MC_UpSearchResults{
+	margin-top: 5rem
+}
+.hst,
+.nst{
+	display:none
+}
+#DivFacilityTypeSub.valuepair span.labelIdentifier.label:after{
+	content:": "
+}
+
+#DivtblSearchResults table#M_MC_TblSearchResults tr td:first-child{
+	width:35px
+}
+#M_Header_content {
+	display: inline-block;
+	right: 20px;
+	position: absolute;
+	top: 14px
+}
+#pnlPersonControls {
+	top: 170px !important;
+	margin: 0 1rem !important;
+	height: 45px;
+	width:32px
+}
+#M_PnlGen{
+	height: 12.9rem
+}
+#M_MC_lstPersonsAvailable, 
+#M_MC_lstPersonsSelected{
+	width:100% !important;
+	margin-top:0.5rem
+}
+#M_MC_pnlPersons{
+	display:flex
+}
+table#M_MC_tblVerguetung,
+table#M_MC_tblVerguetung.tblVerguetung{
+	border:1px solid var(--color-lighter-grey);
+}
+#M_MC_lblUserToChange,
+#lblNews,
+#FDVHeaderLbl,
+.FFRHeaderLbl,
+#ViewCount,
+h3 {
+	font-weight:normal;
+	line-height: 20px;
+	line-height: 1.25em;
+	margin-top: .5em;
+	margin-bottom: .4em;
+	color: var(--color-red)
+}
+#pnlNewControls{
+	margin:0.5rem 0
+}
+#M_MC_btnPersonsAvailableSelectAll:after{
+	content:"Alle auswählen"
+}
+#M_MC_PnlMain .pnlOptionLabel span.lblBegriff{
+	line-height:2rem
+}
+#M_MC_txtCheckEmail,
+#M_MC_PnlMain .pnlOptionValue input{
+	height:24px;
+	line-height:1rem;
+	margin: 0.2rem 0;
+	width: 300px;
+}
+#M_MC_btnTestEmailServer{
+	margin-top:50px
+}
+#M_MC_txtCheckEmail{
+	position:absolute
+}
+#M_MC_PnlMain .pnlOptionValue label{
+	margin-left: 0.5rem;
+	position: absolute;
+	line-height: 2.2rem
+}
+.pnlOuterlstModules.divOuterCheckedListbox{
+	width:100%
+}
+#M_MC_DdlUserTypes{
+	width: calc(100% - 8rem)
+}
+#DdlNewUserType,
+#M_MC_DdlInstitution,
+#M_MC_DdlUserTypes{
+	font-size:100%;
+	padding: 6px;
+	height: 36px;
+	min-height: 2rem
+}
+#DdlNewUserType{
+	float: right
+}
+#M_MC_lcGroupsAvailable {
+  width: 100%
+}
+#DivlstUsers,
+#M_MC_LstUsers,
+#M_MC_DivFacilities #DivlstFacilities,
+#M_MC_PnlOptions #DivModule{
+	width: 100%
+}
+#M_MC_DdlInstitution,
+#M_MC_divInstitution .pnlDropDown,
+#UserInformation .pnlTextBox{
+	width:100%
+}
+#DivNewUserEntries #TxtNewNachname,
+#DivNewUserEntries #TxtNewEmail,
+#DivNewUserEntries #DdlNewUserType,
+#DivNewUserEntries #TxtNewBenutzername,
+#DivNewUserEntries #TxtNewVorname,
+#UserInformation #M_MC_LstUsers,
+#UserInformation #M_MC_TxtBenutzername,
+#UserInformation #M_MC_DdlUserTypes,
+#M_MC_TxtConstraint,
+#UserInformation #M_MC_TxtNachname,
+#UserInformation #M_MC_TxtEmail,
+#UserInformation #M_MC_TxtNachname,
+#UserInformation #M_MC_TxtVorname{
+	padding: 6px;
+	height:22px;
+	width: calc(100% - 1rem)
+}
+#M_MC_TxtConstraint{
+		width: calc(100% - 1rem);
+	margin-bottom:0.5rem;
+	font-size:100%
+}
+.controlComplete{
+	margin-bottom:0.5rem
+}
+.controlComplete span{
+	line-height:2.2rem
+}
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager span.jsgrid-pager-nav-button,
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager span.jsgrid-pager-page{
+	width:10%
+}
+#M_MC_Attachments_FUAddFile{
+	margin: 0.5rem 0
+}
+#M_MC_LblDeleteUserInfoText{
+	margin-bottom: 1rem;
+	display: block
+}
+#M_MC_Standorte .pnlFac{
+	margin-left:0.5rem !important
+}
+#M_MC_Standorte .pnlFac.hss{
+	font-weight:bold;
+	margin-left:0rem !important
+}
+#M_MC_txtPW1,
+#M_MC_TxtPW2{
+	line-height:1.5rem
+}
+#M_MC_LstFacilities label,
+#M_MC_LstModules label{
+	margin-left: 0.4rem;
+	position: absolute;
+	line-height: 2rem
+}
+#M_MC_LstFacilities input[type="checkbox"],
+#M_MC_LstModules input[type="checkbox"]{
+	margin-right:1rem
+}
+#M_MC_PnlMain .pnlOptionLabel span.lblBegriff{
+	margin-right:3rem
+}
+.pnlInnerHeadLine .lblUnterbegriff h3,
+#FDVHeader {
+	margin-top: 1em;
+	color: var(--color-red)
+}
+#M_MC_LstMainLinks{
+	list-style: none;
+	padding-left: 0;
+}
+#M_MC_tblMain{
+	background: rgb(241, 241, 241)	
+}
+#M_MC_tblMain tr{
+	display:block	
+}
+.ffrDate span.label,
+.ffrPlaces span.label{
+	width: 170px !important;
+	display: inline-block
+}
+#FFRContent .ffrData .ffrSR span.label,
+#FFRContent .ffrData .ffrSexM span.label,
+#FFRContent .ffrData .ffrSexF span.label {
+	margin-left:170px
+}
+#M_LblAppname,
+.ffrAvail{
+display: block;
+padding: 0.5em 1em;
+background-color: #404040;
+text-align: center;
+border-top-left-radius: 12px;
+border-top-right-radius: 12px;
+top: 6rem;
+}
+#M_LblAppname:after{
+	content:"Eingliederungsmanagement Sachsen-Anhalt";
+	color: white;
+	font-weight: bold;
+	line-height: 1.7rem;
+}
+label[for="M_MC_chkLeittextVisible"]{
+	position:absolute
+}
+#CommandButtons div{
+	width:100%;
+}
+#divBackForthButtons{
+	display: block;
+}
+#M_MC_btnBack{
+	left:0rem
+}
+#M_MC_lblPages{
+	left:1.5rem
+}
+#M_MC_btnNext{
+	left:18rem
+}
+.M_MC_trvFacilities_2,
+#Einrichtungen #M_MC_pnlAllFacilities #M_MC_trvFacilities.treefix table tbody tr td a:hover{
+	background:unset !important;
+	cursor:pointer;
+	text-decoration: underline
+}
+#CommandButtons div .divDropDown {
+	width:calc(50% - 1rem)
+}
+#M_MC_ddlKreise,
+#M_MC_ddlEinrichtungstypen,
+#M_MC_ddlBogenStatus{
+	width:100%;
+	max-width: unset !important
+}
+.legende .item{
+	line-height: 2rem
+}
+#ExtendedSearch{
+	margin-top:1rem
+}
+#M_lblUserLogin{
+	margin-right: 0;
+	position: absolute;
+	left: 2.5rem;
+	font-style: italic
+}
+#M_MC_NewFacility .PnlDropDown{
+	width: 100%;
+	top: 0;
+	position: absolute
+}
+#M_MC_NewFacility .controls{
+	margin-top:1rem
+}
+#M_MC_DivNewTraeger span,
+#M_MC_LblNewLeistungstyp,
+#M_MC_LblKreis{
+	margin-bottom:0.2rem
+}
+#M_MC_txtInfoText{
+	width:500px !important
+}
+#M_MC_PnlData .pwInput{
+	width:150px
+}
+#M_MC_ddlKreise,
+#M_MC_ddlEinrichtungstypen,
+#M_MC_ddlBogenStatus{
+	background:white;
+	max-width: unset;
+	padding: 0.2rem;
+	height: 36px;
+	border: 1px solid #000;
+	cursor:pointer
+}
+#ElementToHide{
+	padding-left:0 !important;
+	margin-left:0 !important
+}
+#M_MC_LblErweiterteSuche,
+#M_MC_LblTypSuche,
+#M_MC_LblUmkreissuche{
+	font-weight:bold;
+	margin-bottom: 10px;
+	display: block
+}
+#M_MC_DivLstMerkm {
+	display:none
+}
+#ElementToHide{
+	margin-top:1rem !important
+}
+#DivSlider{
+	padding:0.5rem 0 !important;
+	display:inline-block !important
+}
+#DivInnerSearch #DivTextSearchBottom #M_MC_PnlTextboxSuche.pnlTextBox.control-group.searchform input.clearInput{
+	display:none
+}
+.verguetungLegende{
+	width: 1000px;
+	margin-top: 0.5rem
+}
+.pnlVerguetungTabelle table#M_MC_tblVerguetung.tblVerguetung{
+	margin-top:0.5rem !important
+}
+.templates {
+	display:none
+}
+.UsersLoggedIn {
+	display: block
+}
+#M_PnlInfoNews ul{
+	display:none
+}
+#M_PnlMain .innerMain table{
+}
+#M_MC_tblMain tr img{
+	display:none
+}
+#M_MC_tblMain tr td:first-child{
+	display:none
+}
+#M_MC_EinrichtungenListe .pnlFac{
+	border-bottom:1px solid  var(--color-lighter-grey);
+	display:block
+}
+.ulUsers{
+	padding:0;
+	margin:0.5rem 0;
+	list-style-type: none
+}
+#M_PnlFooterMaster{
+	display:none;
+	text-align:center;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	background: #fff;
+	padding: 1rem;
+	border-top: 1px solid  var(--color-lighter-grey)
+}
+.AuflistungEinrichtungnanme{
+	font-weight:bold
+}
+.innerMain .facilityItem{
+	padding: 0
+}
+#M_MC_PnlData.box table tbody tr td{
+	padding:5px 0
+}
+input[type="search"] {
+	-webkit-appearance: none
+}
+#fancybox-content{
+	padding:1rem 0.5rem 0.5rem 0.5rem !important
+}
+#fancybox-title{
+	margin: 0.5rem 0 0 0 !important;
+	width:100% !important;
+	padding:0 !important
+}
+#fancybox-title-inside{
+	background-color: var(--color-lighter-grey);
+	padding:5px
+}
+table {
+	border-spacing: 0px !important
+}
+html {
+	width:100%;
+	overflow-x:	hidden;
+	height:100%
+}
+.divAuflistungEinrichtung .wtSttToggle::after {
+  content: "zu";
+  font-size: 1.5rem;
+  opacity: 0;
+  color: var(--color-blue);
+  background-position-y: 10px;
+  text-align: right;
+  width: 100%;
+  display: block;
+}
+.divAuflistungEinrichtung .toggled.wtSttToggle {
+  background-image: url("Images/Icons/arrow_left.svg");
+}
+.divAuflistungEinrichtung .wtSttToggle {
+	background-image:url("Images/Icons/arrow_down.svg");
+  background-position: left;
+    background-position-x: left;
+  background-position-x: right;
+  background-repeat: no-repeat;
+  background-size: 24px;
+}
+.divAuflistungEinrichtung .wtSttToggle {
+  float: right;
+  top: -1.5rem;
+  position: relative;
+  font-size: 0rem;
+  rotate: 0deg;
+  margin-right: 0.25rem;
+  width: 100%;
+}
+body {
+	margin:0;
+	font-family:'Roboto', Arial, sans-serif;
+	font-size:100%;
+	color: #222;
+	background-color: #8c898c;
+	background-image: linear-gradient(to bottom, #444, rgba(0, 0, 0, 0) 100%);
+    background-attachment: fixed;
+    background-size: cover;
+    min-height: 100vh;
+}
+.InstituionIdentifier,
+.faciityIdentifier {
+	background-size: 32px;
+	height: 50px;
+	display: block;
+	background-position-y: center !important
+}
+.facilityState7{
+	background-image:url("Images/Haus_Abgelehnt.png");
+	background-repeat:no-repeat
+}
+.facilityState5.hst{
+	background-image:url("Images/Icons/Icon_zum_Hauptstandort_grey.svg");
+	background-repeat:no-repeat
+}
+.facilityState5{
+	background-image:url("Images/Haus.png");
+	background-repeat:no-repeat
+}
+.facilityState11{
+	background-image:url("Images/Haus_Entfernt.png");
+	background-repeat:no-repeat
+}
+.facilityState9{
+	background-image:url("Images/Haus_Geschlossen.png");
+	background-repeat:no-repeat
+}
+.facilityState2{
+	background-image:url("Images/Haus_in-Bearbeitung.png");
+	background-repeat:no-repeat
+}
+.facilityState0{
+	background-image:url("Images/Haus_Neu.png");
+	background-repeat:no-repeat
+}
+.facilityState4{
+	background-image:url("Images/Haus_Validierung.png");
+	background-repeat:no-repeat
+}
+.facilityState17{
+	background-image:url("Images/Haus.png");
+	background-repeat:no-repeat
+}
+#M_pnlMain {
+	 min-width:320px
+}
+.shadowRight {
+	background: url("Images/bg_shadow_right.png") repeat-y scroll right top transparent;
+	position:relative
+}
+.shadowBottom {
+	background: url("Images/bg_shadow_bottom.png") repeat-x scroll left bottom transparent;
+	position:inherit
+}
+.shadowBottomRight {
+	background: url("Images/bg_shadow_bottom_right.gif") no-repeat scroll right bottom transparent;
+	position:inherit
+}
+.caplabel {
+	color: black
+}
+.caplink {
+	color: White
+}
+.caplink:hover {
+	text-decoration: underline
+}
+#M_MC_lstMainLinks {
+	list-style-type: none
+}
+#Einrichtungsdaten #M_MC_TblVerguetung{
+	width:550px !important;
+	border:1px solid var(--color-lighter-grey)
+}
+.innerMain table#M_MC_tblMain tr td{
+	padding:0;
+	margin:0;
+	border-bottom: solid 1px #6666;
+}
+#M_MC_LstMainLinks li a.mainlink:hover,
+.innerMain table#M_MC_tblMain tr td a:hover{
+	background:var(--color-blue);
+	text-decoration:unset
+}
+#M_MC_LstMainLinks{
+	width:100%;
+	background-color: rgb(241, 241, 241);
+	margin: 0;	
+}
+
+.innerMain ul#M_MC_LstMainLinks li a.mainlink{
+	display: inline-block;
+	min-width: 240px;
+	text-align: left;
+	padding: 1em 2em 1em 0.5em;
+	overflow-wrap: break-word;
+	color: #333;
+	min-width: 260px;
+	border-bottom: 1px solid rgba(102, 102, 102, 0.4);
+}
+.innerMain table#M_MC_tblMain tr:last-child td:last-child,
+.innerMain ul#M_MC_LstMainLinks li:last-child a.mainlink{
+	border-bottom: none
+}
+/*#M_MC_LblUserToChange, #M_MC_lblUserToChange, #M_MC_pnlStammDaten .topic, .mainlinkSearch{
+	margin: 0;
+	margin-top: 0px;
+	margin-top: 1.5rem;
+	text-align: left;
+	font-size: 1.375rem;
+	text-transform: none;
+	color: var(--color-font);
+	font-family: var(--font-bold)
+}*/
+/*.mainlinkSearch {
+	border-bottom: 1px solid #ccc;
+	font-weight: bold
+}*/
+.mainlink {
+	display:inline-block;
+	min-width:240px;
+	background-color: rgb(241, 241, 241);
+	text-align: left;
+	padding: 1em 2em 1em 0.5em;
+	overflow-wrap: break-word;
+	color:  #333
+}
+.mainlink:hover {
+	text-decoration:underline
+}
+#M_MC_PnlInst_InstName{
+	line-height:2.25rem !important
+}
+#Einrichtungsdaten #M_MC_FacilityData .facData .secLocs.outer .secLoc.label{
+	margin-top:1rem;
+	font-weight: bold
+}
+#M_MC_LblUserToChange,
+#M_MC_lblUserToChange{
+	color: var(--color-red);
+	margin-top:3rem;
+	position: relative;
+	line-height: 4rem
+}
+#M_MC_cmdCancel,
+#M_MC_cmdSave{
+	margin-top:1rem
+}
+#M_MC_pnlData.box table tbody tr{
+	line-height:2rem
+}
+.box {
+	height: 30px;
+	width: auto
+}
+.tvContainer {
+	margin: 3px;
+	margin-top: 10px;
+	padding: 3px;
+	width: auto;
+	border-style: dotted;
+	border-width: thin
+}
+#M_MC_PnlStammDaten table.jsgrid-table{
+	width:250px
+}
+.legende {
+	padding-right: 2rem;
+	border-collapse: collapse;
+	color: black;
+	display: inline-grid;
+	width:90%
+}
+.legende p{
+	margin: 0 0 0.5rem 0
+}
+.legende img {
+	height:24px;
+	margin-right: 0.25em
+}
+.item {
+	display: inline-block;
+	position: relative;
+	display: inline-block;
+	padding: 0px 0 1px 12px
+}
+.itemTop img {
+	vertical-align:top;
+	float: left
+}
+.itemTop span {
+	display:block
+}
+.itemsAdditional {
+	display:inline-block
+}
+.boxEinrichtung {
+	padding: 3px;
+	margin-top: 3px;
+	margin-left: 3px;
+	margin-right: 3px;
+	margin-bottom: 3px
+}
+.cmdpanel {
+	padding: 3px;
+	padding-left: 6px
+}
+.hint {
+	float: left;
+	background-color: #FDF48B;
+	padding: 0.5em;
+	margin-top: 5px;
+	margin-left: 5px;
+	width: 175px
+}
+.chkTerms {
+	text-align: right;
+	margin-right: 5px
+}
+.chkTerms a {
+	text-decoration: underline
+}
+#Lstmenu {
+	margin: 0;
+	margin-left: 5px;
+	padding: 0.5em;
+	background: #B0B0B0;
+	float: left;
+	width: 170px
+}
+#Lstmenu li {
+	list-style: none;
+	margin: 0;
+	padding: 0
+}
+#Lstmenu li#active {
+	padding: 0.5em;
+	text-decoration: underline;
+	font-weight: bold;
+	color: #D67600
+}
+#TblWerte span {
+	padding-left: 15px;
+	display: block
+}
+.labelLevel2 {
+	margin-left: -10px
+}
+.labelLevel4 {
+	margin-left: 35px;
+	display: block
+}
+.labelLevel5 {
+	margin-left: 45px;
+	display: block
+}
+#TblWerte h2 {
+	margin-top: 5px
+}
+#TblWerte p {
+	margin-top: -5px;
+	margin-bottom: 2px
+}
+.helpWindow {
+	z-index: 999;
+	position: absolute;
+	display: none;
+	visibility: hidden;
+	width: 300px;
+	background: #FFF099;
+	border-style: solid;
+	border-width: thin;
+	padding: 3px
+}
+.helpCaption {
+	margin: 1px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	font-weight: bold;
+	text-align: center;
+	color: White;
+	background: #000069
+}	
+#Appname {
+background-image: url("Images/Logo.png");
+width: 200px;
+height: 84px;
+background-repeat: no-repeat;
+background-size: 200px;
+position: absolute;
+left: 1.4rem;
+top: 2.4rem;
+}
+.boxKopf table {
+	width:100%
+}
+.boxKopf table tbody{
+	vertical-align:top
+}
+.treefix table tbody tr td a{
+	margin-left:5px
+}
+#appname {
+	display: inline-block
+}
+.lblAppname {
+	color: #003684;
+	display:inline-block;
+	font-weight:bold;
+	position:relative;
+	top:-32px
+}
+#Headerlogo {
+	display:inline-block;
+	margin-left: 35px;
+	height:68px;
+	width:150px
+}
+#Facilities{
+	width: 250px;
+	float: left
+}
+#M_cphLinkPath_libHauptseite,
+#linkPathNavStart,
+#LinkPathNavStart{
+	display:none
+}
+#M_LblUserLogin{
+	margin-left: 2.6rem;
+	font-size: 80%;
+	color: var(--color-lightgrey)
+}
+#Crmenu {
+	font-size: .8rem;
+	display: block;
+	margin: 0 0 8px 0;
+	text-align: left
+}
+#Page form#aspnetForm #M_pnlMain #WrapperHead #M_PnlTop #M_PnlLinkPath.boxNavigation ul#Linkpath li{
+	float:left;
+	margin-right:0.5rem
+}
+#Crmenu li {
+	list-style: none;
+	display: inline-block;
+	padding: 0;
+	cursor:pointer
+}
+#Crmenu li #PageHelp{
+	padding: 0 .5rem
+}
+#Crmenu a {
+	display: block;
+	cursor:pointer;
+	text-decoration: none;
+	padding: 3px;
+	margin: 0
+}
+#Crmenu li :hover {
+	text-decoration:underline
+}
+.lblUserLogin {
+	color: #0461ac;
+	display: block;
+	float: right;
+	margin: 0;
+	padding: 5px;
+	text-align: right;
+	width: 216px
+}
+.boxKopf #headerleft {
+	vertical-align:middle;
+	width:50px
+}
+.boxKopf #headerright {
+	text-align:right;
+	vertical-align:top
+}
+.leitboxOuter {
+	padding: 0;
+	margin: 0;
+	display:table;
+	width:100%
+}
+.panel {
+	padding: 3px;
+	padding-left: 10px;
+	margin: 3px;
+	margin-top: 0
+}
+#M_PnlLinkPath {
+	margin-right: auto;
+	background-color: var(--color-lighter-grey);
+	margin-top: 0;
+	padding-top: 7px;
+	padding-bottom: 6px;
+	position: relative;
+	font-weight: bold;
+	display:none
+}
+#Page form#aspnetForm #M_pnlMain .wrapper .innerMain #M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager{
+	display:none
+}
+#linkpath,
+#Linkpath {
+	list-style: none;
+	margin-bottom: 0px;
+	margin-top: 0px;
+	display:block;
+	line-height: 1.7rem
+}
+#linkpath li,
+#Linkpath li{
+	float: left
+}
+
+#linkpath li:last-child:after,
+#Linkpath li:last-child:after{
+	content:""
+}
+#M_MC_FDescr_TxtEditFacDesc{
+ 	width: 500px;
+	height: 140px
+}
+#DivBannerPlaceHolder{
+	display:none
+}
+#M_cphLinkPath_LbtHauptseite{
+	display:none !important
+}
+#M_PnlInfoNews{
+	position: absolute;
+	left: 21rem;
+	top: 0;
+	width: 300px;
+	height: 30px
+}
+#Linkpath a {
+	display: inline-block;
+	text-decoration: none;
+	padding: 0 2px 0 2px;
+	color: #333333
+}
+#M_PnlTop{
+	width:100%
+}
+#LinkPathNavStart {
+	background-image:none !important;
+	color: #222;
+	float:left
+}
+.topQMFrage {
+	text-decoration: line-Through
+}
+.TopQWWarnun
+	color: Red;
+	padding-left: 0 !important
+}
+.trv {
+	float:inherit;
+	display:inline-block;
+	z-index:auto;
+	clear:none
+}
+.trv td {
+	vertical-align:top !important
+}
+.lbltrv {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	caption-side:top;
+	position:static;
+	top: 0;
+	clear:left;
+	margin-left: 0
+}
+#AMNavigation {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	margin-left:10px;
+	width:150px
+}
+.AMNavigationElement {
+	margin-bottom:10px
+}
+#TblGesundheit {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	width:720px
+}
+#TblArbeit	{
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top
+}
+#TblFinanzen {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top
+}
+#TblSoziales {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top
+}
+#TblPersonal {	
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top
+}
+.lbtAMStammdaten {
+	margin-bottom:10px
+}
+#linkPathNavStart{
+	display:none
+}
+.lbtAMTraeger {
+	margin-bottom:10px
+}
+.lbtGesundheit {
+	margin-bottom:10px
+}
+#M_MC_lblCurrentFacility,
+#M_MC_PageTitle,
+#M_MC_lblAllFacilities,
+#M_MC_LblHeading{
+	font-size: 1.5rem;
+	line-height: 1.15;
+	font-weight: initial
+}
+.lbtQWSuche {
+	display:block
+}
+#M_MC_PnlData{
+	height:auto
+}
+
+#PnlStammDatenTable1stCol {
+	width:20%;
+	vertical-align:top
+}
+#PnlStammDatenTable2stCol {
+	vertical-align:top
+}
+#M_MC_TrvFacilities table{
+	margin-top:3px
+}
+.stammdatenlblWerte {
+	width:100px
+}
+.stammdatentxtWerte {
+	width:500px
+}
+.lblWerte {
+	margin:0 0 0 5px
+}
+.stammdatenNotEditableTXT {
+	float:Right;
+	margin-left:5em;
+	color:Black
+}
+.lblAMStammEigenschaften {
+	font-weight:bold
+}
+#BottomMenue{
+	display:inline-table;
+	float:none;
+	vertical-align:bottom;
+	margin-bottom:5px
+}
+.lbTest {
+	border-bottom-style:none;
+	border-top-style:none;
+	border-left-style:solid;
+	border-right-style:solid;
+	border-width:1px
+}
+.elementToHide { 
+	display:block
+}
+.elementToHide2 {
+	display:none
+}
+#M_MC_TblSearchResults {
+	border-collapse:collapse;
+	border:0 solid transparent
+}
+#M_MC_TblSearchResults .ResultRow:hover {
+	background-color: #eee;
+}
+#M_MC_ctl01_pnlFacilities{
+	margin-top:20px
+}
+
+#DivtblSearchResults table#M_MC_TblSearchResults tr td{
+	padding: 10px 0;
+border-bottom: 1px solid rgba(102, 102, 102, 0.4);
+
+}
+
+#M_MC_TblSearchResults .ResultRow a {
+	padding: 10px 0;
+}
+.tr_SearchResultAddress {
+	font-style:italic;
+	color:GrayText;
+	padding-left:10px
+}
+.lbt_Show_Hide {
+	background-image:url("Images/plus.jpg")
+}
+.trvSearch {
+	overflow: visible;
+	width:800px
+}
+.trvSearch td {
+	vertical-align:top !important
+}
+.trvSearch td img {
+	height:12px !important
+}
+.innerMain tds
+	padding: 0.25rem
+}
+.treefix td {
+	vertical-align:middle !important;
+	padding: 0
+}
+#divPageTitleSetting{
+	margin-top: 0.5rem;
+	position: absolute;
+	width:510px
+}
+td a#M_MC_btnSave.Button{
+	float: right;
+	margin-top: 2rem;
+	margin-right: 0
+}
+label[for="M_MC_chkLeittextVisible"]{
+	right:0
+}
+#M_MC_chkLeittextVisible{
+	right: 9rem;
+	position: absolute
+}
+#M_MC_lblPageTitleSetting{
+	left:3rem
+}
+#M_MC_lblPageTitleSetting{
+	margin-left:0px !important
+}
+.treefix td img {
+	height:20px !important;
+}
+#Page form#aspnetForm #M_pnlMain .wrapper .innerMain #Einrichtungen #M_MC_PnlCurrentFacility.pnlCurrentFacility #M_MC_TrvCurrentFacility.treefix div,
+#Page form#aspnetForm #M_pnlMain .wrapper .innerMain #Einrichtungen #M_MC_PnlAllFacilities.pnlAllFacilities #M_MC_TrvFacilities.treefix div{
+	margin-left:5px
+}
+#M_MC_txtPageTitleSetting{
+	left:3rem
+}
+#M_MC_lblPageTitleSetting,
+#M_MC_txtPageTitleSetting{
+	left: 0;
+	position: absolute;
+	top:0
+}
+.lblExtension {
+	background-image:url("");
+	float:right;
+	border-style:none;
+	width:10px
+}
+.lblLeftLabel  {
+	vertical-align: text-top
+}
+#M_MC_FFView_ContactData.pnlEdit.ui-dialog-content.ui-widget-content div input,
+#M_MC_PnlInst_EditInst.pnlEdit.ui-dialog-content.ui-widget-content div input,
+#M_MC_FFView_EditContact.pnlEdit.ui-dialog-content.ui-widget-content div input{
+	margin-bottom:0.5rem
+}
+.lblInLine  {
+	vertical-align:middle
+}
+.imgFacility {
+	background-image:url("Images/Haus.png");
+	height:16px
+}
+.imgFacilityNew {
+	background-image:url("Images/Haus_Neu.png");
+	height:16px
+}
+#ImgAddFacility{
+	position:relative;
+	top:0.5rem
+}
+.lblAddFacility {
+	cursor:pointer
+}
+.lblAddFacility:hover{
+	text-decoration:underline
+}
+#M_MC_DivFreePlaces{
+	display:inline-block;
+	margin-top:0.5rem
+}
+#M_MC_TxtEinrichtungsname,
+#M_MC_DdlTypSuche{
+	width:100%;
+	max-width:100%
+}
+.dropDownlist {
+	background: none repeat scroll 0 0 var(--color-white);
+	border-style:none;
+	max-width:96%
+}
+.pnlTextBox {
+	display:inline-block;
+	padding: 0 0 0 0
+}
+#M_MC_pnlInstitutionInner{
+	color: var(--color-black);
+	font-style:normal
+}
+#DivDistance .pnlDropDown{
+	margin-left:5px;
+	width:50px
+}
+#lblEntfernungZusatz {
+	padding-left:5px
+}
+#lblPlz{
+	display:inline-block
+}
+#sliderFac2InstOuter{
+	min-width:50px;
+	width:250px;
+	max-height:10px;
+	display:inline-block
+}
+#DivSlider{
+	display:inline-block;
+	margin-top:5px;
+	margin-bottom:10px
+}
+#DivLabels {
+	display:block;
+	margin-bottom:10px;
+	max-height:10px;
+	min-width:50px;
+	width:250px
+}
+#DivlabelSearchFor{
+	display:inline
+}
+#labelSearchFor{
+	margin-right:5px;
+	vertical-align:text-top
+}
+#M_MC_PnlTextboxSuche {
+	padding:0 0 0 0
+}
+
+#M_MC_pnlEinrichtungsdaten .lblHeadLineOpenImgOpen{
+	display:none !important
+}
+#M_MC_lblAddressFacilityOpenerImg2.lblHeadLineOpenImgOpen,
+#M_MC_pnlStammDaten #M_MC_lblAddressFacilityOpenerImg1.lblHeadLineOpenImgOpen{
+	display:none
+}
+
+#M_MC_BtnEinrichtungssuche:link {
+	background-color: #5371B3
+}
+.facilityItem{
+	display:none
+}
+span#M_MC_lblErweiterteSuche {
+	display: inline-block
+}
+#M_MC_BtnSaveNewFacility{
+	line-height:1.2rem
+}	
+#M_MC_PnlData.ButtonSave,
+#M_MC_TblMain.ButtonSave, 
+.SaveOptions, 
+#M_MC_PnlNewFacility.ButtonSave, 
+#M_MC_PnlEditContact.ButtonSave {
+	padding: 0.2rem 0.5rem 0.2rem 2rem;
+	background-color: #31458A !important;
+	border: 1px solid #122556 !important;
+	color: #fff !important;
+	margin-bottom: 5px !important;
+	min-width:80px !important
+}
+#M_MC_PnlData.ButtonSave:hover,
+#M_MC_TblMain.ButtonSave:hover, 
+.SaveOptions:hover, 
+#M_MC_PnlNewFacility.ButtonSave:hover, 
+#M_MC_PnlEditContact.ButtonSave:hover {
+	background-color: #5371B3 !important;
+	border: 1px solid  #31458A !important
+}
+#M_MC_PnldivContactData,
+#M_MC_PnlEditContact{	
+	height:25px
+}
+input#M_MC_TxtContactDataWWW,
+input#M_MC_TxtContactDataTelefax{
+	position: absolute;
+	left:19.5rem
+}
+#M_MC_PnlEditContact div,
+#M_MC_PnldivContactData div{
+	height:1.5rem
+}
+input#M_MC_TxtEditContactSurName,
+input#M_MC_TxtEditContactTelefax,
+input#M_MC_TxtEditContactInternet{
+	position: absolute;
+	left:18rem
+}
+span#M_MC_lblContactDataWWW,
+span#M_MC_lblContactDataTelefax,
+span#M_MC_lblEditContactSurName,
+span#M_MC_lblEditContactInternet.lblInLine,
+span#M_MC_lblEditContactTelefax{
+	position: absolute;
+	left: 14.5rem
+}
+html body #Page form#aspnetForm #fancybox-wrap #fancybox-outer #fancybox-content{}
+#M_MC_PnlEditContact input#M_MC_TxtEditContactTitle,
+#M_MC_PnlEditContact input#M_MC_TxtEditContactFirstName,
+#M_MC_PnlEditContact input#M_MC_TxtEditContactTelephone,
+#M_MC_PnlEditContact input#M_MC_TxtEditContactMobil,
+#M_MC_PnlEditContact input#M_MC_TxtEditContactEmail,
+input#M_MC_TxtContactDataTelefon,
+input#M_MC_TxtContactDataEmail,
+input#M_MC_TxtContactDataMobil{
+	position: absolute;
+	left: 4rem
+}
+#fancybox-content span{
+	margin:0
+}
+.ButtonSaveInactive {
+	color:transparent;
+	background-color: transparent;
+	background-image:url(Images/Save_16x16_256.ico);
+	background-repeat:no-repeat;
+	background-position:left;
+	border:none;
+	vertical-align:middle;
+	text-decoration: none;
+	min-height: 31px;
+	padding-left:16px;
+	padding-right:1px;
+	cursor:default;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+	width:16px
+}
+#M_MC_BtnSaveContactData{
+	margin:0 !important
+}
+#M_MC_lbtSaveEditContact{
+	margin-left:0 !important;
+	margin-right:0 !important
+}
+#M_MC_PnldivContactData{
+	height:200px;
+	width: 500px
+}
+#M_MC_PnlEditContact{
+	height:200px;
+	width: 460px
+}
+.VerguetungLegende {
+	padding-top:10px
+}
+.TTip {
+	position: relative;
+}
+.TTip span {
+	display: none;
+	color: #000066
+}
+.TTip:hover {
+	background-color: transparent
+}
+.TTip:hover span {
+	max-width:500px;
+	min-width:150px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	display: block;
+	background: #e6ecff;
+	border: 1px solid #003399;
+	text-decoration: none;
+	padding: 3px
+}
+
+.item {
+	margin-left:5px;
+	width:auto
+}
+.pnlBegriff {
+	padding-left: 10px;
+	min-width: 100px;
+	max-width: 390px;
+	display:inline-block
+}
+.pnlBegriffEdit {
+	padding-left: 10px;
+	min-width: 100px;
+	max-width:390px;
+	display:inline-block
+}
+.lblBegriff {
+	overflow: visible;
+	min-width: 100px
+}
+#M_MC_PnlMain {
+	padding-top:16px;
+	display:table
+}
+#M_MC_PnlControls {
+	padding-top:16px
+}
+#DivtboxText {
+	display:inline-block;
+}
+#tboxText {
+	background: none repeat scroll 0 0 #EFF6FA
+}
+#DivHelp {
+	width:500px;
+	height:250px;
+	overflow:auto
+}
+#DivOuterSearch {
+	margin-left:10px; 
+	margin-top:20px;
+	display:block;
+	width:calc(100% - 20px)
+}
+#DivOuterSearch div:first {
+	display:table-row
+}
+#DivInnerSearch {
+	display:table;
+	width:100%
+}
+#DivtblSearchResults table tr.ResultRow{
+	padding-bottom:0.5rem
+}
+#DivInnerSearch input { 
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box
+}
+#DivSearchLabel {
+	display:none;
+	padding-right:5px
+}
+
+#DivTypSucheDropDown {
+	display:inline-block;
+	width:100%;  
+}
+#DivTextSearchBottom {
+	display:table-cell
+}
+#DivTypSuche {
+	display:block
+}
+#M_MC_lblTypSuche {
+	display:inline-block;
+	padding-right:3px
+}
+#DivUmkreisOuter {
+	width: 100%;
+	margin-top:10px
+}
+#DivUmkreisSelection {
+	padding-left:10px;
+	display:table
+}
+#DivUmkreisSelection{
+	padding-left:0
+}
+#DivUmkreisOuter #DivUmkreisSelection #DivPLZ{
+	margin-left:0;
+	padding-left:0
+}
+#DivPLZ .pnlTextBox {
+	margin-left:5px;
+	padding-bottom:1px;
+	padding-right:2px;
+	width:50px;
+	z-index:0
+}
+#DivPLZ {
+	display:inline-block;
+	margin-left:10px;
+	padding-right:40px;
+	padding-left: 100px
+}
+#DivDistance {
+	margin-left:10px;
+	display:inline-block
+}
+#M_MC_lblEntfernung {
+	display: block
+}
+#DivDistance .pnlDropDown {
+	display:inline;
+	vertical-align:middle
+}
+#M_MC_lblEntfernungZusatz {
+	display: inline;
+}
+.ElementToHideInner  {
+	margin-top:10px;
+	margin-bottom:10px;
+	display:table
+}
+#DivlabelSearchFor {
+	display:table-row;
+	margin-right:30px
+}
+#labelSearchFor {
+	vertical-align:text-top
+}
+#DivSlider {
+	width:100%;
+	margin-top:5px;
+	margin-bottom:10px
+}
+#M_MC_DdlMapServices{
+	width: 313px;
+	line-height: 1.5rem
+}
+#M_MC_PnlMain .pnlOptionLabel{
+	min-height: 2.5rem;
+}
+.pnlOptionLabel {
+	display:inline-block;
+	width:300px;
+	margin-left:10px;
+	vertical-align:top
+}
+.pnlOptionValue {
+	display:inline-block;
+	margin-left:10px
+}
+.chkOptionStammdaten {
+	display:block;
+	overflow: visible;
+	min-width: 100px
+}
+#M_MC_PnlTextboxSuche {
+	display:flex
+}
+.divDropDown {
+	display:inline-block; 
+}
+#M_MC_ddlEinrichtungstypen {
+	max-width:150px
+}
+.jsgrid .jsgrid-button[title="Edit"]{
+	background-image: url("images/TreeViewLineImages/edit.png");
+	background-repeat: inherit;
+	height: 24px;
+	width: 24px
+}
+#M_MC_lcGroupsSelected{
+	width:100%
+}
+.jsgrid .jsgrid-button[title="Update"]{
+	background-image: url("images/TreeViewLineImages/check.png");
+	background-repeat: inherit;
+	height: 24px;
+	width: 24px
+}
+.jsgrid .jsgrid-button[title="Cancel edit"]{
+	background-image: url("images/TreeViewLineImages/cancel.png");
+	background-repeat: inherit;
+	height: 24px;
+	width: 24px
+}
+#ResetSearch,
+.expanderOpened,
+.expanderClosed{
+	filter: var(--filter-blue);
+}
+#ResetSearch {
+	background-image: url("images/TreeViewLineImages/reset.svg");
+	border: none;
+	width: 28px;
+	height: 27px;
+	background-color: unset;
+	color:white !important
+}
+.expanderOpened{
+	background-image: url(Images/Icons/arrow_up.svg)
+}
+.expanderClosed {
+	background-image: url(Images/Icons/arrow_down.svg)
+}
+.expanderClosed,
+.expanderOpened {
+	background-color: transparent;
+	background-position: 10% center;
+	background-size: 24px 24px;
+	background-repeat: no-repeat;
+	border: 0 solid transparent;
+	width: 24px
+}
+#M_MC_spanCurrentUsername::before {
+	content: "Benutzer: ";
+	font-weight:bold
+}
+.UserInformation {
+	display:inline-block;
+	padding-right:20px;
+	margin-top:50px;
+	max-width:60%;
+	width:300px
+}
+.ControlComplete .pnlTextBox input {
+	width:100%
+}
+.UserInformation .pnlTextBox {
+	display:block; 
+}
+.UserList {
+	display:inline-block;
+	vertical-align:top;
+	padding-right:20px;
+	width:200px
+}
+
+.ControlComplete {
+	display:block
+}
+.divOuterControl {
+	display:inline-block;
+	vertical-align:text-top
+}
+.ControlLabel {
+	display:inline-block;
+	min-width:200px;
+	vertical-align:top
+}
+#M_MC_lstUsers {
+	border: 1px solid black;
+	cursor:pointer;
+	height: 300px;
+	list-style: none;
+	overflow-y: scroll;
+	padding-left: 10px;
+	width: 185px
+}
+.ui-selected {
+	background-color: #212d6a;
+	color:white
+}
+#M_MC_lcGroupsSelected{
+	height:100px;
+	border: 1px solid #444;
+	font-size:100%
+}
+#M_MC_lcGroupsAvailable,
+#DivlstUsers Select{
+  height:300px;
+  border: 1px solid #444;
+  font-size:100%
+}
+#M_MC_divInstitution {
+	margin-top:20px
+}
+#M_MC_PnlOptions  {
+	margin-top:20px;
+	display:block
+}
+#M_MC_PnlOptions .ControlLabel {
+	display:block
+}
+#M_MC_lstFacilities {
+	display: block;
+	max-height: 300px;
+	overflow: auto;
+	width:100%
+}
+#M_MC_PnlOptions .ControlComplete {
+	vertical-align:top
+}
+#DivlstFacilities {
+	width:100%;
+	min-width: 450px
+}
+#NSTD{
+	display:none
+}
+#M_MC_divFacilities {
+	display:inline-block;
+	min-width:250px;
+	padding-right:20px
+}
+#DivModule {
+	display:inline-block
+}
+#M_MC_ControlButtons {
+	margin-top:20px
+}
+#DivNewUserEntries {
+	width:100%
+}
+#DivNewUserEntries .ControlLabel {
+	display:table-cell;
+	width:150px	
+}
+#DivNewUserEntries .pnlTextBox {
+	width:100%
+}
+#DivNewUserEntries .ControlComplete {
+	margin-bottom:3px
+}
+#DivSpecialinformation {
+	border-top:1px solid black;
+	margin-top:15px
+}
+#M_MC_divCounties {
+	display:inline-block;
+	padding-right:20px
+}
+#DivlstCounties{
+	width:100%
+}
+#M_pnlInfoNews {
+	min-height: 38px;
+	position: absolute;
+	top: 6px;
+	width: 94%;
+	z-index: 99
+}	
+#M_pnlInfoNews ul {
+	background-color:White;
+	box-shadow:10px 10px 5px grey;
+	display:none;
+	list-style-type:none;
+	margin: 0 auto 0 auto;
+	padding: 0px;
+	width:300px;
+	left: calc(100% - 400px);
+	position: fixed;
+	z-index:99
+}
+#M_pnlInfoNews ul li{
+	border-bottom:1px solid black;
+	list-style-type:none;
+	padding: 10px;
+	min-height:35px
+}
+#SpanNewsEx {
+	background-color: #49dfad;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	padding: 5px;
+	left: calc(100% - 380px);
+	position: absolute;
+	cursor: pointer;
+	z-index: 1;
+	color: #003063;
+	border-radius: var(--border-radius);
+	margin-top: 0.4rem
+}
+@keyframes jump {
+	from {
+		background-position-y:0px;
+	}
+	20% {
+		background-position-y:-10px;
+	}
+}
+@keyframes bounce {
+	0%, 20%, 50%, 80%, 100% {
+	background-position-y:4px;
+  }
+	40% {
+	background-position-y:-6px;
+  }
+	60% {
+	background-position-y:-3px;
+  }
+}
+.pnlSave {
+	display:inline-block
+}
+.pnlGenerateNewPasswort {
+	display:inline-block
+}
+.pnlSave {
+	display:inline-block
+}
+.pnlGenerateNewPasswort {
+	display:inline-block
+}
+.passwordPolicyHint {
+	left: 200px;
+	margin-left: 300px;
+	position: absolute
+}
+.facilityControl.imgContactData{
+	background-image: url("Facility_Contact.png");
+	width: 20px;
+	height:20px;
+	background-size: 20px;
+	float: right;
+	margin-right:5px
+}
+#EditContact .FacilityControl{
+	background-image: url("Contact.png");
+	width: 20px;
+	height:20px;
+	background-size: 20px;
+	float: right;
+	margin-right:5px
+}
+#lblChangeVisiblityInner.Image.FacilityControl.NotVisible{
+	background-image: url("Search.png");
+	width: 20px;
+	height:20px;
+	background-repeat:no-repeat;
+	background-size: 20px;
+	float: right;
+	margin-right:5px
+}
+#lblAddAttachmentFileInner.Image.FacilityControl{
+	background-image: url("Upload.png");
+	width: 20px;
+	height:20px;
+	background-size: 20px;
+	float: right;
+	margin-right:5px
+}
+.InstituionIdentifier {
+background-image: url("Images/Icons/Icon_zum_Traeger_grey.svg");
+	background-repeat: no-repeat;
+	display: block;
+	height: 38px;
+	line-height: 2rem;
+	padding-left: 38px
+}
+#DivBackForthButtons .Buttons {
+	min-height:10px;
+	background-color:transparent
+}
+#M_MC_PnlTableInformationBottom {
+	margin-top: 20px;
+	text-align: center
+}
+#M_MC_lblSearchResults {
+	font-weight: bold
+}
+#M_lblImpressumBIT {
+	display: block;
+	margin-top: 10px;
+	border-top: 1px solid black;
+	text-align: center;
+	padding-top: 5px
+}
+.ui-widget-header {
+	background: none !important
+}
+.ui-slider-horizontal {
+	width: 210px !important;
+	margin-left: 15px !important
+}
+#M_MC_divFacilityTypes{
+	display: inline-block
+}
+#DivlstFacilityTypes {
+	height: 250px;
+	overflow-y: scroll
+}
+.FacilityTypeWithQM {
+	background-image: url("Images/QM.gif");
+	height: 16px;
+	display: inline-block;
+	background-size: 16px;
+	background-repeat: no-repeat;
+	width: 16px
+}
+.WaitPanel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	text-align:center;
+	z-index:999
+}
+#DivWaitPanelBackground {
+	background: #CCC;
+	filter: alpha(opacity=60);
+	-moz-opacity: 0.6;
+	opacity: 0.6;
+	height: 100%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index:998
+}
+@WaitLabel1 {
+	background-color:white;
+	background-image:url(Images/waiter1.gif);
+	background-repeat:no-repeat;
+	background-size:100px;
+	background-position-y:top;	 
+	left: 50%;
+	height: 100px;
+	position: fixed;
+	top: 50%;
+	width: 100px;
+	z-index:999
+}
+.WaitLabel2 {
+	filter: alpha(opacity=1);
+	-moz-opacity: 1.0;
+	opacity: 1.0;
+	background-color:white;
+	color:black;
+	height: 25px;
+	left: calc(50%);
+	position: fixed;
+	top: calc(55% + 55px);
+	width: 100px;
+	z-index:999
+}
+.aspNetDisabled {
+	filter: alpha(opacity=60);
+	-moz-opacity: 0.6;
+	opacity: 0.6
+}
+#pnlWaitPanelMaster {
+	display:block
+}
+.divCommandbuttons {
+	display: block;
+	margin-top: 20px
+}
+
+html body div.ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-dialog-buttons.ui-draggable.ui-resizable div.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix.ui-draggable-handle,
+.ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-dialog-buttons.ui-draggable.ui-resizable .ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix.ui-draggable-handle span#ui-id-2.ui-dialog-title,
+#Page form#aspnetForm .ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-draggable.ui-resizable .ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix.ui-draggable-handle {
+	background: var(--color-blue) !important;
+	color: white !important;
+	padding: 0.2rem;
+	margin: unset;
+	width: calc(100% - 0.6rem)
+}
+#M_PnlInfoNews ul {
+	display: none;
+	list-style: none;
+	width: 200px;
+	position: fixed;
+	left: calc(100% - 200px);
+	background-color: white;
+	height: calc(100% - 40px);
+	z-index: 1000;
+	padding:0;
+	top: -5px;
+	border-radius: var(--border-radius) 0 0 var(--border-radius)
+}
+#M_PnlInfoNews ul li {
+	border-bottom: 7px solid #eee;
+	padding: 1rem;
+	cursor: pointer
+}
+@media (max-width: 55rem) {
+	#CrModules li ul li,
+	#CrModules li ul li a {
+		width:auto !important
+	}
+	#CrModules li {
+		width: calc(100% / 7) !important
+	}
+	#ModLinkEinrAuswahl{
+		width: auto !important
+	}
+}
+@media (min-width: 55rem) {
+	.wrapper {
+		padding-bottom: 3rem
+	}
+}
+@media screen and (max-width: 360px) {
+	body {
+		 margin: 0
+	}
+	#WrapperHead {
+		background-image: none !important
+	}
+	.boxKopf {
+		width: 100%;
+	}
+	.boxKopf #headerleft {
+		display:block;
+		width:50px
+	}
+	.boxNavigation {
+		width: 100%
+	}
+	.shadowRight {
+		 background-image: none !important
+	}
+	.shadowBottom {
+		background-image: none !important
+	}
+	.shadowBottomRight {
+		background-image: none !important
+	}
+	.innerMain {
+		width: 100%
+	}
+	.lblUserLogin {
+		position: relative !important;
+		top: 17px !important;
+		width: auto
+	}
+	#headerlogo {
+		left: -10px;
+		position: relative
+	}
+	#fancybox-wrap {
+		left:10px !important;
+		padding:0!important;
+		top:30px !important;
+		width:290px !important
+	}
+	#fancybox-content {
+		width:275px !important
+	}
+	#CrModules {
+		display: table-row !important
+	}
+	#CrModules li {
+		padding-left: 0;
+		padding-right: 0
+	}
+	#DivPLZ {
+		padding-left:0
+	}
+}
+@media screen and (max-width: 1190px) {
+#WrapperHead #M_PnlTop #M_PnlModules.boxNavigation ul#CrModules li ul{
+	width: calc(100% + 290px)
+}
+@media screen and (max-width: 640px) {
+	#M_MC_divFacilities {
+		display:inline-block !important
+	}
+	#M_MC_PnlOptions {
+		display:inline !important
+	}
+}

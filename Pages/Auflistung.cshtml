@@ -1,0 +1,82 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.AuflistungModel
+@{
+    ViewData["Title"] = Model.Listing.Title;
+}
+
+<nav aria-label="Brotkrümelnavigation" style="margin-bottom:24px">
+    <ol style="list-style:none; padding:0; margin:0; display:flex; gap:8px; flex-wrap:wrap; font-size:15px">
+        <li><a asp-page="/Index">Start</a> <span style="margin-left:8px">/</span></li>
+        <li><a asp-page="/Sucharten">Leistungsangebote</a> <span style="margin-left:8px">/</span></li>
+        <li aria-current="page" style="font-weight:600">@Model.Listing.Title</li>
+    </ol>
+</nav>
+
+<h1 style="margin:0 0 24px; font-size:28px; font-weight:700">@Model.Listing.Title</h1>
+
+<div>
+    @foreach (var category in Model.Listing.Categories)
+    {
+        <ul class="superCategory" role="list">
+            <li role="listitem">
+                <div class="sc00" tabindex="0" role="button" aria-expanded="true" aria-label="Unterkategorie ein-/ausblenden"><h2>@category.Name</h2></div>
+                <ul class="subCategory01" role="list">
+                    @foreach (var group in category.Groups)
+                    {
+                        <li role="listitem">
+                            <div class="sc01" tabindex="0" role="button" aria-expanded="true" aria-label="Leistungen ein-/ausblenden">@group.Name</div>
+                            <ul class="facilityItem" role="list">
+                                @foreach (var facility in group.Facilities)
+                                {
+                                    var facilityUrl = Url.Page("/Stammdaten", new { EIID = facility.EIID, STUID = facility.STUID });
+                                    <li>
+                                        <div class="fci">
+                                            <div class="divAuflistungEinrichtung">
+                                                <a href="@facilityUrl">
+                                                    <span class="AuflistungEinrichtungname">@facility.Name</span>
+                                                    @if (!string.IsNullOrWhiteSpace(facility.FacilityIndicator))
+                                                    {
+                                                        <span class="AuflistungEinrichtungkennzeichen">(@facility.FacilityIndicator)</span>
+                                                    }
+                                                    <div class="divAuflistungEinrichtungAdresse"><span class="addr">@facility.Address</span></div>
+                                                </a>
+                                            </div>
+                                            @if (facility.AdditionalLocations.Count > 0)
+                                            {
+                                                <div class="wtStt">
+                                                    <div class="wtStt label">weitere Standorte</div>
+                                                    <div class="wtSttToggle" tabindex="0" role="button" aria-expanded="false" aria-label="Weitere Standorte ein-/ausblenden">toggle</div>
+                                                    <ul class="sub Fci">
+                                                        @foreach (var location in facility.AdditionalLocations)
+                                                        {
+                                                            var locationUrl = Url.Page("/Stammdaten", new { EIID = location.EIID, STUID = location.STUID });
+                                                            <li>
+                                                                <div class="sub fci">
+                                                                    <div class="divAuflistungEinrichtung">
+                                                                        <a href="@locationUrl">
+                                                                            <span class="AuflistungEinrichtungname">@location.Name</span>
+                                                                            <div class="divAuflistungEinrichtungAdresse"><span class="addr">@location.Address</span></div>
+                                                                        </a>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            }
+                                        </div>
+                                    </li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                </ul>
+            </li>
+        </ul>
+    }
+</div>
+
+@section Scripts {
+    <script src="~/js/auflistung.js" asp-append-version="true"></script>
+}
+

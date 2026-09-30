@@ -1,0 +1,185 @@
+﻿/* Version: 250611 */
+
+/* ===== GRUNDSTYLES FÜR DAS MODUL ===== */
+#CrModules {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-family: 'Lato', sans-serif;
+  color: #003159 /* Hamburg.de–Blau */
+}
+
+/* ===== LOGO/APPNAME ===== */
+#Appname {
+  background-image: url("Images/Logo.png");
+  background-repeat: no-repeat;
+  background-size: 153px;
+  background-position: top right;
+  position: absolute;
+  top: 2.25rem;
+  right: 2rem;
+  width: 160px;
+  height: 47px;
+  font-size: 1.25rem;
+  line-height: 1;
+  transform: translateY(-50%);
+  z-index: 10
+}
+
+/* ===== HAMBURGER MENU ===== */
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0.75rem;
+  left: 2.8rem;
+  cursor: pointer;
+  z-index: 2
+}
+
+.hamburger:after {
+  content: "Menu";
+  font-size: 14px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+  margin-top: 0.45rem
+}
+
+.hamburger.active:after {
+  content: "Schließen"
+}
+
+.hamburger div {
+  width: 32px;
+  height: 3px;
+  background-color: var(--color-main);
+  margin: 3px 0 2px
+}
+
+.hamburger div:last-child {
+  width: 16px
+}
+
+/* Hamburger Animation - Aktiver Zustand */
+.hamburger.active div:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+  width: 22px;
+  height: 2px
+}
+
+.hamburger.active div:nth-child(2) {
+  opacity: 0
+}
+
+.hamburger.active div:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+  width: 22px;
+  height: 2px;
+  margin: 6px 0 2px
+}
+
+/* ===== NAVIGATION MENÜ ===== */
+#Crmenu {
+  float: right;
+  position: absolute;
+  right: 13rem;
+  list-style: none
+}
+
+#Crmenu li {
+  float: left;
+  cursor:pointer;
+  margin-right: 1rem
+}
+
+/* ===== HAUPTNAVIGATION (CRMODULES) ===== */
+/* Mobile: Versteckt, nur bei .show sichtbar */
+#CrModules {
+  display: none;
+  flex-direction: column;
+  gap: 0
+}
+
+#CrModules.show {
+  display: flex;
+  position: absolute;
+  top: 4.5rem;
+  background: white;
+  height: 100%;
+  width: 100%;
+  padding-top: 5rem;
+  z-index: 3
+}
+
+/* Top-Level Items */
+#CrModules > li {
+  margin-bottom: 0.75em;
+  width: 400px;
+  left: 13rem;
+  position: relative
+}
+
+/* Top-Level Links */
+#CrModules > li > a {
+  display: block;
+  font-size: 2rem;
+  font-weight: 400;
+  text-decoration: none;
+  padding: 0.25em 0;
+  position: relative;
+  color: var(--color-grey)
+}
+
+/* Pfeil rechts von jedem Top-Level-Link */
+#CrModules > li > a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  background-color: var(--color-main); /* Wunschfarbe */
+  mask: url("../../Images/Pfeil.svg") no-repeat center;
+  -webkit-mask: url("../../Images/Pfeil.svg") no-repeat center;
+  background-size: contain;
+}
+
+/* Ersten Link („Startseite") - ohne Pfeil */
+#CrModules > li:first-child > a {
+  font-weight: 400
+}
+
+/* Hover/Active States */
+#CrModules > li a:hover,
+#CrModules > li a:active {
+  text-decoration: underline
+}
+
+/* ===== SUB-NAVIGATION ===== */
+/* Sub-Liste (z. B. „nach Art der Leistung") */
+#CrModules li ul {
+  list-style: none;
+  margin: 0.5em 0 0.5em 1.5em; /* Einzug nach rechts */
+  padding: 0;
+  position: static
+}
+
+/* Sub-Links kleiner, ohne Pfeil */
+#CrModules li ul li a {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: 400;
+  text-decoration: none;
+  padding: 0.15em 0;
+  color: var(--color-grey)
+}
+
+#CrModules li ul li a::after {
+  content: ''
+}
+
+/* Sub-Items Positioning */
+#CrModules li li {
+  left: 0;
+}

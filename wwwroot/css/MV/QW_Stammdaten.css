@@ -1,0 +1,1732 @@
+﻿/* Version: 241204 */
+
+#M_MC_Documents_Documents #M_MC_Documents_Files.value .pnlFiles .file.data{
+	height:4rem
+}
+
+
+#M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-page.jsgrid-pager-current-page {
+  background-color: var(--color-blue);
+  color: var(--color-white);
+}
+#M_MC_Einrichtungen .jsgrid-pager .jsgrid.pgCounter.container {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs .jsgrid-pager {
+  text-align: center;
+}
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container span {
+  border-radius: 0.1rem;
+  border: 1px solid var(--color-blue);
+}
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager span.jsgrid-pager-nav-button,
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager span.jsgrid-pager-nav-button.jsgrid-pager-nav-inactive-button,
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager span.jsgrid-pager-page {
+  padding: 0.2rem;
+  margin-right: 0.2rem;
+  height: 21px;
+  display: inline-block;
+  margin-bottom: 0.2rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+#M_MC_Einrichtungen .jsgrid-pager .jsgrid.pgCounter.container .lbl {
+  border: 0 !important;
+}
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container {
+  display: block;
+  max-width: 300px;
+  margin: 10px 0;
+}
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs .jsgrid-pager {
+  text-align: center;
+  font-size: 0;
+}
+#Einrichtungsdaten .pnlInstitutionHeadLine .pnlInnerHeadLine:before, .topic.inst {
+	content: 'Leistungserbringer ';
+	font-family: var(--font-300);
+	color: var(--color-darkgrey);
+	font-weight: bold;
+}
+#Facilities {
+	width: unset;
+	float: unset;
+	margin-top: 0px;
+	position: relative;
+	display: inline-block;
+	float: right;
+}
+
+#FIVContent img {
+	max-width:100%;
+}
+
+div#M_MC_FacilityData:before, #Einrichtungsdaten .topic.fac {
+	content: 'Leistungsangebot';
+	margin-bottom: 1rem;
+	display: block;
+	font-family: var(--font-300);
+	color: var(--color-darkgrey);
+	font-weight: bold;
+}
+
+#M_MC_FFView_SecLocs_SecContactsData .email,
+#M_MC_FFView_SecLocs_SecLocsGridGrid .email{
+	width:200px !important;
+	min-width:200px !important
+}
+#M_MC_FFView_SecLocs_SecContactsData .name,
+#M_MC_FFView_SecLocs_SecLocsGridGrid .name{
+	width:250px !important;
+	min-width:250px !important
+}
+#M_MC_FFView_SecLocs_SecContactsData .fax,
+#M_MC_FFView_SecLocs_SecContactsData .fon,
+#M_MC_FFView_SecLocs_SecLocsGridGrid .fax,
+#M_MC_FFView_SecLocs_SecLocsGridGrid .fon{
+	width:150px !important;
+	min-width:150px !important
+}
+#M_MC_FFView_SecLocs_SecContactsData .fax input,
+#M_MC_FFView_SecLocs_SecContactsData .fon input,
+#M_MC_FFView_SecLocs_SecLocsGridGrid .fax input,
+#M_MC_FFView_SecLocs_SecLocsGridGrid .fon input{
+	width:140px !important;
+	min-width:140px !important
+}
+#M_MC_FFView_SecLocs_SecContactsData .state,
+#M_MC_FFView_SecLocs_SecLocsGridGrid .state{
+	width:190px;
+	min-width:190px;
+}
+#M_MC_FFView_SecLocs_SecContactsData .gslSt,
+#M_MC_FFView_SecLocs_SecLocsGridGrid .gslSt{
+	width:135px;
+	min-width:135px;
+}
+
+html body div#Page form#aspnetForm div.ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-draggable div#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content div#M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid div.jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-edit-row td.jsgrid-cell.stt.poBox input,
+html body div#Page form#aspnetForm div.ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-draggable div#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content div#M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid div.jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-edit-row td.jsgrid-cell.stt.capa input
+{
+	width:65px
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.addrVis,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.stt.addrVis.jsgrid-header-sortable,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-edit-row td.jsgrid-cell.stt.addrVis,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content div#M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid div.jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.poBox,
+#M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.num,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.stt.poBox.jsgrid-header-sortable,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-edit-row td.jsgrid-cell.stt.poBox,
+#M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.numAdd,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.stt.numAdd.jsgrid-header-sortable,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-edit-row td.jsgrid-cell.stt.numAdd,
+#M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.capa,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.stt.capa.jsgrid-header-sortable,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-edit-row td.jsgrid-cell.stt.capa{
+	width:75px !important;
+	min-width: 75px !important;
+}
+html body div#Page form#aspnetForm div.ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-draggable div#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content div#M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid div.jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.stt.gslSt.jsgrid-align-center.jsgrid-header-sortable,
+html body div#Page form#aspnetForm div.ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-draggable div#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content div#M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid div.jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-edit-row td.jsgrid-cell.stt.gslSt.jsgrid-align-center{
+	width:135px !important;
+	min-width: 135px !important;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table.jsgrid-table th.state{
+	min-width: 0;
+	width: 190px !important;
+}
+html body div#Page form#aspnetForm div.ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-draggable div#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content div#M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid div.jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-edit-row td.jsgrid-cell.stt.gslSt.jsgrid-align-center input{
+	width:100px;
+}
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid div.jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-edit-row td.jsgrid-cell.stt.num input,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid div.jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-edit-row td.jsgrid-cell.stt.numAdd input{
+	width:40px;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.num,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.stt.num.jsgrid-header-sortable,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-edit-row td.jsgrid-cell.stt.numAdd,
+#M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.num,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.stt.numAdd.jsgrid-header-sortable,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-edit-row td.jsgrid-cell.stt.numAdd{
+	width:50px !important;
+	min-width: 50px !important;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.city,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.stt.city.jsgrid-header-sortable,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-edit-row td.jsgrid-cell.stt.city,
+#M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.street,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.stt.street.jsgrid-header-sortable,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-edit-row td.jsgrid-cell.stt.street{
+	width:200px !important;
+	min-width: 200px !important;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.bez,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.stt.bez.jsgrid-header-sortable,
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-edit-row td.jsgrid-cell.stt.bez{
+	width:200px !important;
+	min-width: 200px !important;
+}
+html body #Page form#aspnetForm #M_PnlMain.main .wrapper .innerMain #M_MC_pnlStammDaten #Einrichtungsdaten #M_MC_uppEinrichtungsdaten #M_MC_pnlEinrichtungsdaten .secLocs.outer .secLoc.label{
+	font-weight:bold;
+}
+
+#M_MC_pnlEinrichtungsdaten .pnlFacilityData #PnlInformation #M_MC_pnlSpecialData #M_MC_pnlFacilityType #DivFacilityType.valuepair span.labelIdentifier.label,
+#M_MC_pnlEinrichtungsdaten .pnlFacilityData #PnlInformation #M_MC_pnlSpecialData #M_MC_pnlFacilityTypeSub #DivFacilityTypeSub.valuepair span.labelIdentifier.label,
+#M_MC_pnlEinrichtungsdaten .pnlFacilityData #PnlInformation #M_MC_pnlSpecialData #M_MC_pnlFacilityCode #DivFacilityCode.valuepair span.labelIdentifier.label,
+#M_MC_pnlEinrichtungsdaten .pnlFacilityData #PnlInformation #M_MC_pnlSpecialData #M_MC_pnlFacilityPlatzzahl #DivFacilityPlatzzahl.valuepair span.labelIdentifier.label
+{
+	font-weight:bold;
+	width: 120px;
+	float:left
+}
+#M_MC_pnlEinrichtungsdaten .pnlFacilityData #PnlInformation #M_MC_pnlSpecialData #M_MC_pnlFacilityType #DivFacilityType.valuepair span.labelIdentifier.label:after,
+#M_MC_pnlEinrichtungsdaten .pnlFacilityData #PnlInformation #M_MC_pnlSpecialData #M_MC_pnlFacilityTypeSub #DivFacilityTypeSub.valuepair span.labelIdentifier.label:after,
+#M_MC_pnlEinrichtungsdaten .pnlFacilityData #PnlInformation #M_MC_pnlSpecialData #M_MC_pnlFacilityCode #DivFacilityCode.valuepair span.labelIdentifier.label:after,
+#M_MC_pnlEinrichtungsdaten .pnlFacilityData #PnlInformation #M_MC_pnlSpecialData #M_MC_pnlFacilityPlatzzahl #DivFacilityPlatzzahl.valuepair span.labelIdentifier.label:after{
+	content:": "
+}
+/* Leiste mit den Icons */
+#M_MC_SLF_UlSecLocs {
+    padding: 0;
+    margin: 0;
+  }
+
+  .secLocs.outer{
+	margin-top:1rem;
+  }
+.lblInLine[for="M_MC_PnlInst_EditVbZg"]{
+	width: 200px !important;
+  margin-top: 0;
+  line-height: 2rem;
+  position: relative;
+  top: -0.25rem;
+}
+#M_MC_FFView_SecLocs_SecContactsData.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecContactsDataGrid.jsgrid .jsgrid-grid-header table.jsgrid-table .hidden,
+#M_MC_FFView_SecLocs_SecContactsData.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecContactsDataGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody .hidden{
+	display:none
+}
+html body #Page form#aspnetForm .ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-draggable[aria-describedby="M_MC_FFView_FIV_EditFacImg"] .ui-dialog-title,
+#aspnetForm .ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-draggable[aria-describedby="M_MC_FFView_FIV_EditFacImg"] #ui-id-1{
+	display:none
+}
+#M_MC_PnlInst_EditVbZg{
+margin-top: 0.5rem;
+  position: relative;
+}
+.ctlPanel.pgCtlOpener {
+height: auto;
+  position: fixed;
+  width: 42px;
+  left: calc(50% - 547px);
+  padding: 0 5px;
+  background-color: white;
+  top: 195px;
+  border-right: 1px solid #999
+}
+#M_MC_FFView_FacCtls div:hover{
+	  filter: var(--filter-red) !important;
+}
+
+.ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-dialog-buttons.ui-draggable.ui-resizable div.ui-dialog-buttonpane.ui-widget-content.ui-helper-clearfix div.ui-dialog-buttonset button.button.ui-button.ui-corner-all.ui-widget{
+border: none;
+  background-color: var(--color-blue);
+}
+html body div.ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-dialog-buttons.ui-draggable.ui-resizable div.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix.ui-draggable-handle button.ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-close span.ui-button-icon.ui-icon.ui-icon-closethick:after{content:"X"}
+#M_MC_FFView_FacCtls div {
+  font-size: 0 !important;
+  background: unset;
+    background-position-x: unset;
+    background-repeat: unset;
+    background-image: unset;
+  margin-bottom: 1rem !important;
+  filter: var(--filter-blue) !important;
+  background-repeat: no-repeat;
+}
+#M_MC_PnlInst_EditInst.pnlEdit .command.buttons{
+	margin-top:.5rem
+}
+#M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager{
+	text-align:center
+}
+#M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-pager-container .jsgrid-pager .jsgrid.pgCounter.container{
+	margin-top:0.5rem
+}
+#M_MC_pnlEinrichtungsdaten .secLocs.outer #M_MC_SLF_LocCtls.ctlPanel.pgCtlOpener{
+	display:none;
+}
+#M_MC_TxtNewEmail, #M_MC_TxtNewTelefon, #M_MC_TxtNewTelefax, #M_MC_TxtNewOrt, #M_MC_TxtNewName, #M_MC_TxtNewStrasse {
+  float: right;
+  width: calc(100% - 12rem);
+}
+#M_MC_NewFacility h2{
+	display:none
+}
+#M_MC_DdlNewTraeger,
+#M_MC_DdlLeistungstyp,
+#M_MC_TxtNewPlatzzahl,
+#M_MC_TxtNewPLZ{
+	float:right
+}
+
+#M_MC_FFView_SecLocs_SecLocsGridGrid table td,
+#M_MC_FFView_SecLocs_SecContactsData #M_MC_FFView_SecLocs_SecContactsDataGrid table td {
+  padding: 0.5rem !important;
+  height: fit-content;
+  line-height: 2rem;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr .name {
+
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr th,
+#M_MC_FFView_SecLocs_SecContactsData #M_MC_FFView_SecLocs_SecContactsDataGrid table tr th {
+  background: #EEE;
+  padding: 0.5rem !important;
+  text-align: left
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table td,
+#M_MC_FFView_SecLocs_SecContactsData #M_MC_FFView_SecLocs_SecContactsDataGrid table td {
+  padding: 0.5rem !important;
+  height: fit-content;
+  line-height: 2rem;
+}
+.jsgrid-grid-body {
+  min-height: 370px;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.state{
+	min-width: 190px !important;
+}
+
+
+#M_MC_FFView_SecLocs_SecLocsGridGrid table.jsgrid-table tr.jsgrid-header-row th.addrVis{
+	font-size: 0;
+	min-width: 0;
+	width: 70px !important;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table.jsgrid-table tr.jsgrid-header-row th.addrVis:after{
+	font-size:1rem;
+	content:"Sichtbar";
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.addrVis{
+	min-width: 70px !important;
+}
+
+#M_MC_FFView_SecLocs_SecLocsGridGrid table.jsgrid-table tr.jsgrid-header-row th.capa{
+	font-size: 0;
+	min-width: 0;
+	width: 70px !important;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table.jsgrid-table tr.jsgrid-header-row th.capa:after{
+	font-size:1rem;
+	content:"Platzzahl";
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.capa{
+	min-width: 70px !important;
+}
+
+#M_MC_FFView_SecLocs_SecLocsGridGrid table.jsgrid-table tr.jsgrid-header-row th.city{
+	font-size: 0;
+	min-width: 0;
+	width: 180px !important;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table.jsgrid-table tr.jsgrid-header-row th.city:after{
+	font-size:1rem;
+	content:"Ort";
+
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.city{
+	min-width: 180px !important;
+}
+
+
+#M_MC_FFView_SecLocs_SecLocsGridGrid table.jsgrid-table tr.jsgrid-header-row th.poBox{
+	font-size: 0;
+	min-width: 0;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table.jsgrid-table tr.jsgrid-header-row th.poBox:after{
+	font-size:1rem;
+	content:"PLZ";
+	width:55px;
+}
+
+
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.numAdd{
+	font-size:0;
+	width:50px;
+}
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.numAdd:after{
+	font-size:1rem;
+	content:"Zusatz";
+	width:50px;
+}
+
+
+#M_MC_FFView_SecLocs_SecContactsData.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecContactsDataGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.hidden.templates.jsgrid-header-sortable,
+#M_MC_FFView_SecLocs_SecContactsData.pnlEdit.ui-dialog-content.ui-widget-content #M_MC_FFView_SecLocs_SecContactsDataGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.hidden.templates
+{
+	width:150px !important;
+	min-width:150px !important;
+}
+
+
+#M_MC_FFView_SecLocs_SecContactsDataGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.inet,
+#M_MC_FFView_SecLocs_SecContactsDataGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.stt.inet.jsgrid-header-sortable{
+	width:200px !important;
+	min-width:200px !important;
+}
+#M_MC_FFView_SecLocs_SecContactsDataGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.mobil,
+#M_MC_FFView_SecLocs_SecContactsDataGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.stt.mobil.jsgrid-header-sortable{
+	width:100px !important;
+	min-width:100px !important;
+}
+#M_MC_FFView_SecLocs_SecContactsDataGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.name,
+#M_MC_FFView_SecLocs_SecContactsDataGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.stt.name.jsgrid-header-sortable{
+	width:250px !important;
+	min-width:250px !important;
+}
+
+
+
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-body table.jsgrid-table tbody tr.jsgrid-row td.jsgrid-cell.stt.numAdd{
+	min-width: 50px !important;
+}
+
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.num{
+	font-size:0
+}
+#M_MC_FFView_SecLocs_SecLocsGrid.pnlEdit #M_MC_FFView_SecLocs_SecLocsGridGrid.jsgrid .jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.num:after{
+	font-size:1rem;
+	content:"Nr."
+}
+
+#M_MC_FFView_SecLocs_SecLocsGridGrid tr .name {
+  min-width: 300px !important;
+    width: 300px !important;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid tr .street {
+  min-width: 250px !important;
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid tr .num{
+	min-width:20px
+}
+#M_MC_FFView_SecLocs_SecLocsGridGrid table tr:nth-child(2n+1), #M_MC_FFView_SecLocs_SecContactsData #M_MC_FFView_SecLocs_SecContactsDataGrid table tr:nth-child(2n+1) {
+    background: #FBFBFB;
+}
+
+#M_MC_FFView_OpenEdtContact{
+		background-image: url("Images/Icons/Stammdaten/Ansprechpartner.svg") !important;
+}
+	#M_MC_FFView_AddFacilityOpener {
+	background-image: url("Images/Icons/Stammdaten/Einrichtung_hinzufuegen.svg") !important;
+}
+#M_MC_FFView_OpenChgVisibility {
+	background-image: url("Images/Icons/Stammdaten/Sichbarheit_Einrichtung.svg") !important;
+}
+#M_MC_FFView_OpenEdtLocsContacts {
+	background-image: url("Images/Icons/Stammdaten/Kontakte_bearbeitenn.svg") !important;
+}
+#M_MC_FFView_OpenEdtLocsData {
+	background-image: url("Images/Icons/Stammdaten/Standort_bearbeiten.svg") !important;
+}
+#M_MC_FFView_OpenAddDocFile {
+	background-image: url("Images/Icons/Stammdaten/Dokument_hinzufuegen.svg") !important;
+	background-size: 40px !important;
+	height: 40px;
+}
+#M_MC_FFView_OpenEdtFacData {
+	background-image: url("Images/Icons/Stammdaten/Standort_bearbeiten.svg") !important;
+}
+#M_MC_FFView_OpenAddFIV {
+	background-image: url("Images/Icons/Stammdaten/Einrichtungsbild.svg") !important;
+}
+#M_MC_FFView_OpenAddFile {
+	background-image: url("Images/Icons/Stammdaten/Broschuere.svg") !important;
+}
+#M_MC_FFView_OpenFacFeatures {
+	background-image: url("Images/Icons/Stammdaten/Merkmale.svg") !important;
+}
+#M_MC_FFView_OpenChgLocVisibility {
+	background-image: url("Images/Icons/Stammdaten/Sichbarheit_Adresse.svg") !important;
+}
+#M_MC_FFView_OpenEdtFacData {
+	background-image: url("Images/Icons/Stammdaten/Bearbeiten.svg") !important;
+}
+#M_MC_FFView_OpenAddFFR {
+	background-image: url("Images/Icons/Stammdaten/Platzzahl.svg") !important;
+}
+#M_MC_FFView_EdtInstOp {
+	background-image: url("Images/Icons/Stammdaten/Traeger.svg") !important;
+}
+#M_MC_FFView_OpenAddFDV {
+	background-image: url("Images/Icons/Stammdaten/Info.svg") !important;
+}
+#M_MC_FFView_OpenChgLocVisibility {
+	background-image: url("Images/Icons/Stammdaten/Sichbarheit_Adresse.svg") !important;
+}
+#M_MC_FFView_OpenChgLocVisibility.hidden {
+	background-image: url("Images/Icons/Stammdaten/Nicht_Sichbarheit_Adresse.svg") !important;
+}
+#M_MC_FFView_OpenAddLocation{
+	background-image: url("Images/Icons/Stammdaten/Standort_hinzufuegen.svg") !important;
+}
+#M_MC_FFView_DeleteFacOpener{
+	background-image: url("Images/Icons/Stammdaten/Einrichtung_loeschen.svg") !important;
+}
+#M_MC_NewFacility{
+	width: 800px !important;
+}
+#M_MC_DivNewTraeger{
+	height:6rem
+}
+#M_MC_FFView_DeleteFacOpener,
+#M_MC_FFView_OpenAddLocation,
+#M_MC_FFView_OpenFacFeatures,
+#M_MC_FFView_OpenEdtLocsContacts,
+#M_MC_FFView_OpenEdtLocsData,
+#M_MC_FFView_AddFacilityOpener,
+#M_MC_FFView_OpenAddFDV,
+#M_MC_FFView_OpenAddFFR,
+#M_MC_FFView_EdtInstOp,
+#M_MC_FFView_OpenChgLocVisibility,
+#M_MC_FFView_OpenChgVisibility,
+#M_MC_FFView_OpenEdtContact,
+#M_MC_FFView_OpenEdtFacData,
+#M_MC_FFView_OpenAddFIV,
+#M_MC_FFView_OpenAddFile {
+    background-position: left;
+    background-repeat: no-repeat;
+    background-size: 48px;
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    font-size: 0 !important;
+    cursor:pointer
+}
+
+.lblInLine,
+.lblLeftLabel{
+	margin-top:0.65rem
+}
+/* Leiste mit den Icons */
+
+/* Adressen Google Maps */
+/*
+.divMaps {
+	height: 34px;
+	margin-left: 5px;
+	width: auto;
+	padding-left: 15px;
+	overflow: hidden;
+	margin-top: 5px;
+	background:url("Images/GoogleMaps_logo.svg");
+	background-repeat:	no-repeat;
+	background-size:10px;
+	position:relative; 
+	border:0 none transparent
+}
+
+#M_MC_FFView_SecLocs_SecondaryLocs.secLocs ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li .mobil:before{
+	content:"Mobil: "
+}
+#M_MC_FFView_SecLocs_SecondaryLocs.secLocs ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li .capacity:before{
+	content:"Platzzahl: "
+}
+ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li .contactData .telephone:before,
+#M_MC_FFView_ContactDirect_CtTelephone:before,
+.lblTelephone:before,
+ul#M_MC_SLF_UlSecLocs .contactData .telephone:before{
+	content:"Telefon: "
+}
+.lblTelephoneMobile:before,
+#M_MC_FFView_ContactDirect_CtMobil:before{
+	content:"Mobil: "
+}
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent .telefax .telefax:before,
+.lblTelefax:before,
+#M_MC_FFView_ContactDirect_CtTelefax:before{
+	content:"Fax: "
+}
+
+.pnlMaps {
+	display: inline-block;
+	vertical-align: top;
+	margin-left: 1rem
+}
+
+.pnlMaps span {
+	display: flex !important
+}
+*/
+/* Adressen Google Maps */
+
+
+/* Kacheln */
+.status0 a{
+	color:var(--color-white)
+}
+#M_MC_FFView_SecLocs_UlSecLocs{
+	min-height:0
+}
+li[selected="selected"] .maps {
+  background-image: url("Images/GoogleMaps_logo_selected.svg") !important;
+}
+#M_MC_FFView_SecLocs_LocCtls{
+	
+}
+#M_MC_FacilityData{
+	width: calc(100% - 300px - 1rem);
+	padding:0
+}
+li .maps {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  height: 33px;
+  background-image: url("Images/GoogleMaps_logo.svg");
+  background-size: 23px;
+  background-repeat: no-repeat;
+}
+.pnlInstitutionAddress,
+html body #Page form#aspnetForm #M_PnlMain.main .wrapper .innerMain #M_MC_PnlStammDaten #M_MC_CurrentFacility #Einrichtungsdaten #M_MC_PnlTraeger #InstitutionInner #M_MC_PnlInst_InstAddress_pnlAddress.pnlAddress.icon{
+background-image: url("Images/GoogleMaps_logo.svg");
+  background-size: 23px;
+  background-repeat: no-repeat;
+  background-position: right;
+  padding-right: 5rem;
+}
+.maps {
+  width: 24px;
+  height: 34px;
+  background-image: url("Images/GoogleMaps_logo.svg");
+  background-repeat: no-repeat;
+  font-size: 0;
+  float: right;
+  margin-left: 0.5rem;
+}
+.maps a{
+	height: 36px;
+	width: 25px;
+	display: inline-block
+}
+#M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-grid-header{
+	margin-bottom: 0.5rem;
+}
+#M_MC_PnlInst_InstAddress_ctl00.divMaps .city{
+	margin-bottom:0.25rem
+}
+#M_MC_PnlInst_InstAddress_ctl00,
+#M_MC_pnlInstitutionAddress{
+	margin:0.25rem 0
+}
+#M_MC_FFView_SecLocs_SecondaryLocs.secLocs ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li,
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #Einrichtungsdaten #M_MC_FacilityData #M_MC_FFView_SecLocs_SecondaryLocs.secLocs .addressOuter ul.standortContent li,
+#M_MC_uppEinrichtungsdaten ul#M_MC_SLF_UlSecLocs li{
+	list-style-type: none;
+	border: 1px solid #aaa;
+	padding: 0.5rem 2rem 0.5rem 0.5rem;
+	margin: 0rem 0.5rem 0.5rem 0;
+	float: left;
+	height: 16rem;
+	position: relative;
+	overflow: hidden;
+	width: calc(50% - 3.5rem);
+	float: left;
+	margin-right: 0.5rem;
+}
+#FacilityListOpenener {
+	width: unset; 
+	float: right;
+	margin-bottom: 0px;
+	display: inline-block;
+	position: relative;
+	top: 0.18rem;
+	right: 8.7rem;
+	display:none;
+}
+
+#M_MC_FFView_SecLocs_UlSecLocs{
+	width:100%
+}
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent li.status1[selected="selected"]:after{
+	content: "⌛";
+	opacity:1;
+	bottom:0.5rem;
+	position:absolute;
+	right: 0.5rem;
+	font-size:1.5rem;
+	color:white;
+}
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent li.status1:after{
+	content: "⌛";
+	opacity:1;
+	bottom:0.5rem;
+	position:absolute;
+	right: 0.5rem;
+	font-size:1.5rem
+}
+
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent li.status0:after{
+	content: "✔";
+	color:#00AE21;
+	bottom:0.5rem;
+	position:absolute;
+	right: 0.5rem;
+	font-size:1.5rem
+}
+#M_MC_FFView_SecLocs_SecondaryLocs.secLocs ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li .mobil:before{
+	content:"Mobil: "
+}
+#M_MC_FFView_SecLocs_SecondaryLocs.secLocs ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li .capacity:before{
+	content:"Platzzahl: "
+}
+ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li .contactData .telephone:before,
+#M_MC_FFView_ContactDirect_CtTelephone:before,
+.lblTelephone:before,
+ul#M_MC_SLF_UlSecLocs .contactData .telephone:before{
+	content:"Telefon: "
+}
+.lblTelephoneMobile:before,
+#M_MC_FFView_ContactDirect_CtMobil:before{
+	content:"Mobil: "
+}
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent .status0 .telefax:before,
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent .telefax .telefax:before,
+.lblTelefax:before,
+#M_MC_FFView_ContactDirect_CtTelefax:before{
+	content:"Fax: "
+}
+
+#M_MC_FFView_SecLocs_UlSecLocs.standortContent li.status0[selected="selected"]:after{
+	content: "✔";
+	bottom:0.5rem;
+	position:absolute;
+	right: 0.5rem;
+	font-size:1.5rem;
+	color:white;
+}
+#M_MC_FFView_FacName{
+	width:85%
+}
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #Einrichtungsdaten #M_MC_FacilityData .facData .secLocs.outer #M_MC_FFView_SecLocs_SecondaryLocs.secLocs ul#M_MC_FFView_SecLocs_UlSecLocs.standortContent li{
+	line-height: 1.2rem;
+}
+#M_MC_pnlStammDaten #Einrichtungsdaten #M_MC_uppEinrichtungsdaten #M_MC_pnlEinrichtungsdaten .secLocs.outer #M_MC_SLF_SecondaryLocs.secLocs ul#M_MC_SLF_UlSecLocs.standortContent li{
+	width: calc((100% / 3) - 3.25rem);
+	cursor:pointer;
+	  line-height: 1.2rem;
+}
+
+#M_MC_SLF_UlSecLocs li .stName{
+	font-weight:bold
+}
+
+ul#M_MC_SLF_UlSecLocs .contactData .telefax .telefax:before{
+	content:"Fax: "
+}
+#M_MC_FFView_SecLocs_UlSecLocs li[selected="selected"],
+#M_MC_pnlEinrichtungsdaten ul#M_MC_SLF_UlSecLocs li[selected="selected"]{
+	list-style-type: none;
+	border:1px solid black;
+	background: #003063;
+	color:#fff
+}
+/* Kacheln */
+
+.unit_€::after {
+    content: '€';
+}
+.unit_%::after {
+    content: '%';
+}
+
+#M_MC_Attachments_RemFile .controls.command.buttons,
+#M_MC_AttachmentsPanel_RemFile .controls.command.buttons{
+	line-height:3rem
+}
+#M_MC_FFView_FacName,
+#M_MC_PnlInst_InstName,
+#M_MC_pnlEinrichtungsdaten #M_MC_lblEinrichtungsName.lblFacilityName h3,
+#M_MC_pnlInstitution .pnlInnerHeadLine span#M_MC_lblInstitutionName.lblInstitutionName.icon h3{
+	padding: 0;
+	margin: 0;
+	font-family: var(--font-100);
+	display: inline-block;
+	font-weight: normal
+}
+#M_MC_pnlStammDaten .pnlFile input.button.delAttmt{
+	border: none;
+	background: var(--color-pink);
+	margin: 0 0 0 0.5rem;
+	color: white;
+	font-size: 1rem;
+	padding: 4px 10px;
+}
+
+.pnlFiles .file:before {
+	content: " ";
+	position: relative;
+	width: 16px;
+	height: 16px;
+	display: inline-block;
+	background-repeat:no-repeat;
+	vertical-align:middle;
+}
+
+.pnlFiles .file.status0:before {/*neu*/
+	background-image: url(./Images/newdocument.gif);
+}
+.pnlFiles .file.status1:before { /*versandt*/
+	background-image: url(./Images/sent.gif);
+}
+.pnlFiles .file.status4:before { /*abgelehnt*/
+	background-image: url(./Images/rejected.gif);
+}
+.pnlFiles .file.status3:before { /*angenommen*/
+	background-image: url(./Images/accepted.gif);
+}
+
+.pnlFiles .file.status2:before { /*in_Validierung*/
+	background-image: url(./Images/question-mark.gif);
+}
+/*Tooltips für die Dokumentanhänge*/
+.pnlFiles .file:hover:after {
+display: block;
+  position: relative;
+  top: -29px;
+  background-color: var(--color-blue);
+  min-width: 150px;
+  left: -5px;
+  padding: 5px;
+  margin: 5px;
+  border: 1px solid #ddd;
+  width: 200px;
+  color: white;
+}
+#M_MC_Documents_Documents{margin-top:2rem}
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #M_MC_PnlDocuments #M_MC_Documents_Documents #M_MC_Documents_Files.value .pnlFiles div.type.file label{line-height: 2rem;
+  font-weight: bold}
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #M_MC_PnlDocuments #M_MC_Documents_Documents div.label.attmts{
+  margin-bottom: 1rem;
+  display: block;
+  font-family: var(--font-300);
+  color: var(--color-darkgrey);
+  font-weight: bold;
+}
+#aspnetForm .ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-draggable #M_MC_Documents_AddFile.ui-dialog-content.ui-widget-content h2{
+	margin-top:0
+}
+#M_MC_Documents_FUAddDoc,
+#aspnetForm div.ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-draggable div#M_MC_Documents_AddFile.ui-dialog-content.ui-widget-content div.docTypes select#M_MC_Documents_DdlDocType{
+ margin:1rem 0;
+}
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #M_MC_PnlDocuments #M_MC_Documents_Documents #M_MC_Documents_Files.value .pnlFiles .file.data .date.file{
+	margin-top:0.5rem
+}
+
+#M_MC_Documents_Files .pnlFiles .file.data input.fileAttmt{
+	margin-right: 1rem;
+	height: 2rem;
+	padding: 0 1rem;
+}
+
+.file.status0:after {
+	content: "Status: neues Dokument";
+	display: none;
+}
+
+.file.status1:after {
+	content: "Status: Dokument wurde heruntergeladen";
+	display: none;
+}
+
+.file.status4:after {
+	content: "Status: Dokument wurde abgelehnt";
+	display: none;
+}
+
+.file.status3:after {
+	content: "Status: Dokument wurde angenommen";
+	display: none;
+}
+
+
+.file.status2:after {
+	content: "Status: Dokument wird geprüft";
+	display: none;
+}
+
+
+#M_MC_pnlStammDaten #currentFacility #Einrichtungsdaten #M_MC_pnlEinrichtungsdaten table td img {
+	margin-bottom:1rem
+}
+
+.TTipVerguetung:after{
+	content:"ℹ";
+	font-size:2rem;
+	color:var(--color-pink)
+}
+.lblTelefax a,
+.lblTelephone a {
+    color: var(--color-blue)
+}
+.FacilityPreview{display:none;}
+#M_MC_pnlInstitution{
+	margin-bottom:1.5rem
+}
+
+#fancybox-title-inside {
+    display: none
+}
+
+#M_MC_pnlStammDaten #currentFacility #Einrichtungsdaten #M_MC_pnlEinrichtungsdaten table tbody tr td {
+    vertical-align: top
+}
+
+#M_MC_Einrichtungsbilder {
+    text-align: right
+}
+
+#facilities {
+    display: inline-block;
+    width: 275px;
+    max-height: 600px
+}
+
+#M_MC_pnlEinrichtungsdaten #M_MC_Einrichtungsbilder {
+    width: 30%
+}
+#Search::-webkit-search-cancel-button{
+   display:none;
+    visibility: hidden;
+}
+input[type=search]::-webkit-search-cancel-button {
+    -webkit-appearance: searchfield-cancel-button
+}
+#search:placeholder-shown + svg {
+	display:none;
+	visibility: hidden
+}
+#M_MC_pnlStammDaten #currentFacility #M_MC_pnlAttachments .label.attmts{
+	font-size:1.2rem;
+	margin-bottom: 1rem;
+	border-bottom: 1px solid #efefef;
+	background-position-y: 7px;
+	font-family: var(--font-georgia) !important
+}
+
+#M_MC_pnlStammDaten #currentFacility #M_MC_pnlAttachments{
+	margin-left:0px; 
+}
+
+#M_MC_pnlStammDaten #currentFacility #M_MC_pnlAttachments .label.attmts,
+#M_MC_pnlStammDaten #currentFacility #Einrichtungsdaten #M_MC_pnlEinrichtungsdaten table tr td span {
+    margin-top: 0.1rem
+}
+
+#M_MC_pnlStammDaten #currentFacility #ViewCount {
+    margin-left: 0.1rem
+}
+
+#currentFacility {
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 320px)
+}
+
+#FacilityFilter {
+    width: 90%
+}
+
+#M_MC_pnlEinrichtungenListe .pnlFac a {
+    padding: 0 0 0 10px;
+    display: inline-block;
+    width: 220px
+}
+
+.lblBegriff {
+    overflow: visible;
+    min-width: 230px
+}
+
+.pnlLV {
+    margin-top: 30px;
+    float: left;
+    display: inline-block
+}
+
+.pnlLVContent {
+    display: block
+}
+
+#M_MC_pnlEinrichtungsdaten table tr td {
+    border-bottom: 1px solid #efefef
+}
+
+#fancybox-content {
+    padding: 10px
+}
+#M_MC_lblWebContactLabel{
+	font-family:var(--font-700)
+}
+#M_MC_lbtSaveEditContact {
+    background: #e9e9e9 none repeat scroll 0 0;
+    border: medium none;
+    border-radius: var(--border-radius);
+    float: left;
+    margin-right: 0.5rem !important;
+    height: 28px;
+    margin: 0 0 0 0.2em;
+    padding: 2px 0.2em;
+    text-decoration: none;
+    width: 130px
+}
+
+#fancybox-content .Button:hover {
+    border: none;
+    background-color: var(--color-blue);
+    color: var(--color-white) !important
+}
+
+#fancybox-content .ButtonCancel:hover,
+#fancybox-content .ButtonSave:hover,
+#fancybox-content .ButtonDelete:hover {
+    border: none;
+    background-color: var(--color-blue);
+    color: var(--color-white)
+}
+#M_MC_ChkFacilityIsVisible{
+	border:1px solid var(--color-blue);
+	height:30px;
+	width:30px;
+	margin:0;
+	padding:0
+}
+	
+#M_MC_BtnSaveFacilityVisibility{
+	background-color: #e9e9e9;
+    background-position: 10px center;
+    background-image: url("Images/Save_16x16_256.ico");
+    border-radius: var(--border-radius);
+    margin: 0 0 0 0.2em;
+    padding: 8px 15px 8px 33px;
+    text-decoration: none;
+    font-family: var(--font-100);
+	border: none;
+	background-repeat: no-repeat;
+	font-size:1rem
+}
+
+#M_MC_lbtRemFileYes,
+#M_MC_lbtRemFileNo,
+#fancybox-content .ButtonCancel {
+    background-color: #e9e9e9;
+    background-image: url("Images/cancel2.png");
+    background-position: 10px center;
+    border-radius: var(--border-radius);
+    margin: 0 0 0 0.2em;
+    padding: 6px 15px 6px 33px;
+    text-decoration: none
+}
+
+#fancybox-content .ButtonDelete {
+    background-color: #e9e9e9;
+    background-position: 10px center;
+    border-radius: var(--border-radius);
+    margin: 0 0 0 0.2em;
+    padding: 6px 15px 6px 33px;
+    text-decoration: none;
+    color: var(--color-table-grey);
+}
+#M_MC_pnlInstitutionAddress.pnlInstitutionAddress.pnlAddress.icon a.divMaps.clickableAddress
+#M_MC_PnlInst_InstAddress_pnlAddress .divMaps {
+  position: absolute;
+  top: 0;
+  right: -2rem;
+}
+#InstitutionInner{
+	position: relative;
+}
+.pnlLVBegriff {
+    float: left;
+    display: block;
+    width: 700px
+}
+
+.lblLVOberBegriff {
+    float: left;
+    min-width: 500px
+}
+
+.lblLVUnterBegriff {
+    float: left;
+    margin-left: 20px;
+    min-width: 500px
+}
+
+.lblLVBegriff {
+    display: list-item;
+    margin-left: 55px;
+    min-width: 500px
+}
+
+.lblLVBegriffHeader {
+    margin-left: 30px;
+    min-width: 500px
+}
+
+.lblLVBegriffHeaderBez {
+    margin-left: 10px
+}
+
+.lblBegriffStammdaten {
+    overflow: visible;
+    min-width: 100px
+}
+
+#Einrichtungsdaten .lblUnterbegriff {
+    overflow: visible;
+    margin-bottom: 10px
+}
+
+.lblUnterbegriff img {
+    height: 0px;
+    width: 0px
+}
+
+.lblPnlLVHeader {
+    display: inline-block
+}
+
+#imgShowHide {
+    margin-left: 5px
+}
+
+#Einrichtungen {
+    font-size: 85%;
+    margin-top: 5px
+}
+
+.VerguetungLegende {
+    display: block;
+    font-size:.75rem
+}
+
+.VerguetungLegendeMitte {
+    display: block
+}
+
+#pnlStammDatenTable1stCol {
+    vertical-align: top
+}
+
+.lbltblVerguetungBezeichnung {
+    text-align: left
+}
+
+.tblVerguetung {
+    text-align: right
+}
+
+.tblVerguetung tr td:first-child {
+    text-align: left
+}
+.tblVerguetung tr td {
+    padding: 3px 5px;
+    min-width: 80px
+}
+
+.lbltblVerguetungHeaderBezeichnung {
+    display: none
+}
+
+#M_MC_tblZuschlag {
+    margin-top: 10px
+}
+
+#M_MC_tblZuschlag .lbltblVerguetungHeader {
+    display: none
+}
+#M_MC_FFView_SpclData{
+	margin-top:1rem
+}
+#Einrichtungsdaten #M_MC_FacilityData #M_MC_FFView_EditContact.pnlEdit .command.buttons{
+	margin-top: 1rem
+}
+#M_MC_FFView_SpclData .valuepair .label{
+	font-family: var(--font-500);
+	float: left;
+	position: relative;
+	width: 130px
+}
+#DivFeats .ffs .valuepair span.label.identifier,
+#M_MC_FacilityData .facData .secLocs.outer .secLoc.label{
+	font-weight: bold
+}
+#M_MC_FacilityData .facData .secLocs.outer .secLoc.label:after,
+#M_MC_FFView_SpclData .valuepair .label:after{
+	content:": "
+}
+
+#M_MC_FFView_SpclData .valuepair .value{
+    position: relative;
+    display: grid;
+}
+#M_MC_FacilityData{
+	margin-top:1rem
+}
+
+#M_MC_pnlInstitutionInner,
+#InstitutionInner{
+width: fit-content;
+	margin-top:1rem
+}
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #Einrichtungsdaten #M_MC_FacilityData #M_MC_FFView_ContactData.pnlEdit div input,
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #Einrichtungsdaten #M_MC_FacilityData #M_MC_FFView_EditContact.pnlEdit div input,
+#Einrichtungsdaten #M_MC_PnlInst_EditInst.pnlEdit input{
+	margin-top:0.2rem
+}
+
+#M_MC_tblWerte {
+    display: table-cell;
+    vertical-align: top
+}
+
+#M_MC_pnlIframe {
+    border: none;
+    display: table-cell;
+    padding-right: 20px;
+    overflow: hidden
+}
+
+#M_MC_pnlIframe iframe {
+    display: table-cell;
+    min-width: 350px;
+    height: 300px;
+    border: transparent
+}
+
+.pnlContactData {
+    display: inline-block
+}
+
+#lblFacilityType {
+    padding-right: 20px
+}
+
+#linkPathNavStart {
+	padding-left: 0 !important
+}
+
+.pnlContactPersonEmailAddress,
+.pnlContactPersonWebAddress,
+.pnlContactPersonTelephone,
+#M_MC_pnlInstitutionStreet {
+	padding: 0 0 2px 0
+}
+
+.lblCity {
+	padding: 2px 0
+}
+
+.innerMain input {
+    margin-right: 1rem
+}
+
+.LabelIdentifier {
+	padding: 2px 0
+}
+
+.pnlStreetCity {
+	display: inline-block;
+	margin-top:0.5rem
+}
+
+.LabelIdentifier {
+	width: 250px;
+	display: table-cell !important;
+	font-family:var(--font-700)
+}
+#Einrichtungsdaten{
+	line-height:1.25rem
+}
+.LabelValue {
+	margin-left: 5px;
+	display: table-cell !important
+}
+
+#M_MC_pnlInstitutionOuter {
+	margin-bottom: 1.5rem
+}
+
+#c0_MC_pnlInstitutionInner {
+	display: block !important
+}
+html body #Page form#aspnetForm .ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-draggable #M_MC_FFView_SecLocs_SecLocAddLoc.pnlEdit.ui-dialog-content.ui-widget-content h2{
+	display:none
+}
+.facilityIcon {
+	background-image: url("Images/Haus.png");
+	background-repeat: no-repeat;
+	display: block;
+	background-size: 24px;
+	height: 24px;
+	padding-left: 31px;
+	float: left;
+	margin-top: 0.25rem;
+}
+#M_MC_uppEinrichtungsdaten{
+	margin-top:1rem
+}
+#M_MC_SLF_UlSecLocs{
+	padding:0;
+	margin-top: 0.25rem
+}
+.lblInstitutionName.icon,
+#M_MC_lblInstitutionName {
+	margin-top: 1rem;
+	background-image: url("Images/Traeger2.png");
+	background-repeat: no-repeat;
+	background-position: left;
+	display: block;
+	background-position-x: -2px;
+	background-size: 30px;
+	height: 38px;
+	line-height: 2rem;
+	padding-left: 38px
+}
+
+#M_MC_lblEinrichtungsName {
+	display: block;
+	line-height: 2.5rem;
+	margin: 0 0 0 2.3rem;
+}
+
+/*.pnlInstitutionAddress {
+	float: right;
+}*/
+
+#M_MC_pnlInstitutionData {
+	display: inline-block
+}
+
+#M_MC_DivLeistungsbeschreibung {
+	margin-top: 1rem
+}
+
+#M_MC_PnlAddress,
+#M_MC_PnlContactPerson {
+	/*width: 33%;*/
+	margin-top: 1.2rem
+}
+
+.pnlInstitutionFacility {
+	margin-bottom: 1rem
+}
+
+.pnlInstitutionFacility .pnlAddress {
+	background-image: none !important;
+	margin-top: 0;
+	padding-left: 0 !important
+}
+
+#lblAddressFacilityOpenerAll {
+	display: none !important
+}
+
+.LinkClass {
+	cursor: pointer !important
+}
+
+
+.pnlVerguetung .lblUnterbegriff .TTip img {
+	display: none
+}
+
+.pnlVerguetung .lblUnterbegriff .TTip span {
+	display: block;
+	font-size: xx-small
+}
+
+.TTipVerguetung {
+	position: relative
+}
+
+.TTipVerguetung span {
+	display: none;
+	color: var(--color-blue) !important;
+	padding: 0.3rem 1rem
+}
+
+#M_MC_pnlEinrichtungenListe div {
+	padding: 10px 0
+}
+
+.TTipVerguetung:hover {
+	background-color: transparent
+}
+
+.TTipVerguetung:hover span {
+	width: 150px;
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	display: block;
+	background: white;
+	border: 1px solid var(--color-grey);
+	text-decoration: none;
+}
+
+#Einrichtungen #M_MC_pnlEinrichtungenListe .pnlFac span img {
+	height: 30px !important;
+	margin-top: 6px
+}
+
+#M_MC_pnlAttachments {
+	margin-top: 20px
+}
+
+#M_MC_pnlAttachments span:first-child {
+	display: block
+}
+
+.FileUpload {
+	display: inline-block;
+	height: 28px !important
+}
+
+.pnlFile {
+	display: block;
+	margin-right: 5px;
+	margin-bottom: 5px
+}
+
+#M_MC_TxtEditFacilityDescription {
+	width: 90%;
+	margin-left: 0.5rem
+}
+
+#M_MC_PnlEditFacilityDescription {
+	height: 100px
+}
+
+#fancybox-content .ButtonCancel {
+	margin-left: unset !important;
+	float: none !important
+}
+
+#fancybox-content .ButtonSave {
+	margin-left: unset !important;
+	margin-right: unset !important;
+	float: none !important
+}
+
+.divCommandbuttons {
+	margin-top: 1.2rem
+}
+
+.ButtonAttachment {
+	display: inline-block;
+	height: 31px;
+	padding-left: 20px;
+	overflow: hidden;
+	width: 250px;
+	word-wrap: break-word
+}
+
+#M_MC_PnlEditFacilityImage {
+	height: 140px
+}
+
+#divContactData.fancyB_Inner #M_MC_pnldivContactData div::last-child {
+	margin-top: 20px;
+	padding: 0px 0 50px 0
+}
+
+.ButtonDeleteFile {
+	vertical-align: middle
+}
+
+.lblInLine,
+.lblLeftLabel {
+	width: 70px;
+	display: inline-block
+}
+
+.lblInLine {
+	display: inline-block;
+	width: 70px;
+}
+
+#M_MC_pnlEditContact div {
+	margin-bottom: 5px
+}
+
+#divEditContact {
+	width: auto;
+	overflow: auto
+}
+
+#fancybox-content {
+	padding: 1rem !important
+}
+
+#divContactData {
+	width: auto;
+	overflow: auto
+}
+
+#divEditFacility {
+	width: auto;
+	overflow: auto
+}
+
+#divNewFacility {
+	width: auto;
+	overflow: auto
+}
+
+#divHelp {
+	width: 750px;
+	overflow: auto
+}
+
+
+.divButtons a#M_MC_lbtRemFileYes.Button,
+.divButtons a#M_MC_lbtRemFileNo.Button {
+	background-color: #e9e9e9;
+	background-repeat: no-repeat;
+	font-family: var(--font-100);
+	padding-left: 28px
+}
+
+.divButtons a#M_MC_lbtRemFileYes.Button {
+	background-image: url("Images/trash.ico");
+	background-position: 5px 6px
+}
+
+.divButtons a#M_MC_lbtRemFileNo.Button {
+	background-image: url("Images/cancel2.png");
+	background-position: 8px 8px
+}
+
+.divButtons a#M_MC_lbtRemFileYes.Button:hover,
+.divButtons a#M_MC_lbtRemFileNo.Button:hover {
+	background-color: var(--color-blue);
+	color: var(--color-white)
+}
+
+.FileUpload {
+	border: 0px solid var(--color-white)
+}
+
+#divRemFile {
+	max-width: 250px;
+	overflow: visible;
+	padding-bottom: 10px
+}
+
+#divAddFile .Button {
+	width: 95%;
+	margin-top: 16px
+}
+
+#divAddFile .FileUpload {
+	width: 50%
+}
+
+#M_MC_lblFileError {
+	position: absolute;
+	right: 11px;
+	top: 5px
+}
+
+#fancybox-title {
+	padding: 0;
+	margin: 0 !important
+}
+
+#fancybox-title-inside {
+	padding: 5px 5px 5px 12px
+}
+
+.divButtons {
+	margin: 14px 58px 14px 0;
+	padding: 0
+}
+
+#divChangeVisibility {
+	margin-top: 10px
+}
+
+#divAddFile {
+	height: 100px;
+	margin-top: 5px
+}
+
+#aRefRemoveFacility,
+#aRefEditFacility {
+	vertical-align: top;
+	color: transparent;
+	margin-left: 5px;
+	float: left
+}
+#M_MC_Attachments_AddFile{DISPLAY:none;}
+.fancybox-title-inside {
+	text-align: left
+}
+
+.Visible {
+	background-image: url("Images/eye.png")
+}
+
+#aRefEditContact:after {
+	content: "Ansprechpartner";
+	color: var(--color-white);
+	margin: 8px
+}
+
+#aRefFacilityImage:after {
+	content: "Foto";
+	color: var(--color-white);
+	margin: 8px
+}
+
+#currentFacility #Einrichtungsdaten #M_MC_pnlEinrichtungsdaten table tr td span.lblBegriff span {
+	line-height: 1rem
+}
+
+#M_MC_pnlStammDaten #currentFacility #Einrichtungsdaten #M_MC_pnlEinrichtungsdaten table tr td span.lblBegriff a {
+	line-height: 1.2rem
+}
+
+#M_MC_pnlEinrichtungsdaten table tbody tr td span a {
+	height: 50px;
+	line-height: 2rem;
+	padding: 5px 0;
+}
+
+#aRefContactData:after {
+	content: "Kontaktdaten";
+	color: var(--color-white);
+	margin: 8px
+}
+
+#aRefFacilityDescription:after {
+	content: "Leistungsbeschreibung";
+	color: var(--color-white);
+	margin: 8px
+}
+
+#DivLBHead {
+	margin-bottom: 1rem
+}
+
+#aRefChangeVisibility.ahrefFancyInline span#lblChangeVisiblityInner.Image.FacilityControl.NotVisible:after {
+    content: "Unsichtbarkeit";
+    color: var(--color-white);
+    margin: 8px
+}
+
+#aRefChangeVisibility.ahrefFancyInline span#lblChangeVisiblityInner.Image.FacilityControl.Visible:after {
+    content: "Sichtbarkeit";
+    color: var(--color-white);
+    margin: 8px
+}
+
+#aRefOpenHBGCost:after {
+	content: "HBG Kosten";
+	color: var(--color-white);
+	margin: 8px
+}
+
+#aRefAddAttachmentFile:after {
+    content: "Anhang";
+    color: var(--color-white);
+    margin: 8px
+}
+
+#aRefChangeVisibility:after{
+	content:"Sichtbarkeit";
+	color: var(--color-white);
+    margin: 8px
+}
+
+#aRefOpenHBGCost,
+#aRefAddAttachmentFile,
+#aRefEditContact,
+#aRefFacilityImage,
+#aRefContactData,
+#aRefChangeVisibility,
+#aRefFacilityDescription {
+    hyphens: unset;
+    margin-right: 0.2rem;
+    background: var(--color-grey);
+    text-align: center;
+    border-radius: var(--border-radius);
+}
+
+#aRefOpenHBGCost:hover,
+#aRefAddAttachmentFile:hover,
+#aRefEditContact:hover,
+#aRefFacilityImage:hover,
+#aRefContactData:hover,
+#aRefChangeVisibility:hover,
+#aRefFacilityDescription:hover {
+    background: var(--color-pink)
+}
+.lblLeftLabel {
+    margin-left: 0;
+}
+#lblEditContactInner,
+#lblContactDataInner,
+#lblEditFacilityInner,
+#lblRemoveFacilityInner,
+#lblAddAttachmentFileInner,
+#lblOpenHBGCostInner,
+#lblFacilityDescriptionInner,
+#lblFacilityImageInner,
+#lblContactDataInner,
+#lblChangeVisiblityInner {
+    height: 0px !important;
+    width: 0px !important;
+    background-size: 0px !important;
+    margin-left: 0px !important;
+    overflow: hidden
+}
+
+#M_MC_FFView_ContactData.pnlEdit h2{
+	margin-top:2rem
+}
+
+#M_MC_NewFacility.ui-dialog-content.ui-widget-content .valuepair .pnlDropDown.value{
+	width:100%
+}
+
+#M_MC_DdlLeistungstyp,
+#M_MC_DdlNewTraeger,
+#M_MC_DdlKreise{
+	width:100%;
+	font-family:var(--font-100)
+}
+.FacilityControl {
+    height: 16px;
+    width: 16px;
+    background-size: 16px;
+    margin-left: 6px
+}
+
+@media screen and (max-width: 500px) {
+    #facilities {
+        height: 200px;
+        margin-bottom: 20px;
+        width: 100%
+    }
+
+    .slimScrollDiv {
+        height: 200px !important
+    }
+
+    .LabelValue {
+        display: block
+    }
+}

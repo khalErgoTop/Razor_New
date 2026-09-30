@@ -1,0 +1,61 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<div style="max-width:480px; margin:40px auto; padding:0 16px">
+    <div class="kern-card" style="padding:32px; background:white; border:1px solid var(--kern-color-layout-border); border-radius:12px">
+
+        <h1 style="margin:0 0 24px; font-size:26px; font-weight:700; color:var(--kern-color-layout-text-default)">Anmeldung</h1>
+
+        <form method="post" style="display:flex; flex-direction:column; gap:20px">
+            <input type="hidden" asp-for="ReturnUrl" />
+
+            <div>
+                <label asp-for="Input.Username" style="display:block; margin-bottom:6px; font-size:15px; font-weight:600"></label>
+                <input asp-for="Input.Username" autocomplete="username" autofocus
+                       style="width:100%; box-sizing:border-box; padding:12px 14px; font-size:16px; border:1px solid var(--kern-color-layout-border); border-radius:6px; background:var(--kern-color-layout-background-default)" />
+                <span asp-validation-for="Input.Username" style="font-size:13px; color:var(--kern-color-danger-default)"></span>
+            </div>
+
+            <div>
+                <label asp-for="Input.Passwort" style="display:block; margin-bottom:6px; font-size:15px; font-weight:600"></label>
+                <input asp-for="Input.Passwort" type="password" autocomplete="current-password"
+                       style="width:100%; box-sizing:border-box; padding:12px 14px; font-size:16px; border:1px solid var(--kern-color-layout-border); border-radius:6px; background:var(--kern-color-layout-background-default)" />
+            </div>
+
+            <label style="display:flex; align-items:center; gap:8px; font-size:15px; cursor:pointer; user-select:none">
+                <input asp-for="Input.StayLoggedIn" type="checkbox" style="width:18px; height:18px" />
+                <span>Angemeldet bleiben</span>
+            </label>
+
+            @if (!string.IsNullOrWhiteSpace(Model.ErrorMessage))
+            {
+                <div role="alert" style="padding:12px 16px; background:var(--kern-color-danger-soft); border:1px solid var(--kern-color-danger-default); border-radius:6px; font-size:14px">@Model.ErrorMessage</div>
+            }
+            @if (Model.WaitSeconds > 0)
+            {
+                <div role="status" style="padding:12px 16px; background:var(--kern-color-warning-soft); border:1px solid var(--kern-color-warning-default); border-radius:6px; font-size:14px">Sie können sich in @Model.WaitSeconds Sekunden erneut einloggen.</div>
+            }
+            @if (!string.IsNullOrWhiteSpace(Model.PasswordRequestMessage))
+            {
+                <div role="status" style="padding:12px 16px; background:var(--kern-color-info-soft); border-radius:6px; font-size:14px">@Model.PasswordRequestMessage</div>
+            }
+            @if (Model.ShowMailLink && !string.IsNullOrWhiteSpace(Model.SupportMail))
+            {
+                <a href="mailto:@Model.SupportMail?subject=Kennung%20fuer%20TOPqm-Login" class="kern-button kern-button--tertiary" style="width:100%; box-sizing:border-box; justify-content:center">Kennung anfordern</a>
+            }
+
+            <button type="submit" class="kern-button kern-button--primary" style="width:100%; padding:12px; font-size:16px; font-weight:600">Anmelden</button>
+        </form>
+
+        <div style="margin-top:24px; padding-top:24px; border-top:1px solid var(--kern-color-layout-border); display:flex; flex-direction:column; gap:12px">
+            <form method="post" asp-page-handler="PasswordRequest">
+                <input type="hidden" asp-for="Input.Username" />
+                <button type="submit" class="kern-button kern-button--tertiary" style="width:100%">Passwort anfordern</button>
+            </form>
+            <a asp-page="/Index" class="kern-button kern-button--tertiary" style="width:100%; justify-content:center; text-decoration:none">Abbrechen</a>
+        </div>
+    </div>
+</div>

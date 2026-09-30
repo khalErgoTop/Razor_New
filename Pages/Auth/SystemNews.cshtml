@@ -1,0 +1,67 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.Auth.SystemNewsModel
+@{
+    ViewData["Title"] = "Systemnachrichten";
+}
+
+<nav aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb"><li><a asp-page="/Index">Start</a></li><li><a asp-page="/Auth/QWWebAdmin">Administration</a></li><li aria-current="page">Nachrichtentexte bearbeiten</li></ol>
+</nav>
+
+<section class="pageContent">
+    <h1>System-Nachrichten</h1>
+    @if (Model.Message is not null)
+    {
+        <p role="status">@Model.Message</p>
+    }
+    <form method="post">
+        <label for="SelectedNewsId">Nachrichten</label>
+        <select id="SelectedNewsId" name="SelectedNewsId" size="6" onchange="this.form.action='?handler=Select'; this.form.submit();">
+            @foreach (var newsItem in Model.News)
+            {
+                <option value="@newsItem.Id" selected="@(newsItem.Id == Model.SelectedNewsId)">@newsItem.Text (@newsItem.UserCount Benutzer)</option>
+            }
+        </select>
+        <div>
+            <button type="submit" formaction="?handler=New">Erstellen</button>
+            <button type="submit" asp-page-handler="Delete" onclick="return confirm('Nachricht wirklich löschen?');">Löschen</button>
+        </div>
+    </form>
+
+    <form method="post">
+        <input type="hidden" name="SelectedNewsId" value="@Model.SelectedNewsId" />
+        <label for="InfoLabel">Name der Abfrage</label>
+        <input id="InfoLabel" name="InfoLabel" value="@Model.InfoLabel" />
+        <label for="InfoText">Infotext</label>
+        <textarea id="InfoText" name="InfoText" rows="5">@Model.InfoText</textarea>
+        <button type="submit" asp-page-handler="Save">Speichern</button>
+    </form>
+
+    @if (Model.SelectedNewsId > 0)
+    {
+        <div>
+            <h2>Personen zur ausgewählten Nachricht</h2>
+            <form method="post">
+                <input type="hidden" name="SelectedNewsId" value="@Model.SelectedNewsId" />
+                <select name="PersonIds" multiple size="12">
+                    @foreach (var person in Model.SelectedPersons)
+                    {
+                        <option value="@person.Id">@person.Username (@person.UserType)</option>
+                    }
+                </select>
+                <button type="submit" asp-page-handler="RemovePersons">Abwählen</button>
+            </form>
+            <h2>Verfügbare Personen</h2>
+            <form method="post">
+                <input type="hidden" name="SelectedNewsId" value="@Model.SelectedNewsId" />
+                <select name="PersonIds" multiple size="12">
+                    @foreach (var person in Model.AvailablePersons)
+                    {
+                        <option value="@person.Id">@person.Username (@person.UserType)</option>
+                    }
+                </select>
+                <button type="submit" asp-page-handler="AddPersons">Hinzufügen</button>
+            </form>
+        </div>
+    }
+</section>

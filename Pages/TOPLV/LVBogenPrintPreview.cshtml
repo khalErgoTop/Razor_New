@@ -1,0 +1,62 @@
+@page
+@model TOPqwWeb_Core.Pages.LV.LVBogenPrintPreviewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <title>LV-Bogen – Druckansicht</title>
+    <link rel="stylesheet" href="~/css/TOPqwdesign/LVBogenPrintPreview.css" />
+    <style>
+        @@media print { .print-actions { display: none; } }
+        .print-actions { margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+@if (Model.Bogen is null)
+{
+    <p>Der LV-Bogen wurde nicht gefunden.</p>
+}
+else
+{
+    <div class="print-actions">
+        <button type="button" onclick="window.print()">Drucken</button>
+        <a asp-page-handler="DownloadXml" asp-route-bid="@Model.Bogen.Id">XML herunterladen</a>
+        <a asp-page="/TOPLV/LVBogen" asp-route-bid="@Model.Bogen.Id">Zurück zum Bogen</a>
+    </div>
+
+    <h1>LV-Bogen: @Model.Bogen.Name</h1>
+    <dl>
+        <dt>Bogen-ID</dt>
+        <dd>@Model.Bogen.Id</dd>
+        <dt>Einrichtung</dt>
+        <dd>@Model.Bogen.EIID</dd>
+        <dt>Status</dt>
+        <dd>@(Model.Bogen.Status?.ToString() ?? "-")</dd>
+    </dl>
+
+    @foreach (var category in Model.Categories)
+    {
+        <section>
+            <h2>@category.Name</h2>
+            @foreach (var subcategory in Model.Structure
+                .Where(item => item.CategoryId == category.Id)
+                .GroupBy(item => new { item.Id, item.Name, item.Order })
+                .OrderBy(group => group.Key.Order))
+            {
+                <h3>@subcategory.Key.Name</h3>
+                <dl>
+                    @foreach (var item in subcategory.OrderBy(value => value.ItemOrder))
+                    {
+                        <dt>@item.ItemName</dt>
+                        <dd>@(string.IsNullOrWhiteSpace(item.Value) ? "-" : item.Value)</dd>
+                    }
+                </dl>
+            }
+        </section>
+    }
+}
+</body>
+</html>

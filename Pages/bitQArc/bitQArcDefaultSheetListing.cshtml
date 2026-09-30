@@ -1,0 +1,61 @@
+@page
+@model TOPqwWeb_Core.Pages.bitQArc.bitQArcDefaultSheetListingModel
+@{
+    ViewData["Title"] = "Bögen auswählen";
+}
+
+<link rel="stylesheet" href="~/css/bitQArcDefaultSheetListing.css" />
+
+<ul id="linkpath">
+    <li id="linkPathNavStart">Navigation</li>
+    <li>Start</li>
+    <li class="current">Bögen auswählen</li>
+</ul>
+
+<section>
+    <h1>Bögen auswählen</h1>
+    <p>Einrichtung: @Model.EIID</p>
+
+    <form method="get">
+        <input type="hidden" name="f" value="@Model.TablePrefix" />
+        <label for="layout">Layout</label>
+        <select id="layout" name="l" onchange="this.form.submit()">
+            @foreach (var layout in Model.Layouts)
+            {
+                <option value="@layout.Id" selected="@(layout.Id == Model.LayoutId)">@layout.Label</option>
+            }
+        </select>
+        <label for="status">Status</label>
+        <select id="status" name="status" onchange="this.form.submit()">
+            <option value="0" selected="@(Model.Status == 0)">Keine Auswahl</option>
+            <option value="1" selected="@(Model.Status == 1)">in Bearbeitung</option>
+            <option value="2" selected="@(Model.Status == 2)">Überarbeiten</option>
+            <option value="3" selected="@(Model.Status == 3)">Versandt</option>
+            <option value="4" selected="@(Model.Status == 4)">Angenommen</option>
+            <option value="5" selected="@(Model.Status == 5)">Abgelehnt</option>
+        </select>
+    </form>
+
+    @if (Model.Sheets.Count == 0)
+    {
+        <p>Für die Auswahl wurden keine Bögen gefunden.</p>
+    }
+    else
+    {
+        <ul>
+            @foreach (var sheet in Model.Sheets)
+            {
+                <li>
+                    <a asp-page="@(Model.TablePrefix.Equals("BE", StringComparison.OrdinalIgnoreCase) ? "/bitQArc/bitQArcBE_MVSheet" : "/bitQArc/bitQArcDefaultSheet")"
+                       asp-route-f="@Model.TablePrefix"
+                       asp-route-e="@sheet.EIID"
+                       asp-route-l="@sheet.LayoutId"
+                       asp-route-fk="@sheet.ForeignKeyId">
+                        @sheet.Label
+                    </a>
+                    <span>(Status: @sheet.Status)</span>
+                </li>
+            }
+        </ul>
+    }
+</section>

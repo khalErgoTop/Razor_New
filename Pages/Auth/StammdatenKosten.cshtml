@@ -1,0 +1,118 @@
+@page
+@model TOPqwWeb_Core.Pages.Auth.StammdatenKostenModel
+@{
+    ViewData["Title"] = "HBG-Kosten";
+}
+
+<h1>HBG-Kosten</h1>
+
+@if (Model.Access.CanEdit)
+{
+    <div class="mb-3">
+        <button type="button" onclick="document.getElementById('new-timeframe').showModal()">Neuen Zeitraum anlegen</button>
+        @if (Model.HBGWZID.HasValue)
+        {
+            <button type="button" onclick="document.getElementById('edit-timeframe').showModal()">Zeitraum bearbeiten</button>
+        }
+    </div>
+}
+
+<form method="get" class="mb-3">
+    <input type="hidden" name="eiid" value="@Model.EIID" />
+    <label for="HBGWZID">Gültigkeitszeitraum</label>
+    <select id="HBGWZID" name="HBGWZID" onchange="this.form.submit()">
+        @foreach (var timeframe in Model.TimeFrames)
+        {
+            if (Model.HBGWZID == timeframe.HBGWZID)
+            {
+                <option value="@timeframe.HBGWZID" selected>@timeframe.VonBis</option>
+            }
+            else
+            {
+                <option value="@timeframe.HBGWZID">@timeframe.VonBis</option>
+            }
+        }
+    </select>
+</form>
+
+@if (Model.Access.CanEdit)
+{
+    <dialog id="new-timeframe">
+        <form method="post" asp-page-handler="SaveTimeFrame">
+            <input type="hidden" name="eiid" value="@Model.EIID" />
+            <input type="hidden" name="HBGWZID" value="0" />
+            <label>von <input type="date" asp-for="DateFrom" required /></label>
+            <label>bis <input type="date" asp-for="DateTo" required /></label>
+            <button type="submit">Speichern</button>
+            <button type="button" onclick="document.getElementById('new-timeframe').close()">Abbrechen</button>
+        </form>
+    </dialog>
+}
+
+@if (Model.Access.CanEdit && Model.HBGWZID.HasValue)
+{
+    <dialog id="edit-timeframe">
+        <form method="post" asp-page-handler="SaveTimeFrame">
+            <input type="hidden" name="eiid" value="@Model.EIID" />
+            <input type="hidden" name="HBGWZID" value="@Model.HBGWZID" />
+            <label>von <input type="date" name="DateFrom" value="@Model.DateFrom.ToString("yyyy-MM-dd")" required /></label>
+            <label>bis <input type="date" name="DateTo" value="@Model.DateTo.ToString("yyyy-MM-dd")" required /></label>
+            <button type="submit">Zeitraum speichern</button>
+            <button type="button" onclick="document.getElementById('edit-timeframe').close()">Abbrechen</button>
+        </form>
+    </dialog>
+}
+
+@if (Model.Access.CanDelete)
+{
+    @if (Model.HBGWZID is int selectedTimeFrameId)
+    {
+        <form method="post" asp-page-handler="DeleteTimeFrame" class="mb-3">
+            <input type="hidden" name="eiid" value="@Model.EIID" />
+            <input type="hidden" name="hbgwzid" value="@selectedTimeFrameId" />
+            <button type="submit">Zeitraum löschen</button>
+        </form>
+    }
+}
+
+@if (Model.Rows.Count == 0)
+{
+    <p>Für den ausgewählten Zeitraum sind keine HBG-Werte vorhanden.</p>
+}
+else
+{
+    @foreach (var row in Model.Rows)
+    {
+        var rowFormId = $"save-row-{row.HBGID}";
+        <form id="@rowFormId" method="post" asp-page-handler="SaveRow">
+            <input type="hidden" name="eiid" value="@Model.EIID" />
+            <input type="hidden" name="hbgwzid" value="@Model.HBGWZID" />
+            <input type="hidden" name="row.HBGID" value="@row.HBGID" />
+            <input type="hidden" name="row.HBGWWID" value="@row.HBGWWID" />
+        </form>
+    }
+    <table>
+        <thead>
+            <tr><th>Bezeichnung</th><th>Vereinbart am</th><th>Unterschrieben am</th><th>MP</th><th>GP</th><th>IB</th><th>FB</th><th></th></tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model.Rows)
+            {
+                var rowFormId = $"save-row-{row.HBGID}";
+                <tr>
+                    <td>@row.Bezeichnung</td>
+                    <td><input form="@rowFormId" type="date" name="row.VereinbartAm" value="@row.VereinbartAm?.ToString("yyyy-MM-dd")" /></td>
+                    <td><input form="@rowFormId" type="date" name="row.UnterschriebenAm" value="@row.UnterschriebenAm?.ToString("yyyy-MM-dd")" /></td>
+                    <td><input form="@rowFormId" type="number" step="0.0001" name="row.MP" value="@row.MP" /></td>
+                    <td><input form="@rowFormId" type="number" step="0.0001" name="row.GP" value="@row.GP" /></td>
+                    <td><input form="@rowFormId" type="number" step="0.0001" name="row.IB" value="@row.IB" /></td>
+                    <td><input form="@rowFormId" type="number" step="0.0001" name="row.FB" value="@row.FB" /></td>
+                    <td>@if (Model.Access.CanEdit) {
+                        <button form="@rowFormId" type="submit">Speichern</button>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+}

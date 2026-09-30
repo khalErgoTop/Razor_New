@@ -1,0 +1,27 @@
+@use "../utilities/mixins";
+
+// Headings
+.kern-heading-display {
+  @include mixins.normalize;
+  @include mixins.heading-display;
+}
+
+.kern-heading-x-large {
+  @include mixins.normalize;
+  @include mixins.heading-x-large;
+}
+
+.kern-heading-large {
+  @include mixins.normalize;
+  @include mixins.heading-large;
+}
+
+.kern-heading-medium {
+  @include mixins.normalize;
+  @include mixins.heading-medium
+}
+
+.kern-heading-small {
+  @include mixins.normalize;
+  @include mixins.heading-small;
+}

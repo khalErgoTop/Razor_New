@@ -1,0 +1,220 @@
+@use "sass:color";
+@use "sass:list";
+@use "sass:math";
+@use "sass:meta";
+@use "sass:string";
+
+
+// includes an z-index from an z-index list
+// http://www.smashingmagazine.com/2014/06/12/sassy-z-index-management-for-complex-layouts/
+// user like this: z-index: z($z-root, header);
+@function z($list, $element) {
+	$z-index: list.index($list, $element);
+
+	@if $z-index {
+		@return $z-index;
+	}
+
+	@warn 'There is no item "#{$element}" in this list; choose one of: #{$list}';
+	@return null;
+}
+
+// Turn numbers with units into unitless numbers: https://github.com/nex3/sass/issues/533
+@function clear-units($value) {
+	@if meta.type-of($value) == "number" {
+		@if  math.is-unitless($value) {
+			@return $value;
+		} @else if math.unit($value) == "em" {
+			@return math.div($value, 1em);
+		} @else if math.unit($value) == "px" {
+			@return math.div($value, 1px);
+		} @else if math.unit($value) == "pt" {
+			@return math.div($value, 1pt);
+		}
+	} @else {
+		@warn "Not a number value: #{$value}";
+		@return $value;
+	}
+}
+
+@function to-string($value) {
+	@return meta.inspect($value);
+}
+
+// Helper function
+// Return null rather than throwing an error if index is outside list range.
+@function nth-or-null($list, $index) {
+	@return if(list.length($list) >= $index, list.nth($list, $index), null);
+}
+
+// str-replace
+// ------------
+// by Hugo Giraudel
+// Replace `$search` with `$replace` in `$string`
+// @param {String} $string - Initial string
+// @param {String} $search - Substring to replace
+// @param {String} $replace ('') - New value
+// @return {String} - Updated string
+@function str-replace($string, $search, $replace: '') {
+	$index: string.index($string, $search);
+
+	@if $index {
+		@return string.slice($string, 1, $index - 1) + $replace + str-replace(string.slice($string, $index + string.length($search)), $search, $replace);
+	}
+
+	@return $string;
+}
+
+// https://codepen.io/tigt/post/optimizing-svgs-in-data-uris
+@function svg-url($svg) {
+
+	//  Add missing namespace
+	@if not string.index($svg,xmlns) {
+		$svg: str-replace($svg, '<svg', '<svg xmlns="http://www.w3.org/2000/svg"');
+	}
+
+	//  Chunk up string in order to avoid
+	//  "stack level too deep" error
+	$encoded: '';
+	$slice: 2000;
+	$index: 0;
+	$loops: math.ceil(math.div(string.length($svg), $slice));
+
+	@for $i from 1 through $loops {
+		$chunk: string.slice($svg, $index, $index + $slice - 1);
+
+		// Encode
+		$chunk: str-replace($chunk, '"', '\'');
+		$chunk: str-replace($chunk, '%', '%25');
+		$chunk: str-replace($chunk, '&', '%26');
+		$chunk: str-replace($chunk, '#', '%23');
+		$chunk: str-replace($chunk, '{', '%7B');
+		$chunk: str-replace($chunk, '}', '%7D');
+		$chunk: str-replace($chunk, '<', '%3C');
+		$chunk: str-replace($chunk, '>', '%3E');
+
+		$encoded: #{$encoded}#{$chunk};
+		$index: $index + $slice;
+	}
+
+	@return url("data:image/svg+xml,#{$encoded}");
+}
+
+/// Incrementally lighten a color in a more effective way than with lighten()
+/// @param {Color} $color - color to tint
+/// @param {Number} $percentage - Percentage of white in the returned color
+/// @return {Color} - The lightened color
+@function light($color, $percentage) {
+	@return mix(#fff, $color, $percentage);
+}
+
+/// Incrementally darken a color in a more effective way than with darken()
+/// @param {Color} $color - Color to shade
+/// @param {Number} $percentage - Percentage of black in the returned color
+/// @return {Color} - The darkened color
+@function dark($color, $percentage) {
+	@return mix(#000, $color, $percentage);
+}
+
+@function fluidSize($value){
+
+	$rfs-base-value: 1.5rem;
+	$rfs-unit: rem;
+
+	@if $rfs-unit != rem and $rfs-unit != px {
+		@error "`#{$rfs-unit}` is not a valid unit for $rfs-unit. Use `px` or `rem`.";
+	}
+
+	// Breakpoint at where values start decreasing if screen width is smaller
+	$rfs-breakpoint: 1504px;
+
+	// Resize values based on screen height and width
+	$rfs-two-dimensional: false;
+
+	// Factor of decrease
+	$rfs-factor: 10;
+
+	@if type-of($rfs-factor) != number or $rfs-factor <= 1 {
+		@error "`#{$rfs-factor}` is not a valid  $rfs-factor, it must be greater than 1.";
+	}
+
+	// 1 rem = $rfs-rem-value px
+	$rfs-rem-value: 16;
+
+
+	// Cache $rfs-base-value unit
+	$rfs-base-value-unit: math.unit($rfs-base-value);
+
+	// Remove px-unit from $rfs-base-value for calculations
+	$rfs-base-value-unitless: $rfs-base-value;
+	@if $rfs-base-value-unit == px {
+		$rfs-base-value-unitless: math.div($rfs-base-value, $rfs-base-value * 0 + 1);
+	}
+	@else if $rfs-base-value-unit == rem {
+		$rfs-base-value-unitless: math.div($rfs-base-value, $rfs-base-value * 0 + math.div(1,$rfs-rem-value));
+	}
+
+	// Cache $rfs-breakpoint unit to prevent multiple calls
+	$rfs-breakpoint-unit-cache: math.unit($rfs-breakpoint);
+
+	// Remove unit from $rfs-breakpoint for calculations
+	@if $rfs-breakpoint-unit-cache == px {
+		$rfs-breakpoint: math.div($rfs-breakpoint, $rfs-breakpoint * 0 + 1);
+	}
+	@else if $rfs-breakpoint-unit-cache == rem or $rfs-breakpoint-unit-cache == "em" {
+		$rfs-breakpoint: math.div($rfs-breakpoint, $rfs-breakpoint * 0 + math.div(1,$rfs-rem-value));
+	}
+
+	@if $value == 0 {
+		@return 0;
+	}
+
+	// Cache $value unit
+	$unit: if(type-of($value) == "number", unit($value), false);
+
+	// If $value isn't a number (like inherit) or $value has a unit (not px or rem, like 1.5em), just print the value
+	@if not $unit or $unit != px and $unit != rem {
+		@return $value;
+	}
+
+	// Remove unit from $value for calculations
+	$value: math.div($value, $value * 0 + if($unit == px, 1, math.div(1,$rfs-rem-value)));
+
+	// Only add the fluid variable if the value is greater than the minimum value
+	@if math.abs($value) <= $rfs-base-value-unitless {
+		@return if($rfs-unit == rem, #{math.div($value, $rfs-rem-value)}rem, #{$value}px);
+	}
+
+	// Calculate the minimum value
+	$value-min: $rfs-base-value-unitless + math.div(math.abs($value) - $rfs-base-value-unitless, $rfs-factor);
+
+	// Calculate difference between $value and the minimum value
+	$value-diff: math.abs($value) - $value-min;
+
+	// Base value formatting
+	$min-width: if($rfs-unit == rem, #{math.div($value-min, $rfs-rem-value)}rem, #{$value-min}px);
+
+	// Use negative value if needed
+	$min-width: if($value < 0, -$min-width, $min-width);
+
+	// Use `vmin` if two-dimensional is enabled
+	$variable-unit: if($rfs-two-dimensional, vmin, vw);
+
+	// Calculate the variable width between 0 and $rfs-breakpoint
+	$variable-width: #{math.div($value-diff * 100, $rfs-breakpoint)}#{$variable-unit};
+
+	//$value: if($rfs-unit == rem, $value / $rfs-rem-value * 1rem, $value * 1px);
+	$value: if($rfs-unit == rem, math.div($value, $rfs-rem-value) * 1rem, $value * 1px);
+
+
+	// Return the calculated value
+	@return string.unquote('clamp('+$rfs-base-value+', calc(' + $min-width + if($value < 0, ' - ', ' + ') + $variable-width + '),'+$value+')');
+}
+
+@function svg-icon-calendar($farbe) {
+	@return svg-url('<svg width="24" height="24" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" fill="#{$farbe}" d="M3.5875 21.4125C3.97917 21.8042 4.45 22 5 22H19C19.55 22 20.0208 21.8042 20.4125 21.4125C20.8042 21.0208 21 20.55 21 20V6C21 5.45 20.8042 4.97917 20.4125 4.5875C20.0208 4.19583 19.55 4 19 4H18V3C18 2.71667 17.9042 2.47917 17.7125 2.2875C17.5208 2.09583 17.2833 2 17 2C16.7167 2 16.4792 2.09583 16.2875 2.2875C16.0958 2.47917 16 2.71667 16 3V4H8V3C8 2.71667 7.90417 2.47917 7.7125 2.2875C7.52083 2.09583 7.28333 2 7 2C6.71667 2 6.47917 2.09583 6.2875 2.2875C6.09583 2.47917 6 2.71667 6 3V4H5C4.45 4 3.97917 4.19583 3.5875 4.5875C3.19583 4.97917 3 5.45 3 6V20C3 20.55 3.19583 21.0208 3.5875 21.4125ZM19 20H5V10H19V20Z"/></svg>') no-repeat;
+}
+
+@function svg-icon-schedule($farbe) {
+	@return svg-url('<svg height="24" viewBox="0 -960 960 960" width="24"><path fill="#{$farbe}" d="m612-292 56-56-148-148v-184h-80v216l172 172ZM480-80q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-400Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z"/></svg>') no-repeat;
+}

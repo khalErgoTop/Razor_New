@@ -1,0 +1,715 @@
+﻿.innerMain {
+    display:table !important;
+}
+
+#QWKalkWerte {
+	max-height:550px;
+	min-height:450px;  
+	overflow:auto; /*wenn an, vergrößert sich das div bei jedem Mousover über einen Dynamischen button im Explorer*/
+	display:table-row;
+}
+
+#QWKalkNavigation {
+	display:table-cell;
+}
+
+.QWNavigation {
+	font: 80% arial-narrow,arial,sans-serif;
+	display:table;
+	z-index:inherit;
+	vertical-align:top;
+	width:50px;
+	margin-left:10px;
+	width:180px;
+}
+
+.QWNavigation td {
+	vertical-align:top !important;
+}
+
+.QWNavigation td img {
+	height:16px !important;
+}
+
+
+#CommandButtons {
+	padding-top:5px;
+	border-top:1px solid #808080;
+}
+
+#Einrichtungen #CommandButtons div {
+    display:inline-block;
+}
+
+#QWKalkBogenOuter {
+    width:730px;
+    display:table;
+    margin-left:20px;
+}
+
+#M_MC_upKalkulationBogen {
+   display:table-row;
+}
+
+.lblqwKalkBegriff {
+	font: 80% arial-narrow,arial,sans-serif;
+	margin-right:20px;
+}
+
+.pnlqwKalk {
+	margin-bottom:10px;
+	display:none;
+}
+
+.pnlAbschreibung {
+	background-color:#f1f1f1;  /* #f1f1f1 =  Hellgrau */
+	margin-top:-15px;
+	margin-left:10px;
+	margin-bottom:10px;
+	display:none;
+}
+
+.lblKalkSummaryHeader {
+	font: 90% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+}
+
+.lblBegriffKalkSum {
+	font: 85% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+}
+
+.lblBegriffKalkSumVal {
+	font: 85% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	float:right;
+	padding-right:50px;
+}
+
+.CellKalkSum {
+	border-top:1px solid black;
+	padding-bottom:5px;	
+}
+
+.lblqwKalkHeader {
+	font: 100% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+}
+
+.pnlqwKalkBegriff {
+	padding-left: 5px;
+	/*min-width: 100px;*/
+	/*width:390px;*/
+	margin-left:50px;
+}
+
+.lblBegriff {
+	font: 80% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	min-width: 100px;
+	vertical-align:top;
+}
+
+.tblPercentsHeader {
+	font: 85% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	overflow:visible;
+	padding-bottom:15px;
+	padding-right:10px;
+}
+
+
+.txtEingabe {
+	vertical-align:top;
+	font: 80% arial-narrow,arial,sans-serif;
+}
+
+.txtDatetimepickerWOP {
+	font: 80% arial-narrow,arial,sans-serif;
+}
+
+.txtEingabeReadonly {
+	vertical-align:top;
+	font: 80% arial-narrow,arial,sans-serif;
+	border:none;
+}
+
+.pnlMemo {
+	vertical-align:top;
+}
+
+.LastRow {
+	margin-bottom:15px;
+	padding-bottom:15px;
+	/*border-bottom:1px solid black;*/
+}
+
+#M_MC_tblQwKalk {
+	/*border:1px solid black;*/
+	border-collapse:collapse;
+}
+
+.celCol1SummaryInnerTable {
+	width:100px;
+	padding-right:20px;
+}
+
+.celCol2SummaryInnerTable {
+	width:100px;
+}
+
+.celCol3SummaryInnerTable {
+	width:100px;
+}
+
+.celCol4SummaryInnerTable {
+	width:70px;
+}
+	
+.lblBegriffPauschale {
+	font: 85% arial-narrow,arial,sans-serif;
+}
+
+.cellBegriffPauschale {
+	width:50px;
+	vertical-align:top;
+}
+
+/*.tblQwKalk th{
+	font: 85% arial-narrow,arial,sans-serif;
+	border-bottom:1px solid black;
+}*/
+
+.txtStandard {
+	font: 80% arial-narrow,arial,sans-serif;
+}
+
+.lblProzentwert {
+	font: 80% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	min-width: 100px;
+	vertical-align:top;
+}
+
+.lblProzentanteil {
+	font: 80% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	min-width: 100px;
+	vertical-align:top;
+}
+
+.lblProzentname {
+	font: 80% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	min-width: 100px;
+	vertical-align:top;
+}
+
+.lblTagPlatz {
+	font: 80% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	min-width: 100px;
+	vertical-align:top;
+}
+
+.lblKalkAktuell {
+	font: 80% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	min-width: 100px;
+	vertical-align:top;
+}
+
+#M_MC_FirstColumnVertragsdaten {
+	width:200px;
+}
+
+#M_MC_lblFile {
+	font: 80% arial-narrow,arial,sans-serif;
+	margin-top:2px;
+}
+
+.lblPKProVK {
+	font: 80% arial-narrow,arial,sans-serif;
+}
+
+#M_MC_HeaderColBezeichnung {
+	width:250px;
+}
+
+#M_MC_HeaderColAktuellGesamt {
+	min-width:50px;
+}
+
+#M_MC_HeaderColAktuellTag {
+	min-width:40px;
+}
+
+#M_MC_HeaderColAntragGesamt {
+	min-width:80px;
+}
+
+#M_MC_HeaderColAntragTag { 
+	min-width:40px;
+}
+#M_MC_HeaderColVK {
+	
+}
+
+#M_MC_HeaderColPKVK {
+	min-width:10px;
+}
+
+#M_MC_HeaderColArt {
+	min-width:10px;
+}
+
+#M_MC_HeaderColProzentAneil {
+	min-width:20px;
+}
+
+#M_MC_HeaderColBetragAnteilig {
+	min-width:20px;
+}
+
+#M_MC_HeaderColABControls {
+	width:20px;
+}
+
+.AddButtonAB {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #36c;*/
+	color:transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 10px;
+	padding:2px 2px 2px 5px;
+	margin-right:5px;
+}
+
+.cImgAddButtonAB {
+}
+
+.DelButtonAB  {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #36c;*/
+	color:transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 10px;
+	padding:2px 2px 2px 5px;
+	margin-right:5px;
+	
+}
+
+.cImgDelButtonAB {
+}
+
+.ButtonSend {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #36c;*/
+	background-image:url(Images/document_up.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 2px 2px 26px;
+	margin-right:5px;
+	/*cursor:hand;*/
+}
+
+.ButtonSendInactive {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #808080;*/
+	background-image:url(Images/document_up.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 2px 2px 26px;
+	margin-right:5px;
+	cursor:default;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+}
+
+.ButtonSend:hover {
+	/*text-decoration: underline;*/
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonDelete {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #36c;*/
+	/*background-image:url(../Images/remove.png);*/
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	/*padding:2px 0px 2px 17px;*/
+	/*margin-right:5px;*/
+	text-align:center;
+	/*cursor:hand;*/
+}
+
+.ButtonDelete:hover {
+	/*text-decoration: underline;*/
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonCancel {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #36c;*/
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	/*padding:2px 0px 2px 17px;*/
+	/*margin-right:5px;*/
+	text-align:center;
+	/*cursor:hand;*/
+}
+
+.ButtonCancel:hover {
+	/*text-decoration: underline;*/
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonSave {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #36c;*/
+	background-image:url(Images/Save_16x16_256.ico);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 0px 2px 17px;
+	margin-right:5px;
+	/*cursor:hand;*/
+}
+
+.ButtonSave:hover {
+	/*text-decoration: underline;*/
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+
+.ButtonBack {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #36c;*/
+	background-image:url(Images/left.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 0px 2px 17px;
+	margin-right:5px;
+	/*cursor:hand;*/
+}
+
+.ButtonBack:hover {
+	/*text-decoration: underline;*/
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonBackInactive {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #808080;*/
+	background-image:url(Images/left.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 2px 2px 26px;
+	margin-right:5px;
+	cursor:default;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;	
+}
+
+.ButtonNext {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #36c;*/
+	background-image:url(Images/right.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 0px 2px 17px;
+	margin-right:5px;
+	/*cursor:hand;*/
+}
+
+.ButtonNext:hover {
+	/*text-decoration: underline;*/
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonNextInactive {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #808080;*/
+	background-image:url(Images/right.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 2px 2px 26px;
+	margin-right:5px;
+	cursor:default;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+}
+
+.ButtonExport {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #36c;*/
+	background-image:url(Images/PrinterZoomIn.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding:2px 0px 2px 17px;
+	height: 18px;
+	margin-right:5px;
+	/*cursor:hand;*/
+}
+
+.ButtonExportInactive {
+	font: 85% arial-narrow,arial,sans-serif;
+	border: 1px solid #36c;
+	
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding:2px 0px 2px 17px;
+	height: 18px;
+	margin-right:5px;
+	cursor:default;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+	/*cursor:hand;*/
+}
+
+.ButtonExport:hover {
+	/*text-decoration: underline;*/
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.Button {
+   min-height:10px; 
+}
+
+.DropDownlist {
+	width:150px;
+}
+
+#divFileUpload {
+	float:right;
+	margin-top:5px;
+	margin-bottom:5px;
+	width:99%;
+}
+
+#divFileUploadOuter {
+	overflow:visible;
+}
+
+#M_MC_lbtFileDownload {
+	margin-left:5px;
+}
+
+
+#divAddFile {
+	margin-bottom:5px;
+}
+
+#M_MC_pnlFiles {
+    
+}
+
+#M_MC_pnlFiles div {
+	margin-bottom:1px;
+}
+
+#M_MC_fuAddFile {
+
+}
+
+.PlatzzahlAuslastungHeader {
+	font: 80% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	padding-top:10px;
+}
+
+#M_MC_tdPlatzzahlAuslastungAktuell{}
+
+.cImgDelAttachment {
+	
+}
+
+.DelAttachment {
+	vertical-align:top;
+	color:transparent;
+}
+
+#M_MC_pnlVersenden {
+	float:right;
+}
+
+#M_MC_lblFileError {
+	font: 80% arial-narrow,arial,sans-serif;
+	color:Red;
+}
+
+
+#M_MC_HeaderColABAnschaffungsjahr{ width:20px;}
+#M_MC_HeaderColABAbschreibungstyp{ width:20px;}
+#M_MC_HeaderColABBasiswertg{ width:20px;}
+#M_MC_HeaderColABFoerdermittel{width:20px; }
+#M_MC_HeaderColABWiederbeschaffungswert{width:20px; }
+#M_MC_HeaderColABAFA{width:20px;}
+#M_MC_HeaderColABJAbschreibung{max-width:20px;}
+
+.tblAbschreibungsHeader {
+	font: 85% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	overflow:hidden;
+	padding-bottom:15px;
+	padding-right:10px;
+	max-width:20px;
+}
+
+.AbSchreibungHeader {
+	font: 85% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	margin-top:2px;
+	margin-bottom:5px;
+	margin-right:10px;
+}
+
+#M_MC_tblAbschreibung {
+	width:99%;
+	border-collapse:collapse;
+}
+
+.FileUpload {
+	font: 85% arial-narrow,arial,sans-serif;
+	/* HellBlau #c8f1ff;  /* #cceffc;*/ /* KSV MittelBlau #3882bd */ /* KSV Dunkelblau #0461ac*/ /*KSV Auslaufgrau #E5EFF6*/ /*Gelb #FDF48B*/
+	border: 1px solid #0461ac; /* lilaMV #5f63a3/* Blaue Umrandung #36c*/
+	background: white;
+	text-decoration: none;
+	height: 18px;
+}
+
+.divButtons {
+	margin-top:20px;
+	padding-right:10px;
+	text-align:right;
+}
+
+
+.HeaderColSPlKJ {
+	font: 90% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	width:20px;
+	padding-right:5px;
+}
+.HeaderColSPDienstaltersstufe {
+	font: 90% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	width:20px;
+	padding-right:5px;
+}
+.HeaderColSPVerguetungsgruppe {
+	font: 90% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	width:20px;
+	padding-right:5px;
+}
+.HeaderColSPStellenanteil {
+	font: 90% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	width:20px;
+	padding-right:5px;
+}
+.HeaderColSPEintrittsdatum {
+	font: 90% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	width: 20px;
+	padding-right:5px;
+}
+.HeaderColSPQualifikation {
+	font: 90% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	width:20px;
+	padding-right:5px;
+}
+.HeaderColSPFunktion {
+	font: 90% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	width:20px;
+	padding-right:5px;
+}
+.HeaderColSPControls {
+	font: 90% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	width:20px;
+}
+.HeaderColSPBesonderheiten {
+	font: 90% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	width:20px;
+	padding-right:5px;
+}
+.HeaderColSPLohnsummeAJ {
+	font: 90% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	width:20px;
+	padding-right:5px;
+}
+
+.pnlStellenplan {
+	background-color:#f1f1f1;  /* #f1f1f1 =  Hellgrau */
+	margin-top:-15px;
+	padding-left:5px;
+	margin-bottom:25px;
+	/*display:none;*/
+	margin-right:5px;
+}
+
+.lblAddItems {
+	font: 90% arial-narrow,arial,sans-serif;
+
+}
+
+.pnlAddItems {
+	padding-left:5px;
+	padding-top:3px;
+}
+
+.lblToggleImage {
+	margin-left:3px;
+}
+
+.pnlStellenplan .key {
+	display: inline-block;
+	margin-right: 5px;
+}
+
+.pnlStellenplan .value {
+	display: inline;
+	margin-right: 10px;
+}

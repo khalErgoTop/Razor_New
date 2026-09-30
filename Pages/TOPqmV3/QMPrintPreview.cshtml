@@ -1,0 +1,58 @@
+@page
+@model TOPqwWeb_Core.Pages.QM.QMPrintPreviewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="utf-8" />
+    <title>QM-Bogen – Druckansicht</title>
+    <link rel="stylesheet" href="~/css/TOPqwdesign/LVBogenPrintPreview.css" />
+    <style>
+        @@media print { .print-actions { display: none; } }
+        .print-actions { margin-bottom: 1rem; }
+    </style>
+</head>
+<body>
+@if (Model.ErrorMessage is not null)
+{
+    <p>@Model.ErrorMessage</p>
+}
+else if (Model.QmBogen is not null)
+{
+    <div class="print-actions">
+        <button type="button" onclick="window.print()">Drucken</button>
+        <a asp-page-handler="DownloadXml">XML herunterladen</a>
+        <a asp-page="/TOPqmV3/QMBogen">Zurück zum Bogen</a>
+    </div>
+    <h1>QM-Bogen: @Model.QmBogen.Bezeichnung</h1>
+    <dl>
+        <dt>Status</dt>
+        <dd>@Model.QmBogen.Status</dd>
+        <dt>Einrichtung</dt>
+        <dd>@Model.QmBogen.EIID</dd>
+    </dl>
+    @foreach (var oberkategorie in Model.Oberkategorien)
+    {
+        <section>
+            <h2>@oberkategorie.Bezeichnung</h2>
+            @foreach (var unterkategorie in oberkategorie.Unterkategorien)
+            {
+                <h3>@unterkategorie.Bezeichnung</h3>
+                @foreach (var frage in unterkategorie.Fragen)
+                {
+                    <div>
+                        <strong>@frage.FrageKurz</strong>
+                        @if (frage.FrageWert is not null)
+                        {
+                            <span>: @frage.FrageWert.Wert</span>
+                        }
+                    </div>
+                }
+            }
+        </section>
+    }
+}
+</body>
+</html>

@@ -1,0 +1,7 @@
+﻿<div class="innerMain">
+	<ul id="M_MC_LstMainLinks">
+		<li><a href="Suche.aspx" target="_self" class="mainlink mainlinkSearch" style="" title="Suche"> Suche</a></li>
+		<li><a href="Auflistung.aspx?Typ=Typ" target="_self" class="mainlink" style="" title="Leistungsanbieter nach Leistungen"> Leistungsanbieter nach Leistungen</a></li>
+		<li><a href="Auflistung.aspx?Typ=Kreis" target="_self" class="mainlink" style="" title="Leistungsanbieter nach Region"> Leistungsanbieter nach Region</a></li>
+	</ul>
+</div>

@@ -1,0 +1,36 @@
+﻿@page
+@model TOPqwWeb_Core.Pages.QM.QMArchivModel
+
+<h1>Berichtsarchiv</h1>
+
+@if (Model.Facilities.Count == 0)
+{
+    <p>Keine archivierten Berichte gefunden.</p>
+}
+else
+{
+    <ul class="treefix">
+        @foreach (var facility in Model.Facilities)
+        {
+            <li>
+                <strong>@facility.Einrichtungsname (@facility.Einrichtungskennzeichen)</strong>
+                <ul>
+                    @foreach (var bogen in facility.Boegen)
+                    {
+                        <li>
+                            @bogen.Bezeichnung (Layoutjahr: @bogen.LayoutJahr, Status: @bogen.Status)
+                            <form method="post" style="display:inline">
+                                <input type="hidden" name="eiid" value="@facility.EIID" />
+                                <input type="hidden" name="qmbogenId" value="@bogen.ID" />
+                                <input type="hidden" name="qlid" value="@bogen.QLID" />
+                                <button type="submit" asp-page-handler="Open">Öffnen</button>
+                            </form>
+                        </li>
+                    }
+                </ul>
+            </li>
+        }
+    </ul>
+}
+@{
+}

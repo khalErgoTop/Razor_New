@@ -1,0 +1,639 @@
+﻿#M_MC_trvFacilities > table {
+    margin-top: 10px;
+}
+
+#M_MC_tblQMBogen {
+	width: 650px;
+}
+
+input.ButtonExport{top:0}
+
+.innerMain {
+    display:table !important;
+	font-size:15px;
+}
+
+#Content {
+    left: 218px;
+    margin-left: 20px;
+    padding-right: 20px;
+}
+
+
+
+input[type='text'] {
+	text-align: right;
+}
+
+#QMWerte {
+    /*width:90%;*/
+    max-height:100%;
+    min-height:350px; 
+    overflow:auto;  
+}
+
+
+
+#QMNavigation{
+  	display:table-cell;
+  	font: 100% arial-narrow,arial,sans-serif;
+	/*position:fixed;*/
+	vertical-align:top;	
+	top: 150px !important;
+	width:200px
+}
+
+/* OPERA Specific Rules*/
+doesnotexist:-o-prefocus, #QMNavigation {
+  position:relative;
+}
+    
+/* OPERA Specific Rules END */
+
+.QMNavigation {
+	/*font: 80% arial-narrow,arial,sans-serif;
+	display:inline-block;
+	vertical-align:top;
+	width:30%;
+	
+	float:left;
+	z-index:inherit;
+	min-width:200px;
+	max-width:400px;
+	margin-left:10px;
+	*/
+}
+#M_MC_tblQMBogen td input.txtInput.typInt,
+.LVBogenTxtEingabe,
+textarea.LVBogenTxtEingabe{
+	border:1px solid #CCCCCC !important
+}
+.QMNavigation td {
+  background-color: unset !important;
+}
+.QMNavigation td:hover {
+  text-decoration: underline;
+}
+#M_MC_trvQMNavigation.QMNavigation #M_MC_trvQMNavigationn0Nodes td.trvQMNavigation_Selected  {
+  text-decoration: underline;	
+} 
+.QMNavigation td img {
+	height:16px !important;
+}
+
+.pnlLVMatrixBegriff {
+	padding-left: 10px;
+}
+
+.cellUnterbegriff {
+	
+}
+
+.cellMatrixBezeichnung {
+	vertical-align:top;
+}
+
+.cellMatrix {
+	
+}
+#M_MC_pnlQMBogen{overflow:hidden;}
+.pnlTblMatrixInner {
+	
+	/*max-width:500px;*/
+	overflow:auto;
+	float:left;
+}
+
+.pnlTblMatrixOuter {
+	
+	/*max-width:500px;*/
+	overflow:auto;
+}
+
+.lblMatrixLabelx {
+	font: 80% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	overflow:visible;
+	max-width: 100px;
+	padding-right:10px;
+}
+
+.lblMatrixLabely {
+	font: 80% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	max-width: 100px;
+	padding-right:10px;
+}
+
+.lblMatrixLabelOuter {
+	font: 80% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	max-width: 100px;
+	padding-right:10px;
+}
+
+.tblMatrix {
+	/*border:1px solid black;*/
+	border-collapse:collapse;
+}
+
+.tblMatrix td {
+	/*border:1px solid black;*/
+}
+
+.tooltip {
+	position: absolute;
+	display: none;
+	background-color: #FFFFFF;
+	border:1px solid black;
+	margin:5px;
+	padding:5px;
+	/*width:220px;*/
+	overflow:visible;
+	z-index:9999; 
+}
+
+.tooltipEdit {
+	position : absolute;
+	display: none;
+	background-color: #FFFFFF;
+	border:1px solid black;
+	margin:5px;
+	padding:5px;
+	/*width:220px;*/
+	overflow:visible;
+	z-index:9999; 
+}
+
+.tooltipClosingImage {
+	position:relative;
+	top:-14px;
+	left:363px; /*x Rechts oben*/
+	/*left:-14px; /*X links oben*/
+}
+
+.imgKommentarEingabe {
+	margin-right:3px;
+	height:22px;
+}
+
+.imgKommentarEingabe:hover {
+	cursor: pointer; cursor: hand;
+}
+
+.imgKommentar:hover {
+	cursor:hand;
+}
+
+.imgKommentar {
+	height:22px;
+}
+	
+/*.RowOdd {
+    background-color: lavender;
+}*/
+#M_MC_pnlQMBogen #M_MC_tblQMBogen tbody tr.RowEven td,
+#M_MC_pnlQMBogen #M_MC_tblQMBogen tbody tr.RowOdd td{
+	border-bottom:1px solid #eee
+}
+/* LV-BogenAnzeige*/
+.lblUnterbegriff {
+	font-weight:bold;
+	overflow:visible;
+	max-width:390px;
+	font-size:21px;
+	padding-bottom:10px;
+	
+}
+
+input.txtInput {
+  margin: 5px 0;
+  font: 100% arial-narrow,arial,sans-serif;
+  min-width: 95%;
+  border: 1px solid #aaa;
+  max-width: 420px;
+}
+
+/* Panel in dem das Label lblBegriff ist LV-BogenAnzeige */
+.pnlLVBegriff {
+	padding-left: 5px;
+	/*min-width: 100px;*/
+	/*width:390px;*/
+	min-width: 100px;
+	max-width: 390px;
+}
+
+.pnlLVBegriffEdit {
+	min-width: 100px;
+	max-width:390px;
+	padding-left:30px;
+}
+
+/* Label für die Begrifferklärung LV-BogenAnzeige*/
+.lblBegriff {
+	font: 100% arial-narrow,arial,sans-serif;
+	min-width: 100px;
+	overflow:visible;
+}
+
+.lblBegriffStammdaten {
+	font: 100% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	min-width: 100px;
+}
+
+.pnlLVBegriffStammdaten {
+	padding-left: 10px;
+	/*min-width: 100px;*/
+}
+
+/* Textfeld für die Eingabe Eines Textes LV-BogenAnzeige*/
+.LVBogenTxtEingabe {
+	margin: 5px 0;
+	font: 100% arial-narrow,arial,sans-serif;
+	min-width: 95%;
+	border: 1px solid #aaa;
+	max-width: 420px;
+}
+.QMNavigation table a{font-weight:bold;}
+.QMNavigation div#M_MC_trvQMNavigationn0Nodes table a{font-weight:normal;}
+.pnlLVBogenChkEingabe {
+	min-width: 120px;
+	text-align:left;
+}
+
+.LVBogenKorrekturWert {
+	font: 100% arial-narrow,arial,sans-serif;
+	color:Red;
+	min-width:20px;
+	max-width:100px;
+}
+
+/*tooltipEdit 
+.pnlLVKorrekturwert {
+	float:right; /*float muß in extra Panel sein, da txtbox sich nicht um float kümmert*/
+	/*min-width:50px;
+	max-width:80px;
+	width:360px;
+}*/
+
+.tblKorrekturVerlauf {
+	font: 100% arial-narrow,arial,sans-serif;
+	max-width:360px;
+}
+
+
+.divtblKorrekturVerlaufRightCol {
+	margin-left:5px;
+}
+
+.divtblKorrekturVerlaufLeftCol {
+	
+}
+
+.divtblKorrekturVerlaufDate {
+	font: 90% arial-narrow,arial,sans-serif;
+	color:#88b8d7;
+}
+
+.divCheckPrivat {
+	font: 80% arial-narrow,arial,sans-serif;
+}
+
+.lblBezeichnungZusatz {
+	font: 80% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	width:50px;
+}
+.lblBezeichnungZusatzHeader {
+	font: 80% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	padding-left:10px;
+	width:100%;
+}
+
+.lblBezeichnungZusatzHeaderNormal {
+	font: 100% arial-narrow,arial,sans-serif;
+	padding: 5px 0;
+}
+
+.pnlBezeichnungHeaderNormal {
+	font: 100% arial-narrow,arial,sans-serif;
+	padding: 5px 0;
+}
+
+.PrivateImage {
+	background-image:url("Images/lock_large_locked.png");
+	width:15px;
+	height:15px;
+	float:left;
+}
+
+#M_MC_lblPages{
+	vertical-align:middle;
+}
+
+.Button {
+	border:none;
+	background-image:none;
+	vertical-align:middle;
+	cursor:default;
+}
+
+.ButtonInactive{
+	vertical-align:middle;
+}
+
+.ButtonRefresh {
+	font: 85% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #36c;*/
+	background-image:url(Images/refresh_forward.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 0px 2px 17px;
+	margin-right:5px;
+	/*cursor:hand;*/
+}
+
+.ButtonRefresh:active:hover {
+	/*text-decoration: underline;*/
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonNext {
+	font: 95% arial-narrow,arial,sans-serif;
+	border:none;
+	background-image:url(Images/right.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	color:transparent;
+	padding: 0px 0px 0px 12px;
+	height: 18px;
+	margin-right:5px;
+	/*cursor:hand;*/
+	max-width: 1px;
+	min-height:31px;
+	vertical-align:middle;
+}
+
+.ButtonNext:hover {}
+
+.ButtonNextInactive {
+	font: 95% arial-narrow,arial,sans-serif;
+	border: none;
+	background-image:url(Images/right.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	color:transparent;
+	padding:0px 0px 0px 12px;
+	height: 18px;
+	margin-right:5px;
+	max-width:1px;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+	cursor:default;
+	vertical-align:middle;
+}
+.ButtonBack {
+	font: 85% arial-narrow,arial,sans-serif;
+	border:none;
+	background-image:url(Images/left.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	color:transparent;
+	height: 18px;
+	padding:0px 0px 0px 12px;
+	margin-right:5px;
+	max-width:1px;
+	min-height:31px;
+	/*cursor:hand;*/
+	vertical-align:middle;	
+}
+
+.ButtonBack:hover {
+	/*text-decoration: underline;*/
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonBackInactive {
+	font: 95% arial-narrow,arial,sans-serif;
+	border: none;
+	background-image:url(Images/left.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	color:transparent;
+	padding:0px 0px 0px 12px;
+	height: 18px;
+	margin-right:5px;
+	max-width:1px;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+	cursor:default;
+	vertical-align:middle;
+}
+
+.ButtonRefreshInactive {
+	font: 95% arial-narrow,arial,sans-serif;
+	/*border: 1px solid #808080;*/
+	background-image:url(Images/refresh_forward.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding:2px 0px 2px 17px;
+	height: 18px;
+	margin-right:5px;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+	cursor:default;
+}
+
+.ButtonSend {
+	background-image:url(Images/document_up.png);
+    color:#FFF;
+	background-color: #31458A;
+	background-repeat:no-repeat;
+	background-position:left;
+	border:1px solid #122556;
+	text-decoration: none;
+	min-height: 31px;
+	padding-left:20px;
+}
+
+.ButtonSendInactive {
+	background-image:url(Images/document_up.png);
+    color:#FFF;
+	background-color: #31458A;
+	background-repeat:no-repeat;
+	background-position:left;
+	border:1px solid #122556;
+	text-decoration: none;
+	min-height: 31px;
+	padding-left:30px;
+	cursor:default;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+}
+
+.ButtonSend:hover {
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonExport {
+	background-image:url(Images/PrinterZoomIn.png);
+    	/*color:#FFF;*/
+
+	background-repeat:no-repeat;
+	background-position-x: 5px;
+	background-position-y: 5px;
+	background-size: 24px;
+		padding-left:35px;
+	/*border:1px solid #122556;
+		background-color: #31458A;
+	text-decoration: none;
+	min-height: 31px;
+
+	top:10px;
+	position:relative;*/
+}
+
+#M_MC_lblControlMsg {
+    color: #444;
+    padding-left: 10px;
+    padding-top: 16px;
+    position: relative;
+	margin: 0 30px 0 0;
+}
+#CommandButtons div{position:relative; left:-25px}
+#CommandButtons div .pnlDropDown{position:relative; left:0px;}
+
+.ButtonExportInactive {
+	background-image:url(Images/PrinterZoomIn.png);
+    color:#FFF;
+	background-color: #31458A;
+	background-repeat:no-repeat;
+	background-position:left;
+	border:1px solid #122556;
+	text-decoration: none;
+	min-height: 31px;
+	padding-left:20px;
+	cursor:default;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+	/*cursor:hand;*/
+}
+
+.ButtonExport:hover {
+    background-color:#5371B3;
+    border:1px solid #31458A;
+}
+#divCommandButtons{
+	/*width: 30rem;*/
+	margin-top: 1rem;
+	border-top: 1px solid red;
+	padding-top: 7px;
+}
+
+/*#M_MC_upVersenden{
+	position: fixed;
+    width: 200px;
+    float: left;
+    left: 60px;
+    top: 450px !important;
+}*/
+#M_MC_pnlVersenden {
+	padding-top:15px;
+}
+
+.lblPrintComment {
+	background-image:url(Images/Printer.png);
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	/*padding:2px 18px 2px 2px;*/
+	display: inline-block;
+	height: 15px;
+	width:20px;
+	margin-left:auto;
+	margin-right:5px;
+	cursor: pointer;
+}
+.lblPrintComment:hover {
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.lblOuterPrintComment {
+    display: block;
+    margin-top: -15px;
+    text-align: right;
+    width: 100%;
+}
+
+#M_MC_txtEditContactPLZ {
+	margin-right:100px;
+}
+
+.Line {
+    border-top: 1px solid #E00060;
+    width:100%;
+}
+
+.fvPflichtfeld {
+    background-image: url(Images/Critical.png);
+    background-size: 16px 16px;
+    display: inline-block;
+	height: 16px;
+	width: 16px;
+}
+
+.fvOperand {
+    background-image: url(Images/Critical.png);
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+    display: inline-block;
+	height: 16px;
+	width: 50px;
+    padding-left: 19px;
+}
+
+#M_MC_lblBogensstatusValue {
+    font-weight:bold;
+    font-size:90%;
+    filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+}
+
+
+#M_MC_trvFacilities td {
+    white-space:pre-line !important;
+}
+
+#M_MC_btnNext, #M_MC_btnBack {
+        min-height:16px!Important;
+        background-color:transparent;
+}
+
+/*.trvQMNavigation_Selected {
+    background-color:#cccccc;
+}*/

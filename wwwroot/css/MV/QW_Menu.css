@@ -1,0 +1,126 @@
+﻿/* Version: 240527 */
+
+a#ModLinkSucheAssist {
+	top: -12px;
+	position: relative;
+}
+
+@media (max-width: 989px){
+#CrModules {
+	width: 100%;
+	margin:0 auto;
+	padding: 0;
+	list-style: none;
+	font-size: 1.15rem;
+}
+}
+@media (min-width: 990px){
+#CrModules .search{
+/*	margin-left:90px*/
+}
+#CrModules .home{
+	width:100px;
+	/*position:absolute*/
+	top:-0.3rem;
+	position:relative
+}
+#CrModules {
+	width: 990px;
+	margin:0 auto;
+	padding: 0;
+	list-style: none;
+	font-size: 1.15rem;
+}
+#M_PnlModules {
+	height: 52px;
+    max-height: 52px;
+}
+}
+
+#CrModules {
+	margin:0 auto;
+	padding: 0;
+	list-style: none;
+	font-size: 1.15rem;
+}
+
+#CrModules li {
+	display: inline-table;
+	width:calc(100% / 8);
+	line-height:1.8rem;
+	text-align:center
+}
+#CrModules ul {
+	display: none	
+}
+#CrModules a {
+	color:var(--color-white);
+	display:block;
+	padding:0.7rem
+}
+#ModLinkHome{
+	/*font-size:0;*/
+}
+#M_PnlModules {
+	border-top: 1px solid var(--color-lightblue);
+	border-bottom: 1px solid var(--color-lightblue);
+	z-index: 1;
+	color:var(--color-lightgrey);
+	background: var(--color-blue);
+}
+#CrModules li:hover > ul {
+	display: block;
+	position:relative;
+	z-index:300;
+	margin:0;
+	padding:0
+}
+.ui-icon-closethick{
+	background-image:none !important
+}
+
+#CrModules li.home a::before {
+	content: url("Images/Haus.svg");
+	width: 28px;
+	margin-left: -0.5rem;
+	position: absolute;
+}
+#CrModules li.home:hover a::before {
+	content: url("Images/Haus_hover.svg")
+}
+html body div#Page form#aspnetForm div#M_PnlMain.main div#WrapperHead.active div#M_PnlTop div#M_PnlModules.boxNavigation ul#CrModules li ul
+#CrModules li:hover,
+#CrModules li ul li:hover{
+	text-decoration:underline
+}
+#CrModules li ul li {
+	background-color: var(--color-blue) !important;
+	display: block;
+	/*float: left;*/
+	width: calc(100%);
+	color: var(--color-white);
+	border-bottom: 1px solid var(--color-white);
+}
+/*da es nur die Kalkulation bei den Berichten gibt, ist der Wunsch gewesen dass auch nur diese angezeigt wird. Und nicht der Menü-öffner Anträge*/
+#ModLinkBerichte {
+	display: none !important;
+}
+
+#ModLinkKalkulation {
+	position: relative;
+}
+#ModLinkKalkulation + li #ModLinkKalkulation {
+	display: block !important;
+}
+#ModLinkBerichte + ul {
+	display:block;
+}
+#ModLinkBerichte + ul {
+	padding: revert !important;
+	margin: auto !important;
+	color: red
+}
+
+#ModLinkBerichte + ul li {
+	border-bottom: none!important;
+} 

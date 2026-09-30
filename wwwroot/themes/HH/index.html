@@ -1,0 +1,191 @@
+﻿<link rel="stylesheet" href="/lib/kern/kern.css" />
+
+<style>
+    #textToSpeechButton {
+        background-image: url(Images/speech.svg);
+        filter: invert(11%) sepia(24%) saturate(6126%) hue-rotate(187deg) brightness(100%) contrast(101%);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        font-size: 0;
+        height: 24px;
+        width: 24px;
+        position: fixed;
+        top: 1rem;
+        left: 22rem;
+        z-index: 10;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+    }
+
+        #textToSpeechButton.active {
+            background-image: url(Images/nospeech.svg);
+        }
+
+    .p-for-tts {
+        background-color: var(--kern-color-neutral-100);
+        border-radius: 4px;
+        padding: 8px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .p-for-tts.highlight, .p-for-tts:hover {
+            background-color: var(--kern-color-neutral-200);
+        }
+
+    .infobox_barrierefreiheit_header {
+        padding: 8px 12px;
+        border-radius: 6px 6px 0 0;
+        background-color: var(--kern-color-action-default);
+        color: var(--kern-color-action-on-default);
+        font-weight: 600;
+        width: fit-content;
+    }
+
+    .beschreibung_vorlesen {
+        border: 1px solid var(--kern-color-layout-border);
+        padding: 12px;
+        border-radius: 0 6px 6px 6px;
+        margin-bottom: 16px;
+    }
+</style>
+
+<button id="textToSpeechButton" title="Vorlesen aktivieren" aria-label="Vorlesemodus gestartet">Vorlesen</button>
+
+<div class="kern-card" style="padding:16px; margin-bottom:24px">
+    <h2>Liebe Besucherin, lieber Besucher,</h2>
+    <p>herzlich willkommen auf dem Teilhabeportal der Sozialbehörde Hamburg.</p>
+    <p>Hier erhalten Sie einen Überblick über die Angebote der Eingliederungshilfe in Hamburg.</p>
+    <p>Mit Hilfe der Suchfunktion können Sie sich gezielt über einzelne Leistungen in ganz Hamburg oder in den Bezirken informieren.</p>
+    <p>Über die Detailsuche können Sie auch herausfinden, welche Angebote es in Ihrer Umgebung gibt. Ihnen werden die Standorte und die Kontakte angezeigt.</p>
+    <p>Wir möchten Sie darauf hinweisen, dass für die Leistungen der <a target="_blank" href="https://www.hamburg.de/fachamt-eingliederungshilfe/">Eingliederungshilfe</a> immer ein Antrag bei der zuständigen Dienststelle erforderlich ist.</p>
+    <p>Wenn Sie Fragen haben: <a href="mailto:vertragsmanagement.egh@soziales.hamburg.de">vertragsmanagement.egh@soziales.hamburg.de</a></p>
+</div>
+
+<div id="mainAccordionList" style="display:flex; flex-direction:column; gap:8px">
+
+    <details class="kern-accordion">
+        <summary class="kern-accordion__header"><span class="kern-title">Assistenz in der Sozialpsychiatrie</span></summary>
+        <div class="kern-accordion__body">
+            <p>Im Zentrum der Assistenz in der Sozialpsychiatrie (ASP) stehen die Unterstützungsleistungen in den Begegnungsstätten.</p>
+            <p>In diesen können sowohl niedrigschwellige, präventive Angebote als auch personenbezogene Assistenzleistungen in Anspruch genommen werden.</p>
+            <p>Bei Bedarf findet auch eine aufsuchende sowie begleitende Betreuung statt.</p>
+        </div>
+    </details>
+
+    <details class="kern-accordion">
+        <summary class="kern-accordion__header"><span class="kern-title">Einfache Assistenz</span></summary>
+        <div class="kern-accordion__body"><p>Die Fachleistungsstunden für einfache Assistenz (EA) stellen eine lebenspraktisch orientierte Leistung der Eingliederungshilfe dar.</p></div>
+    </details>
+
+    <details class="kern-accordion">
+        <summary class="kern-accordion__header"><span class="kern-title">Qualifizierte pädagogische Assistenz</span></summary>
+        <div class="kern-accordion__body"><p>Die qualifizierte pädagogische Assistenz (QPA) stellt eine pädagogische und lernzielorientierte Leistung dar.</p></div>
+    </details>
+
+    <details class="kern-accordion">
+        <summary class="kern-accordion__header"><span class="kern-title">Wohnen mit Assistenz</span></summary>
+        <div class="kern-accordion__body"><p>Wohnen mit Assistenz (WMA/WMAS) ist eine Leistung für Menschen mit Behinderung, die aufgrund umfassender Bedarfe Assistenzleistungen im eigenen Wohnraum erhalten.</p></div>
+    </details>
+
+    <details class="kern-accordion">
+        <summary class="kern-accordion__header"><span class="kern-title">Qualifizierte Assistenz in Besonderen Wohnformen</span></summary>
+        <div class="kern-accordion__body"><p>In Besonderen Wohnformen werden Leistungen der Qualifizierten Assistenz erbracht zur Förderung der Selbstbestimmung und sozialen Teilhabe.</p></div>
+    </details>
+
+    <details class="kern-accordion">
+        <summary class="kern-accordion__header"><span class="kern-title">Tagesförderung</span></summary>
+        <div class="kern-accordion__body"><p>Die Tagesförderung (Tafö) bereitet Menschen mit Behinderungen auf die Teilhabe am Arbeitsleben vor, bietet Tagesstruktur sowie soziale Kontakte.</p></div>
+    </details>
+
+    <details class="kern-accordion">
+        <summary class="kern-accordion__header"><span class="kern-title">Gastweise Unterbringung</span></summary>
+        <div class="kern-accordion__body"><p>Die Gastweise Unterbringung (GWU) soll durch kurzzeitige Betreuung außerhalb des familiären Umfelds entlasten.</p></div>
+    </details>
+
+    <details class="kern-accordion">
+        <summary class="kern-accordion__header"><span class="kern-title">Familienassistenz</span></summary>
+        <div class="kern-accordion__body"><p>Die Familienassistenz (FA) ist eine qualifizierte pädagogisch orientierte Assistenzleistung für Familien.</p></div>
+    </details>
+
+    <details class="kern-accordion">
+        <summary class="kern-accordion__header"><span class="kern-title">Besondere Wohnform für Kinder und Jugendliche</span></summary>
+        <div class="kern-accordion__body"><p>Diese Leistung sieht Wohngruppen für Kinder und Jugendliche vor, die aufgrund ihres Assistenzbedarfs nicht bei den Eltern leben können.</p></div>
+    </details>
+
+    <details class="kern-accordion">
+        <summary class="kern-accordion__header"><span class="kern-title">Komplexleistung Frühförderung</span></summary>
+        <div class="kern-accordion__body"><p>Die Komplexleistung Frühförderung ist ein System von ärztlichen, therapeutischen und heilpädagogischen Leistungen aus einer Hand.</p></div>
+    </details>
+
+    <details class="kern-accordion">
+        <summary class="kern-accordion__header"><span class="kern-title">Teilhabe am arbeitsweltlichen Kontext</span></summary>
+        <div class="kern-accordion__body"><p>Die Teilhabe am arbeitsweltlichen Kontext (TaK) ermöglicht Menschen mit seelischer Behinderung die Eingliederung in das Arbeitsleben.</p></div>
+    </details>
+
+    <details class="kern-accordion">
+        <summary class="kern-accordion__header"><span class="kern-title">andere Leistungsanbieter</span></summary>
+        <div class="kern-accordion__body"><p>Bei anderen Leistungsanbietern (aLa) werden volljährige Menschen mit Behinderungen beschäftigt als Alternative zur Werkstatt.</p></div>
+    </details>
+
+    <details class="kern-accordion">
+        <summary class="kern-accordion__header"><span class="kern-title">Werkstatt für Menschen mit Behinderung</span></summary>
+        <div class="kern-accordion__body"><p>In einer Werkstatt für Menschen mit Behinderung (WfbM) werden volljährige Menschen mit Behinderungen beschäftigt.</p></div>
+    </details>
+
+    <details class="kern-accordion">
+        <summary class="kern-accordion__header"><span class="kern-title">Heilpädagogische Leistungen</span></summary>
+        <div class="kern-accordion__body"><p>Die Leistung richtet sich an Kinder mit Behinderungen, die noch nicht eingeschult sind, und bezieht die Familien mit ein.</p></div>
+    </details>
+
+</div>
+
+<audio id="audioClip"><source src="Text.mp3" type="audio/mpeg"></audio>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const container = document.body;
+    const btn = document.getElementById("textToSpeechButton");
+    let timeout, isTTSActive = false;
+
+    function speak(text) {
+        if (!isTTSActive) return;
+        timeout = setTimeout(() => {
+            const u = new SpeechSynthesisUtterance(text);
+            window.speechSynthesis.speak(u);
+        }, 250);
+    }
+
+    btn.addEventListener("click", () => {
+        if (isTTSActive) { location.reload(); return; }
+        isTTSActive = true;
+        btn.classList.add("active");
+        btn.textContent = "Vorlesen stoppen";
+        speak(btn.getAttribute("aria-label"));
+        document.querySelectorAll("p").forEach(node => {
+            node.classList.add("p-for-tts");
+            node.addEventListener("mouseenter", () => {
+                timeout = setTimeout(() => { if(isTTSActive) speak(node.textContent); }, 100);
+                node.classList.add("highlight");
+            });
+            node.addEventListener("mouseleave", () => {
+                clearTimeout(timeout);
+                node.classList.remove("highlight");
+                window.speechSynthesis.cancel();
+            });
+        });
+        const info = document.createElement("div");
+        info.innerHTML = "<div class='infobox_barrierefreiheit_header'><strong>Wie funktioniert der Vorlesemodus?</strong></div><div class='beschreibung_vorlesen'>Alle verfügbaren Texte sind in farblich hinterlegten Boxen dargestellt.<br>Bewegen Sie die Maus über eine Box, um den Text vorlesen zu lassen.</div>";
+        document.body.insertBefore(info, document.body.firstChild);
+    });
+
+    document.querySelectorAll('#mainAccordionList .kern-accordion').forEach(acc => {
+        acc.addEventListener('toggle', function() {
+            if (this.open) {
+                document.querySelectorAll('#mainAccordionList .kern-accordion').forEach(o => { if (o !== this) o.open = false; });
+            }
+        });
+    });
+});
+</script>

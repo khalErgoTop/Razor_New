@@ -1,0 +1,3902 @@
+﻿/* Version: 250515 */
+
+
+
+
+.divFacilities .pnlFacility .pnlSheet{
+	cursor:pointer
+}
+.divFacilities .pnlFacility .pnlSheet span:after{content:" "}
+
+#M_MC_VsRequiredField{
+	position: absolute;
+  right: 0rem;
+  width: 367px;
+}
+#M_MC_btnSend{
+	top:6rem;
+	position: absolute;
+}
+
+#M_MC_PnlPageControls .divStatus{
+	position: absolute;
+  left: 17rem;
+  top: 1rem;
+}
+#M_MC_btnSend{
+position:absolute;
+background-color: var(--color-blue);
+  color: #fff;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: var(--radius);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 6px;
+  border:none
+}
+#M_MC_UppPageControls #M_MC_PnlPageControls label[for="M_MC_ChkTermsConditions"] #M_MC_btnSend{
+	position: absolute;
+	top: 6rem;
+}
+#M_MC_UppPageControls #M_MC_PnlPageControls label[for="M_MC_ChkTermsConditions"]{
+	position: absolute;
+  top: 3.75rem;
+  left: 2rem;
+   font-size: 0;
+}
+#M_MC_UppPageControls{
+	height:150px
+}
+#M_MC_UppPageControls #M_MC_PnlPageControls label[for="M_MC_ChkTermsConditions"] #Terms{
+font-size:1rem;
+}
+#M_MC_UppPageControls #M_MC_PnlPageControls label[for="M_MC_ChkTermsConditions"] #Terms:before{
+content:"Die"
+}
+#M_MC_UppPageControls #M_MC_PnlPageControls label[for="M_MC_ChkTermsConditions"] #Terms:after{
+content:" habe ich gelesen und akzeptiert."}
+
+#M_MC_UppPageControls #M_MC_PnlPageControls #M_MC_ChkTermsConditions{
+	position: absolute;
+  top: 3.5rem;
+  float: left;
+}
+
+#M_MC_UppPageControls #M_MC_PnlPageControls{
+	position: relative;
+  margin-left: 1.25rem;
+  margin-top: 1rem
+}
+#M_MC_UppPageControls #M_MC_PnlPageControls #M_MC_BtnSave{
+position:absolute;
+background-color: var(--color-blue);
+  color: #fff;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: var(--radius);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 6px;
+  border: none;
+}
+
+#M_MC_UppPageControls #M_MC_PnlPageControls #M_MC_BtnPrintPreview{
+position:absolute;
+background-color: var(--color-blue);
+  color: #fff;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: var(--radius);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 6px;
+  border: none;
+  left: 7rem;
+}
+#M_MC_UppQuestions #M_MC_PnlQuestions .pnlSubCategory .term.termMatrix .pnlMatrix .pnlMatrixRow .pnlMatrixCol.pnlMatrixColValue input.termLabel.colValue.valueTextBox{
+	min-height:1.8rem
+}
+.pnlAnnotations textarea,
+.pnlSubCategory .term.termText.facilityInformation .pnlValue textarea.valueTextBox,
+.pnlSubCategory .term.termText .pnlValue textarea.valueTextBox{
+border: 1px solid var(--color-blue) !important;
+  background: #fdfdfd;
+    background-color: rgb(253, 253, 253);
+  font-family: var(--font-300);
+  cursor: pointer;
+  padding: 0.5rem;
+  min-height: 2.5rem;
+  width: calc(100% - 1.5rem);
+  max-width: calc(100% - 1.5rem);
+  border-radius: var(--radius);
+  background-color: #fafafa;
+  font-size: 14px !important;
+}
+.pnlSubCategory .term.termFileAttachments .pnltermLabel{
+flex: unset !important
+}
+.termFileAttachments {
+ /*display: flex;*/ flex-direction: column; 
+}
+
+.termFileAttachments .pnltermLabel,
+.termFileAttachments .pnlValue {
+  display: block;
+  margin-bottom: 8px; /* optionaler Abstand */
+}
+
+#M_MC_UppQuestions .ButtonAddFile{
+background-color: var(--color-blue);
+  color: #fff;
+  width: 100%;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: var(--radius);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 6px;
+  border: none;
+}
+
+
+.ui-draggable-handle button.ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-close{
+border: none;
+  background: unset;
+}
+.ui-draggable-handle button.ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-close span{
+		content: url("Images/Icons/cancel.svg");
+		filter: invert(1);
+}
+  .pnlFacility {
+    border: 1px solid #ccc;
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin: 20px 0;
+    background-color: #fdfdfd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+
+  .lblFacilityName {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .pnlSheet.pnlNewSheet {
+  }
+
+  .pnlSheet.pnlNewSheet:hover {
+  }
+
+  .pnlSheet.pnlNewSheet span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .pnlSheet {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: var(--radius);
+  }
+
+  .pnlSheet.Angenommen {
+    border-left: 5px solid #28a745;
+  }
+
+  .pnlSheet.Abgelehnt {
+    border-left: 5px solid #dc3545;
+  }
+
+  .pnlSheetState span:last-child {
+    font-weight: bold;
+  }
+
+  .pnlSheetState span:last-child.Angenommen {
+    color: #28a745;
+  }
+
+  .pnlSheetState span:last-child.Abgelehnt {
+    color: #dc3545;
+  }
+
+  .termBool {
+    border-bottom: 1px solid #ddd;
+  }
+
+  /* Stil für Filterbereich */
+  .divFilter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f3f6fa;
+    border: 1px solid #ccc;
+    border-radius: var(--radius);
+    margin-bottom: 30px;
+    align-items: flex-end;
+    font-family: Arial, sans-serif;
+  }
+
+  .divFilter .filter {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .divFilter select,
+  .bitQArcFlavor select,
+  .bitQArcFlavor input[type="text"] {
+    padding: 6px 10px;
+    font-size: 0.95em;
+    border-radius: var(--radius);
+    border: 1px solid #ccc;
+  }
+
+  .divFilter span,
+  .bitQArcFlavor span.lblIdentifier {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+
+  .bitQArcFlavor {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    margin-top: -10px;
+    margin-bottom: 30px;
+    background-color: #f3f6fa;
+    border: 1px solid #ccc;
+    border-radius: var(--radius);
+    font-family: Arial, sans-serif;
+  }
+
+  .bitQArcFlavor .divValue {
+    display: flex;
+    flex-direction: column;
+    position:relative
+  }
+
+.bitQArcFlavor img.ui-datepicker-trigger {
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	float: right;
+	position: absolute;
+	right: 0.5rem;
+	bottom: 0.75rem;
+}
+
+.spanFilter{
+display:none
+}
+/* Optional: Styling für den vorhandenen Text */
+#M_MC_LblWaiter2 {
+  font-size: 2rem;
+  color: black;
+}
+
+  /* Stil für Filterbereich */
+  .divFilter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    background-color: #f3f6fa;
+    border: 1px solid #ccc;
+    border-radius: var(--radius);
+    margin-bottom: 30px;
+    align-items: flex-end;
+    font-family: Arial, sans-serif;
+  }
+
+  .divFilter .filter {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .divFilter select {
+    padding: 6px 10px;
+    font-size: 0.95em;
+    border-radius: var(--radius);
+    border: 1px solid #ccc;
+    min-width: 200px;
+  }
+
+  .divFilter span {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  /* Format für den Titel */
+  .lblFacilityName {
+    font-weight: normal;
+  font-family: var(--font-300);
+  }
+
+
+  /* Allgemeine Formatierung der Einrichtungskarten */
+  .pnlFacility {
+    border: 1px solid #ccc;
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin: 20px 0;
+    background-color: #fdfdfd;
+    font-weight: normal;
+  font-family: var(--font-100);
+  }
+
+  /* Schöner Button für neue Einträge */
+  .pnlSheet.pnlNewSheet {
+  background: var(--color-blue);
+  border: none;
+font-size: 0.95em;
+  transition: all 0.25s ease-in-out;
+  cursor: pointer;
+  display: block;
+  width: fit-content;
+  color: white;
+  font-weight: normal;
+  font-family: var(--font-100);
+  border-radius: var(--radius);
+  }
+
+  .pnlSheet.pnlNewSheet span {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  /* Unterpunkte mit Statusformatierung */
+  .pnlSheet {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-top: 10px;
+    border-radius: var(--radius);
+  }
+
+  .pnlSheet.Angenommen {
+    border-left: 5px solid #28a745;
+  }
+
+  .pnlSheet.Abgelehnt {
+    border-left: 5px solid #dc3545;
+  }
+
+  .pnlSheetState span:last-child {
+    font-weight: bold;
+  }
+
+  .pnlSheetState span:last-child.Angenommen {
+    color: #28a745;
+  }
+
+  .pnlSheetState span:last-child.Abgelehnt {
+    color: #dc3545;
+  }
+
+  .termBool .pnlValue span {
+    float: right;
+  }
+
+  .termBool {
+    border-bottom: 1px solid #ddd;
+  }
+
+/* Version: 250514 */
+#M_MC_PnlSheetStructure {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+.pnlCategory{
+padding: 0 0.25rem 0 0
+}
+.pnlCategory:last-child{
+padding: 0
+}
+
+#M_MC_UppSheetStructure #M_MC_PnlSheetStructure .pnlCategory.btnSelectedCategory .subCategories .pnlCategory input.btnCategory.btnSubCategory{
+	opacity:1
+}
+#M_MC_UppSheetStructure #M_MC_PnlSheetStructure .pnlCategory .subCategories .pnlCategory input.btnCategory{
+
+}
+/* Hauptkategorie */
+#M_MC_PnlSheetStructure .btnCategory {
+    background-color: #f0f0f0;
+    width: 100%;
+    color: #333;
+    padding: 8px 14px;
+    font-size: 14px;
+    border-radius: var(--radius);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 6px;
+}
+
+/* Aktive Hauptkategorie */
+#M_MC_PnlSheetStructure .btnSelectedCategory {
+    background-color: var(--color-blue);
+    color: #fff;
+	width:100%
+}
+
+#M_MC_PnlSheetStructure .pnlCategory.btnSelectedCategory .subCategories .pnlCategory input{
+	    background-color: red;
+}
+
+/* Subkategorieblock */
+
+
+#M_MC_PnlSheetStructure .subCategories input input{
+    background:red;
+    width:100%
+}
+
+/* Subkategoriebutton */
+#M_MC_PnlSheetStructure .btnSubCategory {
+    background-color: #ffffff;
+    color: #333;
+    border: 1px solid #ccc;
+    padding: 8px 14px;
+    border-radius: var(--radius);
+    margin-top: 6px;
+    display: inline-block;
+    transition: all 0.2s ease;
+}
+
+/* Aktive Subkategorie */
+#M_MC_PnlSheetStructure .btnSubCategory.btnSubCategorySelected {
+    background-color: #1976d2;
+    color: white;
+    border-color: #1565c0;
+}
+
+/* Hover-Effekte */
+#M_MC_PnlSheetStructure .btnCategory:hover,
+#M_MC_PnlSheetStructure .btnSubCategory:hover {
+    background-color: #e3f2fd;
+    border-color: #90caf9;
+    color: #0d47a1;
+}
+
+/* Kategorieblock */
+#M_MC_UppQuestions .pnlCategory {
+    margin-bottom: 10px;
+}
+
+/* Hauptkategoriebutton */
+#M_MC_UppQuestions .btnCategory {
+    background-color: #1565c0;
+    color: white;
+    font-weight: bold;
+    padding: 10px 16px;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-block;
+    margin-bottom: 6px;
+    transition: background-color 0.2s;
+}
+
+/* Aktiver Hauptkategoriebutton */
+#M_MC_UppQuestions .btnSelectedCategory {
+    background-color: #0d47a1;
+}
+
+/* Subkategoriebutton */
+#M_MC_UppQuestions .btnSubCategory {
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 8px 14px;
+    border: 1px solid #ccc;
+    border-radius: var(--radius);
+    font-size: 13px;
+    margin-left: 20px;
+    margin-bottom: 6px;
+    cursor: pointer;
+    display: inline-block;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* Aktive Subkategorie */
+#M_MC_UppQuestions .btnSubCategory.btnSubCategorySelected {
+    background-color: #1976d2;
+    color: white;
+    border-color: #1565c0;
+}
+
+/* Optional Hover-Effekte */
+#M_MC_UppQuestions .btnCategory:hover,
+#M_MC_UppQuestions .btnSubCategory:hover {
+    background-color: #004ba0;
+    color: white;
+}
+
+#M_MC_UppQuestions {
+    margin-top: 40px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+#M_MC_UppQuestions .pnlSubCategory {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 20px;
+}
+
+#M_MC_UppQuestions .pnlSubCatLabel {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+#M_MC_UppQuestions .term {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    margin-bottom: 15px;
+}
+#M_MC_UppQuestions .term.termBool .pnltermLabel{
+   flex: 0 0 600px;
+}
+#M_MC_UppQuestions .pnltermLabel {
+    flex: 0 0 300px;
+    font-weight: 600;
+    color: #444;
+    line-height: 2.75rem;
+}
+#M_MC_UppQuestions #M_MC_PnlQuestions .pnlSubCategory .term.termBool .pnltermLabel span.termLabel{
+	line-height:1.5rem
+}
+#M_MC_UppQuestions .termLabel {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+#M_MC_UppQuestions .pnlValue {
+    flex: 1;
+    min-width: 200px;
+}
+
+#M_MC_UppQuestions .valueTextBox {
+    width: calc(100% - 1.5rem);
+    border-radius: var(--radius);
+    background-color: #fafafa;
+    font-size: 14px;
+}
+
+#M_MC_UppQuestions input[type="checkbox"] {
+    transform: scale(1.3);
+    margin-right: 10px;
+    margin-top: 1rem;
+}
+
+#M_MC_UppQuestions .termBool {
+    align-items: center;
+}
+
+#M_MC_UppQuestions .buttonAttachment {
+    border: none;
+    padding: 8px 12px;
+    color: #fff;
+    border-radius: var(--radius);
+    cursor: pointer;
+    margin-top: 8px;
+    font-size: 14px;
+}
+
+#M_MC_UppQuestions .ButtonAddFile:hover,
+#M_MC_UppQuestions .buttonAttachment:hover {
+    background-color: #0056b3;
+}
+
+#M_MC_UppQuestions .ButtonDeleteFile {
+display: inline-block;
+  margin-top: 10px;
+  color: #c00;
+  cursor: pointer;
+  font-size: 14px;
+  text-decoration: underline;
+  width: fit-content;
+  line-height: 2.5rem;
+  margin-left: 1em;
+}
+
+#M_MC_UppQuestions .ButtonDeleteFile:hover {
+    color: #900;
+}
+
+
+/* Version: 240527 */
+@import url(medium.css);
+	@import url(large.css);
+	
+@charset "UTF-8";
+	
+@font-face {
+	font-family: "nunito_light";
+	src: url("Fonts/nunito-light-webfont.woff2") format("woff2"),
+url("Fonts/nunito-light-webfont.woff") format("woff")
+}
+@font-face {
+	font-family: "nunito_regular";
+	src: url("Fonts/nunito-regular-webfont.woff2") format("woff2"),
+url("Fonts/nunito-regular-webfont.woff") format("woff")
+}
+@font-face {
+	font-family: 'nunito_bold';
+	src: url('Fonts/nunito-bold-webfont.woff2') format('woff2'),
+url('Fonts/nunito-bold-webfont.woff') format('woff')
+}
+@font-face {
+	font-family: 'nunito_extrabold';
+	src: url('Fonts/nunito-extrabold-webfont.woff2') format('woff2'),
+url('Fonts/nunito-extrabold-webfont.woff') format('woff')
+}
+@media {
+	:root {
+		--color-white: #FFFFFF;
+		--color-red: #cc0909;
+		--color-pink:#e82c33;
+		--color-blue: #035cad;
+		--color-grey: #1065b2;
+		--color-darkgrey: #5e5e5e;
+		--color-black: #000000;
+		--color-cream: #EFF6FA;
+		--color-lightgrey:#F2F2F2;
+		--color-lightblue:#b8dcfd;
+		--color-table-grey:#333333;
+		--font-100: "nunito_light", Arial,Helvetica,sans-serif;
+		--font-300: "nunito_regular", Arial,Helvetica,sans-serif;
+		--font-500: "nunito_bold", Helvetica,sans-serif;
+		--font-700: "nunito_extrabold", Arial,Helvetica,sans-serif;
+		--font-georgia: Georgia,Arial,Helvetica,sans-serif;
+		--filter-blue: invert(18%) sepia(100%) saturate(2252%) hue-rotate(195deg) brightness(97%) contrast(98%);
+		--filter-red: invert(12%) sepia(62%) saturate(6549%) hue-rotate(347deg) brightness(99%) contrast(117%);
+		--filter-red-invert: invert(0%) sepia(75%) saturate(1820%) hue-rotate(132deg) brightness(99%) contrast(96%);
+		--radius: 0.2rem
+	}
+}
+#BtnInfoNewsKeep,#BtnInfoNewsDelete{
+	margin-top:0.5rem
+}
+input:invalid {
+	color: red;
+}
+
+.pnlStellenplan tr:nth-child(odd){
+	background: #EEE;
+	line-height: 1.5rem;
+	padding: 0.5rem;
+
+}
+#M_MC_PnlTrip{
+	width:700px
+}
+#M_MC_PnlTrip > div {
+  /*display: inline-grid;*/
+	display: table-row;
+}
+.pnlStellenplan tr:nth-child(even){
+	background: #ddd;
+	line-height: 1.5rem;
+	padding: 0.5rem;
+
+}
+.pnlStellenplan .txtEingabe{
+	width: 93% !important;
+}
+.pnlStellenplan input[readonly="readonly"]{
+	cursor:not-allowed;
+	background:#eee
+}
+.pnlStellenplan input.txtEingabe[readonly="readonly"]{
+	border:1px solid #CCC
+}
+.pnlStellenplan td{
+	line-height: 1.5rem;
+	padding: 0.5rem;
+}
+html body div#Page form#aspnetForm div#M_PnlMain.main div.wrapper div.innerMain div.wrapper div.shadowRight div.shadowBottom div.shadowBottomLeft div.shadowBottomRight div.innerMain div#Einrichtungen div#M_MC_pnlAllFacilities.pnlAllFacilities div#M_MC_trvBogenFacilities.treefix div#M_MC_trvBogenFacilitiesn0Nodes table tbody tr td{
+	white-space: nowrap;
+  position: absolute;
+  width: 100%;
+  cursor: pointer;
+}
+html body div#Page form#aspnetForm div#M_PnlMain.main div.wrapper div.innerMain div.wrapper div.shadowRight div.shadowBottom div.shadowBottomLeft div.shadowBottomRight div.innerMain div#Einrichtungen div#M_MC_pnlAllFacilities.pnlAllFacilities div#M_MC_trvBogenFacilities.treefix div#M_MC_trvBogenFacilitiesn0Nodes table tbody tr td a#M_MC_trvBogenFacilitiest1.M_MC_trvBogenFacilities_0{
+display: block;
+}
+.innerMain div div ul.superCategory li div ul.subCategory01 li div ul.facilityItem li .fci .divAuflistungEinrichtung a.textile.c0_MC_trvAuflistung_0.childNodeStyle3.c0_MC_trvAuflistung_5{
+	display:block
+}
+.pnlOptionLabel 
+#M_MC_ctl58.lblBegriff{
+	line-height:1.2rem
+}
+@media (max-width: 989px){
+
+#CrModules li {
+  width: 100% !important;
+}
+#M_MC_FFView_OpenFacFeatures,
+#M_MC_FFView_OpenAddFDV,
+#M_MC_FFView_OpenAddFFR,
+#M_MC_FFView_EdtInstOp,
+#M_MC_FFView_OpenChgLocVisibility,
+#M_MC_FFView_OpenChgVisibility,
+#M_MC_FFView_OpenEdtContact,
+#M_MC_FFView_OpenEdtFacData,
+#M_MC_FFView_OpenAddFIV,
+#M_MC_FFView_OpenAddFile {
+    width: 10% !important;
+}
+
+#M_MC_FFView_FacCtls{
+	margin-left:-2rem;
+}
+#M_PnlFooterMaster, .wrapper {
+  width: 100% !important;
+}
+#M_PnlFooterMaster {
+    border:none;
+}
+
+#WrapperHead {
+  min-width: 100%;
+}
+	#M_cphLeittext_PnlLeittext,
+	#M_PnlLinkPath,
+	.boxKopf,
+	.LeitboxOuter {
+  		width: 100%;
+	}
+}
+@media (min-width: 990px){
+
+#WrapperHead {
+  min-width: 800px;
+  position: inherit;
+  /*z-index: 0;*/
+}
+	#M_cphLeittext_PnlLeittext,
+	#M_PnlLinkPath,
+	.boxKopf,
+	.LeitboxOuter{
+		width:990px
+	}
+}
+/* ADMINISTRATION */
+#M_MC_btnAddGroup {
+  font-size: 1rem !important;
+  line-height: 1rem !important;
+  height: 2rem !important;
+  margin-top: 0.5rem;
+}
+
+#M_MC_lcGroupsAvailable {
+  width: 100%;
+}
+
+#M_MC_btnAddGroup:after {
+	content:"Hinzufügen" !important
+}
+
+#M_MC_btnAddGroup{
+	font-size:1rem !important;
+}
+#DivRights #GridRights .jsgrid-cancel-edit-button{
+	background-image:url("images/cross_close.svg");
+	background-repeat: inherit;
+	width: 24px;
+	height: 24px;
+}
+#DivRights #GridRights .jsgrid-update-button[title="Update"]{
+	background-image:url("images/plus.svg");
+	background-repeat: inherit;
+	width: 24px;
+	height: 24px;
+}
+#DivRights #GridRights .jsgrid-edit-button[title="Edit"]{
+	background-image:url("images/edit.svg");
+	background-repeat: inherit;
+	width: 24px;
+	height: 24px;
+}
+
+#spanGroupsSelectedControls{
+	margin-top: 0.6rem;
+	position: absolute;
+	left: 2.2rem
+}
+#M_MC_btnAddGroup.button, #HrefAddGroup {
+	font-size: 2.5rem;
+	line-height: 2rem;
+	content: "+";
+	display: block;
+	width: 3rem;
+	height: 3rem
+}
+#HrefRemoveGroup{
+	margin-left:1.2rem
+}
+#M_MC_lcGroupsSelected {
+	width: 50%;
+	float: left;
+	margin-left: 6rem
+}
+#HrefAddGroup, #HrefRemoveGroup {
+	float: left;
+	margin-right: 0.5rem;
+	text-align: center;
+	height: 30px;
+	border: none !important;
+	width: 20px;
+	font-size: 0 !important;
+}
+#M_MC_btnAddGroup.button::after, #HrefAddGroup::after{
+	background: var(--color-blue) !important;
+	border-radius: var(--radius);
+	background: var(--color-button);
+	font-family: var(--font-300);
+	cursor: pointer;
+	color: var(--color-white);
+	padding: 0rem 0.5rem;
+	font-size: 2.5rem;
+	line-height: 2rem;
+	content: "+";
+}
+#HrefRemoveGroup::after {
+	font-size: 1.5rem;
+	line-height: 2rem;
+	content: "✕";
+	background: #F00 !important;
+  	border-radius: var(--radius);
+	background: var(--color-button);
+	font-family: var(--font-300);
+	cursor: pointer;
+	color: var(--color-white);
+	padding: 0.5rem 0.6rem;
+}
+#M_MC_spanCurrentUsername::before {
+  content: "Momentan eingeloggt als: ";
+}
+#DivRights #GridRights.jsgrid .jsgrid-grid-body{
+	width:100%
+}
+#M_MC_ChkIsUserDeactivated{
+	position: absolute;
+	margin-top: -2.5rem;
+	margin-left: 13rem;
+}
+#M_MC_LblInstitution{
+	line-height:0.2rem
+}
+.divOuterCheckedListbox{
+	width: calc(100% - 1rem) !important;
+}
+
+#M_MC_LblModules,
+#M_MC_lblFacilities,
+#M_MC_LblUsers,
+#M_MC_LblUserTypes{
+	font-family: var(--font-500)
+}
+#DivddlUserTypes {
+  width: 100% !important
+}
+#M_MC_LblIsUserDeactivated{
+	float:right
+}
+.divOuterControl {
+  width: 100% !important;
+}
+#DivddlUserTypes {
+  width: 100%;
+  max-width: 100%;
+}
+
+.controlLabel, .pnlOptionLabel {
+  display: inline-block;
+  width: 295px;
+  vertical-align: top;
+}
+.controlComplete {
+  margin-bottom: 0.5rem;
+  min-height: 2rem;
+}
+
+/* ENDE ADMINISTRATION */
+
+
+/* LEITTEXT */
+.LeitTextToHideHidden {
+	display:none;
+	margin-bottom:140px
+}
+.Leitbox {
+	background: var(--color-white);
+	margin-left:auto;
+	margin-right:auto;
+	display:block
+}
+#LeitTextToHide.LeitTextToHide .legende .legende .row .itemTop .item{
+	padding: 0 1rem;
+}
+.item {
+	margin-left: 1rem;
+	width: calc(100% - 2rem);
+}
+.GradientLeitbox {
+	height:2px
+}
+.LeitTextToHide {
+	display:block;
+	padding: 0.5rem 0;
+	background:#EEEEEE
+}
+.LeitboxOuter {
+	background: var(--color-white) none repeat scroll 0 0;
+	margin: 0 auto;
+	padding: 0;
+	position: relative
+}
+#imgLeitTextToHide {
+	cursor: pointer;
+	display: table-cell;
+	padding-left: 17px;
+	position: absolute;
+	right: 1rem;
+	top: -2.5rem
+}
+
+/* LEITTEXT ENDE */
+
+body {
+	-webkit-text-size-adjust: none;
+	background-image: linear-gradient(#0960af,#bfd6eb,#fff);
+	overflow-x: hidden !important;
+	padding: 0;
+	font-family: var(--font-300);
+	color: var(--color-darkgrey);
+	min-width: 800px;
+	min-height:600px;
+	overflow:auto;
+	background-repeat:no-repeat;
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#0461ac',endColorstr='#E5EFF6'); /* Internet Explorer */
+	z-index:0;
+	margin: 0
+}
+#M_MC_BtnUserRights{
+	display: block;
+	margin-bottom: 2rem
+}
+#linkpath li:after{
+	content:"\00a0>"
+}
+
+#linkpath li.current:after{
+	content:""
+}
+
+#linkpath li.current{
+	font-family:var(--font-500)
+}
+#linkpath li:after:last-child{
+	content:""
+}
+#ExtendedSearch #DivSlider span{
+	margin-top:0.5rem
+}
+#DdlNewUserType{
+	float: right;
+	width: 100%;
+	font-family: var(--font-100);
+}
+/*Buttons */
+.pnlOptionValue span{
+	display: block;
+	top: 0.5rem;
+	position: relative
+}
+#M_MC_DdlMapServices{
+	width:220px
+}
+#M_MC_BtnDeleteUser,
+#M_MC_BtnNewPW,
+#M_MC_BtnSaveUser,
+#M_MC_BtnSaveNewFacility,
+#AddFacility,
+#M_MC_btnTestEmailServer,
+#M_MC_btnSave,
+#M_MC_LblOpenZusatzWerte,
+.AddButtonAB,
+.btn,
+#M_MC_BtnVersenden,
+.Button,
+.button{
+	cursor: pointer;
+	background: var(--color-blue);
+	color: var(--color-white) !important;
+	border-radius: var(--radius);
+	border: none;
+	padding: 0.5rem;
+	font-family: var(--font-100) !important;
+	font-size: 1rem
+}
+#M_MC_PnlControls{
+	margin-top:1rem
+}
+
+#M_MC_TxtBenutzername,
+#M_MC_TxtVorname,
+#M_MC_TxtNachname,
+#M_MC_TxtEmail{
+	width: calc(100% - 1rem);
+}
+
+#M_MC_DdlMapServices,
+#txtUsername,
+#txtPasswort,
+#DivNewUserEntries input[type="text"],
+.divOuterCheckedListbox,
+select,
+.innerMain input[type="text"],
+.innerMain input[type="password"],
+.innerMain input[type="number"]{
+	border: 1px solid var(--color-blue) !important;
+	background: #fdfdfd;
+	font-family: var(--font-300);
+	cursor: pointer;
+	padding: 0 0.5rem;
+	min-height:2.5rem;
+}
+input[type="text"]{
+	cursor:text
+}
+input[name="M$MC$ValqwSearch.Erweitert.isOpen"]{
+	position: relative;
+	line-height: 3rem;
+	top: -0.5rem;
+}
+
+.lblInLine,
+.lblLeftLabel{
+	font-family:var(--font-100);
+}
+#M_MC_DdlUserTypes{
+	width: calc(100% - 75px);
+}
+
+#M_MC_DdlInstitution{
+	width:100%
+}
+.divOuterControl,
+#M_MC_divInstitution .pnlDropDown{
+	float: right;
+	/*width: 280px*/
+	width:calc(50% - -1rem)
+}
+#M_MC_LblInstitution,
+#M_MC_DivFacilities .controlLabel,
+#DivModule .controlLabel{
+	margin:0.5rem 0 0 0 !important;
+}
+#DivModule,
+#M_MC_DivFacilities{
+	height: 157px
+}
+#DivlstFacilities,
+.pnlOuterlstModules{
+	float:right;
+		height:unset
+}
+#M_MC_PnlOptions,
+#M_MC_PnlUser{
+	width:100%
+}
+b,
+strong{
+	font-family: var(--font-500);
+	font-weight:normal
+}
+#M_MC_DdlEntfernung,
+#M_MC_TxtPlz{
+	width:auto !important
+}
+#M_MC_DivLstMerkm ul#M_MC_LstMerkm li {
+	cursor: pointer;
+	list-style: none;
+	position: relative;
+	margin-left: 32px;
+	min-height: 28px;
+	margin-top:0.2rem
+}
+#M_MC_ChkWithInstitution{color:white}
+
+#M_MC_DivLstMerkm ul#M_MC_LstMerkm li[selected="selected"]:before {
+  background-image: url("images/Box_check_grey.svg");
+
+}
+#DivNewUserEntries{
+	margin:0
+}
+#DivNewUserEntries .controlLabel{
+	margin-top:0
+}
+#DivNewUserEntries .pnlTextBox input{
+	width:calc(100% - 1rem)
+}
+#DivNewUserEntries.ControlComplete .controlComplete .controlLabel{
+	margin:0;
+}
+#BtnSaveNewUser{
+	margin:0.5rem 0;
+}
+#M_MC_LblDeleteUserInfoText{
+	display: ruby-text;
+}
+#M_MC_DivLstMerkm ul#M_MC_LstMerkm li:before {
+	background-image: url("images/Box_uncheck_grey.svg");
+	  background-size: 24px 24px;
+  display: inline-block;
+  width: 30px;
+  height: 24px;
+  content: "";
+  background-repeat: no-repeat;
+  left: -32px;
+  top: -7px;
+  position: absolute;
+}
+#M_MC_LblFreePlaces{
+	margin-left:1.6rem
+}
+#M_MC_DivFreePlaces,
+#DivSlider.control-group div span{
+	display: block
+}input#M_MC_ChkFreePlaces[type="checkbox"],
+#DivSlider.control-group div span input[type="checkbox"]{
+	margin-left:0
+}
+
+#M_MC_FFView_FFS_FacFeatList li::before {
+	width: 24px;
+	height: 24px;
+	position: absolute;
+	content: url("images/Box_uncheck_grey.svg");
+	margin-left: -2rem
+}
+#M_MC_FFView_FFS_FacFeatList li {
+	list-style-type: none;
+	cursor: pointer;
+	line-height: 1.7rem
+}
+#DivlstUsers.divOuterControl select{
+	padding:0
+}
+#divGroupsSelected select option,
+#DivlstUsers.divOuterControl select option{
+	padding:0.25rem
+}
+.msgbox[aria-describedby="M_MC_FFView_FIV_EditFacImg"] .ui-dialog-titlebar::before {
+	content: "Bild der Leistungsangebot ändern";
+	padding: 0.25rem;
+	display: block
+}
+
+.msgbox[aria-describedby="M_MC_FPReporting_PnlAddFFR"] .ui-dialog-titlebar::before {
+	content: "Änderung der Platzzahl";
+	padding: 0.25rem;
+	display: block
+}
+#M_MC_FFView_FIV_EditFacImg h2{
+	display:none
+}
+
+#M_MC_PnlInst_EditInstEmail{
+	margin-right:0
+}
+.msgbox.ui-widget.ui-widget-content.ui-front.ui-draggable.ui-resizable[aria-describedby="M_MC_FFView_ContactData"],
+#M_MC_PnlInst_EditInst{
+	width:800px !important
+}
+#DivFeats{
+	margin-top:2rem
+}
+#DivFIV,
+#InstitutionInner{
+	margin-bottom:2rem
+}
+#M_MC_PnlInst_EditInst.pnlEdit.ui-dialog-content.ui-widget-content div{
+	width:calc(100% - 1rem)
+}
+#M_MC_FFView_ContactData.pnlEdit input{
+	/*margin-right:2rem*/
+}
+#M_MC_FFView_LblContactDataEmail,
+#M_MC_FFView_LblContactDataMobil,
+#M_MC_FFView_LblContactDataTelefax,
+#M_MC_FFView_LblContactDataTelefon,
+#M_MC_FFView_LblContactDataWWW,
+#M_MC_PnlInst_EditInst .lblLeftLabel,
+#M_MC_PnlInst_EditInst .lblInLine,
+#M_MC_PnlInst_EditInst .lblInLine{
+	width: 125px;
+}
+#M_MC_FFView_TxtContactDataWWW,
+#M_MC_FFView_TxtContactDataEmail,
+#M_MC_FFView_TxtContactDataMobil,
+#M_MC_FFView_TxtContactDataTelefon,
+#M_MC_FFView_TxtContactDataTelefax,
+#M_MC_PnlInst_EditInstTel,
+#M_MC_PnlInst_EditInstEmail,
+#M_MC_PnlInst_EditInstWeb{
+	width: 220px;
+	margin-right: 1rem !important
+}
+.lblInLine,
+.lblLeftLabel,
+.pnlEdit .lblLeftLabel {
+	width: 12%;
+	display: inline-block
+}
+#M_MC_FFView_SecLocs_SecLocAddLoc.pnlEdit.ui-dialog-content.ui-widget-content div.command.buttons{
+	margin-top:1rem
+}
+#M_MC_FFView_SecLocs_TxtBezNeu,
+#M_MC_FFView_SecLocs_TxtStrNeu,
+#M_MC_FFView_SecLocs_TxtHnNeu,
+#M_MC_FFView_SecLocs_TxtPlzNeu,
+#M_MC_FFView_SecLocs_TxtHnzNeu,
+#M_MC_FFView_SecLocs_TxtOrtNeu,
+#M_MC_NewFacility .valuepair input.value,
+select.ui-datepicker-year,
+#M_MC_DivKalkZusatzWerte input,
+.pnlAbschreibung .txtEingabe,
+#M_MC_Attachments_RemFileNo,
+#M_MC_Attachments_RemFileYes,
+#M_MC_AttachmentsPanel_RemFileYes,
+#M_MC_AttachmentsPanel_RemFileNo,
+#M_MC_lstPages,
+#M_MC_DdlEntfernung,
+#M_MC_Attachments_BtnAddFile,
+#M_MC_Attachments_BtnCancelAddFile,
+#M_MC_FDescr_FIV_BtnAddFacilityImage,
+#M_MC_FDescr_FIV_BtnCancelAddFacilityImage,
+#M_MC_PnlInst_EditInstEmail,
+#M_MC_PnlInst_EditInstWeb,
+#M_MC_PnlInst_EditInstTel,
+#M_MC_FFView_TxtEditContactFirstName,
+#M_MC_FFView_TxtEditContactSurName,
+#M_MC_FFView_TxtEditContactSurName,
+#M_MC_FFView_TxtEditContactTelephone,
+#M_MC_FFView_TxtEditContactTelefax,
+#M_MC_FFView_TxtEditContactMobil,
+#M_MC_FFView_TxtEditContactEmail,
+#M_MC_FFView_TxtEditContactInternet,
+#M_MC_FFView_TxtEditContactTitle,
+#M_MC_FFView_TxtContactDataTelefon,
+#M_MC_FFView_TxtContactDataMobil,
+#M_MC_FFView_TxtContactDataEmail,
+#M_MC_FFView_TxtContactDataTelefax,
+#M_MC_FFView_TxtContactDataWWW,
+#M_MC_DdlMapServices{
+	border: 1px solid var(--color-blue);
+	border-radius: var(--radius);
+	background: #fdfdfd;
+	cursor: pointer;
+	font-size: 1rem;
+	padding: 0.5rem;
+	margin-top: 0.2rem;
+	width: calc(100% - 1rem);
+	font-family: var(--font-100) !important;
+}
+
+#M_MC_FPReporting_TxtFFRAddPlaces {
+	left: 147px !important
+}
+input[type="checkbox"] {
+	padding: 0;
+	margin: 0;
+	width: 24px !important;
+	height: 24px !important
+}
+#aspnetForm .ui-dialog.ui-corner-all.msgbox.ui-widget.ui-widget-content.ui-front.ui-draggable.ui-resizable {
+	min-width: 500px;
+	padding: 0
+}
+#PnlAddFFRCnt div {
+	height: 40px
+}
+#PnlAddFFRCnt input[type="checkbox"],
+#PnlAddFFRCnt input[type="number"] {
+	position: absolute;
+	left: 180px
+}
+#M_MC_LblFreePlaces,
+#DivSlider label,
+#PnlAddFFRCnt span,
+#M_MC_pnlStammdaten.pnlOptionValue label {
+	display: inline-block;
+	padding: 0.4rem 0 0 0.2rem;
+	position: absolute
+}
+#M_MC_FFView_FFS_EditFeatures h2 {
+	display: none
+}
+.innerMain .templates{
+	display:none
+}
+
+#LeitTextToHide.LeitTextToHide .legende .row .itemTop .item span.itemContent span{
+	margin-left:0 !important;
+	margin-top: 0.5rem !important;
+	display: block
+}
+#M_MC_TblSearchResults tbody tr td{
+	padding:10px
+}
+#M_MC_LstMainLinks{
+	list-style: none
+}
+#ElementToHide {
+	margin-top: 1rem;
+	margin-left: 0 !important
+}
+#M_MC_TxtEinrichtungsname,
+#M_MC_DdlTypSuche {
+	font-family: var(--font-100);
+	font-size: 1rem;
+	border: 1px solid var(--color-blue);
+	border-radius: var(--radius);
+	width: 100%
+}
+#DivUmkreisSelection{
+	margin-top:0.5rem
+}
+#M_MC_LblEntfernung{
+	margin-right: 0.5rem
+}
+#M_MC_DivLstMerkm{
+	margin-top: 2rem
+}
+#DivUmkreisSelection {
+	display: table;
+	margin-top: 1rem
+}
+#DivPLZ {
+	display: inline-block;
+	padding-right: 40px
+}
+#DivDistance {
+	margin-left: 10px;
+	display: inline-block
+}
+#DivPLZ .pnlTextBox {
+	margin-left: 5px;
+	padding-bottom: 1px;
+	padding-right: 2px;
+	width: 50px;
+	z-index: 0
+}
+#DivUmkreisOuter .pnlTextBox {
+	display: inline-block;
+	padding: 0 0 0 0;
+	padding-right: 0px;
+	padding-bottom: 0px
+}
+#M_MC_LblLstMerkm,
+#M_MC_LblUmkreissuche,
+#M_MC_LblErweiterteSuche {
+	color: var(--color-red);
+	font-family: var(--font-500);
+	padding-top:1rem
+}
+#ExtendedSearch input#M_MC_BtnExpander.expanderOpened {
+	background-image: url("Images/Up.png") !important;
+	border: none;
+	width: 25px;
+	background-position: 0px -4px;
+	background-repeat: no-repeat;
+	height: 25px;
+	background-color: white
+}
+#M_MC_chkLeittextVisible{
+	margin-right: 0.5rem;
+	position: relative;
+	top: 0.2rem;
+	margin-left: 0.5rem
+}
+
+#divPageTitleSetting.PageTitleSetting span{
+	display: inline-block;
+	margin-top: 0.2rem;
+	position: relative;
+	top: 0.2rem;
+}
+html body div#Page form#aspnetForm div#M_PnlMain.main div.wrapper div.innerMain div#DivOuterSearch div#ExtendedSearch input#M_MC_BtnExpander{
+		background-image: url("Images/Down.png");
+	border: none;
+	width: 25px;
+	background-repeat: no-repeat;
+	height: 25px;
+	background-position: 0px -5px;
+	background-color:white;
+}
+#ExtendedSearch input#M_MC_BtnExpander.expanderClosed {
+	background-image: url("Images/Down.png") !important;
+	border: none;
+	width: 25px;
+	background-repeat: no-repeat;
+	height: 25px;
+	background-position: 0px -5px;
+	background-color:white;
+}
+#M_MC_LblTypSuche{
+	margin-right: 0.5rem
+}
+#M_MC_BtnEinrichtungssuche {
+	float: right
+}
+#DivlabelSearchFor {
+	display: table-row;
+	margin-right: 30px
+}
+#DivSlider {
+	margin-top: 1rem;
+	margin-bottom: 10px
+}
+#DivTypSucheDropDown {
+	display: inline-block;
+	width: 90%;
+	margin-top: 0.5rem
+}
+#DivSearchButton {
+	display: unset;
+	width: 5%
+}
+#DivTextSearchBottom {
+	font-size: 1.5rem
+}
+#DivInnerSearch {
+	display: table;
+	width: 100%;
+	margin-bottom: 2rem
+}
+#DivTextSearchBottom {
+	display: table;
+	width: 100%
+}
+#M_MC_PnlTextboxSuche {
+	height: 30px;
+	margin-top: 5px
+}
+#M_MC_TxtEinrichtungsname{
+	line-height: 1.5rem;
+	top: 0;
+	position: relative;
+	font-size: 1rem;
+	border: 1px solid var(--color-blue);
+	border-radius: var(--radius);
+	background: #fdfdfd;
+	font-family: var(--font-300);
+	cursor: pointer;
+	font-size: 1rem;
+	padding: 4px 10px
+}
+#footer_blue{
+	background:var(--color-lightgrey);
+	color: var(--color-blue);
+	overflow: hidden;
+	position: relative;
+	bottom: 0;
+	text-align: center;
+	padding: 1.5rem
+}
+#footer_white{
+	background:#FFFFFF);
+	text-align: center;
+	margin:2rem 0
+}
+#footer_white a img{
+	height:60px;
+	padding:0 1rem
+}
+#M_MC_pnlStammDaten #M_MC_uppEinrichtungsdaten span.lblUnterbegriff{
+	padding-top: 2rem
+}
+.ButtonDeleteFile{
+	width: 16px;
+	margin-top: 4px !important;
+	margin-left: 3px
+}
+#c0_MC_pnlViews{
+	margin-top: 2rem
+}
+#c0_MC_btnSave {
+	font-size: medium !important;
+	padding: 5px !important;
+	border: 1px solid var(--color-blue) !important;
+	border-radius: var(--radius) !important;
+	background: #fdfdfd !important
+}
+#c0_MC_btnSave:hover{
+	background-color: var(--color-blue) !important
+}
+#c0_MC_pnlMain #c0_MC_btnTestEmailServer {
+	float: left;
+	width: 177px;
+	margin-top: 3px
+}
+#c0_MC_divUserRights .ControlLabel{
+	margin:0
+}
+#c0_MC_AttachmentsPanel_lblFilesDisclaimer,
+#DivLBContent{
+	line-height:1.3rem
+}
+#c0_MC_divUserRights #c0_MC_lblUserRights{
+	padding:0;
+	margin:0; 
+	line-height:2.2rem
+}
+#UserInformation .ControlComplete{
+	cursor:pointer;
+	min-height:35px;
+	margin-top: 0.2rem
+}
+#UserInformation .ControlComplete .pnlTextBox input{
+	width:100%
+}
+#UserInformation .ControlComplete .divOuterControl{
+	padding: 0;
+	margin: 0
+}	
+#UserInformation .ControlComplete .divOuterControl input{
+	height: 30px;
+	width: 30px;
+	padding: 0;
+	margin: 0
+}
+#fancybox-outer{
+	background:var(--color-white) !important
+}
+#M_MC_FFView_ContactData,
+#M_MC_FFView_ChangeLocationVisibility,
+#M_MC_FFView_EditContact,
+#M_MC_FFView_ChangeVisibility,
+#M_MC_FDescr_EditFacDesc,
+#M_MC_Attachments_AddFile.ui-dialog-content.ui-widget-content h2,
+#M_MC_FDescr_FIV_EditFacImg.pnlEdit.ui-dialog-content.ui-widget-content h2,
+#M_MC_FDescr_EditFacDesc.pnlEdit.ui-dialog-content.ui-widget-content h2,
+#M_MC_PnlInst_EditInst.pnlEdit.ui-dialog-content.ui-widget-content h2,
+#M_MC_FFView_ChangeLocationVisibility.pnlEdit.ui-dialog-content.ui-widget-content h2,
+#M_MC_FFView_ChangeVisibility.pnlEdit.ui-dialog-content.ui-widget-content h2,
+#M_MC_FFView_EditContact.pnlEdit.ui-dialog-content.ui-widget-content h2,
+#M_MC_FFView_ContactData.pnlEdit.ui-dialog-content.ui-widget-content h2 {
+	display: none
+}
+/* .pnlFacilityData{
+	float: left;
+	width:70%
+} */
+#c0_MC_FacilityImgLnk{
+	width:100%
+}
+#c0_MC_Einrichtungsbilder{
+	float: right; width: 30%
+}
+#M_MC_Attachments_RemFileYes,
+#M_MC_AttachmentsPanel_RemFileYes {
+	background: var(--color-red) !important;
+	color: var(--color-white) !important;
+	border: 1px solid var(--color-red) !important
+}
+#WrapperHead #ahrefImp,
+#WrapperHead #ahrefHelp,
+#WrapperHead .ahrefFancyInline{
+	display:none !important
+}
+#fancybox-content div{
+	width:100% !important
+}
+.pnlFacilityData{
+	margin-top:1rem
+}
+#aRefOpenHBGCost{
+	display:none
+}
+#c0_MC_uppEinrichtungsdaten{
+	margin-top:2rem
+}
+#Einrichtungsdaten .topic.fac{
+	width:440px !important
+}
+#M_MC_PnlInst_EditInst{
+	display:none
+}
+#ResetSearch {
+	background-image: url("images/TreeViewLineImages/reset.svg");
+	border: none;
+	width: 23px;
+	background-repeat: no-repeat;
+	height: 25px;
+	background-color: #FFFFFF;
+	cursor:pointer
+}
+#M_MC_BtnExpander{
+	cursor: pointer
+}
+#M_MC_uppEinrichtungsdaten table .lblUnterbegriff:before{
+	background-image: url("Images/Haus.png");
+	background-repeat: no-repeat;
+	background-position: left;
+	content:"";
+	background-position-x: 2px;
+	background-size: 22px;
+	height: 36px;
+	line-height: 2rem;
+	padding-left: 30px
+}
+[type=search]::-webkit-search-cancel-button {
+	-webkit-appearance: none
+}
+#c0_MC_LblEditFacilityDescription{
+	margin:1rem 0;
+	font-size: 1.125rem;
+	font-family: var(--font-100);
+	border-bottom: 1px solid var(--color-pink)
+}
+#c0_MC_PnlEditFacilityImage h2,
+#c0_MC_PnlEditFacilityDescription h2,
+#c0_MC_pnlEditContact h2,
+#c0_MC_pnldivContactData h2{
+	margin:1rem 0 1rem 0.5rem;
+	font-size: 1.125rem;
+	font-family: var(--font-100);
+	border-bottom: 1px solid var(--color-pink)
+}
+#M_MC_DivFreePlaces{
+	margin-top:1rem
+}
+#DivUmkreisOuter{
+	margin-top:3rem
+}
+#DtlMerkm{
+	cursor:pointer
+}
+#c0_MC_lblEditContactTitle,
+c0$MC$txtEditContactTitle input,
+#c0_MC_pnldivContactData{
+	line-height:1.2rem;
+	font-size:1rem;
+	font-family: var(--font-300)
+}
+#c0_MC_pnlEditContact input,
+#c0_MC_pnldivContactData input{
+	line-height:1.2rem;
+	font-size:100%;
+	font-family: var(--font-300);
+	padding:5px;
+	margin-right:2rem;
+	width:275px
+}
+#c0_MC_PnlEditFacilityImage #c0_MC_LblEditFacilityImage,
+#c0_MC_PnlEditFacilityImage #c0_MC_FuFacImg,
+#c0_MC_PnlEditFacilityImage .divCommandbuttons{
+	margin-left:0.5rem
+}
+#c0_MC_tblSearchResults tr{
+	border-bottom:1px solid #eee
+}
+#c0_MC_tblSearchResults tr:nth-child(1) {
+	line-height: 50px;
+	vertical-align: top
+}
+#c0_MC_tblSearchResults tr td:nth-child(3) {
+	width:150px
+}
+#c0_MC_tblSearchResults tr td:nth-child(4) {
+	width:100px
+}
+#c0_MC_tblSearchResults tr td:nth-child(5) {
+	width:100px
+}
+.pnlInstitutionFacility,
+.pnlFacilityHead{
+	cursor:pointer
+}
+#c0_MC_txtEinrichtungsname{
+	width: 90%;
+	line-height: 1.5rem;
+	top: 0;
+	position: relative;
+	font-size:1rem
+}
+#ViewCount .label{
+	margin-right:1rem
+}
+#M_MC_PnlViews{
+	margin-top:1rem
+}
+.verguetungLegende{
+	font-style: italic;
+	font-size:80%
+}
+#c0_MC_TxtEditFacilityDescription{
+	font-family: var(--font-100);
+	margin: 0.5rem 0;
+	font-size: 1rem
+}
+#c0_MC_TxtEditFacilityDescription{
+	height:200px
+}
+#c0_MC_ddlTimeFrames{
+	font-family: var(--font-300);
+	font-size:1rem
+}
+#btnEditTimeFrame,
+#btnRemoveTimeFrame,
+#btnAddTimeFrame{
+	font-family: var(--font-300)
+}
+#c0_MC_PnlEditFacilityDescription,
+#fancybox-wrap #fancybox-outer #fancybox-content{
+	min-height:300px !important
+}
+#HBGGrid{
+	margin-bottom:0.5rem
+}
+#c0_MC_pnlMain #c0_MC_pnlOptionStammdaten{
+	margin-top:10px
+}
+#c0_MC_pnlMain #c0_MC_pnlOptionStammdaten #c0_MC_pnlStammdaten{
+	margin-left:210px
+}
+#c0_MC_pnlMain #c0_MC_pnlOptionStammdaten .pnlOptionLabel{
+	height:200px;
+	position:absolute
+}
+#spanHBGText,
+#divHBGData{
+	margin-top:2rem;
+	margin-bottom:0.5rem
+}
+#c0_MC_fuAddFile,
+#c0_MC_FuFacImg{
+	display: block;
+	font-family: var(--font-100);
+	margin: 0.5rem 0;
+	font-size: 1rem
+}
+
+#divAddFile #c0_MC_btnAddFile{
+	margin-left:0
+}
+#DivLBHead:after{
+	font-size: 1.125rem;
+	font-family: var(--font-100);
+	border-bottom: 1px solid var(--color-pink);
+	color: var(--color-black);
+	content: "Leistungsbeschreibung";
+	padding-top: 2rem;
+	line-height: 2rem;
+	display: block
+}
+#Einrichtungsdaten #c0_MC_lblFilesDisclaimer:after{
+	font-size: 1.125rem;
+	font-family: var(--font-100);
+	border-bottom: 1px solid var(--color-pink);
+	color: var(--color-black);
+	content: "Broschüre";
+	display: block;
+	line-height: 2rem;
+	margin-left: 3rem
+}
+#c0_MC_uppAttachments{
+	margin-top:2rem
+}
+#c0_MC_AttachmentsPanel_pnlFilesDisclaimer{
+	margin:1rem 0;
+	font-style:italic
+}
+#Facilities{
+	width:300px;
+	/*float:left*/
+	float:right
+}
+#M_MC_PnlStammDaten div#Facilities div#M_MC_Einrichtungen #GridFacs.jsgrid div.jsgrid-grid-header table.jsgrid-table tr.jsgrid-header-row th.jsgrid-header-cell.jsgrid-header-sortable{
+	float: left;
+font-family: var(--font-100);
+  font-weight: normal;
+}
+.clearInput {
+background-image: url(Images/Cross.png);
+background-color: white;
+background-repeat: no-repeat;
+background-size: 20px;
+display: none;
+border: none;
+cursor: pointer;
+position: relative;
+vertical-align: top;
+margin: 0;
+  margin-top: 0px;
+  margin-right: 0px;
+margin-top: 12px;
+margin-right: 0px;
+padding: 0;
+width: 20px;
+height: 20px;
+}
+
+#c0_MC_pnlStammDaten #c0_MC_uppAttachments #c0_MC_AttachmentsPanel_pnlAttachments .attmts{
+	font-size: 1.125rem;
+	font-family: var(--font-100);
+	border-bottom:1px solid var(--color-pink);
+	line-height: 2rem
+}
+#M_MC_Einrichtungen #GridFacs .jsgrid-cell .pnlFac .fac.img{
+	float: left;
+	margin-right: 0.5rem
+}
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs .jsgrid-table .selected .pnlFac div{
+	color:#00abe1
+}
+#M_MC_Einrichtungen #GridFacs .jsgrid-cell .pnlFac div:last-child{
+	margin-left:1.5rem
+}
+#Facilities #M_MC_Einrichtungen .jsgrid-table .jsgrid-cell{
+	width:280px !important;
+	cursor:pointer
+}
+#GridFacs{
+	width:300px
+}
+.jsgrid-grid-body{
+	display:block;
+	width:280px
+}
+#M_MC_lcGroupsSelected{
+	padding:0 !important
+}
+#M_MC_PnlStammDaten #M_MC_Einrichtungen #GridFacs .pnlFac{
+	padding-bottom: 0.5rem;
+	border-bottom: 1px solid #ddd;
+	margin-bottom: 0.5rem;
+	min-height:35px
+}
+#aspnetForm .ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix.ui-draggable-handle{
+	background: var(--color-blue) !important;
+	color: var(--color-white);
+	overflow: hidden
+}
+#M_MC_FFView_SecLocs_UlSecLocs{
+	display:inline-block;
+	padding: 0;
+}
+
+#c0_MC_pnlStammDaten #c0_MC_uppAttachments #c0_MC_AttachmentsPanel_pnlAttachments .attmts:before,
+#c0_MC_pnlStammDaten #currentFacility #c0_MC_pnlAttachments .label.attmts:before{
+	background-image: url("Images/Broschuere.png");
+	background-repeat: no-repeat;
+	background-position: left;
+	background-position-x: left;
+	content: "";
+	background-position-x: 2px;
+	background-size: 17px;
+	height: 36px;
+	line-height: 2rem;
+	padding-left: 30px;
+	font-size: 2rem;
+	background-position-y: 7px;
+	background-position-y: 11px
+}
+#divTextSearchBottom{
+	font-size:1.5rem
+}
+#M_MC_FDescr_FIV_EditFacImg.pnlEdit.ui-dialog-content.ui-widget-content .command.buttons,
+#M_MC_FDescr_EditFacDesc.pnlEdit.ui-dialog-content.ui-widget-content .command.buttons,
+#M_MC_PnlInst_EditInst.pnlEdit.ui-dialog-content.ui-widget-content .command.buttons,
+#M_MC_FFView_EditContact.pnlEdit.ui-dialog-content.ui-widget-content div,
+#M_MC_FFView_ContactData.pnlEdit.ui-dialog-content.ui-widget-content div{
+	margin-top:0.3rem
+}
+#c0_MC_btnTestEmailServer{
+	background:var(--color-white);
+	color:var(--color-black)
+}
+#M_MC_FFView_ContactData,
+#M_MC_FFView_ChangeLocationVisibility,
+#M_MC_FFView_EditContact,
+#M_MC_FFView_ChangeVisibility,
+#M_MC_FDescr_EditFacDesc,
+#M_MC_Attachments_AddFile.ui-dialog-content.ui-widget-content h2,
+#M_MC_FDescr_FIV_EditFacImg.pnlEdit.ui-dialog-content.ui-widget-content h2,
+#M_MC_FDescr_EditFacDesc.pnlEdit.ui-dialog-content.ui-widget-content h2,
+#M_MC_PnlInst_EditInst.pnlEdit.ui-dialog-content.ui-widget-content h2,
+#M_MC_FFView_ChangeLocationVisibility.pnlEdit.ui-dialog-content.ui-widget-content h2,
+#M_MC_FFView_ChangeVisibility.pnlEdit.ui-dialog-content.ui-widget-content h2,
+#M_MC_FFView_EditContact.pnlEdit.ui-dialog-content.ui-widget-content h2,
+#M_MC_FFView_ContactData.pnlEdit.ui-dialog-content.ui-widget-content h2{
+	display:none
+}
+#M_MC_lstPages{
+	margin-right:1rem
+}
+#M_MC_uppnlRadioButtonList{
+	margin-bottom:1rem
+}
+.PageTitleSetting{
+	margin-top:1rem
+}
+#M_MC_FDescr_EditFacDesc textarea#M_MC_FDescr_TxtEditFacDesc{
+	width:400px;
+	min-height: 300px
+}
+#M_MC_LblIsUserDeactivated{
+	line-height:2.5rem
+}
+#M_MC_Attachments_RemFileYes,
+#M_MC_AttachmentsPanel_RemFileYes{
+	background: var(--color-red) !important;
+	color:var(--color-white) !important;
+	border:1px solid var(--color-red) !important
+}
+
+#M_MC_lblAllFacilities,
+#M_MC_lblCurrentFacility{
+	font-family: var(--font-500)
+}
+.innerMain #Content #M_MC_upCommandButtons #CommandButtons a#M_MC_btnSave.ButtonSave{
+	background-color: Transparent !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important;
+	border:none
+}
+.innerMain #Content #M_MC_upCommandButtons #CommandButtons a#M_MC_btnBack.aspNetDisabled.ButtonBackInactive{
+	background-image: url("Images/left.png") !important;
+	background-color: Transparent !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important
+}
+.innerMain #Content #M_MC_upCommandButtons #CommandButtons a#M_MC_btnNext.aspNetDisabled.ButtonNextInactive{
+	background-image: url("Images/right.png") !important;
+	background-color: Transparent !important;
+	background-repeat: no-repeat !important;
+	background-position: center !important
+}
+
+.kwdTable input,
+.pnlStellenplan input{
+	width:auto !important;
+	margin-bottom: 0.2rem
+}
+
+#M_MC_FFView_ContactData.pnlEdit.ui-dialog-content.ui-widget-content div{
+	width:100%
+}
+#M_MC_pnlOptionStammdaten #M_MC_pnlStammdaten.pnlOptionValue span.chkOptionStammdaten{
+	line-height:0.5rem;
+	min-height:none
+}
+#M_MC_ControlButtons,
+#M_MC_divFacilities,
+#M_MC_upOptions,
+#M_MC_divUserRights,
+#M_MC_divInstitution{
+	margin-top:1rem
+}
+.wrapper .innerMain #M_MC_PnlMain div{
+	line-height:2.5rem
+}
+#c0_MC_btnSave{
+	color:black;
+	border: 1px solid white
+}
+.StandardTextbox{
+	padding:5px
+}
+.innerMain #c0_MC_pnlStammDaten #currentFacility {
+	margin-left:1rem
+}
+.innerMain #c0_MC_pnlMain input{
+	color: black;
+	font-size:0.9rem
+}
+#WrapperHead #M_PnlTop #M_PnlLinkPath.boxNavigation ul#Linkpath li.current{
+	font-family:var(--font-500);
+}
+.ui-dialog{
+	font-family:var(--font-100)
+}
+#M_PnlLinkPath{
+	background: var(--color-white) none repeat scroll 0 0;
+	margin: 0 auto;
+	padding: 0;
+	position: relative
+}
+#M_MC_TxtPlatzzahlbeantragt,
+#M_MC_TxtAuslastungbeantragt,
+#M_MC_TxtStundenSollbeantragt
+{
+	width:100px !important
+}
+#M_cphLinkPath_LbtHauptseite{display:none}
+ul#linkpath,
+ul#Linkpath{
+	height: 1.7rem;
+	padding: 0.5rem 1rem;
+	margin: 0;
+	line-height: 2rem;
+	list-style-type: none
+}
+#LblFacilityLabel{
+	display:none
+}
+#M_MC_AddFacility{
+	margin-top:1rem
+}
+#LinkPathNavStart,
+#linkPathNavStart{
+	margin-top: 0.3rem
+}
+#Linkpath li,
+#linkpath li {
+	display: inline-block; 
+	list-style: none;
+	padding-right: 3px;
+	vertical-align:text-top;
+	line-height: 2rem;
+	float:left
+}
+#linkPathNavStart,
+#LinkPathNavStart{
+	font-size:0;
+	background: url("Images/Haus.png") no-repeat;
+	background-size: 18px;
+	height:30px;
+	width:18px;
+	margin-right: 0.5rem
+}
+#DivlstCounties.divOuterCheckedListbox table#M_MC_lstCounties tbody tr td input,
+#DivlstFacilities.divOuterCheckedListbox #M_MC_LstFacilities input,
+.pnlOuterlstModules.divOuterCheckedListbox #M_MC_LstModules input{
+	position: absolute
+}
+#DivlstCounties.divOuterCheckedListbox table#M_MC_lstCounties tbody tr td label,
+#DivlstFacilities.divOuterCheckedListbox #M_MC_LstFacilities label,
+.pnlOuterlstModules.divOuterCheckedListbox #M_MC_LstModules label{
+	line-height: 1.7rem;
+	margin-left: 2rem
+}
+#M_MC_PnlStammDaten #Facilities #M_MC_Einrichtungen #GridFacs.jsgrid .jsgrid-grid-header table.jsgrid-table tbody tr.jsgrid-header-row{
+	text-align:left !important
+}
+.innerMain #c0_MC_pnlStammDaten .topic{
+	font-size: 2rem;
+	border-bottom: 3px solid var(--color-pink);
+	font-family: var(--font-georgia);
+	width: 330px;
+	overflow: hidden;
+	color:var(--color-darkgrey)
+}
+#M_MC_ControlButtons{
+	display:inline-block
+}
+#c0_MC_lblWebContactLabel:before{
+	content:"Ihr "
+}
+#M_MC_uppEinrichtungsdaten{
+	display: grid;
+	width: 100%
+}
+.pnlFacilityData,
+#c0_MC_pnlInstitutionInner{
+	color:var(--color-darkgrey);
+	line-height:1.3rem
+}
+#c0_MC_DivLeistungsbeschreibung #DivLBHead span{
+	display:none
+}
+#M_MC_FFView_FacName{
+	line-height:1.7rem
+}
+.pnlVerguetung .lblUnterbegriff h3{
+	width:100%
+}
+
+#M_MC_PnlStammDaten #M_MC_CurrentFacility #Einrichtungsdaten #M_MC_FacilityData .ffs .valuepair span.label.identifier,
+.FFRHeaderLbl,
+#M_MC_uppEinrichtungsdaten #M_MC_pnlEinrichtungsdaten.FacilityData fieldset legend,
+#M_MC_AttachmentsPanel_Attachments .label,
+.innerMain #M_MC_pnlStammDaten .topic.fac,
+.innerMain #M_MC_pnlStammDaten .topic.inst,
+#M_MC_PnlAttachments #M_MC_Attachments_Attachments .attmts,
+#M_MC_FFView_FacName,
+#M_MC_PnlInst_InstName,
+#M_MC_FFView_ContactDirect_ContactPerson,
+.pnlVerguetung .lblUnterbegriff h3,
+#c0_MC_uppEinrichtungsdaten #M_MC_uppEinrichtungsdaten #M_MC_lblEinrichtungsName.lblFacilityName h3,
+#c0_MC_lblInstitutionName h3,
+#M_MC_uppEinrichtungsdaten.FacilityData fieldset legend,
+{
+	font-size:1.125rem;
+	font-family: var(--font-100);
+	font-weight:normal;
+	margin: 0 0 10px;
+	color: var(--color-blue);
+	padding: 0
+}
+#M_MC_PnlTextboxSuche .clearInput{
+	margin-top: 0.3rem;
+}
+.lblAppname {
+	font-family:var(--font-100);
+	position: relative;
+	height:20px;
+	top: -30px;
+	left: 20px;
+	color: var(--color-blue);
+	font-size:1.5rem
+}
+#c0_pnlMain #WrapperHead #M_PnlTop #M_PnlModules.boxNavigation ul#CrModules li{
+	width:150px
+}
+#c0_pnlMain #WrapperHead #M_PnlTop #M_PnlModules.boxNavigation ul#CrModules li:hover{
+	background: var(--color-blue)
+}
+#c0_pnlMain #WrapperHead #M_PnlTop #M_PnlModules.boxNavigation ul#CrModules li:hover a{
+	color:var(--color-white) !important
+}
+#M_LblUserLogin,
+.LblUserLogin {
+display: inline-block;
+position: absolute;
+color: var(--color-pink);
+font-size: 0.75rem;
+padding: 1px 0em;
+width: 202px;
+	text-align: right;
+	right:0
+}
+h2 {
+	font-size: 1.1rem !important
+}
+#fancybox-content #divTerms{
+	width:90%
+}
+.lblAddFacility a#aRefAddFacility.ahrefFancyInline span{
+	color: var(--color-darkgrey) !important
+}
+#divtblSearchResults #c0_MC_tblSearchResults tbody tr a .tr_SearchResultAddress{
+	font-style:italic;
+	font-family:var(--font-300)
+}
+#divtblSearchResults #c0_MC_tblSearchResults tbody tr a div{
+	font-family:var(--font-500);
+	color: var(--color-darkgrey)
+}
+.innerMain #c0_MC_upSearchResults #divtblSearchResults table#c0_MC_tblSearchResults tbody tr:first-child td {
+	font-size: 1.5rem;
+	margin-bottom: 0.8rem
+}
+#divtblSearchResults #c0_MC_tblSearchResults tbody tr a .tr_SearchResultAddress{
+	font-weight:normal;
+	color: var(--color-darkgrey);
+	margin-bottom: 0.8rem
+}
+#divtblSearchResults #c0_MC_tblSearchResults tr td{
+	vertical-align:top
+}
+.innerMain .wrapper .shadowRight .shadowBottom .shadowBottomLeft .shadowBottomRight .innerMain #Content #c0_MC_upLVBogen #LVWerte #c0_MC_pnlLVKat2 table#c0_MC_tblLVKat2 tbody tr td{
+	border-bottom: 1px solid #EDEDED;
+	padding: 8px
+}
+.innerMain .wrapper .shadowRight .shadowBottom .shadowBottomLeft .shadowBottomRight .innerMain #Content #c0_MC_upLVBogen #LVWerte #c0_MC_pnlLVKat2 table#c0_MC_tblLVKat2{
+	width: 89%
+}
+
+#M_pnlMain .wrapper .innerMain .wrapper{
+	width: 960px;
+	padding: 1rem 0 0 0;
+	margin: 0
+}
+.innerMain .innerMain #Einrichtungen{
+	width:95% !important
+}
+.divAuflistungEinrichtungAdresse .addr{
+	font-style:italic
+}
+#c0_pnlMain .innerMain table{
+	margin:0.5rem 0
+}
+#c0_MC_pnlEinrichtungenListe .pnlFac{
+	border-bottom:1px solid #DDD
+}
+.ulUsers{
+	padding:0;
+	margin:0.5rem 0;
+	list-style-type: none
+}
+.UsersOnline{
+	margin-top:3rem
+}
+#M_pnlMain .wrapper .innerMain .wrapper .shadowRight .shadowBottom .shadowBottomLeft .shadowBottomRight .innerMain{
+	padding:0
+}
+.fci:before{
+	display: inherit;
+	background: url("Images/Haus.png") no-repeat;
+	background-size: auto;
+	background-size: 30px;
+	width: 30px;
+	height: 40px;
+	position: relative;
+	border: 0 none transparent;
+	content: "";
+	float: left;
+	margin-right: 10px
+}
+.divAuflistungEinrichtungAdresse{
+	margin-left:2.5rem
+}
+.facilityItem{
+	margin-top:0.7rem
+}
+.AuflistungEinrichtungkennzeichen{
+	font-style:italic !important
+}
+.facilityItem li:nth-child(odd){
+	list-style-type: none;
+	padding:0.3rem 0.5rem;
+	min-height: 3rem
+}
+.facilityItem li:nth-child(even){
+	list-style-type: none;
+	padding:0.3rem 0.5rem;
+	min-height: 3rem
+}
+.superCategory li div ul li .sc01{
+	color: var(--color-darkgrey);
+	background-color:var(--color-cream);
+	padding:0.5rem;
+	cursor:pointer !important;
+	border-bottom:1px solid #c1d4eb
+}
+.superCategory{
+	color: var(--color-darkgrey);
+	list-style-type:none !important;
+	margin:0;
+	padding:0
+}
+.superCategory li h2{
+	background: var(--color-blue);
+	color:var(--color-white);
+	padding:0.5rem;
+	margin:0.5rem 0 0 0;
+	cursor:pointer
+}
+.superCategory li div{
+	color: var(--color-darkgrey);
+	list-style-type: none
+}
+.innerMain .facilityItem{
+	padding: 0
+}
+.subCategory01 {
+	list-style-type: none;
+	margin:0;
+	padding:0
+}
+
+.typ {
+	margin-left: 2.5rem;
+}
+
+#c0_MC_pnlData.box table tbody tr td{
+	padding:5px 0
+}
+.tblVerguetung tbody tr:nth-child(even) {
+	background: #EEE
+}
+.tblVerguetung tbody tr:nth-child(odd) {
+	background: #DDD
+}
+#divImp{
+	padding:10px
+}
+select {
+	-webkit-appearance: none; 
+	-moz-appearance: none;
+	appearance: none
+}
+input[type="search"] {
+	-webkit-appearance: none
+}
+#c0_MC_ctl01_lblLayoutLabel,
+#c0_MC_ctl01_lblType,
+#c0_MC_ctl01_lblStatus,
+#c0_MC_ctl01_lblStand {
+	font-size:75%
+}
+#Page {
+	z-index:0	
+}
+#WrapperHead {
+	min-width:800px;
+	position:inherit;
+	/*z-index:0;*/
+	position: relative
+}
+#M_PnlFooterMaster{
+	display: block ruby;
+	background: white;
+	margin-top:1rem;
+	border-top: 1px solid var(--color-lightblue)
+}
+#M_MC_PnlStammDaten{
+	display: inline-block;
+	width: 100%;
+}
+#M_pnlMain #M_PnlFooterMaster #M_ctl06.UsersOnline{
+	width: 100%;
+	float: right;
+	right: 0;
+	display: block ruby
+}
+#M_PnlFooterMaster{
+	margin: auto;
+}
+#M_DefFooter_ctl02{
+	color:black
+}
+#M_Footer,
+#M_PnlFooterMaster,
+.wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 0;
+	width: 990px;
+	padding: 0.9rem 0 0 0
+}
+
+#M_MC_TxtConstraint {
+	margin-bottom: -1rem;
+}
+#c0_MC_pnlStammDaten {
+	overflow: hidden;
+	padding: 0 0 30px
+}
+#c0_MC_lblInstitutionContactTelephone:before{
+	content:"Telefon: "
+}
+#c0_MC_pnlInstContactPersonTelefax:before{
+	content:"Fax: "
+}
+
+select{
+		appearance: menulist;
+      -webkit-appearance: menulist;
+      -moz-appearance: menulist;
+      appearance: menulist;
+      height:2.5rem;
+      background-color:white
+}
+.wrapper {
+	padding-bottom: 80px;
+
+	display:table
+}
+.footerRotateBG slot{
+	padding:0 10rem
+}
+#c0_MC_txtConstraint {
+	width: 100% !important;
+	font-size: 0.8rem
+}
+.shadowRight {
+	overflow:auto;
+	position:inherit;
+	margin-bottom:10px
+}
+#M_Footer{
+/*	padding-top:1rem;
+	background: #fff;
+	padding-bottom: 1rem;*/
+}
+#PnlVersion{
+	display:none;
+	margin-left:1rem;
+	padding-top:0
+}
+
+.shadowBottom {
+	overflow:auto;
+	position:inherit
+}
+.shadowBottomLeft {
+	overflow:auto;
+	position:inherit
+}
+.shadowBottomRight {
+	overflow:auto;
+	position:inherit
+}
+a {
+	text-decoration:none;
+	color: var(--color-darkgrey);
+	cursor:pointer
+}
+
+h1 {
+	font-size: 14px;
+	font-family: var(--font-500);
+	color: #3399CC;
+	padding: 3px
+}
+#FDVHeader,
+h2 {
+	font-weight: normal;
+	padding-top: 3px;
+	font-family: var(--font-500);
+	margin: 1.5rem 0 0.5rem 0
+}
+h3 {
+	padding: 0;
+	margin: 0;
+	font-family: var(--font-100);
+	display: inline-block
+}
+h4 {
+	padding-left: 5px;
+	font-weight:normal;
+	text-decoration: underline
+}
+#PnlVersion{
+	display:none;
+	color:black;
+	font-family: var(--font-100);
+}
+.menubox {
+	background-color:#0461ac;
+	padding: 3px;
+	margin-top: 3px;
+	margin-left: 3px;	
+	margin-right: 3px;
+	border-bottom: thin dashed teal
+}
+.caplabel {
+	color: var(--color-darkgrey)
+}
+.caplink {
+	color: var(--color-white)
+}
+.caplink:hover {
+	text-decoration: underline
+}
+.stext {
+	font-size: 9px
+}
+#c0_MC_lstMainLinks {
+	list-style-type: none
+}
+.lblIdentifier {
+}
+.TermLabel {
+	display: block;
+	padding: 4px 0
+}
+#M_MC_LstUsers{
+	height: 11.5rem;
+}
+#M_MC_PnlMain.options div{
+	margin-bottom:0.25rem
+}
+#M_MC_lcGroupsAvailable,
+#M_MC_lcGroupsSelected{
+	height:unset
+}
+#DivlstCounties,
+.pnlOuterlstModules.divOuterCheckedListbox{
+	height:unset
+}
+#fancybox-outer {
+	width:1000px !important;
+	height:10% !important;
+	margin:0 auto
+}
+.Term {
+	border-bottom:1px solid #e9e9e9
+}
+.lblSubCategory {
+	font-family: var(--font-300);
+	color: var(--color-blue);
+	font-size:120%
+}
+.mainlink {
+	display:inline-block;
+	font-size: 120%;
+	font-family: var(--font-300);
+	border-color: #e9e9e9;
+	padding:3px 6px;
+	border-width: 0 0 1px;
+	min-width:200px;
+	background: none repeat scroll 0 0 transparent;
+	color: var(--color-darkgrey);
+	border-bottom:1px solid #e9e9e9
+}
+.mainlinkSearch {
+	font-family: var(--font-500)
+}
+#Crmenu li {
+	font-size: 0.8rem
+}
+.box {
+	margin: 3px;
+	height: 30px;
+	width: auto
+}
+#c0_cphLeittext_pnlLeittext {
+	display:none
+}
+.c0_MC_lblTerms {
+	padding:15px
+}
+.tvContainer {
+	margin: 3px;
+	margin-top: 10px;
+	padding: 3px;
+	width: auto;
+	border-style: dotted;
+	border-width: thin
+}
+#divTerms {
+	padding:15px 0 0 5px
+}
+#fancybox-title {
+	width: 97% !important
+}
+#M_PnlLeittextOuter.LeitboxOuter #M_cphLeittext_pnlLeittext.Leitbox #LeitTextToHide.LeitTextToHide .legende .legende .itemTop .item span.itemContent .legende .itemTop .itemsAdditional{
+	margin-left:-1rem
+}
+
+.itemTop img {
+	height:16px;
+	float:left;
+	margin-right: 0.5rem
+}
+
+.itemTop .itemsAdditional .item{
+	height:1.5rem;
+	font-family: var(--font-300)
+}
+
+.itemsAdditional {
+	margin-top:1rem
+}
+.boxEinrichtung {
+	padding: 3px;
+	margin-top: 3px;
+	margin-left: 3px;
+	margin-right: 3px;
+	margin-bottom: 3px
+}
+.cmdpanel {
+	padding: 3px;
+	padding-left: 6px
+}
+.hint {
+	float: left;
+	font-size: 70%;
+	background-color: #FDF48B;
+	padding: 0.5em;
+	margin-top: 5px;
+	margin-left: 5px;
+	width: 175px
+}
+.chkTerms {
+	font-size: smaller;
+	text-align: right;
+	margin-right: 5px
+}
+.chkTerms a {
+	text-decoration: underline
+}
+#lstmenu {
+	margin: 0;
+	margin-left: 5px;
+	padding: 0.5em;
+	background: #B0B0B0;
+	float: left;
+	width: 170px
+}
+#lstmenu li {
+	list-style: none;
+	margin: 0;
+	padding: 0.3em
+}
+#lstmenu li#active {
+	padding: 0.5em;
+	text-decoration: underline;
+	font-family: var(--font-500);
+	color: #D67600
+}
+#tblWerte {
+	width: 700px;
+	border-width: 1px;
+	border-style: dotted;
+	background-color: #D6D6D6
+}
+#tblWerte span {
+	padding-left: 15px;
+	display: block
+}
+.labelLevel2 {
+	margin-left: -10px
+}
+.labelLevel4 {
+	margin-left: 35px;
+	display: block
+}
+.labelLevel5 {
+	margin-left: 45px;
+	display: block
+}
+#tblWerte h2 {
+	font-size: 16px;
+	font-family: var(--font-500);
+	margin-top: 5px
+}
+#tblWerte p {
+	margin-top: -5px;
+	margin-bottom: 2px
+}
+.HelpWindow {
+	z-index: 999;
+	position: absolute;
+	display: none;
+	visibility: hidden;
+	width: 300px;
+	background: var(--color-white)099;
+	border-style: solid;
+	border-width: thin;
+	padding: 3px
+}
+.HelpCaption {
+	margin: 1px;
+	padding-top: 2px;
+	padding-bottom: 2px;
+	font-size: 10px;
+	font-family: var(--font-500);
+	text-align: center;
+	color: var(--color-white);
+	background: var(--color-black)069
+}
+#M_Header_content #Crmenu li{
+	line-height:1.5rem
+}
+
+.boxKopf {
+	height: 8rem;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 0;
+	padding: 0.9rem 0 0 0;
+	background: #FFF
+}
+
+#c0_pnlLinkPath,
+.wrapper{
+	background: #FFF;
+	min-height: 240px
+}
+.boxKopf table {
+	width:100%
+}
+#LoginHeader {
+	background-image: url("Images/LoginGradient.png");
+	background-repeat: no-repeat
+}
+.M_MC_trvCurrentFacility_2,
+.M_MC_trvBogenFacilities_2{
+	background:unset !important;
+	font-family:var(--font-500);
+}
+#Appname {
+	position: absolute;
+	top: 20px;
+	left: 160px;
+	font-family: var(--font-500);
+	font-size: x-large;
+	color: var(--color-white)
+}
+#M_HlRoot {
+	display: inline-block;
+	margin-top: 0.9rem
+}
+.innerMain .wrapper .innerMain{
+	padding:0
+}
+.wrapper .innerMain{
+}
+.wrapper .innerMain .wrapper{
+	padding-top:0;
+	width: calc(990px - 2rem);
+}
+#M_MC_pnlAllFacilities{
+	padding-top: 1rem
+}
+.wrapper .innerMain div.wrapper #Einrichtungen div{
+	line-height:1.5rem
+}
+html body div#Page form#aspnetForm div#M_PnlMain.main div.wrapper div.innerMain div.wrapper div.shadowRight div.shadowBottom div.shadowBottomLeft div.shadowBottomRight div.innerMain div#Einrichtungen div#M_MC_pnlAllFacilities.pnlAllFacilities div#M_MC_trvBogenFacilities.treefix div#M_MC_trvBogenFacilitiesn0Nodes table tbody tr{
+	display: block;
+  height: 2rem;
+}
+#Headerlogo,
+#headerlogo {
+	background: #FFFFFF url("images/Logo.png") no-repeat ;
+	height: 90px;
+	background-size: 120px;
+	width: 150px;
+	background-repeat: no-repeat;
+	float: left;
+	background-position: 14px 7px
+}
+#headerslogan {
+	float:left;
+	margin-top: 1.2rem;
+	margin-left:1rem
+}
+#M_Header_content {
+	float:right;
+	right: 1rem;
+	position: relative;
+}
+#fancybox-wrap{display:none}
+#Crmenu {
+	list-style: none;
+	position: relative;
+	display: block;
+	text-align: right;
+	margin-top: 0px;
+	min-height: 5px
+}
+#Crmenu a:hover,
+#Crmenu li:hover {
+	color:#000
+}
+#Crmenu li {
+	margin-left: 0.5rem;
+	list-style: none;
+	display: block;
+	float: right;
+	cursor:pointer
+}
+#Crmenu a {
+	display: block;
+	text-decoration: none
+}
+#headerright {
+	text-align:right;
+	width: 1px;
+	height: 60px;
+	vertical-align:top;
+	width:250px
+}
+
+.panel {
+	padding: 3px;
+	padding-left: 10px;
+	margin: 3px;
+	margin-top: 30px
+}
+
+#c0_pnlLinkPath {
+	font-size: 1rem
+}
+#M_PnlTop #c0_pnlLinkPath.boxNavigation ul#linkpath{
+	padding:0 20px;
+	margin:0
+}
+#linkPathNavStart {
+	color:var(--color-black)
+}
+.current {
+	color:var(--color-darkgrey);
+	display: inline-block
+}	
+.topQMFrage {
+	text-decoration: line-Through
+}
+.TopQWWarnung {
+	color: Red;
+	padding-left: 0 !important
+}
+.pnlFile {
+	padding-bottom:2px
+}
+.ButtonDeleteFile {
+	margin-top: 1px;
+	position: absolute
+}
+.trv {
+	float:inherit;
+	display:inline-block;
+	z-index:auto;
+	clear:none
+}
+.trv td {
+	vertical-align:top !important
+}
+.lbltrv {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	caption-side:top;
+	position:static;
+	top: 0;
+	clear:left;
+	margin-left: 0
+}
+#AMNavigation {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	width:50px;
+	margin-left:10px;
+	width:150px
+}
+.AMNavigationElement {
+	margin-bottom:10px
+}
+#tblGesundheit {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	width:720px
+}
+#tblArbeit {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	width:720px
+}
+#tblFinanzen {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	width:720px
+}
+#tblSoziales {
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	width:720px
+}
+#tblPersonal {	
+	float:left;
+	display:inline-block;
+	z-index:inherit;
+	vertical-align:top;
+	width:720px
+}
+.lbtAMStammdaten {
+	margin-bottom:10px
+}
+.lbtAMTraeger {
+	margin-bottom:10px
+}
+.lbtGesundheit {
+	margin-bottom:10px
+}
+.lbtQWSuche {
+	display:block
+}
+.facilityItem{
+	display:none
+}
+#Einrichtungen {
+	margin-right:0px !Important;
+	overflow:hidden;
+	width:100% !important
+}
+.StammdatenlblWerte {
+	width:100px
+}
+.StammdatentxtWerte {
+	width:500px
+}
+.lblWerte {
+	margin:0px 0 0 5px
+}
+.StammdatenNotEditableTXT {
+	float:Right;
+	margin-left:5em;
+	color:var(--color-black)
+}
+#c0_MC_upCommandButtons {
+	bottom: 0px;
+	padding: 0 0 10px;
+	position: absolute;
+	width: 92%
+}
+.lblAMStammEigenschaften {
+	color:var(--color-white);
+	font-family: var(--font-500)
+}
+#BottomMenue {
+	display:inline-table;
+	float:none;
+	vertical-align:bottom;
+	margin-bottom:5px
+}
+.lbTest {
+	border-style:solid;
+	border-bottom-style:none;
+	border-top-style:none;
+	border-width:1px
+}
+#c0_MC_lblUmkreissuche,
+#c0_MC_lblErweiterteSuche {
+	color: var(--color-blue);
+	font-family: var(--font-500)
+}
+.ElementToHide { 
+	display:block;
+	margin-left:0 !important;
+	margin-top: 1rem
+}
+#c0_MC_ddlTypSuche,
+#c0_MC_txtPlz{
+	line-height:2rem;
+	padding:0 5px;
+	width: 100%
+}
+.addr,
+.tr_SearchResultAddress {
+	font-style:italic;
+	color: var(--color-grey)
+}
+input.clearInput {
+	margin-left: -1.7rem !important;
+	background-position-y: 2px;
+	background-image: url("Images/Cross.png");
+	border: none;
+	width: 25px;
+	background-repeat: no-repeat;
+	cursor: pointer;
+	position: relative;
+	vertical-align: top;
+	margin-top: 0.4rem;
+	height: 25px;
+	background-size: 20px;
+	background-color: white
+}
+#divOuterSearch input#ResetSearch{
+	background-image: url("Images/Cross.png");
+	border: none;
+	width: 20px;
+	background-repeat: no-repeat;
+	height: 25px;
+	margin-left: 10px;
+	background-size: 20px;
+	background-position-y: 5px;
+	cursor:pointer;
+	background-color: white
+}
+input:not(:valid) ~ .clearInput {
+	display: none
+}
+input:valid ~ .clearInput {
+	display: inline-block
+}
+
+#c0_MC_btnExpander.expanderClosed{
+	background-image: url("Images/Down.png");
+	border: none;
+	width: 25px;
+	background-repeat: no-repeat;
+	height: 25px
+}
+#c0_MC_btnExpander.expanderOpened{
+	background-image: url("Images/Up.png");
+	border: none;
+	width: 25px;
+	background-repeat: no-repeat;
+	height: 25px
+}
+.lbt_Show_Hide {
+	background-image:url("Images/plus.jpg")
+}
+.trvSearch {
+	overflow:visible;
+	width:800px
+}
+.trvSearch td {
+	vertical-align: top !important
+}
+.trvSearch td img {
+	height:12px !important
+}
+.treefix td {
+	vertical-align: top !important
+}
+.treefix td img {
+	margin-right: 5px;
+	height:16px !important
+}
+#M_MC_UppAttachments{
+	margin-top:2rem
+}
+
+.txtLVEingabe {
+	font-family:var(--font-100)
+}
+.tblVerguetung {
+	text-align:center;
+	padding-bottom:5px
+}
+.lbltblVerguetungHeader {
+	font-family:var(--font-700);
+	overflow:visible;
+	color:var(--color-table-grey)
+}
+.lbltblVerguetung {
+	font-family:var(--font-100);
+	margin-left:10px;
+	color:var(--color-table-grey)
+}
+.pnlVerguetungTabelle {
+	padding-top:5px
+}
+.pnlVerguetung {
+}
+.lblExtension {
+	background-image:url("");
+	float:right;
+	border-style:none;
+	width:10px
+}
+.lblLeftLabel	{
+	vertical-align:middle
+}
+.lblInLine	{
+	vertical-align:middle
+}
+.imgFacility {
+	background-image:url("Images/Haus.png");
+	height:16px
+}
+.imgFacilityNew {
+	background-image:url("Images/Haus_Neu.png");
+	height:16px
+}
+.lblAddFacility a{
+	padding: 10px 5px;
+	margin-left: 40px;
+	position: absolute;
+	display: block;
+	padding-left: 10px;
+	z-index: 1;
+	height: 17px;
+	width: 255px
+}
+
+.StandardText {
+	font-family:var(--font-100)
+}
+
+.pnlDropDown {
+	padding:1px;
+	display:inline-table;
+	overflow: hidden
+}
+#divtblSearchResults	{
+	margin-left:10px; 
+	margin-top:20px
+}
+#divDistance .pnlDropDown{
+	vertical-align:middle;
+	width:50px
+}
+#lblEntfernungZusatz {
+	padding-left:5px
+}
+#lblPlz{
+	display:inline-block
+}
+#sliderFac2InstOuter{
+	min-width:50px;
+	width:250px;
+	max-height:10px;
+	display:inline-block
+}
+#divSlider{
+	display:none;
+	margin-top:5px;
+	margin-bottom:10px
+}
+#divLabels {
+	display:block;
+	margin-bottom:10px;
+	max-height:10px;
+	min-width:50px;
+	width:250px
+}
+#divlabelSearchFor{
+	display:none
+}
+#labelSearchFor{
+	margin-right:5px;
+	vertical-align:text-top
+}
+#c0_MC_btnEinrichtungssuche:link {
+	background-image:url("Images/zoom.png");
+	border: 1px solid #0461ac; 
+	background-color:Transparent;
+	cursor: pointer;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding-left:15px
+}
+.ButtonInactive {
+	font-family:var(--font-100);
+	text-decoration: none;
+	padding: 2px 0.2em 2px 0.2em;
+	margin: 0 0 0 0.2em;
+	height: 12px;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5
+}
+#c0_MC_btnToggleVisibility,
+#fancybox-content .ButtonSave {
+	background-color: #e9e9e9;
+	background-image:url("Images/Save_16x16_256.ico");
+	background-position: 10px center;
+	background-repeat:no-repeat;
+	border-radius: var(--radius);
+	border:none; 
+	font-family:var(--font-100);
+	margin: 0 0 0 0.2em;
+	padding: 6px 0.2em 6px 33px;
+	text-decoration: none;
+	width: 78px
+}
+.ButtonSave:hover {
+	border: 1px solid #36c;
+	background-color:#BDCCFC;
+	color:var(--color-white)
+}
+#divHelp {
+	padding: 15px 30px 15px 8px
+}
+.legende .itemsAdditional .item{
+	padding:0
+}
+#c0_MC_divRemFile .divButtons{
+	margin-top:10px
+}
+#c0_MC_divRemFile{
+	padding:10px
+}
+.ButtonAddFile{
+	margin-bottom:10px
+}
+#c0_MC_divRemFile .divButtons .Button{
+	padding:5px 10px;
+	border-radius:var(--radius);
+	margin:0
+}
+.ButtonCancel {
+	font-family:var(--font-100);
+	border:none;
+	background-image:url("Images/cancel2.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding:2px 2px 2px 17px;
+	margin-right:5px
+}
+#Einrichtungen #c0_MC_pnlAllFacilities #CommandButtons{
+	margin-right:20px
+}
+#Einrichtungen #c0_MC_pnlAllFacilities table img{
+	margin-right:5px
+}
+.ButtonCancel:hover {
+	border: 1px solid #36c;
+	background-color:#BDCCFC;
+	color:var(--color-white)
+}
+.TTip {
+	position: relative
+}
+.TTip span {
+	display: none;
+	color: var(--color-black)
+} 
+.TTip:hover {
+	background-color: transparent
+}
+#c0_MC_lstMainLinks{
+	padding-left:0
+}
+.TTip:hover span {
+	width: 300px;
+	position: fixed;
+	top: 10px;
+	left: 10px;
+	display: block;
+	background: #e6ecff;
+	border: 1px solid #003399;
+	text-decoration: none;
+	padding: 3px
+}
+
+.pnlBegriff {
+	padding-left: 10px;
+	min-width: 100px;
+	max-width: 390px;
+	display:inline-block
+}
+.pnlBegriffEdit {
+	padding-left: 10px;
+	min-width: 100px;
+	max-width:390px;
+	display:inline-block
+}
+#M_MC_txtDatepickerGueltigBis,
+#M_MC_txtDatepickerGueltigAb{
+	font-size:100% !important;
+	font-family: var(--font-100)
+}
+.lblBegriff {
+	font-family:var(--font-100);
+	overflow:visible;
+	min-width: 100px;
+	width: 400px;
+	display: block
+}
+#c0_MC_pnlMain {
+	padding-top: 16px;
+	display:table
+}
+#M_MC_btnTestEmailServer{
+	margin-top: 0.5rem
+}
+#c0_MC_pnlControls {
+	padding-top: 16px
+}
+#c0_MC_pnlMain div {
+	padding: 1px
+}
+#divTypSucheDropDown {
+	width: 500px
+}
+#divTypSuche {
+	display:table;
+	margin-top: 10px
+}
+#M_MC_DdlMapServices{
+	width: 218px !important
+}
+.chkOptionStammdaten{
+	margin-bottom: 0.4rem
+}
+.chkOptionStammdaten label{
+	line-height: 1.1rem
+}
+.chkOptionStammdaten input{
+	margin-right: 0.4rem
+}
+#divTypSuche span {
+	padding-right: 3px
+}
+#M_PnlLinkPath.boxNavigation ul#Linkpath li a:after{
+	content:"\00a0>\00a0"
+}
+.pnlOptionValue input[type=checkbox],
+#M_MC_pnlStammdaten .chkOptionStammdaten input,
+#M_MC_ValqwSearch.Erweitert.isOpen{
+	width: 20px;
+	height: 20px
+}
+.M_MC_trvLVNavigation_1 #M_MC_trvLVNavigationt0{
+	font-family: var(--font-500);
+	display: block;
+	margin-bottom: 0.6rem;
+	background-color: none !important
+}
+.pnlOptionLabel {
+	display: inline-block;
+	width: 350px;
+	margin-left: 10px;
+	vertical-align: top
+}
+.pnlOptionValue {
+	display: inline-block;
+	margin-left: 10px
+}
+#M_MC_pnlAllFacilities.pnlAllFacilities #CommandButtons input#M_MC_btnBack.aspNetDisabled.ButtonBackInactive,
+#M_MC_pnlAllFacilities.pnlAllFacilities #CommandButtons input#M_MC_btnNext.aspNetDisabled.ButtonNextInactive{
+	height: 2rem
+}
+.chkOptionStammdaten {
+	display:block;
+	font-family:var(--font-100);
+	overflow:visible;
+	min-width: 100px
+}
+.pnlAddress.icon a.divMaps.clickableAddress:hover{
+	color:var(--color-red)
+}
+
+#pnlStammDatenTable1stCol {
+	width:30%;
+	vertical-align:top
+}
+#c0_MC_pnlPasswordInfo {
+	min-width:320px;
+	max-width:500px
+}
+.passwordPolicyHint,
+.PasswordPolicyHint {
+	margin-left: 0 !important;
+	padding:10px;
+	background:#eee;
+	font-size:80%;
+	border: 1px solid red;
+	margin-bottom: 20px
+}
+.innerMain #M_MC_pnlData.box table{
+	top:0px
+}
+#M_MC_LblUserToChange,
+#M_MC_lblUserToChange{
+	font-family:var(--font-500);
+	margin-bottom:1rem
+}
+#M_MC_pnlData.box table tbody tr{
+	margin-top:1rem
+}
+.UserInformation {
+	float: right;
+	width: 75%
+}
+.UserInformation .pnlTextBox {
+	display:block; 
+	padding: 2px
+}
+.UserList {
+	display:inline-block;
+	vertical-align:top;
+	width:25%
+}
+#c0_MC_lblAddFacility {
+	position: relative
+}
+#c0_MC_pnlNewFacility .lblLeftLabel{
+	margin-left:0px !important
+}
+#c0_MC_divInstitution .pnlDropDown {
+	margin-top:16px
+}
+#c0_MC_txtNewName,
+#c0_MC_ddlLeistungstyp {
+	width:499px !important;
+	margin:0 0 2px 0
+}
+#c0_MC_lblNewStrasse,
+#c0_MC_lblNewOrt,
+#c0_MC_lblNewPlatzzahl,
+#c0_MC_lblNewTelefon,
+#c0_MC_lblNewEmail,
+#c0_MC_lblNewPLZ,
+#c0_MC_lblKreis,
+#c0_MC_lblNewTelefax{
+	width:70px !important
+}
+#c0_MC_txtNewStrasse,
+#c0_MC_txtNewOrt,
+#c0_MC_txtNewPlatzzahl,
+#c0_MC_txtNewTelefon,
+#c0_MC_txtNewEmail,
+#c0_MC_txtNewPLZ,
+#c0_MC_ddlKreise,
+#c0_MC_txtNewTelefax {
+	width:170px !important;
+	margin:2px 0
+}
+.divOuterControl {
+	width: calc(100% - 140px);
+	display:inline-block;
+	margin-top:3px
+}
+#M_MC_TxtConstraint{
+	width:100%
+}
+input#M_MC_ChkIsUserDeactivated[type=checkbox]{
+	width:20px;
+	height:20px
+}
+#M_MC_PnlUser #UserInformation.userInformation .controlComplete .controlLabel #M_MC_LblIsUserDeactivated,
+#M_MC_PnlUser #UserInformation.userInformation .controlComplete .divOuterControl #M_MC_ChkIsUserDeactivated{
+	float:left
+}
+#M_MC_LstUsers{
+	width:100%;
+	margin-top:1rem;
+	display:block
+}
+#DivtxtConstraint{
+	width: calc(100% - 20px)
+}
+#UserInformation{
+	font-family:var(--font-500)
+}
+.ControlComplete {
+	margin-left:10px
+}
+
+#DivddlUserTypes{
+	width: calc(100% - 145px);
+	max-width:100%
+}
+#divddlUserTypes #c0_MC_btnRefreshList {
+	display:none !important
+}
+.ControlComplete {
+	display:block
+}
+.controlLabel,
+.ControlLabel {
+	margin: 5px 0;
+	display:inline-block;
+	min-width:135px;
+	vertical-align:top;
+	margin-top:1rem
+}
+#c0_MC_lstUsers {
+	font-size: 0.9rem;
+	width:200px
+}
+#btnSaveNewUser{
+	margin:0
+}
+#divlstUsers Select{
+	margin-top:0.5rem;
+	height:300px
+}
+#c0_MC_divInstitution {
+	margin-top:20px
+}
+#c0_MC_pnlOptions .ControlLabel {
+	display:block
+}
+#c0_MC_lstFacilities {
+	display: block;
+	max-height: 300px;
+	overflow: auto;
+	width:100%
+}
+#c0_MC_pnlOptions {
+	display:inline-block;
+	margin-top: 20px;
+	width: 100%
+}
+#c0_MC_pnlOptions .ControlComplete {
+	vertical-align:top
+}
+#divlstFacilities {
+	width:100%
+}
+#c0_MC_divFacilityTypes {
+	display:inline-block
+}
+#c0_MC_divFacilities {
+	display:inline-block;
+	margin-left:20px;
+	max-width:400px;
+	width: calc(100%);
+	padding-right:20px
+}
+#divModule {
+	display:inline-block
+}
+#c0_MC_ControlButtons {
+	margin-top:20px
+}
+#divNewUserEntries {
+	display:block;
+	width: calc(95% - 10px)
+}
+#divNewUserEntries .ControlLabel {
+	display:inline-block;
+	min-width: 100px;
+	width: 170px
+}
+#divNewUserEntries .lblLeftLabel{
+	margin-left:0
+}
+#divNewUserEntries .pnlTextBox {
+	display:inline-block;
+	width:95%
+}
+#divNewUserEntries .divOuterControl {
+	display:inline-block
+}
+#divNewUserEntries .ControlComplete {
+	margin-bottom:3px;
+	display: flex;
+	width: 90%
+}
+#divNewUser{
+	width:90% !important
+}
+#divSpecialinformation {
+	 border-top:1px solid var(--color-black);
+	 font-size: 60%;
+	 margin-top:15px
+}
+#c0_MC_divCounties {
+	 display:inline-block;
+	 padding-right:20px
+}
+#divlstCounties{
+	width:100%
+}
+#M_PnlInfoNews ul li{
+	cursor:pointer
+}
+#M_PnlInfoNews ul {
+	display:none;
+	list-style: none;
+	width: 397px;
+	position: absolute;
+	left: calc(100% - 420px);
+	background-color: white;
+	z-index: 1;
+	padding: 10px 13px 10px 10px;
+	top: 11.2rem;
+	border-left: 1px solid #aaa;
+	box-shadow: 0px 0px 11px gray
+}
+#M_PnlMain.main #WrapperHead.active #M_PnlTop #M_PnlInfoNews ul li{
+	border-bottom: 1px solid gray;
+  padding: 0.5rem 0;
+}
+#SpanNewsEx {
+	background-image: url("Images/messagebox_warning.png");
+	background-repeat: no-repeat;
+	background-size: 32px;
+	background-position-y: 5px;
+	margin-right: auto;
+	display: block;
+	position: absolute;
+	cursor: pointer;
+	z-index: 1;
+	line-height: 2rem;
+	right: 0;
+	text-align: right;
+	color: black;
+	width: 200px;
+	top: 100px;
+	background-color: white;
+	padding: 5px 17px 5px 0px;
+	background-position-x: 6px
+}
+#Page form#aspnetForm #M_PnlMain.main #WrapperHead.active #M_PnlTop #M_PnlModules.boxNavigation ul#CrModules li ul{
+	padding:0 !important
+}
+#Page form#aspnetForm #M_PnlMain.main #WrapperHead.active #M_PnlTop #M_PnlModules.boxNavigation ul#CrModules li ul li a#ModLinkLeistungsvereinbarung{
+	display:none
+}
+@keyframes jump {
+	from {
+	background-position-y:0px
+	}	
+	20% {
+	background-position-y:-10px
+	}}html{height:100%}
+.pnlSave {
+	display:inline-block
+}
+.pnlGenerateNewPasswort {
+	display:inline-block
+}
+#M_MC_uppEinrichtungsdaten span:first-child{
+	display: inherit
+}
+#divInnerSearch {
+	display: table;
+	width:100%;	 
+	margin-bottom:2rem
+}
+#divSearchLabel {
+	margin:0;
+	padding: 0
+}
+#divTextSearchBottom {
+	display:table;
+	width:100%
+}
+#divSearchButton {
+	display: unset;
+	width:5%
+}
+#c0_MC_pnlTextboxSuche{
+	height: 30px;
+	margin-top: 5px
+}
+#divSearchButton input {
+	background-color: var(--color-pink);
+	width: 80px;
+	color: var(--color-white);
+	border: none;
+	float: right;
+	height: 36px;
+	cursor: pointer;
+	line-height: 1.5rem;
+	font-size: 1.0rem
+}
+#c0_MC_btnEinrichtungssuche:hover {
+	background-color:var(--color-blue)
+}
+#labelSearchFor {
+	padding-right:18px
+}
+#divTypSucheDropDown{
+	margin-top:0.5rem;
+	width:100%
+}
+.innerMain{
+	padding:0 1rem;
+	background-color:white;
+	margin-top:5px
+}
+#c0_MC_lblTypSuche,
+#divUmkreisOuter {
+	margin-top:2rem
+}
+#divUmkreisSelection {
+	display:table
+}
+#divUmkreisSelection{
+	margin-top:1rem
+}
+#divUmkreisSelection span {
+	display:table-cell;
+	padding-bottom:0.5rem
+}
+.pnlDropDown select#c0_MC_ddlEntfernung.DropDownlist,
+#divPLZ .pnlTextBox {
+	width:50px;
+	z-index:0
+}
+#divPLZ {
+	display:inline-block
+}
+#divDistance {
+	margin-left: 2rem;
+	display:inline-block;
+	vertical-align:top
+}
+#c0_MC_lblEntfernungZusatz{
+	line-height: 2.2rem;
+	float: right
+}
+#c0_MC_lblEntfernungZusatz {
+	line-height: 2.2rem;
+	float: right
+}
+.InstituionIdentifier {
+	color:transparent;
+	display:inline-block;
+	background:url("Images/Traeger2.png");
+	background-repeat:no-repeat;
+	background-size:30px;
+	width:30px;
+	height:30px;
+	position:relative; 
+	border:0 none transparent
+}
+.faciityIdentifier {
+	color:transparent;
+	display:inline-block;
+	background:url("Images/Haus.png");
+	background-repeat:no-repeat;
+	background-size:30px;
+	width:30px;
+	height:30px;
+	position:relative; 
+	border:0 none transparent
+}
+#c0_lblImpressumBIT {
+	display: inline-block;
+	margin-top: 10px;
+	border-top: 1px solid var(--color-black);
+	text-align: center;
+	padding-top: 5px
+}
+#c0_MC_tblEinrichtungenListe td a {
+	white-space:pre-wrap
+}
+.ui-widget-header {
+	 background:none !important
+}
+.ui-slider-horizontal {
+	 width: 210px !important;
+	 margin-left: 15px !important	
+}
+#c0_MC_pnlFilesOuter{
+	margin-top:30px;
+	margin-left:39px
+}
+#c0_MC_pnlAttachments span {
+	max-width: 600px;
+	margin-bottom: 10px;
+	display: block
+}
+#c0_MC_txtKorCategory_40{
+	font-size: 100% !important;
+	width: 600px;
+	height:20px !important
+}
+.pnlFile {
+	display:inline-block
+}
+#c0_MC_pnlFiles .pnlFile {
+	display: block !important
+}
+#c0_MC_uppQuestions .lblSubCategory {
+	font-size: 175%
+}
+#c0_MC_lblSearchResults {
+	color: red;
+	margin-top: 20px;
+	display: block;
+	text-align: center
+}
+#c0_pnlFooter {
+	position:relative
+}
+.UsersOnline .lblBegriff {
+	margin: 5px 0 0 19px
+}
+.UsersOnline,.footerOuter {
+	margin:0 auto;
+	padding-bottom: 5px
+}
+.footerOuter { 
+	padding-bottom: 11px;
+	padding-top:20px;
+	position:relative	
+}
+.footerInner {
+	padding-left:20px
+}
+#footerSpan1 {
+	background-image: url("Images/EFRE.png");
+	background-size: 120px;
+	background-repeat:no-repeat;
+	display: table-cell;
+	height: 75px;
+	margin-left:20px;
+	width: 120px
+}
+#footerSpan2 {
+	color:var(--color-blue);
+	font-size:10px;
+	display:table-cell;
+	padding-left:10px;
+	vertical-align:middle;
+	max-width:200px
+}
+.ulUsers {
+	list-style: none;
+	padding-left: 18px
+}
+.ulUsers li{
+	display:inline-block
+}
+.ulUsers li + li:before {
+	content: ",
+"
+}
+.ulUsers li:first-child:before {
+	content: ""
+}
+.WaitPanel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	text-align:center;
+	z-index:999
+}
+#divWaitPanelBackground {
+	background: #CCC;
+	filter: alpha(opacity=60);
+	/* IE */
+	-moz-opacity: 0.6;
+	/* Mozilla */
+	opacity: 0.6;
+	/* CSS3 */
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%
+}
+#M_MC_FirstColumnVertragsdaten{
+	width:300px;
+	max-width:300px
+}
+.WaitLabel1 {
+	background-color: var(--color-white);
+	background-image:url(Images/waiter1.gif);
+	background-repeat:no-repeat;
+	background-size:100px;
+	background-position-y:top;
+	filter: alpha(opacity=99);
+	/* IE */
+	-moz-opacity: 0.9;
+	/* Mozilla */
+	opacity: 0.9;
+	position: fixed;	 
+	width: 100px;
+	height: 100px;
+	top: calc(50% - 50px);	
+	left: calc(50%)
+}
+.WaitLabel2 {
+	color:var(--color-black);
+	position: fixed;	 
+	width: 100px;
+	height: 25px;
+	top: calc(50% + 40px);	
+	left: calc(50%)
+}
+.aspNetDisabled {
+	filter: alpha(opacity=60);
+	/* IE */
+	-moz-opacity: 0.6;
+	/* Mozilla */
+	opacity: 0.6
+	/* CSS3 */
+}
+.heading.h1 {
+	display: none
+}
+#c0_MC_pnldivContactData div {
+	margin-bottom: 5px
+}
+
+#M_Footer{
+	display:none!important;
+}

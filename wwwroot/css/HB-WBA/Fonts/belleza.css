@@ -1,0 +1,15 @@
+
+@font-face {
+    font-family: 'Belleza';
+    src: url('belleza-webfont.eot?#iefix') format('embedded-opentype'),
+         url('belleza-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+/*
+src: url('belleza-webfont.eot');
+src:url('belleza-webfont.svg#BellezaRegular') format('svg');
+  url('belleza-webfont.woff') format('woff'),
+*/

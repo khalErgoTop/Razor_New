@@ -1,0 +1,480 @@
+﻿::-webkit-scrollbar {
+    width: 4px;
+    height:4px;
+}
+ 
+::-webkit-scrollbar-track {
+   -webkit-box-shadow: inset 0 0 2px rgba(0,0,0,0.3); 
+}
+ 
+::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 4px rgba(0,0,0,0.5); 
+}
+
+#Content {
+    height: 550px;
+    position: relative;
+}
+#LVWerte{
+	width:calc(100% - 200px)
+}
+.LVNavigation {
+	float:left;
+	z-index: 3;
+	margin-left: 10px;
+	width: 180px;
+	position: relative;
+}
+#M_MC_trvLVNavigationn0Nodes{
+	line-height:1.5rem
+}
+.LVNavigation td {
+	vertical-align:top !important;
+}
+a#aRefEditContact.ahrefFancyInline img{height:20px !important}
+.LVNavigation td img {
+	height: 30px !important;
+	margin-top: -0.5rem;
+}
+.pnlLVMatrixBegriff {
+	padding-left: 10px;
+}
+.cellMatrixBezeichnung {
+	vertical-align:top;
+}
+.pnlTblMatrixInner {
+	overflow:auto;
+	float:left;
+}
+
+.pnlTblMatrixOuter {
+	overflow:auto;
+}
+
+.lblMatrixLabelx {
+	font: 80% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	overflow:visible;
+	max-width: 100px;
+	padding-right:10px;
+}
+.lblMatrixLabely {
+	font: 80% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	max-width: 100px;
+	padding-right:10px;
+}
+.lblMatrixLabelOuter {
+	font: 80% arial-narrow,arial,sans-serif;
+	overflow:visible;
+	max-width: 100px;
+	padding-right:10px;
+}
+.tblMatrix {
+	border-collapse:collapse;
+}
+.tooltip {
+	position: absolute;
+	display: none;
+	background-color: #FFFFFF;
+	border:1px solid black;
+	margin:5px;
+	padding:5px;
+	overflow:visible;
+	z-index:9999; 
+}
+.tooltipEdit {
+	position : absolute;
+	display: none;
+	background-color: #FFFFFF;
+	border:1px solid black;
+	margin:5px;
+	padding:5px;
+	/*width:220px;*/
+	overflow:visible;
+	z-index:9999; 
+}
+#LVWerte{
+	height:auto !important
+}
+.tooltipClosingImage {
+	position:relative;
+	top:-14px;
+	left:363px; /*x Rechts oben*/
+	/*left:-14px; /*X links oben*/
+}
+#M_MC_upLVBogen #LVWerte #M_MC_pnlLVKat2 table#M_MC_tblLVKat2 tbody tr:first-child td{
+	border:none
+}
+#M_MC_upLVBogen #M_MC_tblLVKat2 tbody tr td span.lblUnterbegriff{
+	display:unset
+}
+
+#M_MC_upLVBogen #LVWerte #M_MC_pnlLVKat2 table#M_MC_tblLVKat2 tbody tr td{
+	border-bottom: 1px dotted #333;
+	height:1.5rem;
+	width: 40%;
+	display: block;
+	float: left
+}
+img.ui-datepicker-trigger {
+  height: 40px;
+  position: absolute;
+}
+#M_MC_upLVBogen #LVWerte #M_MC_pnlLVKat2 table#M_MC_tblLVKat2 tbody tr{
+	width:calc(100% - 5rem)
+}
+.imgKommentarEingabe {
+	margin-right:3px;
+	height:22px;
+}
+.imgKommentarEingabe:hover {
+	cursor: pointer; cursor: hand;
+}
+.imgKommentar:hover {
+	cursor:hand;
+}
+.imgKommentar {
+	height:22px;
+}
+	
+/* LV-BogenAnzeige*/
+.lblUnterbegriff {
+	font-weight: bold;
+	overflow: visible;
+	position: relative;
+	margin-top: 1rem;
+	display: flex;
+	margin-bottom: 0.5rem;
+}
+#aRefEditContact{
+	margin-left: 7rem !important;
+	float: left;
+	margin-top: -1.5rem;
+	z-index: 1;
+	position: relative;
+}
+
+/* Panel in dem das Label lblBegriff ist LV-BogenAnzeige */
+.pnlLVBegriff {
+	min-width: 100px;
+	max-width: 390px;
+}
+.pnlLVBegriffEdit {
+	padding-left: 10px;
+	min-width: 100px;
+	max-width:390px;
+}
+
+/* Label für die Begrifferklärung LV-BogenAnzeige*/
+.lblBegriff {
+	overflow:visible;
+	min-width: 100px;
+	line-height: 1.5rem;
+}
+.lblBegriffStammdaten {
+	overflow:visible;
+	min-width: 100px;
+}
+.pnlLVBegriffStammdaten {
+	padding-left: 10px;
+}
+
+/* Textfeld für die Eingabe Eines Textes LV-BogenAnzeige*/
+.LVBogenTxtEingabe {
+	min-width: 20px;
+	max-width: 120px;
+}
+.pnlLVBogenChkEingabe {
+	min-width: 120px;
+	text-align:left;
+}
+.LVBogenKorrekturWert {
+	color:Red;
+	min-width:20px;
+	max-width:100px;
+}
+.tblKorrekturVerlauf {
+	font: 80% arial-narrow,arial,sans-serif;
+	max-width:360px;
+}
+.divtblKorrekturVerlaufRightCol {
+	margin-left:5px;
+}
+.divtblKorrekturVerlaufDate {
+	font: 90% arial-narrow,arial,sans-serif;
+	color:#88b8d7;
+}
+.divCheckPrivat {
+	font: 80% arial-narrow,arial,sans-serif;
+}
+.lblBezeichnungZusatz {
+	font: 80% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	width:50px;
+}
+.lblBezeichnungZusatzHeader {
+	font: 80% arial-narrow,arial,sans-serif;
+	font-weight:bold;
+	padding-left:10px;
+	width:100%;
+}
+.lblBezeichnungZusatzHeaderNormal {
+	font: 80% arial-narrow,arial,sans-serif;
+}
+.pnlBezeichnungHeaderNormal {
+	font: 80% arial-narrow,arial,sans-serif;
+	padding-left:30px;
+}
+.PrivateImage {
+	background-image:url("Images/lock_large_locked.png");
+	width:15px;
+	height:15px;
+	float:left;
+}
+.ButtonRefresh {
+	font: 85% arial-narrow,arial,sans-serif;
+	background-image:url("Images/refresh_forward.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	height: 18px;
+	padding:2px 0px 2px 17px;
+	margin-right:5px;
+	width:23px;
+	display: inline-block;
+	background-size: 23px;
+}
+
+.ButtonRefresh:hover {
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonNext {
+	font: 95% arial-narrow,arial,sans-serif;
+	border:none;
+	background-image:url("Images/right.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	color:transparent;
+	padding:2px 18px 2px 2px;
+	height: 18px;
+	margin-right:5px;
+	width:23px;
+	display: inline-block;
+	background-size: 16px;
+}
+
+.ButtonNext:hover {
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonNextInactive {
+	font: 95% arial-narrow,arial,sans-serif;
+	border:none;
+	background-image:url("Images/right.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	color:transparent;
+	padding:2px 18px 2px 2px;
+	height: 18px;
+	margin-right:5px;
+	filter:alpha(opacity=90); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.9;
+	cursor:default;
+	width:23px;
+	display: inline-block;
+	background-size: 16px;
+}
+.ButtonBack {
+	font: 85% arial-narrow,arial,sans-serif;
+	border:none;
+	background-image:url("Images/left.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	color:transparent;
+	height: 18px;
+	padding:2px 2px 2px 17px;
+	margin-right:5px;
+	width:23px;
+	display: inline-block;
+	background-size: 16px;
+}
+
+.ButtonBack:hover {
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonBackInactive {
+	font: 95% arial-narrow,arial,sans-serif;
+	border:none;
+	background-image:url("Images/left.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	color:transparent;
+	padding:2px 2px 2px 17px;
+	height: 18px;
+	margin-right:5px;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+	cursor:default;
+	width:23px;
+	display: inline-block;
+	background-size: 16px;
+}
+
+.ButtonRefreshInactive {
+	font: 95% arial-narrow,arial,sans-serif;
+	background-image:url("Images/refresh_forward.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding:2px 0px 2px 17px;
+	height: 18px;
+	margin-right:5px;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+	cursor:default;
+	width:23px;
+	display: inline-block;
+	background-size: 23px;
+}
+
+#M_MC_btnVersenden,
+.ButtonSendInactive {
+	cursor: pointer;
+	background: var(--color-blue);
+	color: var(--color-white) !important;
+	border-radius: var(--radius);
+	border: none;
+	padding: 0.5rem;
+	font-family: var(--font-100) !important;
+	font-size: 1rem;
+}
+
+.ButtonSend:hover {
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.ButtonExport {
+	font: 85% arial-narrow,arial,sans-serif;
+	background-image:url("Images/PrinterZoomIn.png");
+	background-color: transparent;
+	background-repeat: no-repeat;
+	background-position: left;
+	padding: 2px 0px 2px 17px;
+	height: 18px;
+	width: 23px;
+	display: inline-block;
+	background-size: 23px;
+	margin-right: 5px;
+}
+.M_MC_trvLVNavigation_1 {
+  background-color: unset;
+}
+.ButtonExportInactive {
+	font: 85% arial-narrow,arial,sans-serif;
+	border: 1px solid #36c;
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:left;
+	padding:2px 0px 2px 17px;
+	height: 18px;
+	margin-right:5px;
+	cursor:default;
+	filter:alpha(opacity=50); 
+	-moz-opacity:0.5; 
+	-khtml-opacity: 0.5; 
+	opacity: 0.5;
+}
+#CommandButtons {
+	padding-top:12px;
+	border-top:1px solid #808080;
+	
+}
+#M_MC_chkTerms {
+  margin-right: 0.5rem;
+  position: relative;
+  top: 0.2rem
+}
+#c0_MC_pnlVersenden {
+	padding-top:5px;
+}
+.chkTerms a
+{
+	text-decoration: none;
+	font-weight: bold;
+	cursor: pointer;
+}
+.chkTerms {
+	font-size: unset;
+}
+#M_MC_upCommandButtons,
+#M_MC_upVersenden{
+	width: 80%;
+	float: right;
+	display: block;
+	margin-bottom: 2rem;
+}
+#M_MC_trvLVNavigationt0{
+	margin-bottom: 0.6rem;
+	display: block
+}
+#M_MC_trvLVNavigationt0{
+	font-family:var(--font-500)
+}
+#M_MC_btnVersenden{
+	float:right
+}
+.lblPrintComment {
+	background-image:url("Images/Printer.png");
+	background-color:Transparent;
+	background-repeat:no-repeat;
+	background-position:center;
+	/*padding:2px 18px 2px 2px;*/
+	display: inline-block;
+	height: 15px;
+	width:20px;
+	margin-left:auto;
+	margin-right:5px;
+	cursor: pointer;
+}
+.lblPrintComment:hover {
+	border: 1px solid #36c;
+	background-color: #BDCCFC;
+}
+
+.lblOuterPrintComment {
+    display: block;
+    margin-top: -15px;
+    text-align: right;
+    width: 100%;
+}
+
+#c0_MC_txtEditContactPLZ {
+	margin-right:100px;
+}
+
+#LVWerte {
+    scrollbar-3dlight-color:#fff;
+    scrollbar-arrow-color:#000;
+    scrollbar-face-color:#fff;
+    scrollbar-track-color:#000;
+    scrollbar-darkshadow-color:#FFF;
+    scrollbar-highlight-color:#FFF;
+    scrollbar-shadow-color:#FFF;*/
+}

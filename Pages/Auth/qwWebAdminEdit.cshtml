@@ -1,0 +1,54 @@
+@page
+@model TOPqwWeb_Core.Pages.Auth.QwWebAdminEditModel
+@{
+    ViewData["Title"] = "Hilfetexte bearbeiten";
+}
+
+<nav aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb">
+        <li><a asp-page="/Index">Start</a></li>
+        <li><a asp-page="/Auth/QWWebAdmin">Administration</a></li>
+        <li aria-current="page">Hilfetexte bearbeiten</li>
+    </ol>
+</nav>
+
+<section class="pageContent">
+    <h1>Hilfetexte bearbeiten</h1>
+    @if (Model.Message is not null)
+    {
+        <p role="status">@Model.Message</p>
+    }
+    <form method="post">
+        <fieldset>
+            <legend>Texttyp</legend>
+            <label><input type="radio" name="HelpText" value="false" checked="@(Model.HelpText == false)" onchange="this.form.submit()" /> Leittext bearbeiten</label>
+            <label><input type="radio" name="HelpText" value="true" checked="@(Model.HelpText)" onchange="this.form.submit()" /> Hilfetext bearbeiten</label>
+        </fieldset>
+        <div>
+            <label for="SelectedPage">Seiten</label>
+            <select id="SelectedPage" name="SelectedPage" size="15" onchange="this.form.submit()">
+                @foreach (var pageItem in Model.Pages)
+                {
+                    <option value="@pageItem.Value" selected="@(pageItem.Value == Model.SelectedPage)">@pageItem.Text</option>
+                }
+            </select>
+        </div>
+        <div>
+            <label for="Text">@(Model.HelpText ? "Hilfetext" : "Leittext")</label>
+            <textarea id="Text" name="Text" rows="18" cols="80">@Model.Text</textarea>
+            @if (Model.HelpText)
+            {
+                <div>
+                    <label for="Title">Link</label>
+                    <input id="Title" name="Title" value="@Model.Title" />
+                    <label><input type="checkbox" name="Visible" value="true" checked="@(Model.Visible)" /> HilfeText versteckt</label>
+                </div>
+            }
+            else
+            {
+                <label><input type="checkbox" name="Visible" value="true" checked="@(Model.Visible)" /> Leittext aufgeklappt</label>
+            }
+        </div>
+        <button type="submit" asp-page-handler="Save">Übernehmen</button>
+    </form>
+</section>

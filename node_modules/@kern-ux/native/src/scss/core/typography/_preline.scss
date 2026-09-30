@@ -1,0 +1,15 @@
+@use "../utilities/mixins";
+
+.kern-preline {
+    @include mixins.normalize;
+    @include mixins.preline-default;
+    width: fit-content;
+
+    &--large {
+        @include mixins.preline-large;
+    }
+
+    &--small {
+        @include mixins.preline-small;
+    }
+}
