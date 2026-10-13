@@ -4,26 +4,26 @@
     ViewData["Title"] = "Benutzer-Management";
 }
 
-<nav aria-label="Brotkrümelnavigation">
+<nav class="kern-breadcrumbs" aria-label="Brotkrümelnavigation">
     <ol class="breadcrumb">
-        <li><a asp-page="/Index">Start</a></li>
-        <li><a asp-page="/Auth/QWWebAdmin">Administration</a></li>
+        <li><a class="kern-link" asp-page="/Index">Start</a></li>
+        <li><a class="kern-link" asp-page="/Auth/QWWebAdmin">Administration</a></li>
         <li aria-current="page">Benutzer-Management</li>
     </ol>
 </nav>
 
-<section class="pageContent user-management">
-    <h1>Benutzer-Management</h1>
+<section class="pageContent user-management kern-stack">
+    <h1 class="kern-heading-1">Benutzer-Management</h1>
 
     @if (!string.IsNullOrWhiteSpace(Model.InfoMessage))
     {
-        <p class="confirmation-label">@Model.InfoMessage</p>
+        <div class="kern-alert kern-alert--success"><div class="kern-alert__body">@Model.InfoMessage</div></div>
     }
 
-    <div class="user-management-selection">
-        <form method="post" asp-page-handler="SelectType">
+    <div class="user-management-selection kern-card" style="padding:16px">
+        <form method="post" asp-page-handler="SelectType" class="kern-stack">
             <label for="UserType">Benutzertypen</label>
-            <select id="UserType" name="UserType" onchange="this.form.submit()">
+            <select class="kern-form-input__select" id="UserType" name="UserType" onchange="this.form.submit()">
                 @foreach (var type in Model.Context.UserTypes)
                 {
                     <option value="@type.Value" selected="@(Model.UserType == type.Value)">@type.Text</option>
@@ -36,20 +36,20 @@
             <input type="hidden" name="UserType" value="@Model.UserType" />
             <input type="hidden" name="SelectedUserId" value="@Model.SelectedUserId" />
             <input type="hidden" name="Constraint" value="@Model.Constraint" />
-            <button type="submit">Aktualisieren</button>
+            <button class="kern-button kern-button--secondary" type="submit">Aktualisieren</button>
         </form>
 
-        <form method="get">
+        <form method="get" class="kern-stack">
             <input type="hidden" name="UserType" value="@Model.UserType" />
             <label for="Constraint">Benutzernamen</label>
-            <input id="Constraint" name="Constraint" value="@Model.Constraint" placeholder="Benutzernamen eingrenzen" autocomplete="off" />
-            <button type="submit">Suchen</button>
+            <input class="kern-form-input__input" id="Constraint" name="Constraint" value="@Model.Constraint" placeholder="Benutzernamen eingrenzen" autocomplete="off" />
+            <button class="kern-button kern-button--primary" type="submit">Suchen</button>
         </form>
 
-        <form method="get">
+        <form method="get" class="kern-stack">
             <input type="hidden" name="UserType" value="@Model.UserType" />
             <label for="SelectedUserId">Benutzer auswählen</label>
-            <select id="SelectedUserId" name="SelectedUserId" onchange="this.form.submit()" size="6">
+            <select class="kern-form-input__select" id="SelectedUserId" name="SelectedUserId" onchange="this.form.submit()" size="6">
                 @foreach (var user in Model.Users)
                 {
                     <option value="@user.Beid" selected="@(Model.SelectedUserId == user.Beid)" title="@user.Lastname">@user.Username</option>
@@ -60,50 +60,50 @@
 
     @if (Model.CanCreateUsers)
     {
-        <form method="post" asp-page-handler="CreateUser">
-            <fieldset>
+        <form method="post" asp-page-handler="CreateUser" class="kern-card" style="padding:16px">
+            <fieldset class="kern-fieldset">
                 <legend>Neuer Benutzer</legend>
                 <label asp-for="NewUser.Username">Benutzername</label>
-                <input asp-for="NewUser.Username" autocomplete="off" required />
+                <input class="kern-form-input__input" asp-for="NewUser.Username" autocomplete="off" required />
                 <label asp-for="NewUser.Firstname">Vorname</label>
-                <input asp-for="NewUser.Firstname" />
+                <input class="kern-form-input__input" asp-for="NewUser.Firstname" />
                 <label asp-for="NewUser.Lastname">Nachname</label>
-                <input asp-for="NewUser.Lastname" />
+                <input class="kern-form-input__input" asp-for="NewUser.Lastname" />
                 <label asp-for="NewUser.Email">E-Mail</label>
-                <input asp-for="NewUser.Email" type="email" />
+                <input class="kern-form-input__input" asp-for="NewUser.Email" type="email" />
                 <label asp-for="NewUser.UserType">Benutzertyp</label>
-                <select asp-for="NewUser.UserType">
+                <select class="kern-form-input__select" asp-for="NewUser.UserType">
                     @foreach (var type in Model.Context.UserTypes)
                     {
                         <option value="@type.Value">@type.Text</option>
                     }
                 </select>
             </fieldset>
-            <button type="submit">Speichern</button>
+            <button class="kern-button kern-button--primary" type="submit">Speichern</button>
             @if (Model.Context.IsAdmin)
             {
-                <a asp-page="/Auth/BenutzerManagementRechte" asp-route-UserId="@Model.SelectedUserId">Benutzerrechte verwalten</a>
+                <a class="kern-button kern-button--secondary" asp-page="/Auth/BenutzerManagementRechte" asp-route-UserId="@Model.SelectedUserId">Benutzerrechte verwalten</a>
             }
-            <button type="submit" formaction="?handler=ChangePassword" formmethod="post">Passwort ändern</button>
+            <button class="kern-button kern-button--secondary" type="submit" formaction="?handler=ChangePassword" formmethod="post">Passwort ändern</button>
         </form>
     }
 
     @if (Model.SelectedUser is not null)
     {
-        <form method="post" asp-page-handler="Save">
+        <form method="post" asp-page-handler="Save" class="kern-card" style="padding:16px">
             <input type="hidden" asp-for="UserType" />
             <input type="hidden" asp-for="SelectedUserId" />
             <input type="hidden" asp-for="Constraint" />
-            <fieldset>
+            <fieldset class="kern-fieldset">
                 <legend>Benutzerdaten</legend>
                 <label asp-for="Input.Username">Benutzername</label>
-                <input asp-for="Input.Username" disabled="disabled" />
+                <input class="kern-form-input__input" asp-for="Input.Username" disabled="disabled" />
                 <label asp-for="Input.Firstname">Vorname</label>
-                <input asp-for="Input.Firstname" />
+                <input class="kern-form-input__input" asp-for="Input.Firstname" />
                 <label asp-for="Input.Lastname">Nachname</label>
-                <input asp-for="Input.Lastname" />
+                <input class="kern-form-input__input" asp-for="Input.Lastname" />
                 <label asp-for="Input.Email">E-Mail</label>
-                <input asp-for="Input.Email" type="email" />
+                <input class="kern-form-input__input" asp-for="Input.Email" type="email" />
                 @if (Model.Context.IsAdmin)
                 {
                     <label><input asp-for="Input.IsAdmin" /> Admin</label>
@@ -112,7 +112,7 @@
                 <label><input asp-for="Input.IsDeactivated" /> Benutzer deaktivieren</label>
             </fieldset>
 
-            <fieldset>
+            <fieldset class="kern-fieldset">
                 <legend>Module</legend>
                 @foreach (var module in Model.Modules)
                 {
@@ -122,9 +122,9 @@
 
             @if (Model.Assignments.Facilities.Count > 0)
             {
-                <fieldset>
+                <fieldset class="kern-fieldset">
                     <legend>Einrichtungen</legend>
-                    <select name="Facilities" multiple size="8" disabled="@(!Model.Assignments.CanEditFacilities)">
+                    <select class="kern-form-input__select" name="Facilities" multiple size="8" disabled="@(!Model.Assignments.CanEditFacilities)">
                         @foreach (var facility in Model.Assignments.Facilities)
                         {
                              <option value="@facility.Value" selected="@(facility.IsSelected ? "selected" : null)">@facility.Text</option>
@@ -144,7 +144,7 @@
             {
                 <fieldset>
                     <legend>Kreise</legend>
-                    <select name="Districts" multiple size="8" disabled="@(!Model.Assignments.CanEditDistrictsAndTypes)">
+                    <select class="kern-form-input__select" name="Districts" multiple size="8" disabled="@(!Model.Assignments.CanEditDistrictsAndTypes)">
                         @foreach (var district in Model.Assignments.Districts)
                         {
                              <option value="@district.Value" selected="@(district.IsSelected ? "selected" : null)">@district.Text</option>
@@ -162,9 +162,9 @@
 
             @if (Model.Assignments.FacilityTypes.Count > 0)
             {
-                <fieldset>
+                <fieldset class="kern-fieldset">
                     <legend>Einrichtungstypen</legend>
-                    <select name="FacilityTypes" multiple size="8" disabled="@(!Model.Assignments.CanEditDistrictsAndTypes)">
+                    <select class="kern-form-input__select" name="FacilityTypes" multiple size="8" disabled="@(!Model.Assignments.CanEditDistrictsAndTypes)">
                         @foreach (var facilityType in Model.Assignments.FacilityTypes)
                         {
                              <option value="@facilityType.Value" selected="@(facilityType.IsSelected ? "selected" : null)">@facilityType.Text</option>
@@ -180,21 +180,21 @@
                 </fieldset>
             }
 
-            <button type="submit">Speichern</button>
-            <a asp-page="/PasswortAendern" asp-route-UserId="@Model.SelectedUserId">Passwort ändern</a>
+            <button class="kern-button kern-button--primary" type="submit">Speichern</button>
+            <a class="kern-button kern-button--secondary" asp-page="/PasswortAendern" asp-route-UserId="@Model.SelectedUserId">Passwort ändern</a>
             @if (Model.Context.IsAdmin)
             {
-                <a asp-page="/Auth/BenutzerManagementRechte" asp-route-UserId="@Model.SelectedUserId">Benutzerrechte verwalten</a>
+                <a class="kern-button kern-button--secondary" asp-page="/Auth/BenutzerManagementRechte" asp-route-UserId="@Model.SelectedUserId">Benutzerrechte verwalten</a>
             }
         </form>
 
         @if (Model.SelectedUserId != Model.Context.Beid)
         {
-            <form method="post" asp-page-handler="DeleteUser" onsubmit="return confirm('Soll dieser Benutzer wirklich gelöscht werden?');">
+            <form method="post" asp-page-handler="DeleteUser" class="kern-card" style="padding:16px" onsubmit="return confirm('Soll dieser Benutzer wirklich gelöscht werden?');">
                 <input type="hidden" asp-for="UserType" />
                 <input type="hidden" asp-for="SelectedUserId" />
                 <input type="hidden" asp-for="Constraint" />
-                <button type="submit">Benutzer löschen</button>
+                <button class="kern-button kern-button--tertiary" type="submit">Benutzer löschen</button>
             </form>
         }
     }

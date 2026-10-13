@@ -20,3 +20,95 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.kern-breadcrumbs {
+  margin-bottom: 24px;
+}
+
+.kern-breadcrumbs .breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: #666;
+  font-size: 14px;
+}
+
+.kern-breadcrumbs .breadcrumb li {
+  display: inline-flex;
+  align-items: center;
+}
+
+.kern-breadcrumbs .breadcrumb li:not(:last-child)::after {
+  content: ">";
+  margin: 0 8px;
+  color: #666;
+}
+
+.kern-breadcrumbs .breadcrumb li[aria-current="step"] {
+  color: var(--kern-color-action-default-contextual, #1A3DA5);
+  font-weight: 700;
+}
+
+a,
+a:link,
+a:visited {
+  color: var(--kern-color-action-default-contextual, #1A3DA5) !important;
+}
+
+a:hover,
+a:focus-visible,
+a:active {
+  color: var(--kern-color-action-default-contextual, #1A3DA5) !important;
+}
+
+.kern-link,
+.kern-link:link,
+.kern-link:visited,
+.kern-link:hover,
+.kern-link:focus-visible,
+.kern-link:active {
+  color: var(--kern-color-action-default-contextual, #1A3DA5) !important;
+}
+
+.kern-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 8px 16px;
+  border: 1px solid var(--kern-color-action-default-contextual, #1A3DA5);
+  border-radius: 4px;
+  background: transparent;
+  color: var(--kern-color-action-default-contextual, #1A3DA5);
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.kern-button:hover,
+.kern-button:focus-visible,
+.kern-button:active {
+  text-decoration: none;
+}
+
+.kern-button--primary {
+  background: var(--kern-color-action-default-contextual, #1A3DA5);
+  color: #fff;
+}
+
+.kern-button--primary:visited,
+.kern-button--primary:hover,
+.kern-button--primary:focus-visible,
+.kern-button--primary:active {
+  color: #fff !important;
+}
+
+.kern-button--secondary:hover,
+.kern-button--secondary:focus-visible,
+.kern-button--tertiary:hover,
+.kern-button--tertiary:focus-visible {
+  background: var(--kern-color-action-hover-background-contextual, #E8ECF7);
+}

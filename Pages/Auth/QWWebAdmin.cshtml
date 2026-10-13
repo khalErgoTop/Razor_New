@@ -4,20 +4,20 @@
     ViewData["Title"] = "Administration";
 }
 
-<nav aria-label="Brotkrümelnavigation">
-    <ol class="breadcrumb"><li><a asp-page="/Index">Start</a></li><li aria-current="page">Administration</li></ol>
+<nav class="kern-breadcrumbs" aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb"><li><a class="kern-link" asp-page="/Index">Start</a></li><li aria-current="page">Administration</li></ol>
 </nav>
 
-<section class="pageContent">
-    <h1>Administration</h1>
+<section class="pageContent kern-stack">
+    <h1 class="kern-heading-1">Administration</h1>
     @if (!string.IsNullOrWhiteSpace(Model.Hint))
     {
-        <p class="leitbox">@Model.Hint</p>
+        <div class="kern-alert kern-alert--info"><div class="kern-alert__body">@Model.Hint</div></div>
     }
-    <ul>
+    <ul class="kern-list kern-card" style="padding:16px; list-style:none">
         @foreach (var link in Model.Links)
         {
-            <li><a asp-page="@link.Page">@link.Text</a></li>
+            <li><a class="kern-button kern-button--secondary" asp-page="@link.Page">@link.Text</a></li>
         }
     </ul>
 </section>

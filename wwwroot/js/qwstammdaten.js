@@ -1,5 +1,7 @@
 ﻿(() => {
     const pageUrl = window.location.pathname;
+    let activeDialog = null;
+    let lastFocusedElement = null;
 
     function addOptions(list, values) {
         list.replaceChildren(...values.map(value => {
@@ -57,7 +59,37 @@
         });
     }
 
+    function closeDialog(dialog) {
+        if (!dialog) return;
+        dialog.hidden = true;
+        dialog.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('legacy-dialog-open');
+        if (lastFocusedElement instanceof HTMLElement) lastFocusedElement.focus();
+        activeDialog = null;
+    }
+
+    function openDialog(dialog, opener) {
+        if (!dialog) return;
+        document.querySelectorAll('[role="dialog"]:not([hidden])').forEach(openDialogElement => closeDialog(openDialogElement));
+        lastFocusedElement = opener;
+        activeDialog = dialog;
+        dialog.hidden = false;
+        dialog.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('legacy-dialog-open');
+        dialog.querySelector('input, select, textarea, button')?.focus();
+    }
+
     function initialiseLegacyInteractions() {
+        const facilityListOpener = document.getElementById('FacilityListOpenener');
+        const facilities = document.getElementById('Facilities');
+        if (facilityListOpener && facilities) {
+            facilityListOpener.addEventListener('click', () => {
+                const expanded = facilityListOpener.getAttribute('aria-expanded') === 'true';
+                facilityListOpener.setAttribute('aria-expanded', String(!expanded));
+                facilities.hidden = expanded;
+            });
+        }
+
         document.querySelectorAll('a[href^="tel:"]').forEach(link => {
             link.classList.add('mobile-phone-link');
         });
@@ -74,10 +106,6 @@
             panel.hidden = true;
         });
 
-        const closeDialog = dialog => {
-            dialog.hidden = true;
-            document.body.classList.remove('legacy-dialog-open');
-        };
         document.addEventListener('click', event => {
             const opener = event.target.closest('[data-dialog-target]');
             if (!opener) return;
@@ -87,10 +115,8 @@
                 console.warn(`Dialogziel nicht gefunden: ${target}`);
                 return;
             }
-                document.querySelectorAll('[role="dialog"]').forEach(closeDialog);
-                dialog.hidden = false;
-                document.body.classList.add('legacy-dialog-open');
-                dialog.querySelector('input, select, textarea, button')?.focus();
+            event.preventDefault();
+            openDialog(dialog, opener);
         });
         document.querySelectorAll('.dialog-close').forEach(button => {
             button.addEventListener('click', () => closeDialog(button.closest('[role="dialog"]')));
@@ -98,6 +124,10 @@
         document.addEventListener('keydown', event => {
             if (event.key !== 'Escape') return;
             document.querySelectorAll('[role="dialog"]:not([hidden])').forEach(closeDialog);
+        });
+        document.addEventListener('click', event => {
+            if (!activeDialog || event.target === activeDialog || activeDialog.contains(event.target)) return;
+            if (!event.target.closest('[data-dialog-target]')) closeDialog(activeDialog);
         });
     }
 

@@ -4,43 +4,43 @@
     ViewData["Title"] = "Hilfetexte bearbeiten";
 }
 
-<nav aria-label="Brotkrümelnavigation">
+<nav class="kern-breadcrumbs" aria-label="Brotkrümelnavigation">
     <ol class="breadcrumb">
-        <li><a asp-page="/Index">Start</a></li>
-        <li><a asp-page="/Auth/QWWebAdmin">Administration</a></li>
+        <li><a class="kern-link" asp-page="/Index">Start</a></li>
+        <li><a class="kern-link" asp-page="/Auth/QWWebAdmin">Administration</a></li>
         <li aria-current="page">Hilfetexte bearbeiten</li>
     </ol>
 </nav>
 
-<section class="pageContent">
-    <h1>Hilfetexte bearbeiten</h1>
+<section class="pageContent kern-stack">
+    <h1 class="kern-heading-1">Hilfetexte bearbeiten</h1>
     @if (Model.Message is not null)
     {
-        <p role="status">@Model.Message</p>
+        <div class="kern-alert kern-alert--success" role="status"><div class="kern-alert__body">@Model.Message</div></div>
     }
     <form method="post">
-        <fieldset>
+        <fieldset class="kern-card" style="padding:16px">
             <legend>Texttyp</legend>
             <label><input type="radio" name="HelpText" value="false" checked="@(Model.HelpText == false)" onchange="this.form.submit()" /> Leittext bearbeiten</label>
             <label><input type="radio" name="HelpText" value="true" checked="@(Model.HelpText)" onchange="this.form.submit()" /> Hilfetext bearbeiten</label>
         </fieldset>
-        <div>
+        <div class="kern-card" style="padding:16px">
             <label for="SelectedPage">Seiten</label>
-            <select id="SelectedPage" name="SelectedPage" size="15" onchange="this.form.submit()">
+            <select class="kern-form-input__select" id="SelectedPage" name="SelectedPage" size="15" onchange="this.form.submit()">
                 @foreach (var pageItem in Model.Pages)
                 {
                     <option value="@pageItem.Value" selected="@(pageItem.Value == Model.SelectedPage)">@pageItem.Text</option>
                 }
             </select>
         </div>
-        <div>
+        <div class="kern-card" style="padding:16px">
             <label for="Text">@(Model.HelpText ? "Hilfetext" : "Leittext")</label>
-            <textarea id="Text" name="Text" rows="18" cols="80">@Model.Text</textarea>
+            <textarea class="kern-form-input__input" id="Text" name="Text" rows="18" cols="80">@Model.Text</textarea>
             @if (Model.HelpText)
             {
                 <div>
                     <label for="Title">Link</label>
-                    <input id="Title" name="Title" value="@Model.Title" />
+                    <input class="kern-form-input__input" id="Title" name="Title" value="@Model.Title" />
                     <label><input type="checkbox" name="Visible" value="true" checked="@(Model.Visible)" /> HilfeText versteckt</label>
                 </div>
             }
@@ -49,6 +49,6 @@
                 <label><input type="checkbox" name="Visible" value="true" checked="@(Model.Visible)" /> Leittext aufgeklappt</label>
             }
         </div>
-        <button type="submit" asp-page-handler="Save">Übernehmen</button>
+        <button class="kern-button kern-button--primary" type="submit" asp-page-handler="Save">Übernehmen</button>
     </form>
 </section>

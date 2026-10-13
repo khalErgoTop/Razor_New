@@ -1,0 +1,203 @@
+#PnlStammDaten,
+#M_MC_PnlStammDaten {
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+#FacilityListOpenener.qw-stammdaten-toggle {
+    position: static;
+    display: inline-flex;
+    width: auto !important;
+    min-height: 44px;
+    padding: 10px 16px;
+    margin: 0 0 12px;
+    border: 1px solid var(--kern-color-action-default-contextual, #2044AA);
+    border-radius: 4px;
+    background: var(--kern-color-action-default-contextual, #2044AA);
+    color: #fff;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#Facilities {
+    position: static;
+    display: block;
+    width: auto;
+    margin: 0 0 24px;
+    padding: 16px;
+    border: 1px solid var(--kern-color-layout-border, #d8d8d8);
+    border-radius: 8px;
+    background: var(--kern-color-layout-background, #fff);
+}
+
+#Facilities #LblFacilityLabel {
+    display: block !important;
+    margin-bottom: 12px;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.facility-filter {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: end;
+    gap: 8px;
+    margin-bottom: 16px;
+}
+
+.facility-filter label {
+    flex-basis: 100%;
+    font-weight: 600;
+}
+
+.facility-filter input {
+    flex: 1 1 260px;
+    min-height: 44px;
+    padding: 8px 12px;
+}
+
+.facility-filter button,
+#PageControls .ctlOpener,
+#PageControls button {
+    min-height: 44px;
+    padding: 10px 16px;
+    border: 1px solid var(--kern-color-action-default-contextual, #2044AA);
+    border-radius: 4px;
+    background: var(--kern-color-action-default-contextual, #2044AA);
+    color: #fff;
+    font: inherit;
+    cursor: pointer;
+}
+
+#GridFacs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#GridFacs li {
+    margin: 0;
+    list-style: none;
+}
+
+#GridFacs a {
+    display: block;
+    min-height: 44px;
+    padding: 10px 12px;
+    border: 1px solid var(--kern-color-layout-border, #d8d8d8);
+    border-radius: 4px;
+    background: #fff;
+    text-decoration: none;
+}
+
+#GridFacs li.selected a,
+#GridFacs a:hover,
+#GridFacs a:focus-visible {
+    border-color: var(--kern-color-action-default-contextual, #2044AA);
+    background: #eef2fb;
+}
+
+#PageControls,
+#M_MC_FFView_FacCtls {
+    position: static !important;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    width: auto !important;
+    margin: 0 0 24px;
+    padding: 16px;
+    border: 1px solid var(--kern-color-layout-border, #d8d8d8);
+    border-radius: 8px;
+    background: #f7f8fb;
+    box-shadow: none;
+}
+
+#M_MC_FFView_FacCtls .ctlOpener,
+#PageControls .ctlOpener {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto !important;
+    min-height: 44px;
+    margin: 0 !important;
+    padding: 10px 14px;
+    border: 1px solid var(--kern-color-action-default-contextual, #2044AA);
+    border-radius: 4px;
+    background: #fff;
+    color: var(--kern-color-action-default-contextual, #2044AA);
+    font: inherit;
+    font-size: 1rem !important;
+    cursor: pointer;
+    filter: none !important;
+}
+
+#M_MC_FFView_FacCtls .ctlOpener:hover,
+#M_MC_FFView_FacCtls .ctlOpener:focus-visible,
+#PageControls .ctlOpener:hover,
+#PageControls .ctlOpener:focus-visible {
+    background: #e8ecf7;
+    opacity: 1;
+}
+
+#M_MC_PnlStammDaten .ctlPanel {
+    position: static;
+}
+
+.pnlEdit[role="dialog"] {
+    position: fixed;
+    z-index: 1000;
+    inset: 8vh 5vw auto;
+    max-height: 84vh;
+    overflow: auto;
+    width: auto;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 24px;
+    border: 1px solid #b9bfd0;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 16px 48px rgb(0 0 0 / 25%);
+}
+
+body.legacy-dialog-open::before {
+    content: "";
+    position: fixed;
+    z-index: 999;
+    inset: 0;
+    background: rgb(0 0 0 / 42%);
+}
+
+.pnlEdit[role="dialog"] h2 {
+    margin-top: 0;
+}
+
+.pnlEdit[role="dialog"] .command.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+@media (max-width: 700px) {
+    #M_MC_FFView_FacCtls,
+    #PageControls {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    #M_MC_FFView_FacCtls .ctlOpener,
+    #PageControls .ctlOpener,
+    #PageControls button {
+        width: 100% !important;
+    }
+
+    .pnlEdit[role="dialog"] {
+        inset: 2vh 2vw;
+        max-height: 96vh;
+        padding: 16px;
+    }
+}

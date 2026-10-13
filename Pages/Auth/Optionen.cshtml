@@ -4,15 +4,15 @@
     ViewData["Title"] = "Optionen";
 }
 
-<nav aria-label="Brotkrümelnavigation">
-    <ol class="breadcrumb"><li><a asp-page="/Index">Start</a></li><li><a asp-page="/Auth/QWWebAdmin">Administration</a></li><li aria-current="page">Optionen</li></ol>
+<nav class="kern-breadcrumbs" aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb"><li><a class="kern-link" asp-page="/Index">Start</a></li><li><a class="kern-link" asp-page="/Auth/QWWebAdmin">Administration</a></li><li aria-current="page">Optionen</li></ol>
 </nav>
 
-<section class="pageContent">
-    <h1>Optionen</h1>
-    <form method="get">
+<section class="pageContent kern-stack">
+    <h1 class="kern-heading-1">Optionen</h1>
+    <form method="get" class="kern-card" style="padding:16px">
         <label for="category">Kategorie</label>
-        <select id="category" name="Category">
+        <select class="kern-form-input__select" id="category" name="Category">
             <option value="">Alle</option>
             @foreach (var category in Model.Categories)
             {
@@ -20,10 +20,10 @@
             }
         </select>
         <label for="search">Suche</label>
-        <input id="search" name="Search" value="@Model.Search" />
-        <button type="submit">Suchen</button>
+        <input class="kern-form-input__input" id="search" name="Search" value="@Model.Search" />
+        <button class="kern-button kern-button--primary" type="submit">Suchen</button>
     </form>
-    <table>
+    <table class="kern-table">
         <thead><tr><th>Einstellung</th><th>Wert</th><th>Beschreibung</th><th>Ändern</th></tr></thead>
         <tbody>
         @foreach (var option in Model.Options.Data)
@@ -43,9 +43,9 @@
                         }
                         else
                         {
-                            <input name="changedValue" value="@value" />
+                            <input class="kern-form-input__input" name="changedValue" value="@value" />
                         }
-                        <button type="submit">Speichern</button>
+                        <button class="kern-button kern-button--primary" type="submit">Speichern</button>
                     </form>
                 </td>
             </tr>
@@ -54,17 +54,17 @@
     </table>
     <p>@Model.Options.ItemsCount Optionen gefunden.</p>
 
-    <h2>Sonderoptionen</h2>
-    <form method="post" asp-page-handler="SaveSpecial">
+    <h2 class="kern-heading-2">Sonderoptionen</h2>
+    <form method="post" asp-page-handler="SaveSpecial" class="kern-card" style="padding:16px">
         <div>
             <label for="mapsSearchService">Maps-Suchdienst</label>
-            <select id="mapsSearchService" name="mapsSearchService">
+            <select class="kern-form-input__select" id="mapsSearchService" name="mapsSearchService">
                 <option value="bing" selected="@(Model.MapsSearchService == "bing")">bing</option>
                 <option value="google" selected="@(Model.MapsSearchService == "google")">google</option>
                 <option value="berlin.de" selected="@(Model.MapsSearchService == "berlin.de")">berlin.de</option>
             </select>
         </div>
-        <fieldset>
+        <fieldset class="kern-fieldset">
             <legend>Anzeigbare Stammdaten</legend>
             @foreach (var option in Model.DisplayOptions)
             {
@@ -74,6 +74,6 @@
                 </label>
             }
         </fieldset>
-        <button type="submit">Sonderoptionen speichern</button>
+        <button class="kern-button kern-button--primary" type="submit">Sonderoptionen speichern</button>
     </form>
 </section>

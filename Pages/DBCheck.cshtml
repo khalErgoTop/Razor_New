@@ -13,8 +13,8 @@ else
 {
     <p class="@(Model.Result.IsCurrent ? "dbOk" : "dbFailed")">
         @(Model.Result.IsCurrent
-            ? "Alles Ok. Die Datenbankversion ist aktuell."
-            : "Problem. Die Datenbankversion ist veraltet. Das Ausführen von TOPqwWeb wird zu Fehlern führen.")
+            ? "Die Datenbankversion ist aktuell."
+            : "Die Datenbankversion ist veraltet. Das Ausführen von TOPqwWeb kann zu Fehlern führen.")
     </p>
 }
 

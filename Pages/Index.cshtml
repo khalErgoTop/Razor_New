@@ -2,6 +2,57 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Startseite";
+    ViewData["UseLegacyTheme"] = false;
 }
 
-@Model.LandingContent
+<nav class="kern-breadcrumbs" aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb">
+        <li aria-current="page"><span class="kern-icon kern-icon--home" aria-hidden="true"></span> Start</li>
+    </ol>
+</nav>
+
+<main class="home-page kern-stack">
+    <section class="home-page__hero kern-card kern-card--surface" aria-labelledby="home-title">
+        <div class="kern-card__container">
+            <div class="home-page__hero-content">
+@*                 <span class="kern-badge kern-badge--info"><span class="kern-icon kern-icon--home" aria-hidden="true"></span><span class="kern-label">TOPqwWeb</span></span>
+ *@                <h1 id="home-title" class="kern-heading-1">Willkommen</h1>
+                <p class="kern-body">Finden Sie passende Leistungsangebote und Einrichtungen in Ihrer Umgebung.</p>
+            </div>
+            <div class="home-page__actions kern-btn-wrapper">
+                <a class="kern-btn kern-btn--primary" asp-page="/Sucharten"><span class="kern-icon kern-icon--search" aria-hidden="true"></span><span class="kern-label">Leistungsangebote finden</span></a>
+                <a class="kern-btn kern-btn--secondary" asp-page="/Auflistung" asp-route-Typ="Typ"><span class="kern-icon kern-icon--category" aria-hidden="true"></span><span class="kern-label">Auflistung öffnen</span></a>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-page__content kern-card" aria-labelledby="home-content-title">
+        <div class="kern-card__container">
+            <div class="kern-card__header">
+                <div>
+@*                     <p class="home-page__eyebrow">Informationen</p>
+ *@                    <span class="kern-icon kern-icon--info" aria-hidden="true"></span><h2 id="home-content-title" class="kern-title">Aktuelle Hinweise</h2>
+                </div>
+                
+            </div>
+            <div class="home-page__landing-content">
+                @Model.LandingContent
+            </div>
+        </div>
+    </section>
+</main>
+
+<style>
+    .home-page { max-width: 1100px; margin: 0 auto; padding: 1rem 0 3rem; }
+    .home-page__hero { background: var(--kern-color-layout-background-level-1); }
+    .home-page__hero-content { max-width: 42rem; }
+    .home-page__hero h1 { margin: 1rem 0 .5rem; }
+    .home-page__hero p { margin-bottom: 0; }
+    .home-page__actions { margin-top: 1.5rem; }
+    .home-page__content { margin-top: 1.5rem; }
+    .home-page__eyebrow { color: var(--kern-color-action-default-contextual); font-size: .75rem; font-weight: 700; letter-spacing: .08em; margin: 0 0 .35rem; text-transform: uppercase; }
+    .home-page__landing-content { line-height: 1.6; }
+    @@media (max-width: 600px) {
+        .home-page__actions { align-items: stretch; flex-direction: column; }
+    }
+</style>

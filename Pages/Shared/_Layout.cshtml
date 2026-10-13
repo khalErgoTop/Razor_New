@@ -1,72 +1,4 @@
-﻿@* @inject TOPqwWeb_Core.Infrastructure.Theming.ThemeAssetService ThemeAssets
-@inject TOPqwWeb_Core.Infrastructure.Security.CurrentUserAccessor CurrentUser
-@{
-    var themeName = ThemeAssets.ThemeName;
-}
-<!DOCTYPE html>
-<html lang="de" data-theme="@themeName">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - TOPqwWeb</title>
-    <link rel="stylesheet" href="@ThemeAssets.GetAssetPath("theme.css")" asp-append-version="true" />
-    <link rel="stylesheet" href="@ThemeAssets.GetAssetPath("menu.css")" asp-append-version="true" />
-    <link rel="stylesheet" href="@ThemeAssets.GetAssetPath("auflistung.css")" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/public.css" asp-append-version="true" />
-</head>
-<body>
-    <div id="DivBannerPlaceHolder"></div>
-    <div id="Page" class="page-shell">
-        <header class="razor-page-header page-header">
-            <partial name="_Header" />
-            <div class="page-header-main public-shell">
-                <a class="public-brand" asp-page="/Index" accesskey="0" aria-label="Startseite">TOPqwWeb</a>
-                <div class="application-title">@ViewData["Title"]</div>
-                <div class="header-actions">
-                    @if (CurrentUser.IsAuthenticated)
-                    {
-                        <span class="user-login">Angemeldet als @CurrentUser.Username</span>
-                        <a asp-page="/Logout">Abmelden</a>
-                    }
-                    else
-                    {
-                        <a asp-page="/Login">Anmelden</a>
-                    }
-                    <a href="#" class="layout-action" data-layout-action="contrast" aria-pressed="false">Kontrast</a>
-                </div>
-            </div>
-            <partial name="_Navigation" />
-        </header>
-
-        <div class="public-shell page-content">
-            <main role="main">
-                @RenderBody()
-            </main>
-        </div>
-
-        <partial name="_Footer" />
-    </div>
-
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script>
-        document.querySelector('.module-navigation-toggle')?.addEventListener('click', function () {
-            const menu = document.querySelector('.module-navigation-list');
-            const expanded = this.getAttribute('aria-expanded') === 'true';
-            this.setAttribute('aria-expanded', (!expanded).toString());
-            menu?.classList.toggle('is-open', !expanded);
-        });
-        document.querySelector('[data-layout-action="contrast"]')?.addEventListener('click', function (event) {
-            event.preventDefault();
-            document.documentElement.classList.toggle('high-contrast');
-            this.setAttribute('aria-pressed', document.documentElement.classList.contains('high-contrast').toString());
-        });
-    </script>
-
-    @await RenderSectionAsync("Scripts", required: false)
-</body>
-</html> *@
-
-@inject TOPqwWeb_Core.Infrastructure.Theming.ThemeAssetService ThemeAssets
+﻿@inject TOPqwWeb_Core.Infrastructure.Theming.ThemeAssetService ThemeAssets
 @inject TOPqwWeb_Core.Infrastructure.Security.CurrentUserAccessor CurrentUser
 @{
     var themeName = ThemeAssets.ThemeName;
@@ -81,6 +13,7 @@
     <!-- KERN CSS - muss VOR theme.css -->
     <link rel="stylesheet" href="~/lib/kern/kern.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/lib/kern/fonts/fira-sans.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
     @if (ViewData["UseLegacyTheme"] is true)
     {
@@ -93,13 +26,16 @@
 <body class="kern-level-0">
 
     <div id="Page" style="max-width: 1280px; margin: 0 auto; padding: 0 16px;">
-        <header style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:16px; padding:16px 0; border-bottom: 1px solid var(--kern-color-layout-border);">
-            <div style="display:flex; align-items:center; gap:16px">
-                
-                <span style="opacity:0.7">@ViewData["Title"]</span>
+        <header class="site-header">
+            <div class="site-brand">
+                <a class="site-brand__home" asp-page="/Index" accesskey="0" aria-label="Startseite">
+                    <img src="~/css/HH/Images/hamburg-de-logo.png" alt="Hamburg.de" />
+                    @* <span>TOPqwWeb</span> *@
+                </a>
+                <span class="site-brand__title">@ViewData["Title"]</span>
             </div>
 
-            <div style="display:flex; align-items:center; gap:8px">
+            <div class="site-header__actions">
                 @if (CurrentUser.IsAuthenticated)
                 {
                     <span class="kern-badge">@CurrentUser.Username</span>
@@ -117,7 +53,7 @@
 
         <partial name="_Navigation" />
 
-        <main role="main" style="padding:24px 0">
+        <main role="main" class="site-main">
             @RenderBody()
         </main>
 
@@ -141,6 +77,53 @@
                 this.setAttribute('aria-pressed', document.documentElement.classList.contains('high-contrast').toString());
             });
     </script>
+
+    <style>
+        .site-header {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--kern-color-layout-border);
+        }
+
+        .site-brand,
+        .site-header__actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .site-brand__home {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: inherit;
+            font-size: 1.35rem;
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .site-brand__home img {
+            display: block;
+            width: auto;
+            height: 48px;
+        }
+
+        .site-brand__title {
+            opacity: .7;
+        }
+
+        .site-main {
+            padding: 24px 0;
+        }
+
+        .site-header__actions {
+            flex-wrap: wrap;
+        }
+    </style>
 
     @await RenderSectionAsync("Scripts", required: false)
 </body>

@@ -60,6 +60,32 @@ namespace TOPqwWeb_Core.Pages.QM
             return Page();
         }
 
+        
+
+        public async Task<IActionResult> OnPostSendAsync(bool confirmSend, CancellationToken cancellationToken)
+        {
+            await OnGetAsync(cancellationToken);
+            if (QmBogen is null || !CanEdit || !confirmSend || QmBogen.Status is not (2 or 6)) return Forbid();
+
+            var questions = Oberkategorien.SelectMany(category => category.Unterkategorien).SelectMany(category => category.Fragen);
+            foreach (var frage in questions.Where(frage => frage.Mussfeld))
+            {
+                if (frage.FrageWert is null || string.IsNullOrWhiteSpace(frage.FrageWert.Wert))
+                {
+                    SaveMessage = "Bitte füllen Sie zunächst alle Pflichtfelder aus.";
+                    return Page();
+                }
+            }
+
+            if (!await _service.SetBogenVersandtAsync(QmBogen.ID, QmBogen.EIID, cancellationToken))
+            {
+                SaveMessage = "Der QM-Bogen konnte nicht versendet werden.";
+                return Page();
+            }
+
+            return RedirectToPage();
+        }
+
         public async Task<IActionResult> OnPostSaveAsync(CancellationToken cancellationToken)
         {
             await OnGetAsync(cancellationToken);
@@ -105,30 +131,6 @@ namespace TOPqwWeb_Core.Pages.QM
 
             SaveMessage = "gespeichert";
             return Page();
-        }
-
-        public async Task<IActionResult> OnPostSendAsync(bool confirmSend, CancellationToken cancellationToken)
-        {
-            await OnGetAsync(cancellationToken);
-            if (QmBogen is null || !CanEdit || !confirmSend || QmBogen.Status is not (2 or 6)) return Forbid();
-
-            var questions = Oberkategorien.SelectMany(category => category.Unterkategorien).SelectMany(category => category.Fragen);
-            foreach (var frage in questions.Where(frage => frage.Mussfeld))
-            {
-                if (frage.FrageWert is null || string.IsNullOrWhiteSpace(frage.FrageWert.Wert))
-                {
-                    SaveMessage = "Bitte füllen Sie zunächst alle Pflichtfelder aus.";
-                    return Page();
-                }
-            }
-
-            if (!await _service.SetBogenVersandtAsync(QmBogen.ID, QmBogen.EIID, cancellationToken))
-            {
-                SaveMessage = "Der QM-Bogen konnte nicht versendet werden.";
-                return Page();
-            }
-
-            return RedirectToPage();
         }
 
         public static bool IsSimpleFormat(string? format) => format is "dbText" or "dbMemo" or "dbLong" or "dbBoolean" or "dbBool" or "dbReal" or "dbSingle" or "dbDouble";

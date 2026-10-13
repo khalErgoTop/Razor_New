@@ -4,19 +4,19 @@
     ViewData["Title"] = "Passwort ändern";
 }
 
-<nav aria-label="Brotkrümelnavigation">
+<nav class="kern-breadcrumbs" aria-label="Brotkrümelnavigation">
     <ol class="breadcrumb">
-        <li><a asp-page="/Index">Start</a></li>
-        <li><a asp-page="/Auth/QWWebAdmin">Administration</a></li>
+        <li><a class="kern-link" asp-page="/Index">Start</a></li>
+        <li><a class="kern-link" asp-page="/Auth/QWWebAdmin">Administration</a></li>
         <li aria-current="page">Passwort ändern</li>
     </ol>
 </nav>
 
-<section class="pageContent">
-    <h1>Passwort ändern</h1>
-    <div class="box">
-        <div class="password-info">@Html.Raw(Model.PasswordPolicy.GetHint())</div>
-        <form method="post">
+<section class="pageContent kern-stack">
+    <h1 class="kern-heading-1">Passwort ändern</h1>
+    <div class="box kern-card" style="padding:16px">
+        <div class="password-info kern-alert kern-alert--info"><div class="kern-alert__body">@Html.Raw(Model.PasswordPolicy.GetHint())</div></div>
+        <form method="post" class="kern-stack">
             @if (Model.IsAdministrativeChange)
             {
                 <input type="hidden" asp-for="UserId" />
@@ -27,23 +27,23 @@
                 {
                     <div>
                         <label asp-for="Input.AltesPasswort">Altes Passwort</label>
-                        <input asp-for="Input.AltesPasswort" type="password" autocomplete="current-password" />
+                        <input class="kern-form-input__input" asp-for="Input.AltesPasswort" type="password" autocomplete="current-password" />
                     </div>
                 }
                 <div>
                     <label asp-for="Input.NeuesPasswort">Neues Passwort</label>
-                    <input asp-for="Input.NeuesPasswort" type="password" autocomplete="new-password" />
+                        <input class="kern-form-input__input" asp-for="Input.NeuesPasswort" type="password" autocomplete="new-password" />
                 </div>
                 <div>
                     <label asp-for="Input.PasswortBestaetigung">Passwort bestätigen</label>
-                    <input asp-for="Input.PasswortBestaetigung" type="password" autocomplete="new-password" />
+                        <input class="kern-form-input__input" asp-for="Input.PasswortBestaetigung" type="password" autocomplete="new-password" />
                 </div>
                 @if (!string.IsNullOrWhiteSpace(Model.Message))
                 {
-                    <p class="@(Model.IsSuccess ? "confirmation-label" : "validation-summary-errors")">@Model.Message</p>
+                    <div class="kern-alert @(Model.IsSuccess ? "kern-alert--success" : "kern-alert--error")"><div class="kern-alert__body">@Model.Message</div></div>
                 }
-                <button type="submit" asp-page-handler="@(Model.IsAdministrativeChange ? "Administrative" : null)">Speichern</button>
-                <button type="submit" asp-page-handler="Cancel" formnovalidate>Abbrechen</button>
+                <button class="kern-button kern-button--primary" type="submit" asp-page-handler="@(Model.IsAdministrativeChange ? "Administrative" : null)">Speichern</button>
+                <button class="kern-button kern-button--secondary" type="submit" asp-page-handler="Cancel" formnovalidate>Abbrechen</button>
             </fieldset>
         </form>
     </div>

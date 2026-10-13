@@ -6,17 +6,17 @@
 
 <link rel="stylesheet" href="~/css/HH/AssistOptionen.css" />
 
-<nav aria-label="Brotkrümelnavigation">
+<nav class="kern-breadcrumbs" aria-label="Brotkrümelnavigation">
     <ol class="breadcrumb">
-        <li><a asp-page="/Index">Start</a></li>
-        <li><a asp-page="/Auth/QWWebAdmin">Administration</a></li>
+        <li><a class="kern-link" asp-page="/Index">Start</a></li>
+        <li><a class="kern-link" asp-page="/Auth/QWWebAdmin">Administration</a></li>
         <li aria-current="page">Assistierte Suche Optionen</li>
     </ol>
 </nav>
 
-<section id="AssistOptionen" class="pageContent">
-    <div class="assist-settings">
-        <h6>Suchassistent – Navigation</h6>
+<section id="AssistOptionen" class="pageContent kern-stack">
+    <div class="assist-settings kern-card" style="padding:16px">
+        <h2 class="kern-heading-2">Suchassistent – Navigation</h2>
         <form method="post" asp-page-handler="SaveAssistSettings">
             <label>
                 <input asp-for="AssistVisible" type="checkbox" />
@@ -24,8 +24,8 @@
             </label>
             <br />
             <label asp-for="AssistName">Anzeigename im Menü</label>
-            <input asp-for="AssistName" class="assist-name" />
-            <button type="submit">Navbar-Einstellungen speichern</button>
+            <input asp-for="AssistName" class="assist-name kern-form-input__input" />
+            <button class="kern-button kern-button--primary" type="submit">Navbar-Einstellungen speichern</button>
             @if (Model.SettingsSaved)
             {
                 <span class="confirmation-label">Gespeichert.</span>
@@ -34,10 +34,10 @@
     </div>
     <br />
 
-    <h4>Hier können Sie den Anzeigennamen eines Einrichtungstyps, seine Kategorie und seine Beschreibung bearbeiten.</h4>
-    <div class="container">
+    <h2 class="kern-heading-2">Einrichtungstypen bearbeiten</h2>
+    <div class="container kern-card" style="padding:16px">
         <div class="services">
-            <ul id="lstServices">
+            <ul id="lstServices" class="kern-list">
                 @foreach (var service in Model.Services)
                 {
                     <li selected="@(Model.SelectedId == service.Id ? "selected" : null)">
@@ -47,21 +47,21 @@
             </ul>
         </div>
 
-        <div class="description">
+        <div class="description kern-stack">
             <form method="post" asp-page-handler="Apply">
                 <input type="hidden" asp-for="SelectedId" />
                 <label asp-for="Name">Anzeigename</label>
-                <input asp-for="Name" />
+                <input class="kern-form-input__input" asp-for="Name" />
                 <br /><br />
 
                 <label asp-for="Category">Kategorie</label>
-                <input asp-for="Category" />
+                <input class="kern-form-input__input" asp-for="Category" />
                 <br /><br />
 
                 <label asp-for="Description">Beschreibung</label>
-                <textarea asp-for="Description" rows="10"></textarea>
+                <textarea class="kern-form-input__input" asp-for="Description" rows="10"></textarea>
                 <br />
-                <button id="btnApply" type="submit">Übernehmen</button>
+                <button id="btnApply" class="kern-button kern-button--primary" type="submit">Übernehmen</button>
                 @if (Model.ServiceSaved)
                 {
                     <span class="confirmation-label">Aktion erfolgreich!</span>

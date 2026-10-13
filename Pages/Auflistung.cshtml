@@ -1,82 +1,127 @@
-﻿@page
+@page
 @model TOPqwWeb_Core.Pages.AuflistungModel
 @{
     ViewData["Title"] = Model.Listing.Title;
+    ViewData["UseLegacyTheme"] = false;
 }
 
-<nav aria-label="Brotkrümelnavigation" style="margin-bottom:24px">
-    <ol style="list-style:none; padding:0; margin:0; display:flex; gap:8px; flex-wrap:wrap; font-size:15px">
-        <li><a asp-page="/Index">Start</a> <span style="margin-left:8px">/</span></li>
-        <li><a asp-page="/Sucharten">Leistungsangebote</a> <span style="margin-left:8px">/</span></li>
-        <li aria-current="page" style="font-weight:600">@Model.Listing.Title</li>
+<nav class="kern-breadcrumbs" aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb">
+        <li><a class="kern-link" asp-page="/Index"><span class="kern-icon kern-icon--home" aria-hidden="true"></span> Start</a></li>
+        <li><a class="kern-link" asp-page="/Sucharten">Leistungsangebote</a></li>
+        <li aria-current="page">@Model.Listing.Title</li>
     </ol>
 </nav>
 
-<h1 style="margin:0 0 24px; font-size:28px; font-weight:700">@Model.Listing.Title</h1>
+<main class="listing-page kern-stack">
+    <header class="listing-page__header">
+        <div>
+            <p class="listing-page__eyebrow">Übersicht</p>
+            <h1 class="kern-heading-1">@Model.Listing.Title</h1>
+            <p class="kern-body">Wählen Sie eine Kategorie aus, um passende Leistungsangebote und Einrichtungen anzuzeigen.</p>
+        </div>
+        <span class="kern-badge kern-badge--info"><span class="kern-icon kern-icon--category" aria-hidden="true"></span><span class="kern-label">Auflistung</span></span>
+    </header>
 
-<div>
-    @foreach (var category in Model.Listing.Categories)
-    {
-        <ul class="superCategory" role="list">
-            <li role="listitem">
-                <div class="sc00" tabindex="0" role="button" aria-expanded="true" aria-label="Unterkategorie ein-/ausblenden"><h2>@category.Name</h2></div>
-                <ul class="subCategory01" role="list">
-                    @foreach (var group in category.Groups)
-                    {
-                        <li role="listitem">
-                            <div class="sc01" tabindex="0" role="button" aria-expanded="true" aria-label="Leistungen ein-/ausblenden">@group.Name</div>
-                            <ul class="facilityItem" role="list">
-                                @foreach (var facility in group.Facilities)
-                                {
-                                    var facilityUrl = Url.Page("/Stammdaten", new { EIID = facility.EIID, STUID = facility.STUID });
-                                    <li>
-                                        <div class="fci">
-                                            <div class="divAuflistungEinrichtung">
-                                                <a href="@facilityUrl">
-                                                    <span class="AuflistungEinrichtungname">@facility.Name</span>
-                                                    @if (!string.IsNullOrWhiteSpace(facility.FacilityIndicator))
-                                                    {
-                                                        <span class="AuflistungEinrichtungkennzeichen">(@facility.FacilityIndicator)</span>
-                                                    }
-                                                    <div class="divAuflistungEinrichtungAdresse"><span class="addr">@facility.Address</span></div>
-                                                </a>
-                                            </div>
-                                            @if (facility.AdditionalLocations.Count > 0)
-                                            {
-                                                <div class="wtStt">
-                                                    <div class="wtStt label">weitere Standorte</div>
-                                                    <div class="wtSttToggle" tabindex="0" role="button" aria-expanded="false" aria-label="Weitere Standorte ein-/ausblenden">toggle</div>
-                                                    <ul class="sub Fci">
-                                                        @foreach (var location in facility.AdditionalLocations)
+    <section class="listing-page__content" aria-label="Leistungsangebote">
+        @foreach (var category in Model.Listing.Categories)
+        {
+            <article class="listing-category kern-card" aria-labelledby="category-@category.GetHashCode()">
+                <div class="kern-card__container">
+                    <button id="category-@category.GetHashCode()" class="sc00 listing-toggle kern-btn kern-btn--tertiary" type="button" aria-expanded="false" aria-label="Unterkategorie ein- oder ausblenden">
+                        <span class="kern-icon kern-icon--category" aria-hidden="true"></span>
+                        <span class="kern-label">@category.Name</span>
+                        <span class="kern-icon kern-icon--arrow-down listing-toggle__arrow" aria-hidden="true"></span>
+                    </button>
+                    <ul class="subCategory01 listing-groups kern-list" role="list" style="display:none">
+                        @foreach (var group in category.Groups)
+                        {
+                            <li class="listing-group" role="listitem">
+                                <button class="sc01 listing-subtoggle kern-btn kern-btn--secondary" type="button" aria-expanded="false" aria-label="Leistungen ein- oder ausblenden">
+                                    <span class="kern-icon kern-icon--arrow-forward" aria-hidden="true"></span>
+                                    <span class="kern-label">@group.Name</span>
+                                </button>
+                                <ul class="facilityItem listing-facilities kern-list" role="list" style="display:none">
+                                    @foreach (var facility in group.Facilities)
+                                    {
+                                        var facilityUrl = Url.Page("/Stammdaten", new { EIID = facility.EIID, STUID = facility.STUID });
+                                        <li class="facility-entry" role="listitem">
+                                            <div class="fci kern-card kern-card--surface">
+                                                <a class="facility-entry__link kern-link" href="@facilityUrl">
+                                                    <span class="facility-entry__icon kern-icon kern-icon--location" aria-hidden="true"></span>
+                                                    <span class="facility-entry__details">
+                                                        <strong class="AuflistungEinrichtungname">@facility.Name</strong>
+                                                        @if (!string.IsNullOrWhiteSpace(facility.FacilityIndicator))
                                                         {
-                                                            var locationUrl = Url.Page("/Stammdaten", new { EIID = location.EIID, STUID = location.STUID });
-                                                            <li>
-                                                                <div class="sub fci">
-                                                                    <div class="divAuflistungEinrichtung">
-                                                                        <a href="@locationUrl">
-                                                                            <span class="AuflistungEinrichtungname">@location.Name</span>
-                                                                            <div class="divAuflistungEinrichtungAdresse"><span class="addr">@location.Address</span></div>
-                                                                        </a>
-                                                                    </div>
-                                                                </div>
-                                                            </li>
+                                                            <span class="kern-badge kern-badge--small kern-badge--info"><span class="kern-label">@facility.FacilityIndicator</span></span>
                                                         }
-                                                    </ul>
-                                                </div>
-                                            }
-                                        </div>
-                                    </li>
-                                }
-                            </ul>
-                        </li>
-                    }
-                </ul>
-            </li>
-        </ul>
+                                                        <span class="divAuflistungEinrichtungAdresse kern-body"><span class="addr">@facility.Address</span></span>
+                                                    </span>
+                                                    <span class="kern-icon kern-icon--arrow-forward" aria-hidden="true"></span>
+                                                </a>
+                                                @if (facility.AdditionalLocations.Count > 0)
+                                                {
+                                                    <div class="wtStt additional-locations">
+                                                        <button class="wtSttToggle kern-btn kern-btn--tertiary" type="button" aria-expanded="false" aria-label="Weitere Standorte ein- oder ausblenden">
+                                                            <span class="kern-icon kern-icon--dehaze" aria-hidden="true"></span>
+                                                            <span class="kern-label">@facility.AdditionalLocations.Count weitere Standorte</span>
+                                                            <span class="kern-icon kern-icon--arrow-down" aria-hidden="true"></span>
+                                                        </button>
+                                                        <ul class="sub Fci kern-list" role="list" style="display:none">
+                                                            @foreach (var location in facility.AdditionalLocations)
+                                                            {
+                                                                var locationUrl = Url.Page("/Stammdaten", new { EIID = location.EIID, STUID = location.STUID });
+                                                                <li>
+                                                                    <a class="additional-location kern-link" href="@locationUrl">
+                                                                        <span class="kern-icon kern-icon--location" aria-hidden="true"></span>
+                                                                        <span><strong>@location.Name</strong><span class="kern-body">@location.Address</span></span>
+                                                                        <span class="kern-icon kern-icon--arrow-forward" aria-hidden="true"></span>
+                                                                    </a>
+                                                                </li>
+                                                            }
+                                                        </ul>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </li>
+                                    }
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </article>
+        }
+    </section>
+</main>
+
+<style>
+    .listing-page { max-width: 1100px; margin: 0 auto; padding: 1rem 0 3rem; }
+    .listing-page__header { align-items: flex-start; display: flex; gap: 1.5rem; justify-content: space-between; margin-bottom: 1.5rem; }
+    .listing-page__header h1 { margin: 0 0 .5rem; }
+    .listing-page__header p { margin-bottom: 0; max-width: 42rem; }
+    .listing-page__eyebrow { color: var(--kern-color-action-default-contextual); font-size: .75rem; font-weight: 700; letter-spacing: .08em; margin: 0 0 .35rem !important; text-transform: uppercase; }
+    .listing-page__content { display: grid; gap: 1rem; }
+    .listing-toggle, .listing-subtoggle, .wtSttToggle { align-items: center; display: flex; gap: .75rem; justify-content: flex-start; text-align: left; width: 100%; }
+    .listing-toggle { font-size: 1.1rem; font-weight: 700; padding: .5rem 0; }
+    .listing-toggle__arrow, .wtSttToggle > .kern-icon:last-child { margin-left: auto; }
+    .listing-groups, .listing-facilities, .additional-locations { margin: .75rem 0 0; padding-left: 1rem; }
+    .listing-group { border-top: 1px solid var(--kern-color-layout-border); padding: .75rem 0 0; }
+    .listing-subtoggle { font-weight: 600; }
+    .facility-entry { list-style: none; margin-top: .6rem; }
+    .facility-entry .fci { padding: 0; }
+    .facility-entry__link, .additional-location { align-items: center; display: flex; gap: .75rem; padding: .85rem; text-decoration: none; }
+    .facility-entry__details, .additional-location > span:nth-child(2) { display: grid; gap: .25rem; min-width: 0; }
+    .facility-entry__details .kern-body, .additional-location .kern-body { color: var(--kern-color-layout-text-muted); display: block; font-size: .9rem; }
+    .facility-entry__link > .kern-icon:last-child, .additional-location > .kern-icon:last-child { margin-left: auto; }
+    .facility-entry__icon, .additional-location > .kern-icon:first-child { color: var(--kern-color-action-default-contextual); }
+    .additional-locations { border-top: 1px solid var(--kern-color-layout-border); margin: 0 .85rem; padding: .35rem 0 0; }
+    .additional-location { border-top: 1px solid var(--kern-color-layout-border); }
+    @@media (max-width: 600px) {
+        .listing-page__header { flex-direction: column; }
     }
-</div>
+</style>
 
 @section Scripts {
     <script src="~/js/auflistung.js" asp-append-version="true"></script>
 }
-

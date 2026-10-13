@@ -4,10 +4,29 @@
     ViewData["Title"] = "Assistierte Suche";
 }
 
-<nav aria-label="Brotkrümelnavigation">
+<nav class="kern-breadcrumbs" aria-label="Suchassistent-Schritte">
     <ol class="breadcrumb">
-        <li><a asp-page="/Index">Start</a></li>
-        <li aria-current="page">Assistierte Suche</li>
+        <li aria-current="@(string.IsNullOrWhiteSpace(Model.Suchtyp) ? "step" : null)">
+            <a class="kern-link" asp-page="/SuchAssistent">Suchtyp</a>
+        </li>
+        @if (!string.IsNullOrWhiteSpace(Model.Suchtyp))
+        {
+            <li aria-current="@(string.IsNullOrWhiteSpace(Model.Kategorie) ? "step" : null)">
+                <a class="kern-link" asp-page="/SuchAssistent" asp-route-Suchtyp="@Model.Suchtyp">Kategorien</a>
+            </li>
+        }
+        @if (!string.IsNullOrWhiteSpace(Model.Kategorie))
+        {
+            <li aria-current="@(Model.Leistung.HasValue ? null : "step")">
+                <a class="kern-link" asp-page="/SuchAssistent" asp-route-Suchtyp="@Model.Suchtyp" asp-route-Alter="@Model.Alter" asp-route-Kategorie="@Model.Kategorie">Leistungsauswahl</a>
+            </li>
+        }
+        @if (Model.Leistung.HasValue && Model.BeschreibungBestaetigt)
+        {
+            <li aria-current="page">
+                <a class="kern-link" asp-page="/SuchAssistent" asp-route-Suchtyp="@Model.Suchtyp" asp-route-Alter="@Model.Alter" asp-route-Kategorie="@Model.Kategorie" asp-route-Leistung="@Model.Leistung" asp-route-BeschreibungBestaetigt="true">Ort</a>
+            </li>
+        }
     </ol>
 </nav>
 
@@ -24,17 +43,9 @@
         </div>
     </div>
 }
-else if (string.Equals(Model.Suchtyp, "typ", StringComparison.OrdinalIgnoreCase) && !Model.Alter.HasValue)
-{
-    <div class="kern-card" style="padding:16px; margin-bottom:16px">
-        <h2>Wie alt sind Sie zum Zeitpunkt, zu dem Sie die Leistung in Anspruch nehmen möchten?</h2>
-        <div style="display:flex; gap:8px; margin-top:12px">
-            <a class="kern-button kern-button--primary" asp-page="/SuchAssistent" asp-route-Suchtyp="typ" asp-route-Alter="1">Unter 18 Jahre</a>
-            <a class="kern-button kern-button--primary" asp-page="/SuchAssistent" asp-route-Suchtyp="typ" asp-route-Alter="0">Über 18 Jahre</a>
-        </div>
-    </div>
-}
-else if (string.IsNullOrWhiteSpace(Model.Kategorie) && Model.Assistant is not null)
+else if (string.Equals(Model.Suchtyp, "typ", StringComparison.OrdinalIgnoreCase)
+    && string.IsNullOrWhiteSpace(Model.Kategorie)
+    && Model.Assistant is not null)
 {
     <div class="kern-card" style="padding:16px; margin-bottom:16px">
         <h2>Womit benötigen Sie Unterstützung?</h2>
@@ -71,7 +82,7 @@ else if (Model.Assistant is not null && Model.Leistung.HasValue && !Model.Beschr
            asp-route-BeschreibungBestaetigt="true">Weiter</a>
     </div>
 }
-else if (Model.Assistant is not null)
+else if (Model.Assistant is not null && !Model.Leistung.HasValue)
 {
     <div class="kern-card" style="padding:16px; margin-bottom:16px">
         <h2>Welche Leistung benötigen Sie?</h2>
@@ -90,8 +101,9 @@ else if (Model.Assistant is not null)
             }
         </ul>
     </div>
+}
 
-    @if (Model.Leistung.HasValue)
+@if (Model.Assistant is not null && Model.Leistung.HasValue)
     {
         <h2 style="margin-top:24px">Wo möchten Sie die Leistung in Anspruch nehmen?</h2>
 
@@ -197,7 +209,6 @@ else if (Model.Assistant is not null)
                     </ul>
                 }
             </div>
-        }
     }
 }
 

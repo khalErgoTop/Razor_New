@@ -4,21 +4,21 @@
     ViewData["Title"] = "Benutzer-Rechteverwaltung";
 }
 
-<nav aria-label="Brotkrümelnavigation">
+<nav class="kern-breadcrumbs" aria-label="Brotkrümelnavigation">
     <ol class="breadcrumb">
-        <li><a asp-page="/Index">Start</a></li>
-        <li><a asp-page="/Auth/QWWebAdmin">Administration</a></li>
-        <li><a asp-page="/Auth/BenutzerManagement">Benutzer-Management</a></li>
+        <li><a class="kern-link" asp-page="/Index">Start</a></li>
+        <li><a class="kern-link" asp-page="/Auth/QWWebAdmin">Administration</a></li>
+        <li><a class="kern-link" asp-page="/Auth/BenutzerManagement">Benutzer-Management</a></li>
         <li aria-current="page">Benutzer-Rechteverwaltung</li>
     </ol>
 </nav>
 
-<section class="pageContent user-rights-management">
-    <h1>Benutzer-Rechteverwaltung</h1>
+<section class="pageContent user-rights-management kern-stack">
+    <h1 class="kern-heading-1">Benutzer-Rechteverwaltung</h1>
 
     @if (!string.IsNullOrWhiteSpace(Model.Message))
     {
-        <p class="confirmation-label">@Model.Message</p>
+        <div class="kern-alert kern-alert--success"><div class="kern-alert__body">@Model.Message</div></div>
     }
 
     @if (Model.UserId > 0)
@@ -26,8 +26,8 @@
         <p>Benutzer-ID: @Model.UserId</p>
     }
 
-    <h2>Zugeordnete Gruppen</h2>
-    <ul>
+    <h2 class="kern-heading-2">Zugeordnete Gruppen</h2>
+    <ul class="kern-list kern-card" style="padding:16px">
         @foreach (var group in Model.SelectedGroups)
         {
             <li>
@@ -37,33 +37,33 @@
                     <form method="post" asp-page-handler="RemoveGroup" style="display:inline">
                         <input type="hidden" name="UserId" value="@Model.UserId" />
                         <input type="hidden" name="GroupId" value="@group.Beid" />
-                        <button type="submit">Entfernen</button>
+                        <button class="kern-button kern-button--tertiary" type="submit">Entfernen</button>
                     </form>
                 }
             </li>
         }
     </ul>
 
-    <h2>Verfügbare Gruppen</h2>
-    <form method="post" asp-page-handler="AddGroup">
+    <h2 class="kern-heading-2">Verfügbare Gruppen</h2>
+    <form method="post" asp-page-handler="AddGroup" class="kern-card" style="padding:16px">
         <input type="hidden" name="UserId" value="@Model.UserId" />
-        <select asp-for="GroupId" required>
+        <select class="kern-form-input__select" asp-for="GroupId" required>
             <option value="">Bitte auswählen</option>
             @foreach (var group in Model.AvailableGroups)
             {
                 <option value="@group.Beid">@group.Username</option>
             }
         </select>
-        <button type="submit">Hinzufügen</button>
+        <button class="kern-button kern-button--primary" type="submit">Hinzufügen</button>
     </form>
 
-    <h2>Benutzerrechte</h2>
+    <h2 class="kern-heading-2">Benutzerrechte</h2>
     @foreach (var right in Model.Rights)
     {
         <form method="post" asp-page-handler="SaveRight">
             <input type="hidden" name="UserId" value="@Model.UserId" />
             <input type="hidden" name="RightId" value="@right.Brid" />
-            <fieldset>
+            <fieldset class="kern-card" style="padding:16px">
                 <legend>@right.Bezeichnung</legend>
                 @if (!string.IsNullOrWhiteSpace(right.Beschreibung))
                 {
@@ -81,7 +81,7 @@
                 </label>
                 @if (right.RechtAendern)
                 {
-                    <button type="submit">Speichern</button>
+                    <button class="kern-button kern-button--primary" type="submit">Speichern</button>
                 }
             </fieldset>
         </form>
