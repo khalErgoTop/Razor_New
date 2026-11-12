@@ -1,109 +1,173 @@
-﻿@page
+@page
 @model TOPqwWeb_Core.Pages.SucheModel
 @{
     ViewData["Title"] = "Detailsuche";
+    ViewData["UseLegacyTheme"] = false;
 }
 
-<h1>Detailsuche</h1>
-<div class="kern-card" style="padding:16px; margin-bottom:24px">
-    <form method="get" class="searchform">
-        <div style="margin-bottom:16px">
-            <label class="kern-label" asp-for="Suchbegriff">Suche</label>
-            <input class="kern-form-input__input" asp-for="Suchbegriff" type="search" placeholder="Sie können nach Namen und Kennzeichen suchen" autofocus />
-        </div>
+<nav class="kern-breadcrumbs search-breadcrumbs" aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb">
+        <li><a class="kern-link" asp-page="/Index"><span class="kern-icon kern-icon--home" aria-hidden="true"></span> Start</a></li>
+        <li aria-current="page">Detailsuche</li>
+    </ol>
+</nav>
 
-        <div style="margin-bottom:16px" class="kern-form-input__select-wrapper">
-            <label class="kern-label" asp-for="Einrichtungstyp">Leistungen</label>
-            <select class="kern-form-input__select" asp-for="Einrichtungstyp">
-                <option value="0">Alle Leistungen</option>
-                @foreach (var type in Model.SearchResult?.FacilityTypes ?? [])
-                {
-                    <option value="@type.Id">@type.Name</option>
-                }
-            </select>
+<main class="search-page kern-stack">
+    <header class="search-page__header">
+        <div>
+            <p class="search-page__eyebrow">Passendes Angebot finden</p>
+            <h1 class="kern-heading-1">Detailsuche</h1>
+            <p class="kern-body">Kombinieren Sie Suchbegriff, Ort und Merkmale, um passende Einrichtungen und Leistungserbringer zu finden.</p>
         </div>
+        <span class="kern-badge kern-badge--info"><span class="kern-icon kern-icon--search" aria-hidden="true"></span><span class="kern-label">Suchfilter</span></span>
+    </header>
 
-        <div style="display:flex; gap:16px; margin-bottom:16px">
-            <div style="flex:1">
-                <label class="kern-label" asp-for="Postleitzahl">Postleitzahl</label>
-                <input class="kern-form-input__input" asp-for="Postleitzahl" inputmode="numeric" maxlength="5" />
+    <section class="search-panel kern-card kern-card--large" aria-labelledby="search-panel-title">
+        <div class="kern-card__container">
+            <div class="kern-card__header search-panel__heading">
+                <div><p class="search-page__eyebrow">Filter festlegen</p><h2 id="search-panel-title" class="kern-title">Wonach suchen Sie?</h2></div>
+                <span class="kern-icon kern-icon--checklist" aria-hidden="true"></span>
             </div>
-            <div style="flex:1" class="kern-form-input__select-wrapper">
-                <label class="kern-label" asp-for="Entfernung">im Umkreis von</label>
-                <select class="kern-form-input__select" asp-for="Entfernung">
-                    <option value="0">keine Umkreissuche</option>
-                    @foreach (var distance in Model.SearchResult?.Distances ?? [])
-                    {
-                        <option value="@distance">@distance km</option>
-                    }
-                </select>
-            </div>
-        </div>
 
-        <div style="margin-bottom:16px">
-            <label class="kern-checkbox"><input asp-for="MitFreienPlaetzen" type="checkbox" class="kern-form-check__checkbox" /> mit freien Plätzen</label>
-        </div>
+            <form method="get" class="searchform search-form kern-stack">
+                <input type="hidden" name="search" value="1" />
+                <div class="search-form__primary kern-form-input">
+                    <label class="kern-label" asp-for="Suchbegriff">Suchbegriff</label>
+                    <input class="kern-form-input__input" asp-for="Suchbegriff" type="search" placeholder="Name, Kennzeichen oder Stichwort" autofocus />
+                    <span class="kern-hint">Zum Beispiel der Name einer Einrichtung oder ein Kennzeichen.</span>
+                </div>
 
-        <fieldset style="margin-bottom:16px; border:1px solid var(--kern-color-layout-border); padding:12px">
-            <legend>Suchen nach</legend>
-            <label class="kern-checkbox"><input asp-for="Einrichtungen" type="checkbox" class="kern-form-check__checkbox"/> Einrichtungen</label>
-            <label class="kern-checkbox"><input asp-for="Leistungserbringer" type="checkbox" class="kern-form-check__checkbox" /> Leistungserbringer</label>
-        </fieldset>
+                <div class="search-form__grid">
+                    <div class="kern-form-input">
+                        <label class="kern-label" asp-for="Einrichtungstyp">Leistungsangebot</label>
+                        <div class="kern-form-input__select-wrapper"><select class="kern-form-input__select" asp-for="Einrichtungstyp"><option value="0">Alle Leistungsangebote</option>@foreach (var type in Model.SearchResult?.FacilityTypes ?? []) { <option value="@type.Id">@type.Name</option> }</select></div>
+                    </div>
+                    <div class="kern-form-input">
+                        <label class="kern-label" asp-for="Postleitzahl">Postleitzahl</label>
+                        <input class="kern-form-input__input" asp-for="Postleitzahl" inputmode="numeric" maxlength="5" placeholder="z. B. 20095" />
+                    </div>
+                    <div class="kern-form-input">
+                        <label class="kern-label" asp-for="Entfernung">Suchradius</label>
+                        <div class="kern-form-input__select-wrapper"><select class="kern-form-input__select" asp-for="Entfernung"><option value="0">Kein Suchradius</option>@foreach (var distance in Model.SearchResult?.Distances ?? []) { <option value="@distance">@distance km</option> }</select></div>
+                    </div>
+                </div>
 
-        @if (Model.SearchResult?.FacilityFeatures.Count > 0)
-        {
-            <fieldset style="margin-bottom:16px; border:1px solid var(--kern-color-layout-border); padding:12px">
-                <legend>Mit folgenden Merkmalen</legend>
-                @foreach (var feature in Model.SearchResult.FacilityFeatures)
+                <div class="search-form__options">
+                    <fieldset class="search-option-group kern-card kern-card--surface">
+                        <legend><span class="kern-icon kern-icon--search" aria-hidden="true"></span> Suchen nach</legend>
+                        <label class="kern-checkbox"><input id="Einrichtungen" asp-for="Einrichtungen" type="checkbox" class="kern-form-check__checkbox" /><span>Einrichtungen</span></label>
+                        <label class="kern-checkbox"><input id="Leistungserbringer" asp-for="Leistungserbringer" type="checkbox" class="kern-form-check__checkbox" /><span>Leistungserbringer</span></label>
+                    </fieldset>
+                    <fieldset class="search-option-group kern-card kern-card--surface">
+                        <legend><span class="kern-icon kern-icon--calendar-today" aria-hidden="true"></span> Zusatzoptionen</legend>
+                        <label class="kern-checkbox"><input id="MitFreienPlaetzen" asp-for="MitFreienPlaetzen" type="checkbox" class="kern-form-check__checkbox" /><span>Nur Angebote mit freien Plätzen</span></label>
+                    </fieldset>
+                </div>
+
+                @if (Model.SearchResult?.FacilityFeatures.Count > 0)
                 {
-                    <label class="kern-checkbox" style="display:block; margin-bottom:4px">
-                        <input type="checkbox" name="Merkmale" value="@feature.Id" @(Model.Merkmale.Contains(feature.Id) ? "checked" : null) />
-                        @feature.Name
-                    </label>
+                    <fieldset class="feature-filter">
+                        <legend><span class="kern-icon kern-icon--checklist" aria-hidden="true"></span> Nach Merkmalen filtern</legend>
+                        <div class="feature-filter__items">
+                            @foreach (var feature in Model.SearchResult.FacilityFeatures)
+                            {
+                                <label class="feature-option kern-card kern-card--surface"><input type="checkbox" name="Merkmale" value="@feature.Id" @(Model.Merkmale.Contains(feature.Id) ? "checked" : null) /><span class="kern-label">@feature.Name</span></label>
+                            }
+                        </div>
+                    </fieldset>
                 }
-            </fieldset>
-        }
 
-        <button id="search-submit" class="kern-btn kern-btn--primary" type="submit"><span class="kern-label">Suchen</span></button>
-        <a class="kern-btn kern-btn--secondary" asp-page="/Suche"><span class="kern-label">Suche zurücksetzen</span></a>
-    </form>
-</div>
-
-@if (Model.SearchWasExecuted && Model.SearchResult is not null)
-{
-    <h2>Suchergebnisse</h2>
-    @if (Model.SearchResult.Results.Count == 0)
-    {
-        <div class="kern-alert kern-alert--info">
-            <div class="kern-alert__body">Leider konnte mit den ausgewählten Filtern kein Ergebnis gefunden werden.</div>
+                <div class="search-form__actions kern-btn-wrapper">
+                    <button id="search-submit" class="kern-btn kern-btn--primary" type="submit"><span class="kern-icon kern-icon--search" aria-hidden="true"></span><span class="kern-label">Suche starten</span></button>
+                    <a class="kern-btn kern-btn--secondary" asp-page="/Suche" asp-page-handler="Reset"><span class="kern-icon kern-icon--autorenew" aria-hidden="true"></span><span class="kern-label">Filter zurücksetzen</span></a>
+                </div>
+            </form>
         </div>
-    }
-    else
+    </section>
+
+    @if (Model.SearchWasExecuted && Model.SearchResult is not null)
     {
-        <ul class="search-results" style="list-style:none; padding:0">
-            @foreach (var result in Model.SearchResult.Results)
+        <section class="search-results-section" aria-labelledby="results-title">
+            <div class="results-heading">
+                <div><p class="search-page__eyebrow">Auswertung</p><h2 id="results-title" class="kern-title">Suchergebnisse</h2></div>
+                <span class="kern-badge kern-badge--info"><span class="kern-label">@Model.SearchResult.Results.Count Treffer</span></span>
+            </div>
+            @if (Model.SearchResult.HasMoreResults)
             {
-                <li class="kern-card" style="margin-bottom:8px; padding:12px">
-                    <a asp-page="/Stammdaten" asp-route-EIID="@result.EIID" asp-route-STUID="@result.STUID">
-                        <strong>@result.Name</strong>
-                        @if (!string.IsNullOrWhiteSpace(result.FacilityIndicator))
-                        {
-                            <span class="kern-badge">@result.FacilityIndicator</span>
-                        }
-                        @if (!string.IsNullOrWhiteSpace(result.FacilityType))
-                        {
-                            <span> – @result.FacilityType</span>
-                        }
-                        @if (!string.IsNullOrWhiteSpace(result.Address))
-                        {
-                            <div><small>@result.Address</small></div>
-                        }
-                    </a>
-                </li>
+                <p role="status">Es werden nicht alle Suchergebnisse angezeigt, bitte spezifizieren Sie Ihre Suche stärker.</p>
             }
-        </ul>
+            @if (Model.SearchResult.Results.Count == 0)
+            {
+                <div class="kern-alert kern-alert--info" role="status"><span class="kern-icon kern-icon--info" aria-hidden="true"></span><div class="kern-alert__body"><strong>Keine Treffer</strong><span>Mit diesen Filtern wurde kein passendes Angebot gefunden. Versuchen Sie einen größeren Suchradius oder entfernen Sie einzelne Merkmale.</span></div></div>
+            }
+            else
+            {
+                <ul class="search-results kern-list" role="list">
+                    @foreach (var result in Model.SearchResult.Results)
+                    {
+                        <li class="search-result-item">
+                            <a class="search-result-card kern-card kern-card--interactive" asp-page="/Stammdaten" asp-route-EIID="@result.EIID" asp-route-STUID="@result.STUID">
+                                <span class="search-result-card__icon kern-badge kern-badge--info"><span class="kern-icon kern-icon--info" aria-hidden="true"></span></span>
+                                <span class="search-result-card__content"><strong>@result.Name</strong>@if (!string.IsNullOrWhiteSpace(result.FacilityIndicator)) { <span class="kern-badge kern-badge--small kern-badge--info"><span class="kern-label">@result.FacilityIndicator</span></span> }@if (!string.IsNullOrWhiteSpace(result.FacilityType)) { <span class="kern-body">@result.FacilityType</span> }@if (!string.IsNullOrWhiteSpace(result.Address)) { <span class="kern-body">@result.Address</span> }</span><span class="search-result-card__arrow kern-icon kern-icon--arrow-forward" aria-hidden="true"></span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            }
+        </section>
     }
-}
+</main>
+
+<style>
+    .search-page { width: min(100%, 1060px); margin: 0 auto; padding: 1rem 0 4rem; }
+    .search-breadcrumbs { width: min(100%, 1060px); margin-left: auto; margin-right: auto; }
+    .search-page__header { align-items: flex-start; display: flex; gap: 1.5rem; justify-content: space-between; margin-bottom: 1.5rem; }
+    .search-page__header h1 { margin: 0 0 .45rem; }
+    .search-page__header p { margin-bottom: 0; max-width: 46rem; }
+    .search-page__eyebrow { color: var(--kern-color-action-default-contextual); font-size: .75rem; font-weight: 800; letter-spacing: .08em; margin: 0 0 .35rem; text-transform: uppercase; }
+    .search-panel { margin-bottom: 2rem; }
+    .search-panel__heading { align-items: center; }
+    .search-panel__heading h2 { margin: 0; }
+    .search-panel__heading > .kern-icon { color: var(--kern-color-action-default-contextual); font-size: 1.5rem; }
+    .search-form { gap: 1.25rem; }
+    .search-form__primary .kern-hint { color: var(--kern-color-layout-text-muted); display: block; font-size: .85rem; margin-top: .35rem; }
+    .search-form__grid { display: grid; gap: 1rem; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr) minmax(0, 1fr); }
+    .search-form__options { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .search-option-group, .feature-filter { border: 0; margin: 0; padding: 1rem; }
+    .search-option-group legend, .feature-filter legend { align-items: center; display: flex; font-weight: 700; gap: .45rem; margin-bottom: .75rem; padding: 0; }
+    .search-option-group { display: grid; gap: .65rem; }
+    .search-option-group .kern-checkbox { align-items: center; display: flex; gap: .5rem; }
+    .feature-filter { background: var(--kern-color-layout-background-level-1); }
+    .feature-filter__items { display: flex; flex-wrap: wrap; gap: .6rem; }
+    .feature-option { align-items: center; cursor: pointer; display: flex; gap: .5rem; padding: .65rem .8rem; }
+    .feature-option input { accent-color: var(--kern-color-action-default-contextual); }
+    .search-form__actions { margin-top: .25rem; }
+    .search-results-section { margin-top: 1rem; }
+    .results-heading { align-items: end; display: flex; justify-content: space-between; margin-bottom: 1rem; }
+    .results-heading h2 { margin: 0; }
+    .kern-alert .kern-alert__body { display: grid; gap: .3rem; }
+    .search-results { display: grid; gap: .75rem; margin: 0; padding: 0; }
+    .search-result-item { list-style: none; }
+    .search-result-card { align-items: center; display: flex; gap: 1rem; padding: 1rem; text-decoration: none; transition: transform .15s ease, box-shadow .15s ease; }
+    .search-result-card:hover { transform: translateY(-2px); }
+    .search-result-card__icon { align-items: center; display: inline-flex; flex: 0 0 2.75rem; height: 2.75rem; justify-content: center; }
+    .search-result-card__content { display: grid; gap: .3rem; min-width: 0; }
+    .search-result-card__content strong { font-size: 1.05rem; }
+    .search-result-card__content .kern-body { color: var(--kern-color-layout-text-muted); font-size: .9rem; }
+    .search-result-card__arrow { margin-left: auto; }
+    @@media (max-width: 760px) {
+        .search-page__header { align-items: flex-start; flex-direction: column; }
+        .search-form__grid, .search-form__options { grid-template-columns: 1fr; }
+    }
+    @@media (max-width: 480px) {
+        .search-page { padding-left: .8rem; padding-right: .8rem; }
+        .search-form__actions { align-items: stretch; flex-direction: column; }
+        .search-form__actions .kern-btn { width: 100%; }
+        .results-heading { align-items: flex-start; flex-direction: column; gap: .75rem; }
+        .search-result-card { align-items: flex-start; flex-wrap: wrap; }
+        .search-result-card__arrow { margin-left: auto; }
+    }
+</style>
 
 @section Scripts {
     <script src="~/js/suche.js" asp-append-version="true"></script>

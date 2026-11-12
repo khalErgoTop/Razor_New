@@ -2,35 +2,76 @@
 @inject TOPqwWeb_Core.Infrastructure.Security.CurrentUserAccessor CurrentUser
 @{
     var themeName = ThemeAssets.ThemeName;
+    var usesKern = ThemeAssets.UsesKern;
+    // Das freigegebene Verwaltungsseitenlayout benötigt weiterhin seine bisherige KERN-Basis.
+    var preserveKernLayout = ViewData["PreserveKernLayout"] is true;
+    var loadKern = usesKern || preserveKernLayout;
+    var logo = themeName.ToUpperInvariant() switch
+    {
+        "HH" => ("~/css/HH/Images/hamburg-de-logo.png", "Hamburg"),
+        "SH" => ("~/css/SH/Images/Logo_Schleswig-Holstein.svg", "Schleswig-Holstein"),
+        "BE" => ("~/css/BE/Images/logo_berlin_m_srgb.svg", "Berlin"),
+        "HB-WBA" => ("~/css/HB-WBA/Images/bremen_logo_schwarz.svg", "Bremen"),
+        "MV" => ("~/css/MV/Images/Logo.png", "Mecklenburg-Vorpommern"),
+        "NI" => ("~/css/NI/images/niedersachsen.png", "Niedersachsen"),
+        "ST" => ("~/css/ST/Images/Logo.png", "Sachsen-Anhalt"),
+        "TH" => ("~/css/TH/logo_thueringen.gif", "Thüringen"),
+        _ => ((string?)null, "TOPqwWeb")
+    };
 }
 <!DOCTYPE html>
-<html lang="de" data-theme="@themeName">
+<html lang="de" data-theme="@themeName" data-design="@(usesKern ? "kern" : "legacy")">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - TOPqwWeb</title>
 
-    <!-- KERN CSS - muss VOR theme.css -->
-    <link rel="stylesheet" href="~/lib/kern/kern.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/lib/kern/fonts/fira-sans.css" asp-append-version="true" />
+    @if (loadKern)
+    {
+        <link rel="stylesheet" href="~/lib/kern/kern.css" asp-append-version="true" />
+        <link rel="stylesheet" href="~/lib/kern/fonts/fira-sans.css" asp-append-version="true" />
+    }
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 
-    @if (ViewData["UseLegacyTheme"] is true)
+    @if (!usesKern)
     {
-        <!-- Legacy-Seiten laden die alten globalen Regeln bewusst opt-in. -->
-        <link rel="stylesheet" href="@ThemeAssets.GetAssetPath("theme.css")" asp-append-version="true" />
-        <link rel="stylesheet" href="@ThemeAssets.GetAssetPath("menu.css")" asp-append-version="true" />
-        <link rel="stylesheet" href="@ThemeAssets.GetAssetPath("auflistung.css")" asp-append-version="true" />
+        @foreach (var file in new[] { "QW_ContrastNormal.css", "theme.css", "menu.css" })
+        {
+            var asset = ThemeAssets.GetExistingLegacyAssetPath(file);
+            if (asset is not null)
+            {
+                <link rel="stylesheet" href="@Url.Content(asset)" asp-append-version="true" />
+            }
+        }
+        @if (preserveKernLayout || ViewData["LegacyListingStyles"] is true)
+        {
+            var listingAsset = ThemeAssets.GetExistingLegacyAssetPath("auflistung.css");
+            if (listingAsset is not null)
+            {
+                <link rel="stylesheet" href="@Url.Content(listingAsset)" asp-append-version="true" />
+            }
+        }
+        <link rel="stylesheet" href="~/css/legacy-compat.css" asp-append-version="true" />
+        @if (!preserveKernLayout)
+        {
+            <link rel="stylesheet" href="~/css/legacy-razor.css" asp-append-version="true" />
+        }
     }
 </head>
-<body class="kern-level-0">
+<body class="@(loadKern ? "kern-level-0" : null)">
 
     <div id="Page" style="max-width: 1280px; margin: 0 auto; padding: 0 16px;">
         <header class="site-header">
             <div class="site-brand">
                 <a class="site-brand__home" asp-page="/Index" accesskey="0" aria-label="Startseite">
-                    <img src="~/css/HH/Images/hamburg-de-logo.png" alt="Hamburg.de" />
-                    @* <span>TOPqwWeb</span> *@
+                    @if (logo.Item1 is not null)
+                    {
+                        <img src="@Url.Content(logo.Item1)" alt="@logo.Item2" />
+                    }
+                    else
+                    {
+                        <span>TOPqwWeb</span>
+                    }
                 </a>
                 <span class="site-brand__title">@ViewData["Title"]</span>
             </div>
@@ -61,16 +102,13 @@
     </div>
 
     <!-- Web Component nur 1x als module -->
-    <script type="module" src="~/lib/kern/js/kern-kopfzeile.js" asp-append-version="true"></script>
+    @if (usesKern)
+    {
+        <script type="module" src="~/lib/kern/js/kern-kopfzeile.js" asp-append-version="true"></script>
+    }
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     <script>
-            document.querySelector('.module-navigation-toggle')?.addEventListener('click', function () {
-                const menu = document.querySelector('.module-navigation-list');
-                const expanded = this.getAttribute('aria-expanded') === 'true';
-                this.setAttribute('aria-expanded', (!expanded).toString());
-                menu?.classList.toggle('is-open', !expanded);
-            });
             document.querySelector('[data-layout-action="contrast"]')?.addEventListener('click', function (event) {
                 event.preventDefault();
                 document.documentElement.classList.toggle('high-contrast');

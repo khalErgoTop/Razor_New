@@ -1,0 +1,133 @@
+/* Brücke für Razor-Markup, das nicht die Web-Forms-Selektoren des Landes-CSS trägt.
+   Nur ohne KERN-Basis laden; qwStammdaten behält seinen bisherigen CSS-Pfad. */
+html[data-design="legacy"] {
+    --kern-color-action-default: var(--color-blue, #333);
+    --kern-color-action-default-contextual: var(--color-blue, #333);
+    --kern-color-layout-border: var(--color-grey-dark, #bbb);
+    --kern-color-layout-text-default: var(--color-font, #222);
+    --kern-color-layout-text-muted: #555;
+    --kern-color-layout-background-default: #fff;
+    --kern-color-layout-background-level-1: #f5f5f5;
+    --kern-color-neutral-50: #f8f8f8;
+    --kern-color-neutral-100: #eee;
+    --kern-color-neutral-700: #555;
+    --kern-color-danger-default: #a00000;
+    --kern-color-danger-soft: #fff0f0;
+    --kern-color-warning-default: #765400;
+    --kern-color-warning-soft: #fff7dc;
+    --kern-color-info-soft: #f2f2f2;
+}
+
+/* Struktur statt KERN-Komponentenoptik; die Landesfarben und -schrift bleiben maßgeblich. */
+html[data-design="legacy"] .kern-stack { display: flex; flex-direction: column; gap: 1rem; }
+html[data-design="legacy"] .kern-card { box-sizing: border-box; }
+html[data-design="legacy"] .kern-card__container { padding: 1rem; }
+html[data-design="legacy"] .kern-card--interactive { border: 1px solid #bbb; }
+html[data-design="legacy"] .kern-list { list-style: none; }
+html[data-design="legacy"] .kern-btn-wrapper { display: flex; flex-wrap: wrap; gap: .75rem; }
+html[data-design="legacy"] .kern-form-input { display: flex; flex-direction: column; gap: .35rem; min-width: 0; }
+html[data-design="legacy"] .kern-form-input__input,
+html[data-design="legacy"] .kern-form-input__select {
+    box-sizing: border-box;
+    max-width: 100%;
+    width: 100%;
+    padding: .5rem;
+    border: 1px solid #777;
+    background: #fff;
+    color: #222;
+    font: inherit;
+}
+html[data-design="legacy"] .kern-form-input__select { appearance: auto; }
+html[data-design="legacy"] .kern-btn,
+html[data-design="legacy"] .kern-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: .4rem;
+    min-height: 2.5rem;
+    padding: .5rem .85rem;
+    border: 1px solid #333;
+    border-radius: 0;
+    background: #fff;
+    color: #222;
+    font: inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+html[data-design="legacy"] .kern-btn--primary,
+html[data-design="legacy"] .kern-button--primary {
+    background: #333;
+    color: #fff !important;
+}
+/* Die Original-Buttons dieser Länder verwenden ihre jeweilige Akzentfarbe. */
+html[data-theme="MV" i] .kern-btn--primary,
+html[data-theme="MV" i] .kern-button--primary,
+html[data-theme="HB-WBA" i] .kern-btn--primary,
+html[data-theme="HB-WBA" i] .kern-button--primary {
+    background: var(--color-blue, #333);
+    border-color: var(--color-blue, #333);
+}
+/* In ST ist --color-blue gelb und daher keine lesbare Textfarbe auf Weiß. */
+html[data-theme="ST" i] { --kern-color-action-default: #222; --kern-color-action-default-contextual: #222; }
+html[data-theme="ST" i] a,
+html[data-theme="ST" i] a:visited { color: #222 !important; }
+html[data-theme="ST" i] .kern-btn,
+html[data-theme="ST" i] .kern-button { display: inline-flex !important; }
+html[data-theme="ST" i] .kern-btn--primary,
+html[data-theme="ST" i] .kern-button--primary {
+    background: var(--color-blue, #e8c425) !important;
+    color: #000 !important;
+}
+html[data-theme="NI" i] .listing-page .sc00 {
+    background: var(--color-red, #e50046);
+    color: #fff;
+}
+html[data-design="legacy"] .kern-btn:disabled,
+html[data-design="legacy"] .kern-button:disabled { cursor: not-allowed; opacity: .6; }
+html[data-design="legacy"] .kern-alert { padding: 1rem; border-left: 4px solid #777; background: #f5f5f5; }
+html[data-design="legacy"] .kern-alert--warning { border-color: #765400; background: #fff7dc; }
+html[data-design="legacy"] .kern-alert--danger { border-color: #a00000; background: #fff0f0; }
+html[data-design="legacy"] .kern-badge { display: inline-block; font-size: .9em; }
+html[data-design="legacy"] [hidden] { display: none !important; }
+
+/* Pfeile bleiben auch ohne KERN-Iconfont sichtbar, insbesondere am Menüknopf. */
+html[data-design="legacy"] .kern-icon { display: inline-block; font-style: normal; }
+html[data-design="legacy"] .kern-icon--arrow-down::before { content: "▾"; }
+html[data-design="legacy"] .kern-icon--arrow-up::before { content: "▴"; }
+html[data-design="legacy"] .kern-icon--arrow-forward::before,
+html[data-design="legacy"] .kern-icon--chevron-right::before { content: "›"; }
+html[data-design="legacy"] .kern-icon--arrow-back::before { content: "‹"; }
+html[data-design="legacy"] .kern-icon--dehaze::before { content: "☰"; }
+html[data-design="legacy"] .kern-icon--close::before { content: "×"; }
+html[data-design="legacy"] .kern-icon--add::before { content: "+"; }
+
+/* Alte Menüregeln nehmen eine andere DOM-Struktur an. Sichtbarkeit folgt aria-expanded/JS. */
+html[data-design="legacy"] #CrModules { height: auto; }
+html[data-design="legacy"] #CrModules > li { position: relative; width: auto; flex: 0 1 auto; }
+html[data-design="legacy"] #CrModules .nav-link { width: auto; height: auto; min-width: 0; text-align: left; }
+html[data-design="legacy"] #CrModules .nav-sub,
+html[data-design="legacy"] #CrModules li:hover > .nav-sub,
+html[data-design="legacy"] #CrModules li:focus-within > .nav-sub { display: none; top: 100%; }
+html[data-design="legacy"] #CrModules .nav-sub.is-open,
+html[data-design="legacy"] #CrModules li:hover > .nav-sub.is-open,
+html[data-design="legacy"] #CrModules li:focus-within > .nav-sub.is-open { display: block; }
+html[data-design="legacy"] #CrModules .nav-sub > li { float: none; width: auto; }
+html[data-design="legacy"] #CrModules .nav-sub .nav-link { display: block; width: auto; }
+html[data-design="legacy"] .nav-arrow { min-width: 2.5rem; min-height: 2.5rem; }
+html[data-design="legacy"] .module-navigation-toggle { display: none !important; }
+
+/* BE nutzt diesen Namen für ein bildbasiertes Web-Forms-Element, Razor für einen Button. */
+html[data-design="legacy"] .listing-page .wtSttToggle { height: auto; font-size: inherit; position: static; }
+html[data-design="legacy"] .listing-page .wtSttToggle::after { content: none; }
+
+@media (max-width: 900px) {
+    html[data-design="legacy"] .module-navigation-toggle { display: inline-flex !important; }
+    html[data-design="legacy"] #CrModules { display: none; position: static; min-height: 0; padding: 0 0 1rem; }
+    html[data-design="legacy"] #CrModules.is-open { display: flex; }
+    html[data-design="legacy"] #CrModules > li { width: 100%; }
+    html[data-design="legacy"] #CrModules .nav-sub { position: static; }
+    /* NI zeichnet für das alte Menü einen nicht bedienbaren Schließen-Button. */
+    html[data-theme="NI" i] #CrModules::before,
+    html[data-theme="NI" i] #CrModules::after { content: none; }
+    html[data-theme="NI" i] #CrModules .nav-parent > .nav-link { width: auto !important; flex: 1; }
+}

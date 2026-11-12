@@ -13,7 +13,7 @@ public sealed class BenutzerManagementRechteService
 
     public BenutzerManagementRechteService(IConfiguration configuration, LegacyPermissionService permissions, CurrentUserAccessor currentUser)
     {
-        _connectionString = configuration.GetConnectionString("TOPqwWeb") ?? throw new InvalidOperationException("ConnectionStrings:TOPqwWeb muss konfiguriert werden.");
+        _connectionString = configuration.GetConnectionString("TOPqm") ?? throw new InvalidOperationException("ConnectionStrings:TOPqm muss konfiguriert werden.");
         _permissions = permissions;
         _currentUser = currentUser;
     }

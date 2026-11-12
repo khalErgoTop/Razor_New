@@ -1,112 +1,218 @@
-﻿@page
+@page
 @model TOPqwWeb_Core.Pages.QM.QMBogenModel
-
-<h1>QM-Bogen</h1>
-
-@if (Model.ErrorMessage is not null)
-{
-    <div asp-validation-summary="All"></div>
-    <p>@Model.ErrorMessage</p>
-    <a asp-page="/TOPqmV3/QMAuswahl">Zur Bogenauswahl</a>
+@using TOPqwWeb_Core.Legacy.Bridge
+@using System.Globalization
+@{
+    ViewData["Title"] = Model.QmBogen?.Bezeichnung ?? "QM-Bogen";
+    var status = Model.QmBogen?.Status switch
+    {
+        1 => "Neu",
+        2 => "In Bearbeitung",
+        3 => "Versandt",
+        4 => "Angenommen",
+        5 => "Abgelehnt",
+        6 => "Nachtrag",
+        _ => "Unbekannt"
+    };
+    var isSavePost = HttpMethods.IsPost(Request.Method) && string.Equals(Request.Query["handler"], "Save", StringComparison.OrdinalIgnoreCase);
 }
-else if (Model.QmBogen is not null)
-{
-    <dl>
-        <dt>Bogen</dt>
-        <dd>@Model.QmBogen.Bezeichnung</dd>
-        <dt>Status</dt>
-        <dd>@Model.QmBogen.Status</dd>
-        <dt>Einrichtung</dt>
-        <dd>@Model.QmBogen.EIID</dd>
-        <dt>Layout</dt>
-        <dd>@Model.QmBogen.QLID</dd>
-        @if (Model.QmBogen.GeaendertAm.HasValue)
-        {
-            <dt>Geändert am</dt>
-            <dd>@Model.QmBogen.GeaendertAm.Value</dd>
-        }
-    </dl>
+<link rel="stylesheet" href="~/css/qmbogen.css" asp-append-version="true" />
 
-    <h2>Inhalt</h2>
-    @if (!string.IsNullOrWhiteSpace(Model.SaveMessage))
+<div class="qm-page" data-qm-page>
+    <nav class="qm-breadcrumb" aria-label="Brotkrümelnavigation">
+        <a asp-page="/Index">Start</a><span aria-hidden="true"> / </span>
+        <a asp-page="@Model.ReturnPage" asp-route-EIID="@Model.ReturnFacilityId">@(Model.IsArchive ? "QM-Archiv" : "QM-Bogenauswahl")</a><span aria-hidden="true"> / </span>
+        <span aria-current="page">QM-Bogen</span>
+    </nav>
+
+    @if (Model.ErrorMessage is not null)
     {
-        <p class="lblControlMsg">@Model.SaveMessage</p>
+        <section class="qm-notice qm-notice--error" role="alert">
+            <h1>QM-Bogen nicht verfügbar</h1>
+            <p>@Model.ErrorMessage</p>
+            <a asp-page="@Model.ReturnPage" asp-route-EIID="@Model.ReturnFacilityId">Zurück zur Auswahl</a>
+        </section>
     }
-    <form method="post" asp-page-handler="Save">
-    @if (Model.Oberkategorien.Count == 0)
+    else if (Model.QmBogen is not null)
     {
-        <p>Für diesen LeistungsTyp sind keine Fragen hinterlegt.</p>
-    }
-    else
-    {
-        @foreach (var oberkategorie in Model.Oberkategorien)
+        var questionCount = Model.Oberkategorien.Sum(category => category.Unterkategorien.Sum(subcategory => subcategory.Fragen.Count(question => question.Eintragstyp == 0)));
+        <header class="qm-header">
+            <div class="qm-header__identity">
+                <p class="qm-eyebrow">Qualitätsmanagement / QM-Bogen</p>
+                <h1>@(string.IsNullOrWhiteSpace(Model.QmBogen.Bezeichnung) ? "QM-Bogen" : Model.QmBogen.Bezeichnung)</h1>
+                <div class="qm-metadata">
+                    <span class="qm-status">@status</span>
+                    <span>Einrichtung: @Model.QmBogen.EIID</span>
+                    @if (Model.QmBogen.GeaendertAm.HasValue)
+                    {
+                        <span>Zuletzt geändert: @Model.QmBogen.GeaendertAm.Value.ToString("dd.MM.yyyy HH:mm")</span>
+                    }
+                </div>
+            </div>
+            <a class="qm-button qm-button--secondary" asp-page="/TOPqmV3/QMPrintPreview">Druckansicht / XML</a>
+        </header>
+
+        @if (!string.IsNullOrWhiteSpace(Model.SaveMessage))
         {
-            <section>
-                <h3>@oberkategorie.Bezeichnung</h3>
-                @foreach (var unterkategorie in oberkategorie.Unterkategorien)
-                {
-                    <h4>@unterkategorie.Bezeichnung</h4>
-                    <ul>
-                        @foreach (var frage in unterkategorie.Fragen)
+            <div class="qm-notice @(Model.ValidationErrors.Count > 0 ? "qm-notice--error" : "")" role="status" tabindex="-1" data-qm-message>@Model.SaveMessage</div>
+        }
+        @if (!Model.CanEdit)
+        {
+            <div class="qm-notice" role="status">Dieser Bogen ist aufgrund seines Status, des Archivmodus oder Ihrer Berechtigung schreibgeschützt.</div>
+        }
+
+        @if (Model.Oberkategorien.Count == 0)
+        {
+            <section class="qm-empty"><h2>Keine Fragen verfügbar</h2><p>Für diesen Bogen und Einrichtungstyp wurden keine Fragen geladen.</p></section>
+        }
+        else
+        {
+            <div class="qm-workspace">
+                <aside class="qm-sidebar" aria-label="Bogenbereiche">
+                    <details open>
+                        <summary>Inhalt <span>@Model.Oberkategorien.Count Bereiche</span></summary>
+                        <nav aria-label="Bereiche des QM-Bogens">
+                            <ol>
+                                @foreach (var category in Model.Oberkategorien)
+                                {
+                                    <li><a href="#qm-category-@category.ID">@category.Bezeichnung</a></li>
+                                }
+                            </ol>
+                        </nav>
+                    </details>
+                </aside>
+                <div class="qm-content">
+                    <div class="qm-content__intro"><div><h2>Inhalt des Bogens</h2><p>Wählen Sie einen Bereich aus oder gehen Sie die Fragen der Reihe nach durch.</p></div><span>@questionCount @(questionCount == 1 ? "Frage" : "Fragen")</span></div>
+                    @if (Model.CanEdit)
+                    {
+                        <p class="qm-required-note">Mit <span aria-hidden="true">*</span><span class="qm-visually-hidden">Stern</span> gekennzeichnete Felder sind Pflichtfelder.</p>
+                    }
+                    <form method="post" asp-page-handler="Save" data-qm-form novalidate>
+                        @foreach (var category in Model.Oberkategorien)
                         {
-                            <li>
-                                <span>@frage.FrageKurz</span>
-                                @if (Model.CanEdit && TOPqwWeb_Core.Pages.QM.QMBogenModel.IsSimpleFormat(frage.Format))
+                            <section class="qm-category" id="qm-category-@category.ID" aria-labelledby="qm-category-title-@category.ID">
+                                <header class="qm-category__header"><p class="qm-eyebrow">Bereich</p><h2 id="qm-category-title-@category.ID">@category.Bezeichnung</h2></header>
+                                @foreach (var subcategory in category.Unterkategorien)
                                 {
-                                    @if (frage.Mussfeld)
-                                    {
-                                        <strong aria-label="Pflichtfeld">*</strong>
-                                    }
-                                    @if (frage.Format is "dbBoolean" or "dbBool")
-                                    {
-                                        <input type="hidden" name="Values[@frage.ID]" value="false" />
-                                        <input type="checkbox" name="Values[@frage.ID]" value="true" checked="@(frage.FrageWert?.WertBOOL == true ? "checked" : null)" />
-                                    }
-                                    else
-                                    {
-                                        <input type="@(frage.Format is "dbLong" or "dbReal" or "dbSingle" or "dbDouble" ? "number" : "text")" name="Values[@frage.ID]" value="@(GetInputValue(frage))" />
-                                    }
-                                    @if (Model.ValidationErrors.TryGetValue(frage.ID, out var validationError))
-                                    {
-                                        <span class="field-validation-error">@validationError</span>
-                                    }
+                                    <section class="qm-subcategory" aria-labelledby="qm-subcategory-@category.ID-@subcategory.ID">
+                                        <h3 id="qm-subcategory-@category.ID-@subcategory.ID">@subcategory.Bezeichnung</h3>
+                                        @foreach (var question in subcategory.Fragen)
+                                        {
+                                            if (question.Eintragstyp != 0)
+                                            {
+                                                if (question.Eintragstyp == 2)
+                                                {
+                                                    <hr class="qm-separator" />
+                                                }
+                                                else
+                                                {
+                                                    <div class="qm-explanation">
+                                                        @if (!string.IsNullOrWhiteSpace(question.FrageKurz)) { <strong>@question.FrageKurz</strong> }
+                                                        @if (!string.IsNullOrWhiteSpace(question.FrageLang)) { <p>@question.FrageLang</p> }
+                                                        @if (!string.IsNullOrWhiteSpace(question.Hilfetext) && question.Hilfetext != question.FrageLang) { <p>@question.Hilfetext</p> }
+                                                    </div>
+                                                }
+                                                continue;
+                                            }
+                                            var inputId = $"qm-question-{question.ID}";
+                                            var helpId = $"{inputId}-help";
+                                            var errorId = $"{inputId}-error";
+                                            var hasHelp = !string.IsNullOrWhiteSpace(question.FrageLang) || !string.IsNullOrWhiteSpace(question.Hilfetext);
+                                            var hasError = Model.ValidationErrors.TryGetValue(question.ID, out var error);
+                                            var describedBy = string.Join(" ", new[] { hasHelp ? helpId : null, hasError ? errorId : null }.Where(x => x is not null));
+                                            var value = isSavePost && Model.Values.TryGetValue(question.ID, out var posted) ? posted ?? "" : GetValue(question);
+                                            var editable = Model.CanEdit && TOPqwWeb_Core.Pages.QM.QMBogenModel.IsSimpleFormat(question.Format);
+                                            <div class="qm-question">
+                                                @if (editable)
+                                                {
+                                                    <label class="qm-question__label" for="@inputId">@question.FrageKurz @if (question.Mussfeld) { <span aria-hidden="true">*</span><span class="qm-visually-hidden"> (Pflichtfeld)</span> }</label>
+                                                }
+                                                else
+                                                {
+                                                    <div class="qm-question__label">@question.FrageKurz</div>
+                                                }
+                                                @if (hasHelp)
+                                                {
+                                                    <div class="qm-question__help" id="@helpId">
+                                                        @if (!string.IsNullOrWhiteSpace(question.FrageLang)) { <p>@question.FrageLang</p> }
+                                                        @if (!string.IsNullOrWhiteSpace(question.Hilfetext) && question.Hilfetext != question.FrageLang) { <p>@question.Hilfetext</p> }
+                                                    </div>
+                                                }
+                                                @if (editable)
+                                                {
+                                                    @if (question.Format is "dbBool" or "dbBoolean")
+                                                    {
+                                                        <select class="qm-input" id="@inputId" name="Values[@question.ID]" aria-describedby="@describedBy" aria-invalid="@(hasError ? "true" : null)" required="@(question.Mussfeld)">
+                                                            <option value="" selected="@(value == "")">Bitte auswählen</option>
+                                                            <option value="true" selected="@(value == "true")">Ja</option>
+                                                            <option value="false" selected="@(value == "false")">Nein</option>
+                                                        </select>
+                                                    }
+                                                    else if (question.Format == "dbMemo")
+                                                    {
+                                                        <textarea class="qm-input" id="@inputId" name="Values[@question.ID]" rows="4" aria-describedby="@describedBy" aria-invalid="@(hasError ? "true" : null)" required="@(question.Mussfeld)">@value</textarea>
+                                                    }
+                                                    else
+                                                    {
+                                                        <input class="qm-input" id="@inputId" name="Values[@question.ID]" type="@(question.Format is "dbLong" or "dbReal" or "dbSingle" or "dbDouble" ? "number" : "text")" step="@(question.Format is "dbReal" or "dbSingle" or "dbDouble" ? "any" : null)" value="@value" aria-describedby="@describedBy" aria-invalid="@(hasError ? "true" : null)" required="@(question.Mussfeld)" />
+                                                    }
+                                                    @if (hasError) { <p class="qm-question__error" id="@errorId">@error</p> }
+                                                }
+                                                else
+                                                {
+                                                    <p class="qm-question__value">@(question.FrageWert is null ? "Keine Angabe" : GetDisplayValue(question))</p>
+                                                    @if (Model.CanEdit && !TOPqwWeb_Core.Pages.QM.QMBogenModel.IsSimpleFormat(question.Format)) { <small>Dieses Feld kann hier derzeit nicht bearbeitet werden.</small> }
+                                                }
+                                            </div>
+                                        }
+                                    </section>
                                 }
-                                else if (frage.FrageWert is not null)
-                                {
-                                    <span>: @frage.FrageWert.Wert</span>
-                                }
-                            </li>
+                            </section>
                         }
-                    </ul>
-                }
-            </section>
+                        @if (Model.CanEdit)
+                        {
+                            <div class="qm-savebar"><span data-qm-dirty-status>Änderungen werden erst nach dem Speichern übernommen.</span><button class="qm-button qm-button--primary" type="submit">Änderungen speichern</button></div>
+                        }
+                    </form>
+                    @if (Model.CanEdit && Model.QmBogen.Status is 2 or 6)
+                    {
+                        <section class="qm-send" aria-labelledby="qm-send-title">
+                            <h2 id="qm-send-title">Bogen versenden</h2>
+                            <p>Es werden die zuletzt gespeicherten Angaben versendet. Prüfen und speichern Sie Ihre Änderungen vor dem Versand.</p>
+                            <form method="post" asp-page-handler="Send" data-qm-send-form>
+                                <label><input type="checkbox" name="confirmSend" value="true" required /> Ich bestätige, dass der QM-Bogen versendet werden soll.</label>
+                                <button class="qm-button qm-button--secondary" type="submit">QM-Bogen versenden</button>
+                            </form>
+                        </section>
+                    }
+                </div>
+            </div>
         }
     }
-    @if (Model.CanEdit && Model.Oberkategorien.Count > 0)
-    {
-        <button type="submit">Speichern</button>
-    }
-    </form>
-    @if (Model.CanEdit && Model.QmBogen.Status is 2 or 6)
-    {
-        <form method="post" asp-page-handler="Send">
-            <label>
-                <input type="checkbox" name="confirmSend" value="true" required />
-                Ich bestätige, dass der QM-Bogen versendet werden soll.
-            </label>
-            <button type="submit">Versenden</button>
-        </form>
-    }
-    <p><a asp-page="/TOPqmV3/QMPrintPreview">Druckansicht</a></p>
+</div>
+
+@section Scripts {
+    <script src="~/js/qmbogen.js" asp-append-version="true"></script>
 }
 
 @functions {
-    private static string GetInputValue(TOPqwWeb_Core.Legacy.Bridge.QmFrageResponse frage) => frage.FrageWert is null ? string.Empty : frage.Format switch
+    private static string GetValue(QmFrageResponse question) => question.FrageWert is null ? "" : question.Format switch
     {
-        "dbText" => frage.FrageWert.WertTXT,
-        "dbMemo" => frage.FrageWert.WertMEMO,
-        "dbLong" => frage.FrageWert.WertINT.ToString(System.Globalization.CultureInfo.CurrentCulture),
-        "dbReal" or "dbSingle" or "dbDouble" => frage.FrageWert.WertREAL.ToString(System.Globalization.CultureInfo.CurrentCulture),
-        _ => string.Empty
+        "dbText" => question.FrageWert.WertTXT,
+        "dbMemo" => question.FrageWert.WertMEMO,
+        "dbLong" => question.FrageWert.WertINT.ToString(CultureInfo.InvariantCulture),
+        "dbReal" or "dbSingle" or "dbDouble" => question.FrageWert.WertREAL.ToString("R", CultureInfo.InvariantCulture),
+        "dbBoolean" or "dbBool" => question.FrageWert.WertBOOL ? "true" : "false",
+        _ => question.FrageWert.Wert
+    };
+
+    private static string GetDisplayValue(QmFrageResponse question) => question.FrageWert is null ? "Keine Angabe" : question.Format switch
+    {
+        "dbBoolean" or "dbBool" => question.FrageWert.WertBOOL ? "Ja" : "Nein",
+        "dbLong" => question.FrageWert.WertINT.ToString(CultureInfo.CurrentCulture),
+        "dbReal" or "dbSingle" or "dbDouble" => question.FrageWert.WertREAL.ToString(CultureInfo.CurrentCulture),
+        "dbText" => question.FrageWert.WertTXT,
+        "dbMemo" => question.FrageWert.WertMEMO,
+        _ => question.FrageWert.Wert
     };
 }

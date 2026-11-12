@@ -30,9 +30,9 @@ namespace TOPqwWeb_Core.Legacy.Adapters
 
         public PublicSearchAdapter(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("TOPqwWeb") is { Length: > 0 } connectionString
+            _connectionString = configuration.GetConnectionString("TOPqm") is { Length: > 0 } connectionString
                 ? connectionString
-                : throw new InvalidOperationException("ConnectionStrings:TOPqwWeb ist leer. Konfigurieren Sie den Wert über User Secrets oder die Umgebungsvariable ConnectionStrings__TOPqwWeb.");
+                : throw new InvalidOperationException("ConnectionStrings:TOPqm ist leer. Konfigurieren Sie den Wert über User Secrets oder die Umgebungsvariable ConnectionStrings__TOPqm.");
         }
 
         public async Task<AuflistungResponse> GetAuflistungAsync(string type, string? typeId, string? districtId, CancellationToken cancellationToken)
@@ -91,6 +91,9 @@ namespace TOPqwWeb_Core.Legacy.Adapters
                        OR ISNULL(ei.Einrichtungskennzeichen, '') LIKE '%' + @searchValue + '%'
                        OR ISNULL(ei.Aktenzeichen, '') LIKE '%' + @searchValue + '%'
                        OR ISNULL(st.Standortname, '') LIKE '%' + @searchValue + '%'
+                       OR ISNULL(st.Ort, '') LIKE '%' + @searchValue + '%'
+                       OR ISNULL(st.Strasse, '') LIKE '%' + @searchValue + '%'
+                       OR ISNULL(et.Unterkategorie, '') LIKE '%' + @searchValue + '%'
                        OR ISNULL(st.Bezeichnung, '') LIKE '%' + @searchValue + '%')
                 ORDER BY CASE WHEN @postalCode = '' THEN 0 ELSE dbo.GetGeoDistance(origin.lat, origin.lon, ISNULL(st.GeoLat, geo.lat), ISNULL(st.GeoLon, geo.lon)) END,
                          ei.Einrichtungsname, ei.EIID, st.Hauptstandort DESC;
@@ -184,7 +187,7 @@ namespace TOPqwWeb_Core.Legacy.Adapters
             };
         }
 
-        private sealed record FacilityRow(string EIID, string? STUID, string Name, string FacilityType, string Category, string District, bool IsMainLocation, string? Indicator, string? Address)
+        private sealed record FacilityRow(string EIID, string? STUID, string Name, string? LocationName, string FacilityType, string Category, string District, bool IsMainLocation, string? Indicator, string? Address)
         {
             private static string? GetNullableString(SqlDataReader reader, int index) => reader.IsDBNull(index) ? null : reader.GetValue(index).ToString();
 
@@ -193,6 +196,7 @@ namespace TOPqwWeb_Core.Legacy.Adapters
                 var eiid = GetNullableString(reader, 0) ?? string.Empty;
                 var stuid = GetNullableString(reader, 1);
                 var name = GetNullableString(reader, 2) ?? string.Empty;
+                var locationName = GetNullableString(reader, 3);
                 var facilityType = GetNullableString(reader, 5) ?? string.Empty;
                 var category = GetNullableString(reader, 6) ?? string.Empty;
                 var district = reader.IsDBNull(8) ? "Kreis" : GetNullableString(reader, 8) ?? "Kreis";
@@ -218,10 +222,10 @@ namespace TOPqwWeb_Core.Legacy.Adapters
                     ? null
                     : string.Join(" ", Enumerable.Range(10, 4).Select(index => GetNullableString(reader, index)).Where(value => !string.IsNullOrWhiteSpace(value)));
 
-                return new FacilityRow(eiid, stuid, name, facilityType, category, district, isMain, indicator, address);
+                return new FacilityRow(eiid, stuid, name, locationName, facilityType, category, district, isMain, indicator, address);
             }
 
-            public AuflistungFacilityResponse ToResponse(IEnumerable<FacilityRow> rows) => new() { EIID = EIID, Name = Name, FacilityIndicator = Indicator, Address = Address, AdditionalLocations = rows.Where(row => row.EIID == EIID && !row.IsMainLocation).Select(row => new AuflistungFacilityResponse { EIID = row.EIID, STUID = row.STUID, Name = row.Name, FacilityIndicator = row.Indicator, Address = row.Address }).ToList() };
+            public AuflistungFacilityResponse ToResponse(IEnumerable<FacilityRow> rows) => new() { EIID = EIID, STUID = STUID, Name = Name, FacilityIndicator = Indicator, Address = Address, AdditionalLocations = rows.Where(row => row.EIID == EIID && !row.IsMainLocation).Select(row => new AuflistungFacilityResponse { EIID = row.EIID, STUID = row.STUID, Name = string.IsNullOrWhiteSpace(row.LocationName) ? row.Name : row.LocationName, FacilityIndicator = row.Indicator, Address = row.Address }).ToList() };
         }
     }
 }

@@ -1,216 +1,184 @@
-﻿@page
+@page
 @model TOPqwWeb_Core.Pages.SuchAssistentModel
 @{
     ViewData["Title"] = "Assistierte Suche";
+    ViewData["UseLegacyTheme"] = false;
 }
 
-<nav class="kern-breadcrumbs" aria-label="Suchassistent-Schritte">
+<nav class="kern-breadcrumbs assistant-breadcrumbs" aria-label="Suchassistent-Schritte">
     <ol class="breadcrumb">
-        <li aria-current="@(string.IsNullOrWhiteSpace(Model.Suchtyp) ? "step" : null)">
-            <a class="kern-link" asp-page="/SuchAssistent">Suchtyp</a>
-        </li>
+        <li><a class="kern-link" asp-page="/Index"><span class="kern-icon kern-icon--home" aria-hidden="true"></span> Start</a></li>
+        <li aria-current="@(string.IsNullOrWhiteSpace(Model.Suchtyp) ? "page" : null)"><a class="kern-link" asp-page="/SuchAssistent">Suchtyp</a></li>
         @if (!string.IsNullOrWhiteSpace(Model.Suchtyp))
         {
-            <li aria-current="@(string.IsNullOrWhiteSpace(Model.Kategorie) ? "step" : null)">
-                <a class="kern-link" asp-page="/SuchAssistent" asp-route-Suchtyp="@Model.Suchtyp">Kategorien</a>
-            </li>
+            <li aria-current="@(string.IsNullOrWhiteSpace(Model.Kategorie) ? "page" : null)"><a class="kern-link" asp-page="/SuchAssistent" asp-route-Suchtyp="@Model.Suchtyp">Kategorien</a></li>
         }
         @if (!string.IsNullOrWhiteSpace(Model.Kategorie))
         {
-            <li aria-current="@(Model.Leistung.HasValue ? null : "step")">
-                <a class="kern-link" asp-page="/SuchAssistent" asp-route-Suchtyp="@Model.Suchtyp" asp-route-Alter="@Model.Alter" asp-route-Kategorie="@Model.Kategorie">Leistungsauswahl</a>
-            </li>
+            <li aria-current="@(Model.Leistung.HasValue ? null : "page")"><a class="kern-link" asp-page="/SuchAssistent" asp-route-Suchtyp="@Model.Suchtyp" asp-route-Alter="@Model.Alter" asp-route-Kategorie="@Model.Kategorie">Leistungsauswahl</a></li>
         }
         @if (Model.Leistung.HasValue && Model.BeschreibungBestaetigt)
         {
-            <li aria-current="page">
-                <a class="kern-link" asp-page="/SuchAssistent" asp-route-Suchtyp="@Model.Suchtyp" asp-route-Alter="@Model.Alter" asp-route-Kategorie="@Model.Kategorie" asp-route-Leistung="@Model.Leistung" asp-route-BeschreibungBestaetigt="true">Ort</a>
-            </li>
+            <li aria-current="page"><span>Ort</span></li>
         }
     </ol>
 </nav>
 
-<h1>Assistierte Suche</h1>
-
-@if (string.IsNullOrWhiteSpace(Model.Suchtyp))
-{
-    <div class="kern-card" style="padding:16px; margin-bottom:16px">
-        <h2>Wissen Sie, was ein Leistungstyp ist?</h2>
-        <p>Wenn Sie nach einem Leistungstyp suchen möchten, wählen Sie „Ja“.</p>
-        <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px">
-            <a class="kern-button kern-button--secondary" asp-page="/Suche">Nein, ich möchte die einfache Suche benutzen</a>
-            <a class="kern-button kern-button--primary" asp-page="/SuchAssistent" asp-route-Suchtyp="typ">Ja, ich möchte nach einem Leistungstyp suchen</a>
+<main class="assistant-page kern-stack">
+    <header class="assistant-page__header">
+        <div>
+            <p class="assistant-page__eyebrow">Schritt für Schritt</p>
+            <h1 class="kern-heading-1">Assistierte Suche</h1>
+            <p class="kern-body">Beantworten Sie wenige Fragen, damit wir passende Leistungen und Einrichtungen für Sie finden.</p>
         </div>
-    </div>
-}
-else if (string.Equals(Model.Suchtyp, "typ", StringComparison.OrdinalIgnoreCase)
-    && string.IsNullOrWhiteSpace(Model.Kategorie)
-    && Model.Assistant is not null)
-{
-    <div class="kern-card" style="padding:16px; margin-bottom:16px">
-        <h2>Womit benötigen Sie Unterstützung?</h2>
-        <ul role="list" style="list-style:none; padding:0; margin:12px 0 0">
-            @foreach (var category in Model.Assistant.Categories)
-            {
-                <li style="margin-bottom:8px">
-                    <a class="kern-button kern-button--tertiary" style="width:100%; justify-content:flex-start"
-                       asp-page="/SuchAssistent"
-                       asp-route-Suchtyp="@Model.Suchtyp"
-                       asp-route-Alter="@Model.Alter"
-                       asp-route-Kategorie="@category.Name">@category.Name</a>
-                </li>
-            }
-        </ul>
-    </div>
-}
-else if (Model.Assistant is not null && Model.Leistung.HasValue && !Model.BeschreibungBestaetigt)
-{
-    <div class="kern-card" style="padding:16px; margin-bottom:16px">
-        <h2>Beschreibung der Leistung</h2>
-        @if (!string.IsNullOrWhiteSpace(Model.Leistungsbeschreibung))
-        {
-            <div class="kern-alert kern-alert--info" style="margin:12px 0">
-                <div class="kern-alert__body">@Model.Leistungsbeschreibung</div>
-            </div>
-        }
-        <a class="kern-button kern-button--primary"
-           asp-page="/SuchAssistent"
-           asp-route-Suchtyp="@Model.Suchtyp"
-           asp-route-Alter="@Model.Alter"
-           asp-route-Kategorie="@Model.Kategorie"
-           asp-route-Leistung="@Model.Leistung"
-           asp-route-BeschreibungBestaetigt="true">Weiter</a>
-    </div>
-}
-else if (Model.Assistant is not null && !Model.Leistung.HasValue)
-{
-    <div class="kern-card" style="padding:16px; margin-bottom:16px">
-        <h2>Welche Leistung benötigen Sie?</h2>
-        <p><span class="kern-badge">Kategorie: @Model.Kategorie</span></p>
-        <ul role="list" style="list-style:none; padding:0; margin:12px 0 0">
-            @foreach (var leistung in Model.Assistant.Leistungen)
-            {
-                <li style="margin-bottom:8px">
-                    <a class="kern-button kern-button--tertiary" style="width:100%; justify-content:flex-start"
-                       asp-page="/SuchAssistent"
-                       asp-route-Suchtyp="@Model.Suchtyp"
-                       asp-route-Alter="@Model.Alter"
-                       asp-route-Kategorie="@Model.Kategorie"
-                       asp-route-Leistung="@leistung.Id">@leistung.Name</a>
-                </li>
-            }
-        </ul>
-    </div>
-}
+        <span class="kern-badge kern-badge--info"><span class="kern-icon kern-icon--search" aria-hidden="true"></span><span class="kern-label">Suchassistent</span></span>
+    </header>
 
-@if (Model.Assistant is not null && Model.Leistung.HasValue)
+    @if (string.IsNullOrWhiteSpace(Model.Suchtyp))
     {
-        <h2 style="margin-top:24px">Wo möchten Sie die Leistung in Anspruch nehmen?</h2>
-
-        <div style="display:flex; flex-wrap:wrap; gap:16px; margin-top:12px">
-            <!-- PLZ Suche -->
-            <form method="get" class="kern-card" style="flex:1; min-width:280px; padding:16px">
-                <h3>Suche per Postleitzahl</h3>
-                <input type="hidden" name="Suchtyp" value="@Model.Suchtyp" />
-                <input type="hidden" name="Alter" value="@Model.Alter" />
-                <input type="hidden" name="Kategorie" value="@Model.Kategorie" />
-                <input type="hidden" name="Leistung" value="@Model.Leistung" />
-                <input type="hidden" name="BeschreibungBestaetigt" value="true" />
-
-                <div style="margin:12px 0">
-                    <label class="kern-label" for="Postleitzahl">Postleitzahl</label>
-                    <input class="kern-input-text" id="Postleitzahl" name="Postleitzahl" value="@Model.Postleitzahl" maxlength="5" inputmode="numeric" list="postal-code-options" autocomplete="off" style="width:100%; margin-top:4px" />
-                    @if (Model.Postleitzahlen.Count > 0)
+        <section class="assistant-card kern-card kern-card--large" aria-labelledby="assistant-start-title">
+            <div class="kern-card__container">
+                <div class="assistant-card__heading">
+                    <span class="assistant-card__icon kern-badge kern-badge--info"><span class="kern-icon kern-icon--help" aria-hidden="true"></span></span>
+                    <div><p class="assistant-page__eyebrow">Start</p><h2 id="assistant-start-title" class="kern-title">Wissen Sie, was ein Leistungstyp ist?</h2></div>
+                </div>
+                <p class="kern-body">Wenn Sie nach einem Leistungstyp suchen möchten, wählen Sie „Ja“. Andernfalls können Sie die einfache Suche verwenden.</p>
+                <div class="assistant-actions kern-btn-wrapper">
+                    <a class="kern-btn kern-btn--secondary" asp-page="/Suche"><span class="kern-icon kern-icon--search" aria-hidden="true"></span><span class="kern-label">Nein, einfache Suche</span></a>
+                    <a class="kern-btn kern-btn--primary" asp-page="/SuchAssistent" asp-route-Suchtyp="typ"><span class="kern-icon kern-icon--arrow-forward" aria-hidden="true"></span><span class="kern-label">Ja, Leistungstyp suchen</span></a>
+                </div>
+            </div>
+        </section>
+    }
+    else if (string.Equals(Model.Suchtyp, "typ", StringComparison.OrdinalIgnoreCase) && string.IsNullOrWhiteSpace(Model.Kategorie) && Model.Assistant is not null)
+    {
+        <section class="assistant-card kern-card kern-card--large" aria-labelledby="category-title">
+            <div class="kern-card__container">
+                <div class="assistant-card__heading"><span class="assistant-card__icon kern-badge kern-badge--info"><span class="kern-icon kern-icon--checklist" aria-hidden="true"></span></span><div><p class="assistant-page__eyebrow">Nächster Schritt</p><h2 id="category-title" class="kern-title">Womit benötigen Sie Unterstützung?</h2></div></div>
+                <ul class="assistant-choice-list kern-list" role="list">
+                    @foreach (var category in Model.Assistant.Categories)
                     {
-                        <datalist id="postal-code-options">
-                            @foreach (var postalCode in Model.Postleitzahlen)
-                            {
-                                <option value="@postalCode"></option>
-                            }
-                        </datalist>
-                    }
-                </div>
-                <button class="kern-button kern-button--primary" type="submit">Postleitzahl suchen</button>
-            </form>
-
-            <!-- Geo Suche - IDs must stay exact for suchassistent.js -->
-            <form method="get" id="GeolocationForm" class="kern-card" style="flex:1; min-width:280px; padding:16px">
-                <h3>Suche per Standort</h3>
-                <input type="hidden" name="Suchtyp" value="@Model.Suchtyp" />
-                <input type="hidden" name="Alter" value="@Model.Alter" />
-                <input type="hidden" name="Kategorie" value="@Model.Kategorie" />
-                <input type="hidden" name="Leistung" value="@Model.Leistung" />
-                <input type="hidden" name="BeschreibungBestaetigt" value="true" />
-
-                <div style="margin:12px 0">
-                    <label class="kern-label" for="Latitude">Latitude</label>
-                    <input class="kern-input-text" id="Latitude" name="Latitude" value="@Model.Latitude" type="number" step="any" required style="width:100%; margin-top:4px" />
-                </div>
-                <div style="margin:12px 0">
-                    <label class="kern-label" for="Longitude">Longitude</label>
-                    <input class="kern-input-text" id="Longitude" name="Longitude" value="@Model.Longitude" type="number" step="any" required style="width:100%; margin-top:4px" />
-                </div>
-                <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:12px">
-                    <button class="kern-button kern-button--secondary" type="button" id="GeolocationSearchButton">Meinen Standort verwenden</button>
-                    <button class="kern-button kern-button--primary" type="submit">Koordinaten suchen</button>
-                </div>
-                <p id="GeolocationMessage" role="status" aria-live="polite" style="margin-top:8px; font-size:0.875rem"></p>
-            </form>
-        </div>
-
-        @if (Model.Kreise.Count > 0)
-        {
-            <div class="kern-card" style="padding:16px; margin-top:16px">
-                <h3>Oder wählen Sie einen Kreis</h3>
-                <ul role="list" style="list-style:none; padding:0; margin:12px 0 0; display:flex; flex-wrap:wrap; gap:8px">
-                    @foreach (var kreis in Model.Kreise)
-                    {
-                        <li><a class="kern-button kern-button--tertiary" asp-page="/SuchAssistent" asp-route-Suchtyp="@Model.Suchtyp" asp-route-Alter="@Model.Alter" asp-route-Kategorie="@Model.Kategorie" asp-route-Leistung="@Model.Leistung" asp-route-BeschreibungBestaetigt="true" asp-route-Kreis="@kreis.Id">@kreis.Name</a></li>
+                        <li><a class="assistant-choice kern-card kern-card--interactive" asp-page="/SuchAssistent" asp-route-Suchtyp="@Model.Suchtyp" asp-route-Alter="@Model.Alter" asp-route-Kategorie="@category.Name"><span class="assistant-choice__icon kern-icon kern-icon--arrow-forward" aria-hidden="true"></span><span class="kern-label">@category.Name</span><span class="kern-icon kern-icon--chevron-right" aria-hidden="true"></span></a></li>
                     }
                 </ul>
             </div>
-        }
-
-        @if (Model.Kreis.HasValue || Model.Ergebnisse.Count > 0)
-        {
-            <div class="kern-card" style="padding:16px; margin-top:16px">
-                <h3>Gefundene Einrichtungen</h3>
-                @if (Model.Ergebnisse.Count == 0)
-                {
-                    <div class="kern-alert kern-alert--warning" style="margin-top:12px">
-                        <div class="kern-alert__body">Für die gewählte Kombination wurden keine Einrichtungen gefunden.</div>
-                    </div>
-                }
-                else
-                {
-                    <ul role="list" style="list-style:none; padding:0; margin:12px 0 0">
-                        @foreach (var ergebnis in Model.Ergebnisse)
-                        {
-                            <li class="kern-card" style="padding:12px; margin-bottom:8px">
-                                <h4 style="margin:0 0 4px"><a asp-page="/Stammdaten" asp-route-EIID="@ergebnis.EIID" asp-route-STUID="@ergebnis.STUID">@ergebnis.Name</a></h4>
-                                @if (!string.IsNullOrWhiteSpace(ergebnis.Standortname))
-                                {
-                                    <div>@ergebnis.Standortname</div>
-                                }
-                                <div style="font-size:0.875rem; opacity:0.8">
-                                    @ergebnis.Strasse @ergebnis.Hausnummer @ergebnis.Hausnummerzusatz<br />
-                                    @ergebnis.PLZ @ergebnis.Ort
-                                </div>
-                                @if (!string.IsNullOrWhiteSpace(ergebnis.Telefon))
-                                {
-                                    <div style="margin-top:4px">Telefon: <a href="tel:@ergebnis.Telefon">@ergebnis.Telefon</a></div>
-                                }
-                                @if (ergebnis.Entfernung.HasValue)
-                                {
-                                    <span class="kern-badge" style="margin-top:8px">@ergebnis.Entfernung.Value.ToString("0.0") km</span>
-                                }
-                            </li>
-                        }
-                    </ul>
-                }
-            </div>
+        </section>
     }
-}
+    else if (Model.Assistant is not null && Model.Leistung.HasValue && !Model.BeschreibungBestaetigt)
+    {
+        <section class="assistant-card kern-card kern-card--large" aria-labelledby="description-title">
+            <div class="kern-card__container">
+                <div class="assistant-card__heading"><span class="assistant-card__icon kern-badge kern-badge--info"><span class="kern-icon kern-icon--info" aria-hidden="true"></span></span><div><p class="assistant-page__eyebrow">Leistungsdetails</p><h2 id="description-title" class="kern-title">Beschreibung der Leistung</h2></div></div>
+                @if (!string.IsNullOrWhiteSpace(Model.Leistungsbeschreibung))
+                {
+                    <div class="kern-alert kern-alert--info" role="note"><span class="kern-icon kern-icon--info" aria-hidden="true"></span><div class="kern-alert__body">@Model.Leistungsbeschreibung</div></div>
+                }
+                <div class="assistant-actions"><a class="kern-btn kern-btn--primary" asp-page="/SuchAssistent" asp-route-Suchtyp="@Model.Suchtyp" asp-route-Alter="@Model.Alter" asp-route-Kategorie="@Model.Kategorie" asp-route-Leistung="@Model.Leistung" asp-route-BeschreibungBestaetigt="true"><span class="kern-label">Weiter zur Ortssuche</span><span class="kern-icon kern-icon--arrow-forward" aria-hidden="true"></span></a></div>
+            </div>
+        </section>
+    }
+    else if (Model.Assistant is not null && !Model.Leistung.HasValue)
+    {
+        <section class="assistant-card kern-card kern-card--large" aria-labelledby="service-title">
+            <div class="kern-card__container">
+                <div class="assistant-card__heading"><span class="assistant-card__icon kern-badge kern-badge--info"><span class="kern-icon kern-icon--checklist" aria-hidden="true"></span></span><div><p class="assistant-page__eyebrow">Leistungsangebot</p><h2 id="service-title" class="kern-title">Welche Leistung benötigen Sie?</h2></div></div>
+                <p><span class="kern-badge kern-badge--small kern-badge--info"><span class="kern-label">Kategorie: @Model.Kategorie</span></span></p>
+                <ul class="assistant-choice-list kern-list" role="list">
+                    @foreach (var leistung in Model.Assistant.Leistungen)
+                    {
+                        <li><a class="assistant-choice kern-card kern-card--interactive" asp-page="/SuchAssistent" asp-route-Suchtyp="@Model.Suchtyp" asp-route-Alter="@Model.Alter" asp-route-Kategorie="@Model.Kategorie" asp-route-Leistung="@leistung.Id"><span class="assistant-choice__icon kern-icon kern-icon--check" aria-hidden="true"></span><span class="kern-label">@leistung.Name</span><span class="kern-icon kern-icon--chevron-right" aria-hidden="true"></span></a></li>
+                    }
+                </ul>
+            </div>
+        </section>
+    }
+
+    @if (Model.Assistant is not null && Model.Leistung.HasValue)
+    {
+        <section class="location-section" aria-labelledby="location-title">
+            <div class="assistant-section-heading"><div><p class="assistant-page__eyebrow">Letzter Schritt</p><h2 id="location-title" class="kern-title">Wo möchten Sie die Leistung in Anspruch nehmen?</h2></div><span class="kern-badge kern-badge--success"><span class="kern-icon kern-icon--info" aria-hidden="true"></span><span class="kern-label">Ort auswählen</span></span></div>
+            <div class="location-methods">
+                <form method="get" class="method-card kern-card" aria-labelledby="postal-title">
+                    <div class="kern-card__container">
+                        <div class="method-card__heading"><span class="method-card__icon kern-icon kern-icon--search" aria-hidden="true"></span><h3 id="postal-title" class="kern-title">Suche per Postleitzahl</h3></div>
+                        <input type="hidden" name="Suchtyp" value="@Model.Suchtyp" /><input type="hidden" name="Alter" value="@Model.Alter" /><input type="hidden" name="Kategorie" value="@Model.Kategorie" /><input type="hidden" name="Leistung" value="@Model.Leistung" /><input type="hidden" name="BeschreibungBestaetigt" value="true" />
+                        <div class="kern-form-input"><label class="kern-label" for="Postleitzahl">Postleitzahl</label><input class="kern-form-input__input" id="Postleitzahl" name="Postleitzahl" value="@Model.Postleitzahl" maxlength="5" inputmode="numeric" list="postal-code-options" autocomplete="off" /></div>
+                        @if (Model.Postleitzahlen.Count > 0)
+                        {
+                            <datalist id="postal-code-options">@foreach (var postalCode in Model.Postleitzahlen) { <option value="@postalCode"></option> }</datalist>
+                        }
+                        <button class="kern-btn kern-btn--primary" type="submit"><span class="kern-icon kern-icon--search" aria-hidden="true"></span><span class="kern-label">Postleitzahl suchen</span></button>
+                    </div>
+                </form>
+                <form method="get" id="GeolocationForm" class="method-card kern-card" aria-labelledby="geo-title">
+                    <div class="kern-card__container">
+                        <div class="method-card__heading"><span class="method-card__icon kern-icon kern-icon--info" aria-hidden="true"></span><h3 id="geo-title" class="kern-title">Suche per Standort</h3></div>
+                        <input type="hidden" name="Suchtyp" value="@Model.Suchtyp" /><input type="hidden" name="Alter" value="@Model.Alter" /><input type="hidden" name="Kategorie" value="@Model.Kategorie" /><input type="hidden" name="Leistung" value="@Model.Leistung" /><input type="hidden" name="BeschreibungBestaetigt" value="true" />
+                        <div class="geo-fields"><div class="kern-form-input"><label class="kern-label" for="Latitude">Latitude</label><input class="kern-form-input__input" id="Latitude" name="Latitude" value="@Model.Latitude" type="number" step="any" required /></div><div class="kern-form-input"><label class="kern-label" for="Longitude">Longitude</label><input class="kern-form-input__input" id="Longitude" name="Longitude" value="@Model.Longitude" type="number" step="any" required /></div></div>
+                        <div class="assistant-actions"><button class="kern-btn kern-btn--secondary" type="button" id="GeolocationSearchButton"><span class="kern-icon kern-icon--info" aria-hidden="true"></span><span class="kern-label">Meinen Standort verwenden</span></button><button class="kern-btn kern-btn--primary" type="submit"><span class="kern-label">Koordinaten suchen</span></button></div>
+                        <p id="GeolocationMessage" class="method-card__message kern-body" role="status" aria-live="polite"></p>
+                    </div>
+                </form>
+            </div>
+            @if (Model.Kreise.Count > 0)
+            {
+                <section class="district-card kern-card" aria-labelledby="district-title"><div class="kern-card__container"><div class="method-card__heading"><span class="method-card__icon kern-icon kern-icon--checklist" aria-hidden="true"></span><h3 id="district-title" class="kern-title">Oder wählen Sie einen Kreis</h3></div><ul class="district-list kern-list" role="list">@foreach (var kreis in Model.Kreise) { <li><a class="kern-btn kern-btn--tertiary" asp-page="/SuchAssistent" asp-route-Suchtyp="@Model.Suchtyp" asp-route-Alter="@Model.Alter" asp-route-Kategorie="@Model.Kategorie" asp-route-Leistung="@Model.Leistung" asp-route-BeschreibungBestaetigt="true" asp-route-Kreis="@kreis.Id"><span class="kern-label">@kreis.Name</span></a></li> }</ul></div></section>
+            }
+        </section>
+    }
+
+    @if (Model.Leistung.HasValue && (Model.Kreis.HasValue || Model.Ergebnisse.Count > 0))
+    {
+        <section class="results-section kern-card" aria-labelledby="results-title"><div class="kern-card__container"><div class="assistant-section-heading"><div><p class="assistant-page__eyebrow">Suchergebnis</p><h2 id="results-title" class="kern-title">Gefundene Einrichtungen</h2></div><span class="kern-badge kern-badge--info"><span class="kern-label">@Model.Ergebnisse.Count Treffer</span></span></div>@if (Model.Ergebnisse.Count == 0) { <div class="kern-alert kern-alert--warning" role="status"><span class="kern-icon kern-icon--warning" aria-hidden="true"></span><div class="kern-alert__body">Für die gewählte Kombination wurden keine Einrichtungen gefunden.</div></div> } else { <ul class="result-list kern-list" role="list">@foreach (var ergebnis in Model.Ergebnisse) { <li class="result-item"><a class="result-item__link kern-card kern-card--interactive" asp-page="/Stammdaten" asp-route-EIID="@ergebnis.EIID" asp-route-STUID="@ergebnis.STUID"><span class="result-item__icon kern-badge kern-badge--info"><span class="kern-icon kern-icon--info" aria-hidden="true"></span></span><span class="result-item__content"><strong>@ergebnis.Name</strong>@if (!string.IsNullOrWhiteSpace(ergebnis.Standortname)) { <span>@ergebnis.Standortname</span> }<span class="kern-body">@ergebnis.Strasse @ergebnis.Hausnummer @ergebnis.Hausnummerzusatz<br />@ergebnis.PLZ @ergebnis.Ort</span>@if (!string.IsNullOrWhiteSpace(ergebnis.Telefon)) { <span class="kern-body">Telefon: <span class="kern-link">@ergebnis.Telefon</span></span> }</span>@if (ergebnis.Entfernung.HasValue) { <span class="kern-badge kern-badge--small kern-badge--info"><span class="kern-label">@ergebnis.Entfernung.Value.ToString("0.0") km</span></span> }<span class="kern-icon kern-icon--arrow-forward" aria-hidden="true"></span></a></li> }</ul> }</div></section>
+    }
+</main>
+
+<style>
+    .assistant-page { width: min(100%, 1060px); margin: 0 auto; padding: 1rem 0 4rem; }
+    .assistant-breadcrumbs { width: min(100%, 1060px); margin-left: auto; margin-right: auto; }
+    .assistant-page__header { align-items: flex-start; display: flex; gap: 1.5rem; justify-content: space-between; margin-bottom: 1.5rem; }
+    .assistant-page__header h1 { margin: 0 0 .45rem; }
+    .assistant-page__header p { margin-bottom: 0; max-width: 46rem; }
+    .assistant-page__eyebrow { color: var(--kern-color-action-default-contextual); font-size: .75rem; font-weight: 800; letter-spacing: .08em; margin: 0 0 .35rem; text-transform: uppercase; }
+    .assistant-card { margin-bottom: 1.5rem; }
+    .assistant-card__heading, .method-card__heading, .assistant-section-heading { align-items: center; display: flex; gap: .85rem; }
+    .assistant-card__heading { margin-bottom: 1.25rem; }
+    .assistant-card__heading h2, .method-card__heading h3, .assistant-section-heading h2 { margin: 0; }
+    .assistant-card__icon { align-items: center; display: inline-flex; flex: 0 0 3rem; height: 3rem; justify-content: center; }
+    .assistant-card__icon .kern-icon { font-size: 1.4rem; }
+    .assistant-actions { display: flex; flex-wrap: wrap; gap: .65rem; margin-top: 1.25rem; }
+    .assistant-choice-list, .result-list { display: grid; gap: .65rem; margin: 1.25rem 0 0; padding: 0; }
+    .assistant-choice-list li, .result-list li { list-style: none; }
+    .assistant-choice { align-items: center; display: flex; gap: .85rem; padding: 1rem; text-decoration: none; }
+    .assistant-choice__icon { color: var(--kern-color-action-default-contextual); }
+    .assistant-choice > .kern-icon:last-child { margin-left: auto; }
+    .location-section { margin-top: .5rem; }
+    .assistant-section-heading { justify-content: space-between; margin-bottom: 1rem; }
+    .location-methods { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .method-card .kern-card__container { display: grid; gap: 1rem; height: 100%; }
+    .method-card__icon { color: var(--kern-color-action-default-contextual); font-size: 1.5rem; }
+    .geo-fields { display: grid; gap: .75rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .method-card__message { min-height: 1.4rem; margin: 0; }
+    .district-card, .results-section { margin-top: 1rem; }
+    .district-list { display: flex; flex-wrap: wrap; gap: .5rem; margin: 1rem 0 0; padding: 0; }
+    .district-list li { list-style: none; }
+    .result-item__link { align-items: center; display: flex; gap: .85rem; padding: 1rem; text-decoration: none; }
+    .result-item__icon { align-items: center; display: inline-flex; flex: 0 0 2.75rem; height: 2.75rem; justify-content: center; }
+    .result-item__content { display: grid; gap: .25rem; min-width: 0; }
+    .result-item__content .kern-body { color: var(--kern-color-layout-text-muted); font-size: .9rem; }
+    .result-item__link > .kern-icon:last-child { margin-left: auto; }
+    @@media (max-width: 720px) {
+        .assistant-page__header, .assistant-section-heading { align-items: flex-start; flex-direction: column; }
+        .location-methods { grid-template-columns: 1fr; }
+    }
+    @@media (max-width: 480px) {
+        .assistant-page__header { gap: .75rem; }
+        .geo-fields { grid-template-columns: 1fr; }
+        .assistant-actions .kern-btn { width: 100%; }
+        .result-item__link { align-items: flex-start; flex-wrap: wrap; }
+        .result-item__link > .kern-icon:last-child { margin-left: auto; }
+    }
+</style>
 
 @section Scripts {
     <script src="~/js/suchassistent.js" asp-append-version="true"></script>

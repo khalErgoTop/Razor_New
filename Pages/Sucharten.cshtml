@@ -4,65 +4,116 @@
     ViewData["Title"] = "Leistungsangebote";
 }
 
-<nav aria-label="Brotkrümelnavigation" style="margin-bottom:24px">
-    <ol class="breadcrumb" style="list-style:none; padding:0; margin:0; display:flex; gap:8px; font-size:15px">
-        <li><a asp-page="/Index">Start</a> <span style="margin-left:8px">/</span></li>
-        <li aria-current="page" style="font-weight:600">Leistungsangebote</li>
+<nav class="kern-breadcrumbs sucharten-breadcrumbs" aria-label="Brotkrümelnavigation">
+    <ol class="breadcrumb">
+        <li><a class="kern-link" asp-page="/Index"><span class="kern-icon kern-icon--home" aria-hidden="true"></span> Start</a></li>
+        <li aria-current="page">Leistungsangebote</li>
     </ol>
 </nav>
 
-<div class="kern-card" style="padding:32px; max-width:800px">
-    <h1 style="margin:0 0 8px; font-size:28px">Leistungsangebote</h1>
-    <p style="margin:0 0 24px; font-size:16px; color:var(--kern-color-neutral-700)">Wählen Sie eine Suchart:</p>
+<main class="sucharten-page kern-stack">
+    <section class="kern-card kern-card--large sucharten-card" aria-labelledby="sucharten-title">
+        <div class="kern-card__container">
+            <div class="kern-card__header">
+                <h1 id="sucharten-title" class="kern-title">Leistungsangebote</h1>
+                <p class="kern-body">Wählen Sie eine Suchart:</p>
+            </div>
 
-    <ul class="search-type-links" style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:12px">
-        <li>
-            <a asp-page="/Suche" class="kern-card" style="display:flex; align-items:center; gap:16px; padding:16px 20px; text-decoration:none; border:1px solid var(--kern-color-layout-border); border-radius:8px">
-                <span class="kern-icon kern-icon--search" aria-hidden="true" style="font-size:24px"></span>
-                <div>
-                    <div style="font-size:17px; font-weight:600; color:#1a1a1a">Detailsuche</div>
-                    <div style="font-size:14px; color:var(--kern-color-neutral-700)">Gezielt nach Leistungen, Region und Stichworten filtern</div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a asp-page="/Auflistung" asp-route-Typ="Typ" class="kern-card" style="display:flex; align-items:center; gap:16px; padding:16px 20px; text-decoration:none; border:1px solid var(--kern-color-layout-border); border-radius:8px">
-                <span class="kern-icon kern-icon--category" aria-hidden="true" style="font-size:24px"></span>
-                <div>
-                    <div style="font-size:17px; font-weight:600; color:#1a1a1a">Nach Art der Leistung</div>
-                    <div style="font-size:14px; color:var(--kern-color-neutral-700)">Assistenz, Wohnen, Tagesförderung, WfbM u.a.</div>
-                </div>
-            </a>
-        </li>
-        <li>
-            <a asp-page="/Auflistung" asp-route-Typ="Kreis" class="kern-card" style="display:flex; align-items:center; gap:16px; padding:16px 20px; text-decoration:none; border:1px solid var(--kern-color-layout-border); border-radius:8px">
-                <span class="kern-icon kern-icon--location" aria-hidden="true" style="font-size:24px"></span>
-                <div>
-                    <div style="font-size:17px; font-weight:600; color:#1a1a1a">Nach @Model.DistrictLabel</div>
-                    <div style="font-size:14px; color:var(--kern-color-neutral-700)">Angebote in Ihrer Nähe finden</div>
-                </div>
-            </a>
-        </li>
-    </ul>
-</div>
+            <ul class="search-type-links" role="list">
+                <li>
+                    <a asp-page="/Suche" class="kern-card kern-card--interactive search-type-link">
+                        <div class="kern-card__container">
+                            <span class="search-type-link__icon kern-icon kern-icon--search" aria-hidden="true"></span>
+                            <div class="search-type-link__content">
+                                <span class="kern-title">Detailsuche</span>
+                                <span class="kern-body">Gezielt nach Leistungen, Region und Stichworten filtern</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a asp-page="/Auflistung" asp-route-Typ="Typ" class="kern-card kern-card--interactive search-type-link">
+                        <div class="kern-card__container">
+                            <span class="search-type-link__icon kern-icon kern-icon--category" aria-hidden="true"></span>
+                            <div class="search-type-link__content">
+                                <span class="kern-title">Nach Art der Leistung</span>
+                                <span class="kern-body">Assistenz, Wohnen, Tagesförderung, WfbM u.a.</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a asp-page="/Auflistung" asp-route-Typ="Kreis" class="kern-card kern-card--interactive search-type-link">
+                        <div class="kern-card__container">
+                            <span class="search-type-link__icon kern-icon kern-icon--location" aria-hidden="true"></span>
+                            <div class="search-type-link__content">
+                                <span class="kern-title">Nach @Model.DistrictLabel</span>
+                                <span class="kern-body">Angebote in Ihrer Nähe finden</span>
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+</main>
 
 <style>
-    .breadcrumb a, .breadcrumb a:visited {
-        color: #1a1a1a !important;
+    .sucharten-page {
+        max-width: var(--kern-480);
+        margin: var(--kern-metric-space-6x-large) auto;
+        padding: 0 var(--kern-metric-space-default);
+    }
+
+    .sucharten-card .kern-card__header {
+        gap: var(--kern-metric-space-x-small);
+    }
+
+    .sucharten-card .kern-title,
+    .sucharten-card .kern-body,
+    .search-type-link .kern-title,
+    .search-type-link .kern-body {
+        margin: 0;
+    }
+
+    .search-type-links {
+        display: flex;
+        flex-direction: column;
+        gap: var(--kern-metric-space-small);
+        list-style: none;
+        margin: var(--kern-metric-space-large) 0 0;
+        padding: 0;
+    }
+
+    .search-type-link {
+        color: var(--kern-color-layout-text-default);
         text-decoration: none;
     }
 
-        .breadcrumb a:hover {
-            color: var(--kern-color-action-default) !important;
-            text-decoration: underline;
-        }
-
-    .search-type-links a, .search-type-links a:visited {
-        color: #1a1a1a !important;
+    .search-type-link .kern-card__container {
+        display: flex;
+        align-items: center;
+        gap: var(--kern-metric-space-default);
     }
 
-        .search-type-links a:hover {
-            border-color: var(--kern-color-action-default) !important;
-            background: var(--kern-color-neutral-50);
-        }
+    .search-type-link__icon {
+        flex: 0 0 auto;
+        font-size: var(--kern-24, 1.5rem);
+    }
+
+    .search-type-link__content {
+        display: flex;
+        flex-direction: column;
+        gap: var(--kern-metric-space-2x-small);
+    }
+
+    .search-type-link:hover,
+    .search-type-link:focus-visible {
+        border-color: var(--kern-color-action-default);
+    }
+
+    .search-type-link:focus-visible {
+        outline: var(--kern-metric-border-width-light) solid var(--kern-color-action-focus-default);
+        outline-offset: var(--kern-metric-space-2x-small);
+    }
 </style>

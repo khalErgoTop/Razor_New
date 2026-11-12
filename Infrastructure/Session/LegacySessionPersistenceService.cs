@@ -13,9 +13,9 @@ public sealed class LegacySessionPersistenceService
 
     public LegacySessionPersistenceService(IConfiguration configuration)
     {
-        _connectionString = configuration.GetConnectionString("TOPqwWeb") is { Length: > 0 } connectionString
+        _connectionString = configuration.GetConnectionString("TOPqm") is { Length: > 0 } connectionString
             ? connectionString
-            : throw new InvalidOperationException("Die ConnectionStrings:TOPqwWeb-Konfiguration fehlt.");
+            : throw new InvalidOperationException("Die ConnectionStrings:TOPqm-Konfiguration fehlt.");
     }
 
     public async Task LoadAsync(ISession session, CancellationToken cancellationToken)

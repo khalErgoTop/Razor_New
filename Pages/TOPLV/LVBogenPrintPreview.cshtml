@@ -1,14 +1,23 @@
 @page
 @model TOPqwWeb_Core.Pages.LV.LVBogenPrintPreviewModel
+@inject TOPqwWeb_Core.Infrastructure.Theming.ThemeAssetService ThemeAssets
 @{
     Layout = null;
+    var legacyCss = ThemeAssets.GetExistingLegacyAssetPath("LVBogenPrintPreview.css");
 }
 <!DOCTYPE html>
 <html lang="de">
 <head>
     <meta charset="utf-8" />
     <title>LV-Bogen – Druckansicht</title>
-    <link rel="stylesheet" href="~/css/TOPqwdesign/LVBogenPrintPreview.css" />
+    @if (legacyCss is not null)
+    {
+        <link rel="stylesheet" href="@Url.Content(legacyCss)" asp-append-version="true" />
+    }
+    else if (ThemeAssets.UsesKern)
+    {
+        <link rel="stylesheet" href="~/lib/kern/kern.css" asp-append-version="true" />
+    }
     <style>
         @@media print { .print-actions { display: none; } }
         .print-actions { margin-bottom: 1rem; }

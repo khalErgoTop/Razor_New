@@ -1,0 +1,59 @@
+html[data-design="legacy"] {
+    --kern-color-action-default: var(--color-blue, #333);
+    --kern-color-action-default-contextual: var(--color-blue, #333);
+    --kern-color-layout-border: var(--color-grey-dark, #ccc);
+    --kern-color-layout-text-muted: var(--color-grey, #555);
+}
+
+html[data-design="legacy"] .site-header {
+    border-color: var(--color-grey-dark, #ccc);
+}
+
+html[data-design="legacy"] .module-navigation {
+    background: transparent;
+    border-color: var(--color-grey-dark, #ccc);
+}
+
+html[data-design="legacy"] .nav-link,
+html[data-design="legacy"] .nav-link:visited,
+html[data-design="legacy"] .nav-link:active,
+html[data-design="legacy"] a,
+html[data-design="legacy"] a:visited {
+    color: var(--color-blue, #333) !important;
+}
+
+html[data-design="legacy"] .kern-button--primary,
+html[data-design="legacy"] .kern-button--primary:visited {
+    color: #fff !important;
+}
+
+html[data-design="legacy"] #CrModules {
+    height: auto;
+}
+
+html[data-design="legacy"] #CrModules > li {
+    position: relative;
+    width: auto;
+    flex: 0 1 auto;
+    line-height: normal;
+}
+
+html[data-design="legacy"] #CrModules .nav-sub > li {
+    display: block;
+    width: auto;
+    line-height: normal;
+}
+
+@media (max-width: 900px) {
+    html[data-design="legacy"] #CrModules {
+        display: none;
+    }
+
+    html[data-design="legacy"] #CrModules.is-open {
+        display: flex;
+    }
+
+    html[data-design="legacy"] #CrModules > li {
+        width: 100%;
+    }
+}

@@ -9,8 +9,8 @@ namespace TOPqwWeb_Core.Services.Public
 
         public SuchAssistentPageService(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("TOPqwWeb")
-                ?? throw new InvalidOperationException("ConnectionStrings:TOPqwWeb muss konfiguriert werden.");
+            _connectionString = configuration.GetConnectionString("TOPqm")
+                ?? throw new InvalidOperationException("ConnectionStrings:TOPqm muss konfiguriert werden.");
         }
 
         public async Task<SuchAssistentResponse> GetCategoriesAsync(int? age, CancellationToken cancellationToken)
@@ -167,8 +167,12 @@ namespace TOPqwWeb_Core.Services.Public
                 DECLARE @now datetime = GETDATE();
                 DECLARE @nowP1 datetime = GETDATE() + 0.001;
                 SELECT TOP (50) ei.EIID, std.STUID, ei.Einrichtungsname,
-                       ei.Einrichtungskennzeichen, std.Standortname, std.Strasse,
-                       std.Hausnummer, std.Hausnummerzusatz, std.PLZ, std.Ort,
+                       ei.Einrichtungskennzeichen, std.Standortname,
+                       CASE WHEN std.AdresseImWebAnzeigen = 1 THEN std.Strasse END,
+                       CASE WHEN std.AdresseImWebAnzeigen = 1 THEN std.Hausnummer END,
+                       CASE WHEN std.AdresseImWebAnzeigen = 1 THEN std.Hausnummerzusatz END,
+                       CASE WHEN std.AdresseImWebAnzeigen = 1 THEN std.PLZ END,
+                       CASE WHEN std.AdresseImWebAnzeigen = 1 THEN std.Ort END,
                        std.Telefon, std.Email, std.Internet
                 FROM dbo.Einrichtungen ei
                 INNER JOIN dbo.Standorte std ON ei.EIID = std.FKEIID
@@ -227,8 +231,12 @@ namespace TOPqwWeb_Core.Services.Public
                 DECLARE @now datetime = GETDATE();
                 DECLARE @nowP1 datetime = GETDATE() + 0.001;
                 SELECT TOP (50) ei.EIID, std.STUID, ei.Einrichtungsname,
-                       ei.Einrichtungskennzeichen, std.Standortname, std.Strasse,
-                       std.Hausnummer, std.Hausnummerzusatz, std.PLZ, std.Ort,
+                       ei.Einrichtungskennzeichen, std.Standortname,
+                       CASE WHEN std.AdresseImWebAnzeigen = 1 THEN std.Strasse END,
+                       CASE WHEN std.AdresseImWebAnzeigen = 1 THEN std.Hausnummer END,
+                       CASE WHEN std.AdresseImWebAnzeigen = 1 THEN std.Hausnummerzusatz END,
+                       CASE WHEN std.AdresseImWebAnzeigen = 1 THEN std.PLZ END,
+                       CASE WHEN std.AdresseImWebAnzeigen = 1 THEN std.Ort END,
                        std.Telefon, std.Email, std.Internet,
                        ISNULL(dbo.GetGeoDistance(@latitude, @longitude, std.GeoLat, std.GeoLon),
                               dbo.GetGeoDistanceByPlz2(@latitude, @longitude, std.PLZ)) AS Entfernung
@@ -288,8 +296,12 @@ namespace TOPqwWeb_Core.Services.Public
                 DECLARE @now datetime = GETDATE();
                 DECLARE @nowP1 datetime = GETDATE() + 0.001;
                 SELECT TOP (50) ei.EIID, std.STUID, ei.Einrichtungsname,
-                       ei.Einrichtungskennzeichen, std.Standortname, std.Strasse,
-                       std.Hausnummer, std.Hausnummerzusatz, std.PLZ, std.Ort,
+                       ei.Einrichtungskennzeichen, std.Standortname,
+                       CASE WHEN std.AdresseImWebAnzeigen = 1 THEN std.Strasse END,
+                       CASE WHEN std.AdresseImWebAnzeigen = 1 THEN std.Hausnummer END,
+                       CASE WHEN std.AdresseImWebAnzeigen = 1 THEN std.Hausnummerzusatz END,
+                       CASE WHEN std.AdresseImWebAnzeigen = 1 THEN std.PLZ END,
+                       CASE WHEN std.AdresseImWebAnzeigen = 1 THEN std.Ort END,
                        std.Telefon, std.Email, std.Internet
                 FROM dbo.Einrichtungen ei
                 INNER JOIN dbo.Standorte std ON ei.EIID = std.FKEIID

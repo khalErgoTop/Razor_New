@@ -10,8 +10,8 @@ public sealed class LvService
 
     public LvService(IConfiguration configuration)
     {
-        _connectionString = configuration.GetConnectionString("TOPqwWeb")
-            ?? throw new InvalidOperationException("ConnectionStrings:TOPqwWeb muss konfiguriert werden.");
+        _connectionString = configuration.GetConnectionString("TOPqm")
+            ?? throw new InvalidOperationException("ConnectionStrings:TOPqm muss konfiguriert werden.");
     }
 
     public async Task<LvBogen?> GetBogenAsync(int bogenId, CancellationToken cancellationToken)

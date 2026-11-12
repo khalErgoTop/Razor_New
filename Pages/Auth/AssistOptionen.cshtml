@@ -1,10 +1,16 @@
 @page
 @model TOPqwWeb_Core.Pages.Auth.AssistOptionenModel
+@inject TOPqwWeb_Core.Infrastructure.Theming.ThemeAssetService ThemeAssets
 @{
     ViewData["Title"] = "Assistierte Suche Optionen";
+    var legacyCss = ThemeAssets.GetExistingLegacyAssetPath("AssistOptionen.css");
 }
 
-<link rel="stylesheet" href="~/css/HH/AssistOptionen.css" />
+@if (legacyCss is not null)
+{
+    <link rel="stylesheet" href="@Url.Content(legacyCss)" asp-append-version="true" />
+}
+<link rel="stylesheet" href="~/css/assist-optionen.css" asp-append-version="true" />
 
 <nav class="kern-breadcrumbs" aria-label="Brotkrümelnavigation">
     <ol class="breadcrumb">

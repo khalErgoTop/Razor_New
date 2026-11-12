@@ -132,8 +132,8 @@ public sealed class LayoutNavigationService
         }
     }
 
-    private string GetConnectionString() => _configuration.GetConnectionString("TOPqwWeb")
-        ?? throw new InvalidOperationException("ConnectionStrings:TOPqwWeb muss konfiguriert werden.");
+    private string GetConnectionString() => _configuration.GetConnectionString("TOPqm")
+        ?? throw new InvalidOperationException("ConnectionStrings:TOPqm muss konfiguriert werden.");
 }
 
 public sealed record LayoutNavigationModel(

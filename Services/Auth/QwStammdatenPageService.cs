@@ -122,7 +122,7 @@ namespace TOPqwWeb_Core.Services.Auth
                 Representatives = representatives,
                 Features = features,
                 AvailableFeatures = availableFeatures,
-                CanEditFeatures = permissions[Stammdaten_Einrichtung_Bearbeiten] && permissions[Stammdaten_Merkmale_Bearbeiten],
+                CanEditFeatures = permissions[Stammdaten_Einrichtung_Bearbeiten] && permissions[Stammdaten_Merkmale_Anzeigen] && permissions[Stammdaten_Merkmale_Bearbeiten],
                 CanViewCosts = canViewCosts,
                 CanViewOwnFacilities = permissions[Stammdaten_Einrichtung_Eigene_Anzeigen],
                 CanChangeFacilityVisibility = permissions[Stammdaten_Einrichtung_Suche_Verbergen],
@@ -201,6 +201,12 @@ namespace TOPqwWeb_Core.Services.Auth
             if (!permissions[Stammdaten_Einrichtung_Eigene_Anzeigen]) return [];
             var isAdmin = await _permissionService.HasPermissionAsync(beid.Value, AdminRechte, cancellationToken);
             return await _publicStammdatenAdapter.GetFacilitiesForUserAsync(beid.Value, isAdmin, cancellationToken);
+        }
+
+        public async Task<bool> CanViewOwnFacilitiesAsync(CancellationToken cancellationToken)
+        {
+            var beid = _currentUserAccessor.BEID;
+            return beid.HasValue && await _permissionService.HasPermissionAsync(beid.Value, Stammdaten_Einrichtung_Eigene_Anzeigen, cancellationToken);
         }
 
         public async Task<(bool Allowed, StammdatenFacilityCreateOptions Options)> GetFacilityCreateOptionsAsync(CancellationToken cancellationToken)
@@ -327,8 +333,16 @@ namespace TOPqwWeb_Core.Services.Auth
         public async Task<bool> SaveFreePlacesAsync(string eiid, IReadOnlyList<FreePlaceQuestionInput> questions, CancellationToken cancellationToken)
         {
             var beid = _currentUserAccessor.BEID;
-            if (!beid.HasValue || !await _permissionService.HasPermissionAsync(beid.Value, Stammdaten_Einrichtung_Bearbeiten, cancellationToken)) return false;
+            if (!beid.HasValue || !await _permissionService.HasPermissionAsync(beid.Value, Stammdaten_FreiePlaetze_Bearbeiten, cancellationToken)) return false;
+            if (!await _publicStammdatenAdapter.GetBooleanOptionAsync(Stammdaten_FreePlacesAvailable, cancellationToken)) return false;
             if (!await HasFacilityAccessAsync(eiid, beid.Value, cancellationToken)) return false;
+            var report = await _publicStammdatenAdapter.GetFreePlacesAsync(eiid, cancellationToken);
+            if (report is null) return false;
+            var expected = report.Categories.SelectMany(category => category.Questions)
+                .Where(question => question.TypeId is 0 or 1)
+                .Select(question => (question.Id, question.TypeId)).ToHashSet();
+            if (questions.Count != expected.Count || questions.Select(question => (question.QuestionId, question.TypeId)).Distinct().Count() != expected.Count ||
+                questions.Any(question => !expected.Contains((question.QuestionId, question.TypeId)))) return false;
             return await _publicStammdatenAdapter.SaveFreePlacesAsync(eiid, questions, cancellationToken);
         }
 

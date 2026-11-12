@@ -20,7 +20,8 @@ namespace TOPqwWeb_Core.Services.Public
                 throw new ArgumentOutOfRangeException(nameof(type), "Für die Auflistung ist nur Typ oder Kreis zulässig.");
             }
 
-            return _searchAdapter.GetAuflistungAsync(type, typeId, districtId, cancellationToken);
+            var isType = string.Equals(type, "Typ", StringComparison.OrdinalIgnoreCase);
+            return _searchAdapter.GetAuflistungAsync(isType ? "Typ" : "Kreis", isType ? typeId : null, isType ? null : districtId, cancellationToken);
         }
     }
 }

@@ -8,8 +8,8 @@ public sealed class AssistOptionenService
 
     public AssistOptionenService(IConfiguration configuration)
     {
-        _connectionString = configuration.GetConnectionString("TOPqwWeb")
-            ?? throw new InvalidOperationException("ConnectionStrings:TOPqwWeb muss konfiguriert werden.");
+        _connectionString = configuration.GetConnectionString("TOPqm")
+            ?? throw new InvalidOperationException("ConnectionStrings:TOPqm muss konfiguriert werden.");
     }
 
     public async Task<AssistOptionenSettings> GetSettingsAsync(CancellationToken cancellationToken)
@@ -44,14 +44,18 @@ public sealed class AssistOptionenService
     public async Task SaveSettingsAsync(bool visible, string? name, CancellationToken cancellationToken)
     {
         const string sql = """
-            EXEC dbo.SaveByTokenList @SemikolonSeperatedTokenList=@visibleTokens, @tableName=N'TOPqw_Einstellungen', @idName=N'Einstellung', @id=N'SuchAssistent_anzeigen';
-            EXEC dbo.SaveByTokenList @SemikolonSeperatedTokenList=@nameTokens, @tableName=N'TOPqw_Einstellungen', @idName=N'Einstellung', @id=N'SuchAssistent_Name';
+            UPDATE TOPqw_Einstellungen SET WertBOOL = @visible WHERE Einstellung = N'SuchAssistent_anzeigen' AND ISNULL(fkUSID, 0) = 0;
+            IF @@ROWCOUNT = 0
+                INSERT INTO TOPqw_Einstellungen (Einstellung, WertBOOL, fkUSID) VALUES (N'SuchAssistent_anzeigen', @visible, 0);
+            UPDATE TOPqw_Einstellungen SET WertTXT = @name WHERE Einstellung = N'SuchAssistent_Name' AND ISNULL(fkUSID, 0) = 0;
+            IF @@ROWCOUNT = 0
+                INSERT INTO TOPqw_Einstellungen (Einstellung, WertTXT, fkUSID) VALUES (N'SuchAssistent_Name', @name, 0);
             """;
 
         await using var connection = await OpenAsync(cancellationToken);
         await using var command = new SqlCommand(sql, connection);
-        command.Parameters.AddWithValue("@visibleTokens", $"WertBOOL={(visible ? 1 : 0)}");
-        command.Parameters.AddWithValue("@nameTokens", $"WertTXT={(string.IsNullOrWhiteSpace(name) ? "Assistierte Suche" : name.Trim())}");
+        command.Parameters.AddWithValue("@visible", visible);
+        command.Parameters.AddWithValue("@name", string.IsNullOrWhiteSpace(name) ? "Assistierte Suche" : name.Trim());
         await command.ExecuteNonQueryAsync(cancellationToken);
     }
 

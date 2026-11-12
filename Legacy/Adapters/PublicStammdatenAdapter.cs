@@ -13,8 +13,8 @@ namespace TOPqwWeb_Core.Legacy.Adapters
 
         public PublicStammdatenAdapter(IConfiguration configuration, IWebHostEnvironment environment, ILogger<PublicStammdatenAdapter> logger)
         {
-            _connectionString = configuration.GetConnectionString("TOPqwWeb")
-                ?? throw new InvalidOperationException("ConnectionStrings:TOPqwWeb muss konfiguriert werden.");
+            _connectionString = configuration.GetConnectionString("TOPqm")
+                ?? throw new InvalidOperationException("ConnectionStrings:TOPqm muss konfiguriert werden.");
             var configuredPath = configuration["FacilityImages:Path"] ?? "Images/FacilityImages";
             _facilityImagesPath = Path.IsPathRooted(configuredPath)
                 ? configuredPath
@@ -24,49 +24,18 @@ namespace TOPqwWeb_Core.Legacy.Adapters
 
         public async Task<bool> SaveFacilityDataAsync(string eiid, StammdatenFacilityUpdateInput input, CancellationToken cancellationToken)
         {
-            if (!Guid.TryParse(eiid, out _) || string.IsNullOrWhiteSpace(input.Name) || input.Capacity < 0 || input.DistrictId <= 0 || input.FacilityTypeIds.Count == 0 || input.FacilityTypeIds.Any(id => id <= 0))
+            if (!Guid.TryParse(eiid, out _) || string.IsNullOrWhiteSpace(input.Name) || input.Capacity < 0)
                 return false;
 
+            const string sql = "UPDATE Einrichtungen SET Einrichtungsname=@name, Einrichtungskennzeichen=@indicator, Platzzahl=@capacity WHERE EIID=@eiid";
             await using var connection = new SqlConnection(_connectionString);
             await connection.OpenAsync(cancellationToken);
-            await using var transaction = (SqlTransaction)await connection.BeginTransactionAsync(cancellationToken);
-            try
-            {
-                const string referenceSql = "SELECT CASE WHEN EXISTS (SELECT 1 FROM Kreise WHERE KRID=@krid) THEN 1 ELSE 0 END, CASE WHEN NOT EXISTS (SELECT 1 FROM Einrichtungstypen WHERE ETID IN (SELECT value FROM STRING_SPLIT(@etids, ','))) THEN 0 ELSE 1 END;";
-                await using (var referenceCommand = new SqlCommand(referenceSql, connection, transaction))
-                {
-                    referenceCommand.Parameters.AddWithValue("@krid", input.DistrictId);
-                    referenceCommand.Parameters.AddWithValue("@etids", string.Join(',', input.FacilityTypeIds.Distinct()));
-                    await using var reader = await referenceCommand.ExecuteReaderAsync(cancellationToken);
-                    if (!await reader.ReadAsync(cancellationToken) || reader.GetInt32(0) != 1 || reader.GetInt32(1) != 1)
-                        return false;
-                }
-
-                var tokenList = $"Einrichtungsname={EscapeToken(input.Name.Trim())}/;Einrichtungskennzeichen={EscapeToken(input.FacilityIndicator.Trim())}/;Platzzahl={input.Capacity}/;FKKRID={input.DistrictId}";
-                await using (var facilityCommand = new SqlCommand("dbo.SaveByTokenList", connection, transaction) { CommandType = System.Data.CommandType.StoredProcedure })
-                {
-                    facilityCommand.Parameters.AddWithValue("@SemikolonSeperatedTokenList", tokenList);
-                    facilityCommand.Parameters.AddWithValue("@tableName", "Einrichtungen");
-                    facilityCommand.Parameters.AddWithValue("@idName", "EIID");
-                    facilityCommand.Parameters.AddWithValue("@id", eiid);
-                    await facilityCommand.ExecuteScalarAsync(cancellationToken);
-                }
-
-                await using (var typeCommand = new SqlCommand("dbo.SaveFacilityTypes", connection, transaction) { CommandType = System.Data.CommandType.StoredProcedure })
-                {
-                    typeCommand.Parameters.AddWithValue("@etids", string.Join(',', input.FacilityTypeIds.Distinct()));
-                    typeCommand.Parameters.AddWithValue("@eiid", eiid);
-                    await typeCommand.ExecuteNonQueryAsync(cancellationToken);
-                }
-
-                await transaction.CommitAsync(cancellationToken);
-                return true;
-            }
-            catch
-            {
-                await transaction.RollbackAsync(cancellationToken);
-                throw;
-            }
+            await using var command = new SqlCommand(sql, connection);
+            command.Parameters.AddWithValue("@name", input.Name.Trim());
+            command.Parameters.AddWithValue("@indicator", input.FacilityIndicator?.Trim() ?? string.Empty);
+            command.Parameters.AddWithValue("@capacity", input.Capacity);
+            command.Parameters.AddWithValue("@eiid", eiid);
+            return await command.ExecuteNonQueryAsync(cancellationToken) > 0;
         }
 
         private static string EscapeToken(string value) => value.Replace("'", "''", StringComparison.Ordinal);
@@ -311,12 +280,16 @@ namespace TOPqwWeb_Core.Legacy.Adapters
             await using var reader = await command.ExecuteReaderAsync(cancellationToken);
             if (!await reader.ReadAsync(cancellationToken)) return null;
             var reportId = reader.GetInt32(0);
+            var reportDate = reader.GetDateTime(1);
+            var layoutId = reader.GetInt32(2);
+            var availability = reader.IsDBNull(3) ? 0 : reader.GetInt32(3);
+            await reader.DisposeAsync();
             var report = new FreePlaceReportingResponse
             {
-                ReportingDate = reader.GetDateTime(1),
-                LayoutId = reader.GetInt32(2),
-                Availability = reader.IsDBNull(3) ? 0 : reader.GetInt32(3),
-                Categories = await ReadFreePlaceCategoriesAsync(connection, reportId, reader.GetInt32(2), eiid, cancellationToken)
+                ReportingDate = reportDate,
+                LayoutId = layoutId,
+                Availability = availability,
+                Categories = await ReadFreePlaceCategoriesAsync(connection, reportId, layoutId, eiid, cancellationToken)
             };
             return report;
         }
@@ -998,7 +971,7 @@ namespace TOPqwWeb_Core.Legacy.Adapters
                 SELECT ei.EIID AS FacilityEIID, ei.Einrichtungsname AS FacilityName,
                        ei.Einrichtungskennzeichen AS FacilityIndicator,
                        ei.FKKRID AS FacilityDistrictId, ei.FKETID AS FacilityTypeId,
-                       ei.Status AS FacilityStatus,
+                       ei.Status AS FacilityStatus, ei.Platzzahl AS FacilityCapacity,
                        ei.Einrichtungsbeschreibung AS FacilityDescription,
                        st.STUID AS LocationSTUID, st.Standortname AS LocationName,
                        st.Strasse AS LocationStreet, st.Hausnummer AS LocationHouseNumber,
@@ -1057,6 +1030,7 @@ namespace TOPqwWeb_Core.Legacy.Adapters
                 DistrictId = GetInt(reader, "FacilityDistrictId"),
                 FacilityTypeId = GetInt(reader, "FacilityTypeId"),
                 Status = GetInt(reader, "FacilityStatus") ?? 0,
+                Capacity = GetInt(reader, "FacilityCapacity"),
                 Description = GetString(reader, "FacilityDescription"),
                 Locations = []
             };

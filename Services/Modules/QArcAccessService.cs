@@ -14,8 +14,8 @@ public sealed class QArcAccessService
 
     public QArcAccessService(IConfiguration configuration, CurrentUserAccessor user, LegacyPermissionService permissions)
     {
-        _connectionString = configuration.GetConnectionString("TOPqwWeb")
-            ?? throw new InvalidOperationException("ConnectionStrings:TOPqwWeb muss konfiguriert werden.");
+        _connectionString = configuration.GetConnectionString("TOPqm")
+            ?? throw new InvalidOperationException("ConnectionStrings:TOPqm muss konfiguriert werden.");
         _user = user;
         _permissions = permissions;
     }

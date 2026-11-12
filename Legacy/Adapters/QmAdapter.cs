@@ -12,14 +12,14 @@ namespace TOPqwWeb_Core.Legacy.Adapters
 
         public QmAdapter(IConfiguration configuration, CurrentUserAccessor user)
         {
-            _connectionString = configuration.GetConnectionString("TOPqwWeb")
-                ?? throw new InvalidOperationException("ConnectionStrings:TOPqwWeb muss konfiguriert werden.");
+            _connectionString = configuration.GetConnectionString("TOPqm")
+                ?? throw new InvalidOperationException("ConnectionStrings:TOPqm muss konfiguriert werden.");
             _user = user;
         }
 
         public async Task<IReadOnlyList<QmOberkategorieResponse>> GetQmBogenStrukturAsync(int QLID, int ETID, int QMBogenID, CancellationToken cancellationToken)
         {
-            const string sql = "SELECT ok.OKID, ISNULL(ilo.Position, ok.Position) AS OKPosition, ok.Bezeichnung, ok.BezeichnungKurz, uk.UKID, iou.Position AS UKPosition, uk.Bezeichnung, uk.BezeichnungKurz, f.QFID, iuf.Position AS FragePosition, f.FrageKurz, f.FrageLang, f.Hilfetext, f.Format, iuf.Mussfeld, iuf.Eintragstyp FROM [dbo].[QMLV3Oberkategorie] ok INNER JOIN [dbo].[QMLV3IndexLayoutOberkategorie] ilo ON ilo.FKOKID = ok.OKID AND ilo.FKQLID = @QLID INNER JOIN [dbo].[QMLV3IndexEinrichtungstypOberkategorie] ieo ON ieo.FKOKID = ok.OKID AND ieo.FKQLID = ilo.FKQLID AND ieo.FKETID = @ETID INNER JOIN [dbo].[QMLV3IndexOberUnterkategorie] iou ON iou.FKQLID = @QLID AND iou.FKOKID = ok.OKID INNER JOIN [dbo].[QMLV3Unterkategorie] uk ON uk.UKID = iou.FKUKID INNER JOIN [dbo].[QMLV3IndexEinrichtungstypUnterkategorie] ieu ON ieu.FKQLID = @QLID AND ieu.FKOKID = ok.OKID AND ieu.FKUKID = uk.UKID AND ieu.FKETID = @ETID INNER JOIN [dbo].[QMLV3IndexUnterkategorieFrage] iuf ON iuf.FKQLID = @QLID AND iuf.FKOKID = ok.OKID AND iuf.FKUKID = uk.UKID INNER JOIN [dbo].[QMLV3Frage] f ON f.QFID = iuf.FKQFID WHERE ISNULL(ok.isDeleted, 0) = 0 AND ISNULL(ilo.isDeleted, 0) = 0 AND ISNULL(iou.isDeleted, 0) = 0 AND ISNULL(iuf.isDeleted, 0) = 0 AND ISNULL(f.isDeleted, 0) = 0 ORDER BY OKPosition, UKPosition, FragePosition";
+            const string sql = "SELECT ok.OKID, ISNULL(ilo.Position, ok.Position) AS OKPosition, ok.Bezeichnung, ok.BezeichnungKurz, uk.UKID, iou.Position AS UKPosition, uk.Bezeichnung, uk.BezeichnungKurz, iuf.QIID, iuf.Position AS FragePosition, f.FrageKurz, f.FrageLang, f.Hilfetext, f.Format, iuf.Mussfeld, iuf.Eintragstyp FROM [dbo].[QMLV3Oberkategorie] ok INNER JOIN [dbo].[QMLV3IndexLayoutOberkategorie] ilo ON ilo.FKOKID = ok.OKID AND ilo.FKQLID = @QLID INNER JOIN [dbo].[QMLV3IndexEinrichtungstypOberkategorie] ieo ON ieo.FKOKID = ok.OKID AND ieo.FKQLID = ilo.FKQLID AND ieo.FKETID = @ETID INNER JOIN [dbo].[QMLV3IndexOberUnterkategorie] iou ON iou.FKQLID = @QLID AND iou.FKOKID = ok.OKID INNER JOIN [dbo].[QMLV3Unterkategorie] uk ON uk.UKID = iou.FKUKID INNER JOIN [dbo].[QMLV3IndexEinrichtungstypUnterkategorie] ieu ON ieu.FKQLID = @QLID AND ieu.FKOKID = ok.OKID AND ieu.FKUKID = uk.UKID AND ieu.FKETID = @ETID INNER JOIN [dbo].[QMLV3IndexUnterkategorieFrage] iuf ON iuf.FKQLID = @QLID AND iuf.FKOKID = ok.OKID AND iuf.FKUKID = uk.UKID INNER JOIN [dbo].[QMLV3Frage] f ON f.QFID = iuf.FKQFID WHERE ISNULL(ok.isDeleted, 0) = 0 AND ISNULL(ilo.isDeleted, 0) = 0 AND ISNULL(iou.isDeleted, 0) = 0 AND ISNULL(iuf.isDeleted, 0) = 0 AND ISNULL(f.isDeleted, 0) = 0 ORDER BY OKPosition, UKPosition, FragePosition";
             await using var connection = new SqlConnection(_connectionString);
             await connection.OpenAsync(cancellationToken);
             await using var command = new SqlCommand(sql, connection);
@@ -133,7 +133,7 @@ namespace TOPqwWeb_Core.Legacy.Adapters
         }
 
         private static int ParseInt(string format, string value) => format.Equals("dbLong", StringComparison.OrdinalIgnoreCase) && int.TryParse(value, out var result) ? result : 0;
-        private static double ParseDouble(string format, string value) => (format.Equals("dbReal", StringComparison.OrdinalIgnoreCase) || format.Equals("dbSingle", StringComparison.OrdinalIgnoreCase) || format.Equals("dbDouble", StringComparison.OrdinalIgnoreCase)) && double.TryParse(value, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.CurrentCulture, out var result) ? result : 0;
+        private static double ParseDouble(string format, string value) => (format.Equals("dbReal", StringComparison.OrdinalIgnoreCase) || format.Equals("dbSingle", StringComparison.OrdinalIgnoreCase) || format.Equals("dbDouble", StringComparison.OrdinalIgnoreCase)) && double.TryParse(value, System.Globalization.NumberStyles.Float, System.Globalization.CultureInfo.InvariantCulture, out var result) ? result : 0;
         private static bool ParseBool(string format, string value) => (format.Equals("dbBoolean", StringComparison.OrdinalIgnoreCase) || format.Equals("dbBool", StringComparison.OrdinalIgnoreCase)) && bool.TryParse(value, out var result) && result;
 
         public async Task<IReadOnlyDictionary<int, QmFrageWertResponse>> GetFrageWerteAsync(int QMBogenID, CancellationToken cancellationToken)
@@ -213,7 +213,7 @@ namespace TOPqwWeb_Core.Legacy.Adapters
 
         public async Task<IReadOnlyList<QmSelectableBogenResponse>> GetSelectableBoegenAsync(string EIID, int ETID, int iQMBogenstatus, CancellationToken cancellationToken)
         {
-            const string sql = "SELECT b.QBID, b.FKEIID, b.FKQLID, l.Bezeichnung, l.Layoutjahr, b.Bezeichnung, b.Status, b.GeaendertAm FROM [dbo].[QMWV3Bogen] b INNER JOIN [dbo].[QMLV3Layout] l ON l.QLID = b.FKQLID INNER JOIN [dbo].[QMLV3IndexEinrichtungstypOberkategorie] i ON i.FKQLID = l.QLID WHERE b.FKEIID = @EIID AND i.FKETID = @ETID AND l.Aktiv = 1 AND ISNULL(l.IstTraegerBogen, 0) = 0 AND (@QMBogenstatus = -1 OR b.Status = @QMBogenstatus) ORDER BY l.Layoutjahr DESC, l.Bezeichnung, b.Bezeichnung";
+            const string sql = "SELECT b.QBID, b.FKEIID, b.FKQLID, l.Bezeichnung, l.Layoutjahr, b.Bezeichnung, b.Status, b.GeaendertAm FROM [dbo].[QMWV3Bogen] b INNER JOIN [dbo].[QMLV3Layout] l ON l.QLID = b.FKQLID WHERE b.FKEIID = @EIID AND EXISTS (SELECT 1 FROM [dbo].[QMLV3IndexEinrichtungstypOberkategorie] i WHERE i.FKQLID = l.QLID AND i.FKETID = @ETID) AND l.Aktiv = 1 AND ISNULL(l.IstTraegerBogen, 0) = 0 AND (@QMBogenstatus = -1 OR b.Status = @QMBogenstatus) ORDER BY l.Layoutjahr DESC, l.Bezeichnung, b.Bezeichnung";
             await using var connection = new SqlConnection(_connectionString);
             await connection.OpenAsync(cancellationToken);
             await using var command = new SqlCommand(sql, connection);

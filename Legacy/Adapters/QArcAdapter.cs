@@ -16,8 +16,8 @@ public sealed class QArcAdapter
 
     public QArcAdapter(IConfiguration configuration)
     {
-        _connectionString = configuration.GetConnectionString("TOPqwWeb")
-            ?? throw new InvalidOperationException("ConnectionStrings:TOPqwWeb muss konfiguriert werden.");
+        _connectionString = configuration.GetConnectionString("TOPqm")
+            ?? throw new InvalidOperationException("ConnectionStrings:TOPqm muss konfiguriert werden.");
     }
 
     public Task<IReadOnlyList<QArcLayout>> GetLayoutsAsync(string tablePrefix, CancellationToken cancellationToken) =>

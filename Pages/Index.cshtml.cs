@@ -17,7 +17,7 @@ namespace TOPqwWeb_Core.Pages
 
         public async Task OnGetAsync()
         {
-            LandingContent = new HtmlString(await _indexPageService.GetLandingContentAsync());
+            LandingContent = new HtmlString(await _indexPageService.GetLandingContentAsync(Request.PathBase));
         }
     }
 }

@@ -24,8 +24,8 @@ public sealed class PasswortAendernPageService
 
     public async Task<string?> GetUsernameAsync(int userId, CancellationToken cancellationToken)
     {
-        var connectionString = _configuration.GetConnectionString("TOPqwWeb")
-            ?? throw new InvalidOperationException("ConnectionStrings:TOPqwWeb muss konfiguriert werden.");
+        var connectionString = _configuration.GetConnectionString("TOPqm")
+            ?? throw new InvalidOperationException("ConnectionStrings:TOPqm muss konfiguriert werden.");
         await using var connection = new Microsoft.Data.SqlClient.SqlConnection(connectionString);
         await connection.OpenAsync(cancellationToken);
         await using var command = new Microsoft.Data.SqlClient.SqlCommand(

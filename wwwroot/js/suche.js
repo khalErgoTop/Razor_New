@@ -23,14 +23,15 @@
                 if (!['Backspace','Delete','Tab','Enter','ArrowLeft','ArrowRight'].includes(e.key)) {
                     e.preventDefault();
                 }
+            }
+        });
+    }
 
     [einrichtungen, leistungserbringer].forEach(input => {
         if (input) input.addEventListener('change', updateSearchButton);
     });
     updateSearchButton();
-            }
-        });
-    }
+
 
     // Reset button is now just a link to /Suche, no JS needed
 })();

@@ -10,8 +10,8 @@ public sealed class StammdatenKostenAdapter
 
     public StammdatenKostenAdapter(IConfiguration configuration)
     {
-        _connectionString = configuration.GetConnectionString("TOPqwWeb")
-            ?? throw new InvalidOperationException("ConnectionStrings:TOPqwWeb muss konfiguriert werden.");
+        _connectionString = configuration.GetConnectionString("TOPqm")
+            ?? throw new InvalidOperationException("ConnectionStrings:TOPqm muss konfiguriert werden.");
     }
 
     public async Task<int?> GetFacilityTypeAsync(string eiid, CancellationToken cancellationToken)
@@ -154,7 +154,7 @@ public sealed class StammdatenKostenAdapter
                     FROM HilfebedarfsWerteWeb w
                     WHERE HBGWWID=@HBGWWID AND FKHBGWZID=@HBGWZID
                       AND EXISTS (SELECT 1 FROM HilfebedarfsWerteZeitraumWeb WHERE HBGWZID=@HBGWZID AND FKEIID=@EIID);
-                    SELECT @HBGWWID;
+                    SELECT CASE WHEN @@ROWCOUNT > 0 THEN @HBGWWID ELSE NULL END;
                 END
             END
             """;
@@ -168,8 +168,8 @@ public sealed class StammdatenKostenAdapter
         command.Parameters.AddWithValue("@VereinbartAm", (object?)row.VereinbartAm ?? DBNull.Value);
         command.Parameters.AddWithValue("@UnterschriebenAm", (object?)row.UnterschriebenAm ?? DBNull.Value);
         command.Parameters.AddWithValue("@ErstelltVon", username); command.Parameters.AddWithValue("@GeaendertVon", username);
-        await command.ExecuteScalarAsync(cancellationToken);
-        return true;
+        var result = await command.ExecuteScalarAsync(cancellationToken);
+        return result is not null && result != DBNull.Value;
     }//balla3
 
     private async Task<int> ExecuteCountAsync(string sql, string eiid, int hbgwzid, CancellationToken cancellationToken)

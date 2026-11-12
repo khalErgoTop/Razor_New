@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = Model.Facility?.Facility.Name ?? "Stammdaten Verwaltung";
     ViewData["UseLegacyTheme"] = false;
+    ViewData["PreserveKernLayout"] = true;
 }
 <link rel="stylesheet" href="~/css/qwstammdaten.css" asp-append-version="true" />
 <link rel="stylesheet" href="~/lib/kern/kern-grid.css" asp-append-version="true" />
@@ -16,82 +17,144 @@
 
 <main class="masterdata kern-stack" data-masterdata-page>
     <header class="masterdata__header">
-        <div>
-            <a class="masterdata__back kern-link" asp-page="/Index"><span class="kern-icon kern-icon--arrow-back" aria-hidden="true"></span> Startseite</a>
-            <p class="masterdata__eyebrow">Verwaltung</p>
-            <h1 class="kern-heading-1">Leistungsangebote</h1>
-            <p class="masterdata__intro kern-body">Verwalten Sie die öffentlichen Angaben Ihrer Einrichtungen an einem Ort.</p>
+        <div class="masterdata__identity">
+            <p class="masterdata__eyebrow">Stammdaten / Leistungsangebot</p>
+            <h1>@(string.IsNullOrWhiteSpace(Model.Facility?.Facility.Name) ? "Leistungsangebot auswählen" : Model.Facility.Facility.Name)</h1>
+            @if (Model.Facility is not null)
+            {
+                <div class="masterdata__metadata">
+                    @if (!string.IsNullOrWhiteSpace(Model.Facility.Facility.FacilityIndicator)) { <span>@Model.Facility.Facility.FacilityIndicator</span> }
+                    @if (!string.IsNullOrWhiteSpace(Model.Facility.Institution?.Name)) { <span>@Model.Facility.Institution.Name</span> }
+                    <span class="kern-badge @(Model.Facility.FacilityVisibleInSearch ? "kern-badge--success" : "kern-badge--warning")">@(Model.Facility.FacilityVisibleInSearch ? "In der Suche sichtbar" : "Für die Suche verborgen")</span>
+                </div>
+            }
         </div>
         @if (Model.CanCreateFacility)
         {
-            <button class="md-button kern-btn kern-btn--primary" type="button" data-dialog-target="NewFacility"><span class="kern-icon kern-icon--add" aria-hidden="true"></span><span class="kern-label">Neues Leistungsangebot</span></button>
+            <button class="md-button kern-btn kern-btn--tertiary" type="button" data-dialog-target="NewFacility"><span class="kern-icon kern-icon--add" aria-hidden="true"></span><span class="kern-label">Neues Leistungsangebot</span></button>
         }
     </header>
 
-    <section class="facility-switcher kern-card kern-card--surface" aria-labelledby="facility-switcher-title">
-        <div class="kern-card__container">
-            <div class="kern-card__header facility-switcher__topline">
-                <div><p class="masterdata__eyebrow">Arbeitsbereich</p><h2 id="facility-switcher-title" class="kern-title">Einrichtung auswählen</h2></div>
-                <span class="kern-badge kern-badge--info"><span class="kern-label">@Model.Facilities.Count Einrichtungen</span></span>
-            </div>
+    <details class="facility-switcher" open="@(Model.Facility is null || Request.Query["switcher"] == "1")">
+        <summary>Einrichtung wechseln <span aria-hidden="true">⌄</span></summary>
+        <div class="facility-switcher__panel">
             <form method="get" class="facility-search">
+                <input type="hidden" name="eiid" value="@Model.Facility?.Facility.EIID" />
+                <input type="hidden" name="pageIndex" value="0" />
+                <input type="hidden" name="switcher" value="1" />
                 <div class="kern-form-input">
                     <label class="kern-label" for="FacilityFilter">Einrichtung suchen</label>
                     <div class="facility-search__control">
                         <input class="kern-form-input__input" id="FacilityFilter" name="filter" value="@Model.FacilityFilter" placeholder="Name oder Kennzeichen" />
-                        <button class="md-button kern-btn kern-btn--secondary" type="submit"><span class="kern-icon kern-icon--search" aria-hidden="true"></span><span class="kern-label">Suchen</span></button>
+                        <button class="kern-btn kern-btn--secondary" type="submit">Suchen</button>
+                        @if (!string.IsNullOrEmpty(Model.FacilityFilter)) { <a class="kern-btn kern-btn--tertiary" asp-page="/Auth/qwStammdaten" asp-route-eiid="@Model.Facility?.Facility.EIID" asp-route-filter="" asp-route-pageIndex="0" asp-route-switcher="1">Zurücksetzen</a> }
                     </div>
                 </div>
             </form>
+            <p class="facility-switcher__count">@Model.FacilityCount @(Model.FacilityCount == 1 ? "Einrichtung" : "Einrichtungen") gefunden</p>
             @if (Model.Facilities.Count == 0)
             {
-                <div class="kern-alert kern-alert--info" role="status"><span class="kern-icon kern-icon--info" aria-hidden="true"></span><div class="kern-alert__body">Keine Einrichtung entspricht Ihrer Suche.</div></div>
+                <p role="status">@(string.IsNullOrWhiteSpace(Model.FacilityFilter) ? "Es stehen keine Einrichtungen zur Auswahl." : "Keine Einrichtung entspricht Ihrer Suche.")</p>
             }
             else
             {
-                <div class="facility-list">
+                <ul class="facility-list">
                     @foreach (var facility in Model.Facilities)
                     {
-                        var selected = facility.EIID == Model.Facility?.Facility.EIID;
-                        <a class="facility-card kern-card kern-card--interactive @(selected ? "is-selected" : null)" asp-page="/Auth/qwStammdaten" asp-route-eiid="@facility.EIID" asp-route-filter="@Model.FacilityFilter" asp-route-pageIndex="@Model.FacilityPageIndex" aria-current="@(selected ? "page" : null)">
-                            <span class="facility-card__mark kern-badge kern-badge--small @(selected ? "kern-badge--success" : "kern-badge--info")"><span class="kern-icon @(selected ? "kern-icon--check" : "kern-icon--info")" aria-hidden="true"></span></span>
-                            <span><strong>@facility.Name</strong><small>@(string.IsNullOrWhiteSpace(facility.FacilityIndicator) ? "Kein Kennzeichen" : facility.FacilityIndicator)</small></span>
-                            <span class="facility-card__arrow kern-icon kern-icon--arrow-forward" aria-hidden="true"></span>
-                        </a>
+                        var selected = string.Equals(facility.EIID, Model.Facility?.Facility.EIID, StringComparison.OrdinalIgnoreCase);
+                        <li><a class="facility-option @(selected ? "is-selected" : null)" asp-page="/Auth/qwStammdaten" asp-route-eiid="@facility.EIID" asp-route-filter="@Model.FacilityFilter" asp-route-pageIndex="@Model.FacilityPageIndex" aria-current="@(selected ? "page" : null)">
+                            <span><strong>@(string.IsNullOrWhiteSpace(facility.Name) ? "Ohne Bezeichnung" : facility.Name)</strong>@if (!string.IsNullOrWhiteSpace(facility.FacilityIndicator)) { <small>@facility.FacilityIndicator</small> }</span>
+                            @if (selected) { <span class="facility-option__current">Ausgewählt</span> }
+                        </a></li>
                     }
-                </div>
+                </ul>
+                @if (Model.FacilityPageCount > 1)
+                {
+                    <nav class="facility-pagination" aria-label="Seiten der Einrichtungsliste">
+                        @if (Model.FacilityPageIndex > 0) { <a asp-page="/Auth/qwStammdaten" asp-route-eiid="@Model.Facility?.Facility.EIID" asp-route-filter="@Model.FacilityFilter" asp-route-pageIndex="@(Model.FacilityPageIndex - 1)" asp-route-switcher="1">Zurück</a> }
+                        <span>Seite @(Model.FacilityPageIndex + 1) von @Model.FacilityPageCount</span>
+                        @if (Model.FacilityPageIndex + 1 < Model.FacilityPageCount) { <a asp-page="/Auth/qwStammdaten" asp-route-eiid="@Model.Facility?.Facility.EIID" asp-route-filter="@Model.FacilityFilter" asp-route-pageIndex="@(Model.FacilityPageIndex + 1)" asp-route-switcher="1">Weiter</a> }
+                    </nav>
+                }
             }
         </div>
-    </section>
+    </details>
 
     @if (Model.Facility is null)
     {
-        <section class="empty-state empty-state--large kern-alert kern-alert--info" role="status"><span class="kern-icon kern-icon--info" aria-hidden="true"></span><div class="kern-alert__body"><h2>Keine Einrichtung ausgewählt</h2><p>Wählen Sie oben ein Leistungsangebot aus, um die Stammdaten zu bearbeiten.</p></div></section>
+        <section class="empty-state kern-alert kern-alert--info" role="status"><div class="kern-alert__body"><h2>Keine Einrichtung ausgewählt</h2><p>Wählen Sie eine Einrichtung aus, um ihre Stammdaten zu sehen.</p></div></section>
     }
     else
     {
         var mainLocation = Model.Facility.Facility.Locations.FirstOrDefault(x => x.IsMainLocation) ?? Model.Facility.Facility.Locations.FirstOrDefault();
-        <section class="facility-hero kern-card kern-card--large">
-            <div class="kern-card__container">
-                <div class="facility-hero__identity"><div class="facility-avatar kern-badge kern-badge--info"><span class="kern-label">@Model.Facility.Facility.Name.FirstOrDefault()</span></div><div><p class="masterdata__eyebrow">@(Model.Facility.Institution?.Name ?? "Leistungserbringer")</p><h2 class="kern-title">@Model.Facility.Facility.Name</h2><p class="kern-body">@(mainLocation is null ? "Keine Hauptadresse hinterlegt" : $"{mainLocation.Street} {mainLocation.HouseNumber}, {mainLocation.PostalCode} {mainLocation.City}")</p></div></div>
-                <div class="facility-hero__status"><span class="kern-badge @(Model.Facility.FacilityVisibleInSearch ? "kern-badge--success" : "kern-badge--warning")"><span class="kern-icon @(Model.Facility.FacilityVisibleInSearch ? "kern-icon--visibility" : "kern-icon--visibility-off")" aria-hidden="true"></span><span class="kern-label">@(Model.Facility.FacilityVisibleInSearch ? "In der Suche sichtbar" : "Nicht öffentlich sichtbar")</span></span></div>
-            </div>
-        </section>
+        <nav class="masterdata-nav" aria-label="Bereiche des Leistungsangebots">
+            <a href="#uebersicht">Übersicht</a><a href="#kontakt">Kontakt</a><a href="#standorte">Standorte</a><a href="#leistungsprofil">Leistungsprofil</a>
+            @if (Model.Facility.ShowFreePlaces) { <a href="#platzmeldung">Platzmeldung</a> }
+            @if (Model.Facility.CanViewAttachments || Model.Facility.CanViewDocuments || Model.Facility.CanEditAttachments || Model.Facility.CanEditDocuments) { <a href="#dateien">Dateien</a> }
+        </nav>
 
-        <div class="masterdata__layout kern-row">
-            <div class="masterdata__content kern-col-md-8">
-                <section class="md-card md-card--highlight kern-card"><div class="kern-card__container"><div class="kern-card__header md-card__heading"><div><p class="masterdata__eyebrow">Übersicht</p><h2 class="kern-title">Was möchten Sie bearbeiten?</h2></div></div><div class="quick-actions">
-                    @if (Model.Facility.CanEditFacility) { <button class="quick-action kern-btn kern-btn--secondary" type="button" data-dialog-target="EditFacilityData"><span class="kern-icon kern-icon--edit" aria-hidden="true"></span><span><strong>Stammdaten</strong><small>Name, Adresse und Kapazität</small></span></button> }
-                    @if (Model.Facility.CanEditContactData) { <button class="quick-action kern-btn kern-btn--secondary" type="button" data-dialog-target="M_MC_FFView_EditContact"><span class="kern-icon kern-icon--mail" aria-hidden="true"></span><span><strong>Kontaktdaten</strong><small>Telefon, E-Mail und Web</small></span></button> }
-                    @if (Model.Facility.CanEditFeatures) { <button class="quick-action kern-btn kern-btn--secondary" type="button" data-dialog-target="EditFeatures"><span class="kern-icon kern-icon--checklist" aria-hidden="true"></span><span><strong>Merkmale</strong><small>Leistungsangebot beschreiben</small></span></button> }
-                    @if (Model.Facility.CanEditLocations) { <button class="quick-action kern-btn kern-btn--secondary" type="button" data-dialog-target="M_MC_FFView_SecLocs_SecLocsGrid"><span class="kern-icon kern-icon--info" aria-hidden="true"></span><span><strong>Standorte</strong><small>Adressen verwalten</small></span></button> }
-                    @if (Model.Facility.CanEditImage) { <button class="quick-action kern-btn kern-btn--secondary" type="button" data-dialog-target="M_MC_FFView_FIV_EditFacImg"><span class="kern-icon kern-icon--draft" aria-hidden="true"></span><span><strong>Bild</strong><small>Darstellung aktualisieren</small></span></button> }
-                    @if (Model.Facility.ShowFreePlaces && Model.Facility.CanEditFreePlaces && Model.Facility.FreePlaces is not null) { <button class="quick-action kern-btn kern-btn--secondary" type="button" data-dialog-target="EditFreePlaces"><span class="kern-icon kern-icon--calendar-today" aria-hidden="true"></span><span><strong>Platzmeldung</strong><small>Freie Plätze aktualisieren</small></span></button> }
-                </div></div></section>
+        <div class="masterdata__layout">
+            <div class="masterdata__content">
+                <section class="md-card kern-card" id="uebersicht"><div class="kern-card__container">
+                    <div class="md-card__heading"><div><p class="masterdata__eyebrow">Übersicht</p><h2>Stammdaten</h2></div>@if (Model.Facility.CanEditFacility) { <button class="md-link kern-btn kern-btn--tertiary" type="button" data-dialog-target="EditFacilityData">Bearbeiten</button> }</div>
+                    <dl class="data-list"><dt>Kennzeichen</dt><dd>@(string.IsNullOrWhiteSpace(Model.Facility.Facility.FacilityIndicator) ? "–" : Model.Facility.Facility.FacilityIndicator)</dd><dt>Platzzahl</dt><dd>@(Model.Facility.Facility.Capacity?.ToString() ?? "–")</dd><dt>Träger</dt><dd>@(Model.Facility.Institution?.Name ?? "–")</dd><dt>Hauptstandort</dt><dd>@(mainLocation is null ? "Nicht hinterlegt" : string.Join(" ", new[] { mainLocation.Street, mainLocation.HouseNumber, mainLocation.HouseNumberAddition, mainLocation.PostalCode, mainLocation.City }.Where(value => !string.IsNullOrWhiteSpace(value))))</dd></dl>
+                    @foreach (var person in Model.Facility.Representatives) { <p>Sachbearbeitung: @person.Name @person.Email</p> }
+                </div></section>
+                <section class="md-card kern-card" id="kontakt"><div class="kern-card__container">
+                    <div class="md-card__heading"><div><p class="masterdata__eyebrow">Hauptstandort</p><h2>Kontakt</h2></div>@if (Model.Facility.CanEditContactData && mainLocation is not null) { <button class="md-link kern-btn kern-btn--tertiary" type="button" data-dialog-target="M_MC_FFView_EditContact">Bearbeiten</button> }</div>
+                    <dl class="data-list"><dt>Telefon</dt><dd>@(mainLocation?.Phone ?? "–")</dd><dt>Mobil</dt><dd>@(mainLocation?.Mobile ?? "–")</dd><dt>Fax</dt><dd>@(mainLocation?.Fax ?? "–")</dd><dt>E-Mail</dt><dd>@(mainLocation?.Email ?? "–")</dd><dt>Internet</dt><dd>@(mainLocation?.Internet ?? "–")</dd></dl>
+                </div></section>
 
-                <section class="md-card kern-card"><div class="kern-card__container"><div class="kern-card__header md-card__heading"><div><p class="masterdata__eyebrow">Leistungsprofil</p><h2 class="kern-title">Merkmale</h2></div>@if (Model.Facility.CanEditFeatures) { <button class="md-link kern-btn kern-btn--tertiary" type="button" data-dialog-target="EditFeatures"><span class="kern-icon kern-icon--edit" aria-hidden="true"></span><span class="kern-label">Bearbeiten</span></button> }</div><div class="tag-list">@if (Model.Facility.Features.Count > 0) { foreach (var feature in Model.Facility.Features) { <span class="kern-badge kern-badge--info"><span class="kern-label">@feature.Label</span></span> } } else { <p class="muted kern-body">Noch keine Merkmale hinterlegt.</p> }</div></div></section>
+                <section class="md-card kern-card" id="leistungsprofil"><div class="kern-card__container"><div class="kern-card__header md-card__heading"><div><p class="masterdata__eyebrow">Leistungsprofil</p><h2 class="kern-title">Merkmale</h2></div>@if (Model.Facility.CanEditFeatures) { <button class="md-link kern-btn kern-btn--tertiary" type="button" data-dialog-target="EditFeatures"><span class="kern-label">Bearbeiten</span></button> }</div><div class="tag-list">@if (Model.Facility.Features.Count > 0) { foreach (var feature in Model.Facility.Features) { <span class="kern-badge kern-badge--info"><span class="kern-label">@feature.Label</span></span> } } else { <p class="muted kern-body">Noch keine Merkmale hinterlegt.</p> }</div>@if (Model.Facility.CanEditImage) { <button class="kern-btn kern-btn--tertiary" type="button" data-dialog-target="M_MC_FFView_FIV_EditFacImg">Bild bearbeiten</button> }</div></section>
                 @if (Model.Facility.ShowFacilityDescription) { <section class="md-card kern-card"><div class="kern-card__container"><div class="kern-card__header md-card__heading"><div><p class="masterdata__eyebrow">Öffentliche Darstellung</p><h2 class="kern-title">Leistungsbeschreibung</h2></div>@if (Model.Facility.CanEditFacility) { <button class="md-link kern-btn kern-btn--tertiary" type="button" data-dialog-target="EditFacilityDescription"><span class="kern-icon kern-icon--edit" aria-hidden="true"></span><span class="kern-label">Bearbeiten</span></button> }</div><p class="description kern-body">@(string.IsNullOrWhiteSpace(Model.Facility.Facility.Description) ? "Noch keine Beschreibung hinterlegt." : Model.Facility.Facility.Description)</p></div></section> }
-                <section class="md-card kern-card"><div class="kern-card__container"><div class="kern-card__header md-card__heading"><div><p class="masterdata__eyebrow">Adressen</p><h2 class="kern-title">Standorte</h2></div><div class="heading-actions">@if (Model.Facility.CanAddLocation) { <button class="md-link kern-btn kern-btn--tertiary" type="button" data-dialog-target="M_MC_FFView_SecLocs_SecLocAddLoc"><span class="kern-icon kern-icon--add" aria-hidden="true"></span><span class="kern-label">Standort</span></button> } @if (Model.Facility.CanEditLocations) { <button class="md-link kern-btn kern-btn--tertiary" type="button" data-dialog-target="M_MC_FFView_SecLocs_SecLocsGrid"><span class="kern-icon kern-icon--edit" aria-hidden="true"></span><span class="kern-label">Bearbeiten</span></button> }</div></div><div class="location-list">@foreach (var location in Model.Facility.Facility.Locations) { <article class="location kern-card kern-card--surface"><div class="location__icon kern-icon kern-icon--info" aria-hidden="true"></div><div><strong>@location.Name@(location.IsMainLocation ? " · Hauptstandort" : "")</strong><p class="kern-body">@location.Street @location.HouseNumber @location.HouseNumberAddition<br />@location.PostalCode @location.City</p></div><span class="location__capacity kern-badge kern-badge--small kern-badge--info"><span class="kern-label">@(location.Capacity ?? 0) Plätze</span></span></article> }</div></div></section>
+                <section class="md-card kern-card" id="standorte"><div class="kern-card__container">
+                    <div class="md-card__heading"><div><p class="masterdata__eyebrow">Adressen</p><h2>Standorte</h2></div>@if (Model.Facility.CanAddLocation) { <button class="md-link kern-btn kern-btn--tertiary" type="button" data-dialog-target="M_MC_FFView_SecLocs_SecLocAddLoc">Standort hinzufügen</button> }</div>
+                    <p>Änderungen an Standortadressen werden zur weiteren Bearbeitung gespeichert und sind möglicherweise nicht sofort sichtbar.</p>
+                    <div class="location-list">@foreach (var location in Model.Facility.Facility.Locations) {
+                        <article class="location kern-card kern-card--surface"><div><strong>@location.Name@(location.IsMainLocation ? " · Hauptstandort" : "")</strong><p>@location.Street @location.HouseNumber @location.HouseNumberAddition<br />@location.PostalCode @location.City</p><span>@(location.ShowAddressInWeb ? "Adresse öffentlich" : "Adresse nicht öffentlich")</span></div><span class="location__capacity">@(location.Capacity?.ToString() ?? "–") Plätze</span></article>
+                        @if (Model.Facility.CanEditLocations && !string.IsNullOrWhiteSpace(location.STUID)) {
+                            <details class="location-editor"><summary>Standort bearbeiten</summary>
+                                <form method="post" asp-page-handler="SaveLocation" class="md-form">
+                                    <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" /><input type="hidden" name="stuid" value="@location.STUID" />
+                                    <div class="form-grid"><label>Bezeichnung<input name="EditedLocation.Name" value="@location.Name" /></label><label>Straße<input name="EditedLocation.Street" value="@location.Street" /></label><label>Hausnummer<input name="EditedLocation.HouseNumber" value="@location.HouseNumber" /></label><label>Zusatz<input name="EditedLocation.HouseNumberAddition" value="@location.HouseNumberAddition" /></label><label>PLZ<input name="EditedLocation.PostalCode" value="@location.PostalCode" /></label><label>Ort<input name="EditedLocation.City" value="@location.City" required /></label><label>Platzzahl<input name="EditedLocation.Capacity" type="number" min="0" value="@location.Capacity" /></label></div>
+                                    <label><input type="checkbox" name="EditedLocation.ShowAddressInWeb" value="true" checked="@location.ShowAddressInWeb" /> Adresse öffentlich anzeigen</label><input type="hidden" name="EditedLocation.ShowAddressInWeb" value="false" />
+                                    <button class="kern-btn kern-btn--primary" type="submit">Standort speichern</button>
+                                </form>
+                            </details>
+                        }
+                    }</div>
+                </div></section>
+                @if (Model.Facility.ShowFreePlaces && Model.Facility.FreePlaces is not null) {
+                    <section class="md-card kern-card" id="platzmeldung"><div class="kern-card__container"><div class="md-card__heading"><div><p class="masterdata__eyebrow">Kapazität</p><h2>Platzmeldung</h2></div></div>
+                        <p>Stand: @Model.Facility.FreePlaces.ReportingDate.ToString("dd.MM.yyyy")</p>
+                        <form method="post" asp-page-handler="SaveFreePlaces" class="md-form"><input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
+                            @{ var questionIndex = 0; }
+                            @foreach (var category in Model.Facility.FreePlaces.Categories) { <fieldset><legend>@category.Label</legend>
+                                @foreach (var question in category.Questions) {
+                                    @if (question.TypeId is 0 or 1) {
+                                    <input type="hidden" name="FreePlaceQuestions[@questionIndex].QuestionId" value="@question.Id" /><input type="hidden" name="FreePlaceQuestions[@questionIndex].TypeId" value="@question.TypeId" />
+                                    @if (question.TypeId == 0) { <label><input type="checkbox" name="FreePlaceQuestions[@questionIndex].BooleanValue" value="true" checked="@question.BooleanValue" disabled="@(!Model.Facility.CanEditFreePlaces)" /> @question.Label</label> }
+                                    else if (question.TypeId == 1) { <label>@question.Label<input type="number" name="FreePlaceQuestions[@questionIndex].IntegerValue" value="@question.IntegerValue" disabled="@(!Model.Facility.CanEditFreePlaces)" /></label> }
+                                    questionIndex++;
+                                    }
+                                }
+                            </fieldset> }
+                            @if (Model.Facility.CanEditFreePlaces) { <button class="kern-btn kern-btn--primary" type="submit">Platzmeldung speichern</button> }
+                        </form>
+                    </div></section>
+                }
+                else if (Model.Facility.ShowFreePlaces) {
+                    <section class="md-card kern-card" id="platzmeldung"><div class="kern-card__container"><h2>Platzmeldung</h2><p>Noch keine Platzmeldung vorhanden. Das erstmalige Anlegen ist hier noch nicht verfügbar.</p></div></section>
+                }
+                @if (Model.Facility.CanViewAttachments || Model.Facility.CanViewDocuments || Model.Facility.CanEditAttachments || Model.Facility.CanEditDocuments) {
+                    <section class="md-card kern-card" id="dateien"><div class="kern-card__container"><p class="masterdata__eyebrow">Unterlagen</p><h2>Dateien</h2>
+                        @if (Model.Facility.CanViewAttachments) { <h3>Anhänge</h3><ul>@foreach (var file in Model.Facility.Facility.Attachments) { <li><a asp-page-handler="Attachment" asp-route-eiid="@Model.Facility.Facility.EIID" asp-route-attachmentId="@file.Id" asp-route-attachmentType="@file.Type" asp-route-document="false">@file.Filename</a></li> }</ul> }
+                        @if (Model.Facility.CanEditAttachments) { <form method="post" enctype="multipart/form-data" asp-page-handler="SaveAttachment" class="md-form"><input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" /><label>Anhang hinzufügen<input asp-for="AttachmentFile" type="file" required /></label><button class="kern-btn kern-btn--secondary" type="submit">Hochladen</button></form> }
+                        @if (Model.Facility.CanViewDocuments) { <h3>Dokumente</h3><ul>@foreach (var file in Model.Facility.Documents) { <li><a asp-page-handler="Attachment" asp-route-eiid="@Model.Facility.Facility.EIID" asp-route-attachmentId="@file.Id" asp-route-attachmentType="@file.Type" asp-route-document="true">@file.Filename</a></li> }</ul> }
+                        @if (Model.Facility.CanEditDocuments) { <button class="kern-btn kern-btn--secondary" type="button" data-dialog-target="M_MC_Documents_AddFile">Dokument hinzufügen</button> }
+                    </div></section>
+                }
+                @if (Model.Facility.CanViewCosts) { <section class="md-card kern-card"><div class="kern-card__container"><h2>Vergütung und Kosten</h2><a class="kern-link" asp-page="/Auth/StammdatenKosten" asp-route-eiid="@Model.Facility.Facility.EIID">Kosten verwalten</a></div></section> }
             </div>
             <aside class="masterdata__aside">
                 <section class="md-card kern-card"><div class="kern-card__container"><div class="kern-card__header md-card__heading"><div><p class="masterdata__eyebrow">Veröffentlichung</p><h2 class="kern-title">Sichtbarkeit</h2></div>@if (Model.Facility.CanChangeFacilityVisibility) { <button class="md-link kern-btn kern-btn--tertiary" type="button" data-dialog-target="M_MC_FFView_ChangeVisibility"><span class="kern-label">Ändern</span></button> }</div><div class="visibility"><span class="kern-badge @(Model.Facility.FacilityVisibleInSearch ? "kern-badge--success" : "kern-badge--warning")"><span class="kern-icon @(Model.Facility.FacilityVisibleInSearch ? "kern-icon--visibility" : "kern-icon--visibility-off")" aria-hidden="true"></span><span class="kern-label">@(Model.Facility.FacilityVisibleInSearch ? "Öffentlich sichtbar" : "Nicht veröffentlicht")</span></span><div><p class="kern-body">@(Model.Facility.FacilityVisibleInSearch ? "In der Suche auffindbar." : "Für die Suche verborgen.")</p></div></div></div></section>
@@ -102,11 +165,18 @@
         <div class="danger-zone">@if (Model.Facility.CanRemoveFacility) { <button class="md-link md-link--danger kern-btn kern-btn--tertiary" type="button" data-dialog-target="RemoveFacility"><span class="kern-icon kern-icon--delete" aria-hidden="true"></span><span class="kern-label">Leistungsangebot löschen</span></button> }</div>
 
         <div class="dialog-layer" data-dialog-layer hidden>
-            @if (Model.Facility.CanEditFacility && Model.FacilityCreateOptions is not null)
+            @if (Model.Facility.CanEditFacility)
             {
                 <div id="EditFacilityData" class="md-dialog kern-dialog" role="dialog" aria-modal="true" aria-labelledby="EditFacilityDataTitle" hidden>
                     <div class="md-dialog__header kern-dialog__header"><h2 id="EditFacilityDataTitle" class="kern-title">Leistungsangebot bearbeiten</h2><button class="md-dialog__close kern-btn kern-btn--tertiary" type="button" data-dialog-close aria-label="Dialog schließen"><span class="kern-icon kern-icon--close" aria-hidden="true"></span></button></div>
-                    <form method="post" asp-page-handler="SaveFacilityData" class="md-form kern-stack"><input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" /><input type="hidden" name="stuid" value="@mainLocation?.STUID" /><label>Name<input class="kern-form-input__input" asp-for="FacilityData.Name" /></label><label>Kennzeichen<input class="kern-form-input__input" asp-for="FacilityData.FacilityIndicator" /></label><div class="form-grid"><label>Straße<input class="kern-form-input__input street-directory-street" asp-for="FacilityData.Street" /></label><label>Hausnummer<input class="kern-form-input__input street-directory-number" asp-for="FacilityData.HouseNumber" /></label><label>PLZ<input class="kern-form-input__input" asp-for="FacilityData.PostalCode" /></label><label>Ort<input class="kern-form-input__input" asp-for="FacilityData.City" /></label></div><label class="check-row"><input asp-for="FacilityData.ShowAddressInWeb" /> Adresse öffentlich anzeigen</label><label>Kapazität<input class="kern-form-input__input" asp-for="FacilityData.Capacity" type="number" min="0" /></label><div class="md-form__actions kern-btn-wrapper"><button class="md-button kern-btn kern-btn--primary" type="submit">Speichern</button><button class="md-button kern-btn kern-btn--tertiary" type="button" data-dialog-close>Abbrechen</button></div></form>
+                    <form method="post" asp-page-handler="SaveFacilityData" class="md-form kern-stack">
+                        <input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" />
+                        <label>Name<input class="kern-form-input__input" asp-for="FacilityData.Name" required /></label>
+                        <label>Kennzeichen<input class="kern-form-input__input" asp-for="FacilityData.FacilityIndicator" /></label>
+                        <label>Platzzahl<input class="kern-form-input__input" asp-for="FacilityData.Capacity" type="number" min="0" /></label>
+                        <p>Adressen und standortbezogene Platzzahlen können im Bereich Standorte geändert werden.</p>
+                        <div class="md-form__actions kern-btn-wrapper"><button class="md-button kern-btn kern-btn--primary" type="submit">Speichern</button><button class="md-button kern-btn kern-btn--tertiary" type="button" data-dialog-close>Abbrechen</button></div>
+                    </form>
                 </div>
             }
             @if (Model.Facility.CanEditFeatures)
@@ -115,7 +185,7 @@
             }
             @if (Model.Facility.CanEditContactData)
             {
-                <div id="M_MC_FFView_EditContact" class="md-dialog kern-dialog" role="dialog" aria-modal="true" aria-labelledby="ContactTitle" hidden><div class="md-dialog__header kern-dialog__header"><h2 id="ContactTitle" class="kern-title">Kontaktdaten bearbeiten</h2><button class="md-dialog__close kern-btn kern-btn--tertiary" type="button" data-dialog-close aria-label="Dialog schließen"><span class="kern-icon kern-icon--close" aria-hidden="true"></span></button></div><form method="post" asp-page-handler="SaveContactData" class="md-form kern-stack"><input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" /><input type="hidden" name="stuid" value="@mainLocation?.STUID" /><div class="form-grid"><label>Telefon<input class="kern-form-input__input" asp-for="ContactData.Phone" /></label><label>Mobil<input class="kern-form-input__input" asp-for="ContactData.Mobile" /></label><label>E-Mail<input class="kern-form-input__input" asp-for="ContactData.Email" /></label><label>Internet<input class="kern-form-input__input" asp-for="ContactData.Internet" /></label></div><div class="md-form__actions kern-btn-wrapper"><button class="md-button kern-btn kern-btn--primary" type="submit">Speichern</button><button class="md-button kern-btn kern-btn--tertiary" type="button" data-dialog-close>Abbrechen</button></div></form></div>
+                <div id="M_MC_FFView_EditContact" class="md-dialog kern-dialog" role="dialog" aria-modal="true" aria-labelledby="ContactTitle" hidden><div class="md-dialog__header kern-dialog__header"><h2 id="ContactTitle" class="kern-title">Kontaktdaten bearbeiten</h2><button class="md-dialog__close kern-btn kern-btn--tertiary" type="button" data-dialog-close aria-label="Dialog schließen"><span class="kern-icon kern-icon--close" aria-hidden="true"></span></button></div><form method="post" asp-page-handler="SaveContactData" class="md-form kern-stack"><input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" /><input type="hidden" name="stuid" value="@mainLocation?.STUID" /><div class="form-grid"><label>Telefon<input class="kern-form-input__input" asp-for="ContactData.Phone" /></label><label>Mobil<input class="kern-form-input__input" asp-for="ContactData.Mobile" /></label><label>Fax<input class="kern-form-input__input" asp-for="ContactData.Fax" /></label><label>E-Mail<input class="kern-form-input__input" asp-for="ContactData.Email" /></label><label>Internet<input class="kern-form-input__input" asp-for="ContactData.Internet" /></label></div><div class="md-form__actions kern-btn-wrapper"><button class="md-button kern-btn kern-btn--primary" type="submit">Speichern</button><button class="md-button kern-btn kern-btn--tertiary" type="button" data-dialog-close>Abbrechen</button></div></form></div>
             }
             @if (Model.Facility.ShowFacilityDescription && Model.Facility.CanEditFacility)
             {
@@ -135,7 +205,7 @@
             }
             @if (Model.Facility.CanEditInstitutionContactData)
             {
-                <div id="M_MC_PnlInst_EditInst" class="md-dialog kern-dialog" role="dialog" aria-modal="true" aria-labelledby="InstitutionTitle" hidden><div class="md-dialog__header kern-dialog__header"><h2 id="InstitutionTitle" class="kern-title">Leistungserbringer bearbeiten</h2><button class="md-dialog__close kern-btn kern-btn--tertiary" type="button" data-dialog-close aria-label="Dialog schließen"><span class="kern-icon kern-icon--close" aria-hidden="true"></span></button></div><form method="post" asp-page-handler="SaveInstitutionContactData" class="md-form kern-stack"><input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" /><label>Telefon<input class="kern-form-input__input" asp-for="InstitutionContactData.Phone" /></label><label>E-Mail<input class="kern-form-input__input" asp-for="InstitutionContactData.Email" /></label><label>Internet<input class="kern-form-input__input" asp-for="InstitutionContactData.Internet" /></label><div class="md-form__actions kern-btn-wrapper"><button class="md-button kern-btn kern-btn--primary" type="submit">Speichern</button><button class="md-button kern-btn kern-btn--tertiary" type="button" data-dialog-close>Abbrechen</button></div></form></div>
+                <div id="M_MC_PnlInst_EditInst" class="md-dialog kern-dialog" role="dialog" aria-modal="true" aria-labelledby="InstitutionTitle" hidden><div class="md-dialog__header kern-dialog__header"><h2 id="InstitutionTitle" class="kern-title">Leistungserbringer bearbeiten</h2><button class="md-dialog__close kern-btn kern-btn--tertiary" type="button" data-dialog-close aria-label="Dialog schließen"><span class="kern-icon kern-icon--close" aria-hidden="true"></span></button></div><form method="post" asp-page-handler="SaveInstitutionContactData" class="md-form kern-stack"><input type="hidden" name="eiid" value="@Model.Facility.Facility.EIID" /><label>Telefon<input class="kern-form-input__input" asp-for="InstitutionContactData.Phone" /></label><label>E-Mail<input class="kern-form-input__input" asp-for="InstitutionContactData.Email" /></label><label>Internet<input class="kern-form-input__input" asp-for="InstitutionContactData.Internet" /></label><label><input asp-for="InstitutionContactData.AssociationAccessAllowed" /> Verbandszugriff erlauben</label><div class="md-form__actions kern-btn-wrapper"><button class="md-button kern-btn kern-btn--primary" type="submit">Speichern</button><button class="md-button kern-btn kern-btn--tertiary" type="button" data-dialog-close>Abbrechen</button></div></form></div>
             }
             @if (Model.Facility.CanEditImage)
             {
@@ -158,7 +228,7 @@
     <div class="dialog-layer" data-dialog-layer hidden>
         <div id="NewFacility" class="md-dialog kern-dialog" role="dialog" aria-modal="true" aria-labelledby="NewFacilityTitle" hidden>
             <div class="md-dialog__header kern-dialog__header"><h2 id="NewFacilityTitle" class="kern-title">Neues Leistungsangebot</h2><button class="md-dialog__close kern-btn kern-btn--tertiary" type="button" data-dialog-close aria-label="Dialog schließen"><span class="kern-icon kern-icon--close" aria-hidden="true"></span></button></div>
-            <form method="post" asp-page-handler="CreateFacility" class="md-form kern-stack"><label>Leistungsangebot<input class="kern-form-input__input" asp-for="NewFacility.Name" /></label><label>Straße<input class="kern-form-input__input" asp-for="NewFacility.Street" /></label><div class="form-grid"><label>Hausnummer<input class="kern-form-input__input" asp-for="NewFacility.HouseNumber" /></label><label>Postleitzahl<input class="kern-form-input__input" asp-for="NewFacility.PostalCode" /></label><label>Ort<input class="kern-form-input__input" asp-for="NewFacility.City" /></label><label>Platzzahl<input class="kern-form-input__input" asp-for="NewFacility.Capacity" type="number" /></label></div><label>Kreis<select class="kern-form-input__select" asp-for="NewFacility.DistrictId"><option value="">Bitte auswählen</option>@foreach (var district in Model.FacilityCreateOptions.Districts) { <option value="@district.KRID">@district.Kreis</option> }</select></label><label>Träger<select class="kern-form-input__select" asp-for="NewFacility.TraegerId"><option value="">Bitte auswählen</option>@foreach (var institution in Model.FacilityCreateOptions.Institutions) { <option value="@institution.Id">@institution.Name</option> }</select></label><div class="md-form__actions kern-btn-wrapper"><button class="md-button kern-btn kern-btn--primary" type="submit">Speichern</button><button class="md-button kern-btn kern-btn--tertiary" type="button" data-dialog-close>Abbrechen</button></div></form>
+            <form method="post" asp-page-handler="CreateFacility" class="md-form kern-stack"><label>Leistungsangebot<input class="kern-form-input__input" asp-for="NewFacility.Name" required /></label><label>Straße<input class="kern-form-input__input" asp-for="NewFacility.Street" /></label><div class="form-grid"><label>Hausnummer<input class="kern-form-input__input" asp-for="NewFacility.HouseNumber" /></label><label>Postleitzahl<input class="kern-form-input__input" asp-for="NewFacility.PostalCode" /></label><label>Ort<input class="kern-form-input__input" asp-for="NewFacility.City" required /></label><label>Platzzahl<input class="kern-form-input__input" asp-for="NewFacility.Capacity" type="number" min="0" /></label></div><label>Kreis<select class="kern-form-input__select" asp-for="NewFacility.DistrictId" required><option value="">Bitte auswählen</option>@foreach (var district in Model.FacilityCreateOptions.Districts) { <option value="@district.KRID">@district.Kreis</option> }</select></label><label>Leistungstyp<select class="kern-form-input__select" name="NewFacility.FacilityTypeIds" required><option value="">Bitte auswählen</option>@foreach (var type in Model.FacilityCreateOptions.FacilityTypes) { <option value="@type.ETID">@type.Typkennzeichnung</option> }</select></label><label>Träger<select class="kern-form-input__select" asp-for="NewFacility.TraegerId" required><option value="">Bitte auswählen</option>@foreach (var institution in Model.FacilityCreateOptions.Institutions) { <option value="@institution.Id">@institution.Name</option> }</select></label><div class="md-form__actions kern-btn-wrapper"><button class="md-button kern-btn kern-btn--primary" type="submit">Speichern</button><button class="md-button kern-btn kern-btn--tertiary" type="button" data-dialog-close>Abbrechen</button></div></form>
         </div>
     </div>
 }

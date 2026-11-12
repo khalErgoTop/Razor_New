@@ -29,6 +29,7 @@ namespace TOPqwWeb_Core.Pages.QM
 
         public IActionResult OnPostOpen(string eiid, int qmbogenId, int qlid)
         {
+            _legacySessionContext.QMAuswahlSource = "Archiv";
             _legacySessionContext.CurrentEIID = eiid;
             _legacySessionContext.QMBogenID = qmbogenId;
             _legacySessionContext.QMLayoutId = qlid;

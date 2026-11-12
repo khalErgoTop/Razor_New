@@ -12,8 +12,8 @@ namespace TOPqwWeb_Core.Legacy.Adapters
 
         public AuthAdapter(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("TOPqwWeb")
-                ?? throw new InvalidOperationException("ConnectionStrings:TOPqwWeb muss konfiguriert werden.");
+            _connectionString = configuration.GetConnectionString("TOPqm")
+                ?? throw new InvalidOperationException("ConnectionStrings:TOPqm muss konfiguriert werden.");
         }
 
         public async Task<AuthResponse?> LoginEncAsync(string szName, string szPW, CancellationToken cancellationToken)

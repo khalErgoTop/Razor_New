@@ -11,9 +11,9 @@ public sealed class DbCheckService
     public DbCheckService(IConfiguration configuration)
     {
         _configuration = configuration;
-        _connectionString = configuration.GetConnectionString("TOPqwWeb") is { Length: > 0 } connectionString
+        _connectionString = configuration.GetConnectionString("TOPqm") is { Length: > 0 } connectionString
             ? connectionString
-            : throw new InvalidOperationException("ConnectionStrings:TOPqwWeb ist leer. Konfigurieren Sie den Wert über User Secrets oder die Umgebungsvariable ConnectionStrings__TOPqwWeb.");
+            : throw new InvalidOperationException("ConnectionStrings:TOPqm ist leer. Konfigurieren Sie den Wert über User Secrets oder die Umgebungsvariable ConnectionStrings__TOPqm.");
     }
 
     public async Task<DbCheckResult> CheckAsync(CancellationToken cancellationToken)

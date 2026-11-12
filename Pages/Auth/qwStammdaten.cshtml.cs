@@ -33,6 +33,7 @@ namespace TOPqwWeb_Core.Pages.Auth
         public string FacilityFilter { get; private set; } = string.Empty;
         public int FacilityPageIndex { get; private set; }
         public int FacilityPageCount { get; private set; }
+        public int FacilityCount { get; private set; }
         [BindProperty]
         public ContactDataInput ContactData { get; set; } = new();
         [BindProperty]
@@ -116,6 +117,7 @@ namespace TOPqwWeb_Core.Pages.Auth
                 : allFacilities.Where(choice =>
                     choice.Name.Contains(FacilityFilter, StringComparison.CurrentCultureIgnoreCase)
                     || (choice.FacilityIndicator?.Contains(FacilityFilter, StringComparison.CurrentCultureIgnoreCase) ?? false)).ToList();
+            FacilityCount = filteredFacilities.Count;
             FacilityPageCount = (int)Math.Ceiling(filteredFacilities.Count / (double)FacilityListPageSize);
             if (FacilityPageCount > 0 && FacilityPageIndex >= FacilityPageCount)
             {
@@ -144,7 +146,8 @@ namespace TOPqwWeb_Core.Pages.Auth
             if (Facility is null)
             {
                 _logger.LogWarning("qwStammdaten PageModel found no accessible facility. EIID={EIID}, STUID={STUID}", eiid, stuid);
-                return Forbid();
+                if (!string.IsNullOrWhiteSpace(eiid) || !await _service.CanViewOwnFacilitiesAsync(cancellationToken)) return Forbid();
+                return Page();
             }
 
             _legacySessionContext.CurrentEIID = Facility.Facility.EIID;
@@ -155,22 +158,8 @@ namespace TOPqwWeb_Core.Pages.Auth
         public async Task<IActionResult> OnPostSaveFacilityDataAsync(string? eiid, string? stuid, CancellationToken cancellationToken)
         {
             if (string.IsNullOrWhiteSpace(eiid)) return BadRequest();
+            if (string.IsNullOrWhiteSpace(FacilityData.Name) || FacilityData.Capacity < 0) return BadRequest();
             if (!await _service.SaveFacilityDataAsync(eiid, FacilityData, cancellationToken)) return Forbid();
-            if (!string.IsNullOrWhiteSpace(stuid))
-            {
-                var location = new StammdatenLocationInput
-                {
-                    Street = FacilityData.Street,
-                    HouseNumber = FacilityData.HouseNumber,
-                    HouseNumberAddition = FacilityData.HouseNumberAddition,
-                    PostalCode = FacilityData.PostalCode,
-                    City = FacilityData.City,
-                    StreetDirectoryValidated = FacilityData.StreetDirectoryValidated,
-                    Capacity = FacilityData.Capacity,
-                    ShowAddressInWeb = FacilityData.ShowAddressInWeb
-                };
-                if (!await _service.SaveLocationAsync(eiid, stuid, location, cancellationToken)) return Forbid();
-            }
             return RedirectToPage(new { eiid, stuid });
         }
 

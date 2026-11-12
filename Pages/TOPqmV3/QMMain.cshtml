@@ -1,16 +1,28 @@
-﻿@page
+@page
 @model TOPqwWeb_Core.Pages.QM.QMMainModel
+@{
+    ViewData["Title"] = "Qualitätsmanagement";
+}
+<link rel="stylesheet" href="~/css/qmbogen.css" asp-append-version="true" />
+<link rel="stylesheet" href="~/css/qmauswahl.css" asp-append-version="true" />
 
-<h1>Qualitätsmanagement</h1>
-
-<nav aria-label="Qualitätsmanagement">
-    <ul class="mainlink-list">
-        @foreach (var link in Model.Links)
-        {
-            <li>
-                <span aria-hidden="true">&#9654;</span>
-                <a href="@link.NavigateUrl" class="mainlink">@link.Caption</a>
-            </li>
-        }
-    </ul>
-</nav>
+<div class="qm-page qm-overview">
+    <nav class="qm-breadcrumb" aria-label="Brotkrümelnavigation">
+        <a asp-page="/Index">Start</a><span aria-hidden="true"> / </span><span aria-current="page">Qualitätsmanagement</span>
+    </nav>
+    <header class="qm-header">
+        <div class="qm-header__identity">
+            <p class="qm-eyebrow">Qualitätsmanagement</p>
+            <h1>Qualitätsmanagement</h1>
+            <p>Wählen Sie, welche QM-Berichte Sie ansehen möchten.</p>
+        </div>
+    </header>
+    <nav class="qm-overview__cards" aria-label="QM-Berichte">
+        <a class="qm-overview__card" asp-page="/TOPqmV3/QMAuswahl">
+            <h2>Aktuelle Berichte</h2><p>Leistung auswählen und verfügbare QM-Bögen öffnen.</p><span>Zur Bogenauswahl →</span>
+        </a>
+        <a class="qm-overview__card" asp-page="/TOPqmV3/QMArchiv">
+            <h2>Alte Berichte</h2><p>Archivierte QM-Berichte einsehen.</p><span>Zum Archiv →</span>
+        </a>
+    </nav>
+</div>

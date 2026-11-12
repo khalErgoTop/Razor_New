@@ -10,7 +10,6 @@ public sealed class OptionenService
 {
     private const string MapsSearchSetting = "StammdatenAnzeige.MapsSucheMit";
     private const string AdminRights = "ea0adb75-cea8-47a9-943c-f6a34f0a943e";
-    private const string PageRights = "69CEA34F-ADA6-4C70-84E8-C4852F7BF1C2";
     private readonly string _connectionString;
     private readonly LegacyPermissionService _permissionService;
     private readonly CurrentUserAccessor _currentUser;
@@ -18,8 +17,8 @@ public sealed class OptionenService
 
     public OptionenService(IConfiguration configuration, LegacyPermissionService permissionService, CurrentUserAccessor currentUser, ILogger<OptionenService> logger)
     {
-        _connectionString = configuration.GetConnectionString("TOPqwWeb")
-            ?? throw new InvalidOperationException("ConnectionStrings:TOPqwWeb muss konfiguriert werden.");
+        _connectionString = configuration.GetConnectionString("TOPqm")
+            ?? throw new InvalidOperationException("ConnectionStrings:TOPqm muss konfiguriert werden.");
         _permissionService = permissionService;
         _currentUser = currentUser;
         _logger = logger;
@@ -27,8 +26,7 @@ public sealed class OptionenService
 
     public async Task<bool> CanAccessAsync(CancellationToken cancellationToken)
         => _currentUser.BEID is int beid &&
-           (await _permissionService.HasPermissionAsync(beid, AdminRights, cancellationToken) ||
-            await _permissionService.HasPermissionAsync(beid, PageRights, cancellationToken));
+           await _permissionService.HasPermissionAsync(beid, AdminRights, cancellationToken);
 
     public async Task<IReadOnlyList<OptionCategory>> GetCategoriesAsync(CancellationToken cancellationToken)
     {
@@ -139,7 +137,7 @@ public sealed class OptionenService
                 WertSNG = CASE WHEN @column = 'WertSNG' THEN @singleValue ELSE WertSNG END,
                 WertTXT = CASE WHEN @column = 'WertTXT' THEN @textValue ELSE WertTXT END,
                 WertMEMO = CASE WHEN @column = 'WertMEMO' THEN @textValue ELSE WertMEMO END
-            WHERE Einstellung = @setting AND ISNULL(fkUSID, 0) = 0;
+            WHERE Einstellung = @setting AND ISNULL(fkUSID, 0) = 0 AND ISNULL(Aenderbar, 1) <> 0;
             """;
 
         await using var connection = await OpenAsync(cancellationToken);

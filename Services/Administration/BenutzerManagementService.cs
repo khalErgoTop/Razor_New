@@ -14,8 +14,8 @@ public sealed class BenutzerManagementService
 
     public BenutzerManagementService(IConfiguration configuration, LegacyPermissionService permissions, CurrentUserAccessor currentUser)
     {
-        _connectionString = configuration.GetConnectionString("TOPqwWeb")
-            ?? throw new InvalidOperationException("ConnectionStrings:TOPqwWeb muss konfiguriert werden.");
+        _connectionString = configuration.GetConnectionString("TOPqm")
+            ?? throw new InvalidOperationException("ConnectionStrings:TOPqm muss konfiguriert werden.");
         _permissions = permissions;
         _currentUser = currentUser;
     }
@@ -320,7 +320,7 @@ public sealed class BenutzerManagementService
         await using var transaction = (SqlTransaction)await connection.BeginTransactionAsync(cancellationToken);
         try
         {
-            await using (var delete = new SqlCommand("DELETE FROM IndexBenutzerModule WHERE FKBEID = @beid", connection, transaction))
+            await using (var delete = new SqlCommand("DELETE FROM IndexBenutzerModule WHERE FKBEID = @beid AND ModuleID IN (SELECT MID FROM Module WHERE ISNULL(Sichtbar, 0) = 1)", connection, transaction))
             {
                 delete.Parameters.AddWithValue("@beid", userId);
                 await delete.ExecuteNonQueryAsync(cancellationToken);
@@ -399,11 +399,13 @@ public sealed class BenutzerManagementService
         if (!CanEditTarget(context, user.UserType)) return false;
 
         var isSelf = context.Beid == user.Beid;
-        var isAdmin = isSelf ? context.IsAdmin && user.IsAdmin : context.IsAdmin && user.IsAdmin;
+        var canChangeFlags = await HasAdminRightsAsync(cancellationToken);
+        var isAdmin = context.IsAdmin && user.IsAdmin;
         var isKosoz = isSelf ? context.IsKosoz && user.IsKosoz : context.IsAdmin && user.IsKosoz;
         const string sql = """
             UPDATE Benutzer SET Benutzername=@username, Vorname=@firstname, Nachname=@lastname,
-                Email=@email, Admin=@admin, Kosoz=@kosoz, IsDeactivated=@deactivated
+                Email=@email, Admin=CASE WHEN @canChangeFlags = 1 THEN @admin ELSE Admin END,
+                Kosoz=CASE WHEN @canChangeFlags = 1 THEN @kosoz ELSE Kosoz END, IsDeactivated=@deactivated
             WHERE BEID=@beid;
             """;
         await using var connection = await OpenAsync(cancellationToken);
@@ -412,6 +414,7 @@ public sealed class BenutzerManagementService
         command.Parameters.AddWithValue("@firstname", user.Firstname);
         command.Parameters.AddWithValue("@lastname", user.Lastname);
         command.Parameters.AddWithValue("@email", user.Email);
+        command.Parameters.AddWithValue("@canChangeFlags", canChangeFlags);
         command.Parameters.AddWithValue("@admin", isAdmin);
         command.Parameters.AddWithValue("@kosoz", isKosoz);
         command.Parameters.AddWithValue("@deactivated", user.IsDeactivated);

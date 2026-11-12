@@ -10,8 +10,8 @@ public sealed class LegacyPermissionService
 
     public LegacyPermissionService(IConfiguration configuration, ILogger<LegacyPermissionService> logger)
     {
-        _connectionString = configuration.GetConnectionString("TOPqwWeb")
-            ?? throw new InvalidOperationException("ConnectionStrings:TOPqwWeb muss konfiguriert werden.");
+        _connectionString = configuration.GetConnectionString("TOPqm")
+            ?? throw new InvalidOperationException("ConnectionStrings:TOPqm muss konfiguriert werden.");
         _logger = logger;
     }
 

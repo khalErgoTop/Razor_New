@@ -23,6 +23,7 @@ namespace TOPqwWeb_Core.Pages.QM
         public IReadOnlyList<QmFacilityResponse> Facilities { get; private set; } = Array.Empty<QmFacilityResponse>();
         public QmBogenResponse? QmBogen { get; private set; }
         public IReadOnlyList<QmSelectableBogenResponse> SelectableBoegen { get; private set; } = Array.Empty<QmSelectableBogenResponse>();
+        public QmFacilityResponse? SelectedFacility { get; private set; }
 
         [BindProperty(SupportsGet = true)]
         public int BogenstatusSelection { get; set; } = -1;
@@ -42,7 +43,6 @@ namespace TOPqwWeb_Core.Pages.QM
             LoadBogenstatus();
             await LoadFacilitiesAsync(cancellationToken);
             await LoadSelectableBoegenAsync(cancellationToken);
-            await LoadQmBogenAsync(cancellationToken);
         }
 
         public async Task OnPostFilterAsync(CancellationToken cancellationToken)
@@ -51,35 +51,34 @@ namespace TOPqwWeb_Core.Pages.QM
             LoadBogenstatus();
             await LoadFacilitiesAsync(cancellationToken);
             await LoadSelectableBoegenAsync(cancellationToken);
-            await LoadQmBogenAsync(cancellationToken);
         }
 
         private async Task LoadSelectableBoegenAsync(CancellationToken cancellationToken)
         {
-            if (!string.IsNullOrWhiteSpace(EIID) && ETID.HasValue)
+            SelectedFacility = Facilities.FirstOrDefault(f => string.Equals(f.EIID, EIID, StringComparison.OrdinalIgnoreCase));
+            if (SelectedFacility?.FKETID is int facilityType)
             {
-                SelectableBoegen = await _service.GetSelectableBoegenAsync(EIID, ETID.Value, BogenstatusSelection, cancellationToken);
+                ETID = facilityType;
+                SelectableBoegen = await _service.GetSelectableBoegenAsync(SelectedFacility.EIID, facilityType, BogenstatusSelection, cancellationToken);
             }
         }
 
         public async Task<IActionResult> OnPostOpenAsync(CancellationToken cancellationToken)
         {
-            if (string.IsNullOrWhiteSpace(EIID) || !QLID.HasValue)
+            ResetQmSelection();
+            LoadBogenstatus();
+            await LoadFacilitiesAsync(cancellationToken);
+            await LoadSelectableBoegenAsync(cancellationToken);
+            if (SelectedFacility is null || !QLID.HasValue || !SelectableBoegen.Any(b => b.QLID == QLID.Value))
             {
-                ModelState.AddModelError(string.Empty, "Bitte wählen Sie einen QM-Bogen aus.");
-                ResetQmSelection();
-                LoadBogenstatus();
-                await LoadFacilitiesAsync(cancellationToken);
+                ModelState.AddModelError(string.Empty, "Der ausgewählte QM-Bogen ist nicht verfügbar. Bitte wählen Sie eine Leistung und einen Bogen aus.");
                 return Page();
             }
 
-            QmBogen = await _service.GetQmBogenAsync(EIID, QLID.Value, cancellationToken);
+            QmBogen = await _service.GetQmBogenAsync(SelectedFacility.EIID, QLID.Value, cancellationToken);
             if (QmBogen is null)
             {
                 ModelState.AddModelError(string.Empty, "Der ausgewählte QM-Bogen wurde nicht gefunden.");
-                ResetQmSelection();
-                LoadBogenstatus();
-                await LoadFacilitiesAsync(cancellationToken);
                 return Page();
             }
 
@@ -92,14 +91,6 @@ namespace TOPqwWeb_Core.Pages.QM
         private async Task LoadFacilitiesAsync(CancellationToken cancellationToken)
         {
             Facilities = await _service.GetFacilitiesAvailableAsync(BogenstatusSelection, cancellationToken);
-        }
-
-        private async Task LoadQmBogenAsync(CancellationToken cancellationToken)
-        {
-            if (!string.IsNullOrWhiteSpace(EIID) && QLID.HasValue)
-            {
-                QmBogen = await _service.GetQmBogenAsync(EIID, QLID.Value, cancellationToken);
-            }
         }
 
         private void LoadBogenstatus()

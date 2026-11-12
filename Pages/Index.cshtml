@@ -1,10 +1,16 @@
 ﻿@page
 @model IndexModel
+@inject TOPqwWeb_Core.Infrastructure.Theming.ThemeAssetService ThemeAssets
 @{
     ViewData["Title"] = "Startseite";
-    ViewData["UseLegacyTheme"] = false;
 }
 
+@if (!ThemeAssets.UsesKern)
+{
+    <div class="innerMain">@Model.LandingContent</div>
+}
+else
+{
 <nav class="kern-breadcrumbs" aria-label="Brotkrümelnavigation">
     <ol class="breadcrumb">
         <li aria-current="page"><span class="kern-icon kern-icon--home" aria-hidden="true"></span> Start</li>
@@ -41,6 +47,7 @@
         </div>
     </section>
 </main>
+}
 
 <style>
     .home-page { max-width: 1100px; margin: 0 auto; padding: 1rem 0 3rem; }

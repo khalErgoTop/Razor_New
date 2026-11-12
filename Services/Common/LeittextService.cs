@@ -8,8 +8,8 @@ public sealed class LeittextService
 
     public LeittextService(IConfiguration configuration)
     {
-        _connectionString = configuration.GetConnectionString("TOPqwWeb")
-            ?? throw new InvalidOperationException("ConnectionStrings:TOPqwWeb muss konfiguriert werden.");
+        _connectionString = configuration.GetConnectionString("TOPqm")
+            ?? throw new InvalidOperationException("ConnectionStrings:TOPqm muss konfiguriert werden.");
     }
 
     public async Task<IReadOnlyList<LeittextPage>> GetPagesAsync(CancellationToken cancellationToken)

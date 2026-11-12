@@ -3,13 +3,30 @@
     public class ThemeAssetService
     {
         private readonly ThemeResolver _themeResolver;
+        private readonly IWebHostEnvironment _environment;
 
-        public ThemeAssetService(ThemeResolver themeResolver)
+        public ThemeAssetService(ThemeResolver themeResolver, IWebHostEnvironment environment)
         {
             _themeResolver = themeResolver;
+            _environment = environment;
         }
 
         public string ThemeName => _themeResolver.GetThemeName();
+
+        public bool UsesKern => string.Equals(ThemeName, "HH", StringComparison.OrdinalIgnoreCase) ||
+                                string.Equals(ThemeName, "SH", StringComparison.OrdinalIgnoreCase);
+
+        public string? GetExistingLegacyAssetPath(string fileName)
+        {
+            if (UsesKern)
+            {
+                return null;
+            }
+
+            var path = GetAssetPath(fileName);
+            var file = Path.GetFileName(path);
+            return File.Exists(Path.Combine(_environment.WebRootPath, "css", ThemeName, file)) ? path : null;
+        }
 
         public string GetAssetPath(string fileName)
         {
@@ -26,7 +43,7 @@
                 _ => fileName
             };
 
-            return $"/css/{ThemeName}/{legacyFileName}";
+            return $"~/css/{ThemeName}/{legacyFileName}";
         }
     }
 }

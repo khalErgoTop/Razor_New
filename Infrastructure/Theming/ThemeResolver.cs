@@ -16,7 +16,9 @@ namespace TOPqwWeb_Core.Infrastructure.Theming
 
         public string GetThemeName()
         {
-            if (string.IsNullOrWhiteSpace(_settings.Name) || _settings.Name.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+            if (string.IsNullOrWhiteSpace(_settings.Name) || _settings.Name is "." or ".." ||
+                _settings.Name.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0 ||
+                _settings.Name.Contains('/') || _settings.Name.Contains('\\'))
             {
                 throw new InvalidOperationException("Die konfigurierte Theme-Bezeichnung ist ungültig.");
             }

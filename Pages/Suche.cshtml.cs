@@ -44,10 +44,17 @@ namespace TOPqwWeb_Core.Pages
         public PublicSearchResponse? SearchResult { get; private set; }
         public bool SearchWasExecuted { get; private set; }
 
+        public IActionResult OnGetReset()
+        {
+            _searchState.Request = null;
+            _searchState.Results = null;
+            return RedirectToPage("/Suche");
+        }
+
         public async Task OnGetAsync(CancellationToken cancellationToken)
         {
             var request = _searchState.Request;
-            var hasQuery = !string.IsNullOrWhiteSpace(Suchbegriff) || Einrichtungstyp > 0 || !string.IsNullOrWhiteSpace(Postleitzahl) || MitFreienPlaetzen || Merkmale.Count > 0;
+            var hasQuery = Request.Query.ContainsKey("search") || !string.IsNullOrWhiteSpace(Suchbegriff) || Einrichtungstyp > 0 || !string.IsNullOrWhiteSpace(Postleitzahl) || MitFreienPlaetzen || Merkmale.Count > 0;
             if (hasQuery)
             {
                 request = new PublicSearchRequest
